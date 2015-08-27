@@ -11,6 +11,7 @@
 
 @interface PDWallet : NSObject
 
++ (NSMutableArray *) wallet;
 + (PDReward*) find:(NSInteger)identifier;
 + (void) add:(PDReward*)reward;
 + (void) remove:(NSInteger)rewardId;

@@ -11,7 +11,7 @@
 
 @implementation PDWallet
 
-+ (NSMutableArray *) store {
++ (NSMutableArray *) wallet {
     static dispatch_once_t pred;
     static NSMutableArray *sharedInstance = nil;
     dispatch_once(&pred, ^{
