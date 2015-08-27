@@ -28,6 +28,7 @@
 		397479271B8F16AE0015C661 /* PDBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479241B8F16AE0015C661 /* PDBrand.m */; };
 		397479281B8F16AE0015C661 /* PDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479251B8F16AE0015C661 /* PDFeedItem.m */; };
 		3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792A1B8F16B50015C661 /* PDAPIClient.m */; };
+		3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */; };
 		39D7D0711B8F0DCF00E45D0B /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		39EF927A1B8F125400D16F18 /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92771B8F125400D16F18 /* Brand.json */; };
 		39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92781B8F125400D16F18 /* BrandTests.m */; };
@@ -110,6 +111,8 @@
 		397479261B8F16AE0015C661 /* PDFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFeedItem.h; sourceTree = "<group>"; };
 		397479291B8F16B50015C661 /* PDAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIClient.h; sourceTree = "<group>"; };
 		3974792A1B8F16B50015C661 /* PDAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIClient.m; sourceTree = "<group>"; };
+		3974792D1B8F1FC50015C661 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
+		3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGeolocationManager.m; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				397479211B8F16A40015C661 /* PDConstants.m */,
 				397478FA1B8F16730015C661 /* PDUtils.m */,
 				397478FB1B8F16730015C661 /* PDUtils.h */,
+				3974792D1B8F1FC50015C661 /* PDGeolocationManager.h */,
+				3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				3974791E1B8F16980015C661 /* PDBrandStore.m in Sources */,
 				3974790F1B8F16860015C661 /* PDOpeningHoursWeek.m in Sources */,
 				3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */,
+				3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */,
 				3974791A1B8F16900015C661 /* PDFeeds.m in Sources */,
 				397479051B8F167E0015C661 /* PDRewardStore.m in Sources */,
 				397479191B8F16900015C661 /* PDLocationStore.m in Sources */,
