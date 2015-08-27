@@ -109,4 +109,8 @@ The users last name
  */
 - (PDScores*) scores;
 
++ (PDUser*) initFromUserDefaults:(NSDictionary*)dict;
+
+- (NSMutableDictionary*) dictionaryRepresentation;
+
 @end
