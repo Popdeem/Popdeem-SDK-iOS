@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) add:(PDBrand*)b;
 + (NSArray*) allBrands;
 + (nullable PDBrand*) findBrandByIdentifier:(NSInteger)identifier;
-
++ (NSArray *) orderedByDistanceFromUser;
++ (NSArray *) orderedByName
+;
 @end
 NS_ASSUME_NONNULL_END

@@ -31,4 +31,13 @@
     return [[PDBrandStore store] objectForKey:@(identifier)];
 }
 
+
++ (NSArray *) orderedByDistanceFromUser {
+    return [[[PDBrandStore store] allValues] sortedArrayUsingSelector:@selector(compareDistance:)];
+}
+
++ (NSArray *) orderedByName {
+    return [[[PDBrandStore store] allValues] sortedArrayUsingSelector:@selector(compare:)];
+}
+
 @end

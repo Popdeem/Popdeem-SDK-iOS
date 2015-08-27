@@ -159,8 +159,8 @@
 		3974792C1B8F16C30015C661 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				3974791C1B8F16980015C661 /* PDBrandStore.m */,
 				3974791D1B8F16980015C661 /* PDBrandStore.h */,
+				3974791C1B8F16980015C661 /* PDBrandStore.m */,
 				397479171B8F16900015C661 /* PDLocationStore.h */,
 				397479121B8F16900015C661 /* PDLocationStore.m */,
 				397478FF1B8F167D0015C661 /* PDRewardStore.h */,

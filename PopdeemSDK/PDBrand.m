@@ -7,6 +7,9 @@
 //
 
 #import "PDBrand.h"
+#import "PDUser.h"
+#import "PDLocationStore.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation PDBrand
 
@@ -31,6 +34,41 @@
         return self;
     }
     return nil;
+}
+
+- (NSComparisonResult)compare:(PDBrand *)otherObject {
+    return [self.name compare:otherObject.name];
+}
+
+- (NSComparisonResult)compareDistance:(PDBrand *)otherObject {
+    if (otherObject.distanceFromUser == self.distanceFromUser) {
+        return NSOrderedSame;
+    }
+    if (otherObject.distanceFromUser < self.distanceFromUser) {
+        return NSOrderedDescending;
+    }
+    return NSOrderedAscending;
+}
+
+- (void) calculateDistanceFromUser {
+    
+    NSArray *locations = [PDLocationStore locationsForBrandIdentifier:self.identifier];
+    if (!locations) {
+        return;
+    }
+    PDUser *user = [PDUser sharedInstance];
+    CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:user.lastLocation.latitude longitude:user.lastLocation.longitude];
+    
+    double closestDistance = MAXFLOAT;
+    for (PDLocation *loc in locations) {
+        CLLocation *thisLocation = [[CLLocation alloc] initWithLatitude:loc.geoLocation.latitude longitude:loc.geoLocation.longitude];
+        
+        double distance = [userLocation distanceFromLocation:thisLocation];
+        if (distance < closestDistance) {
+            closestDistance = distance;
+        }
+    }
+    self.distanceFromUser = closestDistance;
 }
 
 @end

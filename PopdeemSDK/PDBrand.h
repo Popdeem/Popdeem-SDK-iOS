@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "PDOpeningHoursWeek.h"
 
 @interface PDBrand : NSObject
@@ -24,8 +25,14 @@
 
 @property (nonatomic) NSInteger numberOfLocations;
 
+@property (nonatomic) float distanceFromUser;
+
 @property (nonatomic, strong) PDOpeningHoursWeek *openingHours;
 
+@property (nonatomic, strong) UIImage *coverImage;
+@property (nonatomic, strong) UIImage *logoImage;
+
 - (id) initFromApi:(NSDictionary*)params;
+- (NSComparisonResult)compareDistance:(PDBrand *)otherObject;
 
 @end
