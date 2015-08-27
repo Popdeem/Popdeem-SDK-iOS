@@ -110,29 +110,18 @@
     }
 }
 
-- (void) downloadLogoImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
-    NSDictionary *userDictionary;
-    if (isDownloadingLogo) {
-        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"Already downloading this image", NSLocalizedDescriptionKey,
-                          nil];
-        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
-        failure(error);
-        
-    };
+- (void) downloadLogoImageCompletion:(void (^)(BOOL))completion {
+
+    if (isDownloadingLogo) completion(NO);
     if (self.logoUrlString) {
         isDownloadingLogo = YES;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             self.logoImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.logoUrlString]]];
             isDownloadingLogo = NO;
-            success();
+            completion(YES);
         });
     } else {
-        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"Image is default image", NSLocalizedDescriptionKey,
-                          nil];
-        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
-        failure(error);
+        completion(NO);
     }
 }
 

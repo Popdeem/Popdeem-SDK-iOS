@@ -884,6 +884,7 @@
 		38485DF619582598A97F7D7A61F00BAD /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		3920EA5343F630925D4602ADE30C052C /* HCIsDictionaryContainingEntries.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCIsDictionaryContainingEntries.h; path = Source/Library/Collection/HCIsDictionaryContainingEntries.h; sourceTree = "<group>"; };
 		396CBEC58E223F00105A364E246CDFB0 /* HCCharReturnGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCCharReturnGetter.m; path = Source/Core/Helpers/ReturnValueGetters/HCCharReturnGetter.m; sourceTree = "<group>"; };
+		397479311B8F45880015C661 /* PopdeemSDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = PopdeemSDK.podspec; path = ../PopdeemSDK.podspec; sourceTree = "<group>"; };
 		3A980517B4A7DD997B245B79CA20605B /* HCStringEndsWith.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HCStringEndsWith.h; path = Source/Library/Text/HCStringEndsWith.h; sourceTree = "<group>"; };
 		3B92EB2824BCC975CDD86CBFB019DB2C /* FBSDKButton+Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKButton+Subclass.h"; path = "FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKButton+Subclass.h"; sourceTree = "<group>"; };
 		3C4B8604CA0F4C74B6BC4C613AE72AE2 /* Bolts.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Bolts.h; path = Bolts/Common/Bolts.h; sourceTree = "<group>"; };
@@ -1853,6 +1854,7 @@
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
+				397479311B8F45880015C661 /* PopdeemSDK.podspec */,
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */,
 				3FC21796B40509346D65CF06652770DE /* Pods */,

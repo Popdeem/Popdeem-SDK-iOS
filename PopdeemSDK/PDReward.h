@@ -55,6 +55,6 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 
 - (id) initFromApi:(NSDictionary*)params;
 
-- (void) downloadCoverImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure;
+- (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion;
 
 @end

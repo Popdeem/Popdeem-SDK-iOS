@@ -96,16 +96,10 @@
     return nil;
 }
 
-- (void) downloadCoverImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
-    NSDictionary *userDictionary;
-    if (isDownloadingCover) {
-        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"Already downloading this image", NSLocalizedDescriptionKey,
-                          nil];
-        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
-        failure(error);
-        
-    };
+- (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion {
+
+    if (isDownloadingCover) completion(NO);
+    
     if ([self.coverImageUrl isKindOfClass:[NSString class]]) {
         if ([self.coverImageUrl.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
             isDownloadingCover = YES;
@@ -115,14 +109,10 @@
                 
                 self.coverImage = coverImage;
                 isDownloadingCover = NO;
-                success();
+                completion(YES);
             });
         } else {
-            userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @"Image is default image", NSLocalizedDescriptionKey,
-                              nil];
-            NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
-            failure(error);
+            completion(NO);
         }
     }
 }
