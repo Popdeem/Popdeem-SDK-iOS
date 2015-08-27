@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PopdeemSDK"
-  s.version      = "0.0.5"
+  s.version      = "0.0.7"
   s.summary      = "A short description of PopdeemSDK."
 
   s.description  = <<-DESC
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/Popdeem/Popdeem-SDK-iOS.git", :tag => "0.0.5" }
+  s.source       = { :git => "https://github.com/Popdeem/Popdeem-SDK-iOS.git", :tag => "0.0.7" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

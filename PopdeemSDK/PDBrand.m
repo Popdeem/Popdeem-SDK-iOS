@@ -9,7 +9,15 @@
 #import "PDBrand.h"
 #import "PDUser.h"
 #import "PDLocationStore.h"
+#import "PDConstants.h"
 #import <CoreLocation/CoreLocation.h>
+
+@interface PDBrand () {
+    BOOL isDownloadingCover;
+    BOOL isDownloadingLogo;
+}
+
+@end
 
 @implementation PDBrand
 
@@ -69,6 +77,63 @@
         }
     }
     self.distanceFromUser = closestDistance;
+}
+
+- (void) downloadCoverImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
+    NSDictionary *userDictionary;
+    if (isDownloadingCover) {
+        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"Already downloading this image", NSLocalizedDescriptionKey,
+                                        nil];
+        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
+        failure(error);
+
+    };
+    if ([self.coverUrlString isKindOfClass:[NSString class]]) {
+        if ([self.coverUrlString.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
+            isDownloadingCover = YES;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *coverData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.coverUrlString]];
+                UIImage *coverImage = [UIImage imageWithData:coverData];
+                
+                self.coverImage = coverImage;
+                isDownloadingCover = NO;
+                success();
+            });
+        } else {
+            userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @"Image is default image", NSLocalizedDescriptionKey,
+                              nil];
+            NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
+            failure(error);
+        }
+    }
+}
+
+- (void) downloadLogoImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
+    NSDictionary *userDictionary;
+    if (isDownloadingLogo) {
+        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"Already downloading this image", NSLocalizedDescriptionKey,
+                          nil];
+        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
+        failure(error);
+        
+    };
+    if (self.logoUrlString) {
+        isDownloadingLogo = YES;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            self.logoImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.logoUrlString]]];
+            isDownloadingLogo = NO;
+            success();
+        });
+    } else {
+        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"Image is default image", NSLocalizedDescriptionKey,
+                          nil];
+        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
+        failure(error);
+    }
 }
 
 @end

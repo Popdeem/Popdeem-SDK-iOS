@@ -35,4 +35,9 @@
 - (id) initFromApi:(NSDictionary*)params;
 - (NSComparisonResult)compareDistance:(PDBrand *)otherObject;
 
+- (void) downloadCoverImageSuccess:(void (^)())success
+                           failure:(void (^)(NSError *error))failure;
+
+- (void) downloadLogoImageSuccess:(void (^)())success
+                          failure:(void (^)(NSError *error))failure;
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Popdeem. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "PDRewardCustomAvailability.h"
 
@@ -35,6 +36,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) PDRewardType type;
 @property (nonatomic, strong) NSMutableArray *socialMediaTypes;
 @property (nonatomic, strong) NSString *coverImageUrl;
+@property (nonatomic, strong, nullable) UIImage *coverImage;
 
 @property (nonatomic, strong) NSString *rewardDescription;
 @property (nonatomic, strong) NSString *rewardRules;
@@ -52,5 +54,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, strong) NSMutableArray *locationIds;
 
 - (id) initFromApi:(NSDictionary*)params;
+
+- (void) downloadCoverImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 @end

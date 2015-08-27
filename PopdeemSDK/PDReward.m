@@ -8,6 +8,13 @@
 
 #import "PDReward.h"
 #import "PDUser.h"
+#import "PDConstants.h"
+
+@interface PDReward () {
+    BOOL isDownloadingCover;
+}
+
+@end
 
 @implementation PDReward
 
@@ -87,6 +94,37 @@
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     return nil;
+}
+
+- (void) downloadCoverImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
+    NSDictionary *userDictionary;
+    if (isDownloadingCover) {
+        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                          @"Already downloading this image", NSLocalizedDescriptionKey,
+                          nil];
+        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
+        failure(error);
+        
+    };
+    if ([self.coverImageUrl isKindOfClass:[NSString class]]) {
+        if ([self.coverImageUrl.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
+            isDownloadingCover = YES;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *coverData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.coverImageUrl]];
+                UIImage *coverImage = [UIImage imageWithData:coverData];
+                
+                self.coverImage = coverImage;
+                isDownloadingCover = NO;
+                success();
+            });
+        } else {
+            userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                              @"Image is default image", NSLocalizedDescriptionKey,
+                              nil];
+            NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
+            failure(error);
+        }
+    }
 }
 
 @end
