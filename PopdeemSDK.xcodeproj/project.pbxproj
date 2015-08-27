@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		39D7D0691B8F0DCF00E45D0B /* PopdeemSDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39D7D0681B8F0DCF00E45D0B /* PopdeemSDK.h */; };
+		39D7D06B1B8F0DCF00E45D0B /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D7D06A1B8F0DCF00E45D0B /* PopdeemSDK.m */; };
+		39D7D0711B8F0DCF00E45D0B /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		84CD3BBBC1E769CE9AF260D9 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39D7D0721B8F0DCF00E45D0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39D7D05D1B8F0DCF00E45D0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39D7D0641B8F0DCF00E45D0B;
+			remoteInfo = PopdeemSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		39D7D0631B8F0DCF00E45D0B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				39D7D0691B8F0DCF00E45D0B /* PopdeemSDK.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		39D7D0681B8F0DCF00E45D0B /* PopdeemSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
+		39D7D06A1B8F0DCF00E45D0B /* PopdeemSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
+		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
+		E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		39D7D0621B8F0DCF00E45D0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84CD3BBBC1E769CE9AF260D9 /* libPods-PopdeemSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39D7D06D1B8F0DCF00E45D0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39D7D0711B8F0DCF00E45D0B /* libPopdeemSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		39D7D05C1B8F0DCF00E45D0B = {
+			isa = PBXGroup;
+			children = (
+				39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */,
+				39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */,
+				39D7D0661B8F0DCF00E45D0B /* Products */,
+				5DBE05A8A8516121F073643A /* Pods */,
+				4EF69A0328B0579398DD2DED /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		39D7D0661B8F0DCF00E45D0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */,
+				39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */ = {
+			isa = PBXGroup;
+			children = (
+				39D7D0681B8F0DCF00E45D0B /* PopdeemSDK.h */,
+				39D7D06A1B8F0DCF00E45D0B /* PopdeemSDK.m */,
+			);
+			path = PopdeemSDK;
+			sourceTree = "<group>";
+		};
+		39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				39D7D0751B8F0DCF00E45D0B /* Supporting Files */,
+			);
+			path = PopdeemSDKTests;
+			sourceTree = "<group>";
+		};
+		39D7D0751B8F0DCF00E45D0B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39D7D0761B8F0DCF00E45D0B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EF69A0328B0579398DD2DED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DBE05A8A8516121F073643A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */,
+				D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39D7D0791B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDK" */;
+			buildPhases = (
+				DC27E41D61A1EBEF3CD6DB7A /* Check Pods Manifest.lock */,
+				39D7D0611B8F0DCF00E45D0B /* Sources */,
+				39D7D0621B8F0DCF00E45D0B /* Frameworks */,
+				39D7D0631B8F0DCF00E45D0B /* CopyFiles */,
+				7B7F06E745DE584256C8D0B1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopdeemSDK;
+			productName = PopdeemSDK;
+			productReference = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		39D7D06F1B8F0DCF00E45D0B /* PopdeemSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39D7D07C1B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDKTests" */;
+			buildPhases = (
+				39D7D06C1B8F0DCF00E45D0B /* Sources */,
+				39D7D06D1B8F0DCF00E45D0B /* Frameworks */,
+				39D7D06E1B8F0DCF00E45D0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39D7D0731B8F0DCF00E45D0B /* PBXTargetDependency */,
+			);
+			name = PopdeemSDKTests;
+			productName = PopdeemSDKTests;
+			productReference = 39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		39D7D05D1B8F0DCF00E45D0B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Popdeem;
+				TargetAttributes = {
+					39D7D0641B8F0DCF00E45D0B = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					39D7D06F1B8F0DCF00E45D0B = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 39D7D0601B8F0DCF00E45D0B /* Build configuration list for PBXProject "PopdeemSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 39D7D05C1B8F0DCF00E45D0B;
+			productRefGroup = 39D7D0661B8F0DCF00E45D0B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */,
+				39D7D06F1B8F0DCF00E45D0B /* PopdeemSDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39D7D06E1B8F0DCF00E45D0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B7F06E745DE584256C8D0B1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC27E41D61A1EBEF3CD6DB7A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		39D7D0611B8F0DCF00E45D0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39D7D06B1B8F0DCF00E45D0B /* PopdeemSDK.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39D7D06C1B8F0DCF00E45D0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39D7D0731B8F0DCF00E45D0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */;
+			targetProxy = 39D7D0721B8F0DCF00E45D0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		39D7D0771B8F0DCF00E45D0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		39D7D0781B8F0DCF00E45D0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		39D7D07A1B8F0DCF00E45D0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		39D7D07B1B8F0DCF00E45D0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		39D7D07D1B8F0DCF00E45D0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PopdeemSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		39D7D07E1B8F0DCF00E45D0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PopdeemSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39D7D0601B8F0DCF00E45D0B /* Build configuration list for PBXProject "PopdeemSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39D7D0771B8F0DCF00E45D0B /* Debug */,
+				39D7D0781B8F0DCF00E45D0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39D7D0791B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39D7D07A1B8F0DCF00E45D0B /* Debug */,
+				39D7D07B1B8F0DCF00E45D0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39D7D07C1B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39D7D07D1B8F0DCF00E45D0B /* Debug */,
+				39D7D07E1B8F0DCF00E45D0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 39D7D05D1B8F0DCF00E45D0B /* Project object */;
+}
