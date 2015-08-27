@@ -1,0 +1,21 @@
+{
+    "brand": {
+        "name": "Popdeem Bakery",
+        "logo": "http://s3-eu-west-1.amazonaws.com/popdeem-staging/brands/logo_images/000/000/010/original/popdeem_logo.png?1370879332"
+    },
+    "reward": {
+        "type": "coupon",
+        "description": "Free Coffee"
+    },
+    "time_ago": "10 months ago",
+    "picture=": "http://s3-eu-west-1.amazonaws.com/popdeem-staging/requests/photos/000/000/455/original/455.png?1413206567",
+    "text": "You took a photo at <b>Popdeem Bakery</b>. Your score increased by <b>2</b>",
+    "social_account": {
+        "user": {
+            "id": 1231,
+            "first_name": "Niall",
+            "last_name": "Quinn"
+        },
+        "profile_picture": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p200x200/10561791_10152587847771069_6128016419296960032_n.jpg?oh=dfcfc553c9aaf041416d0860c08d2c43&oe=561003BD&__gda__=1444320298_77b07a28640de42951ba6293df2e9621"
+    }
+}

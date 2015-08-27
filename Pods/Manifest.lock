@@ -20,11 +20,46 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Bolts (1.2.0):
+    - Bolts/AppLinks (= 1.2.0)
+    - Bolts/Tasks (= 1.2.0)
+  - Bolts/AppLinks (1.2.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.2.0)
+  - Expecta (1.0.2)
+  - FBSDKCoreKit (4.5.1):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.5.1)
+    - FBSDKCoreKit/no-arc (= 4.5.1)
+  - FBSDKCoreKit/arc (4.5.1):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.5.1):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.5.1):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.5.1):
+    - FBSDKCoreKit
+  - OCHamcrest (4.1.1)
+  - Specta (0.5.0)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (~> 2.0)
+  - Expecta (~> 1.0.0)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
+  - OCHamcrest (~> 4.0)
+  - Specta (~> 0.5)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
+  FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
+  FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
+  FBSDKShareKit: 642034ac9f30793dfd897851b724bb4281750266
+  OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
+  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
 
 COCOAPODS: 0.38.2

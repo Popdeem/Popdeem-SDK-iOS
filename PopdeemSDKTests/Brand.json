@@ -1,0 +1,51 @@
+{
+    "id": "123",
+    "name": "Conors Coffee",
+    "logo": "http://s3-eu-west-1.amazonaws.com/popdeem-staging/brands/logo_images/000/000/123/original/Untitled_5.png?1440414100",
+    "cover_image": "http://s3-eu-west-1.amazonaws.com/popdeem-staging/brands/cover_images/000/000/123/original/coffeeheader.png?1440414101",
+    "contacts": {
+        "phone": "018251508",
+        "email": "info@conorscoffee.ie",
+        "web": "www.conorscoffee.ie",
+        "facebook": "facebook.com/ccoffee",
+        "twitter": "@ccoffee"
+    },
+    "opening_hours": {
+        "sunday": {
+            "closed": false,
+            "from": "09:00",
+            "to": "17:00"
+        },
+        "monday": {
+            "closed": false,
+            "from": "09:00",
+            "to": "17:00"
+        },
+        "tuesday": {
+            "closed": false,
+            "from": "09:00",
+            "tuesday": "17:00"
+        },
+        "wednesday": {
+            "closed": false,
+            "from": "09:00",
+            "to": "17:00"
+        },
+        "thursday": {
+            "closed": false,
+            "from": "09:00",
+            "to": "17:00"
+        },
+        "friday": {
+            "closed": false,
+            "from": "09:00",
+            "to": "17:00"
+        },
+        "saturday": {
+            "closed": false,
+            "from": "09:00",
+            "to": "17:00"
+        }
+    },
+    "number_of_locations": "1"
+}

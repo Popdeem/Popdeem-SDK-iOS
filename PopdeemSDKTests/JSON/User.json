@@ -1,0 +1,66 @@
+{
+    "status": "User Data",
+    "user": {
+        "facebook": {
+            "social_account_id": 1234,
+            "facebook_id": "123456789",
+            "tester": "false",
+            "access_token": "facebokaccesstoken",
+            "expiration_time": 123456789,
+            "profile_picture_url": "https://imageurl.com",
+            "score": {
+                "total_score": {
+                    "value": "100.0"
+                },
+                "influence_score": {
+                    "reach_score_value": "100.0",
+                    "engangement_score_value": "100.0",
+                    "engagement_score_value": "100.0",
+                    "frequency_score_value": "100.0"
+                },
+                "advocacy_score": {
+                    "value": 100
+                }
+            },
+            "favourite_brand_ids": [
+            
+            ]
+        },
+        "twitter": {
+            "social_account_id": 123,
+            "twitter_id": "123456789",
+            "tester": "",
+            "access_token": "twitteraccesstoken",
+            "expiration_time": 123456789,
+            "profile_picture_url": "https://www.twitterurl.com",
+            "score": {
+                "total_score": {
+                    "value": "100.0"
+                },
+                "influence_score": {
+                    "reach_score_value": "100.0",
+                    "engangement_score_value": "100.0",
+                    "engagement_score_value": "100.0",
+                    "frequency_score_value": "100.0"
+                },
+                "advocacy_score": {
+                    "value": 100.00
+                }
+            },
+            "favourite_brand_ids": [
+            
+            ]
+        },
+        "first_name": "John",
+        "last_name": "Doe",
+        "sex": "male",
+        "college": " ",
+        "type": "demo",
+        "location": {
+            "latitude": 53.3313,
+            "longitude": -6.2439
+        },
+        "id": "1231",
+        "user_token": "hdgshsghwghgeygdyegdyge"
+    }
+}
