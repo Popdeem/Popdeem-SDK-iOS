@@ -7,6 +7,7 @@
 //
 
 #import "PDUser.h"
+#import "PDUser+Facebook.h"
 
 @interface PDUser()
 
@@ -161,6 +162,14 @@
             return self.facebookParams.scores;
             break;
     }
+}
+
+- (NSArray*) socialMediaFriendsOrderedAlpha {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES comparator:^NSComparisonResult(id obj1, id obj2) {
+        return [(NSString *)obj1 compare:(NSString *)obj2 options:NSNumericSearch];
+    }];
+    NSArray *sortedArray = [[PDUser taggableFriends] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+    return sortedArray;
 }
 
 

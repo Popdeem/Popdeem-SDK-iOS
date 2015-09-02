@@ -38,4 +38,7 @@
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion;
 
 - (void) downloadLogoImageCompletion:(void (^)(BOOL success))completion;
+
+- (BOOL) isOpenNow;
+
 @end

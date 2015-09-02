@@ -18,7 +18,7 @@
 + (void) add:(PDReward *)reward;
 + (PDReward *) find:(NSInteger)identifier;
 + (NSMutableArray*) allRewardsForBrandId:(NSInteger)brandId;
-
++ (void) deleteReward:(NSInteger)rewardId;
 /**
  * @abstract The number of rewards available for a given brand.
  * @param brandId The Popdeem identifier for the brand.

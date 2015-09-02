@@ -19,6 +19,7 @@ NSString *const LOCATIONS_PATH = @"api/v2/locations";
 NSString *const WALLET_PATH = @"api/v2/rewards/wallet";
 NSString *const MESSAGES_PATH = @"api/v2/messages";
 NSString *const FEEDS_PATH = @"api/v2/feeds";
+NSString *const BRANDS_PATH = @"api/v2/brands";
 /*
  End API URL Strings
  */

@@ -113,4 +113,6 @@ The users last name
 
 - (NSMutableDictionary*) dictionaryRepresentation;
 
+- (NSArray*) socialMediaFriendsOrderedAlpha;
+
 @end

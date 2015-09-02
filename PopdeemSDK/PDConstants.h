@@ -16,6 +16,7 @@ extern NSString *const LOCATIONS_PATH;
 extern NSString *const WALLET_PATH;
 extern NSString *const MESSAGES_PATH;
 extern NSString *const FEEDS_PATH;
+extern NSString *const BRANDS_PATH;
 
 //
 //NSNotificationCenter Strings
@@ -62,7 +63,9 @@ typedef NS_ENUM(NSInteger, PDErrorCode) {
     PDErrorCodeUserCreationFailed = 27001,
     PDErrorCodeGetLocationsFailed = 27002,
     PDErrorCodeClaimFailed = 27003,
-    PDErrorCodeGetFeedsFailed = 27004,
-    PDErrorCodeImageDownloadFailed = 27005
+    PDErrorCodeRedeemFailed = 27004,
+    PDErrorCodeGetFeedsFailed = 27005,
+    PDErrorCodeGetBrandsFailed = 27006,
+    PDErrorCodeImageDownloadFailed = 27007
 };
 

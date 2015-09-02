@@ -285,8 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				3974791F1B8F16A40015C661 /* PDConstants.h */,
-				397479201B8F16A40015C661 /* PDCommon.h */,
 				397479211B8F16A40015C661 /* PDConstants.m */,
+				397479201B8F16A40015C661 /* PDCommon.h */,
 				397478FA1B8F16730015C661 /* PDUtils.m */,
 				397478FB1B8F16730015C661 /* PDUtils.h */,
 				3974792D1B8F1FC50015C661 /* PDGeolocationManager.h */,

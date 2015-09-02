@@ -11,6 +11,7 @@
 #import "PDLocationStore.h"
 #import "PDConstants.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PDAPIClient.h"
 
 @interface PDBrand () {
     BOOL isDownloadingCover;
@@ -38,7 +39,17 @@
         if (params[@"opening_hours"]) {
             self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];
         }
-        
+        NSArray *locations = [PDLocationStore locationsForBrandIdentifier:self.identifier];
+        if (!locations) {
+            [[PDAPIClient sharedInstance] getLocationsForBrandId:self.identifier success:^(){
+                [self calculateDistanceFromUser];
+            } failure:^(NSError *error){
+                
+            }];
+        } else {
+            [self calculateDistanceFromUser];
+        }
+
         return self;
     }
     return nil;
@@ -61,9 +72,7 @@
 - (void) calculateDistanceFromUser {
     
     NSArray *locations = [PDLocationStore locationsForBrandIdentifier:self.identifier];
-    if (!locations) {
-        return;
-    }
+
     PDUser *user = [PDUser sharedInstance];
     CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:user.lastLocation.latitude longitude:user.lastLocation.longitude];
     
@@ -79,15 +88,10 @@
     self.distanceFromUser = closestDistance;
 }
 
-- (void) downloadCoverImageSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
+- (void) downloadCoverImageCompletion:(void (^)(BOOL))completion {
     NSDictionary *userDictionary;
     if (isDownloadingCover) {
-        userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        @"Already downloading this image", NSLocalizedDescriptionKey,
-                                        nil];
-        NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
-        failure(error);
-
+        completion(NO);
     };
     if ([self.coverUrlString isKindOfClass:[NSString class]]) {
         if ([self.coverUrlString.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
@@ -98,14 +102,10 @@
                 
                 self.coverImage = coverImage;
                 isDownloadingCover = NO;
-                success();
+                completion(YES);
             });
         } else {
-            userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @"Image is default image", NSLocalizedDescriptionKey,
-                              nil];
-            NSError *error = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeImageDownloadFailed userInfo:userDictionary];
-            failure(error);
+            completion(NO);
         }
     }
 }
@@ -123,6 +123,84 @@
     } else {
         completion(NO);
     }
+}
+
+- (BOOL) isOpenNow {
+    PDOpeningHoursDay *day;
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [gregorian setTimeZone:[NSTimeZone localTimeZone]];
+    NSDateComponents *nowComps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    int weekday = (int)[nowComps weekday];
+    
+    switch (weekday) {
+        case 1://Sunday
+            day = self.openingHours.sunday;
+            break;
+        case 2:
+            day = self.openingHours.monday;
+            break;
+        case 3:
+            day = self.openingHours.tuesday;
+            break;
+        case 4:
+            day = self.openingHours.wednesday;
+            break;
+        case 5:
+            day = self.openingHours.thursday;
+            break;
+        case 6:
+            day = self.openingHours.friday;
+            break;
+        case 7:
+            day = self.openingHours.saturday;
+            break;
+    }
+    
+    if (day.isClosedForDay) return NO;
+    
+    NSDate *now = [NSDate date];
+    NSString *nowTime = [self.timeFormatter stringFromDate:now];
+    
+    return [self time:nowTime isBetweenOpen:day.openingTimeStringRepresentation closed:day.closingTimeStringRepresentation];
+}
+
+- (BOOL) time:(NSString*)now isBetweenOpen:(NSString*)open closed:(NSString*)closed {
+    NSArray *nowComps = [now componentsSeparatedByString:@":"];
+    NSArray *openComps = [open componentsSeparatedByString:@":"];
+    NSArray *closeComps = [closed componentsSeparatedByString:@":"];
+    
+    int nowH = [nowComps[0] intValue];
+    int nowM = [nowComps[1] intValue];
+    int openH = [openComps[0] intValue];
+    int openM = [openComps[1] intValue];
+    int closeH = [closeComps[0] intValue];
+    int closeM = [closeComps[1] intValue];
+    
+    if (nowH >= openH && nowH <= closeH ) {
+        if (nowH == openH) {
+            return nowM > openM;
+        }
+        if (nowH == closeH) {
+            return nowM < closeM;
+        }
+        return YES;
+    } else if (closeH < openH) {
+        //closes in the early hours of next day
+        if (nowH <= closeH) {
+            if (nowH == closeH) {
+                return nowM < closeM;
+            }
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (NSDateFormatter*) timeFormatter {
+    NSDateFormatter *timeFormatter = [[NSDateFormatter  alloc] init];
+    [timeFormatter setDateFormat:@"HH:mm"];
+    return timeFormatter;
 }
 
 @end

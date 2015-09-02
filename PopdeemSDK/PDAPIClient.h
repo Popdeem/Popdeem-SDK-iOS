@@ -125,6 +125,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) getAllLocationsSuccess:(void (^)(void))success
                         failure:(void (^)(NSError *error))failure;
 
+- (void) getLocationsForBrandId:(NSInteger)brandId
+                        success:(void (^)(void))success
+                        failure:(void (^)(NSError *error))failure;
+
 /// ---------------------
 /// @name Rewards
 ///-----------------------
@@ -210,6 +214,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param failure block to be called on failure
  */
 - (void) claimReward:(NSInteger)rewardId
+            location:(PDLocation*)location
          withMessage:(nullable NSString*)message
        taggedFriends:(nullable NSArray*)taggedFriends
                image:(nullable UIImage*)image
@@ -256,6 +261,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @param failure block to be called on failure
  */
 - (void) getFeedsSuccess:(void (^)(void))success
+                 failure:(void (^)(NSError *error))failure;
+
+
+-(void) getBrandsSuccess:(void (^)(void))success
                  failure:(void (^)(NSError *error))failure;
 
 @end

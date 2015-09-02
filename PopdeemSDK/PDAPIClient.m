@@ -156,13 +156,14 @@
                     failure:(void (^)(NSError *error))failure {
     PDUser *_user = [PDUser sharedInstance];
     [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
-    [self POST:LOCATIONS_PATH
+    [self GET:LOCATIONS_PATH
     parameters:nil
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
            for (id loc in responseObject[@"locations"]) {
                PDLocation *location = [[PDLocation alloc] initFromApi:loc];
                [PDLocationStore add:location];
            }
+           success();
        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
            NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                            @"Get Locations Failed", NSLocalizedDescriptionKey,
@@ -181,13 +182,40 @@
     PDUser *_user = [PDUser sharedInstance];
     [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     NSString *singleLocationPath = [NSString stringWithFormat:@"%@/%li",LOCATIONS_PATH,identifier];
-    [self POST:singleLocationPath
+    [self GET:singleLocationPath
     parameters:nil
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
             PDLocation *location = [[PDLocation alloc] initFromApi:responseObject[@"location"]];
             [PDLocationStore add:location];
-           
+           success();
+       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+           NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           @"Get Locations Failed", NSLocalizedDescriptionKey,
+                                           error, NSUnderlyingErrorKey,
+                                           nil];
+           NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
+                                                          code:PDErrorCodeGetLocationsFailed
+                                                      userInfo:userDictionary];
+           failure(endError);
+       }];
+}
+
+- (void) getLocationsForBrandId:(NSInteger)brandId
+                        success:(void (^)(void))success
+                        failure:(void (^)(NSError *error))failure {
+    PDUser *_user = [PDUser sharedInstance];
+    [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
+    
+    NSString *brandLocatonPath = [NSString stringWithFormat:@"@%/%li/locations",BRANDS_PATH,brandId];
+    [self GET:brandLocatonPath
+    parameters:nil
+       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           for (id loc in responseObject[@"locations"]) {
+               PDLocation *location = [[PDLocation alloc] initFromApi:loc];
+               [PDLocationStore add:location];
+           }
+           success();
        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
            NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                            @"Get Locations Failed", NSLocalizedDescriptionKey,
@@ -351,6 +379,7 @@
 #pragma mark - Claim Reward -
 
 - (void) claimReward:(NSInteger)rewardId
+            location:(PDLocation*)location
          withMessage:(NSString*)message
        taggedFriends:(NSArray*)taggedFriends
                image:(UIImage*)image
@@ -401,13 +430,17 @@
         [params setObject:imageString forKey:@"file"];
     }
     
-    NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",_user.lastLocation.latitude],@"latitude",[NSString stringWithFormat:@"%.4f",_user.lastLocation.longitude], @"longitude", nil];
+    NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",location.geoLocation.latitude],@"latitude",
+                                                                              [NSString stringWithFormat:@"%.4f",location.geoLocation.longitude], @"longitude",
+                                                                              [NSString stringWithFormat:@"%li", location.identifier],
+                                                                            nil];
     [params setObject:locationParams forKey:@"location"];
     
     NSLog(@"Claim");
     [self POST:postPath
     parameters:params
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           [PDRewardStore deleteReward:rewardId];
            success();
        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
            NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -427,11 +460,22 @@
               success:(void (^)(void))success
               failure:(void (^)(NSError *error))failure {
     
+    PDReward *r = [PDWallet find:rewardId];
+    if (r.type == PDRewardTypeSweepstake) {
+        NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"Cannot redeem a sweepstake reward", NSLocalizedDescriptionKey,
+                                        nil];
+        NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
+                                                       code:PDErrorCodeRedeemFailed
+                                                   userInfo:userDictionary];
+        failure(endError);
+    }
     PDUser *_user = [PDUser sharedInstance];
     [[self requestSerializer] setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     
-    NSString *postPath = [NSString stringWithFormat:@"%@/%li/redeem",REWARDS_PATH,rewardId];
+    NSString *postPath = [NSString stringWithFormat:@"%@/%li/redeem",REWARDS_PATH,(long)rewardId];
     [self POST:postPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        PDReward *r = [PDWallet find:rewardId];
         [PDWallet remove:rewardId];
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -491,6 +535,34 @@
                                                    userInfo:userDictionary];
         failure(endError);
     }];
+}
+
+#pragma mark - Get Brands -
+-(void) getBrandsSuccess:(void (^)(void))success
+                 failure:(void (^)(NSError *error))failure {
+    
+    PDUser *user = [PDUser sharedInstance];
+    [[self requestSerializer] setValue:user.userToken forHTTPHeaderField:@"User-Token"];
+    [self GET:BRANDS_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSArray *brands = responseObject[@"brands"];
+        for (NSDictionary *attributes in brands) {
+            PDBrand *b = [[PDBrand alloc] initFromApi:attributes];
+            if ([PDBrandStore findBrandByIdentifier:b.identifier] == nil) {
+                [PDBrandStore add:b];
+            }
+        }
+        success();
+    } failure:^(AFHTTPRequestOperation* operation, NSError *error) {
+        NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"Get Brands Failed", NSLocalizedDescriptionKey,
+                                        error, NSUnderlyingErrorKey,
+                                        nil];
+        NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
+                                                       code:PDErrorCodeGetBrandsFailed
+                                                   userInfo:userDictionary];
+        failure(endError);
+    }];
+    
 }
 
 @end

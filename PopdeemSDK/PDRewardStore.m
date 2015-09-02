@@ -24,6 +24,12 @@
     [[PDRewardStore store] setObject:reward forKey:@(reward.identifier)];
 }
 
++ (void) deleteReward:(NSInteger)rewardId {
+    if ([[PDRewardStore store] objectForKey:@(rewardId)]) {
+        [[PDRewardStore store] removeObjectForKey:@(rewardId)];
+    }
+}
+
 + (PDReward *) find:(NSInteger)identifier {
     //Convert NSInteger to NSNumber for search
     return [[PDRewardStore store] objectForKey:@(identifier)];

@@ -43,7 +43,7 @@
     return [NSArray arrayWithArray:sortedArray];
 }
 
-- (NSArray*) locationsForBrandIdentifier:(NSInteger)identifier {
++ (nonnull NSArray*) locationsForBrandIdentifier:(NSInteger)identifier {
     NSMutableArray *rarr = [NSMutableArray array];
     for (PDLocation *l in [[PDLocationStore store] allValues]) {
         if (l.brandIdentifier == identifier) {

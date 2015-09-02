@@ -21,7 +21,7 @@
 }
 
 + (PDReward*) find:(NSInteger)identifier {
-    for (PDReward *r in [PDWallet store]) {
+    for (PDReward *r in [PDWallet wallet]) {
         if (r.identifier == identifier){
             return r;
         }
@@ -34,24 +34,24 @@
     NSDate *now = [NSDate date];
     NSDate *until = [NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil];
     if ([now compare:until] == NSOrderedAscending) {
-        [[PDWallet store] addObject:reward];
+        [[PDWallet wallet] addObject:reward];
     }
 }
 
 + (void) removeAllRewards {
-    [[PDWallet store] removeAllObjects];
+    [[PDWallet wallet] removeAllObjects];
 }
 
 + (void) remove:(NSInteger)rewardId {
     NSUInteger index = -1;
-    for (PDReward *r in [PDWallet store]) {
+    for (PDReward *r in [PDWallet wallet]) {
         if (r.identifier == rewardId) {
-            index = [[PDWallet store] indexOfObject:r];
+            index = [[PDWallet wallet] indexOfObject:r];
             break;
         }
     }
     if (index != -1) {
-        [[PDWallet store] removeObjectAtIndex:index];
+        [[PDWallet wallet] removeObjectAtIndex:index];
     }
 }
 
