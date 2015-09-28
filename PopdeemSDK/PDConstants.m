@@ -12,7 +12,7 @@
 /*
  API URL Strings
  */
-NSString *const API_URL = @"http://api.popdeem.com/";
+NSString *const API_URL = @"http://staging.popdeem.com/";
 NSString *const USERS_PATH = @"api/v2/users";
 NSString *const REWARDS_PATH = @"api/v2/rewards";
 NSString *const LOCATIONS_PATH = @"api/v2/locations";

@@ -29,5 +29,24 @@ NS_ASSUME_NONNULL_BEGIN
  *@return apiKey
  */
 + (nullable NSString*) getPopdeemApiKey:(NSError**)err;
+
+/*!
+ * @abstract Get Twitter Consumer Key
+ *
+ *@discussion This returns the Twitter Consumer Key specified in the *info.plist*. May return nil if the key cannot be found.
+ *@param err inOut error
+ *@return consumerKey
+ */
++ (nullable NSString*) getTwitterConsumerKey:(NSError**)err;
+
+/*!
+ * @abstract Get Twitter Consumer Secret
+ *
+ *@discussion This returns the Twitter Consumer Secret specified in the *info.plist*. May return nil if the key cannot be found.
+ *@param err inOut error
+ *@return consumerSecret
+ */
++ (nullable NSString*) getTwitterConsumerSecret:(NSError**)err;
+
 NS_ASSUME_NONNULL_END
 @end

@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @abstract The Brand name for the action.
  */
-@property (nonatomic, retain, nullable) NSString *brandName;
+@property (nonatomic, retain) NSString *brandName;
 
 /**
  * @abstract The url string for action image.
@@ -37,37 +37,37 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @abstract The user profile picture url string.
  */
-@property (nonatomic, retain) NSString *userProfilePicUrlString;
+@property (nonatomic, retain, nullable) NSString *userProfilePicUrlString;
 
 /**
  * @abstract The User first name.
  */
-@property (nonatomic, retain) NSString *userFirstName;
+@property (nonatomic, retain, nullable) NSString *userFirstName;
 
 /**
  * @abstract The user last name.
  */
-@property (nonatomic, retain) NSString *userLastName;
+@property (nonatomic, retain, nullable) NSString *userLastName;
 
 /**
  * @abstract The user identifier
  */
-@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic) NSInteger userId;
 
 /**
  * @abstract The action text associated with the reward.
  */
-@property (nonatomic, retain) NSString *actionText;
+@property (nonatomic, retain, nullable) NSString *actionText;
 
 /**
  * @abstract A string depicting how long ago the action happened.
  */
-@property (nonatomic, retain) NSString *timeAgoString;
+@property (nonatomic, retain, nullable) NSString *timeAgoString;
 
 /**
  * @abstract The reward description.
  */
-@property (nonatomic, retain) NSString *descriptionString;
+@property (nonatomic, retain, nullable) NSString *descriptionString;
 
 /**
  * @abstract The initialised action image.

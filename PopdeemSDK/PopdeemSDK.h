@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PDAPIClient.h"
 
 @interface PopdeemSDK : NSObject
 

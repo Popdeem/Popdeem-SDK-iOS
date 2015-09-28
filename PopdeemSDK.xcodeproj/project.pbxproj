@@ -30,6 +30,7 @@
 		3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792A1B8F16B50015C661 /* PDAPIClient.m */; };
 		3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */; };
 		39D7D0711B8F0DCF00E45D0B /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */; settings = {ASSET_TAGS = (); }; };
 		39EF927A1B8F125400D16F18 /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92771B8F125400D16F18 /* Brand.json */; };
 		39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92781B8F125400D16F18 /* BrandTests.m */; };
 		39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92791B8F125400D16F18 /* FeedItemTests.m */; };
@@ -116,6 +117,8 @@
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39DDF0961BB93BE600D779E6 /* PDSocialMediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaManager.h; sourceTree = "<group>"; };
+		39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaManager.m; sourceTree = "<group>"; };
 		39EF92771B8F125400D16F18 /* Brand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Brand.json; sourceTree = "<group>"; };
 		39EF92781B8F125400D16F18 /* BrandTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandTests.m; sourceTree = "<group>"; };
 		39EF92791B8F125400D16F18 /* FeedItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTests.m; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				397478FB1B8F16730015C661 /* PDUtils.h */,
 				3974792D1B8F1FC50015C661 /* PDGeolocationManager.h */,
 				3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */,
+				39DDF0961BB93BE600D779E6 /* PDSocialMediaManager.h */,
+				39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				397478F91B8F16600015C661 /* PDUserFacebookParams.m in Sources */,
 				397479221B8F16A40015C661 /* PDConstants.m in Sources */,
 				397479061B8F167E0015C661 /* PDSocialMediaFriend.m in Sources */,
+				39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */,
 				3974790E1B8F16860015C661 /* PDRewardCustomAvailability.m in Sources */,
 				397479101B8F16860015C661 /* PDReward.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,

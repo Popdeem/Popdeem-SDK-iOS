@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Expecta.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,7 +44,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Specta.xcscheme</key>
+		<key>STTwitter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,52 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>434877FE010F0162243491C679162EBB</key>
+		<key>13E35ABA8C3D6AE483EAEA6CA19E0266</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>56DADF6C4809577BF206EA3781090546</key>
+		<key>411CBD39BCE94F3C077873B9FCB878BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DA97617F52F6D638E5775E816EFCC4B</key>
+		<key>4F0B6BB4B34A77929669A1CE15EF2735</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F3B2BC17BB0D693EE286A84E86A4995</key>
+		<key>5BA2E4A3645E92DA10786C187EA55265</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEEEEF4C52FFD4A9EB2C3F1A6A91E09F</key>
+		<key>8087F11290AFF6B0A53F33B59C9C1270</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B002FD644ACB5BFD0193493018E334A3</key>
+		<key>D1F79BE338D1FD9C354A11C208D97A39</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D345AEA78D232A344AB35D45A3C5D338</key>
+		<key>D51E643EAF3D1AF066F00E53FB74E787</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB2203F0BD1BDF807B7C5106B0D3C1DD</key>
+		<key>D828026261E82721C1A5287EC5245C72</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4A1770EDE647D986E0A9440A411F29E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E97A02DD69143CF53448FEACFEE09AEF</key>
+		<key>E4E2A899F2394842E976A4B307393A65</key>
 		<dict>
 			<key>primary</key>
 			<true/>

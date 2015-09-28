@@ -66,6 +66,8 @@ typedef NS_ENUM(NSInteger, PDErrorCode) {
     PDErrorCodeRedeemFailed = 27004,
     PDErrorCodeGetFeedsFailed = 27005,
     PDErrorCodeGetBrandsFailed = 27006,
-    PDErrorCodeImageDownloadFailed = 27007
+    PDErrorCodeImageDownloadFailed = 27007,
+    PDErrorCodeFBPermissions = 27008,
+    PDErrorCodeTWPermissions = 27009
 };
 

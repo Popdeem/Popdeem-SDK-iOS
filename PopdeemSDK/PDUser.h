@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, PDGender) {
 };
 
 /**
+ @abstract Social media types
  **/
 typedef NS_ENUM(NSUInteger, PDSocialMediaType){
     //Facebook

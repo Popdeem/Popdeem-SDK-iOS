@@ -112,6 +112,36 @@
        }];
 }
 
+#pragma mark - Connect Twitter Account - 
+
+- (void) connectTwitterAccount:(NSString*)userId
+                   accessToken:(NSString*)accessToken
+                  accessSecret:(NSString*)accessSecret
+                       success:(void (^)(PDUser *user))success
+                       failure:(void (^)(NSError *error))failure {
+    
+    NSMutableDictionary *twitter = [NSMutableDictionary dictionary];
+    [twitter setObject:userId forKey:@"social_id"];
+    [twitter setObject:accessToken forKey:@"access_token"];
+    [twitter setObject:accessSecret forKey:@"access_secret"];
+    
+    NSMutableDictionary *user = [NSMutableDictionary dictionary];
+    [user setObject:twitter forKey:@"twitter"];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:user forKey:@"user"];
+    
+    NSString *path = [NSString stringWithFormat:@"%@/%@",USERS_PATH,@"connect_social_account"];
+    
+    [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *userObject = responseObject[@"user"];
+        PDUser *user = [PDUser initFromAPI:userObject preferredSocialMediaType:PDSocialMediaTypeFacebook];
+        success(user);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+
 #pragma mark - Update User Location and DeviceToken -
 
 - (void) updateUserLocationAndDeviceTokenSuccess:(void (^)(PDUser *user))success
@@ -204,10 +234,11 @@
 - (void) getLocationsForBrandId:(NSInteger)brandId
                         success:(void (^)(void))success
                         failure:(void (^)(NSError *error))failure {
+    
     PDUser *_user = [PDUser sharedInstance];
     [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     
-    NSString *brandLocatonPath = [NSString stringWithFormat:@"@%/%li/locations",BRANDS_PATH,brandId];
+    NSString *brandLocatonPath = [NSString stringWithFormat:@"%@/%li/locations",BRANDS_PATH,brandId];
     [self GET:brandLocatonPath
     parameters:nil
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -318,6 +349,42 @@
     }
     [self.requestSerializer setValue:brandKey forHTTPHeaderField:@"Brand-Key"];
     [self getAllRewardsSuccess:success failure:failure];
+    
+}
+
+- (void) getRewardsForBrandId:(NSInteger)brandid
+                      success:(void (^)(NSArray *rewards))success
+                      failure:(void (^)(NSError *error))failure {
+    PDUser *_user = [PDUser sharedInstance];
+    [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
+    
+    NSString *rewardsForBrandPath = [NSString stringWithFormat:@"%@/%li/rewards",BRANDS_PATH,brandid];
+    [self GET:rewardsForBrandPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *rewardsObj = [responseObject valueForKeyPath:@"rewards"];
+        for (PDReward *r in [[PDRewardStore store] allValues]) {
+            if (r.brandId == brandid) {
+                [[PDRewardStore store] removeObjectForKey:@(r.identifier)];
+            }
+        }
+        NSMutableArray *rewardsForB = [NSMutableArray array];
+        for (NSDictionary *attributes in rewardsObj) {
+            PDReward *reward = [[PDReward alloc] initFromApi:attributes];
+            reward.brandId = brandid;
+            [PDRewardStore add:reward];
+            [rewardsForB addObject:reward];
+        }
+        success(rewardsForB);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"Get rewards for brand failed", NSLocalizedDescriptionKey,
+                                        error, NSUnderlyingErrorKey,
+                                        nil];
+        NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
+                                                       code:PDErrorCodeGetBrandsFailed
+                                                   userInfo:userDictionary];
+        failure(endError);
+
+    }];
     
 }
 

@@ -187,6 +187,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) getAllWalletRewardsWithBundledBrandKeySuccess:(void (^)(void))success
                                                failure:(void (^)(NSError *error))failure;
 
+- (void) getRewardsForBrandId:(NSInteger)brandid
+                      success:(void (^)(NSArray *rewards))success
+                      failure:(void (^)(NSError *error))failure;
+
 /*!
  * @abstract Get all Rewards in Wallet With Specified Brand Key
  *

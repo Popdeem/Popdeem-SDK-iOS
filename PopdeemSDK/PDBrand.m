@@ -12,6 +12,7 @@
 #import "PDConstants.h"
 #import <CoreLocation/CoreLocation.h>
 #import "PDAPIClient.h"
+#import "PDLocationStore.h"
 
 @interface PDBrand () {
     BOOL isDownloadingCover;
@@ -39,17 +40,16 @@
         if (params[@"opening_hours"]) {
             self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];
         }
-        NSArray *locations = [PDLocationStore locationsForBrandIdentifier:self.identifier];
-        if (!locations) {
-            [[PDAPIClient sharedInstance] getLocationsForBrandId:self.identifier success:^(){
-                [self calculateDistanceFromUser];
-            } failure:^(NSError *error){
-                
-            }];
-        } else {
-            [self calculateDistanceFromUser];
+        
+        //Parse Locations and calculate distance
+        
+        NSArray *locations = params[@"locations"];
+        for (NSDictionary *d in locations) {
+            PDLocation *l = [[PDLocation alloc] initFromApi:d];
+            [PDLocationStore add:l];
         }
-
+        
+        [self calculateDistanceFromUser];
         return self;
     }
     return nil;

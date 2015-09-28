@@ -10,20 +10,41 @@
 #import <Foundation/Foundation.h>
 #import "PDRewardCustomAvailability.h"
 
+NS_ASSUME_NONNULL_BEGIN
+/**
+ * @abstract Reward type.
+ */
 typedef NS_ENUM(NSInteger, PDRewardType){
+    ///Coupon Reward
+    ///A coupon reward, when claimed, will appear in the wallet to be claimed.
     PDRewardTypeCoupon = 1,
+    ///Sweepstake Reward
+    ///A sweepstake reward, when claimed, results in the user being entered into a draw. The wallet item is not claimable.
     PDRewardTypeSweepstake,
+    ///Instant Reward
+    ///An instant reward can be claimed without any social action.
     PDRewardTypeInstant
 };
 
+/**
+ * @abstract Reward Action.
+ */
 typedef NS_ENUM(NSInteger, PDRewardAction){
+    ///Checkin - the user must check-in, but may also add a photo.
     PDRewardActionCheckin = 1,
+    ///Photo - the user must add a photo.
     PDRewardActionPhoto,
+    ///No action needed. May claim on item tap.
     PDRewardActionNone
 };
 
+/**
+ * @abstract Reward Status.
+ */
 typedef NS_ENUM(NSInteger, PDRewardStatus){
+    ///Live
     PDRewardStatusLive = 1,
+    ///Expired
     PDRewardStatusExpired
 };
 
@@ -52,9 +73,12 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, strong) PDRewardCustomAvailability *customAvailability;
 
 @property (nonatomic, strong) NSMutableArray *locationIds;
+@property (nonatomic) NSInteger brandId;
+
 
 - (id) initFromApi:(NSDictionary*)params;
 
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion;
 
 @end
+NS_ASSUME_NONNULL_END

@@ -39,7 +39,7 @@
     
     NSMutableArray* array = [NSMutableArray array];
     for (PDReward *r in [[PDRewardStore store] allValues]) {
-        if (r.identifier == brandId) {
+        if (r.brandId == brandId) {
             [array addObject:r];
         }
     }
