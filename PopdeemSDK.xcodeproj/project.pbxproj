@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		067D16A0C35A1F31AF56AB5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7148E7293ED54A945519DA3 /* libPods.a */; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
 		397478F71B8F16600015C661 /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478F21B8F16600015C661 /* PDUser.m */; };
@@ -132,6 +133,7 @@
 		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
 		90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A7148E7293ED54A945519DA3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
 		E2C76181153169D6ED342DB5 /* Pods-PopdeemSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84CD3BBBC1E769CE9AF260D9 /* libPods-PopdeemSDK.a in Frameworks */,
+				067D16A0C35A1F31AF56AB5F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +308,7 @@
 			children = (
 				E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */,
 				90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */,
+				A7148E7293ED54A945519DA3 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -425,7 +429,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		88A1A30A1AB100B88A3BF289 /* Copy Pods Resources */ = {

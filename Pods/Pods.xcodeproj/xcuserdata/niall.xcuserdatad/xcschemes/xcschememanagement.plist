@@ -34,12 +34,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-PopdeemSDK.xcscheme</key>
+		<key>Pods-PopdeemSDKTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-PopdeemSDKTests.xcscheme</key>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0C46F24A70433BABE1875B53CF95B254</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>13E35ABA8C3D6AE483EAEA6CA19E0266</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>411CBD39BCE94F3C077873B9FCB878BD</key>
+		<key>2A78729A1FD4E5F683AC8E2DEFDCA940</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F0B6BB4B34A77929669A1CE15EF2735</key>
+		<key>30B3168D89A262077393D131BA5A2A74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5BA2E4A3645E92DA10786C187EA55265</key>
+		<key>6D21DB07ABD8964597EDE8E72BF312D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8087F11290AFF6B0A53F33B59C9C1270</key>
+		<key>758277D5BF3CBB3A9BABC93BDA99EC7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1F79BE338D1FD9C354A11C208D97A39</key>
+		<key>BE92C8C88DFAD55CD93EF2F59FD5DEB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D51E643EAF3D1AF066F00E53FB74E787</key>
+		<key>D3CAB89F90A05A5295FF44031554ADB9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D828026261E82721C1A5287EC5245C72</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E4E2A899F2394842E976A4B307393A65</key>
+		<key>E8E8FDAC7D6FD9A796DA1C244C1206AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
