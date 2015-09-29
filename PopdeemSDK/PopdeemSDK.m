@@ -7,7 +7,12 @@
 //
 
 #import "PopdeemSDK.h"
+#import "PDSocialMediaManager.h"
 
 @implementation PopdeemSDK
+
++ (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier {
+    [[PDSocialMediaManager manager] setOAuthToken:token oauthVerifier:verifier];
+}
 
 @end

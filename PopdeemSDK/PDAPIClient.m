@@ -117,8 +117,12 @@
 - (void) connectTwitterAccount:(NSString*)userId
                    accessToken:(NSString*)accessToken
                   accessSecret:(NSString*)accessSecret
-                       success:(void (^)(PDUser *user))success
+                       success:(void (^)(void))success
                        failure:(void (^)(NSError *error))failure {
+    
+//    [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    PDUser *_user = [PDUser sharedInstance];
+    [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     
     NSMutableDictionary *twitter = [NSMutableDictionary dictionary];
     [twitter setObject:userId forKey:@"social_id"];
@@ -127,18 +131,19 @@
     
     NSMutableDictionary *user = [NSMutableDictionary dictionary];
     [user setObject:twitter forKey:@"twitter"];
+    [user setObject:[NSDictionary dictionary] forKey:@"facebook"];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:user forKey:@"user"];
     
-    NSString *path = [NSString stringWithFormat:@"%@/%@",USERS_PATH,@"connect_social_account"];
+    NSString *path = [NSString stringWithFormat:@"%@/%ld/%@",USERS_PATH,_user.identifier,@"connect_social_account"];
     
     [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *userObject = responseObject[@"user"];
         PDUser *user = [PDUser initFromAPI:userObject preferredSocialMediaType:PDSocialMediaTypeFacebook];
-        success(user);
+        success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        failure(error);
     }];
 }
 
@@ -499,8 +504,8 @@
     
     NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",location.geoLocation.latitude],@"latitude",
                                                                               [NSString stringWithFormat:@"%.4f",location.geoLocation.longitude], @"longitude",
-                                                                              [NSString stringWithFormat:@"%li", location.identifier],
-                                                                            nil];
+                                                                              [NSString stringWithFormat:@"%li", location.identifier], @"id",
+                                                                                nil];
     [params setObject:locationParams forKey:@"location"];
     
     NSLog(@"Claim");

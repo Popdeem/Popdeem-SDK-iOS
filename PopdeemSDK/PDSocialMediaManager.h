@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface PDSocialMediaManager : NSObject
+
++ (id) manager;
+
+- (id) initForViewController:(UIViewController*)viewController;
 
 - (void) loginWithFacebookReadPermissions:(NSArray*)permissions
                                   success:(void (^)(void))success
@@ -19,6 +24,8 @@
 - (void) facebookRequestPublishPermissions:(void (^)(void))success
                                    failure:(void (^)(NSError *err))failure;
 
+- (void) loginWithTwitter:(void (^)(void))success
+                  failure:(void (^)(NSError *error))failure;
 
-
+- (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier;
 @end

@@ -21,19 +21,27 @@
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) NSArray *iOSAccounts;
 @property (nonatomic, assign) UIViewController *holderViewController;
+@property (nonatomic, strong) STTwitterAPI *twitterAPI;
 
 @end
 
 @implementation PDSocialMediaManager
 
-- (id) initForViewController:(UIViewController*)viewController {
-    if (self = [super init]) {
-        _holderViewController = viewController;
-        return self;
-    }
-    return nil;
++ (id) manager {
+    static dispatch_once_t pred;
+    static PDSocialMediaManager *sharedInstance = nil;
+    dispatch_once(&pred, ^{
+        sharedInstance = [[PDSocialMediaManager alloc] init];
+    });
+    return sharedInstance;
 }
 
+- (id) initForViewController:(UIViewController*)viewController {
+    self = [PDSocialMediaManager manager];
+    self.holderViewController = viewController;
+    self.accountStore = [[ACAccountStore alloc] init];
+    return self;
+}
 
 #pragma mark - Facebook -
 
@@ -41,8 +49,7 @@
                               success:(void (^)(void))success
                               failure:(void (^)(NSError *err))failure {
     FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
-    [lm
-     logInWithReadPermissions: permissions
+    [lm logInWithReadPermissions: permissions
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
          if (error) {
              failure(error);
@@ -107,12 +114,15 @@
         
         if (self.iOSAccounts.count > 1) {
             [self chooseAccount:^(ACAccount *account) {
-                [self loginWithTwitter:success failure:failure];
+                [self twitterLoginWithAccount:account success:success failure:failure];
             } failure:^(NSError *error) {
                 failure(error);
             }];
-        } else {
+        } else if (self.iOSAccounts.count == 1) {
             [self twitterLoginWithAccount:[self.iOSAccounts objectAtIndex:0] success:success failure:failure];
+        } else {
+            //Login with safari
+            [self loginOnTheWeb];
         }
     };
     
@@ -128,11 +138,12 @@
     NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
     NSString *twConsumerSecret = [PDUtils getTwitterConsumerSecret:&secretError];
     
-    STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerName:nil
+    _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerName:nil
                                                               consumerKey:twConsumerKey
                                                            consumerSecret:twConsumerSecret];
+
     
-    [twitter postReverseOAuthTokenRequest:^(NSString *authenticationHeader) {
+    [_twitterAPI postReverseOAuthTokenRequest:^(NSString *authenticationHeader) {
         
         STTwitterAPI *twitterAPIOS = [STTwitterAPI twitterAPIOSWithAccount:account];
         
@@ -143,7 +154,7 @@
                                                                                NSString *userID,
                                                                                NSString *screenName) {
                                                                     
-                                                                    [self twitterRegisterWithPopdeem:oAuthToken secret:oAuthTokenSecret userID:userID screenName:username success:success failure:failure];
+                                                                    [self twitterConnectWithPopdeem:oAuthToken secret:oAuthTokenSecret userID:userID screenName:username success:success failure:failure];
                                                                 } errorBlock:^(NSError *error) {
                                                                     failure(error);
                                                                 }];
@@ -162,15 +173,6 @@
                          screenName:(NSString*)screenName
                             success:(void (^)(void))success
                             failure:(void (^)(NSError* error))failure {
-    
-}
-
-- (void) twitterConnectAccountToPopdeem:(NSString*)oAuthToken
-                                 secret:(NSString*)oAuthSecret
-                                 userID:(NSString*)userID
-                             screenName:(NSString*)screenName
-                                success:(void (^)(void))success
-                                failure:(void (^)(NSError* error))failure {
     
 }
 
@@ -203,12 +205,14 @@
                 [ac addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
                         //Handle Cancel
                 }]];
+                ac.view.tintColor = [UIColor blackColor];
                 for (ACAccount *account in _iOSAccounts) {
                     [ac addAction:[UIAlertAction actionWithTitle:account.username style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                         [self selectedIOSTwitterAccount:account];
                     }]];
                 }
                 [_holderViewController presentViewController:ac animated:YES completion:nil];
+                ac.view.tintColor = [UIColor blackColor];
             }
         }];
     };
@@ -221,6 +225,56 @@
 
 - (void) selectedIOSTwitterAccount:(ACAccount*)account {
     NSLog(@"Chose Twitter Account: %@",account.username);
+}
+
+- (void) loginOnTheWeb {
+    NSError *keyError = nil;
+    NSError *secretError = nil;
+    NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
+    NSString *twConsumerSecret = [PDUtils getTwitterConsumerSecret:&secretError];
+    
+    _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:twConsumerKey
+                                                           consumerSecret:twConsumerSecret];
+    
+    [_twitterAPI postTokenRequest:^(NSURL *url, NSString *oauthToken) {
+        NSLog(@"-- url: %@", url);
+        NSLog(@"-- oauthToken: %@", oauthToken);
+        
+
+        [[UIApplication sharedApplication] openURL:url];
+        
+    } authenticateInsteadOfAuthorize:NO
+                    forceLogin:@(YES)
+                    screenName:nil
+                 oauthCallback:@"myapp://twitter_access_tokens/"
+                    errorBlock:^(NSError *error) {
+                        NSLog(@"-- error: %@", error);
+                    }];
+}
+
+- (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier {
+    
+    [_twitterAPI postAccessTokenRequestWithPIN:verifier successBlock:^(NSString *oauthToken, NSString *oauthTokenSecret, NSString *userID, NSString *screenName) {
+        NSLog(@"-- screenName: %@", screenName);
+        [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:oauthTokenSecret screenName:screenName success:^(void){
+                //User is connected to Popdeem
+        } failure:^(NSError *error){
+                //Something went wrong
+            
+        }];
+        //Now connect social account
+    } errorBlock:^(NSError *error) {
+        NSLog(@"-- %@", [error localizedDescription]);
+    }];
+}
+
+- (void) twitterConnectWithPopdeem:(NSString*)oAuthToken
+                            secret:(NSString*)oAuthSecret
+                            userID:(NSString*)userID
+                        screenName:(NSString*)screenName
+                           success:(void (^)(void))success
+                           failure:(void (^)(NSError* error))failure {
+    [[PDAPIClient sharedInstance] connectTwitterAccount:userID accessToken:oAuthToken accessSecret:oAuthSecret success:success failure:failure];
 }
 
 @end

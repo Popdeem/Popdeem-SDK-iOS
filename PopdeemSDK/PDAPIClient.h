@@ -99,6 +99,13 @@ NS_ASSUME_NONNULL_BEGIN
                                      success:(void (^)(PDUser *user))success
                                      failure:(void (^)(NSError *error))failure;
 
+
+- (void) connectTwitterAccount:(NSString*)userId
+                   accessToken:(NSString*)accessToken
+                  accessSecret:(NSString*)accessSecret
+                       success:(void (^)(void))success
+                       failure:(void (^)(NSError *error))failure;
+
 ///---------------------
 /// @name Update User
 ///-----------------------
