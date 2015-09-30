@@ -15,15 +15,16 @@ struct PDGeoLocation {
 };
 typedef struct PDGeoLocation PDGeoLocation;
 
-static PDGeoLocation PDGeoLocationMake(float lati, float longi) {
+static inline PDGeoLocation PDGeoLocationMake(float lati, float longi) {
     PDGeoLocation loc;
     loc.latitude = lati;
     loc.longitude = longi;
     return loc;
+    
 }
 
 //For JSON parsing, check for Null Class
-static BOOL isNilClass(id item) {
+static inline BOOL isNilClass(id item) {
     return [item isKindOfClass:[NSNull class]];
 }
 

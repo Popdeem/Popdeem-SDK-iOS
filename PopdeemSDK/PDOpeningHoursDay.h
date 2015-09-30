@@ -54,13 +54,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (id) initAsClosed;
 
 /**
- * @abstract Determine if the current time falls inside the opening hours of this day.
- *
- * @return Boolean value of is open.
- */
-- (BOOL) isOpenNow;
-
-/**
  * @abstract String representation of the opening hours.
  *
  * @return The opening hours string.

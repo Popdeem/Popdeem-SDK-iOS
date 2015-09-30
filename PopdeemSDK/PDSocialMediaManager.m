@@ -90,6 +90,32 @@
     return [FBSDKAccessToken currentAccessToken] != nil;
 }
 
+- (void) refreshFacebookAccessToken:(void (^)(NSString *token, NSError *err))completion {
+    [FBSDKAccessToken refreshCurrentAccessToken:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if (error) {
+            completion(nil, error);
+        }
+        NSString *tokenString = [[FBSDKAccessToken currentAccessToken] tokenString];
+        [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+        [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user) {
+            if ([[[[PDUser sharedInstance] facebookParams] accessToken] isEqualToString:tokenString]) {
+                completion([[FBSDKAccessToken currentAccessToken] tokenString], nil);
+            } else {
+                NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                @"Tokens Do Not Match", NSLocalizedDescriptionKey,
+                                                error, NSUnderlyingErrorKey,
+                                                nil];
+                NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
+                                                               code:PDErrorCodeUserCreationFailed
+                                                           userInfo:userDictionary];
+                completion(nil, endError);
+            }
+        } failure:^(NSError *apiError) {
+            completion(nil, apiError);
+        }];
+    }];
+}
+
 #pragma mark - Twitter -
 
 - (void) loginWithTwitter:(void (^)(void))success
