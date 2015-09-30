@@ -89,7 +89,6 @@
 }
 
 - (void) downloadCoverImageCompletion:(void (^)(BOOL))completion {
-    NSDictionary *userDictionary;
     if (isDownloadingCover) {
         completion(NO);
     };

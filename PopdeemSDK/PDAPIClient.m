@@ -136,11 +136,10 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:user forKey:@"user"];
     
-    NSString *path = [NSString stringWithFormat:@"%@/%ld/%@",USERS_PATH,_user.identifier,@"connect_social_account"];
+    NSString *path = [NSString stringWithFormat:@"%@/%ld/%@",USERS_PATH,(long)_user.identifier,@"connect_social_account"];
     
     [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *userObject = responseObject[@"user"];
-        PDUser *user = [PDUser initFromAPI:userObject preferredSocialMediaType:PDSocialMediaTypeFacebook];
+//        NSDictionary *userObject = responseObject[@"user"];
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
@@ -165,7 +164,7 @@
     [params setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.latitude] forKey:@"user[latitude]"];
     [params setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.longitude] forKey:@"user[longitude]"];
     
-    NSString *putPath = [NSString stringWithFormat:@"%@/%li",USERS_PATH,_user.identifier];
+    NSString *putPath = [NSString stringWithFormat:@"%@/%ld",USERS_PATH,(long)_user.identifier];
     
     [self PUT:putPath
    parameters:params
@@ -216,7 +215,7 @@
                   failure:(void (^)(NSError *error))failure {
     PDUser *_user = [PDUser sharedInstance];
     [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
-    NSString *singleLocationPath = [NSString stringWithFormat:@"%@/%li",LOCATIONS_PATH,identifier];
+    NSString *singleLocationPath = [NSString stringWithFormat:@"%@/%ld",LOCATIONS_PATH,(long)identifier];
     [self GET:singleLocationPath
     parameters:nil
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -243,7 +242,7 @@
     PDUser *_user = [PDUser sharedInstance];
     [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     
-    NSString *brandLocatonPath = [NSString stringWithFormat:@"%@/%li/locations",BRANDS_PATH,brandId];
+    NSString *brandLocatonPath = [NSString stringWithFormat:@"%@/%ld/locations",BRANDS_PATH,(long)brandId];
     [self GET:brandLocatonPath
     parameters:nil
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -302,7 +301,7 @@
                                 failure:(void (^)(NSError *error))failure {
     PDUser *_user = [PDUser sharedInstance];
     [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
-    NSString *singleLocationRewardsPath = [NSString stringWithFormat:@"%@/%li/rewards",LOCATIONS_PATH,locationIdentifier];
+    NSString *singleLocationRewardsPath = [NSString stringWithFormat:@"%@/%ld/rewards",LOCATIONS_PATH,(long)locationIdentifier];
     [self GET:singleLocationRewardsPath
    parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -363,7 +362,7 @@
     PDUser *_user = [PDUser sharedInstance];
     [self.requestSerializer setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     
-    NSString *rewardsForBrandPath = [NSString stringWithFormat:@"%@/%li/rewards",BRANDS_PATH,brandid];
+    NSString *rewardsForBrandPath = [NSString stringWithFormat:@"%@/%ld/rewards",BRANDS_PATH,(long)brandid];
     [self GET:rewardsForBrandPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *rewardsObj = [responseObject valueForKeyPath:@"rewards"];
         for (PDReward *r in [[PDRewardStore store] allValues]) {
@@ -459,7 +458,7 @@
              failure:(void (^)(NSError *error))failure {
     
     PDUser *_user = [PDUser sharedInstance];
-    NSString *postPath = [NSString stringWithFormat:@"%@/%li/claim",REWARDS_PATH,rewardId];
+    NSString *postPath = [NSString stringWithFormat:@"%@/%ld/claim",REWARDS_PATH,(long)rewardId];
     
     PDReward *r = [PDRewardStore find:rewardId];
     
@@ -504,7 +503,7 @@
     
     NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",location.geoLocation.latitude],@"latitude",
                                                                               [NSString stringWithFormat:@"%.4f",location.geoLocation.longitude], @"longitude",
-                                                                              [NSString stringWithFormat:@"%li", location.identifier], @"id",
+                                                                              [NSString stringWithFormat:@"%ld", (long)location.identifier], @"id",
                                                                                 nil];
     [params setObject:locationParams forKey:@"location"];
     
@@ -545,9 +544,8 @@
     PDUser *_user = [PDUser sharedInstance];
     [[self requestSerializer] setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     
-    NSString *postPath = [NSString stringWithFormat:@"%@/%li/redeem",REWARDS_PATH,(long)rewardId];
+    NSString *postPath = [NSString stringWithFormat:@"%@/%ld/redeem",REWARDS_PATH,(long)rewardId];
     [self POST:postPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        PDReward *r = [PDWallet find:rewardId];
         [PDWallet remove:rewardId];
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -568,7 +566,7 @@
               failure:(void (^)(NSError *error))failure {
     
     [[self requestSerializer] setValue:authenticationToken forKey:@"User-Token"];
-    NSString *postPath = [NSString stringWithFormat:@"%@/%li/redeem",REWARDS_PATH,rewardId];
+    NSString *postPath = [NSString stringWithFormat:@"%@/%ld/redeem",REWARDS_PATH,(long)rewardId];
     
     [self POST:postPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [PDWallet remove:rewardId];

@@ -64,12 +64,12 @@
 
 - (NSString*) openingTimeStringRepresentation {
     if (_isClosedForDay) return @"Closed";
-    return [NSString stringWithFormat:@"%.02li:%.02li",self.openingHour.integerValue,self.openingMinute.integerValue];
+    return [NSString stringWithFormat:@"%.02ld:%.02ld",(long)self.openingHour.integerValue,(long)self.openingMinute.integerValue];
 }
 
 - (NSString*) closingTimeStringRepresentation {
     if (_isClosedForDay) return @"Closed";
-    return [NSString stringWithFormat:@"%.02li:%.02li",self.closingHour.integerValue,self.closingMinute.integerValue];
+    return [NSString stringWithFormat:@"%.02ld:%.02ld",(long)self.closingHour.integerValue,(long)self.closingMinute.integerValue];
 }
 
 - (NSString*) description {
