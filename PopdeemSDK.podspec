@@ -17,18 +17,12 @@ Pod::Spec.new do |s|
 
   s.name         = "PopdeemSDK"
   s.version      = "0.0.12"
-  s.summary      = "A short description of PopdeemSDK."
+  s.summary      = "PopdeemSDK is used to interact with the Popdeem API on iOS."
 
-  s.description  = <<-DESC
-                   A longer description of PopdeemSDK in Markdown format.
+  s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
 
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
 
-  s.homepage     = "http://EXAMPLE/PopdeemSDK"
+  s.homepage     = "https://github.com/Popdeem/Popdeem-SDK-iOS.git"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -78,7 +72,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/Popdeem/Popdeem-SDK-iOS.git", :tag => "0.0.12" }
+  s.source       = { :git => "https://github.com/Popdeem/Popdeem-SDK-iOS.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -131,10 +125,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "STTwitter"
   s.dependency "AFNetworking"
-  s.dependency "FBSDKCoreKit"
-  s.dependency "FBSDKLoginKit"
-  s.dependency "FBSDKShareKit"
-
 end

@@ -13,8 +13,8 @@
 #import "PDAPIClient.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <STTwitter/STTwitter.h>
 #import <Accounts/Accounts.h>
+#import <STTwitter/STTwitter.h>
 
 @interface PDSocialMediaManager()
 

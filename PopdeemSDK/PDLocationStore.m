@@ -53,4 +53,12 @@
     return rarr;
 }
 
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    return nil;
+}
+
 @end
