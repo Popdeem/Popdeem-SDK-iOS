@@ -45,7 +45,10 @@
 
 #pragma mark - Facebook -
 
+
+
 - (void) loginWithFacebookReadPermissions:(NSArray*)permissions
+                      registerWithPopdeem:(BOOL)reg
                               success:(void (^)(void))success
                               failure:(void (^)(NSError *err))failure {
     FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
@@ -56,9 +59,37 @@
          } else if (result.isCancelled) {
              NSLog(@"Cancelled");
          } else {
-             success();
+             if (reg) {
+                 [self registerAfterLogin:^(void) {
+                     success();
+                 } failure:^(NSError *error) {
+                     failure(error);
+                 }];
+             } else {
+                 success();
+             }
          }
      }];
+}
+
+- (void) registerAfterLogin:(void (^)(void))success failure:(void (^)(NSError *error))failure {
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+         if (!error) {
+                 //             NSLog(@"fetched user:%@", result);
+             NSString *facebookAccessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+             NSString *facebookID = [result objectForKey:@"id"];
+             [[[PDUser sharedInstance] facebookParams] setIdentifier:facebookID];
+             NSLog(@"facebook ID: %@",facebookID);
+             
+            [[PDAPIClient sharedInstance] registerUserwithFacebookAccesstoken:facebookAccessToken facebookId:facebookID success:^(PDUser *user) {
+                success();
+            }failure:^(NSError *error) {
+                failure(error);
+            }];
+         }
+     }];
+
 }
 
 - (void) logoutFacebook {
