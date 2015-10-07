@@ -61,13 +61,26 @@
             self.status = PDRewardStatusExpired;
         }
         
-        NSString *action = params[@"action"];
-        if ([action isEqualToString:@"photo"]) {
-            self.action = PDRewardActionPhoto;
-        } else if ([action isEqualToString:@"checkin"]) {
-            self.action = PDRewardActionCheckin;
-        } else {
-            self.action = PDRewardActionNone;
+        NSMutableDictionary *actions = params[@"action"];
+        NSString *facebookAction = actions[@"facebook"];
+        NSString *twitterAction = actions[@"twitter"];
+        if (facebookAction.length > 0) {
+            if ([facebookAction isEqualToString:@"photo"]) {
+                self.facebookAction = PDRewardActionPhoto;
+            } else if ([facebookAction isEqualToString:@"checkin"]) {
+                self.facebookAction = PDRewardActionCheckin;
+            } else {
+                self.facebookAction = PDRewardActionNone;
+            }
+        }
+        if (twitterAction.length > 0) {
+            if ([twitterAction isEqualToString:@"tweet"]) {
+                self.twitterAction = PDRewardActionTweet;
+            } else if ([twitterAction isEqualToString:@"photo"]) {
+                self.twitterAction = PDRewardActionPhoto;
+            } else {
+                self.twitterAction = PDRewardActionNone;
+            }
         }
         
         id remaining = params[@"remaining_count"];

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PDScores.h"
 #import "PDUserFacebookParams.h"
+#import "PDUserTwitterParams.h"
 #import "PDCommon.h"
 
 /**
@@ -82,6 +83,12 @@ The users last name
  The Facebook paramaters for the user. See PDUserFacebookParams
  */
 @property (nonatomic, strong) PDUserFacebookParams *facebookParams;
+
+
+/**
+ The Twitter paramaters for the user. See PDUserTwitterParams
+ */
+@property (nonatomic, strong) PDUserTwitterParams *twitterParams;
 
 /**
  The preferred Social Media type for the user

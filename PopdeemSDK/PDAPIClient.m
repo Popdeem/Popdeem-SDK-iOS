@@ -136,10 +136,12 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:user forKey:@"user"];
     
-    NSString *path = [NSString stringWithFormat:@"%@/%ld/%@",USERS_PATH,(long)_user.identifier,@"connect_social_account"];
+    NSString *path = [NSString stringWithFormat:@"%@/%@",USERS_PATH,@"connect_social_account"];
     
     [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSDictionary *userObject = responseObject[@"user"];
+        NSDictionary *userObject = responseObject[@"user"];
+        PDUser *user = [PDUser initFromAPI:userObject preferredSocialMediaType:PDSocialMediaTypeTwitter];
+        [user.twitterParams setAccessSecret:accessSecret];
         success();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
@@ -454,6 +456,8 @@
          withMessage:(NSString*)message
        taggedFriends:(NSArray*)taggedFriends
                image:(UIImage*)image
+            facebook:(BOOL)facebook
+             twitter:(BOOL)twitter
              success:(void (^)(void))success
              failure:(void (^)(NSError *error))failure {
     
@@ -472,7 +476,7 @@
     if (image) {
         NSString *imageString = [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:0];
         [params setObject:imageString forKey:@"file"];
-    } else if (r.action == PDRewardActionPhoto) {
+    } else if (r.facebookAction == PDRewardActionPhoto || r.twitterAction == PDRewardActionPhoto) {
         //There must be a photo on this action
         NSLog(@"The reward action specifies PDRewardActionPhoto, but there is no image attached. Cannot claim this reward...Aborting");
         NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -485,6 +489,8 @@
         return;
     }
     
+    if (twitter) [[PDUser sharedInstance] setPreferredSocialMediaType:PDSocialMediaTypeTwitter];
+    
     if ([[PDUser sharedInstance] preferredSocialMediaType] == PDSocialMediaTypeFacebook) {
         NSMutableDictionary *facebookParams = [NSMutableDictionary dictionary];
         [facebookParams setObject:_user.facebookParams.accessToken forKey:@"access_token"];
@@ -493,7 +499,10 @@
         }
         [params setObject:facebookParams forKey:@"facebook"];
     } else if ([[PDUser sharedInstance] preferredSocialMediaType] == PDSocialMediaTypeTwitter) {
-        
+        NSMutableDictionary *twitterParams = [NSMutableDictionary dictionary];
+        [twitterParams setObject:_user.twitterParams.accessToken forKey:@"access_token"];
+        [twitterParams setObject:_user.twitterParams.accessSecret forKey:@"access_secret"];
+        [params setObject:twitterParams forKey:@"twitter"];
     }
     
     if (image) {

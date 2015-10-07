@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, PDRewardAction){
     PDRewardActionCheckin = 1,
     ///Photo - the user must add a photo.
     PDRewardActionPhoto,
+    PDRewardActionTweet,
     ///No action needed. May claim on item tap.
     PDRewardActionNone
 };
@@ -65,8 +66,9 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) long createdAt;
 @property (nonatomic) long availableUntil;
 
-@property (nonatomic) PDRewardAction action;
 @property (nonatomic) PDRewardStatus status;
+@property (nonatomic) PDRewardAction facebookAction;
+@property (nonatomic) PDRewardAction twitterAction;
 
 @property (nonatomic) NSInteger remainingCount;
 

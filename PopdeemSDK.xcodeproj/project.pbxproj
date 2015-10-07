@@ -30,6 +30,7 @@
 		397479281B8F16AE0015C661 /* PDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479251B8F16AE0015C661 /* PDFeedItem.m */; };
 		3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792A1B8F16B50015C661 /* PDAPIClient.m */; };
 		3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */; };
+		39AE13B01BC092450026F466 /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */; settings = {ASSET_TAGS = (); }; };
 		39D7D0711B8F0DCF00E45D0B /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */; settings = {ASSET_TAGS = (); }; };
 		39EF927A1B8F125400D16F18 /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92771B8F125400D16F18 /* Brand.json */; };
@@ -115,6 +116,8 @@
 		3974792A1B8F16B50015C661 /* PDAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIClient.m; sourceTree = "<group>"; };
 		3974792D1B8F1FC50015C661 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
 		3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGeolocationManager.m; sourceTree = "<group>"; };
+		39AE13AE1BC092450026F466 /* PDUserTwitterParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserTwitterParams.h; sourceTree = "<group>"; };
+		39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserTwitterParams.m; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 				397478F31B8F16600015C661 /* PDUser+Facebook.m */,
 				397478F41B8F16600015C661 /* PDUserFacebookParams.h */,
 				397478F61B8F16600015C661 /* PDUserFacebookParams.m */,
+				39AE13AE1BC092450026F466 /* PDUserTwitterParams.h */,
+				39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 			files = (
 				397479271B8F16AE0015C661 /* PDBrand.m in Sources */,
 				3974791E1B8F16980015C661 /* PDBrandStore.m in Sources */,
+				39AE13B01BC092450026F466 /* PDUserTwitterParams.m in Sources */,
 				3974790F1B8F16860015C661 /* PDOpeningHoursWeek.m in Sources */,
 				3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */,
 				3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */,

@@ -42,7 +42,6 @@
         }
         
         //Parse Locations and calculate distance
-        
         NSArray *locations = params[@"locations"];
         for (NSDictionary *d in locations) {
             PDLocation *l = [[PDLocation alloc] initFromApi:d];

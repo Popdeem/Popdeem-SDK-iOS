@@ -55,6 +55,9 @@
     NSDictionary *facebookParams = params[@"facebook"];
     user.facebookParams = [[PDUserFacebookParams alloc] initWithParams:facebookParams];
     
+    NSDictionary *twitterParams = params[@"twitter"];
+    user.twitterParams = [[PDUserTwitterParams alloc] initWithParams:twitterParams];
+    
     NSString *testerStatus = facebookParams[@"tester"];
     if ([testerStatus isEqualToString:@"true"]) {
         user.isTester = YES;
