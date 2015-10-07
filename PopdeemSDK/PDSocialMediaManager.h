@@ -11,11 +11,14 @@
 
 @interface PDSocialMediaManager : NSObject
 
+@property (nonatomic, assign) UIViewController *holderViewController;
+
 + (id) manager;
 
 - (id) initForViewController:(UIViewController*)viewController;
 
 - (void) loginWithFacebookReadPermissions:(NSArray*)permissions
+                      registerWithPopdeem:(BOOL)reg
                                   success:(void (^)(void))success
                                   failure:(void (^)(NSError *err))failure;
 

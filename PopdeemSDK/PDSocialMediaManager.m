@@ -20,7 +20,6 @@
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) NSArray *iOSAccounts;
-@property (nonatomic, assign) UIViewController *holderViewController;
 @property (nonatomic, strong) STTwitterAPI *twitterAPI;
 
 
@@ -61,7 +60,7 @@
              NSLog(@"Cancelled");
          } else {
              if (reg) {
-                 [self registerAfterLogin:^(void) {
+                 [self registerAfterLogin:^() {
                      success();
                  } failure:^(NSError *error) {
                      failure(error);
@@ -74,10 +73,9 @@
 }
 
 - (void) registerAfterLogin:(void (^)(void))success failure:(void (^)(NSError *error))failure {
-    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id"}]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
          if (!error) {
-                 //             NSLog(@"fetched user:%@", result);
              NSString *facebookAccessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
              NSString *facebookID = [result objectForKey:@"id"];
              [[[PDUser sharedInstance] facebookParams] setIdentifier:facebookID];
@@ -85,12 +83,11 @@
              
             [[PDAPIClient sharedInstance] registerUserwithFacebookAccesstoken:facebookAccessToken facebookId:facebookID success:^(PDUser *user) {
                 success();
-            }failure:^(NSError *error) {
+            } failure:^(NSError *error) {
                 failure(error);
             }];
          }
      }];
-
 }
 
 - (void) logoutFacebook {

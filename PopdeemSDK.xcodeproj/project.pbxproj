@@ -31,6 +31,7 @@
 		3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792A1B8F16B50015C661 /* PDAPIClient.m */; };
 		3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */; };
 		39AE13B01BC092450026F466 /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */; settings = {ASSET_TAGS = (); }; };
+		39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C39A141BC52659007794D7 /* PDFacebookLoginButton.m */; settings = {ASSET_TAGS = (); }; };
 		39D7D0711B8F0DCF00E45D0B /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */; settings = {ASSET_TAGS = (); }; };
 		39EF927A1B8F125400D16F18 /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92771B8F125400D16F18 /* Brand.json */; };
@@ -118,6 +119,8 @@
 		3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGeolocationManager.m; sourceTree = "<group>"; };
 		39AE13AE1BC092450026F466 /* PDUserTwitterParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserTwitterParams.h; sourceTree = "<group>"; };
 		39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserTwitterParams.m; sourceTree = "<group>"; };
+		39C39A131BC52659007794D7 /* PDFacebookLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFacebookLoginButton.h; sourceTree = "<group>"; };
+		39C39A141BC52659007794D7 /* PDFacebookLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFacebookLoginButton.m; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,6 +183,15 @@
 			name = Stores;
 			sourceTree = "<group>";
 		};
+		39C39A121BC5264C007794D7 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				39C39A131BC52659007794D7 /* PDFacebookLoginButton.h */,
+				39C39A141BC52659007794D7 /* PDFacebookLoginButton.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
 		39D7D05C1B8F0DCF00E45D0B = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +215,7 @@
 		39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */ = {
 			isa = PBXGroup;
 			children = (
+				39C39A121BC5264C007794D7 /* UIKit */,
 				3974792C1B8F16C30015C661 /* Stores */,
 				397478EF1B8F16530015C661 /* PopdeemSDK.m */,
 				397478F01B8F16530015C661 /* PopdeemSDK.h */,
@@ -510,6 +523,7 @@
 				397479221B8F16A40015C661 /* PDConstants.m in Sources */,
 				397479061B8F167E0015C661 /* PDSocialMediaFriend.m in Sources */,
 				39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */,
+				39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */,
 				3974790E1B8F16860015C661 /* PDRewardCustomAvailability.m in Sources */,
 				397479101B8F16860015C661 /* PDReward.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,

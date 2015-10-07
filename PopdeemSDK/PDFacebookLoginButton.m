@@ -80,20 +80,19 @@
         [self setTitle:@"Logging in..." forState:UIControlStateNormal];
         [self setEnabled:NO];
         [self setBackgroundColor:[UIColor colorWithRed:0.353 green:0.435 blue:0.651 alpha:1.000]];
-        [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:_readPermissions success:^(NSString *accessToken, NSString *identifier) {
+        
+        [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:_readPermissions registerWithPopdeem:YES success:^(void) {
             //Now register with popdeem
-            [[PDAPIClient sharedInstance] registerUserwithFacebookAccesstoken:accessToken facebookId:identifier success:^(PDUser *user) {
-                    //Add the user to device
-                [self writeUserToDevice];
-                [self setupForLoggedIn:YES];
-                [self setEnabled:YES];
-                [_delegate PDFacebookLoginButtonDidFinishLoggingIn];
-            } failure:^(NSError *error) {
-                [self setEnabled:YES];
-                [_delegate PDFacebookLoginButtonDidFailWithError:error];
-            }];
+            [_delegate PDFacebookLoginButtonDidFinishLoggingIn];
+            isLoggedIn = YES;
+            [self setupForLoggedIn:YES];
+            [self setEnabled:YES];
+            [self writeUserToDevice];
         } failure:^(NSError *error){
             [_delegate PDFacebookLoginButtonDidFailWithError:error];
+            isLoggedIn = NO;
+            [self setupForLoggedIn:NO];
+            [self setEnabled:YES];
         }];
     }
 }
