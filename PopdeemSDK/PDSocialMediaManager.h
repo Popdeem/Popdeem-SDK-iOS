@@ -21,6 +21,8 @@
 
 - (void) logoutFacebook;
 
+- (BOOL) isLoggedInWithFacebook;
+
 - (void) facebookRequestPublishPermissions:(void (^)(void))success
                                    failure:(void (^)(NSError *err))failure;
 
@@ -28,4 +30,7 @@
                   failure:(void (^)(NSError *error))failure;
 
 - (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier;
+
+- (BOOL) verifyTwitterCredentials;
+
 @end

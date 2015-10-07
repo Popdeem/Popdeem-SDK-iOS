@@ -12,13 +12,25 @@
 
 - (nullable PDUserTwitterParams*) initWithParams:(NSDictionary *)params {
     if (self = [super init]) {
-        NSInteger socId = [params[@"social_account_id"] integerValue];
+        NSInteger socId;
+        if ([params[@"social_account_id"] isKindOfClass:[NSString class]]) {
+            socId = [params[@"social_account_id"] integerValue];
+        } else {
+            socId = 0;
+        }
         self.socialAccountId = socId;
         NSString *twid = params[@"twitter_id"];
         self.identifier  = ([twid isKindOfClass:[NSString class]]) ? twid : nil;
         NSString *accessToken = params[@"access_token"];
         self.accessToken = ([accessToken isKindOfClass:[NSString class]]) ? accessToken : nil;
-        long expirationTime = [params[@"expiration_time"] longValue];
+        NSString *accessSecret = params[@"access_secret"];
+        self.accessSecret = ([accessSecret isKindOfClass:[NSString class]]) ? accessSecret : nil;
+        long expirationTime;
+        if ([params[@"expiration_time"] isKindOfClass:[NSString class]] && [(NSString*)params[@"expiration_time"] length] > 0 ) {
+            expirationTime = [params[@"expiration_time"] longValue];
+        } else {
+            expirationTime = 0;
+        }
         self.expirationTime = expirationTime;
         NSString *ppurl = params[@"profile_picture_url"];
         self.profilePictureUrl = ([ppurl isKindOfClass:[NSString class]]) ? ppurl : nil;

@@ -95,6 +95,26 @@
         self.availableUntil = [params[@"available_until"] intValue];
         
         self.locationIds = [NSMutableArray array];
+        /*
+        "tweet_options" =     {
+            "download_link" = "http://bit.ly/1iIe5Q3";
+            "force_tag" = true;
+            "forced_tag" = "#forcedTag";
+            "free_form" = false;
+            "include_download_link" = true;
+            prefill = true;
+            "prefilled_message" = "This can be deleted";
+        };
+         */
+        id tweet_options = params[@"tweet_options"];
+        if ([tweet_options isKindOfClass:[NSDictionary class]]) {
+            NSString *downloadLink = tweet_options[@"download_link"];
+            self.downloadLink = (downloadLink.length > 0) ? downloadLink : nil;
+            NSString *prefilledMessage = tweet_options[@"prefilled_message"];
+            self.twitterPrefilledMessage = (prefilledMessage.length > 0) ? prefilledMessage : nil;
+            NSString *forcedTag = tweet_options[@"forced_tag"];
+            self.twitterForcedTag = (forcedTag.length > 0) ? forcedTag : nil;
+        }
         
         return self;
     }

@@ -36,29 +36,29 @@
 }
 
 + (NSString*) getTwitterConsumerKey:(NSError**)err {
-//    NSString *twitterConsumerKey = nil;
-//    if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterConsumerKey"]) {
-//        twitterConsumerKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterConsumerKey"];
-//    } else {
-//        NSLog(@"No Twitter Consumer Key Found");
-//        NSString *errD = @"There is no Twitter Consumer key in the plist file. Please check that you have your Twitter Consumer key set under the key \"TwitterConsumerKey\"";
-//        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:errD, NSLocalizedDescriptionKey, nil];
-//        *err = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeNoAPIKey userInfo:userInfo];
-//    }
-    return @"MGylqZ9TIf7i2DD94rb2eoxnn";
+    NSString *twitterConsumerKey = nil;
+    if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterAppConsumerKey"]) {
+        twitterConsumerKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterAppConsumerKey"];
+    } else {
+        NSLog(@"No Twitter Consumer Key Found");
+        NSString *errD = @"There is no Twitter Consumer key in the plist file. Please check that you have your Twitter Consumer key set under the key \"TwitterAppConsumerKey\"";
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:errD, NSLocalizedDescriptionKey, nil];
+        *err = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeNoAPIKey userInfo:userInfo];
+    }
+    return twitterConsumerKey;
 }
 
 + (NSString*) getTwitterConsumerSecret:(NSError**)err {
-//    NSString *twitterConsumerSecret = nil;
-//    if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterConsumerSecret"]) {
-//        twitterConsumerSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterConsumerSecret"];
-//    } else {
-//        NSLog(@"No Twitter Consumer Secret Found");
-//        NSString *errD = @"There is no Twitter Consumer Secret in the plist file. Please check that you have your Twitter Consumer Secret set under the key \"TwitterConsumerSecret\"";
-//        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:errD, NSLocalizedDescriptionKey, nil];
-//        *err = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeNoAPIKey userInfo:userInfo];
-//    }
-    return @"Fy5qD9BdTamRsGzbVORhquuAVNC7yRlOdooATKzDRB9EPioXQa";
+    NSString *twitterConsumerSecret = nil;
+    if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterAppConsumerSecret"]) {
+        twitterConsumerSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterAppConsumerSecret"];
+    } else {
+        NSLog(@"No Twitter Consumer Secret Found");
+        NSString *errD = @"There is no Twitter Consumer Secret in the plist file. Please check that you have your Twitter Consumer Secret set under the key \"TwitterAppConsumerSecret\"";
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:errD, NSLocalizedDescriptionKey, nil];
+        *err = [[NSError alloc] initWithDomain:kPopdeemErrorDomain code:PDErrorCodeNoAPIKey userInfo:userInfo];
+    }
+    return twitterConsumerSecret;
 }
 
 @end

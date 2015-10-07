@@ -77,6 +77,9 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, strong) NSMutableArray *locationIds;
 @property (nonatomic) NSInteger brandId;
 
+@property (nonatomic, strong, nullable) NSString *twitterForcedTag;
+@property (nonatomic, strong, nullable) NSString *downloadLink;
+@property (nonatomic, strong, nullable) NSString *twitterPrefilledMessage;
 
 - (id) initFromApi:(NSDictionary*)params;
 

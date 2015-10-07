@@ -23,6 +23,7 @@
 @property (nonatomic, assign) UIViewController *holderViewController;
 @property (nonatomic, strong) STTwitterAPI *twitterAPI;
 
+
 @end
 
 @implementation PDSocialMediaManager
@@ -265,7 +266,7 @@
                 ac.view.tintColor = [UIColor blackColor];
                 for (ACAccount *account in _iOSAccounts) {
                     [ac addAction:[UIAlertAction actionWithTitle:account.username style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-                        [self selectedIOSTwitterAccount:account];
+                        success(account);
                     }]];
                 }
                 [_holderViewController presentViewController:ac animated:YES completion:nil];
@@ -280,8 +281,13 @@
 
 }
 
-- (void) selectedIOSTwitterAccount:(ACAccount*)account {
+- (void) selectedIOSTwitterAccount:(ACAccount*)account success:(void (^)(void))success failure:(void (^)(NSError *error))failure {
     NSLog(@"Chose Twitter Account: %@",account.username);
+    [self twitterLoginWithAccount:account success:^(void){
+        success();
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
 }
 
 - (void) loginOnTheWeb {
@@ -293,6 +299,8 @@
     _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:twConsumerKey
                                                            consumerSecret:twConsumerSecret];
     
+    NSString *callback = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"PopdeemTwitterCallbackScheme"];
+    NSString *fullCallback = [NSString stringWithFormat:@"%@://twitter_access_tokens/",callback];
     [_twitterAPI postTokenRequest:^(NSURL *url, NSString *oauthToken) {
         NSLog(@"-- url: %@", url);
         NSLog(@"-- oauthToken: %@", oauthToken);
@@ -303,7 +311,7 @@
     } authenticateInsteadOfAuthorize:NO
                     forceLogin:@(YES)
                     screenName:nil
-                 oauthCallback:@"myapp://twitter_access_tokens/"
+                 oauthCallback:fullCallback
                     errorBlock:^(NSError *error) {
                         NSLog(@"-- error: %@", error);
                     }];
@@ -315,6 +323,8 @@
         NSLog(@"-- screenName: %@", screenName);
         [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:oauthTokenSecret screenName:screenName success:^(void){
                 //User is connected to Popdeem
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Connected" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [alert show];
         } failure:^(NSError *error){
                 //Something went wrong
             
@@ -332,6 +342,15 @@
                            success:(void (^)(void))success
                            failure:(void (^)(NSError* error))failure {
     [[PDAPIClient sharedInstance] connectTwitterAccount:userID accessToken:oAuthToken accessSecret:oAuthSecret success:success failure:failure];
+}
+
+- (BOOL) verifyTwitterCredentials {
+
+    //Not OK
+    if ([[[PDUser sharedInstance] twitterParams] accessToken] && [[[PDUser sharedInstance] twitterParams] accessSecret]) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

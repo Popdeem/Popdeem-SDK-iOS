@@ -229,6 +229,8 @@ NS_ASSUME_NONNULL_BEGIN
          withMessage:(nullable NSString*)message
        taggedFriends:(nullable NSArray*)taggedFriends
                image:(nullable UIImage*)image
+            facebook:(BOOL)facebook
+             twitter:(BOOL)twitter
              success:(void (^)(void))success
              failure:(void (^)(NSError *error))failure;
 
