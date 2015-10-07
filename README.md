@@ -1,7 +1,7 @@
 # Popdeem-SDK-iOS
 
 #### Popdeem iOS SDK
-Full documentation at [Popdeem Developer](http://www.popdeem.com/developer/iosdocs "iOS Docs")
+Full documentation at the [Popdeem Developer](http://www.popdeem.com/developer/iosdocs "iOS Docs") Portal.
 -----
 ##### Changelog
 -----
