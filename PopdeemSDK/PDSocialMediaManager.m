@@ -22,7 +22,6 @@
 @property (nonatomic, strong) NSArray *iOSAccounts;
 @property (nonatomic, strong) STTwitterAPI *twitterAPI;
 
-
 @end
 
 @implementation PDSocialMediaManager
