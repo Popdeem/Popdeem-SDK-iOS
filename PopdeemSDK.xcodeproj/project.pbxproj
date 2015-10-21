@@ -17,7 +17,6 @@
 		397479041B8F167D0015C661 /* PDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478FE1B8F167D0015C661 /* PDScores.m */; };
 		397479051B8F167E0015C661 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479011B8F167D0015C661 /* PDRewardStore.m */; };
 		397479061B8F167E0015C661 /* PDSocialMediaFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479031B8F167D0015C661 /* PDSocialMediaFriend.m */; };
-		3974790E1B8F16860015C661 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479071B8F16860015C661 /* PDRewardCustomAvailability.m */; };
 		3974790F1B8F16860015C661 /* PDOpeningHoursWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479091B8F16860015C661 /* PDOpeningHoursWeek.m */; };
 		397479101B8F16860015C661 /* PDReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974790B1B8F16860015C661 /* PDReward.m */; };
 		397479111B8F16860015C661 /* PDOpeningHoursDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974790C1B8F16860015C661 /* PDOpeningHoursDay.m */; };
@@ -90,10 +89,8 @@
 		397479011B8F167D0015C661 /* PDRewardStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardStore.m; sourceTree = "<group>"; };
 		397479021B8F167D0015C661 /* PDSocialMediaFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaFriend.h; sourceTree = "<group>"; };
 		397479031B8F167D0015C661 /* PDSocialMediaFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaFriend.m; sourceTree = "<group>"; };
-		397479071B8F16860015C661 /* PDRewardCustomAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardCustomAvailability.m; sourceTree = "<group>"; };
 		397479081B8F16860015C661 /* PDReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReward.h; sourceTree = "<group>"; };
 		397479091B8F16860015C661 /* PDOpeningHoursWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursWeek.m; sourceTree = "<group>"; };
-		3974790A1B8F16860015C661 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
 		3974790B1B8F16860015C661 /* PDReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReward.m; sourceTree = "<group>"; };
 		3974790C1B8F16860015C661 /* PDOpeningHoursDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursDay.m; sourceTree = "<group>"; };
 		3974790D1B8F16860015C661 /* PDOpeningHoursWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDOpeningHoursWeek.h; sourceTree = "<group>"; };
@@ -287,8 +284,6 @@
 				397479091B8F16860015C661 /* PDOpeningHoursWeek.m */,
 				397479081B8F16860015C661 /* PDReward.h */,
 				3974790B1B8F16860015C661 /* PDReward.m */,
-				3974790A1B8F16860015C661 /* PDRewardCustomAvailability.h */,
-				397479071B8F16860015C661 /* PDRewardCustomAvailability.m */,
 				397479001B8F167D0015C661 /* PDScores.h */,
 				397478FE1B8F167D0015C661 /* PDScores.m */,
 				397479021B8F167D0015C661 /* PDSocialMediaFriend.h */,
@@ -524,7 +519,6 @@
 				397479061B8F167E0015C661 /* PDSocialMediaFriend.m in Sources */,
 				39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */,
 				39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */,
-				3974790E1B8F16860015C661 /* PDRewardCustomAvailability.m in Sources */,
 				397479101B8F16860015C661 /* PDReward.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 			);

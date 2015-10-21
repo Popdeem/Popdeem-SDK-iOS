@@ -16,11 +16,16 @@
 #import <Accounts/Accounts.h>
 #import <STTwitter/STTwitter.h>
 
-@interface PDSocialMediaManager()
+@interface PDSocialMediaManager() {
+    ACAccount *singleAccount;
+}
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) NSArray *iOSAccounts;
 @property (nonatomic, strong) STTwitterAPI *twitterAPI;
+
+@property (nonatomic, copy) void (^endSuccess)(void);
+@property (nonatomic, copy) void (^endError)(NSError *error);
 
 @end
 
@@ -166,7 +171,7 @@
         
         self.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
         
-        if (self.iOSAccounts.count > 1) {
+        if (self.iOSAccounts.count > 0) {
             [self chooseAccount:^(ACAccount *account) {
                 [self twitterLoginWithAccount:account success:success failure:failure];
             } failure:^(NSError *error) {
@@ -176,6 +181,8 @@
             [self twitterLoginWithAccount:[self.iOSAccounts objectAtIndex:0] success:success failure:failure];
         } else {
             //Login with safari
+            self.endSuccess = success;
+            self.endError = failure;
             [self loginOnTheWeb];
         }
     };
@@ -183,6 +190,19 @@
     [self.accountStore requestAccessToAccountsWithType:accountType
                                                options:NULL
                                             completion:handler];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (alertView.tag) {
+        case 0:
+            //OK button of selecter view
+            
+            break;
+            
+        default:
+            return;
+            break;
+    }
 }
 
 - (void) twitterLoginWithAccount:(ACAccount*)account success:(void (^)(void))success failure:(void (^)(NSError *error))failure {
@@ -251,15 +271,15 @@
             
             self.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
             
-            if([_iOSAccounts count] == 1) {
-                ACAccount *account = [_iOSAccounts lastObject];
-                success(account);
-            } else {
+//            if([_iOSAccounts count] == 1) {
+//                ACAccount *account = [_iOSAccounts lastObject];
+//                success(account);
+//            } else {
                 UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Select an account:" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
                 [ac addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
                         //Handle Cancel
                 }]];
-                ac.view.tintColor = [UIColor blackColor];
+                ac.view.tintColor = [UIColor blueColor];
                 for (ACAccount *account in _iOSAccounts) {
                     [ac addAction:[UIAlertAction actionWithTitle:account.username style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                         success(account);
@@ -267,7 +287,7 @@
                 }
                 [_holderViewController presentViewController:ac animated:YES completion:nil];
                 ac.view.tintColor = [UIColor blackColor];
-            }
+//            }
         }];
     };
     
@@ -321,9 +341,10 @@
                 //User is connected to Popdeem
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Connected" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [alert show];
+            self.endSuccess();
         } failure:^(NSError *error){
                 //Something went wrong
-            
+            self.endError(error);
         }];
         //Now connect social account
     } errorBlock:^(NSError *error) {
@@ -349,4 +370,16 @@
     return NO;
 }
 
+- (void) userCancelledTwitterLogin {
+    NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    @"User Cancelled Login", NSLocalizedDescriptionKey,
+                                    nil];
+    NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
+                                                   code:PDErrorCodeFBPermissions
+                                               userInfo:userDictionary];
+    self.endError(endError);
+}
+- (void) twitterLoginSuccessfulToken:(NSString *)token oauthVerifier:(NSString *)verifier {
+    [self setOAuthToken:token oauthVerifier:verifier];
+}
 @end

@@ -13,10 +13,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PDAPIClient.h"
 #import "PDLocationStore.h"
+#import "PDBrandStore.h"
 
 @interface PDBrand () {
     BOOL isDownloadingCover;
     BOOL isDownloadingLogo;
+    NSInteger _rewardsAvailable;
 }
 
 @end
@@ -48,10 +50,24 @@
             [PDLocationStore add:l];
         }
         
+        NSString *rewardsAvail = params[@"number_of_rewards_available"];
+        _rewardsAvailable = [rewardsAvail isKindOfClass:[NSString class]] ? rewardsAvail.integerValue : 0;
+        
         [self calculateDistanceFromUser];
         return self;
     }
     return nil;
+}
+
+- (NSInteger) numberOfRewardsAvailable {
+    if ([PDRewardStore allRewardsForBrandId:self.identifier].count > 0) {
+        return [PDRewardStore allRewardsForBrandId:self.identifier].count;
+    }
+    return _rewardsAvailable;
+}
+
+- (void) setNumberOfRewardsAvailable:(NSInteger)available {
+    _rewardsAvailable = available;
 }
 
 - (NSComparisonResult)compare:(PDBrand *)otherObject {
