@@ -32,6 +32,7 @@ NSString *const PDAPIClientDidFailWithErrorNotification = @"PDAPIClientDidFailWi
 NSString *const PDBrandCoverImageDidDownload = @"BrandCoverImageDidDownload";
 NSString *const PDBrandLogoImageDidDownload = @"BrandLogoImageDidDownload";
 NSString *const PDRewardCoverImageDidDownload = @"RewardCoverImageDidDownload";
+NSString *const PDFeedItemImageDidDownload = @"PDFeedItemImageDidDownload";
 /*
  End NSNotificationCenter Strings
  */

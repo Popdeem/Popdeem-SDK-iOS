@@ -22,9 +22,21 @@
         NSString *twid = params[@"twitter_id"];
         self.identifier  = ([twid isKindOfClass:[NSString class]]) ? twid : nil;
         NSString *accessToken = params[@"access_token"];
-        self.accessToken = ([accessToken isKindOfClass:[NSString class]]) ? accessToken : nil;
+        if ([accessToken isKindOfClass:[NSString class]]) {
+            if (accessToken.length > 0) {
+                self.accessToken = accessToken;
+            } else {
+                self.accessToken = nil;
+            }
+        }
         NSString *accessSecret = params[@"access_secret"];
-        self.accessSecret = ([accessSecret isKindOfClass:[NSString class]]) ? accessSecret : nil;
+        if ([accessSecret isKindOfClass:[NSString class]]) {
+            if (accessSecret.length > 0) {
+                self.accessSecret = accessSecret;
+            } else {
+                self.accessSecret = nil;
+            }
+        }
         long expirationTime;
         if ([params[@"expiration_time"] isKindOfClass:[NSString class]] && [(NSString*)params[@"expiration_time"] length] > 0 ) {
             expirationTime = [params[@"expiration_time"] longValue];

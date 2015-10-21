@@ -470,13 +470,15 @@
     [[self requestSerializer] setValue:_user.userToken forHTTPHeaderField:@"User-Token"];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    //Add the message
     if (message) {
         [params setObject:message forKey:@"message"];
     }
+    //Add the image. If no image, make sure it is allowed to post
     if (image) {
         NSString *imageString = [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:0];
         [params setObject:imageString forKey:@"file"];
-    } else if (r.facebookAction == PDRewardActionPhoto || r.twitterAction == PDRewardActionPhoto) {
+    } else if (r.action == PDRewardActionPhoto) {
         //There must be a photo on this action
         NSLog(@"The reward action specifies PDRewardActionPhoto, but there is no image attached. Cannot claim this reward...Aborting");
         NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -489,34 +491,30 @@
         return;
     }
     
-    if (twitter) [[PDUser sharedInstance] setPreferredSocialMediaType:PDSocialMediaTypeTwitter];
-    
-    if ([[PDUser sharedInstance] preferredSocialMediaType] == PDSocialMediaTypeFacebook) {
+    //Facebook and Twitter credentials
+    if (facebook) {
         NSMutableDictionary *facebookParams = [NSMutableDictionary dictionary];
         [facebookParams setObject:_user.facebookParams.accessToken forKey:@"access_token"];
         if (taggedFriends.count > 0) {
             [facebookParams setObject:_user.selectedFriendsJSONRepresentation  forKey:@"associated_account_ids"];
         }
         [params setObject:facebookParams forKey:@"facebook"];
-    } else if ([[PDUser sharedInstance] preferredSocialMediaType] == PDSocialMediaTypeTwitter) {
+    }
+    if (twitter) {
         NSMutableDictionary *twitterParams = [NSMutableDictionary dictionary];
         [twitterParams setObject:_user.twitterParams.accessToken forKey:@"access_token"];
         [twitterParams setObject:_user.twitterParams.accessSecret forKey:@"access_secret"];
         [params setObject:twitterParams forKey:@"twitter"];
     }
     
-    if (image) {
-        NSString *imageString = [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:0];
-        [params setObject:imageString forKey:@"file"];
-    }
-    
+    //user location
     NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",location.geoLocation.latitude],@"latitude",
                                                                               [NSString stringWithFormat:@"%.4f",location.geoLocation.longitude], @"longitude",
                                                                               [NSString stringWithFormat:@"%ld", (long)location.identifier], @"id",
                                                                                 nil];
     [params setObject:locationParams forKey:@"location"];
     
-    NSLog(@"Claim");
+
     [self POST:postPath
     parameters:params
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -599,8 +597,9 @@
     
     PDUser *user = [PDUser sharedInstance];
     [[self requestSerializer] setValue:user.userToken forHTTPHeaderField:@"User-Token"];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"20",@"limit", nil];
     
-    [self GET:FEEDS_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:FEEDS_PATH parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *feeds = [responseObject objectForKey:@"feeds"];
         [PDFeeds populateFromAPI:feeds];
         success();
@@ -628,6 +627,8 @@
             PDBrand *b = [[PDBrand alloc] initFromApi:attributes];
             if ([PDBrandStore findBrandByIdentifier:b.identifier] == nil) {
                 [PDBrandStore add:b];
+            } else {
+                [[PDBrandStore findBrandByIdentifier:b.identifier] setNumberOfRewardsAvailable:b.numberOfRewardsAvailable];
             }
         }
         success();
