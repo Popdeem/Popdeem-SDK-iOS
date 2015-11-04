@@ -53,7 +53,7 @@
 
 - (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier;
 
-- (BOOL) verifyTwitterCredentials;
+- (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion;
 
 - (void) userCancelledTwitterLogin;
 - (void) twitterLoginSuccessfulToken:(NSString *)token oauthVerifier:(NSString *)verifier;

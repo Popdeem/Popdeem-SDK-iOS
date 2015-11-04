@@ -27,6 +27,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "PDRewardCustomAvailability.h"
+#import "PDConstants.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /**

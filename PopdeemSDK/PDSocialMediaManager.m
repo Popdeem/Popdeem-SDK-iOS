@@ -56,24 +56,23 @@
                               success:(void (^)(void))success
                               failure:(void (^)(NSError *err))failure {
     FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
-    [lm logInWithReadPermissions: permissions
-     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-         if (error) {
-             failure(error);
-         } else if (result.isCancelled) {
-             NSLog(@"Cancelled");
-         } else {
-             if (reg) {
-                 [self registerAfterLogin:^() {
-                     success();
-                 } failure:^(NSError *error) {
-                     failure(error);
-                 }];
-             } else {
-                 success();
-             }
-         }
-     }];
+    [lm logInWithPublishPermissions:permissions fromViewController:_holderViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+        if (error) {
+            failure(error);
+        } else if (result.isCancelled) {
+            NSLog(@"Cancelled");
+        } else {
+            if (reg) {
+                [self registerAfterLogin:^() {
+                    success();
+                } failure:^(NSError *error) {
+                    failure(error);
+                }];
+            } else {
+                success();
+            }
+        }
+    }];
 }
 
 - (void) registerAfterLogin:(void (^)(void))success failure:(void (^)(NSError *error))failure {
@@ -102,7 +101,23 @@
 - (void) facebookRequestPublishPermissions:(void (^)(void))success
                                  failure:(void (^)(NSError *err))failure {
     FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
-    [lm logInWithPublishPermissions:@[@"publish_actions"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+//    [lm logInWithPublishPermissions:@[@"publish_actions"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+//        if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+//            [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+//            success();
+//        } else {
+//            NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                            @"Necessary permissions were not granted", NSLocalizedDescriptionKey,
+//                                            error, NSUnderlyingErrorKey,
+//                                            nil];
+//            NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
+//                                                           code:PDErrorCodeFBPermissions
+//                                                       userInfo:userDictionary];
+//            failure(endError);
+//        }
+//    }];
+    
+    [lm logInWithPublishPermissions:@[@"publish_actions"] fromViewController:_holderViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
             [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
             success();
@@ -361,13 +376,34 @@
     [[PDAPIClient sharedInstance] connectTwitterAccount:userID accessToken:oAuthToken accessSecret:oAuthSecret success:success failure:failure];
 }
 
-- (BOOL) verifyTwitterCredentials {
-
-    //Not OK
-    if ([[[PDUser sharedInstance] twitterParams] accessToken] && [[[PDUser sharedInstance] twitterParams] accessSecret]) {
-        return YES;
+- (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion {
+    NSError *keyError = nil;
+    NSError *secretError = nil;
+    NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
+    NSString *twConsumerSecret = [PDUtils getTwitterConsumerSecret:&secretError];
+    
+    NSString *userTwitterToken = [[[PDUser sharedInstance] twitterParams] accessToken];
+    NSString *userTwitterSecret = [[[PDUser sharedInstance] twitterParams] accessSecret];
+    
+    if (userTwitterToken == nil || userTwitterSecret == nil) {
+        completion(NO, nil);
+        return;
     }
-    return NO;
+    
+    _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:twConsumerKey
+                                                 consumerSecret:twConsumerSecret
+                                                    oauthToken:userTwitterToken
+                                              oauthTokenSecret:userTwitterSecret];
+    
+    if (!_twitterAPI) {
+        completion(NO,nil);
+        return;
+    }
+    [_twitterAPI verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
+        completion(YES,nil);
+    } errorBlock:^(NSError *error) {
+        completion(NO,error);
+    }];
 }
 
 - (void) userCancelledTwitterLogin {

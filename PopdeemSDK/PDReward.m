@@ -8,7 +8,6 @@
 
 #import "PDReward.h"
 #import "PDUser.h"
-#import "PDConstants.h"
 
 @interface PDReward () {
     BOOL isDownloadingCover;
@@ -101,8 +100,12 @@
             self.twitterPrefilledMessage = (prefilledMessage.length > 0) ? prefilledMessage : nil;
             NSString *forcedTag = tweet_options[@"forced_tag"];
             self.twitterForcedTag = (forcedTag.length > 0) ? forcedTag : nil;
-            NSString *mediaLength = tweet_options[@"twitter_media_characters"];
-            self.twitterMediaLength = [mediaLength isKindOfClass:[NSString class]] ? mediaLength.integerValue : 23;
+        }
+        NSString *mediaLength = params[@"twitter_media_characters"];
+        if ([mediaLength isKindOfClass:[NSString class]]) {
+            self.twitterMediaLength = mediaLength.length > 0 ? mediaLength.integerValue : 25;
+        } else {
+            self.twitterMediaLength = 25;
         }
         
         return self;
