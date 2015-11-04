@@ -26,8 +26,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONModel.h"
 
-@interface PDScores : NSObject
+@interface PDScores : JSONModel
 
 @property (nonatomic) float total;
 @property (nonatomic) float reach;
@@ -36,5 +37,6 @@
 @property (nonatomic) float advocacy;
 
 - (id) initFromAPI:(NSDictionary*)params;
+- (id) initWithJSON:(NSString*)json;
 
 @end

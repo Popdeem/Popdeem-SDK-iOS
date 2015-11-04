@@ -37,7 +37,7 @@
         self.email = contacts[@"email"];
         self.web  = contacts[@"web"];
         self.facebook = contacts[@"facebook"];
-        self.twitter = contacts[@"twitter"];
+        self.twitter = [contacts[@"twitter"] isKindOfClass:[NSString class]] ? contacts[@"twitter"] : @"";
         
         if (params[@"opening_hours"]) {
             self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];

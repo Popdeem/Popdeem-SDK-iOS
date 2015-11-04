@@ -26,7 +26,7 @@
             if (accessToken.length > 0) {
                 self.accessToken = accessToken;
             } else {
-                self.accessToken = nil;
+                self.accessToken = @"";
             }
         }
         NSString *accessSecret = params[@"access_secret"];
@@ -34,7 +34,7 @@
             if (accessSecret.length > 0) {
                 self.accessSecret = accessSecret;
             } else {
-                self.accessSecret = nil;
+                self.accessSecret = @"";
             }
         }
         long expirationTime;

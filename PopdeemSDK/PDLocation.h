@@ -27,11 +27,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PDCommon.h"
+#import "JSONModel.h"
 NS_ASSUME_NONNULL_BEGIN
 /**
  * @abstract A Location is used to represent a physical location in which a reward can be claimed. You should use this information to both display where the reward will be available, and to validate that the user is at the correct location for claiming.
  */
-@interface PDLocation : NSObject
+@interface PDLocation : JSONModel
 
 /**
  * @abstract The Location identifier on the Popdeem Platform.
@@ -76,6 +77,8 @@ NS_ASSUME_NONNULL_BEGIN
  * @param params The NSDictionary of items gleaned from the JSON return.
  */
 - (id) initFromApi:(NSDictionary*)params;
+
+- (id) initWithJSON:(NSString*)json;
 
 /**
  * @abstract Calculate distance from user.
