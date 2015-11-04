@@ -10,6 +10,7 @@ target 'PopdeemSDK' do
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
     pod 'STTwitter'
+    pod 'JSONModel'
 end
 
 target 'PopdeemSDKTests' do
@@ -19,6 +20,7 @@ target 'PopdeemSDKTests' do
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
     pod 'STTwitter'
+    pod 'JSONModel'
 end
 
 

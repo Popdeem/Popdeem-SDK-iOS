@@ -29,7 +29,16 @@
         self.expirationTime = expirationTime;
         NSString *ppurl = params[@"profile_picture_url"];
         self.profilePictureUrl = ([ppurl isKindOfClass:[NSString class]]) ? ppurl : nil;
-        self.scores = [[PDScores alloc] initFromAPI:params[@"score"]];
+//        self.scores = [[PDScores alloc] initFromAPI:params[@"score"]];
+
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params[@"score"]
+                                                           options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                             error:&error];
+        
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+        self.scores = [[PDScores alloc] initWithJSON:jsonString];
         return self;
     }
     return nil;

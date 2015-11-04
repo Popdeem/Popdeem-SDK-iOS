@@ -29,8 +29,6 @@
             self.actionText = @"checked in & redeemed";
         } else {
             self.imageUrlString = picture ? picture : @"";
-            UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrlString]]];
-            [self setActionImage:img];
             self.actionText = @"shared a photo & redeemed";
         }
         
@@ -71,6 +69,15 @@
     if (self.userProfilePicUrlString) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             self.profileImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.userProfilePicUrlString]]];
+        });
+    }
+}
+
+- (void) downloadActionImage {
+    if (self.imageUrlString.length > 0) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            self.actionImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrlString]]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:PDFeedItemImageDidDownload object:self];
         });
     }
 }

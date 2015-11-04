@@ -13,10 +13,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PDAPIClient.h"
 #import "PDLocationStore.h"
+#import "PDBrandStore.h"
 
 @interface PDBrand () {
     BOOL isDownloadingCover;
     BOOL isDownloadingLogo;
+    NSInteger _rewardsAvailable;
 }
 
 @end
@@ -35,7 +37,7 @@
         self.email = contacts[@"email"];
         self.web  = contacts[@"web"];
         self.facebook = contacts[@"facebook"];
-        self.twitter = contacts[@"twitter"];
+        self.twitter = [contacts[@"twitter"] isKindOfClass:[NSString class]] ? contacts[@"twitter"] : @"";
         
         if (params[@"opening_hours"]) {
             self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];
@@ -48,10 +50,24 @@
             [PDLocationStore add:l];
         }
         
+        NSString *rewardsAvail = params[@"number_of_rewards_available"];
+        _rewardsAvailable = [rewardsAvail isKindOfClass:[NSString class]] ? rewardsAvail.integerValue : 0;
+        
         [self calculateDistanceFromUser];
         return self;
     }
     return nil;
+}
+
+- (NSInteger) numberOfRewardsAvailable {
+    if ([PDRewardStore allRewardsForBrandId:self.identifier].count > 0) {
+        return [PDRewardStore allRewardsForBrandId:self.identifier].count;
+    }
+    return _rewardsAvailable;
+}
+
+- (void) setNumberOfRewardsAvailable:(NSInteger)available {
+    _rewardsAvailable = available;
 }
 
 - (NSComparisonResult)compare:(PDBrand *)otherObject {

@@ -39,6 +39,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.5.1):
     - FBSDKCoreKit
+  - JSONModel (1.1.2)
   - OCHamcrest (4.1.1)
   - STTwitter (0.2.2)
 
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - JSONModel
   - OCHamcrest (~> 4.0)
   - STTwitter
 
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
   FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
   FBSDKShareKit: 642034ac9f30793dfd897851b724bb4281750266
+  JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
 

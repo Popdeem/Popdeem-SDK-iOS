@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		067D16A0C35A1F31AF56AB5F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7148E7293ED54A945519DA3 /* libPods.a */; };
+		3951C8DF1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */; };
+		396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */; settings = {ASSET_TAGS = (); }; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
 		397478F71B8F16600015C661 /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478F21B8F16600015C661 /* PDUser.m */; };
@@ -17,7 +18,6 @@
 		397479041B8F167D0015C661 /* PDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478FE1B8F167D0015C661 /* PDScores.m */; };
 		397479051B8F167E0015C661 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479011B8F167D0015C661 /* PDRewardStore.m */; };
 		397479061B8F167E0015C661 /* PDSocialMediaFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479031B8F167D0015C661 /* PDSocialMediaFriend.m */; };
-		3974790E1B8F16860015C661 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479071B8F16860015C661 /* PDRewardCustomAvailability.m */; };
 		3974790F1B8F16860015C661 /* PDOpeningHoursWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479091B8F16860015C661 /* PDOpeningHoursWeek.m */; };
 		397479101B8F16860015C661 /* PDReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974790B1B8F16860015C661 /* PDReward.m */; };
 		397479111B8F16860015C661 /* PDOpeningHoursDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974790C1B8F16860015C661 /* PDOpeningHoursDay.m */; };
@@ -46,7 +46,6 @@
 		39EF928A1B8F125D00D16F18 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92831B8F125D00D16F18 /* UserTests.m */; };
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
 		4507CDE799460AED7133AD0B /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
-		84CD3BBBC1E769CE9AF260D9 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +71,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
+		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
+		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
+		396EFFF81BDA6C3300C0BAC7 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
+		396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardCustomAvailability.m; sourceTree = "<group>"; };
 		397478EC1B8F16480015C661 /* PDWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWallet.h; sourceTree = "<group>"; };
 		397478ED1B8F16480015C661 /* PDWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDWallet.m; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
@@ -90,10 +94,8 @@
 		397479011B8F167D0015C661 /* PDRewardStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardStore.m; sourceTree = "<group>"; };
 		397479021B8F167D0015C661 /* PDSocialMediaFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaFriend.h; sourceTree = "<group>"; };
 		397479031B8F167D0015C661 /* PDSocialMediaFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaFriend.m; sourceTree = "<group>"; };
-		397479071B8F16860015C661 /* PDRewardCustomAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardCustomAvailability.m; sourceTree = "<group>"; };
 		397479081B8F16860015C661 /* PDReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReward.h; sourceTree = "<group>"; };
 		397479091B8F16860015C661 /* PDOpeningHoursWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursWeek.m; sourceTree = "<group>"; };
-		3974790A1B8F16860015C661 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
 		3974790B1B8F16860015C661 /* PDReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReward.m; sourceTree = "<group>"; };
 		3974790C1B8F16860015C661 /* PDOpeningHoursDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursDay.m; sourceTree = "<group>"; };
 		3974790D1B8F16860015C661 /* PDOpeningHoursWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDOpeningHoursWeek.h; sourceTree = "<group>"; };
@@ -151,8 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84CD3BBBC1E769CE9AF260D9 /* libPods-PopdeemSDK.a in Frameworks */,
-				067D16A0C35A1F31AF56AB5F /* libPods.a in Frameworks */,
+				3951C8DF1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,8 +288,6 @@
 				397479091B8F16860015C661 /* PDOpeningHoursWeek.m */,
 				397479081B8F16860015C661 /* PDReward.h */,
 				3974790B1B8F16860015C661 /* PDReward.m */,
-				3974790A1B8F16860015C661 /* PDRewardCustomAvailability.h */,
-				397479071B8F16860015C661 /* PDRewardCustomAvailability.m */,
 				397479001B8F167D0015C661 /* PDScores.h */,
 				397478FE1B8F167D0015C661 /* PDScores.m */,
 				397479021B8F167D0015C661 /* PDSocialMediaFriend.h */,
@@ -301,6 +300,8 @@
 				397478F61B8F16600015C661 /* PDUserFacebookParams.m */,
 				39AE13AE1BC092450026F466 /* PDUserTwitterParams.h */,
 				39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */,
+				396EFFF81BDA6C3300C0BAC7 /* PDRewardCustomAvailability.h */,
+				396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -324,6 +325,9 @@
 		4EF69A0328B0579398DD2DED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */,
+				3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */,
+				3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */,
 				E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */,
 				90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */,
 				A7148E7293ED54A945519DA3 /* libPods.a */,
@@ -524,8 +528,8 @@
 				397479061B8F167E0015C661 /* PDSocialMediaFriend.m in Sources */,
 				39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */,
 				39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */,
-				3974790E1B8F16860015C661 /* PDRewardCustomAvailability.m in Sources */,
 				397479101B8F16860015C661 /* PDReward.m in Sources */,
+				396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +644,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -653,6 +661,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",

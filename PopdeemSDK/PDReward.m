@@ -8,7 +8,6 @@
 
 #import "PDReward.h"
 #import "PDUser.h"
-#import "PDConstants.h"
 
 @interface PDReward () {
     BOOL isDownloadingCover;
@@ -61,26 +60,13 @@
             self.status = PDRewardStatusExpired;
         }
         
-        NSMutableDictionary *actions = params[@"action"];
-        NSString *facebookAction = actions[@"facebook"];
-        NSString *twitterAction = actions[@"twitter"];
-        if (facebookAction.length > 0) {
-            if ([facebookAction isEqualToString:@"photo"]) {
-                self.facebookAction = PDRewardActionPhoto;
-            } else if ([facebookAction isEqualToString:@"checkin"]) {
-                self.facebookAction = PDRewardActionCheckin;
-            } else {
-                self.facebookAction = PDRewardActionNone;
-            }
-        }
-        if (twitterAction.length > 0) {
-            if ([twitterAction isEqualToString:@"tweet"]) {
-                self.twitterAction = PDRewardActionTweet;
-            } else if ([twitterAction isEqualToString:@"photo"]) {
-                self.twitterAction = PDRewardActionPhoto;
-            } else {
-                self.twitterAction = PDRewardActionNone;
-            }
+        NSString *action = [params[@"action"] isKindOfClass:[NSString class]] ? params[@"action"] : @"";
+        if ([action isEqualToString:@"photo"]) {
+            self.action = PDRewardActionPhoto;
+        } else if ([action isEqualToString:@"checkin"]) {
+            self.action = PDRewardActionCheckin;
+        } else {
+            self.action = PDRewardActionNone;
         }
         
         id remaining = params[@"remaining_count"];
@@ -114,6 +100,12 @@
             self.twitterPrefilledMessage = (prefilledMessage.length > 0) ? prefilledMessage : nil;
             NSString *forcedTag = tweet_options[@"forced_tag"];
             self.twitterForcedTag = (forcedTag.length > 0) ? forcedTag : nil;
+        }
+        NSString *mediaLength = params[@"twitter_media_characters"];
+        if ([mediaLength isKindOfClass:[NSString class]]) {
+            self.twitterMediaLength = mediaLength.length > 0 ? mediaLength.integerValue : 25;
+        } else {
+            self.twitterMediaLength = 25;
         }
         
         return self;
