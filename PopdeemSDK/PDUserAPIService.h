@@ -7,17 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PDAPIService.h"
 #import "PDUser.h"
 
-@interface PDUserAPIService : PDAPIService
+@interface PDUserAPIService : NSObject
 
 @property (nonatomic, strong) NSString *baseUrl;
 
 - (id) init;
+
 - (void) getUserDetailsForId:(NSString*)userId
          authenticationToken:(NSString*)authToken
                      success:(void (^)(PDUser *user))success
                      failure:(void (^)(NSError *error))failure;
+
+- (void) registerUserwithFacebookAccesstoken:(NSString*)facebookAccessToken
+                                  facebookId:(NSString*)facebookId
+                                     success:(void (^)(PDUser *user))success
+                                     failure:(void (^)(NSError *error))failure;
 
 @end

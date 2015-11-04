@@ -52,27 +52,6 @@
     
     PDUserAPIService *apiService = [[PDUserAPIService alloc] init];
     [apiService getUserDetailsForId:userId authenticationToken:authToken success:success failure:failure];
-    /*
-    NSString *getPath = [NSString stringWithFormat:@"%@/%@",USERS_PATH,userId];
-    [self.requestSerializer setValue:authToken forHTTPHeaderField:@"User-Token"];
-    
-    [self GET:getPath
-   parameters:nil
-      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          NSDictionary *userObject = responseObject[@"user"];
-          PDUser *u = [PDUser initFromAPI:userObject preferredSocialMediaType:PDSocialMediaTypeFacebook];
-          success(u);
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                          @"User creation from API Failed", NSLocalizedDescriptionKey,
-                                          error, NSUnderlyingErrorKey,
-                                          nil];
-          NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
-                                                         code:PDErrorCodeUserCreationFailed
-                                                     userInfo:userDictionary];
-          failure(endError);
-      }];
-     */
 }
 
 #pragma mark - Facebook -
@@ -85,36 +64,11 @@
                                       success:(void (^)(PDUser *user))success
                                      failure:(void (^)(NSError *error))failure {
     
-    NSMutableDictionary *facebook = [NSMutableDictionary dictionary];
-    [facebook setObject:facebookId forKey:@"id"];
-    [facebook setObject:facebookAccessToken forKey:@"access_token"];
-    
-    NSMutableDictionary *user = [NSMutableDictionary dictionary];
-    [user setObject:facebook forKey:@"facebook"];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:user forKey:@"user"];
-    
-    [self POST:USERS_PATH
-    parameters:params
-       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-           
-           NSDictionary *userObject = responseObject[@"user"];
-           PDUser *user = [PDUser initFromAPI:userObject preferredSocialMediaType:PDSocialMediaTypeFacebook];
-           [user.facebookParams setAccessToken:facebookAccessToken];
-           [user.facebookParams setIdentifier:facebookId];
-           success(user);
-           
-       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-           NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                           @"User Registration Failed", NSLocalizedDescriptionKey,
-                                           error, NSUnderlyingErrorKey,
-                                           nil];
-           NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
-                                                          code:PDErrorCodeUserCreationFailed
-                                                      userInfo:userDictionary];
-           failure(endError);
-       }];
+    PDUserAPIService *apiService = [[PDUserAPIService alloc] init];
+    [apiService registerUserwithFacebookAccesstoken:facebookAccessToken
+                                         facebookId:facebookId
+                                            success:success
+                                            failure:failure];
 }
 
 #pragma mark - Connect Twitter Account - 

@@ -46,6 +46,7 @@
 		39EF928A1B8F125D00D16F18 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92831B8F125D00D16F18 /* UserTests.m */; };
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
 		39F513EB1BEA19A80027EC62 /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */; };
+		39F513F71BEA521B0027EC62 /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513F61BEA521B0027EC62 /* NSURLSession+Popdeem.m */; };
 		4507CDE799460AED7133AD0B /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,8 @@
 		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
 		39F513E91BEA19A80027EC62 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
 		39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
+		39F513F51BEA521B0027EC62 /* NSURLSession+Popdeem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+Popdeem.h"; sourceTree = "<group>"; };
+		39F513F61BEA521B0027EC62 /* NSURLSession+Popdeem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+Popdeem.m"; sourceTree = "<group>"; };
 		90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7148E7293ED54A945519DA3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +271,8 @@
 		39EF928E1B8F15AD00D16F18 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				39F513F51BEA521B0027EC62 /* NSURLSession+Popdeem.h */,
+				39F513F61BEA521B0027EC62 /* NSURLSession+Popdeem.m */,
 				397479291B8F16B50015C661 /* PDAPIClient.h */,
 				3974792A1B8F16B50015C661 /* PDAPIClient.m */,
 				39F513E91BEA19A80027EC62 /* PDUserAPIService.h */,
@@ -533,6 +538,7 @@
 				397479221B8F16A40015C661 /* PDConstants.m in Sources */,
 				397479061B8F167E0015C661 /* PDSocialMediaFriend.m in Sources */,
 				39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */,
+				39F513F71BEA521B0027EC62 /* NSURLSession+Popdeem.m in Sources */,
 				39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */,
 				397479101B8F16860015C661 /* PDReward.m in Sources */,
 				396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */,
