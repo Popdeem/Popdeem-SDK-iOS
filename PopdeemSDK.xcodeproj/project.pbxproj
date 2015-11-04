@@ -45,7 +45,7 @@
 		39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92821B8F125D00D16F18 /* RewardTests.m */; };
 		39EF928A1B8F125D00D16F18 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92831B8F125D00D16F18 /* UserTests.m */; };
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
-		39F513E81BEA18570027EC62 /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513E71BEA18570027EC62 /* PDUserAPIService.m */; };
+		39F513EB1BEA19A80027EC62 /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */; };
 		4507CDE799460AED7133AD0B /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
 /* End PBXBuildFile section */
 
@@ -140,8 +140,8 @@
 		39EF92821B8F125D00D16F18 /* RewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTests.m; sourceTree = "<group>"; };
 		39EF92831B8F125D00D16F18 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
-		39F513E61BEA18570027EC62 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUserAPIService.h; path = "../../../sdk2/Popdeem-SDK-iOS/PopdeemSDK/PDUserAPIService.h"; sourceTree = "<group>"; };
-		39F513E71BEA18570027EC62 /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUserAPIService.m; path = "../../../sdk2/Popdeem-SDK-iOS/PopdeemSDK/PDUserAPIService.m"; sourceTree = "<group>"; };
+		39F513E91BEA19A80027EC62 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
+		39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
 		90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7148E7293ED54A945519DA3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,8 +270,8 @@
 			children = (
 				397479291B8F16B50015C661 /* PDAPIClient.h */,
 				3974792A1B8F16B50015C661 /* PDAPIClient.m */,
-				39F513E61BEA18570027EC62 /* PDUserAPIService.h */,
-				39F513E71BEA18570027EC62 /* PDUserAPIService.m */,
+				39F513E91BEA19A80027EC62 /* PDUserAPIService.h */,
+				39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -522,7 +522,7 @@
 				397479191B8F16900015C661 /* PDLocationStore.m in Sources */,
 				397479281B8F16AE0015C661 /* PDFeedItem.m in Sources */,
 				3974791B1B8F16900015C661 /* PDLocation.m in Sources */,
-				39F513E81BEA18570027EC62 /* PDUserAPIService.m in Sources */,
+				39F513EB1BEA19A80027EC62 /* PDUserAPIService.m in Sources */,
 				397478F81B8F16600015C661 /* PDUser+Facebook.m in Sources */,
 				397479111B8F16860015C661 /* PDOpeningHoursDay.m in Sources */,
 				397478FC1B8F16730015C661 /* PDUtils.m in Sources */,
