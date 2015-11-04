@@ -7,6 +7,7 @@
 //
 
 #import "PDAPIClient.h"
+#import "PDUserAPIService.h"
 
 @implementation PDAPIClient
 
@@ -49,6 +50,9 @@
                       success:(void (^)(PDUser *user))success
                      failure:(void (^)(NSError *error))failure {
     
+    PDUserAPIService *apiService = [[PDUserAPIService alloc] init];
+    [apiService getUserDetailsForId:userId authenticationToken:authToken success:success failure:failure];
+    /*
     NSString *getPath = [NSString stringWithFormat:@"%@/%@",USERS_PATH,userId];
     [self.requestSerializer setValue:authToken forHTTPHeaderField:@"User-Token"];
     
@@ -68,6 +72,7 @@
                                                      userInfo:userDictionary];
           failure(endError);
       }];
+     */
 }
 
 #pragma mark - Facebook -
