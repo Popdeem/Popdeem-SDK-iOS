@@ -195,7 +195,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                failure:(void (^)(NSError *error))failure;
 
 - (void) getRewardsForBrandId:(NSInteger)brandid
-                      success:(void (^)(NSArray *rewards))success
+                      success:(void (^)(void))success
                       failure:(void (^)(NSError *error))failure;
 
 /*!
@@ -258,10 +258,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @param success block to be called on success
  * @param failure block to be called on failure
  */
-- (void) redeemReward:(NSInteger)rewardId
- forUserWithAuthToken:(NSString*)authenticationToken
-              success:(void (^)(void))success
-              failure:(void (^)(NSError *error))failure;
+//- (void) redeemReward:(NSInteger)rewardId
+// forUserWithAuthToken:(NSString*)authenticationToken
+//              success:(void (^)(void))success
+//              failure:(void (^)(NSError *error))failure;
 
 /// ---------------------
 /// @name Feed
