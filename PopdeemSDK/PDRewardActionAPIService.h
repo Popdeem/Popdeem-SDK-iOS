@@ -7,7 +7,22 @@
 //
 
 #import "PDAPIService.h"
+#import "PDLocation.h"
+#import <UIKit/UIKit.h>
 
 @interface PDRewardActionAPIService : PDAPIService
+
+- (void) claimReward:(NSInteger)rewardId
+            location:(PDLocation*)location
+         withMessage:(NSString*)message
+       taggedFriends:(NSArray*)taggedFriends
+               image:(UIImage*)image
+            facebook:(BOOL)facebook
+             twitter:(BOOL)twitter
+          completion:(void (^)(NSError *error))completion;
+
+
+- (void) redeemReward:(NSInteger)rewardId
+           completion:(void (^)(NSError *error))completion;
 
 @end

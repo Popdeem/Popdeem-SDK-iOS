@@ -7,17 +7,12 @@
 //
 
 #import "PDUserAPIService.h"
-#import "PDConstants.h"
-#import "PDUtils.h"
-#import "PDURLSession.h"
-#import "NSURLSession+Popdeem.h"
+#import "PDAPIClient.h"
 
 @implementation PDUserAPIService
 
-- (id) init;
-{
+- (id) init {
     if (self = [super init]) {
-        self.baseUrl = API_URL;
         return self;
     }
     return nil;
@@ -25,8 +20,7 @@
 
 - (void) getUserDetailsForId:(NSString*)userId
          authenticationToken:(NSString*)authToken
-                     success:(void (^)(PDUser *user))success
-                     failure:(void (^)(NSError *error))failure {
+                  completion:(void (^)(PDUser *user, NSError *error))completion {
     
     NSString *apiString = [NSString stringWithFormat:@"%@/%@/%@",self.baseUrl,USERS_PATH,userId];
     
@@ -36,7 +30,9 @@
       completion:^(NSData* data, NSURLResponse *response, NSError *error) {
           if (error) {
               //Handle Error
-              failure(error);
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  completion(nil, error);
+              });
               return;
           }
           if (response) {
@@ -47,7 +43,7 @@
               PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
               [session invalidateAndCancel];
               dispatch_async(dispatch_get_main_queue(), ^{
-                  success(user);
+                  completion(user, nil);
               });
           }
     }];
@@ -55,8 +51,7 @@
 
 - (void) registerUserwithFacebookAccesstoken:(NSString*)facebookAccessToken
                                   facebookId:(NSString*)facebookId
-                                     success:(void (^)(PDUser *user))success
-                                     failure:(void (^)(NSError *error))failure {
+                                  completion:(void (^)(PDUser *user, NSError *error))completion {
     
     NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
     
@@ -74,7 +69,9 @@
     [session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {
             //Handle Error
-            failure(error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, error);
+            });
             return;
         }
         if (response) {
@@ -85,7 +82,45 @@
             PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
             [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{
-                success(user);
+                completion(user, nil);
+            });
+        }
+    }];
+}
+
+- (void) updateUserWithCompletion:(void (^)(PDUser *user, NSError *error))completion {
+    
+    PDUser *_user = [PDUser sharedInstance];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"ios" forKey:@"user[platform]"];
+    if ([[PDAPIClient sharedInstance] deviceToken]) {
+        //Will be set by app delegate if user allows notifications
+        [params setValue:[[PDAPIClient sharedInstance] deviceToken]  forKey:@"user[device_token]"];
+        [_user setDeviceToken:[[PDAPIClient sharedInstance] deviceToken]];
+    }
+    [params setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.latitude] forKey:@"user[latitude]"];
+    [params setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.longitude] forKey:@"user[longitude]"];
+    
+    NSString *putPath = [NSString stringWithFormat:@"%@/%@/%ld",self.baseUrl,USERS_PATH,(long)_user.identifier];
+    NSURLSession *session = [NSURLSession createPopdeemSession];
+    [session PUT:putPath params:params completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            //Handle Error
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, error);
+            });
+            return;
+        }
+        if (response) {
+            //Deal with response
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            
+            PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(user, nil);
             });
         }
     }];

@@ -10,4 +10,12 @@
 
 @implementation PDAPIService
 
+- (id) init {
+    if (self = [super init]) {
+        self.baseUrl = API_URL;
+        return self;
+    }
+    return nil;
+}
+
 @end

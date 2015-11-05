@@ -10,4 +10,7 @@
 
 @interface PDFeedAPIService : PDAPIService
 
+- (void) getFeedsWithCompletion:(void (^)(NSError *error))completion;
+- (void) getFeedsLimit:(NSInteger)limit completion:(void (^)(NSError *error))completion;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface PDBrandApiService : PDAPIService
 
+- (void) getBrandsWithCompletion:(void (^)(NSError *error))completion;
+
 @end

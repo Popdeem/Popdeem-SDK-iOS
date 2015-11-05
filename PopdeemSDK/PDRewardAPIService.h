@@ -10,4 +10,8 @@
 
 @interface PDRewardAPIService : PDAPIService
 
+- (void) getAllRewardsWithCompletion:(void (^)(NSError *error))completion;
+- (void) getAllRewardsForLocationWithId:(NSInteger)locationIdentifier completion:(void (^)(NSError *error))completion;
+- (void) getAllRewardsForBrandId:(NSInteger)brandid completion:(void (^)(NSError *error))completion;
+
 @end

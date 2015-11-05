@@ -10,4 +10,6 @@
 
 @interface PDWalletAPIService : PDAPIService
 
+- (void) getRewardsInWalletWithCompletion:(void (^)(NSError *error))completion;
+
 @end

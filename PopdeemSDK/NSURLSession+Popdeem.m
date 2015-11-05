@@ -47,6 +47,19 @@
     [postDataTask resume];
 }
 
+- (void) PUT:(NSString*)apiString
+      params:(NSDictionary*)params
+  completion:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion {
+    
+    NSMutableURLRequest *mutableRequest = [self buildMutableRequestWithApiString:apiString params:params];
+    [mutableRequest setHTTPMethod:@"PUT"];
+    
+    NSURLSessionDataTask *postDataTask = [self dataTaskWithRequest:mutableRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        completion(data,response,error);
+    }];
+    [postDataTask resume];
+}
+
 - (NSMutableURLRequest*) buildMutableRequestWithApiString:(NSString*)apiString params:(NSDictionary*)params {
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:apiString]
@@ -67,6 +80,7 @@
         [mutableRequest setValue:[NSString stringWithFormat:@"%ld", [JSONData length]] forHTTPHeaderField:@"Content-Length"];
         [mutableRequest setHTTPBody:JSONData];
     }
+    return mutableRequest;
 }
 
 - (NSString*) apiKey {

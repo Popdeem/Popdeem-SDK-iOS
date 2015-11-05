@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PDAPIService.h"
 
-@interface PDSocialAPIService : NSObject
+@interface PDSocialAPIService : PDAPIService
+
+- (void) connectTwitterAccount:(NSString*)userId
+                   accessToken:(NSString*)accessToken
+                  accessSecret:(NSString*)accessSecret
+                    completion:(void (^)(NSError *error))completion;
 
 @end

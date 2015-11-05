@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PDConstants.h"
+#import "NSURLSession+Popdeem.h"
+#import "PDConstants.h"
 
 @interface PDAPIService : NSObject
+
+@property (nonatomic, strong) NSString *baseUrl;
 
 @end
