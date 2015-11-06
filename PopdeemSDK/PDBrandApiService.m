@@ -22,7 +22,7 @@
 - (void) getBrandsWithCompletion:(void (^)(NSError *error))completion {
     
     NSURLSession *session = [NSURLSession createPopdeemSession];
-    NSString *path = [NSString stringWithFormat:@"%@,%@",self.baseUrl,BRANDS_PATH];
+    NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,BRANDS_PATH];
     [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{

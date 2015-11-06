@@ -32,7 +32,7 @@
           completion:(void (^)(NSError *error))completion {
     
     NSURLSession *session = [NSURLSession createPopdeemSession];
-    NSString *path = [NSString stringWithFormat:@"%@,%@/%ld/claim",self.baseUrl,REWARDS_PATH,(long)rewardId];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%ld/claim",self.baseUrl,REWARDS_PATH,(long)rewardId];
     
     PDUser *user = [PDUser sharedInstance];
     PDReward *r = [PDRewardStore find:rewardId];

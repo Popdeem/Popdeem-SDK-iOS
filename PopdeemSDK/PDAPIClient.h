@@ -25,7 +25,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
 #import "PDConstants.h"
 #import "PDLocation.h"
 #import "PDLocationStore.h"
@@ -36,6 +35,7 @@
 #import "PDBrandStore.h"
 #import "PDUser+Facebook.h"
 #import "PDFeeds.h"
+#import "PDReferral.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -46,13 +46,14 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  For an in-depth walk through and sample code, see our [iOS Documentation](http://www.popdeem.com/developer/iosdocs "iOS Docs")
  */
-@interface PDAPIClient : AFHTTPRequestOperationManager
+@interface PDAPIClient : NSObject
 
 /**
  * @abstract The device token for the user
  * @discussion This should be set as early as possible in the app lifecycle
  */
 @property (nonatomic, strong, nullable) NSString *deviceToken;
+@property (nonatomic, strong, nullable) PDReferral *referral;
 
 /*!
  * @abstract Return the shared API Client

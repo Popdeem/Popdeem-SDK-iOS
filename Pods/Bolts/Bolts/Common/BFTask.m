@@ -43,11 +43,13 @@ NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsExcept
 #pragma mark - Initializer
 
 - (instancetype)init {
-    if (self = [super init]) {
-        _lock = [[NSObject alloc] init];
-        _condition = [[NSCondition alloc] init];
-        _callbacks = [NSMutableArray array];
-    }
+    self = [super init];
+    if (!self) return nil;
+
+    _lock = [[NSObject alloc] init];
+    _condition = [[NSCondition alloc] init];
+    _callbacks = [NSMutableArray array];
+
     return self;
 }
 
@@ -170,7 +172,9 @@ NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsExcept
 
 + (instancetype)taskFromExecutor:(BFExecutor *)executor
                        withBlock:(id (^)())block {
-    return [[self taskWithResult:nil] continueWithExecutor:executor withBlock:block];
+    return [[self taskWithResult:nil] continueWithExecutor:executor withBlock:^id(BFTask *task) {
+        return block();
+    }];
 }
 
 #pragma mark - Custom Setters/Getters
@@ -340,7 +344,7 @@ NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsExcept
             if ([result isKindOfClass:[BFTask class]]) {
 
                 id (^setupWithTask) (BFTask *) = ^id(BFTask *task) {
-                    if (task.cancelled) {
+                    if (cancellationToken.cancellationRequested || task.cancelled) {
                         [tcs cancel];
                     } else if (task.exception) {
                         tcs.exception = task.exception;
@@ -357,7 +361,7 @@ NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsExcept
                 if (resultTask.completed) {
                     setupWithTask(resultTask);
                 } else {
-                    [resultTask continueWithBlock:setupWithTask cancellationToken:cancellationToken];
+                    [resultTask continueWithBlock:setupWithTask];
                 }
 
             } else {

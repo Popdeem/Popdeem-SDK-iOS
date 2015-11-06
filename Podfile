@@ -5,7 +5,6 @@ platform :ios, '7.1'
 link_with 'PopdeemSDK', 'PopdeemSDKTests'
 
 target 'PopdeemSDK' do
-    pod 'AFNetworking', '~> 2.0'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
@@ -15,7 +14,6 @@ end
 
 target 'PopdeemSDKTests' do
     pod 'OCHamcrest', '~> 4.0'
-    pod 'AFNetworking', '~> 2.0'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'

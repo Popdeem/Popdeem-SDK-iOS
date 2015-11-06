@@ -67,6 +67,8 @@
                                          timeoutInterval:60.0];
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     [mutableRequest addValue:[self apiKey] forHTTPHeaderField:@"Api-Key"];
+    [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     if ([[PDUser sharedInstance] userToken]) {
         [mutableRequest addValue:[[PDUser sharedInstance] userToken] forHTTPHeaderField:@"User-Token"];
     }

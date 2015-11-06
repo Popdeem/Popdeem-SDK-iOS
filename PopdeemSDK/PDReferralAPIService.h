@@ -7,7 +7,10 @@
 //
 
 #import "PDAPIService.h"
+#import "PDReferral.h"
 
 @interface PDReferralAPIService : PDAPIService
+
+- (void) logReferral:(PDReferral*)referral;
 
 @end

@@ -170,25 +170,25 @@
 
 - (void) getAllRewardsWithBundledBrandKeySuccess:(void (^)(void))success
                                          failure:(void (^)(NSError *error))failure {
-    NSString *bundledBrandKey = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"popdeemBrandKey"];
-    if (bundledBrandKey == nil) {
-        NSLog(@"Error: No popdeemBrandKey found in info.plist. Getting all rewards for customer instead");
-        [self getAllRewardsSuccess:success failure:failure];
-        return;
-    }
-    [self getAllRewardsByBrandKey:bundledBrandKey success:success failure:failure];
+//    NSString *bundledBrandKey = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"popdeemBrandKey"];
+//    if (bundledBrandKey == nil) {
+//        NSLog(@"Error: No popdeemBrandKey found in info.plist. Getting all rewards for customer instead");
+//        [self getAllRewardsSuccess:success failure:failure];
+//        return;
+//    }
+//    [self getAllRewardsByBrandKey:bundledBrandKey success:success failure:failure];
 }
 
 - (void) getAllRewardsByBrandKey:(NSString*)brandKey
                          success:(void (^)(void))success
                          failure:(void (^)(NSError *error))failure {
-    if (brandKey == nil) {
-        NSLog(@"Error: No Brand Key. Getting all rewards for customer instead");
-        [self getAllRewardsSuccess:success failure:failure];
-        return;
-    }
-    [self.requestSerializer setValue:brandKey forHTTPHeaderField:@"Brand-Key"];
-    [self getAllRewardsSuccess:success failure:failure];
+//    if (brandKey == nil) {
+//        NSLog(@"Error: No Brand Key. Getting all rewards for customer instead");
+//        [self getAllRewardsSuccess:success failure:failure];
+//        return;
+//    }
+//    [self.requestSerializer setValue:brandKey forHTTPHeaderField:@"Brand-Key"];
+//    [self getAllRewardsSuccess:success failure:failure];
     
 }
 
@@ -235,13 +235,13 @@
 - (void) getAllWalletRewardsByBrandKey:(NSString*)brandKey
                                success:(void (^)(void))success
                                failure:(void (^)(NSError *error))failure {
-    if (brandKey == nil) {
-        NSLog(@"Error: No Brand Key. Getting all rewards for customer instead");
-        [self getRewardsInWalletSuccess:success failure:failure];
-        return;
-    }
-    [self.requestSerializer setValue:brandKey forHTTPHeaderField:@"Brand-Key"];
-    [self getRewardsInWalletSuccess:success failure:failure];
+//    if (brandKey == nil) {
+//        NSLog(@"Error: No Brand Key. Getting all rewards for customer instead");
+//        [self getRewardsInWalletSuccess:success failure:failure];
+//        return;
+//    }
+//    [self.requestSerializer setValue:brandKey forHTTPHeaderField:@"Brand-Key"];
+//    [self getRewardsInWalletSuccess:success failure:failure];
 }
 
 #pragma mark - Claim Reward -

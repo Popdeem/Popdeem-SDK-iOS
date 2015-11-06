@@ -32,7 +32,7 @@
         NSError *jsonError;
         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
         [PDWallet removeAllRewards];
-        for (NSDictionary *attributes in jsonObject) {
+        for (NSDictionary *attributes in jsonObject[@"rewards"]) {
             PDReward *reward = [[PDReward alloc] initFromApi:attributes];
             if (reward.status == PDRewardStatusLive) {
                 [PDWallet add:reward];

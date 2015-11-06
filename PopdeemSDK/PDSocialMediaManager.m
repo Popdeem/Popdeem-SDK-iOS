@@ -56,7 +56,7 @@
                               success:(void (^)(void))success
                               failure:(void (^)(NSError *err))failure {
     FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
-    [lm logInWithPublishPermissions:permissions fromViewController:_holderViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    [lm logInWithPublishPermissions:permissions fromViewController:_holderViewController  handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error) {
             failure(error);
         } else if (result.isCancelled) {

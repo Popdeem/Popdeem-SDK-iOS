@@ -83,7 +83,7 @@
         }
         NSError *jsonError;
         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        for (NSDictionary *attributes in jsonObject) {
+        for (NSDictionary *attributes in jsonObject[@"rewards"]) {
             PDReward *reward = [[PDReward alloc] initFromApi:attributes];
             reward.brandId = brandid;
             [PDRewardStore add:reward];

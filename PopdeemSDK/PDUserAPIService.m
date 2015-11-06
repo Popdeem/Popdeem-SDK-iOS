@@ -8,6 +8,7 @@
 
 #import "PDUserAPIService.h"
 #import "PDAPIClient.h"
+#import "PDReferral.h"
 
 @implementation PDUserAPIService
 
@@ -93,17 +94,34 @@
     PDUser *_user = [PDUser sharedInstance];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:@"ios" forKey:@"user[platform]"];
+    
+    NSMutableDictionary *user = [NSMutableDictionary dictionary];
+    [user setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.latitude] forKey:@"latitude"];
+    [user setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.longitude] forKey:@"longitude"];
+    [user setValue:@"ios" forKey:@"platform"];
+    
     if ([[PDAPIClient sharedInstance] deviceToken]) {
         //Will be set by app delegate if user allows notifications
-        [params setValue:[[PDAPIClient sharedInstance] deviceToken]  forKey:@"user[device_token]"];
+        [user setValue:[[PDAPIClient sharedInstance] deviceToken]  forKey:@"device_token"];
         [_user setDeviceToken:[[PDAPIClient sharedInstance] deviceToken]];
     }
-    [params setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.latitude] forKey:@"user[latitude]"];
-    [params setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.longitude] forKey:@"user[longitude]"];
     
     NSString *putPath = [NSString stringWithFormat:@"%@/%@/%ld",self.baseUrl,USERS_PATH,(long)_user.identifier];
     NSURLSession *session = [NSURLSession createPopdeemSession];
+    
+    if ([[PDAPIClient sharedInstance] referral] != nil) {
+        PDReferral *r = [[PDAPIClient sharedInstance] referral];
+        NSMutableDictionary *referDict = [NSMutableDictionary dictionary];
+        if (r.senderId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",[r senderId]] forKey:@"referrer_id"];
+        if (r.typeString) [referDict setObject:[r typeString] forKey:@"type"];
+        if (r.senderAppName) [referDict setObject:[r senderAppName] forKey:@"referrer_app_name"];
+        if (r.requestId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",[r requestId]] forKey:@"request_id"];
+        [params setValue:referDict forKey:@"referral"];
+        [[PDAPIClient sharedInstance] setReferral:nil];
+    }
+    
+    [params setObject:user forKey:@"user"];
+    
     [session PUT:putPath params:params completion:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             //Handle Error
