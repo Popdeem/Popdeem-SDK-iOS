@@ -53,4 +53,26 @@
     }];
 }
 
+- (void) disconnectTwitterAccountWithCompletion:(void (^)(NSError *error))completion {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSMutableDictionary *user = [NSMutableDictionary dictionary];
+    NSMutableDictionary *twitter = [NSMutableDictionary dictionary];
+    NSString *twitterAccessToken = [[[PDUser sharedInstance] twitterParams] accessToken];
+    NSString *twitterAccessSecret = [[[PDUser sharedInstance] twitterParams] accessSecret];
+    [twitter setObject:twitterAccessToken forKey:@"access_token"];
+    [twitter setObject:twitterAccessSecret forKey:@"access_secret"];
+    [user setObject:twitter forKey:@"user"];
+    [params setObject:user forKey:@"user"];
+    
+    NSURLSession *session = [NSURLSession createPopdeemSession];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/disconnect_social_account",self.baseUrl,USERS_PATH];
+    [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+        if (error) {
+            completion(error);
+            return;
+        }
+        completion(nil);
+    }];
+}
+
 @end

@@ -54,10 +54,10 @@
     NSMutableURLRequest *mutableRequest = [self buildMutableRequestWithApiString:apiString params:params];
     [mutableRequest setHTTPMethod:@"PUT"];
     
-    NSURLSessionDataTask *postDataTask = [self dataTaskWithRequest:mutableRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *putDataTask = [self dataTaskWithRequest:mutableRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         completion(data,response,error);
     }];
-    [postDataTask resume];
+    [putDataTask resume];
 }
 
 - (NSMutableURLRequest*) buildMutableRequestWithApiString:(NSString*)apiString params:(NSDictionary*)params {
