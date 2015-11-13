@@ -26,7 +26,7 @@
     NSURLSession *session = [NSURLSession createPopdeemSession];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",limit],@"limit", nil];
     NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,FEEDS_PATH];
-    [session GET:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+    [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(error);
@@ -35,6 +35,10 @@
         }
         NSError *jsonError;
         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+        if (jsonObject == nil) {
+            completion(error);
+            return;
+        };
         NSArray *feeds = [jsonObject objectForKey:@"feeds"];
         [PDFeeds populateFromAPI:feeds];
         [session invalidateAndCancel];

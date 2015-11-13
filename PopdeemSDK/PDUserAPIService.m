@@ -79,7 +79,10 @@
             //Deal with response
             NSError *jsonError;
             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-            
+            if (!jsonObject) {
+                completion(nil, nil);
+                return;
+            }
             PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
             [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{

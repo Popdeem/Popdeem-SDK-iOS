@@ -31,6 +31,10 @@
         }
         NSError *jsonError;
         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+        if (jsonObject == nil) {
+            completion(error);
+            return;
+        };
         for (id attributes in jsonObject[@"brands"]) {
             PDBrand *b = [[PDBrand alloc] initFromApi:attributes];
             if ([PDBrandStore findBrandByIdentifier:b.identifier] == nil) {

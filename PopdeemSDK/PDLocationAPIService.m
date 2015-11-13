@@ -31,6 +31,10 @@
         }
         NSError *jsonError;
         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+        if (jsonObject == nil) {
+            completion(error);
+            return;
+        };
         for (id loc in jsonObject[@"locations"]) {
             PDLocation *location = [[PDLocation alloc] initFromApi:loc];
             [PDLocationStore add:location];

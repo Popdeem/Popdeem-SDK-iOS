@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 /**
  @abstract The Type of Referral
  **/
@@ -31,6 +32,6 @@ typedef NS_ENUM(NSUInteger, PDReferralType) {
 - (id) initWithSenderId:(NSInteger)senderId senderApp:(NSString*)senderApp type:(PDReferralType)type;
 - (id) initWithUrl:(NSURL*)url appRef:(UIApplication*)application;
 - (NSString*) typeString;
-+ (void) logReferral:(PDReferral*)referral ;
++ (void) logReferral:(PDReferral*)referral;
 
 @end

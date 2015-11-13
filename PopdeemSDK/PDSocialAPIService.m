@@ -44,6 +44,10 @@
         }
         NSError *jsonError;
         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+        if (jsonObject == nil) {
+            completion(error);
+            return;
+        };
         PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
         [user.twitterParams setAccessSecret:accessSecret];
         [session invalidateAndCancel];

@@ -377,6 +377,9 @@
 }
 
 - (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion {
+    completion(NO,nil);
+    return;
+    
     NSError *keyError = nil;
     NSError *secretError = nil;
     NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
