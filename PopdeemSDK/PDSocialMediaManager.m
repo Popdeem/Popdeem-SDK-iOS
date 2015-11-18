@@ -11,8 +11,6 @@
 #import "PDConstants.h"
 #import "PDUtils.h"
 #import "PDAPIClient.h"
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Accounts/Accounts.h>
 #import <STTwitter/STTwitter.h>
 
@@ -56,7 +54,7 @@
                               success:(void (^)(void))success
                               failure:(void (^)(NSError *err))failure {
     FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
-    [lm logInWithPublishPermissions:permissions fromViewController:_holderViewController  handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    [lm logInWithReadPermissions:permissions fromViewController:_holderViewController  handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error) {
             failure(error);
         } else if (result.isCancelled) {
@@ -101,21 +99,6 @@
 - (void) facebookRequestPublishPermissions:(void (^)(void))success
                                  failure:(void (^)(NSError *err))failure {
     FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
-//    [lm logInWithPublishPermissions:@[@"publish_actions"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-//        if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-//            [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-//            success();
-//        } else {
-//            NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                            @"Necessary permissions were not granted", NSLocalizedDescriptionKey,
-//                                            error, NSUnderlyingErrorKey,
-//                                            nil];
-//            NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
-//                                                           code:PDErrorCodeFBPermissions
-//                                                       userInfo:userDictionary];
-//            failure(endError);
-//        }
-//    }];
     
     [lm logInWithPublishPermissions:@[@"publish_actions"] fromViewController:_holderViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
@@ -162,6 +145,10 @@
             completion(nil, apiError);
         }];
     }];
+}
+
+- (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error completion:(void (^)(NSError *error))completion {
+    
 }
 
 #pragma mark - Twitter -

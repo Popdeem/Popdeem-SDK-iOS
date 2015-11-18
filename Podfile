@@ -13,12 +13,7 @@ target 'PopdeemSDK' do
 end
 
 target 'PopdeemSDKTests' do
-    pod 'OCHamcrest', '~> 4.0'
-    pod 'FBSDKCoreKit'
-    pod 'FBSDKLoginKit'
-    pod 'FBSDKShareKit'
-    pod 'STTwitter'
-    pod 'JSONModel'
+    pod 'Kiwi'
 end
 
 

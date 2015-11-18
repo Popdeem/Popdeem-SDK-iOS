@@ -29,20 +29,30 @@
                 return;
             });
         }
-        NSError *jsonError;
-        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        if (jsonObject == nil) {
-            completion(error);
-            return;
-        };
-        for (id loc in jsonObject[@"locations"]) {
-            PDLocation *location = [[PDLocation alloc] initFromApi:loc];
-            [PDLocationStore add:location];
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            if (!jsonObject) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                });
+                return;
+            }
+            for (id loc in jsonObject[@"locations"]) {
+                PDLocation *location = [[PDLocation alloc] initFromApi:loc];
+                [PDLocationStore add:location];
+            }
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
         }
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
     }];
 }
 
@@ -55,14 +65,28 @@
                 completion(error);
             });
         }
-        NSError *jsonError;
-        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        PDLocation *location = [[PDLocation alloc] initFromApi:jsonObject[@"location"]];
-        [PDLocationStore add:location];
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            if (!jsonObject) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                });
+                return;
+            }
+            PDLocation *location = [[PDLocation alloc] initFromApi:jsonObject[@"location"]];
+            [PDLocationStore add:location];
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+        }
     }];
 }
 
@@ -75,16 +99,30 @@
                 completion(error);
             });
         }
-        NSError *jsonError;
-        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        for (id loc in jsonObject[@"locations"]) {
-            PDLocation *location = [[PDLocation alloc] initFromApi:loc];
-            [PDLocationStore add:location];
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            if (!jsonObject) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                });
+                return;
+            }
+            for (id loc in jsonObject[@"locations"]) {
+                PDLocation *location = [[PDLocation alloc] initFromApi:loc];
+                [PDLocationStore add:location];
+            }
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
         }
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
     }];
 }
 

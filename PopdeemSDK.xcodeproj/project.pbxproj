@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22F4E7431A7F374C7939C417 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
+		3957060E1BFC847C0027B3A4 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3957060D1BFC847C0027B3A4 /* UserTests.m */; };
+		3957060F1BFC8BAA0027B3A4 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 395706101BFC8BFF0027B3A4 /* PDNetworkError.m */; };
+		396B2B431BFCC6BF003D9F25 /* KWSpec+WaitFor.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B2B421BFCC6BF003D9F25 /* KWSpec+WaitFor.m */; };
 		396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
@@ -29,20 +34,10 @@
 		397479281B8F16AE0015C661 /* PDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 397479251B8F16AE0015C661 /* PDFeedItem.m */; };
 		3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792A1B8F16B50015C661 /* PDAPIClient.m */; };
 		3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */; };
+		397CA67C1BFCDE9B003BC48A /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 397CA67B1BFCDE9B003BC48A /* UserAPIServiceTests.m */; };
+		397CA67E1BFCE132003BC48A /* JDTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 397CA67D1BFCE132003BC48A /* JDTest.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
-		39A772DC1BECB941007ED334 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */; };
-		39A772DD1BECB951007ED334 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		39A772E31BECBE84007ED334 /* PDReferral.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A772E21BECBE84007ED334 /* PDReferral.m */; };
-		39A7737E1BF9EBB7007ED334 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A7737D1BF9EBB7007ED334 /* main.m */; };
-		39A773811BF9EBB7007ED334 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A773801BF9EBB7007ED334 /* AppDelegate.m */; };
-		39A773871BF9EBB7007ED334 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A773851BF9EBB7007ED334 /* Main.storyboard */; };
-		39A773891BF9EBB7007ED334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A773881BF9EBB7007ED334 /* Assets.xcassets */; };
-		39A7738C1BF9EBB7007ED334 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A7738A1BF9EBB7007ED334 /* LaunchScreen.storyboard */; };
-		39A773971BF9EBB7007ED334 /* LocationBasedExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A773961BF9EBB7007ED334 /* LocationBasedExampleTests.m */; };
-		39A773A21BF9EBB7007ED334 /* LocationBasedExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A773A11BF9EBB7007ED334 /* LocationBasedExampleUITests.m */; };
-		39A773AF1BF9EC91007ED334 /* LBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A773AE1BF9EC91007ED334 /* LBHomeViewController.m */; };
-		39A773B21BF9ECBA007ED334 /* LBHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A773B11BF9ECBA007ED334 /* LBHomeViewModel.m */; };
-		39A773B81BF9F164007ED334 /* LBMenuOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A773B71BF9F164007ED334 /* LBMenuOption.m */; };
 		39AE13B01BC092450026F466 /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */; };
 		39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C39A141BC52659007794D7 /* PDFacebookLoginButton.m */; };
 		39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */; };
@@ -55,7 +50,6 @@
 		39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */; };
 		39EF92881B8F125D00D16F18 /* Reward.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92811B8F125D00D16F18 /* Reward.json */; };
 		39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92821B8F125D00D16F18 /* RewardTests.m */; };
-		39EF928A1B8F125D00D16F18 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92831B8F125D00D16F18 /* UserTests.m */; };
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
 		39F513EB1BEA19A80027EC62 /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */; };
 		39F513F71BEA521B0027EC62 /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513F61BEA521B0027EC62 /* NSURLSession+Popdeem.m */; };
@@ -70,20 +64,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		39A773931BF9EBB7007ED334 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 39D7D05D1B8F0DCF00E45D0B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39A773791BF9EBB7007ED334;
-			remoteInfo = LocationBasedExample;
-		};
-		39A7739E1BF9EBB7007ED334 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 39D7D05D1B8F0DCF00E45D0B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39A773791BF9EBB7007ED334;
-			remoteInfo = LocationBasedExample;
-		};
 		39D7D0721B8F0DCF00E45D0B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 39D7D05D1B8F0DCF00E45D0B /* Project object */;
@@ -109,6 +89,12 @@
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
+		3957060D1BFC847C0027B3A4 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
+		395706101BFC8BFF0027B3A4 /* PDNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNetworkError.m; sourceTree = "<group>"; };
+		395706111BFC8BFF0027B3A4 /* PDNetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNetworkError.h; sourceTree = "<group>"; };
+		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		396B2B411BFCC6BF003D9F25 /* KWSpec+WaitFor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KWSpec+WaitFor.h"; sourceTree = "<group>"; };
+		396B2B421BFCC6BF003D9F25 /* KWSpec+WaitFor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KWSpec+WaitFor.m"; sourceTree = "<group>"; };
 		396EFFF81BDA6C3300C0BAC7 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
 		396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardCustomAvailability.m; sourceTree = "<group>"; };
 		397478EC1B8F16480015C661 /* PDWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWallet.h; sourceTree = "<group>"; };
@@ -154,30 +140,12 @@
 		3974792A1B8F16B50015C661 /* PDAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIClient.m; sourceTree = "<group>"; };
 		3974792D1B8F1FC50015C661 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
 		3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGeolocationManager.m; sourceTree = "<group>"; };
+		397CA67B1BFCDE9B003BC48A /* UserAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIServiceTests.m; sourceTree = "<group>"; };
+		397CA67D1BFCE132003BC48A /* JDTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDTest.m; sourceTree = "<group>"; };
 		39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDKTests.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDKTests.a"; sourceTree = "<group>"; };
 		39A772E11BECBE84007ED334 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		39A772E21BECBE84007ED334 /* PDReferral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReferral.m; sourceTree = "<group>"; };
-		39A7737A1BF9EBB7007ED334 /* LocationBasedExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationBasedExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		39A7737D1BF9EBB7007ED334 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		39A7737F1BF9EBB7007ED334 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		39A773801BF9EBB7007ED334 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		39A773861BF9EBB7007ED334 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		39A773881BF9EBB7007ED334 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		39A7738B1BF9EBB7007ED334 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		39A7738D1BF9EBB7007ED334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39A773921BF9EBB7007ED334 /* LocationBasedExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationBasedExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		39A773961BF9EBB7007ED334 /* LocationBasedExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationBasedExampleTests.m; sourceTree = "<group>"; };
-		39A773981BF9EBB7007ED334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39A7739D1BF9EBB7007ED334 /* LocationBasedExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationBasedExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		39A773A11BF9EBB7007ED334 /* LocationBasedExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationBasedExampleUITests.m; sourceTree = "<group>"; };
-		39A773A31BF9EBB7007ED334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39A773AD1BF9EC91007ED334 /* LBHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeViewController.h; sourceTree = "<group>"; };
-		39A773AE1BF9EC91007ED334 /* LBHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeViewController.m; sourceTree = "<group>"; };
-		39A773B01BF9ECBA007ED334 /* LBHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBHomeViewModel.h; sourceTree = "<group>"; };
-		39A773B11BF9ECBA007ED334 /* LBHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBHomeViewModel.m; sourceTree = "<group>"; };
-		39A773B61BF9F164007ED334 /* LBMenuOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMenuOption.h; sourceTree = "<group>"; };
-		39A773B71BF9F164007ED334 /* LBMenuOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMenuOption.m; sourceTree = "<group>"; };
 		39AE13AE1BC092450026F466 /* PDUserTwitterParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserTwitterParams.h; sourceTree = "<group>"; };
 		39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserTwitterParams.m; sourceTree = "<group>"; };
 		39C39A131BC52659007794D7 /* PDFacebookLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFacebookLoginButton.h; sourceTree = "<group>"; };
@@ -196,7 +164,6 @@
 		39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDKTests.m; sourceTree = "<group>"; };
 		39EF92811B8F125D00D16F18 /* Reward.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Reward.json; sourceTree = "<group>"; };
 		39EF92821B8F125D00D16F18 /* RewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTests.m; sourceTree = "<group>"; };
-		39EF92831B8F125D00D16F18 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
 		39F513E91BEA19A80027EC62 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
 		39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
@@ -228,27 +195,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		39A773771BF9EBB7007ED334 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39A7738F1BF9EBB7007ED334 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39A7739A1BF9EBB7007ED334 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		39D7D0621B8F0DCF00E45D0B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,14 +207,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A772DD1BECB951007ED334 /* libPopdeemSDK.a in Frameworks */,
-				39A772DC1BECB941007ED334 /* libPods-PopdeemSDKTests.a in Frameworks */,
+				3957060F1BFC8BAA0027B3A4 /* libPopdeemSDK.a in Frameworks */,
+				22F4E7431A7F374C7939C417 /* libPods-PopdeemSDKTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3957060B1BFC84050027B3A4 /* APIServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				397CA67B1BFCDE9B003BC48A /* UserAPIServiceTests.m */,
+			);
+			name = APIServiceTests;
+			sourceTree = "<group>";
+		};
+		3957060C1BFC84120027B3A4 /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				3957060D1BFC847C0027B3A4 /* UserTests.m */,
+			);
+			name = ModelTests;
+			sourceTree = "<group>";
+		};
 		3974792C1B8F16C30015C661 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,52 +244,6 @@
 				397478ED1B8F16480015C661 /* PDWallet.m */,
 			);
 			name = Stores;
-			sourceTree = "<group>";
-		};
-		39A7737B1BF9EBB7007ED334 /* LocationBasedExample */ = {
-			isa = PBXGroup;
-			children = (
-				39A7737F1BF9EBB7007ED334 /* AppDelegate.h */,
-				39A773801BF9EBB7007ED334 /* AppDelegate.m */,
-				39A773AD1BF9EC91007ED334 /* LBHomeViewController.h */,
-				39A773AE1BF9EC91007ED334 /* LBHomeViewController.m */,
-				39A773B01BF9ECBA007ED334 /* LBHomeViewModel.h */,
-				39A773B11BF9ECBA007ED334 /* LBHomeViewModel.m */,
-				39A773B61BF9F164007ED334 /* LBMenuOption.h */,
-				39A773B71BF9F164007ED334 /* LBMenuOption.m */,
-				39A773851BF9EBB7007ED334 /* Main.storyboard */,
-				39A773881BF9EBB7007ED334 /* Assets.xcassets */,
-				39A7738A1BF9EBB7007ED334 /* LaunchScreen.storyboard */,
-				39A7738D1BF9EBB7007ED334 /* Info.plist */,
-				39A7737C1BF9EBB7007ED334 /* Supporting Files */,
-			);
-			path = LocationBasedExample;
-			sourceTree = "<group>";
-		};
-		39A7737C1BF9EBB7007ED334 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				39A7737D1BF9EBB7007ED334 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		39A773951BF9EBB7007ED334 /* LocationBasedExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				39A773961BF9EBB7007ED334 /* LocationBasedExampleTests.m */,
-				39A773981BF9EBB7007ED334 /* Info.plist */,
-			);
-			path = LocationBasedExampleTests;
-			sourceTree = "<group>";
-		};
-		39A773A01BF9EBB7007ED334 /* LocationBasedExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				39A773A11BF9EBB7007ED334 /* LocationBasedExampleUITests.m */,
-				39A773A31BF9EBB7007ED334 /* Info.plist */,
-			);
-			path = LocationBasedExampleUITests;
 			sourceTree = "<group>";
 		};
 		39C39A121BC5264C007794D7 /* UIKit */ = {
@@ -344,9 +260,6 @@
 			children = (
 				39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */,
 				39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */,
-				39A7737B1BF9EBB7007ED334 /* LocationBasedExample */,
-				39A773951BF9EBB7007ED334 /* LocationBasedExampleTests */,
-				39A773A01BF9EBB7007ED334 /* LocationBasedExampleUITests */,
 				39D7D0661B8F0DCF00E45D0B /* Products */,
 				5DBE05A8A8516121F073643A /* Pods */,
 				4EF69A0328B0579398DD2DED /* Frameworks */,
@@ -358,9 +271,6 @@
 			children = (
 				39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */,
 				39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */,
-				39A7737A1BF9EBB7007ED334 /* LocationBasedExample.app */,
-				39A773921BF9EBB7007ED334 /* LocationBasedExampleTests.xctest */,
-				39A7739D1BF9EBB7007ED334 /* LocationBasedExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -375,6 +285,7 @@
 				39EF928E1B8F15AD00D16F18 /* API */,
 				39EF92901B8F15B800D16F18 /* Util */,
 				39EF928F1B8F15B300D16F18 /* Models */,
+				396B2B401BFCC262003D9F25 /* info.plist */,
 			);
 			path = PopdeemSDK;
 			sourceTree = "<group>";
@@ -382,14 +293,18 @@
 		39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				3957060C1BFC84120027B3A4 /* ModelTests */,
+				3957060B1BFC84050027B3A4 /* APIServiceTests */,
 				39EF928B1B8F126100D16F18 /* JSON */,
 				39EF927E1B8F125D00D16F18 /* LocationTests.m */,
 				39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */,
 				39EF92821B8F125D00D16F18 /* RewardTests.m */,
-				39EF92831B8F125D00D16F18 /* UserTests.m */,
 				39EF92781B8F125400D16F18 /* BrandTests.m */,
 				39EF92791B8F125400D16F18 /* FeedItemTests.m */,
 				39D7D0751B8F0DCF00E45D0B /* Supporting Files */,
+				396B2B411BFCC6BF003D9F25 /* KWSpec+WaitFor.h */,
+				396B2B421BFCC6BF003D9F25 /* KWSpec+WaitFor.m */,
+				397CA67D1BFCE132003BC48A /* JDTest.m */,
 			);
 			path = PopdeemSDKTests;
 			sourceTree = "<group>";
@@ -417,6 +332,8 @@
 		39EF928E1B8F15AD00D16F18 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				395706101BFC8BFF0027B3A4 /* PDNetworkError.m */,
+				395706111BFC8BFF0027B3A4 /* PDNetworkError.h */,
 				39F514101BEA74730027EC62 /* Services */,
 				39F513F51BEA521B0027EC62 /* NSURLSession+Popdeem.h */,
 				39F513F61BEA521B0027EC62 /* NSURLSession+Popdeem.m */,
@@ -533,59 +450,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		39A773791BF9EBB7007ED334 /* LocationBasedExample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39A773AA1BF9EBB7007ED334 /* Build configuration list for PBXNativeTarget "LocationBasedExample" */;
-			buildPhases = (
-				39A773761BF9EBB7007ED334 /* Sources */,
-				39A773771BF9EBB7007ED334 /* Frameworks */,
-				39A773781BF9EBB7007ED334 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = LocationBasedExample;
-			productName = LocationBasedExample;
-			productReference = 39A7737A1BF9EBB7007ED334 /* LocationBasedExample.app */;
-			productType = "com.apple.product-type.application";
-		};
-		39A773911BF9EBB7007ED334 /* LocationBasedExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39A773AB1BF9EBB7007ED334 /* Build configuration list for PBXNativeTarget "LocationBasedExampleTests" */;
-			buildPhases = (
-				39A7738E1BF9EBB7007ED334 /* Sources */,
-				39A7738F1BF9EBB7007ED334 /* Frameworks */,
-				39A773901BF9EBB7007ED334 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				39A773941BF9EBB7007ED334 /* PBXTargetDependency */,
-			);
-			name = LocationBasedExampleTests;
-			productName = LocationBasedExampleTests;
-			productReference = 39A773921BF9EBB7007ED334 /* LocationBasedExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		39A7739C1BF9EBB7007ED334 /* LocationBasedExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39A773AC1BF9EBB7007ED334 /* Build configuration list for PBXNativeTarget "LocationBasedExampleUITests" */;
-			buildPhases = (
-				39A773991BF9EBB7007ED334 /* Sources */,
-				39A7739A1BF9EBB7007ED334 /* Frameworks */,
-				39A7739B1BF9EBB7007ED334 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				39A7739F1BF9EBB7007ED334 /* PBXTargetDependency */,
-			);
-			name = LocationBasedExampleUITests;
-			productName = LocationBasedExampleUITests;
-			productReference = 39A7739D1BF9EBB7007ED334 /* LocationBasedExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39D7D0791B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDK" */;
@@ -635,17 +499,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Popdeem;
 				TargetAttributes = {
-					39A773791BF9EBB7007ED334 = {
-						CreatedOnToolsVersion = 7.1;
-					};
-					39A773911BF9EBB7007ED334 = {
-						CreatedOnToolsVersion = 7.1;
-						TestTargetID = 39A773791BF9EBB7007ED334;
-					};
-					39A7739C1BF9EBB7007ED334 = {
-						CreatedOnToolsVersion = 7.1;
-						TestTargetID = 39A773791BF9EBB7007ED334;
-					};
 					39D7D0641B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -669,38 +522,11 @@
 			targets = (
 				39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */,
 				39D7D06F1B8F0DCF00E45D0B /* PopdeemSDKTests */,
-				39A773791BF9EBB7007ED334 /* LocationBasedExample */,
-				39A773911BF9EBB7007ED334 /* LocationBasedExampleTests */,
-				39A7739C1BF9EBB7007ED334 /* LocationBasedExampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		39A773781BF9EBB7007ED334 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39A7738C1BF9EBB7007ED334 /* LaunchScreen.storyboard in Resources */,
-				39A773891BF9EBB7007ED334 /* Assets.xcassets in Resources */,
-				39A773871BF9EBB7007ED334 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39A773901BF9EBB7007ED334 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39A7739B1BF9EBB7007ED334 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		39D7D06E1B8F0DCF00E45D0B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -794,34 +620,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		39A773761BF9EBB7007ED334 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39A773811BF9EBB7007ED334 /* AppDelegate.m in Sources */,
-				39A773B81BF9F164007ED334 /* LBMenuOption.m in Sources */,
-				39A7737E1BF9EBB7007ED334 /* main.m in Sources */,
-				39A773AF1BF9EC91007ED334 /* LBHomeViewController.m in Sources */,
-				39A773B21BF9ECBA007ED334 /* LBHomeViewModel.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39A7738E1BF9EBB7007ED334 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39A773971BF9EBB7007ED334 /* LocationBasedExampleTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39A773991BF9EBB7007ED334 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39A773A21BF9EBB7007ED334 /* LocationBasedExampleUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		39D7D0611B8F0DCF00E45D0B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -847,6 +645,7 @@
 				397479111B8F16860015C661 /* PDOpeningHoursDay.m in Sources */,
 				397478FC1B8F16730015C661 /* PDUtils.m in Sources */,
 				397478EE1B8F16480015C661 /* PDWallet.m in Sources */,
+				395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */,
 				397478F71B8F16600015C661 /* PDUser.m in Sources */,
 				39F514061BEA671D0027EC62 /* PDRewardAPIService.m in Sources */,
 				397479041B8F167D0015C661 /* PDScores.m in Sources */,
@@ -871,9 +670,12 @@
 			files = (
 				39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */,
 				39EF92851B8F125D00D16F18 /* LocationTests.m in Sources */,
-				39EF928A1B8F125D00D16F18 /* UserTests.m in Sources */,
 				39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */,
+				3957060E1BFC847C0027B3A4 /* UserTests.m in Sources */,
+				396B2B431BFCC6BF003D9F25 /* KWSpec+WaitFor.m in Sources */,
+				397CA67C1BFCDE9B003BC48A /* UserAPIServiceTests.m in Sources */,
 				39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */,
+				397CA67E1BFCE132003BC48A /* JDTest.m in Sources */,
 				39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,16 +683,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		39A773941BF9EBB7007ED334 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 39A773791BF9EBB7007ED334 /* LocationBasedExample */;
-			targetProxy = 39A773931BF9EBB7007ED334 /* PBXContainerItemProxy */;
-		};
-		39A7739F1BF9EBB7007ED334 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 39A773791BF9EBB7007ED334 /* LocationBasedExample */;
-			targetProxy = 39A7739E1BF9EBB7007ED334 /* PBXContainerItemProxy */;
-		};
 		39D7D0731B8F0DCF00E45D0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */;
@@ -898,111 +690,7 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		39A773851BF9EBB7007ED334 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39A773861BF9EBB7007ED334 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		39A7738A1BF9EBB7007ED334 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39A7738B1BF9EBB7007ED334 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		39A773A41BF9EBB7007ED334 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = LocationBasedExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.LocationBasedExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		39A773A51BF9EBB7007ED334 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = LocationBasedExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.LocationBasedExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		39A773A61BF9EBB7007ED334 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = LocationBasedExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.LocationBasedExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocationBasedExample.app/LocationBasedExample";
-			};
-			name = Debug;
-		};
-		39A773A71BF9EBB7007ED334 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = LocationBasedExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.LocationBasedExampleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocationBasedExample.app/LocationBasedExample";
-			};
-			name = Release;
-		};
-		39A773A81BF9EBB7007ED334 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = LocationBasedExampleUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.LocationBasedExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LocationBasedExample;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		39A773A91BF9EBB7007ED334 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = LocationBasedExampleUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.LocationBasedExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LocationBasedExample;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 		39D7D0771B8F0DCF00E45D0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1121,7 +809,7 @@
 		};
 		39D7D07D1B8F0DCF00E45D0B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */;
+			baseConfigurationReference = BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1138,6 +826,52 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Bolts\"",
+					"-l\"FBSDKCoreKit\"",
+					"-l\"FBSDKLoginKit\"",
+					"-l\"FBSDKShareKit\"",
+					"-l\"JSONModel\"",
+					"-l\"Kiwi\"",
+					"-l\"STTwitter\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Twitter\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"XCTest\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-Objc",
+					"-framework",
+					XCTest,
+					"-weak_framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Popdeem.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1145,7 +879,7 @@
 		};
 		39D7D07E1B8F0DCF00E45D0B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2C76181153169D6ED342DB5 /* Pods-PopdeemSDKTests.release.xcconfig */;
+			baseConfigurationReference = BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1158,6 +892,47 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Bolts\"",
+					"-l\"FBSDKCoreKit\"",
+					"-l\"FBSDKLoginKit\"",
+					"-l\"FBSDKShareKit\"",
+					"-l\"JSONModel\"",
+					"-l\"STTwitter\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Twitter\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					XCTest,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Popdeem.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1166,33 +941,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		39A773AA1BF9EBB7007ED334 /* Build configuration list for PBXNativeTarget "LocationBasedExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				39A773A41BF9EBB7007ED334 /* Debug */,
-				39A773A51BF9EBB7007ED334 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		39A773AB1BF9EBB7007ED334 /* Build configuration list for PBXNativeTarget "LocationBasedExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				39A773A61BF9EBB7007ED334 /* Debug */,
-				39A773A71BF9EBB7007ED334 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		39A773AC1BF9EBB7007ED334 /* Build configuration list for PBXNativeTarget "LocationBasedExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				39A773A81BF9EBB7007ED334 /* Debug */,
-				39A773A91BF9EBB7007ED334 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		39D7D0601B8F0DCF00E45D0B /* Build configuration list for PBXProject "PopdeemSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

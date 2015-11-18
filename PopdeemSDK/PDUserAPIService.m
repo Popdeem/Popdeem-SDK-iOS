@@ -9,6 +9,7 @@
 #import "PDUserAPIService.h"
 #import "PDAPIClient.h"
 #import "PDReferral.h"
+#import "PDNetworkError.h"
 
 @implementation PDUserAPIService
 
@@ -31,20 +32,33 @@
       completion:^(NSData* data, NSURLResponse *response, NSError *error) {
           if (error) {
               //Handle Error
+              [session invalidateAndCancel];
               dispatch_async(dispatch_get_main_queue(), ^{
                   completion(nil, error);
               });
               return;
           }
-          if (response) {
+          NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+          NSInteger responseStatusCode = [httpResponse statusCode];
+          if (responseStatusCode < 500) {
               //Deal with response
               NSError *jsonError;
               NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-              
+              if (!jsonObject) {
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                  });
+                  return;
+              }
               PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
               [session invalidateAndCancel];
               dispatch_async(dispatch_get_main_queue(), ^{
                   completion(user, nil);
+              });
+          } else {
+              [session invalidateAndCancel];
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
               });
           }
     }];
@@ -75,18 +89,26 @@
             });
             return;
         }
-        if (response) {
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
             //Deal with response
             NSError *jsonError;
             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
             if (!jsonObject) {
-                completion(nil, nil);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                });
                 return;
             }
             PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
             [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(user, nil);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
             });
         }
     }];
@@ -133,15 +155,26 @@
             });
             return;
         }
-        if (response) {
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
             //Deal with response
             NSError *jsonError;
             NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-            
+            if (!jsonObject) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                });
+                return;
+            }
             PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
             [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(user, nil);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
             });
         }
     }];

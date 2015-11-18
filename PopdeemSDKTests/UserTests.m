@@ -2,102 +2,88 @@
 //  UserTests.m
 //  PopdeemSDK
 //
-//  Created by Niall Quinn on 19/08/2015.
-//  Copyright (c) 2015 Popdeem. All rights reserved.
+//  Created by Niall Quinn on 18/11/2015.
+//  Copyright © 2015 Popdeem. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#define HC_SHORTHAND
-#import <OCHamcrest/OCHamcrest.h>
+#import "Kiwi.h"
 #import "PDUser.h"
-@interface UserTests : XCTestCase {
-    PDUser *user;
-}
-@end
+#import "KWSpec+WaitFor.h"
 
-@implementation UserTests
+SPEC_BEGIN(UserSpec)
 
-- (void)setUp {
-    [super setUp];
-    
-    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
-    NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
-    NSData *data = [userJSON dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err = [[NSError alloc] init];
-    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
-    
-    
-    user = [PDUser initFromAPI:json[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
-    
-}
+describe(@"User", ^{
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
+    context(@"init with mock JSON", ^{
+        
+        __block PDUser *u;
+        
+        beforeAll(^{
+            NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
+            NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
+            NSData *data = [userJSON dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *err;
+            id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+            
+            u = [PDUser initFromAPI:json[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+        });
+        
+        it (@"first name should be John", ^{
+            [[u.firstName should] equal:@"John"];
+        });
+        
+        it (@"last name should be Doe", ^{
+            [[u.lastName should] equal:@"Doe"];
+        });
+        
+        it (@"gender should be male", ^{
+            [[theValue(u.gender) should] equal:theValue(PDGenderMale)];
+        });
+        
+        
+        it (@"location should be 53.3313, -6.2439", ^{
+            [[theValue((double)u.location.latitude) should] equal:53.3313 withDelta:0.01];
+            [[theValue((double)u.location.longitude) should] equal:-6.2439 withDelta:0.01];
+        });
+        
+        it (@"identifier should be 1231", ^{
+            [[theValue(u.identifier) should] equal:theValue(1231)];
+        });
+        
+        // Facebook Tests
+        it (@"userToken should be hdgshsghwghgeygdyegdyge", ^{
+            [[u.userToken should] equal:@"hdgshsghwghgeygdyegdyge"];
+        });
+        
+        it (@"facebook ID should be 123456789", ^{
+            [[u.facebookParams.identifier should] equal:@"123456789"];
+        });
+        
+        it (@"facebook access token should be facebookaccesstoken", ^{
+            [[u.facebookParams.accessToken should] equal:@"facebookaccesstoken"];
+        });
+        
+        it (@"facebook social account id should be 1234", ^{
+            [[theValue(u.facebookParams.socialAccountId) should] equal:theValue(1234)];
+        });
+        
+        it (@"facebook expiration time should be (long)123456789", ^{
+            [[theValue(u.facebookParams.expirationTime) should] equal:theValue(123456789)];
+        });
+        
+        it (@"facebook profile picture url should be https://imageurl.com", ^{
+            [[u.facebookParams.profilePictureUrl should] equal:@"https://imageurl.com"];
+        });
+        
+        it (@"facebook scores", ^{
+            [[theValue(u.facebookParams.scores.total) should] equal:100.0 withDelta:0.01];
+            [[theValue(u.facebookParams.scores.reach) should] equal:100.0 withDelta:0.01];
+            [[theValue(u.facebookParams.scores.engagement) should] equal:100.0 withDelta:0.01];
+            [[theValue(u.facebookParams.scores.frequency) should] equal:100.0 withDelta:0.01];
+            [[theValue(u.facebookParams.scores.advocacy) should] equal:100.0 withDelta:0.01];
+        });
+    });
+});
 
-- (void) testUserExists {
-    assertThat(user, isNot(nilValue()));
-}
-
-- (void) testFirstName {
-    assertThat(user.firstName, equalTo(@"John"));
-}
-
-- (void) testLastName {
-    assertThat(user.lastName, equalTo(@"Doe"));
-}
-
-- (void) testSex {
-    assertThatInteger(user.gender, equalToInteger(PDGenderMale));
-}
-
-- (void) testUserLocation {
-    assertThatFloat(user.location.latitude, closeTo(53.3313,0.01));
-    assertThatFloat(user.location.longitude, closeTo(-6.2439,0.01));
-}
-
-- (void) testIdentifier {
-    assertThatInteger(user.identifier, equalToInteger(1231));
-}
-
-- (void) testUserToken {
-    assertThat(user.userToken, equalTo(@"hdgshsghwghgeygdyegdyge"));
-}
-
-- (void) testIsTester {
-
-}
-
-//Facebook Tests
-- (void) testFacebookSocialAccountId {
-    assertThatInteger(user.facebookParams.socialAccountId, equalToInteger(1234));
-}
-
-- (void) testFacebookIdentifier {
-    assertThat(user.facebookParams.identifier, equalTo(@"123456789"));
-}
-
-- (void) testFacebookAccessToken {
-    assertThat(user.facebookParams.accessToken, equalTo(@"facebokaccesstoken"));
-}
-
-- (void) testFacebookExpirationTime {
-    assertThatLong(user.facebookParams.expirationTime, equalToLong(123456789));
-}
-
-- (void) testFacebookProfilePictureUrl {
-    assertThat(user.facebookParams.profilePictureUrl, equalTo(@"https://imageurl.com"));
-}
-
-- (void) testFacebookScores {
-    assertThatFloat(user.facebookParams.scores.total, closeTo(100.00, 0.01));
-    assertThatFloat(user.facebookParams.scores.reach, closeTo(100.00, 0.01));
-    assertThatFloat(user.facebookParams.scores.engagement, closeTo(100.00, 0.01));
-    assertThatFloat(user.facebookParams.scores.frequency, closeTo(100.00, 0.01));
-    assertThatFloat(user.facebookParams.scores.advocacy, closeTo(100.00, 0.01));
-}
-
-
-@end
+SPEC_END
