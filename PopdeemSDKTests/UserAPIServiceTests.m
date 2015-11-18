@@ -26,7 +26,7 @@ describe(@"User API Service", ^{
             [_apiService registerUserwithFacebookAccesstoken:@"" facebookId:@"" completion:^(PDUser *user, NSError *error){}];
             NSURLRequest *req = requestSpy.argument;
             [req shouldNotBeNil];
-            [[[req.URL absoluteString] should] equal:@""];
+            [[[req.URL absoluteString] should] equal:@"http://staging.popdeem.com/api/v2/users"];
         });
     });
 });
