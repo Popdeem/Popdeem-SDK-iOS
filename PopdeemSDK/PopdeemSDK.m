@@ -30,6 +30,20 @@
 
 @implementation PopdeemSDK
 
++ (id) sharedInstance {
+    static PopdeemSDK *SDK;
+    static dispatch_once_t sharedToken;
+    dispatch_once(&sharedToken, ^{
+        SDK = [[PopdeemSDK alloc] init];
+    });
+    return SDK;
+}
+
++ (void) withAPIKey:(NSString*)apiKey {
+    PopdeemSDK *SDK = [[self class] sharedInstance];
+    [SDK setApiKey:apiKey];
+}
+
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier {
     [[PDSocialMediaManager manager] setOAuthToken:token oauthVerifier:verifier];
 }
