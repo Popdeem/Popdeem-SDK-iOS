@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-
+#import <Expecta/Expecta.h>
 #import "PDFeedItem.h"
 
 @interface FeedItemTests : XCTestCase {
@@ -36,41 +36,45 @@
     [super tearDown];
 }
 
-//- (void) testBrandName {
-////    assertThat(feedItem.brandName, equalTo(@"Popdeem Bakery"));
-//}
-//
-//- (void) testBrandLogo {
-////    assertThat(feedItem.brandLogoUrlString, equalTo(@"http://s3-eu-west-1.amazonaws.com/popdeem-staging/brands/logo_images/000/000/010/original/popdeem_logo.png?1370879332"));
-//}
-//
-//- (void) testRewardType {
-////    assertThat(feedItem.rewardTypeString, equalTo(@"coupon"));
-//}
-//
-//- (void) testRewardDescription {
-////    assertThat(feedItem.descriptionString, equalTo(@"Free Coffee"));
-//}
-//
-//- (void) testTimeAgo {
-////    assertThat(feedItem.timeAgoString, equalTo(@"10 months ago"));
-//}
-//
-//- (void) testPictureUrl {
-////    assertThat(feedItem.imageUrlString, equalTo(@"http://s3-eu-west-1.amazonaws.com/popdeem-staging/requests/photos/000/000/455/original/455.png?1413206567"));
-//}
-//
-//- (void) testUserName {
-////    assertThat(feedItem.userFirstName, equalTo(@"Niall"));
-////    assertThat(feedItem.userLastName, equalTo(@"Quinn"));
-//}
-//
-//- (void) testUserIdentifier {
-////    assertThatInteger(feedItem.userId, equalToInteger(1231));
-//}
-//
-//- (void) testUserProfilePic {
-////    assertThat(feedItem.userProfilePicUrlString, equalTo(@"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p200x200/10561791_10152587847771069_6128016419296960032_n.jpg?oh=dfcfc553c9aaf041416d0860c08d2c43&oe=561003BD&__gda__=1444320298_77b07a28640de42951ba6293df2e9621"));
-//}
+- (void) testItemExists {
+    expect(feedItem).toNot.beNil;
+}
+
+- (void) testBrandName {
+    expect(feedItem.brandName).to.equal(@"Popdeem Bakery");
+}
+
+- (void) testBrandLogo {
+    expect(feedItem.brandLogoUrlString).to.equal(@"http://s3-eu-west-1.amazonaws.com/popdeem-staging/brands/logo_images/000/000/010/original/popdeem_logo.png?1370879332");
+}
+
+- (void) testRewardType {
+    expect(feedItem.rewardTypeString).to.equal(@"coupon");
+}
+
+- (void) testRewardDescription {
+    expect(feedItem.descriptionString).to.equal(@"Free Coffee");
+}
+
+- (void) testTimeAgo {
+    expect(feedItem.timeAgoString).to.equal(@"10 months ago");
+}
+
+- (void) testPictureUrl {
+    expect(feedItem.imageUrlString).to.equal(@"http://s3-eu-west-1.amazonaws.com/popdeem-staging/requests/photos/000/000/455/original/455.png?1413206567");
+}
+
+- (void) testUserName {
+    expect(feedItem.userFirstName).to.equal(@"Niall");
+    expect(feedItem.userLastName).to.equal(@"Quinn");
+}
+
+- (void) testUserIdentifier {
+    expect(feedItem.userId).to.equal(1231);
+}
+
+- (void) testUserProfilePic {
+    expect(feedItem.userProfilePicUrlString).to.equal(@"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p200x200/10561791_10152587847771069_6128016419296960032_n.jpg?oh=dfcfc553c9aaf041416d0860c08d2c43&oe=561003BD&__gda__=1444320298_77b07a28640de42951ba6293df2e9621");
+}
 
 @end
