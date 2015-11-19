@@ -7,8 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <Expecta/Expecta.h>
+#import "PDUser.h"
 
-@interface UserTests : XCTestCase
+
+@interface UserTests : XCTestCase {
+    PDUser *_u;
+}
 
 @end
 
@@ -16,24 +21,25 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
+    NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
+    NSData *data = [userJSON dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err = [[NSError alloc] init];
+    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+    _u = [PDUser initFromAPI:json[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testUserExists {
+    expect(_u).toNot.beNil;
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testNames {
+    expect(_u.firstName).to.equal(@"John");
+    expect(_u.lastName).to.equal(@"Doe");
 }
 
 @end

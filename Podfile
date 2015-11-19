@@ -13,7 +13,7 @@ target 'PopdeemSDK' do
 end
 
 target 'PopdeemSDKTests' do
-    pod 'Kiwi'
+    pod 'Expecta', '~> 1.0.0'
 end
 
 

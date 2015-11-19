@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.5.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.5.0)
+  - Expecta (1.0.5)
   - FBSDKCoreKit (4.8.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc (= 4.8.0)
@@ -19,24 +20,23 @@ PODS:
   - FBSDKShareKit (4.8.0):
     - FBSDKCoreKit
   - JSONModel (1.1.2)
-  - Kiwi (2.4.0)
   - STTwitter (0.2.2)
 
 DEPENDENCIES:
+  - Expecta (~> 1.0.0)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
   - JSONModel
-  - Kiwi
   - STTwitter
 
 SPEC CHECKSUMS:
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
   FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
-  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
   STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
 
 COCOAPODS: 0.39.0
