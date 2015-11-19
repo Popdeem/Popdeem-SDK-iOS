@@ -20,6 +20,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>PopdeemApiKey</key>
+	<string>8abcb2bd-edf2-4007-bb40-97e43b8a9498</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

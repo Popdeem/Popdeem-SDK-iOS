@@ -52,6 +52,10 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface PopdeemSDK : NSObject
 
+@property (nonatomic, strong) NSString *apiKey;
+
++ (id) sharedInstance;
++ (void) withAPIKey:(NSString*)apiKey;
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier;
 
 @end

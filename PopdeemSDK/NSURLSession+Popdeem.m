@@ -9,6 +9,7 @@
 #import "NSURLSession+Popdeem.h"
 #import "PDUser.h"
 #import "PDUtils.h"
+#import "PopdeemSDK.h"
 
 @implementation NSURLSession (Popdeem)
 
@@ -86,8 +87,12 @@
 }
 
 - (NSString*) apiKey {
+    PopdeemSDK *SDK = [PopdeemSDK sharedInstance];
+    if (SDK.apiKey) return SDK.apiKey;
+    //Search the plist
+    NSString *apiKey;
     NSError *err;
-    NSString *apiKey = [PDUtils getPopdeemApiKey:&err];
+    apiKey = [PDUtils getPopdeemApiKey:&err];
     if (err) {
         [NSException raise:@"No API Key" format:@"%@",err.localizedDescription];
     }

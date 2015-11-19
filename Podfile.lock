@@ -20,6 +20,7 @@ PODS:
   - FBSDKShareKit (4.8.0):
     - FBSDKCoreKit
   - JSONModel (1.1.2)
+  - Nocilla (0.10.0)
   - STTwitter (0.2.2)
 
 DEPENDENCIES:
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - FBSDKShareKit
   - JSONModel
+  - Nocilla
   - STTwitter
 
 SPEC CHECKSUMS:
@@ -37,6 +39,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
+  Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
   STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
 
 COCOAPODS: 0.39.0

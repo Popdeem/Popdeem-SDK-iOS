@@ -14,6 +14,7 @@ end
 
 target 'PopdeemSDKTests' do
     pod 'Expecta', '~> 1.0.0'
+    pod 'Nocilla'
 end
 
 
