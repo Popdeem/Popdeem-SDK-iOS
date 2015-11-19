@@ -37,7 +37,7 @@
 }
 
 - (void) testIdentifier {
-    expect(location.geoLocation.latitude).to.equal(159);
+    expect(location.identifier).to.equal(159);
 }
 
 - (void) testLocation {
@@ -46,22 +46,22 @@
 }
 
 - (void) testTwitterPageId {
-//    assertThat(location.twitterPageId, equalTo(nil));
+    expect(location.twitterPageId).to.beNil;
 }
 
 - (void) testFacebookPageId {
-//    assertThat(location.facebookPageId, equalTo(nil));
+    expect(location.facebookPageId).to.beNil;
 }
 
 - (void) testNumberOfRewards {
-//    assertThatInteger(location.numberOfRewards, equalToInteger(0));
+    expect(location.numberOfRewards).to.equal(0);
 }
 
 - (void) testBrandName {
-//    assertThat(location.brandName, equalTo(@"NO user brand"));
+    expect(location.brandName).to.equal(@"NO user brand");
 }
 
 - (void) testBrandId {
-//    assertThatInteger(location.brandIdentifier, equalToInteger(102));
+    expect(location.brandIdentifier).to.equal(102);
 }
 @end
