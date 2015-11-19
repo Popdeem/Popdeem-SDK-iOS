@@ -171,6 +171,7 @@
     }];
     NSArray *sortedArray = [[PDUser taggableFriends] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
     return sortedArray;
+    return nil;
 }
 
 

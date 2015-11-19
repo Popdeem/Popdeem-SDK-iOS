@@ -26,21 +26,36 @@
     NSURLSession *session = [NSURLSession createPopdeemSession];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",limit],@"limit", nil];
     NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,FEEDS_PATH];
-    [session GET:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+    [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(error);
             });
             return;
         }
-        NSError *jsonError;
-        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        NSArray *feeds = [jsonObject objectForKey:@"feeds"];
-        [PDFeeds populateFromAPI:feeds];
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
+        
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            if (!jsonObject) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                });
+                return;
+            }
+            NSArray *feeds = [jsonObject objectForKey:@"feeds"];
+            [PDFeeds populateFromAPI:feeds];
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+        }
     }];
 }
 

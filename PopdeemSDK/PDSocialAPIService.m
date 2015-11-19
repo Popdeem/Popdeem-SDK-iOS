@@ -39,17 +39,31 @@
     NSURLSession *session = [NSURLSession createPopdeemSession];
     [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
+            [session invalidateAndCancel];
             completion(error);
             return;
         }
-        NSError *jsonError;
-        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
-        [user.twitterParams setAccessSecret:accessSecret];
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            if (jsonObject == nil) {
+                completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+                return;
+            };
+            PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+            [user.twitterParams setAccessSecret:accessSecret];
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [session invalidateAndCancel];
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+        }
     }];
 }
 
@@ -68,10 +82,25 @@
     NSString *path = [NSString stringWithFormat:@"%@/%@/disconnect_social_account",self.baseUrl,USERS_PATH];
     [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {
-            completion(error);
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(error);
+            });
             return;
         }
-        completion(nil);
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+        }
     }];
 }
 

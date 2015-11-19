@@ -83,16 +83,26 @@
     
     [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {
+            [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(error);
             });
             return;
         }
-        [PDRewardStore deleteReward:rewardId];
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            [PDRewardStore deleteReward:rewardId];
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+        }
     }];
 }
 
@@ -116,16 +126,26 @@
     
     [session POST:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {
+            [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(error);
             });
             return;
         }
-        [PDWallet remove:rewardId];
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            [PDWallet remove:rewardId];
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+        }
     }];
 }
 @end

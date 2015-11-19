@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22F4E7431A7F374C7939C417 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
+		391CE0471BFDF8A100868532 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0461BFDF8A100868532 /* UserTests.m */; };
+		3957060F1BFC8BAA0027B3A4 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 395706101BFC8BFF0027B3A4 /* PDNetworkError.m */; };
 		396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
@@ -30,8 +34,6 @@
 		3974792B1B8F16B50015C661 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792A1B8F16B50015C661 /* PDAPIClient.m */; };
 		3974792F1B8F1FC50015C661 /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3974792E1B8F1FC50015C661 /* PDGeolocationManager.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
-		39A772DC1BECB941007ED334 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */; };
-		39A772DD1BECB951007ED334 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		39A772E31BECBE84007ED334 /* PDReferral.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A772E21BECBE84007ED334 /* PDReferral.m */; };
 		39AE13B01BC092450026F466 /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */; };
 		39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C39A141BC52659007794D7 /* PDFacebookLoginButton.m */; };
@@ -45,7 +47,6 @@
 		39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */; };
 		39EF92881B8F125D00D16F18 /* Reward.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92811B8F125D00D16F18 /* Reward.json */; };
 		39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92821B8F125D00D16F18 /* RewardTests.m */; };
-		39EF928A1B8F125D00D16F18 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92831B8F125D00D16F18 /* UserTests.m */; };
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
 		39F513EB1BEA19A80027EC62 /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */; };
 		39F513F71BEA521B0027EC62 /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513F61BEA521B0027EC62 /* NSURLSession+Popdeem.m */; };
@@ -82,9 +83,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		391CE0461BFDF8A100868532 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
+		395706101BFC8BFF0027B3A4 /* PDNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNetworkError.m; sourceTree = "<group>"; };
+		395706111BFC8BFF0027B3A4 /* PDNetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNetworkError.h; sourceTree = "<group>"; };
+		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		396EFFF81BDA6C3300C0BAC7 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
 		396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardCustomAvailability.m; sourceTree = "<group>"; };
 		397478EC1B8F16480015C661 /* PDWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWallet.h; sourceTree = "<group>"; };
@@ -152,7 +157,6 @@
 		39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDKTests.m; sourceTree = "<group>"; };
 		39EF92811B8F125D00D16F18 /* Reward.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Reward.json; sourceTree = "<group>"; };
 		39EF92821B8F125D00D16F18 /* RewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTests.m; sourceTree = "<group>"; };
-		39EF92831B8F125D00D16F18 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
 		39F513E91BEA19A80027EC62 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
 		39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
@@ -196,14 +200,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A772DD1BECB951007ED334 /* libPopdeemSDK.a in Frameworks */,
-				39A772DC1BECB941007ED334 /* libPods-PopdeemSDKTests.a in Frameworks */,
+				3957060F1BFC8BAA0027B3A4 /* libPopdeemSDK.a in Frameworks */,
+				22F4E7431A7F374C7939C417 /* libPods-PopdeemSDKTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3957060B1BFC84050027B3A4 /* APIServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = APIServiceTests;
+			sourceTree = "<group>";
+		};
+		3957060C1BFC84120027B3A4 /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				391CE0461BFDF8A100868532 /* UserTests.m */,
+			);
+			name = ModelTests;
+			sourceTree = "<group>";
+		};
 		3974792C1B8F16C30015C661 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +277,7 @@
 				39EF928E1B8F15AD00D16F18 /* API */,
 				39EF92901B8F15B800D16F18 /* Util */,
 				39EF928F1B8F15B300D16F18 /* Models */,
+				396B2B401BFCC262003D9F25 /* info.plist */,
 			);
 			path = PopdeemSDK;
 			sourceTree = "<group>";
@@ -265,11 +285,12 @@
 		39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				3957060C1BFC84120027B3A4 /* ModelTests */,
+				3957060B1BFC84050027B3A4 /* APIServiceTests */,
 				39EF928B1B8F126100D16F18 /* JSON */,
 				39EF927E1B8F125D00D16F18 /* LocationTests.m */,
 				39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */,
 				39EF92821B8F125D00D16F18 /* RewardTests.m */,
-				39EF92831B8F125D00D16F18 /* UserTests.m */,
 				39EF92781B8F125400D16F18 /* BrandTests.m */,
 				39EF92791B8F125400D16F18 /* FeedItemTests.m */,
 				39D7D0751B8F0DCF00E45D0B /* Supporting Files */,
@@ -300,6 +321,8 @@
 		39EF928E1B8F15AD00D16F18 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				395706101BFC8BFF0027B3A4 /* PDNetworkError.m */,
+				395706111BFC8BFF0027B3A4 /* PDNetworkError.h */,
 				39F514101BEA74730027EC62 /* Services */,
 				39F513F51BEA521B0027EC62 /* NSURLSession+Popdeem.h */,
 				39F513F61BEA521B0027EC62 /* NSURLSession+Popdeem.m */,
@@ -444,6 +467,7 @@
 				39D7D06D1B8F0DCF00E45D0B /* Frameworks */,
 				39D7D06E1B8F0DCF00E45D0B /* Resources */,
 				88A1A30A1AB100B88A3BF289 /* Copy Pods Resources */,
+				A98231D874CEE4DFACCFC815 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -478,6 +502,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 39D7D05C1B8F0DCF00E45D0B;
 			productRefGroup = 39D7D0661B8F0DCF00E45D0B /* Products */;
@@ -534,6 +559,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A98231D874CEE4DFACCFC815 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D5C72A9033B689A657046C12 /* Check Pods Manifest.lock */ = {
@@ -594,6 +634,7 @@
 				397479111B8F16860015C661 /* PDOpeningHoursDay.m in Sources */,
 				397478FC1B8F16730015C661 /* PDUtils.m in Sources */,
 				397478EE1B8F16480015C661 /* PDWallet.m in Sources */,
+				395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */,
 				397478F71B8F16600015C661 /* PDUser.m in Sources */,
 				39F514061BEA671D0027EC62 /* PDRewardAPIService.m in Sources */,
 				397479041B8F167D0015C661 /* PDScores.m in Sources */,
@@ -618,7 +659,7 @@
 			files = (
 				39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */,
 				39EF92851B8F125D00D16F18 /* LocationTests.m in Sources */,
-				39EF928A1B8F125D00D16F18 /* UserTests.m in Sources */,
+				391CE0471BFDF8A100868532 /* UserTests.m in Sources */,
 				39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */,
 				39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */,
 				39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */,
@@ -771,6 +812,51 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Bolts\"",
+					"-l\"FBSDKCoreKit\"",
+					"-l\"FBSDKLoginKit\"",
+					"-l\"FBSDKShareKit\"",
+					"-l\"JSONModel\"",
+					"-l\"STTwitter\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Twitter\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"XCTest\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-Objc",
+					"-framework",
+					XCTest,
+					"-weak_framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Popdeem.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -790,6 +876,47 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Bolts\"",
+					"-l\"FBSDKCoreKit\"",
+					"-l\"FBSDKLoginKit\"",
+					"-l\"FBSDKShareKit\"",
+					"-l\"JSONModel\"",
+					"-l\"STTwitter\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Twitter\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					XCTest,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Popdeem.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
