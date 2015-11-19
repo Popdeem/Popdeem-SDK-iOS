@@ -219,6 +219,10 @@
 			isa = PBXGroup;
 			children = (
 				391CE0461BFDF8A100868532 /* UserTests.m */,
+				39EF92821B8F125D00D16F18 /* RewardTests.m */,
+				39EF927E1B8F125D00D16F18 /* LocationTests.m */,
+				39EF92781B8F125400D16F18 /* BrandTests.m */,
+				39EF92791B8F125400D16F18 /* FeedItemTests.m */,
 			);
 			name = ModelTests;
 			sourceTree = "<group>";
@@ -288,11 +292,7 @@
 				3957060C1BFC84120027B3A4 /* ModelTests */,
 				3957060B1BFC84050027B3A4 /* APIServiceTests */,
 				39EF928B1B8F126100D16F18 /* JSON */,
-				39EF927E1B8F125D00D16F18 /* LocationTests.m */,
 				39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */,
-				39EF92821B8F125D00D16F18 /* RewardTests.m */,
-				39EF92781B8F125400D16F18 /* BrandTests.m */,
-				39EF92791B8F125400D16F18 /* FeedItemTests.m */,
 				39D7D0751B8F0DCF00E45D0B /* Supporting Files */,
 			);
 			path = PopdeemSDKTests;
