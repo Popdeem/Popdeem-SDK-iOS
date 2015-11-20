@@ -42,10 +42,8 @@
                 return;
             }
             for (id attributes in jsonObject[@"rewards"]) {
-                for (NSDictionary *rew in attributes) {
-                    PDReward *reward = [[PDReward alloc] initFromApi:rew];
-                    [PDRewardStore add:reward];
-                }
+                PDReward *reward = [[PDReward alloc] initFromApi:attributes];
+                [PDRewardStore add:reward];
             }
             [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{

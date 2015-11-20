@@ -137,10 +137,10 @@
     if ([[PDAPIClient sharedInstance] referral] != nil) {
         PDReferral *r = [[PDAPIClient sharedInstance] referral];
         NSMutableDictionary *referDict = [NSMutableDictionary dictionary];
-        if (r.senderId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",[r senderId]] forKey:@"referrer_id"];
+        if (r.senderId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",(long)[r senderId]] forKey:@"referrer_id"];
         if (r.typeString) [referDict setObject:[r typeString] forKey:@"type"];
         if (r.senderAppName) [referDict setObject:[r senderAppName] forKey:@"referrer_app_name"];
-        if (r.requestId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",[r requestId]] forKey:@"request_id"];
+        if (r.requestId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",(long)[r requestId]] forKey:@"request_id"];
         [params setValue:referDict forKey:@"referral"];
         [[PDAPIClient sharedInstance] setReferral:nil];
     }

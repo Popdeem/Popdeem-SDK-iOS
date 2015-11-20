@@ -363,10 +363,7 @@
     [[PDAPIClient sharedInstance] connectTwitterAccount:userID accessToken:oAuthToken accessSecret:oAuthSecret success:success failure:failure];
 }
 
-- (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion {
-    completion(NO,nil);
-    return;
-    
+- (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion {    
     NSError *keyError = nil;
     NSError *secretError = nil;
     NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];

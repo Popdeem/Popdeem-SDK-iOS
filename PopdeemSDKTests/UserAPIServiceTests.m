@@ -37,6 +37,9 @@
 }
 
 #pragma mark - Get User Details -
+/*
+ Test the error handling of the getUserDetails API Service method
+ */
 - (void) testGetUserDetails_500Error {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 500 Error"];
     stubRequest(@"GET", @"http://staging.popdeem.com/api/v2/users/1231")
@@ -89,6 +92,10 @@
     }];
 }
 
+/*
+ Test the mechanics of the Get User Details API Service
+ Should result in a user being created from the JSON in the response body
+ */
 - (void) testGetUserDetails_200OK {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 200 OK"];
     NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
@@ -106,6 +113,83 @@
         [expectation fulfill];
         [self afterEach];
     }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        [self afterEach];
+    }];
+}
+
+#pragma mark - Register User -
+/*
+ Test the error handling of the registerUser API Service method
+ */
+- (void) testRegisterUser_500Error {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 500 Error"];
+    stubRequest(@"POST", @"http://staging.popdeem.com/api/v2/users")
+    .andReturn(500)
+    .withHeaders(@{@"Content-Type": @"application/json"});
+    
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service registerUserwithFacebookAccesstoken:@"Token" facebookId:@"ID" completion:^(PDUser *user, NSError *error){
+        expect(error).toNot.beNil;
+        expect(error.code).to.equal(500);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        [self afterEach];
+    }];
+}
+
+- (void) testRegisterUser_504Error {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 504 Error"];
+    stubRequest(@"POST", @"http://staging.popdeem.com/api/v2/users")
+    .andReturn(504)
+    .withHeaders(@{@"Content-Type": @"application/json"});
+    
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service registerUserwithFacebookAccesstoken:@"Token" facebookId:@"ID" completion:^(PDUser *user, NSError *error){
+        expect(error).toNot.beNil;
+        expect(error.code).to.equal(504);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        [self afterEach];
+    }];
+}
+
+/*
+ Test the mechanics of the Regiser User API Service
+ Should result in a user being created from the JSON in the response body
+ */
+- (void) testRegisterUser_200OK {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 200 OK"];
+    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
+    NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
+    
+    stubRequest(@"POST", @"http://staging.popdeem.com/api/v2/users")
+    .andReturn(200)
+    .withBody(userJSON)
+    .withHeaders(@{@"Content-Type": @"application/json"});
+    
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service registerUserwithFacebookAccesstoken:@"" facebookId:@"" completion:^(PDUser* user, NSError *error) {
+        expect(error).to.beNil;
+        expect(user.identifier).to.equal(1231);
+        [expectation fulfill];
+        [self afterEach];
+    }];
+    
     [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
         if(error)
         {
