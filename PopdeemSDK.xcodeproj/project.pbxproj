@@ -13,11 +13,17 @@
 		391CE04F1BFF274600868532 /* APIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE04E1BFF274600868532 /* APIServiceTests.m */; };
 		391CE0511BFF27CD00868532 /* SocialAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */; };
 		391CE0531BFF29E800868532 /* LocationAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */; };
-		391CE0551BFF2F4000868532 /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0541BFF2F4000868532 /* Locations.json */; };
 		391CE0571BFF332E00868532 /* BrandAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */; };
-		391CE0591BFF33BE00868532 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0581BFF33BE00868532 /* Brands.json */; };
 		391CE05B1BFF360300868532 /* RewardAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */; };
-		391CE05D1BFF36A900868532 /* Rewards.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE05C1BFF36A900868532 /* Rewards.json */; };
+		391CE05F1BFF427400868532 /* WalletAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE05E1BFF427400868532 /* WalletAPIServiceTests.m */; };
+		391CE0611BFF466200868532 /* FeedAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0601BFF466200868532 /* FeedAPIServiceTests.m */; };
+		391CE0691BFF468400868532 /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0621BFF468400868532 /* Brand.json */; };
+		391CE06A1BFF468400868532 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0631BFF468400868532 /* Brands.json */; };
+		391CE06B1BFF468400868532 /* Location.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0641BFF468400868532 /* Location.json */; };
+		391CE06C1BFF468400868532 /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0651BFF468400868532 /* Locations.json */; };
+		391CE06D1BFF468400868532 /* PDFeedItem_WithPicture.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0661BFF468400868532 /* PDFeedItem_WithPicture.json */; };
+		391CE06E1BFF468400868532 /* Reward.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0671BFF468400868532 /* Reward.json */; };
+		391CE06F1BFF468400868532 /* Rewards.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0681BFF468400868532 /* Rewards.json */; };
 		395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 395706101BFC8BFF0027B3A4 /* PDNetworkError.m */; };
 		396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
@@ -46,14 +52,10 @@
 		39AE13B01BC092450026F466 /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AE13AF1BC092450026F466 /* PDUserTwitterParams.m */; };
 		39C39A151BC52659007794D7 /* PDFacebookLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C39A141BC52659007794D7 /* PDFacebookLoginButton.m */; };
 		39DDF0981BB93BE600D779E6 /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */; };
-		39EF927A1B8F125400D16F18 /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92771B8F125400D16F18 /* Brand.json */; };
 		39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92781B8F125400D16F18 /* BrandTests.m */; };
 		39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92791B8F125400D16F18 /* FeedItemTests.m */; };
-		39EF92841B8F125D00D16F18 /* Location.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF927D1B8F125D00D16F18 /* Location.json */; };
 		39EF92851B8F125D00D16F18 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF927E1B8F125D00D16F18 /* LocationTests.m */; };
-		39EF92861B8F125D00D16F18 /* PDFeedItem_WithPicture.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF927F1B8F125D00D16F18 /* PDFeedItem_WithPicture.json */; };
 		39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */; };
-		39EF92881B8F125D00D16F18 /* Reward.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF92811B8F125D00D16F18 /* Reward.json */; };
 		39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92821B8F125D00D16F18 /* RewardTests.m */; };
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
 		39F513EB1BEA19A80027EC62 /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F513EA1BEA19A80027EC62 /* PDUserAPIService.m */; };
@@ -96,11 +98,17 @@
 		391CE04E1BFF274600868532 /* APIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIServiceTests.m; sourceTree = "<group>"; };
 		391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAPIServiceTests.m; sourceTree = "<group>"; };
 		391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE0541BFF2F4000868532 /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE0581BFF33BE00868532 /* Brands.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Brands.json; sourceTree = "<group>"; };
 		391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE05C1BFF36A900868532 /* Rewards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rewards.json; sourceTree = "<group>"; };
+		391CE05E1BFF427400868532 /* WalletAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletAPIServiceTests.m; sourceTree = "<group>"; };
+		391CE0601BFF466200868532 /* FeedAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedAPIServiceTests.m; sourceTree = "<group>"; };
+		391CE0621BFF468400868532 /* Brand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Brand.json; path = JSON/Brand.json; sourceTree = "<group>"; };
+		391CE0631BFF468400868532 /* Brands.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Brands.json; path = JSON/Brands.json; sourceTree = "<group>"; };
+		391CE0641BFF468400868532 /* Location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Location.json; path = JSON/Location.json; sourceTree = "<group>"; };
+		391CE0651BFF468400868532 /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Locations.json; path = JSON/Locations.json; sourceTree = "<group>"; };
+		391CE0661BFF468400868532 /* PDFeedItem_WithPicture.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PDFeedItem_WithPicture.json; path = JSON/PDFeedItem_WithPicture.json; sourceTree = "<group>"; };
+		391CE0671BFF468400868532 /* Reward.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Reward.json; path = JSON/Reward.json; sourceTree = "<group>"; };
+		391CE0681BFF468400868532 /* Rewards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Rewards.json; path = JSON/Rewards.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -165,14 +173,10 @@
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39DDF0961BB93BE600D779E6 /* PDSocialMediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaManager.h; sourceTree = "<group>"; };
 		39DDF0971BB93BE600D779E6 /* PDSocialMediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaManager.m; sourceTree = "<group>"; };
-		39EF92771B8F125400D16F18 /* Brand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Brand.json; sourceTree = "<group>"; };
 		39EF92781B8F125400D16F18 /* BrandTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandTests.m; sourceTree = "<group>"; };
 		39EF92791B8F125400D16F18 /* FeedItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTests.m; sourceTree = "<group>"; };
-		39EF927D1B8F125D00D16F18 /* Location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Location.json; sourceTree = "<group>"; };
 		39EF927E1B8F125D00D16F18 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
-		39EF927F1B8F125D00D16F18 /* PDFeedItem_WithPicture.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PDFeedItem_WithPicture.json; sourceTree = "<group>"; };
 		39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDKTests.m; sourceTree = "<group>"; };
-		39EF92811B8F125D00D16F18 /* Reward.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Reward.json; sourceTree = "<group>"; };
 		39EF92821B8F125D00D16F18 /* RewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTests.m; sourceTree = "<group>"; };
 		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
 		39F513E91BEA19A80027EC62 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */,
 				391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */,
 				391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */,
+				391CE05E1BFF427400868532 /* WalletAPIServiceTests.m */,
+				391CE0601BFF466200868532 /* FeedAPIServiceTests.m */,
 			);
 			name = APIServiceTests;
 			sourceTree = "<group>";
@@ -331,14 +337,14 @@
 		39EF928B1B8F126100D16F18 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				39EF927D1B8F125D00D16F18 /* Location.json */,
-				391CE0541BFF2F4000868532 /* Locations.json */,
-				39EF927F1B8F125D00D16F18 /* PDFeedItem_WithPicture.json */,
+				391CE0621BFF468400868532 /* Brand.json */,
+				391CE0631BFF468400868532 /* Brands.json */,
+				391CE0641BFF468400868532 /* Location.json */,
+				391CE0651BFF468400868532 /* Locations.json */,
+				391CE0661BFF468400868532 /* PDFeedItem_WithPicture.json */,
+				391CE0671BFF468400868532 /* Reward.json */,
+				391CE0681BFF468400868532 /* Rewards.json */,
 				39EF928C1B8F126F00D16F18 /* User.json */,
-				39EF92811B8F125D00D16F18 /* Reward.json */,
-				391CE05C1BFF36A900868532 /* Rewards.json */,
-				39EF92771B8F125400D16F18 /* Brand.json */,
-				391CE0581BFF33BE00868532 /* Brands.json */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -545,14 +551,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39EF92881B8F125D00D16F18 /* Reward.json in Resources */,
 				39EF928D1B8F126F00D16F18 /* User.json in Resources */,
-				391CE0551BFF2F4000868532 /* Locations.json in Resources */,
-				39EF92861B8F125D00D16F18 /* PDFeedItem_WithPicture.json in Resources */,
-				391CE05D1BFF36A900868532 /* Rewards.json in Resources */,
-				391CE0591BFF33BE00868532 /* Brands.json in Resources */,
-				39EF92841B8F125D00D16F18 /* Location.json in Resources */,
-				39EF927A1B8F125400D16F18 /* Brand.json in Resources */,
+				391CE06E1BFF468400868532 /* Reward.json in Resources */,
+				391CE06A1BFF468400868532 /* Brands.json in Resources */,
+				391CE06C1BFF468400868532 /* Locations.json in Resources */,
+				391CE06F1BFF468400868532 /* Rewards.json in Resources */,
+				391CE06D1BFF468400868532 /* PDFeedItem_WithPicture.json in Resources */,
+				391CE06B1BFF468400868532 /* Location.json in Resources */,
+				391CE0691BFF468400868532 /* Brand.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,8 +695,10 @@
 				391CE05B1BFF360300868532 /* RewardAPIServiceTests.m in Sources */,
 				39EF92851B8F125D00D16F18 /* LocationTests.m in Sources */,
 				391CE04F1BFF274600868532 /* APIServiceTests.m in Sources */,
+				391CE0611BFF466200868532 /* FeedAPIServiceTests.m in Sources */,
 				391CE0471BFDF8A100868532 /* UserTests.m in Sources */,
 				391CE0491BFE080D00868532 /* UserAPIServiceTests.m in Sources */,
+				391CE05F1BFF427400868532 /* WalletAPIServiceTests.m in Sources */,
 				39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */,
 				39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */,
 				39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */,

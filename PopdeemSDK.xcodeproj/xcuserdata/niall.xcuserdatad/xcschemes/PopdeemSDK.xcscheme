@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "39D7D0641B8F0DCF00E45D0B"
-               BuildableName = "libPopdeemSDK.a"
+               BuildableName = "PopdeemSDK"
                BlueprintName = "PopdeemSDK"
                ReferencedContainer = "container:PopdeemSDK.xcodeproj">
             </BuildableReference>
