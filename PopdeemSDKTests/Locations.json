@@ -1,15 +1,15 @@
 {
     "locations" : [
-    {
-    "id": "159",
-    "latitude": "53.3735",
-    "longitude": "-6.17981",
-    "twitter_page_id": null,
-    "fb_page_id": null,
-    "number_of_rewards": 0,
-    "brand": {
-        "id": "102",
-        "name": "NO user brand"
-    }
+                   {
+                   "id": "159",
+                   "latitude": "53.3735",
+                   "longitude": "-6.17981",
+                   "twitter_page_id": null,
+                   "fb_page_id": null,
+                   "number_of_rewards": 0,
+                   "brand": {
+                        "id": "102",
+                        "name": "NO user brand"
+                   }
     ]
 }
