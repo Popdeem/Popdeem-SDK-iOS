@@ -41,5 +41,4 @@
     expect(_u.firstName).to.equal(@"John");
     expect(_u.lastName).to.equal(@"Doe");
 }
-
 @end

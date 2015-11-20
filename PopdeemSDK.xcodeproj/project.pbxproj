@@ -68,6 +68,7 @@
 		39F514091BEA70330027EC62 /* PDWalletAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F514081BEA70330027EC62 /* PDWalletAPIService.m */; };
 		39F5140C1BEA71650027EC62 /* PDRewardActionAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5140B1BEA71650027EC62 /* PDRewardActionAPIService.m */; };
 		39F5140F1BEA745D0027EC62 /* PDFeedAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5140E1BEA745D0027EC62 /* PDFeedAPIService.m */; };
+		55E0F480843FAE4040696615 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
 		63F4E9B168ED4C923CDFADFB /* Feeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 63F4E1F058416F172D304096 /* Feeds.json */; };
 /* End PBXBuildFile section */
 
@@ -224,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */,
+				55E0F480843FAE4040696615 /* libPods-PopdeemSDKTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,141 +725,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		391CE04A1BFE0D2A00868532 /* Testing */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Testing;
-		};
-		391CE04B1BFE0D2A00868532 /* Testing */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */;
-			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"TESTING=1",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Testing;
-		};
-		391CE04C1BFE0D2A00868532 /* Testing */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PopdeemSDKTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-l\"Bolts\"",
-					"-l\"FBSDKCoreKit\"",
-					"-l\"FBSDKLoginKit\"",
-					"-l\"FBSDKShareKit\"",
-					"-l\"JSONModel\"",
-					"-l\"STTwitter\"",
-					"-framework",
-					"\"Accounts\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"Twitter\"",
-					"-framework",
-					"\"UIKit\"",
-					"-framework",
-					"\"XCTest\"",
-					"-weak_framework",
-					"\"Accounts\"",
-					"-weak_framework",
-					"\"AudioToolbox\"",
-					"-weak_framework",
-					"\"CoreGraphics\"",
-					"-weak_framework",
-					"\"CoreLocation\"",
-					"-weak_framework",
-					"\"Foundation\"",
-					"-weak_framework",
-					"\"QuartzCore\"",
-					"-weak_framework",
-					"\"Security\"",
-					"-weak_framework",
-					"\"Social\"",
-					"-Objc",
-					"-framework",
-					XCTest,
-					"-weak_framework",
-					"\"UIKit\"",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Popdeem.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Testing;
-		};
 		39D7D0771B8F0DCF00E45D0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1111,7 +978,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D7D0771B8F0DCF00E45D0B /* Debug */,
-				391CE04A1BFE0D2A00868532 /* Testing */,
 				39D7D0781B8F0DCF00E45D0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1121,7 +987,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D7D07A1B8F0DCF00E45D0B /* Debug */,
-				391CE04B1BFE0D2A00868532 /* Testing */,
 				39D7D07B1B8F0DCF00E45D0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1131,7 +996,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D7D07D1B8F0DCF00E45D0B /* Debug */,
-				391CE04C1BFE0D2A00868532 /* Testing */,
 				39D7D07E1B8F0DCF00E45D0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
