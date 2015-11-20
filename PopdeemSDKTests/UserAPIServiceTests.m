@@ -109,6 +109,7 @@
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
     [service getUserDetailsForId:@"1231" authenticationToken:@"token" completion:^(PDUser* user, NSError *error) {
         expect(error).to.beNil;
+        expect(user).toNot.beNil;
         expect(user.identifier).to.equal(1231);
         [expectation fulfill];
         [self afterEach];
@@ -185,6 +186,7 @@
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
     [service registerUserwithFacebookAccesstoken:@"" facebookId:@"" completion:^(PDUser* user, NSError *error) {
         expect(error).to.beNil;
+        expect(user).toNot.beNil;
         expect(user.identifier).to.equal(1231);
         [expectation fulfill];
         [self afterEach];
@@ -199,4 +201,78 @@
     }];
 }
 
+#pragma mark - Update User -
+
+- (void) testUpdateUser_500Error {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 500 Error"];
+    
+    stubRequest(@"PUT", @"http://staging.popdeem.com/api/v2/users/1231")
+    .andReturn(500)
+    .withHeaders(@{@"Content-Type": @"application/json"});
+    
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+        expect(error).toNot.beNil;
+        expect(error.code).to.equal(500);
+        [expectation fulfill];
+        [self afterEach];
+    }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError *error){
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        [self afterEach];
+    }];
+}
+
+- (void) testUpdateUser_504Error {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 504 Error"];
+    
+    stubRequest(@"PUT", @"http://staging.popdeem.com/api/v2/users/1231")
+    .andReturn(504)
+    .withHeaders(@{@"Content-Type": @"application/json"});
+    
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+        expect(error).toNot.beNil;
+        expect(error.code).to.equal(504);
+        [expectation fulfill];
+        [self afterEach];
+    }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError *error){
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        [self afterEach];
+    }];
+}
+
+- (void) testUpdateUser_200OK {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Test Async 200 OK"];
+    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
+    NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
+    
+    stubRequest(@"PUT", @"http://staging.popdeem.com/api/v2/users/1231")
+    .andReturn(200)
+    .withBody(userJSON)
+    .withHeaders(@{@"Content-Type": @"application/json"});
+    
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service updateUserWithCompletion:^(PDUser *user, NSError *error) {
+        expect(error).to.beNil;
+        expect(user).toNot.beNil;
+        expect(user.identifier).to.equal(1231);
+        [expectation fulfill];
+        [self afterEach];
+    }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError *error){
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        [self afterEach];
+    }];
+}
 @end
