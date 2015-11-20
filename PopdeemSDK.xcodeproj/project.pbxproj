@@ -10,6 +10,9 @@
 		391CE0471BFDF8A100868532 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0461BFDF8A100868532 /* UserTests.m */; };
 		391CE0491BFE080D00868532 /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0481BFE080D00868532 /* UserAPIServiceTests.m */; };
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		391CE04F1BFF274600868532 /* APIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE04E1BFF274600868532 /* APIServiceTests.m */; };
+		391CE0511BFF27CD00868532 /* SocialAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */; };
+		391CE0531BFF29E800868532 /* LocationAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */; };
 		395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 395706101BFC8BFF0027B3A4 /* PDNetworkError.m */; };
 		396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
@@ -85,6 +88,9 @@
 /* Begin PBXFileReference section */
 		391CE0461BFDF8A100868532 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		391CE0481BFE080D00868532 /* UserAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIServiceTests.m; sourceTree = "<group>"; };
+		391CE04E1BFF274600868532 /* APIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIServiceTests.m; sourceTree = "<group>"; };
+		391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAPIServiceTests.m; sourceTree = "<group>"; };
+		391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAPIServiceTests.m; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -211,7 +217,10 @@
 		3957060B1BFC84050027B3A4 /* APIServiceTests */ = {
 			isa = PBXGroup;
 			children = (
+				391CE04E1BFF274600868532 /* APIServiceTests.m */,
 				391CE0481BFE080D00868532 /* UserAPIServiceTests.m */,
+				391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */,
+				391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */,
 			);
 			name = APIServiceTests;
 			sourceTree = "<group>";
@@ -660,11 +669,14 @@
 			files = (
 				39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */,
 				39EF92851B8F125D00D16F18 /* LocationTests.m in Sources */,
+				391CE04F1BFF274600868532 /* APIServiceTests.m in Sources */,
 				391CE0471BFDF8A100868532 /* UserTests.m in Sources */,
 				391CE0491BFE080D00868532 /* UserAPIServiceTests.m in Sources */,
 				39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */,
 				39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */,
 				39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */,
+				391CE0511BFF27CD00868532 /* SocialAPIServiceTests.m in Sources */,
+				391CE0531BFF29E800868532 /* LocationAPIServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
