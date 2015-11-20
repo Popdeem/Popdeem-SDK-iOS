@@ -24,7 +24,7 @@
 
 - (void) getFeedsLimit:(NSInteger)limit completion:(void (^)(NSError *error))completion {
     NSURLSession *session = [NSURLSession createPopdeemSession];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",limit],@"limit", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)limit],@"limit", nil];
     NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,FEEDS_PATH];
     [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {

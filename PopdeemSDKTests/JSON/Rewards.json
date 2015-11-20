@@ -1,0 +1,26 @@
+{
+    "rewards" : [
+                 {
+                 "id": "728",
+                 "reward_type": "coupon",
+                 "social_media_types": [
+                                        "Facebook"
+                                        ],
+                 "picture": "http://popdeem.com/images/brand_default.png",
+                 "blurred_picture": "http://popdeem.com/images/brand_default.png",
+                 "cover_image": "http://s3-eu-west-1.amazonaws.com/popdeem/rewards/cover_images/000/000/728/original/10401200_47976816068_100_n.jpg?1440068738",
+                 "created_at": "1440068740",
+                 "rules": "Test Rules",
+                 "status": "live",
+                 "description": "Test Reward",
+                 "action": "photo",
+                 "remaining_count": 100,
+                 "name": null,
+                 "available_until": "1440885540",
+                 "available_next": "1440021600",
+                 "locations": [
+                 
+                 ]
+                 }
+    ]
+}

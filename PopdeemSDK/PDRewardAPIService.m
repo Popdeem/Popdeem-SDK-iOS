@@ -42,10 +42,8 @@
                 return;
             }
             for (id attributes in jsonObject[@"rewards"]) {
-                for (NSDictionary *rew in attributes) {
-                    PDReward *reward = [[PDReward alloc] initFromApi:rew];
-                    [PDRewardStore add:reward];
-                }
+                PDReward *reward = [[PDReward alloc] initFromApi:attributes];
+                [PDRewardStore add:reward];
             }
             [session invalidateAndCancel];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -70,18 +68,25 @@
             });
             return;
         }
-        NSError *jsonError;
-        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        for (id attributes in jsonObject[@"rewards"]) {
-            for (NSDictionary *rew in attributes) {
-                PDReward *reward = [[PDReward alloc] initFromApi:rew];
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            for (id attributes in jsonObject[@"rewards"]) {
+                PDReward *reward = [[PDReward alloc] initFromApi:attributes];
                 [PDRewardStore add:reward];
             }
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        } else {
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
         }
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
     }];
 }
 
@@ -96,17 +101,27 @@
             });
             return;
         }
-        NSError *jsonError;
-        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-        for (NSDictionary *attributes in jsonObject[@"rewards"]) {
-            PDReward *reward = [[PDReward alloc] initFromApi:attributes];
-            reward.brandId = brandid;
-            [PDRewardStore add:reward];
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        NSInteger responseStatusCode = [httpResponse statusCode];
+        if (responseStatusCode < 500) {
+            NSError *jsonError;
+            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            for (NSDictionary *attributes in jsonObject[@"rewards"]) {
+                PDReward *reward = [[PDReward alloc] initFromApi:attributes];
+                reward.brandId = brandid;
+                [PDRewardStore add:reward];
+            }
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+
+        } else {
+            [session invalidateAndCancel];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
         }
-        [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
-        });
     }];
 }
 
