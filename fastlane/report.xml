@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="fastlane">
+  <testsuite name="run">
+    
+      
+      <testcase name="0: Verifying required fastlane version" time="0.00035">
+        
+      </testcase>
+    
+      
+      <testcase name="1: default_platform" time="0.00015">
+        
+      </testcase>
+    
+      
+      <testcase name="2: cocoapods" time="19.484911">
+        
+      </testcase>
+    
+      
+      <testcase name="3: Switch to ios current_version lane" time="0.000328">
+        
+      </testcase>
+    
+      
+      <testcase name="4: slack" time="3.8679">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

@@ -29,6 +29,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "39D7D06F1B8F0DCF00E45D0B"
+               BuildableName = "PopdeemSDKTests.xctest"
+               BlueprintName = "PopdeemSDKTests"
+               ReferencedContainer = "container:PopdeemSDK.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

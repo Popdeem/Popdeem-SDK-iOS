@@ -1,0 +1,4 @@
+language: objective-c
+script:
+  - xctool -workspace PopdeemSDK.xcworkspace -scheme PopdeemSDK -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -workspace PopdeemSDK.xcworkspace -scheme PopdeemSDK -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
