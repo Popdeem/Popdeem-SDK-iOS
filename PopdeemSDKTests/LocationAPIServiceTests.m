@@ -10,6 +10,8 @@
 #import <Expecta/Expecta.h>
 #import "Nocilla.h"
 #import "PDLocationAPIService.h"
+#import "PDLocation.h"
+#import "PDLocationStore.h"
 #import "PDConstants.h"
 #import "PopdeemSDK.h"
 
@@ -81,15 +83,23 @@
 
 - (void) testGetAllLocations_200OK {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Test 200 OK get All Locations"];
+    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Location" ofType:@"json"];
+    NSString *locationJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
+    
+    NSMutableString *locationArr = [NSMutableString stringWithFormat:@"{\"locations\" : [%@]}", locationJSON];
     
     stubRequest(@"GET", @"http://staging.popdeem.com/api/v2/locations")
     .andReturn(200)
+    .withBody(locationArr)
     .withHeaders(@{@"Content-Type": @"application/json"});
     
     PDLocationAPIService *service = [[PDLocationAPIService alloc] init];
     [service getAllLocationsWithCompletion:^(NSError *error){
         expect(error).to.beNil;
         [expectation fulfill];
+        PDLocation *loc = [PDLocationStore find:159];
+        expect(loc).toNot.beNil;
+        expect(loc.identifier).to.equal(159);
         [self afterEach];
     }];
     [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
@@ -144,14 +154,20 @@
 
 - (void) testGetLocationForID_200OK {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Test 200 OK get Location"];
+    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Location" ofType:@"json"];
+    NSString *locationJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
     
     stubRequest(@"GET", @"http://staging.popdeem.com/api/v2/locations/1")
     .andReturn(200)
+    .withBody(locationJSON)
     .withHeaders(@{@"Content-Type": @"application/json"});
     
     PDLocationAPIService *service = [[PDLocationAPIService alloc] init];
     [service getLocationForId:1 completion:^(NSError *error){
         expect(error).to.beNil;
+        PDLocation *loc = [PDLocationStore find:159];
+        expect(loc).toNot.beNil;
+        expect(loc.identifier).to.equal(159);
         [expectation fulfill];
         [self afterEach];
     }];
@@ -204,13 +220,22 @@
 
 - (void) testGetLocationsForBrandId_200OK {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Test Get Locations for Brand ID 200OK"];
+    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Location" ofType:@"json"];
+    NSString *locationJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
+    
+    NSMutableString *locationArr = [NSMutableString stringWithFormat:@"{\"locations\" : [%@]}", locationJSON];
+    
     stubRequest(@"GET", @"http://staging.popdeem.com/api/v2/brands/1/locations")
     .andReturn(200)
+    .withBody(locationArr)
     .withHeaders(@{@"Content-Type": @"application/json"});
     
     PDLocationAPIService *service = [[PDLocationAPIService alloc] init];
     [service getLocationsForBrandId:1 completion:^(NSError *error){
         expect(error).to.beNil;
+        PDLocation *loc = [PDLocationStore find:159];
+        expect(loc).toNot.beNil;
+        expect(loc.identifier).to.equal(159);
         [expectation fulfill];
         [self afterEach];
     }];

@@ -13,6 +13,7 @@
 		391CE04F1BFF274600868532 /* APIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE04E1BFF274600868532 /* APIServiceTests.m */; };
 		391CE0511BFF27CD00868532 /* SocialAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */; };
 		391CE0531BFF29E800868532 /* LocationAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */; };
+		391CE0551BFF2F4000868532 /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0541BFF2F4000868532 /* Locations.json */; };
 		395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 395706101BFC8BFF0027B3A4 /* PDNetworkError.m */; };
 		396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
@@ -91,6 +92,7 @@
 		391CE04E1BFF274600868532 /* APIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIServiceTests.m; sourceTree = "<group>"; };
 		391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAPIServiceTests.m; sourceTree = "<group>"; };
 		391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAPIServiceTests.m; sourceTree = "<group>"; };
+		391CE0541BFF2F4000868532 /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				39EF927D1B8F125D00D16F18 /* Location.json */,
+				391CE0541BFF2F4000868532 /* Locations.json */,
 				39EF927F1B8F125D00D16F18 /* PDFeedItem_WithPicture.json */,
 				39EF928C1B8F126F00D16F18 /* User.json */,
 				39EF92811B8F125D00D16F18 /* Reward.json */,
@@ -532,6 +535,7 @@
 			files = (
 				39EF92881B8F125D00D16F18 /* Reward.json in Resources */,
 				39EF928D1B8F126F00D16F18 /* User.json in Resources */,
+				391CE0551BFF2F4000868532 /* Locations.json in Resources */,
 				39EF92861B8F125D00D16F18 /* PDFeedItem_WithPicture.json in Resources */,
 				39EF92841B8F125D00D16F18 /* Location.json in Resources */,
 				39EF927A1B8F125400D16F18 /* Brand.json in Resources */,
