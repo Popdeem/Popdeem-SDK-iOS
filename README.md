@@ -1,4 +1,5 @@
 ## Popdeem iOS SDK
+![Build Status](https://travis-ci.org/Popdeem/Popdeem-SDK-iOS.svg?branch=master)
 
 Full documentation at the [Popdeem Developer](http://www.popdeem.com/developer/iosdocs "iOS Docs") Portal.
 -----
