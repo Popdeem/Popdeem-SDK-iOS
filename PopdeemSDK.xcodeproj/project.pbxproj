@@ -17,6 +17,7 @@
 		391CE0571BFF332E00868532 /* BrandAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */; };
 		391CE0591BFF33BE00868532 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0581BFF33BE00868532 /* Brands.json */; };
 		391CE05B1BFF360300868532 /* RewardAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */; };
+		391CE05D1BFF36A900868532 /* Rewards.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE05C1BFF36A900868532 /* Rewards.json */; };
 		395706121BFC8BFF0027B3A4 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 395706101BFC8BFF0027B3A4 /* PDNetworkError.m */; };
 		396EFFFA1BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 396EFFF91BDA6C3300C0BAC7 /* PDRewardCustomAvailability.m */; };
 		397478EE1B8F16480015C661 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478ED1B8F16480015C661 /* PDWallet.m */; };
@@ -99,6 +100,7 @@
 		391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandAPIServiceTests.m; sourceTree = "<group>"; };
 		391CE0581BFF33BE00868532 /* Brands.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Brands.json; sourceTree = "<group>"; };
 		391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardAPIServiceTests.m; sourceTree = "<group>"; };
+		391CE05C1BFF36A900868532 /* Rewards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Rewards.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				39EF927F1B8F125D00D16F18 /* PDFeedItem_WithPicture.json */,
 				39EF928C1B8F126F00D16F18 /* User.json */,
 				39EF92811B8F125D00D16F18 /* Reward.json */,
+				391CE05C1BFF36A900868532 /* Rewards.json */,
 				39EF92771B8F125400D16F18 /* Brand.json */,
 				391CE0581BFF33BE00868532 /* Brands.json */,
 			);
@@ -546,6 +549,7 @@
 				39EF928D1B8F126F00D16F18 /* User.json in Resources */,
 				391CE0551BFF2F4000868532 /* Locations.json in Resources */,
 				39EF92861B8F125D00D16F18 /* PDFeedItem_WithPicture.json in Resources */,
+				391CE05D1BFF36A900868532 /* Rewards.json in Resources */,
 				391CE0591BFF33BE00868532 /* Brands.json in Resources */,
 				39EF92841B8F125D00D16F18 /* Location.json in Resources */,
 				39EF927A1B8F125400D16F18 /* Brand.json in Resources */,
