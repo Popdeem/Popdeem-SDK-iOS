@@ -24,11 +24,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="WalletAPIServiceTests.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/WalletAPIServiceTests.m">
+      <file leaf-file-name="FeedAPIServiceTests.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/FeedAPIServiceTests.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82147026" vertical-offset="996" max-vertical-offset="1853">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6627771" vertical-offset="1166" max-vertical-offset="2023">
+              <caret line="102" column="21" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+              <folding>
+                <element signature="e#144#169#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PDFeedItem_WithPicture.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/JSON/PDFeedItem_WithPicture.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="442">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -40,6 +52,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/PopdeemSDKTests/WalletAPIServiceTests.m" />
+        <option value="$PROJECT_DIR$/PopdeemSDKTests/JSON/Feeds.json" />
+        <option value="$PROJECT_DIR$/PopdeemSDKTests/FeedAPIServiceTests.m" />
       </list>
     </option>
   </component>
@@ -132,6 +146,24 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="JSON" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PopdeemSDK" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PopdeemSDKTests" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="APIServiceTests" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
@@ -153,6 +185,7 @@
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="OBJC.PRESERVED_TARGET_SELECTION" value="PopdeemSDKTests" />
   </component>
   <component name="RunManager" selected="Application.PopdeemSDK">
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="PopdeemSDK" TARGET_NAME="PopdeemSDK" CONFIG_NAME="Debug" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
@@ -160,6 +193,17 @@
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
       </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="true" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="PopdeemSDK" TARGET_NAME="PopdeemSDKTests" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="OCGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS="FALSE" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
     <configuration default="false" name="PopdeemSDK" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="PopdeemSDK" TARGET_NAME="PopdeemSDK" CONFIG_NAME="Debug" SCHEME_NAME="PopdeemSDK" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
@@ -269,6 +313,7 @@
     <frame x="0" y="23" width="1680" height="1003" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -329,9 +374,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/WalletAPIServiceTests.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82147026" vertical-offset="996" max-vertical-offset="1853">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="843" max-vertical-offset="1836">
+          <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/JSON/Feeds.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24578314" vertical-offset="0" max-vertical-offset="830">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/LocationAPIServiceTests.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2578763" vertical-offset="1105" max-vertical-offset="4182">
+          <caret line="85" column="91" selection-start-line="85" selection-start-column="91" selection-end-line="85" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/JSON/PDFeedItem_WithPicture.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="442">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PopdeemSDKTests/FeedAPIServiceTests.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6627771" vertical-offset="1166" max-vertical-offset="2023">
+          <caret line="102" column="21" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+          <folding>
+            <element signature="e#144#169#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

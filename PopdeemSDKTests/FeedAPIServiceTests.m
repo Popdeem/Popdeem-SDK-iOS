@@ -13,6 +13,7 @@
 #import "PDFeedItem.h"
 #import "PDConstants.h"
 #import "PopdeemSDK.h"
+#import "PDFeeds.h"
 
 @interface FeedAPIServiceTests : XCTestCase
 
@@ -83,5 +84,31 @@
         if (error) XCTFail(@"Expectation Failed with error: %@", error);
     }];
 }
+
+- (void) testGetFeeds_200OK {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Test Feeds 200 OK"];
+
+    NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Feeds" ofType:@"json"];
+    NSString *feedsJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
+
+    stubRequest(@"GET", [self apiUrl])
+    .andReturn(200)
+    .withBody(feedsJSON)
+    .withHeaders(@{@"Content-Type" : @"application/json"});
+
+    PDFeedAPIService *service = [[PDFeedAPIService alloc] init];
+    [service getFeedsLimit:1 completion:^(NSError* error){
+        expect(error).to.beNil;
+        NSMutableArray *feed = [PDFeeds feed];
+        expect(feed.count).to.equal(1);
+        [self afterEach];
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
+        [self afterEach];
+        if (error) XCTFail(@"Expectation Failed with error: %@", error);
+    }];
+}
+
 
 @end
