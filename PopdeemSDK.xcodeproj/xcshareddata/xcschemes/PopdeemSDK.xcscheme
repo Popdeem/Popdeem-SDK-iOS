@@ -15,22 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "39D7D0641B8F0DCF00E45D0B"
-               BuildableName = "PopdeemSDK"
+               BuildableName = "libPopdeemSDK.a"
                BlueprintName = "PopdeemSDK"
-               ReferencedContainer = "container:PopdeemSDK.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39D7D06F1B8F0DCF00E45D0B"
-               BuildableName = "PopdeemSDKTests.xctest"
-               BlueprintName = "PopdeemSDKTests"
                ReferencedContainer = "container:PopdeemSDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,51 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39D7D06F1B8F0DCF00E45D0B"
-               BuildableName = "PopdeemSDKTests.xctest"
-               BlueprintName = "PopdeemSDKTests"
-               ReferencedContainer = "container:PopdeemSDK.xcodeproj">
-            </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_FacebookAccessTokenShouldBeFacebookaccesstoken">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_FacebookExpirationTimeShouldBelong123456789">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_FacebookIDShouldBe123456789">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_FacebookProfilePictureUrlShouldBeHttpsimageurlcom">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_FacebookSocialAccountIdShouldBe1234">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_FirstNameShouldBeJohn">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_GenderShouldBeMale">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_IdentifierShouldBe1231">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_LastNameShouldBeDoe">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_LocationShouldBe533313_62439">
-               </Test>
-               <Test
-                  Identifier = "UserSpec/User_UserShouldHaveCorrectValuesFromInputJSON_UserTokenShouldBeHdgshsghwghgeygdyegdyge">
-               </Test>
-            </SkippedTests>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
