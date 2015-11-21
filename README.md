@@ -4,7 +4,7 @@
 
 Full documentation at the [Popdeem Developer](http://www.popdeem.com/developer/iosdocs "iOS Docs") Portal.
 -----
-##### Changelog
+#### Changelog
 -----
 This is currently in development. Users of the SDK should monitor the changelog until a period of stability is reached. We expect this to be in the near future.
 
