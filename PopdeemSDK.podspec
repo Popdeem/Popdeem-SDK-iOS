@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PopdeemSDK"
-  s.version      = "0.1.17"
+  s.version      = "0.1.18"
   s.summary      = "PopdeemSDK is used to interact with the Popdeem API on iOS."
 
   s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
@@ -125,7 +125,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "AFNetworking"
   s.dependency "FBSDKLoginKit"
   s.dependency "FBSDKCoreKit"
   s.dependency "FBSDKShareKit"
