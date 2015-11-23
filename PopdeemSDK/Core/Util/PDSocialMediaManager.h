@@ -45,6 +45,8 @@
 
 - (void) logoutFacebook;
 
+- (BOOL) isLoggedIn;
+
 - (BOOL) isLoggedInWithFacebook;
 
 - (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error completion:(void (^)(NSError *error))completion;

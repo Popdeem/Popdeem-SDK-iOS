@@ -45,8 +45,33 @@
     return self;
 }
 
-#pragma mark - Facebook -
+-(BOOL)isLoggedIn {
+    if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+        PDUser *user = [self fetchPopdeemUser];
+        if (user == nil) {
+            [[PDSocialMediaManager manager] logoutFacebook];
+            return NO;
+        }
+    }
+    return YES;
+}
 
+- (PDUser*) fetchPopdeemUser {
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self popdeemUserStoreUrl]];
+    if (!fileExists) return nil;
+    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithFile:[self popdeemUserStoreUrl]];
+    return [PDUser initFromUserDefaults:dict];
+}
+
+- (NSString*) popdeemUserStoreUrl {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"popdeemUser.pddata"];
+    return appFile;
+    
+}
+
+#pragma mark - Facebook -
 
 
 - (void) loginWithFacebookReadPermissions:(NSArray*)permissions

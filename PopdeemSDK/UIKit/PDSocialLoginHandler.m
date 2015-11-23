@@ -7,6 +7,7 @@
 //
 
 #import "PDSocialLoginHandler.h"
+#import "PDSocialMediaManager.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
@@ -20,7 +21,7 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 - (void)showPromptIfNeededWithMaxAllowed:(NSNumber*)numberOfTimes  {
     self.maxPrompts = numberOfTimes.integerValue;
 
-    if(self.usesCount  < self.maxPrompts){
+    if(self.usesCount  < self.maxPrompts && ![[PDSocialMediaManager manager] isLoggedIn]){
         //TODO hookup nialls ui - using [self topViewController] presentviewcontroller
         NSLog(@"Showing popdeem social login");
         [self setUsesCount:self.usesCount+1];

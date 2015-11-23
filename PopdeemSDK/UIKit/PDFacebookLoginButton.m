@@ -9,6 +9,7 @@
 #import "PDFacebookLoginButton.h"
 #import "PDSocialMediaManager.h"
 #import "PDAPIClient.h"
+#import "PDSocialMediaManager.h"
 
 @interface PDFacebookLoginButton()
 {
@@ -35,14 +36,7 @@
 }
 
 - (void) setup {
-    isLoggedIn = [[PDSocialMediaManager manager] isLoggedInWithFacebook];
-    if (isLoggedIn) {
-        PDUser *user = [self fetchPopdeemUser];
-        if (user == nil) {
-            [[PDSocialMediaManager manager] logoutFacebook];
-            isLoggedIn = NO;
-        }
-    }
+    isLoggedIn = [[PDSocialMediaManager manager] isLoggedIn];
     
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self setupForLoggedIn:isLoggedIn];
@@ -97,18 +91,13 @@
     }
 }
 
-- (PDUser*) fetchPopdeemUser {
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self PopdeemUserStoreUrl]];
-    if (!fileExists) return nil;
-    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithFile:[self PopdeemUserStoreUrl]];
-    return [PDUser initFromUserDefaults:dict];
-}
-
+//FIXME - move from here
 - (void) writeUserToDevice {
     NSDictionary *userDict = [[PDUser sharedInstance] dictionaryRepresentation];
     [NSKeyedArchiver archiveRootObject:userDict toFile:[self PopdeemUserStoreUrl]];
 }
 
+//FIXME - move from here, its in PDSocialMediaManager right now
 - (NSString*) PopdeemUserStoreUrl {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -116,12 +105,5 @@
     return appFile;
 
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
