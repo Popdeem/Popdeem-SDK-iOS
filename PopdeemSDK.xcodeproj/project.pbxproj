@@ -34,33 +34,33 @@
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
 		55E0F480843FAE4040696615 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
 		63F4E9B168ED4C923CDFADFB /* Feeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 63F4E1F058416F172D304096 /* Feeds.json */; };
-		BC67F07A60EB232FD1A868E5 /* PDRewardActionAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FE5755C329F26449EE71 /* PDRewardActionAPIService.m */; };
-		BC67F08331D3FE88FD125AD1 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F2CCBC39FB3EB283EBED /* PDRewardStore.m */; };
-		BC67F10F234A756718601AD2 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FC888101881C12640EF5 /* PDBrandStore.m */; };
-		BC67F2427CE6CB92C4F6D44E /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6FCCCD1AF6264AC4E40 /* PDAPIClient.m */; };
+		BC67F1818241869ED5AE3E96 /* PDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */; };
+		BC67F1F58689AA2729A0B6CF /* PDBrandApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF0E6854328471162315 /* PDBrandApiService.m */; };
 		BC67F2A1D8DBA60B62E3649F /* PDUser+Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F89FF91371885F0B43F6 /* PDUser+Facebook.m */; };
 		BC67F2B019190563963D9DFA /* PDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDF77E9C2BC42F475282 /* PDConstants.m */; };
 		BC67F2EA9AC44543E93524B5 /* PDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F866213BA9B492FB005B /* PDLocation.m */; };
 		BC67F31395CA7C3B031AAB89 /* PDReferral.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB138AFDB8475775021B /* PDReferral.m */; };
-		BC67F3BF8DBC298B6531E367 /* PDFeedAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F62984FB907564B79017 /* PDFeedAPIService.m */; };
+		BC67F315ED6DD6E7A68D6DC2 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F4CCDD8EBA5C99F9DFBD /* PDBrandStore.m */; };
+		BC67F348F8098F8237693F9D /* PDSocialAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */; };
 		BC67F4363103CF33FE89C5BC /* PDFacebookLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FE603F2F3D5DB84F340A /* PDFacebookLoginButton.m */; };
-		BC67F4F983F810A0EBAAF7D9 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F5A50CC2527679BEA512 /* PDLocationStore.m */; };
-		BC67F501A0C44F5E0431EAA9 /* PDSocialAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0C1E2DD443A3B926EC6 /* PDSocialAPIService.m */; };
+		BC67F4D6CAE34F664AF37B3C /* PDReferralAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */; };
+		BC67F589520EE25D681D091B /* PDRewardAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F27493A67F748B19C2F6 /* PDRewardAPIService.m */; };
+		BC67F5BB09D851870D18E285 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FA50A957A3764748EF64 /* PDNetworkError.m */; };
+		BC67F5D4ECB6F5BAB25D55EF /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0CAFEA2538AFD16E238 /* PDWallet.m */; };
 		BC67F612E0F34A0EF06B04C7 /* PDOpeningHoursWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6C0C7E739CB86F6515 /* PDOpeningHoursWeek.m */; };
-		BC67F6296385CB536CF579FD /* PDLocationAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0610EED39EE4E7D1FA5 /* PDLocationAPIService.m */; };
 		BC67F6BBD9FD32D05383E3C5 /* PDFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FFE3DB5E8203430170C6 /* PDFeeds.m */; };
-		BC67F7C268935FD54EE63196 /* PDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F64F1D6B972C6685D553 /* PDAPIService.m */; };
+		BC67F709A15ADAAFDAE09585 /* PDFeedAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6E966611691DB623D7 /* PDFeedAPIService.m */; };
+		BC67F753B2EEF7CCD826055D /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F2C780E082B7FA7D60C9 /* PDRewardStore.m */; };
 		BC67F876237D47936806AE85 /* PDReward.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB3FE741B22C74D4A257 /* PDReward.m */; };
-		BC67FA58BE694299A54C67A2 /* PDWalletAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F685173274BFC3CD2C67 /* PDWalletAPIService.m */; };
+		BC67F8BE30DE8BB1D7F93097 /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0521517D04945EBCFDE /* NSURLSession+Popdeem.m */; };
+		BC67F8E071FDCAF25FE666A1 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F41B89CC22132BA7DC29 /* PDLocationStore.m */; };
+		BC67F99A98DBBDD2F8CC4BED /* PDLocationAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F72645898839719EF769 /* PDLocationAPIService.m */; };
+		BC67FA525500547B66CBFFEF /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */; };
 		BC67FA7AA48A4DC0BBFB453F /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */; };
 		BC67FAAF23C4FF66C76369B8 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */; };
-		BC67FACE493E6BC2C4420384 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F1A60A65EE05065A4965 /* PDWallet.m */; };
-		BC67FAE6D0676199E880D385 /* PDBrandApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F3BDD3C12CA55F52B7E6 /* PDBrandApiService.m */; };
-		BC67FB2D1E8D4F9D67100B7F /* PDReferralAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FA21D8F75E1547A05FBD /* PDReferralAPIService.m */; };
-		BC67FBE8635F6B403898D228 /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F3EDB2302C4D779E0669 /* NSURLSession+Popdeem.m */; };
+		BC67FABEDA5987CB6DAA7880 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */; };
+		BC67FAE361700CE9FCF09E94 /* PDRewardActionAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */; };
 		BC67FC59C9F0E8F553AB4748 /* PDOpeningHoursDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F48B372E10AF910E9DF7 /* PDOpeningHoursDay.m */; };
-		BC67FC7531EE1992BF8CFECD /* PDRewardAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FFB407D9028697CEE486 /* PDRewardAPIService.m */; };
-		BC67FC7A36761C38616482ED /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FFC4685640C60E0FD099 /* PDNetworkError.m */; };
 		BC67FCD5547FD4C2E1FC9420 /* PDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB072FF7574FC00933C0 /* PDScores.m */; };
 		BC67FD9C148569401EA363B3 /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */; };
 		BC67FDCC4C43D980D5D6D7C2 /* PDBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F09D8703806E4EB93264 /* PDBrand.m */; };
@@ -68,7 +68,7 @@
 		BC67FE9BC86BF5C034E8FEEA /* PDURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDA747BB4787ACBCC9A9 /* PDURLSession.m */; };
 		BC67FEAC806E9FE2D889DF6F /* PDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FE5072EA22D083C45380 /* PDFeedItem.m */; };
 		BC67FF0016DDE85E2428E787 /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6499A11C2A5AB3AC2AE /* PDUserTwitterParams.m */; };
-		BC67FF26CAEC655DE0A485DC /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDF0F39CAFC4CCB375DE /* PDUserAPIService.m */; };
+		BC67FF6F0C9145D3F47766D7 /* PDWalletAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEC0CFB9324C3DE2AAA0 /* PDWalletAPIService.m */; };
 		BC67FF75453A8113C8B79578 /* PDSocialMediaFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F98E0D4534F9808FA7BD /* PDSocialMediaFriend.m */; };
 		BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
 		BC67FFAF6CF0555B014F2D5B /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
@@ -137,80 +137,80 @@
 		A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PopdeemSDK.podspec; sourceTree = "<group>"; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		BC67F0259BE1A6F5B3827F5D /* PDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUtils.m; sourceTree = "<group>"; };
-		BC67F0588C74F7E811F3A1A7 /* PDRewardStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardStore.h; sourceTree = "<group>"; };
-		BC67F0610EED39EE4E7D1FA5 /* PDLocationAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationAPIService.m; sourceTree = "<group>"; };
-		BC67F0792867BA5726BFE5DC /* PDAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIClient.h; sourceTree = "<group>"; };
+		BC67F0521517D04945EBCFDE /* NSURLSession+Popdeem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+Popdeem.m"; sourceTree = "<group>"; };
 		BC67F07B38BD59459659DB91 /* PDSocialMediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaManager.h; sourceTree = "<group>"; };
 		BC67F09D8703806E4EB93264 /* PDBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrand.m; sourceTree = "<group>"; };
-		BC67F0C1E2DD443A3B926EC6 /* PDSocialAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialAPIService.m; sourceTree = "<group>"; };
-		BC67F0C7773116C03672651E /* PDReferralAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferralAPIService.h; sourceTree = "<group>"; };
-		BC67F10F3E0ACF9E31DEC420 /* PDLocationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationStore.h; sourceTree = "<group>"; };
-		BC67F1A60A65EE05065A4965 /* PDWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDWallet.m; sourceTree = "<group>"; };
-		BC67F240770A7D3E7A3F5313 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
+		BC67F0CAFEA2538AFD16E238 /* PDWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDWallet.m; sourceTree = "<group>"; };
+		BC67F26A12AEA75D17EFB319 /* PDLocationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationStore.h; sourceTree = "<group>"; };
+		BC67F27493A67F748B19C2F6 /* PDRewardAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardAPIService.m; sourceTree = "<group>"; };
 		BC67F2830CA3AB87C33E47AB /* PDCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCommon.h; sourceTree = "<group>"; };
-		BC67F2CCBC39FB3EB283EBED /* PDRewardStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardStore.m; sourceTree = "<group>"; };
+		BC67F2BC3D598A88A1F252F2 /* PDBrandStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrandStore.h; sourceTree = "<group>"; };
+		BC67F2C780E082B7FA7D60C9 /* PDRewardStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardStore.m; sourceTree = "<group>"; };
 		BC67F32784B6CE0B0F6826CD /* PDUserTwitterParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserTwitterParams.h; sourceTree = "<group>"; };
-		BC67F3BDD3C12CA55F52B7E6 /* PDBrandApiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrandApiService.m; sourceTree = "<group>"; };
-		BC67F3EDB2302C4D779E0669 /* NSURLSession+Popdeem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+Popdeem.m"; sourceTree = "<group>"; };
+		BC67F32C9F68BBD8CAC67A6B /* PDLocationAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationAPIService.h; sourceTree = "<group>"; };
+		BC67F41B89CC22132BA7DC29 /* PDLocationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationStore.m; sourceTree = "<group>"; };
 		BC67F48B372E10AF910E9DF7 /* PDOpeningHoursDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursDay.m; sourceTree = "<group>"; };
+		BC67F4A09A24DC6F9C77D440 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
+		BC67F4AA7FCF897050B6FE6A /* PDBrandApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrandApiService.h; sourceTree = "<group>"; };
+		BC67F4BB97818CD3B43E3A12 /* NSURLSession+Popdeem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+Popdeem.h"; sourceTree = "<group>"; };
+		BC67F4C01336D4CAE7FF60FB /* PDFeedAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFeedAPIService.h; sourceTree = "<group>"; };
+		BC67F4CB300FA77B737F385E /* PDRewardAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardAPIService.h; sourceTree = "<group>"; };
+		BC67F4CCDD8EBA5C99F9DFBD /* PDBrandStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrandStore.m; sourceTree = "<group>"; };
+		BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReferralAPIService.m; sourceTree = "<group>"; };
 		BC67F52A3CB7FE2B77A0DDCB /* PDFeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFeedItem.h; sourceTree = "<group>"; };
-		BC67F55F5FA20D47813006D3 /* PDWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWallet.h; sourceTree = "<group>"; };
 		BC67F5A345F527890EBC0236 /* PDOpeningHoursWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDOpeningHoursWeek.h; sourceTree = "<group>"; };
-		BC67F5A50CC2527679BEA512 /* PDLocationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationStore.m; sourceTree = "<group>"; };
-		BC67F5D0DE883F35B931BEA2 /* PDNetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNetworkError.h; sourceTree = "<group>"; };
 		BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardCustomAvailability.m; sourceTree = "<group>"; };
 		BC67F6177E3E2771EAEAA4AB /* PDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUser.m; sourceTree = "<group>"; };
 		BC67F61D2DAFF16950F2F11C /* PDScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScores.h; sourceTree = "<group>"; };
-		BC67F62984FB907564B79017 /* PDFeedAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeedAPIService.m; sourceTree = "<group>"; };
+		BC67F61F12CA6425FEECB668 /* PDRewardStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardStore.h; sourceTree = "<group>"; };
 		BC67F6499A11C2A5AB3AC2AE /* PDUserTwitterParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserTwitterParams.m; sourceTree = "<group>"; };
-		BC67F64F1D6B972C6685D553 /* PDAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIService.m; sourceTree = "<group>"; };
+		BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardActionAPIService.m; sourceTree = "<group>"; };
 		BC67F65A4E33DADDC2CA0D1A /* PDFacebookLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFacebookLoginButton.h; sourceTree = "<group>"; };
-		BC67F6718BC70BDB58FFBDD8 /* NSURLSession+Popdeem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+Popdeem.h"; sourceTree = "<group>"; };
-		BC67F685173274BFC3CD2C67 /* PDWalletAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDWalletAPIService.m; sourceTree = "<group>"; };
-		BC67F6B6C46800DE162D57D0 /* PDBrandStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrandStore.h; sourceTree = "<group>"; };
-		BC67F6FCCCD1AF6264AC4E40 /* PDAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIClient.m; sourceTree = "<group>"; };
-		BC67F772A694D440965D3B53 /* PDAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIService.h; sourceTree = "<group>"; };
+		BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIClient.m; sourceTree = "<group>"; };
+		BC67F72645898839719EF769 /* PDLocationAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationAPIService.m; sourceTree = "<group>"; };
 		BC67F782A6DC710569DD5DB0 /* PDUserFacebookParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserFacebookParams.h; sourceTree = "<group>"; };
-		BC67F83D2F86345E9FE3104F /* PDWalletAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWalletAPIService.h; sourceTree = "<group>"; };
-		BC67F852C305D2C2590A2855 /* PDBrandApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrandApiService.h; sourceTree = "<group>"; };
+		BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialAPIService.m; sourceTree = "<group>"; };
+		BC67F7DF66DB5FA8514BC364 /* PDAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIService.h; sourceTree = "<group>"; };
 		BC67F85574F43691853864E0 /* PDSocialMediaFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaFriend.h; sourceTree = "<group>"; };
 		BC67F866213BA9B492FB005B /* PDLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocation.m; sourceTree = "<group>"; };
 		BC67F89FF91371885F0B43F6 /* PDUser+Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDUser+Facebook.m"; sourceTree = "<group>"; };
 		BC67F8D82295C72E404956E2 /* PDReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReward.h; sourceTree = "<group>"; };
+		BC67F909A48D90F8B69E19E5 /* PDReferralAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferralAPIService.h; sourceTree = "<group>"; };
 		BC67F98E0D4534F9808FA7BD /* PDSocialMediaFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaFriend.m; sourceTree = "<group>"; };
-		BC67F9BA46FC9FAA42314690 /* PDLocationAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationAPIService.h; sourceTree = "<group>"; };
-		BC67F9D07FECAEBC1826A0AF /* PDRewardActionAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardActionAPIService.h; sourceTree = "<group>"; };
 		BC67F9D6AE1A1E6162AD05A9 /* PDLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocation.h; sourceTree = "<group>"; };
-		BC67FA21D8F75E1547A05FBD /* PDReferralAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReferralAPIService.m; sourceTree = "<group>"; };
+		BC67FA50A957A3764748EF64 /* PDNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNetworkError.m; sourceTree = "<group>"; };
 		BC67FB072FF7574FC00933C0 /* PDScores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScores.m; sourceTree = "<group>"; };
 		BC67FB138AFDB8475775021B /* PDReferral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReferral.m; sourceTree = "<group>"; };
-		BC67FB27ACC18D8A4FC18352 /* PDFeedAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFeedAPIService.h; sourceTree = "<group>"; };
 		BC67FB3FE741B22C74D4A257 /* PDReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReward.m; sourceTree = "<group>"; };
-		BC67FC888101881C12640EF5 /* PDBrandStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrandStore.m; sourceTree = "<group>"; };
+		BC67FB8A5D1136F33891E72B /* PDSocialAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialAPIService.h; sourceTree = "<group>"; };
+		BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
+		BC67FBFC43B1F1FFB9F13D2A /* PDNetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNetworkError.h; sourceTree = "<group>"; };
+		BC67FC2CEA552E61FAA8A4D4 /* PDWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWallet.h; sourceTree = "<group>"; };
+		BC67FC8425A034478627B82B /* PDAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIClient.h; sourceTree = "<group>"; };
 		BC67FCD8902CC5CD75C180E1 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
+		BC67FD35C97C481E7B4E94F1 /* PDRewardActionAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardActionAPIService.h; sourceTree = "<group>"; };
 		BC67FD41F4A3215835B48282 /* PDURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDURLSession.h; sourceTree = "<group>"; };
 		BC67FD6C0C7E739CB86F6515 /* PDOpeningHoursWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursWeek.m; sourceTree = "<group>"; };
-		BC67FD9554B794A40C64592C /* PDRewardAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardAPIService.h; sourceTree = "<group>"; };
+		BC67FD6E966611691DB623D7 /* PDFeedAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeedAPIService.m; sourceTree = "<group>"; };
 		BC67FD969767A7C8B857115E /* PDUser+Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDUser+Facebook.h"; sourceTree = "<group>"; };
 		BC67FDA747BB4787ACBCC9A9 /* PDURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDURLSession.m; sourceTree = "<group>"; };
 		BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserFacebookParams.m; sourceTree = "<group>"; };
 		BC67FDD74A2E45FB36948272 /* PDOpeningHoursDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDOpeningHoursDay.h; sourceTree = "<group>"; };
-		BC67FDF0F39CAFC4CCB375DE /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
 		BC67FDF77E9C2BC42F475282 /* PDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDConstants.m; sourceTree = "<group>"; };
 		BC67FDF824643AEEF7E9F2A1 /* PDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUtils.h; sourceTree = "<group>"; };
 		BC67FE5072EA22D083C45380 /* PDFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeedItem.m; sourceTree = "<group>"; };
-		BC67FE5755C329F26449EE71 /* PDRewardActionAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardActionAPIService.m; sourceTree = "<group>"; };
 		BC67FE603F2F3D5DB84F340A /* PDFacebookLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFacebookLoginButton.m; sourceTree = "<group>"; };
 		BC67FE7E0D2E0BA29BB80554 /* PDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDConstants.h; sourceTree = "<group>"; };
+		BC67FEA2B5B08F1F2099935B /* PDWalletAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWalletAPIService.h; sourceTree = "<group>"; };
 		BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaManager.m; sourceTree = "<group>"; };
+		BC67FEC0CFB9324C3DE2AAA0 /* PDWalletAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDWalletAPIService.m; sourceTree = "<group>"; };
 		BC67FEC3F75949725292F426 /* PDBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrand.h; sourceTree = "<group>"; };
 		BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGeolocationManager.m; sourceTree = "<group>"; };
+		BC67FF0E6854328471162315 /* PDBrandApiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrandApiService.m; sourceTree = "<group>"; };
 		BC67FF59F96E53614CB77B90 /* PDFeeds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFeeds.h; sourceTree = "<group>"; };
-		BC67FF767488AF13FFF2A1F9 /* PDSocialAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialAPIService.h; sourceTree = "<group>"; };
+		BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIService.m; sourceTree = "<group>"; };
 		BC67FF81C6E0A9A231CE6FE4 /* PDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUser.h; sourceTree = "<group>"; };
 		BC67FFB094C0C5B47033A565 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
-		BC67FFB407D9028697CEE486 /* PDRewardAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardAPIService.m; sourceTree = "<group>"; };
-		BC67FFC4685640C60E0FD099 /* PDNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNetworkError.m; sourceTree = "<group>"; };
 		BC67FFE3DB5E8203430170C6 /* PDFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeeds.m; sourceTree = "<group>"; };
 		BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -377,82 +377,56 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		BC67F27CE02F0CD26D457C35 /* Services */ = {
+		BC67F3729CD470E13CE36933 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				BC67F772A694D440965D3B53 /* PDAPIService.h */,
-				BC67F64F1D6B972C6685D553 /* PDAPIService.m */,
-				BC67FB27ACC18D8A4FC18352 /* PDFeedAPIService.h */,
-				BC67F62984FB907564B79017 /* PDFeedAPIService.m */,
-				BC67F240770A7D3E7A3F5313 /* PDUserAPIService.h */,
-				BC67FDF0F39CAFC4CCB375DE /* PDUserAPIService.m */,
-				BC67F852C305D2C2590A2855 /* PDBrandApiService.h */,
-				BC67F3BDD3C12CA55F52B7E6 /* PDBrandApiService.m */,
-				BC67FD9554B794A40C64592C /* PDRewardAPIService.h */,
-				BC67FFB407D9028697CEE486 /* PDRewardAPIService.m */,
-				BC67FF767488AF13FFF2A1F9 /* PDSocialAPIService.h */,
-				BC67F0C1E2DD443A3B926EC6 /* PDSocialAPIService.m */,
-				BC67F83D2F86345E9FE3104F /* PDWalletAPIService.h */,
-				BC67F685173274BFC3CD2C67 /* PDWalletAPIService.m */,
-				BC67F9BA46FC9FAA42314690 /* PDLocationAPIService.h */,
-				BC67F0610EED39EE4E7D1FA5 /* PDLocationAPIService.m */,
-				BC67F0C7773116C03672651E /* PDReferralAPIService.h */,
-				BC67FA21D8F75E1547A05FBD /* PDReferralAPIService.m */,
-				BC67F9D07FECAEBC1826A0AF /* PDRewardActionAPIService.h */,
-				BC67FE5755C329F26449EE71 /* PDRewardActionAPIService.m */,
+				BC67F9F9215A562BABAB2207 /* Services */,
+				BC67FC8425A034478627B82B /* PDAPIClient.h */,
+				BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */,
+				BC67FBFC43B1F1FFB9F13D2A /* PDNetworkError.h */,
+				BC67FA50A957A3764748EF64 /* PDNetworkError.m */,
+				BC67F4BB97818CD3B43E3A12 /* NSURLSession+Popdeem.h */,
+				BC67F0521517D04945EBCFDE /* NSURLSession+Popdeem.m */,
 			);
-			path = Services;
+			path = API;
 			sourceTree = "<group>";
 		};
 		BC67F591CB1E9DF1136B7D20 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				BC67F7EEEC66F7D6AB013FC3 /* API */,
 				BC67FEB8A2F92A9F8B4D84FE /* Stores */,
 				BC67F00548709376630E993B /* Util */,
 				BC67FA5FB895CC0BDBDC7C1B /* Model */,
+				BC67F3729CD470E13CE36933 /* API */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		BC67F7EEEC66F7D6AB013FC3 /* API */ = {
+		BC67F9F9215A562BABAB2207 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				BC67F8EBC7F19DB2CF7F1651 /* API */,
+				BC67F7DF66DB5FA8514BC364 /* PDAPIService.h */,
+				BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */,
+				BC67F4C01336D4CAE7FF60FB /* PDFeedAPIService.h */,
+				BC67FD6E966611691DB623D7 /* PDFeedAPIService.m */,
+				BC67F4A09A24DC6F9C77D440 /* PDUserAPIService.h */,
+				BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */,
+				BC67F4AA7FCF897050B6FE6A /* PDBrandApiService.h */,
+				BC67FF0E6854328471162315 /* PDBrandApiService.m */,
+				BC67F4CB300FA77B737F385E /* PDRewardAPIService.h */,
+				BC67F27493A67F748B19C2F6 /* PDRewardAPIService.m */,
+				BC67FB8A5D1136F33891E72B /* PDSocialAPIService.h */,
+				BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */,
+				BC67FEA2B5B08F1F2099935B /* PDWalletAPIService.h */,
+				BC67FEC0CFB9324C3DE2AAA0 /* PDWalletAPIService.m */,
+				BC67F32C9F68BBD8CAC67A6B /* PDLocationAPIService.h */,
+				BC67F72645898839719EF769 /* PDLocationAPIService.m */,
+				BC67F909A48D90F8B69E19E5 /* PDReferralAPIService.h */,
+				BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */,
+				BC67FD35C97C481E7B4E94F1 /* PDRewardActionAPIService.h */,
+				BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */,
 			);
-			name = API;
-			path = PopdeemSDK;
-			sourceTree = SOURCE_ROOT;
-		};
-		BC67F8003437DA00C4EAF25A /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				BC67F55F5FA20D47813006D3 /* PDWallet.h */,
-				BC67F1A60A65EE05065A4965 /* PDWallet.m */,
-				BC67F6B6C46800DE162D57D0 /* PDBrandStore.h */,
-				BC67FC888101881C12640EF5 /* PDBrandStore.m */,
-				BC67F0588C74F7E811F3A1A7 /* PDRewardStore.h */,
-				BC67F2CCBC39FB3EB283EBED /* PDRewardStore.m */,
-				BC67F10F3E0ACF9E31DEC420 /* PDLocationStore.h */,
-				BC67F5A50CC2527679BEA512 /* PDLocationStore.m */,
-			);
-			name = Stores;
-			path = Core/Stores;
-			sourceTree = "<group>";
-		};
-		BC67F8EBC7F19DB2CF7F1651 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				BC67F27CE02F0CD26D457C35 /* Services */,
-				BC67F0792867BA5726BFE5DC /* PDAPIClient.h */,
-				BC67F6FCCCD1AF6264AC4E40 /* PDAPIClient.m */,
-				BC67F5D0DE883F35B931BEA2 /* PDNetworkError.h */,
-				BC67FFC4685640C60E0FD099 /* PDNetworkError.m */,
-				BC67F6718BC70BDB58FFBDD8 /* NSURLSession+Popdeem.h */,
-				BC67F3EDB2302C4D779E0669 /* NSURLSession+Popdeem.m */,
-			);
-			name = API;
-			path = Core/API;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		BC67FA5FB895CC0BDBDC7C1B /* Model */ = {
@@ -497,7 +471,14 @@
 		BC67FEB8A2F92A9F8B4D84FE /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				BC67F8003437DA00C4EAF25A /* Stores */,
+				BC67F2C780E082B7FA7D60C9 /* PDRewardStore.m */,
+				BC67F61F12CA6425FEECB668 /* PDRewardStore.h */,
+				BC67FC2CEA552E61FAA8A4D4 /* PDWallet.h */,
+				BC67F2BC3D598A88A1F252F2 /* PDBrandStore.h */,
+				BC67F4CCDD8EBA5C99F9DFBD /* PDBrandStore.m */,
+				BC67F26A12AEA75D17EFB319 /* PDLocationStore.h */,
+				BC67F41B89CC22132BA7DC29 /* PDLocationStore.m */,
+				BC67F0CAFEA2538AFD16E238 /* PDWallet.m */,
 			);
 			name = Stores;
 			path = PopdeemSDK;
@@ -716,27 +697,10 @@
 				391CE0531BFF29E800868532 /* LocationAPIServiceTests.m in Sources */,
 				391CE0571BFF332E00868532 /* BrandAPIServiceTests.m in Sources */,
 				BC67F4363103CF33FE89C5BC /* PDFacebookLoginButton.m in Sources */,
-				BC67F7C268935FD54EE63196 /* PDAPIService.m in Sources */,
-				BC67F3BF8DBC298B6531E367 /* PDFeedAPIService.m in Sources */,
-				BC67FF26CAEC655DE0A485DC /* PDUserAPIService.m in Sources */,
-				BC67FAE6D0676199E880D385 /* PDBrandApiService.m in Sources */,
-				BC67FC7531EE1992BF8CFECD /* PDRewardAPIService.m in Sources */,
-				BC67F501A0C44F5E0431EAA9 /* PDSocialAPIService.m in Sources */,
-				BC67FA58BE694299A54C67A2 /* PDWalletAPIService.m in Sources */,
-				BC67F6296385CB536CF579FD /* PDLocationAPIService.m in Sources */,
-				BC67FB2D1E8D4F9D67100B7F /* PDReferralAPIService.m in Sources */,
-				BC67F07A60EB232FD1A868E5 /* PDRewardActionAPIService.m in Sources */,
-				BC67F2427CE6CB92C4F6D44E /* PDAPIClient.m in Sources */,
-				BC67FC7A36761C38616482ED /* PDNetworkError.m in Sources */,
-				BC67FBE8635F6B403898D228 /* NSURLSession+Popdeem.m in Sources */,
 				BC67FDFD1FA0B0A0808CC6CA /* PDUtils.m in Sources */,
 				BC67F2B019190563963D9DFA /* PDConstants.m in Sources */,
 				BC67FA7AA48A4DC0BBFB453F /* PDGeolocationManager.m in Sources */,
 				BC67FD9C148569401EA363B3 /* PDSocialMediaManager.m in Sources */,
-				BC67FACE493E6BC2C4420384 /* PDWallet.m in Sources */,
-				BC67F10F234A756718601AD2 /* PDBrandStore.m in Sources */,
-				BC67F08331D3FE88FD125AD1 /* PDRewardStore.m in Sources */,
-				BC67F4F983F810A0EBAAF7D9 /* PDLocationStore.m in Sources */,
 				BC67FFAF6CF0555B014F2D5B /* PDUser.m in Sources */,
 				BC67FDCC4C43D980D5D6D7C2 /* PDBrand.m in Sources */,
 				BC67F6BBD9FD32D05383E3C5 /* PDFeeds.m in Sources */,
@@ -753,6 +717,23 @@
 				BC67FF0016DDE85E2428E787 /* PDUserTwitterParams.m in Sources */,
 				BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */,
 				BC67FAAF23C4FF66C76369B8 /* PDRewardCustomAvailability.m in Sources */,
+				BC67F1818241869ED5AE3E96 /* PDAPIService.m in Sources */,
+				BC67F709A15ADAAFDAE09585 /* PDFeedAPIService.m in Sources */,
+				BC67FA525500547B66CBFFEF /* PDUserAPIService.m in Sources */,
+				BC67F1F58689AA2729A0B6CF /* PDBrandApiService.m in Sources */,
+				BC67F589520EE25D681D091B /* PDRewardAPIService.m in Sources */,
+				BC67F348F8098F8237693F9D /* PDSocialAPIService.m in Sources */,
+				BC67FF6F0C9145D3F47766D7 /* PDWalletAPIService.m in Sources */,
+				BC67F99A98DBBDD2F8CC4BED /* PDLocationAPIService.m in Sources */,
+				BC67F4D6CAE34F664AF37B3C /* PDReferralAPIService.m in Sources */,
+				BC67FAE361700CE9FCF09E94 /* PDRewardActionAPIService.m in Sources */,
+				BC67FABEDA5987CB6DAA7880 /* PDAPIClient.m in Sources */,
+				BC67F5BB09D851870D18E285 /* PDNetworkError.m in Sources */,
+				BC67F8BE30DE8BB1D7F93097 /* NSURLSession+Popdeem.m in Sources */,
+				BC67F753B2EEF7CCD826055D /* PDRewardStore.m in Sources */,
+				BC67F315ED6DD6E7A68D6DC2 /* PDBrandStore.m in Sources */,
+				BC67F8E071FDCAF25FE666A1 /* PDLocationStore.m in Sources */,
+				BC67F5D4ECB6F5BAB25D55EF /* PDWallet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
