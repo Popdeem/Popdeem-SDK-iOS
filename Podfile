@@ -12,6 +12,10 @@ target 'PopdeemSDK' do
     pod 'JSONModel'
 end
 
+target 'PopdeemSample' do
+    pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
+end
+
 target 'PopdeemSDKTests' do
     pod 'Expecta', '~> 1.0.0'
     pod 'Nocilla'
