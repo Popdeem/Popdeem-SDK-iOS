@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+@class PDSocialLoginViewController;
+
 @interface PDSocialLoginViewModel : NSObject <FBSDKLoginButtonDelegate>
 
-@property (nonatomic, strong) id viewController;
+@property (nonatomic, strong) PDSocialLoginViewController *viewController;
 
 @end

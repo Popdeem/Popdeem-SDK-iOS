@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "PDSocialLoginViewModel.h"
+
+@class PDSocialLoginViewModel;
 
 @interface PDSocialLoginViewController : UIViewController
 

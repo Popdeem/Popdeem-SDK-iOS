@@ -7,6 +7,7 @@
 //
 
 #import "PDSocialLoginViewController.h"
+#import "PDSocialLoginViewModel.h"
 
 @interface PDSocialLoginViewController ()
 
