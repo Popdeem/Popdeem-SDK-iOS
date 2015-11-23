@@ -33,11 +33,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Popdeem/Popdeem-SDK-iOS.git", :tag => s.version.to_s }
 
 
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.source_files  = "PopdeemSDK", "PopdeemSDK/**/*.{h,m}", "PopdeemSDK/**/**/*.{h,m}"
-  s.public_header_files = "PopdeemSDK/**/*.h"
-
-
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   # s.resources = "Resources/*.png"
 
@@ -49,9 +44,22 @@ Pod::Spec.new do |s|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.requires_arc = true
 
-  s.dependency "FBSDKLoginKit"
-  s.dependency "FBSDKCoreKit"
-  s.dependency "FBSDKShareKit"
-  s.dependency "STTwitter"
-  s.dependency "JSONModel"
+  # ――― Specs ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.default_subspecs = 'Core'
+
+  s.subspec 'Core' do |core|
+    core.source_files  =  "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}"
+    core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
+    core.dependency "FBSDKLoginKit"
+    core.dependency "FBSDKCoreKit"
+    core.dependency "FBSDKShareKit"
+    core.dependency "STTwitter"
+    core.dependency "JSONModel"
+  end
+
+  s.subspec 'UIKit' do |uikit|
+    uikit.source_files = "PopdeemSDK", 'PopdeemSDK/UIKit/*.{h,m}', 'PopdeemSDK/UIKit/**/*.{h,m}'
+    uikit.dependency "PopdeemSDK/Core"
+  end
+
 end
