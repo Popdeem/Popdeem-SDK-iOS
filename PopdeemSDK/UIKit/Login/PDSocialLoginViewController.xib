@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="backingView" destination="zXD-1c-3iT" id="qfZ-3f-hdf"/>
                 <outlet property="containterView" destination="6N2-o4-zDa" id="jdG-7X-5gH"/>
-                <outlet property="facebookLoginButton" destination="AGq-IQ-PkR" id="Gdd-F2-ljh"/>
                 <outlet property="loginButton" destination="AGq-IQ-PkR" id="Xdg-lP-61d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -41,6 +40,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="AUR-cB-LCO"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="oYW-wj-SxM"/>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="xd4-CO-EFb"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Popdeem" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-Mb-YSP">
@@ -53,7 +53,7 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To see what rewards you have unlocked, simply connect your Facebook account below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ0-lw-cgj">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="To see what rewards you have unlocked, simply connect your Facebook account below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ0-lw-cgj">
                                     <rect key="frame" x="20" y="276" width="264" height="29"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -74,7 +74,7 @@
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="AGq-IQ-PkR" firstAttribute="top" secondItem="XJ0-lw-cgj" secondAttribute="bottom" constant="8" id="0TL-Nd-dBp"/>
+                                <constraint firstItem="JLv-Mb-YSP" firstAttribute="top" secondItem="AGq-IQ-PkR" secondAttribute="bottom" constant="8" id="0pz-n0-Jbk"/>
                                 <constraint firstItem="jSw-bR-cZp" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="1y4-tR-qeM"/>
                                 <constraint firstAttribute="trailing" secondItem="VVY-dA-foM" secondAttribute="trailing" constant="8" id="7IA-1i-NQA"/>
                                 <constraint firstItem="JLv-Mb-YSP" firstAttribute="top" secondItem="AGq-IQ-PkR" secondAttribute="bottom" constant="8" id="Bmw-ma-rL4"/>
@@ -82,13 +82,14 @@
                                 <constraint firstAttribute="trailing" secondItem="JLv-Mb-YSP" secondAttribute="trailing" constant="8" id="FeN-uM-ZMP"/>
                                 <constraint firstAttribute="bottom" secondItem="JLv-Mb-YSP" secondAttribute="bottom" constant="8" id="Lz5-8q-ZVs"/>
                                 <constraint firstItem="jSw-bR-cZp" firstAttribute="top" secondItem="6N2-o4-zDa" secondAttribute="top" constant="17" id="PpI-W9-LiN"/>
-                                <constraint firstItem="AGq-IQ-PkR" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="VwX-sV-pV0"/>
                                 <constraint firstAttribute="trailing" secondItem="XJ0-lw-cgj" secondAttribute="trailing" constant="20" id="Yxu-PI-Ntc"/>
                                 <constraint firstItem="VVY-dA-foM" firstAttribute="top" secondItem="jSw-bR-cZp" secondAttribute="bottom" constant="8" id="d2u-cS-yX0"/>
                                 <constraint firstAttribute="trailing" secondItem="AGq-IQ-PkR" secondAttribute="trailing" constant="8" id="ecE-6j-8n2"/>
                                 <constraint firstAttribute="trailing" secondItem="jSw-bR-cZp" secondAttribute="trailing" constant="8" id="iOF-5a-PGA"/>
                                 <constraint firstItem="VVY-dA-foM" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="p2s-lf-ig9"/>
+                                <constraint firstItem="AGq-IQ-PkR" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="qY0-QW-D5I"/>
                                 <constraint firstItem="XJ0-lw-cgj" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="20" id="r7r-GQ-tpJ"/>
+                                <constraint firstAttribute="trailing" secondItem="AGq-IQ-PkR" secondAttribute="trailing" constant="8" id="sjn-3J-y1c"/>
                                 <constraint firstAttribute="height" constant="400" id="tZd-5J-IBJ"/>
                                 <constraint firstAttribute="width" constant="304" id="yyj-DU-qft"/>
                             </constraints>

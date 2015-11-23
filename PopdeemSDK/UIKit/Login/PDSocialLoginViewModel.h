@@ -11,4 +11,6 @@
 
 @interface PDSocialLoginViewModel : NSObject <FBSDKLoginButtonDelegate>
 
+@property (nonatomic, strong) id viewController;
+
 @end

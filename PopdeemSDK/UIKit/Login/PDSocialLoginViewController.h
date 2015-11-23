@@ -1,6 +1,6 @@
 //
 //  PDSocialLoginViewController.h
-//  PopdeemSDK
+//  ;
 //
 //  Created by Niall Quinn on 23/11/2015.
 //  Copyright © 2015 Popdeem. All rights reserved.
@@ -18,5 +18,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *containterView;
 
 @property (unsafe_unretained, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+
+- (id) initFromNib;
 
 @end
