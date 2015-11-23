@@ -27,10 +27,6 @@
 
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
-#import "PDCommon.h"
-
-//TODO - if defined
-#import "PDSocialLoginHandler.h"
 
 @interface PopdeemSDK()
 @end
@@ -56,8 +52,19 @@
 }
 
 + (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts {
-    PDSocialLoginHandler *handler = [[PDSocialLoginHandler alloc]init];
-    [handler showPromptIfNeededWithMaxAllowed:noOfPrompts];
+    Class loginClazz = NSClassFromString(@"PDSocialLoginHandler");
+    SEL selector = NSSelectorFromString(@"showPromptIfNeededWithMaxAllowed:");
+    
+    if(loginClazz){
+        id loginHandler = [[loginClazz alloc]init];
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+ [loginHandler performSelector:selector withObject:@(noOfPrompts)];
+#pragma clang diagnostic pop        
+    }else{
+        [NSException raise:@"Popdeem UIKit not installed - pod 'PopdeemSDK/UIKit'" format:@""];
+    }
 }
 
 @end

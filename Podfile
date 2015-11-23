@@ -9,7 +9,6 @@ target 'PopdeemSDK' do
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
     pod 'STTwitter'
-    pod 'Aspects'
     pod 'JSONModel'
 end
 

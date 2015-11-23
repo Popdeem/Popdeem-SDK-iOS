@@ -1,5 +1,4 @@
 PODS:
-  - Aspects (1.4.1)
   - Bolts (1.5.0):
     - Bolts/AppLinks (= 1.5.0)
     - Bolts/Tasks (= 1.5.0)
@@ -35,7 +34,6 @@ PODS:
   - STTwitter (0.2.2)
 
 DEPENDENCIES:
-  - Aspects
   - Expecta (~> 1.0.0)
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -51,7 +49,6 @@ EXTERNAL SOURCES:
     :path: "../Popdeem-SDK-iOS"
 
 SPEC CHECKSUMS:
-  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
