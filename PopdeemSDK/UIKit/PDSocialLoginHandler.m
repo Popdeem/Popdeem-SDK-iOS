@@ -8,6 +8,7 @@
 
 #import "PDSocialLoginHandler.h"
 #import "PDSocialLoginViewController.h"
+#import "PDSocialMediaManager.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 

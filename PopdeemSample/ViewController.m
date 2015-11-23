@@ -17,15 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-#warning This is for testing
-
-//    PDSocialLoginViewController *loginVC = [[PDSocialLoginViewController alloc] initFromNib];
-//    [self addChildViewController:loginVC];
-//    [loginVC didMoveToParentViewController:self];
     PDSocialLoginHandler *loginHandler = [[PDSocialLoginHandler alloc] init];
     [loginHandler showPromptIfNeededWithMaxAllowed:@100];
-    
 }
 
 - (void)didReceiveMemoryWarning {
