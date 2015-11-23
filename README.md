@@ -1,7 +1,7 @@
 
 ## Popdeem iOS SDK
-[![Build Status](https://travis-ci.org/Popdeem/Popdeem-SDK-iOS.svg)](https://travis-ci.org/Popdeem/Popdeem-SDK-iOS)
-[![Pod Version](https://img.shields.io/cocoapods/v/PopdeemSDK.svg)]
+[![Build Status](https://travis-ci.org/Popdeem/Popdeem-SDK-iOS.svg)](https://travis-ci.org/Popdeem/Popdeem-SDK-iOS)  
+![Pod Version](https://img.shields.io/cocoapods/v/PopdeemSDK.svg)
 
 Full documentation at the [Popdeem Developer](http://www.popdeem.com/developer/iosdocs "iOS Docs") Portal.
 -----
