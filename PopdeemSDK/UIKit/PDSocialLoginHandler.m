@@ -7,6 +7,7 @@
 //
 
 #import "PDSocialLoginHandler.h"
+#import "PDSocialLoginViewController.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
@@ -21,7 +22,7 @@ static NSString *const PDUseCountKey = @"PDUseCount";
     self.maxPrompts = numberOfTimes.integerValue;
 
     if(self.usesCount  < self.maxPrompts){
-        //TODO hookup nialls ui - using [self topViewController] presentviewcontroller
+        [[self topViewController] presentViewController:[[PDSocialLoginViewController alloc] initFromNib] animated:YES completion:^{}];
         NSLog(@"Showing popdeem social login");
         [self setUsesCount:self.usesCount+1];
     }
@@ -41,6 +42,8 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 }
 
 - (UIViewController *)topViewController {
+//TODO: this failed for single view application
+//After embedding the initial vc in a navigation controller in storboard, it worked
     return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 }
 

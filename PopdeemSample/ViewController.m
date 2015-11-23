@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "PDSocialLoginViewController.h"
+#import "PDSocialLoginHandler.h"
 
 @interface ViewController ()
 
@@ -20,10 +20,11 @@
     
 #warning This is for testing
 
-    PDSocialLoginViewController *loginVC = [[PDSocialLoginViewController alloc] initFromNib];
-    [self addChildViewController:loginVC];
-    [loginVC didMoveToParentViewController:self];
-
+//    PDSocialLoginViewController *loginVC = [[PDSocialLoginViewController alloc] initFromNib];
+//    [self addChildViewController:loginVC];
+//    [loginVC didMoveToParentViewController:self];
+    PDSocialLoginHandler *loginHandler = [[PDSocialLoginHandler alloc] init];
+    [loginHandler showPromptIfNeededWithMaxAllowed:@100];
     
 }
 
