@@ -10,4 +10,6 @@
 
 @interface PDSocialLoginHandler : NSObject
 
+- (void)showPromptIfNeededWithMaxAllowed:(NSInteger)numberOfTimes;
+
 @end

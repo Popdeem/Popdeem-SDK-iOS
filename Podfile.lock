@@ -1,4 +1,5 @@
 PODS:
+  - Aspects (1.4.1)
   - Bolts (1.5.0):
     - Bolts/AppLinks (= 1.5.0)
     - Bolts/Tasks (= 1.5.0)
@@ -29,9 +30,12 @@ PODS:
     - FBSDKShareKit
     - JSONModel
     - STTwitter
+  - PopdeemSDK/UIKit (0.1.17):
+    - PopdeemSDK/Core
   - STTwitter (0.2.2)
 
 DEPENDENCIES:
+  - Aspects
   - Expecta (~> 1.0.0)
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -39,6 +43,7 @@ DEPENDENCIES:
   - JSONModel
   - Nocilla
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
+  - PopdeemSDK/UIKit (from `../Popdeem-SDK-iOS`)
   - STTwitter
 
 EXTERNAL SOURCES:
@@ -46,6 +51,7 @@ EXTERNAL SOURCES:
     :path: "../Popdeem-SDK-iOS"
 
 SPEC CHECKSUMS:
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
@@ -53,7 +59,7 @@ SPEC CHECKSUMS:
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
   Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
-  PopdeemSDK: 61a86bd9a5c9c419854359f1b6d8319ed79afbd4
+  PopdeemSDK: e5d801c49cf1ce18e8fa9bad9a3282278f6cb0ff
   STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
 
 COCOAPODS: 0.39.0
