@@ -8,16 +8,37 @@
 
 #import "PDSocialLoginHandler.h"
 
+static NSString *const PDUseCountKey = @"PDUseCount";
+
+@interface PDSocialLoginHandler()
+@property (nonatomic, assign) NSUInteger usesCount;
+@property (nonatomic, assign) NSUInteger maxPrompts;
+@end
+
 @implementation PDSocialLoginHandler
 
-+ (void)load {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidLaunch)
-                                                 name:@"UIApplicationDidFinishLaunchingNotification" object:nil];
-    
+- (void)showPromptIfNeededWithMaxAllowed:(NSInteger)numberOfTimes  {
+    self.maxPrompts = numberOfTimes;
+
+    if(self.usesCount  < self.maxPrompts){
+        //TODO hookup nialls ui
+        //[self showSocialLogin];
+        NSLog(@"Showing social login");
+        [self setUsesCount:self.usesCount+1];
+    }
 }
 
-- (void)appDidLaunch {
-    NSLog(@"did launch");
+- (NSUInteger)usesCount {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
+}
+
+- (void)setUsesCount:(NSUInteger)count {
+    [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)count forKey:PDUseCountKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSUInteger)numberOfPromptsAllowed {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
 }
 
 @end

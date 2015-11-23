@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL) validatePopdeemApiKey;
 
++ (BOOL) isUiKitLoaded;
+
 /*!
  * @abstract Get Popdeem API Key
  *

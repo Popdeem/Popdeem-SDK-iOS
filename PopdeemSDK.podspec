@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'Core'
 
   s.subspec 'Core' do |core|
-    core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}"
+    core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
     core.dependency "FBSDKLoginKit"
     core.dependency "FBSDKCoreKit"

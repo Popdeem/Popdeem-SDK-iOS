@@ -9,11 +9,13 @@ target 'PopdeemSDK' do
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
     pod 'STTwitter'
+    pod 'Aspects'
     pod 'JSONModel'
 end
 
 target 'PopdeemSample' do
     pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
+    pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
 end
 
 target 'PopdeemSDKTests' do

@@ -58,5 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) withAPIKey:(NSString*)apiKey;
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier;
 
++ (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts;
+
 @end
 NS_ASSUME_NONNULL_END

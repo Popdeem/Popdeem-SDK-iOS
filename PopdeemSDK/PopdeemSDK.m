@@ -27,6 +27,13 @@
 
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
+#import "PDCommon.h"
+
+//TODO - if defined
+#import "PDSocialLoginHandler.h"
+
+@interface PopdeemSDK()
+@end
 
 @implementation PopdeemSDK
 
@@ -44,8 +51,13 @@
     [SDK setApiKey:apiKey];
 }
 
-+ (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier {
++ (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*) verifier {
     [[PDSocialMediaManager manager] setOAuthToken:token oauthVerifier:verifier];
+}
+
++ (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts {
+    PDSocialLoginHandler *handler = [[PDSocialLoginHandler alloc]init];
+    [handler showPromptIfNeededWithMaxAllowed:noOfPrompts];
 }
 
 @end
