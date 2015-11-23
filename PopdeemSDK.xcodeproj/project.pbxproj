@@ -25,6 +25,8 @@
 		391CE06E1BFF468400868532 /* Reward.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0671BFF468400868532 /* Reward.json */; };
 		391CE06F1BFF468400868532 /* Rewards.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0681BFF468400868532 /* Rewards.json */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
+		398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */; };
+		398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
 		39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92781B8F125400D16F18 /* BrandTests.m */; };
 		39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92791B8F125400D16F18 /* FeedItemTests.m */; };
@@ -123,6 +125,11 @@
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
+		398E4B761C03744B00A68529 /* PDSocialLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginViewController.h; path = Login/PDSocialLoginViewController.h; sourceTree = "<group>"; };
+		398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewController.m; path = Login/PDSocialLoginViewController.m; sourceTree = "<group>"; };
+		398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDSocialLoginViewController.xib; path = Login/PDSocialLoginViewController.xib; sourceTree = "<group>"; };
+		398E4B7A1C03766500A68529 /* PDSocialLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginViewModel.h; path = Login/PDSocialLoginViewModel.h; sourceTree = "<group>"; };
+		398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewModel.m; path = Login/PDSocialLoginViewModel.m; sourceTree = "<group>"; };
 		39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDKTests.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDKTests.a"; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,6 +299,18 @@
 				39EF92791B8F125400D16F18 /* FeedItemTests.m */,
 			);
 			name = ModelTests;
+			sourceTree = "<group>";
+		};
+		398E4B751C03730100A68529 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				398E4B761C03744B00A68529 /* PDSocialLoginViewController.h */,
+				398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */,
+				398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */,
+				398E4B7A1C03766500A68529 /* PDSocialLoginViewModel.h */,
+				398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		39D7D05C1B8F0DCF00E45D0B = {
@@ -545,6 +564,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				398E4B751C03730100A68529 /* Login */,
 				BC67F65A4E33DADDC2CA0D1A /* PDFacebookLoginButton.h */,
 				BC67FE603F2F3D5DB84F340A /* PDFacebookLoginButton.m */,
 				A90FA4BF1C035C9A001DA473 /* PDSocialLoginHandler.h */,
@@ -814,7 +834,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
+				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				A90FA4C11C035C9A001DA473 /* PDSocialLoginHandler.m in Sources */,
+				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PDSocialLoginViewController.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+#warning This is for testing
+
+    PDSocialLoginViewController *loginVC = [[PDSocialLoginViewController alloc] initFromNib];
+    [self addChildViewController:loginVC];
+    [loginVC didMoveToParentViewController:self];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
