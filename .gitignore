@@ -6,6 +6,10 @@
 build/
 DerivedData
 
+.idea/**
+.idea/encodings.xml
+.idea/
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
