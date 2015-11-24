@@ -17,7 +17,6 @@
 
 - (id) initFromNib {
     NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
-
     if (self = [self initWithNibName:@"PDSocialLoginViewController" bundle:podBundle]) {
         return self;
     }

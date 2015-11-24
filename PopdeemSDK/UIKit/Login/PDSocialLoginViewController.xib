@@ -27,69 +27,87 @@
                                     <rect key="frame" x="8" y="46" width="288" height="21"/>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="8JD-NF-1tG"/>
+                                        <constraint firstAttribute="height" constant="21" id="3lP-tG-MeU"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGq-IQ-PkR" customClass="FBSDKLoginButton">
-                                    <rect key="frame" x="8" y="313" width="288" height="50"/>
+                                    <rect key="frame" x="8" y="297" width="288" height="50"/>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="AUR-cB-LCO"/>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="oYW-wj-SxM"/>
-                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="xd4-CO-EFb"/>
+                                        <constraint firstAttribute="height" constant="50" id="fvY-nY-Ayn"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Popdeem" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-Mb-YSP">
-                                    <rect key="frame" x="8" y="371" width="288" height="21"/>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="U6u-Oa-U81"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="To see what rewards you have unlocked, simply connect your Facebook account below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ0-lw-cgj">
-                                    <rect key="frame" x="20" y="276" width="264" height="29"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Update " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSw-bR-cZp">
                                     <rect key="frame" x="8" y="17" width="288" height="21"/>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="23O-LK-mpF"/>
+                                        <constraint firstAttribute="height" constant="21" id="Jwg-fl-Wyd"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                     <color key="textColor" red="0.74509803921568629" green="0.25098039215686274" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_rewardsIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="obk-PH-sSJ">
+                                    <rect key="frame" x="101" y="116" width="100" height="100"/>
+                                    <animations/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_rainbow.png" translatesAutoresizingMaskIntoConstraints="NO" id="9WB-nZ-s3O">
+                                    <rect key="frame" x="113" y="384" width="78" height="8"/>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="8" id="Ddy-N5-Q72"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Popdeem" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-Mb-YSP">
+                                    <rect key="frame" x="8" y="355" width="288" height="21"/>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="Tdd-Ua-Prf"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To see what rewards you have unlocked, simply connect your Facebook account below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ0-lw-cgj">
+                                    <rect key="frame" x="20" y="260" width="264" height="29"/>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="29" id="wyy-5c-c6S"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="JLv-Mb-YSP" firstAttribute="top" secondItem="AGq-IQ-PkR" secondAttribute="bottom" constant="8" id="0pz-n0-Jbk"/>
-                                <constraint firstItem="jSw-bR-cZp" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="1y4-tR-qeM"/>
-                                <constraint firstAttribute="trailing" secondItem="VVY-dA-foM" secondAttribute="trailing" constant="8" id="7IA-1i-NQA"/>
-                                <constraint firstItem="JLv-Mb-YSP" firstAttribute="top" secondItem="AGq-IQ-PkR" secondAttribute="bottom" constant="8" id="Bmw-ma-rL4"/>
-                                <constraint firstItem="JLv-Mb-YSP" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="CrR-D1-DwS"/>
-                                <constraint firstAttribute="trailing" secondItem="JLv-Mb-YSP" secondAttribute="trailing" constant="8" id="FeN-uM-ZMP"/>
-                                <constraint firstAttribute="bottom" secondItem="JLv-Mb-YSP" secondAttribute="bottom" constant="8" id="Lz5-8q-ZVs"/>
-                                <constraint firstItem="jSw-bR-cZp" firstAttribute="top" secondItem="6N2-o4-zDa" secondAttribute="top" constant="17" id="PpI-W9-LiN"/>
-                                <constraint firstAttribute="trailing" secondItem="XJ0-lw-cgj" secondAttribute="trailing" constant="20" id="Yxu-PI-Ntc"/>
-                                <constraint firstItem="VVY-dA-foM" firstAttribute="top" secondItem="jSw-bR-cZp" secondAttribute="bottom" constant="8" id="d2u-cS-yX0"/>
-                                <constraint firstAttribute="trailing" secondItem="AGq-IQ-PkR" secondAttribute="trailing" constant="8" id="ecE-6j-8n2"/>
-                                <constraint firstAttribute="trailing" secondItem="jSw-bR-cZp" secondAttribute="trailing" constant="8" id="iOF-5a-PGA"/>
-                                <constraint firstItem="VVY-dA-foM" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="p2s-lf-ig9"/>
-                                <constraint firstItem="AGq-IQ-PkR" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="qY0-QW-D5I"/>
-                                <constraint firstItem="XJ0-lw-cgj" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="20" id="r7r-GQ-tpJ"/>
-                                <constraint firstAttribute="trailing" secondItem="AGq-IQ-PkR" secondAttribute="trailing" constant="8" id="sjn-3J-y1c"/>
+                                <constraint firstItem="9WB-nZ-s3O" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="113" id="1Zv-NB-DTB"/>
+                                <constraint firstItem="XJ0-lw-cgj" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="20" id="7la-89-jLe"/>
+                                <constraint firstItem="obk-PH-sSJ" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="101" id="9Vv-EH-iMA"/>
+                                <constraint firstAttribute="trailing" secondItem="XJ0-lw-cgj" secondAttribute="trailing" constant="20" id="Epy-o9-pgv"/>
+                                <constraint firstItem="XJ0-lw-cgj" firstAttribute="top" secondItem="obk-PH-sSJ" secondAttribute="bottom" constant="44" id="KdH-EN-gP1"/>
+                                <constraint firstItem="AGq-IQ-PkR" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="Lgh-yP-fgd"/>
+                                <constraint firstAttribute="trailing" secondItem="AGq-IQ-PkR" secondAttribute="trailing" constant="8" id="NEK-Ws-4YJ"/>
+                                <constraint firstItem="9WB-nZ-s3O" firstAttribute="top" secondItem="JLv-Mb-YSP" secondAttribute="bottom" constant="8" id="OPY-8H-4qX"/>
+                                <constraint firstAttribute="trailing" secondItem="JLv-Mb-YSP" secondAttribute="trailing" constant="8" id="Pjp-UF-FSC"/>
+                                <constraint firstItem="JLv-Mb-YSP" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="WW0-fh-ytR"/>
+                                <constraint firstItem="jSw-bR-cZp" firstAttribute="top" secondItem="6N2-o4-zDa" secondAttribute="top" constant="17" id="X3n-cR-jn5"/>
+                                <constraint firstItem="VVY-dA-foM" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="bQW-xw-TtM"/>
+                                <constraint firstAttribute="trailing" secondItem="VVY-dA-foM" secondAttribute="trailing" constant="8" id="f5M-nR-rBY"/>
+                                <constraint firstAttribute="trailing" secondItem="9WB-nZ-s3O" secondAttribute="trailing" constant="113" id="g2d-eZ-j3v"/>
+                                <constraint firstItem="JLv-Mb-YSP" firstAttribute="top" secondItem="AGq-IQ-PkR" secondAttribute="bottom" constant="8" id="igj-9Y-BuY"/>
+                                <constraint firstAttribute="trailing" secondItem="jSw-bR-cZp" secondAttribute="trailing" constant="8" id="j1W-JL-Tz2"/>
+                                <constraint firstItem="AGq-IQ-PkR" firstAttribute="top" secondItem="XJ0-lw-cgj" secondAttribute="bottom" constant="8" id="ju5-4C-ZzF"/>
+                                <constraint firstItem="obk-PH-sSJ" firstAttribute="top" secondItem="VVY-dA-foM" secondAttribute="bottom" constant="49" id="jyf-4C-oAR"/>
+                                <constraint firstItem="jSw-bR-cZp" firstAttribute="leading" secondItem="6N2-o4-zDa" secondAttribute="leading" constant="8" id="kR7-wQ-Jmi"/>
+                                <constraint firstAttribute="trailing" secondItem="obk-PH-sSJ" secondAttribute="trailing" constant="103" id="qWA-7Y-erj"/>
+                                <constraint firstItem="VVY-dA-foM" firstAttribute="top" secondItem="jSw-bR-cZp" secondAttribute="bottom" constant="8" id="rPd-ZB-sKR"/>
+                                <constraint firstAttribute="bottom" secondItem="9WB-nZ-s3O" secondAttribute="bottom" constant="8" id="s9Q-wQ-6N3"/>
                                 <constraint firstAttribute="height" constant="400" id="tZd-5J-IBJ"/>
                                 <constraint firstAttribute="width" constant="304" id="yyj-DU-qft"/>
                             </constraints>
@@ -114,4 +132,8 @@
             <point key="canvasLocation" x="814" y="474"/>
         </view>
     </objects>
+    <resources>
+        <image name="pduikit_rainbow.png" width="80" height="8"/>
+        <image name="pduikit_rewardsIcon.png" width="100" height="100"/>
+    </resources>
 </document>

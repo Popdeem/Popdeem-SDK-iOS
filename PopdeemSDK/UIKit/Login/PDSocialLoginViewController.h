@@ -13,7 +13,7 @@
 
 @interface PDSocialLoginViewController : UIViewController
 
-@property (nonatomic, assign) PDSocialLoginViewModel *viewModel;
+@property (nonatomic, retain) PDSocialLoginViewModel *viewModel;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *backingView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *containterView;

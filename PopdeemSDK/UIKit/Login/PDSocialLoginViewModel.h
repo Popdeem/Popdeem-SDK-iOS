@@ -13,6 +13,6 @@
 
 @interface PDSocialLoginViewModel : NSObject <FBSDKLoginButtonDelegate>
 
-@property (nonatomic, strong) PDSocialLoginViewController *viewController;
+@property (nonatomic, assign) PDSocialLoginViewController *viewController;
 
 @end

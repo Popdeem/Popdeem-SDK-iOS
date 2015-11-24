@@ -141,6 +141,11 @@
 		39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDKTests.m; sourceTree = "<group>"; };
 		39EF92821B8F125D00D16F18 /* RewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTests.m; sourceTree = "<group>"; };
 		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
+		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
+		39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@2x.png"; path = "Resources/pduikit_rainbow@2x.png"; sourceTree = "<group>"; };
+		39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@3x.png"; path = "Resources/pduikit_rainbow@3x.png"; sourceTree = "<group>"; };
+		39FD1C191C046DAE00CC3B0C /* pduikit_rewardsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rewardsIcon.png; path = Resources/pduikit_rewardsIcon.png; sourceTree = "<group>"; };
+		39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIcon@2x.png"; path = "Resources/pduikit_rewardsIcon@2x.png"; sourceTree = "<group>"; };
 		63F4E1F058416F172D304096 /* Feeds.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; name = Feeds.json; path = JSON/Feeds.json; sourceTree = "<group>"; };
 		7328E046345EC7EE3EC6B270 /* libPods-PopdeemSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,6 +390,18 @@
 			name = JSON;
 			sourceTree = "<group>";
 		};
+		39FD1C151C046DA100CC3B0C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */,
+				39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */,
+				39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */,
+				39FD1C191C046DAE00CC3B0C /* pduikit_rewardsIcon.png */,
+				39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		4EF69A0328B0579398DD2DED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +581,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				39FD1C151C046DA100CC3B0C /* Resources */,
 				398E4B751C03730100A68529 /* Login */,
 				BC67F65A4E33DADDC2CA0D1A /* PDFacebookLoginButton.h */,
 				BC67FE603F2F3D5DB84F340A /* PDFacebookLoginButton.m */,

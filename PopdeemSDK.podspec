@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.resources = "Resources/*.png", "PopdeemSDK/UIKit/*{xib,png}", "PopdeemSDK/UIKit/**/*.{xib,png}"
+  s.resources = "Resources/*.png", "PopdeemSDK/UIKit/*{xib,png}", "PopdeemSDK/UIKit/**/*.{xib,png}", "PopdeemSDK/UIKit/**/**/*.{xib,png}"
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
