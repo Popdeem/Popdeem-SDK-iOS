@@ -9,10 +9,13 @@
 #import "PDSocialLoginHandler.h"
 #import "PDSocialLoginViewController.h"
 #import "PDSocialMediaManager.h"
+#import "PDUIKitUtils.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
-@interface PDSocialLoginHandler()
+@interface PDSocialLoginHandler() {
+    BOOL shownThisLaunch;
+}
 @property (nonatomic, assign) NSUInteger usesCount;
 @property (nonatomic, assign) NSUInteger maxPrompts;
 @end
@@ -21,12 +24,20 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 
 - (void)showPromptIfNeededWithMaxAllowed:(NSNumber*)numberOfTimes  {
     self.maxPrompts = numberOfTimes.integerValue;
-
-    if(self.usesCount  < self.maxPrompts){
-        [[self topViewController] presentViewController:[[PDSocialLoginViewController alloc] initFromNib] animated:YES completion:^{}];
-        NSLog(@"Showing popdeem social login");
-        [self setUsesCount:self.usesCount+1];
+    
+    if (self.usesCount  < self.maxPrompts) {
+        [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.2];
     }
+}
+
+- (void) presentLoginModal {
+    [[self topViewController] setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initFromNib];
+    vc.snapshotView.image = [PDUIKitUtils screenSnapshot];
+    [[self topViewController] presentViewController:vc animated:YES completion:^{}];
+    NSLog(@"Showing popdeem social login");
+    [self setUsesCount:self.usesCount+1];
+
 }
 
 - (NSUInteger)usesCount {

@@ -51,6 +51,8 @@
 
 - (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error completion:(void (^)(NSError *error))completion;
 
+- (void) nextStepForFacebookLoggedInUser:(void (^)(NSError *error))completion;
+
 - (void) facebookRequestPublishPermissions:(void (^)(void))success
                                    failure:(void (^)(NSError *err))failure;
 

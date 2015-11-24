@@ -17,8 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PDSocialLoginHandler *loginHandler = [[PDSocialLoginHandler alloc] init];
-    [loginHandler showPromptIfNeededWithMaxAllowed:@100];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+
 }
 
 - (void)didReceiveMemoryWarning {

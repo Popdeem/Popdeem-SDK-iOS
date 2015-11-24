@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "PopdeemSDK.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "PDSocialLoginHandler.h"
 
 @interface AppDelegate ()
 
@@ -18,9 +20,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
     [PopdeemSDK withAPIKey:@"43507f68-eeab-49e7-abf0-da099b14f17f"];
-    [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
+    [PopdeemSDK enableSocialLoginWithNumberOfPrompts:300];
+    
     return YES;
+}
+
+- (BOOL) application:(UIApplication *)application
+             openURL:(NSURL *)url
+   sourceApplication:(NSString *)sourceApplication
+          annotation:(id)annotation {
+    
+    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    //TODO: We could maybe take this into a Popdeem class and lighten the FB integration burden?
+    BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                     openURL:url
+                                                           sourceApplication:sourceApplication
+                                                                  annotation:annotation];
+    
+    // You can add your app-specific url handling code here if needed
+    
+    return wasHandled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

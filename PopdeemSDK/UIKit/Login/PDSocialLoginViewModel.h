@@ -15,4 +15,5 @@
 
 @property (nonatomic, assign) PDSocialLoginViewController *viewController;
 
+- (void) proceedWithLoggedInUser;
 @end

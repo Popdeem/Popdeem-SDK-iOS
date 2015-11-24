@@ -46,9 +46,9 @@
 	<key>PopdeemApiKey</key>
 	<string>43507f68-eeab-49e7-abf0-da099b14f17f</string>
 	<key>FacebookAppID</key>
-	<string>317234361671287</string>
+	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>
-	<string>Popdeem</string>
+	<string>PopdeemStaging</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -61,7 +61,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb317234361671287</string>
+				<string>fb370441856449418</string>
 			</array>
 		</dict>
 	</array>

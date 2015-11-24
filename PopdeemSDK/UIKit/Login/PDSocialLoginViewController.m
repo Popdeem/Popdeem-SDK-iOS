@@ -8,8 +8,10 @@
 
 #import "PDSocialLoginViewController.h"
 #import "PDSocialLoginViewModel.h"
+#import "PDSocialMediaManager.h"
 
-@interface PDSocialLoginViewController ()
+@interface PDSocialLoginViewController () {
+}
 
 @end
 
@@ -18,12 +20,14 @@
 - (id) initFromNib {
     NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
     if (self = [self initWithNibName:@"PDSocialLoginViewController" bundle:podBundle]) {
+        self.view.backgroundColor = [UIColor clearColor];
         return self;
     }
     return nil;
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     _viewModel = [[PDSocialLoginViewModel alloc] init];
     [_viewModel setViewController:self];
@@ -32,8 +36,15 @@
     //Backing View Dismiss Recogniser
     UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
     [_backingView addGestureRecognizer:backingTap];
+
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    BOOL isLoggedIn = [[PDSocialMediaManager manager] isLoggedInWithFacebook];
+    if (isLoggedIn && !_facebookLoginOccurring) {
+        [_viewModel proceedWithLoggedInUser];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -51,6 +62,10 @@
     [self dismissViewControllerAnimated:YES completion:^{
         //Any cleanup to do?
     }];
+}
+
+- (IBAction) continueAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

@@ -7,24 +7,76 @@
 //
 
 #import "PDSocialLoginViewModel.h"
+#import "PDSocialLoginViewController.h"
 #import "PDSocialMediaManager.h"
+#import "PDModalLoadingView.h"
 
+@interface PDSocialLoginViewModel() {
+    PDModalLoadingView *loadingView;
+}
+
+@end
 @implementation PDSocialLoginViewModel
 
 - (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
     //Perform Popdeem User Login
-    PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self.viewController];
-    [manager loginButton:loginButton didCompleteWithResult:result error:error completion:^(NSError* error){
-        if (error) {
-            NSLog(@"Something went wrong: %@",error);
-            return;
-        }
-        NSLog(@"User Is Logged In");
-    }];
+    if (error) {
+        //Show error message
+        return;
+    }
+    [self proceedWithLoggedInUser];
 }
 
 - (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
     //Should clear up Popdeem User
+}
+
+
+- (void) showPublishFlowIfNeeded {
+    BOOL publish = [self checkPublishPermissions];
+    if (publish) {
+        [_viewController dismissViewControllerAnimated:YES completion:^{}];
+    } else {
+        
+    }
+}
+
+- (BOOL) checkPublishPermissions {
+    return YES;
+}
+
+- (void) proceedWithLoggedInUser {
+    loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.view];
+    [loadingView showAnimated:YES];
+    
+    PDSocialMediaManager *man = [[PDSocialMediaManager alloc] init];
+    [man nextStepForFacebookLoggedInUser:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [loadingView hideAnimated:YES];
+        });
+        if (error) {
+            NSLog(@"Something went wrong: %@",error);
+//            [[PDSocialMediaManager manager] logoutFacebook];
+            return;
+        }
+        NSLog(@"Now User is Logged in...");
+        [self renderSuccess];
+    }];
+}
+
+- (BOOL) loginButtonWillLogin:(FBSDKLoginButton *)loginButton {
+    _viewController.facebookLoginOccurring = YES;
+    return YES;
+}
+
+- (void) renderSuccess {
+    _viewController.titleLabel.text = @"Connected!";
+    _viewController.titleLabel.textColor = [UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000];
+    _viewController.iconView.image = [UIImage imageNamed:@"pduikit_rewardsIconSuccess"];
+    [_viewController.descriptionLabel setText:@"Rewards are now unlocked. You will be notified when new rewards are available!"];
+    [_viewController.loginButton setHidden:YES];
+    [_viewController.continueButton setHidden:NO];
+    [_viewController.view setNeedsDisplay];
 }
 
 @end

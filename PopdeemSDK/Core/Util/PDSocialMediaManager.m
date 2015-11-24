@@ -45,7 +45,7 @@
     return self;
 }
 
--(BOOL)isLoggedIn {
+-(BOOL) isLoggedIn {
     if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
         PDUser *user = [self fetchPopdeemUser];
         if (user == nil) {
@@ -112,6 +112,8 @@
             } failure:^(NSError *error) {
                 failure(error);
             }];
+         } else {
+             failure(error);
          }
      }];
 }
@@ -173,7 +175,19 @@
 }
 
 - (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error completion:(void (^)(NSError *error))completion {
-    
+    [self registerAfterLogin:^{
+        completion(nil);
+    } failure:^(NSError *error){
+        completion(error);
+    }];
+}
+
+- (void) nextStepForFacebookLoggedInUser:(void (^)(NSError *error))completion {
+    [self registerAfterLogin:^{
+        completion(nil);
+    } failure:^(NSError *error){
+        completion(error);
+    }];
 }
 
 #pragma mark - Twitter -

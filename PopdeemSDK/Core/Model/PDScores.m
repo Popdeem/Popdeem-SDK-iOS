@@ -34,7 +34,7 @@
 +(JSONKeyMapper*)keyMapper {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
                                                        @"total_score.value": @"total",
-                                                       @"influence_score.engangement_score_value": @"engagement",
+                                                       @"influence_score.engagement_score_value": @"engagement",
                                                        @"influence_score.reach_score_value": @"reach",
                                                        @"influence_score.frequency_score_value": @"frequency",
                                                        @"advocacy_score.value": @"advocacy"

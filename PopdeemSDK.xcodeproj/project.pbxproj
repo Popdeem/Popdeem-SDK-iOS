@@ -34,6 +34,10 @@
 		39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */; };
 		39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92821B8F125D00D16F18 /* RewardTests.m */; };
 		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
+		39FD1C1E1C046F6300CC3B0C /* PDModalLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C1D1C046F6300CC3B0C /* PDModalLoadingView.m */; };
+		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
+		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
+		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
 		55E0F480843FAE4040696615 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
 		63F4E9B168ED4C923CDFADFB /* Feeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 63F4E1F058416F172D304096 /* Feeds.json */; };
 		A90FA4C11C035C9A001DA473 /* PDSocialLoginHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4C01C035C9A001DA473 /* PDSocialLoginHandler.m */; };
@@ -146,6 +150,12 @@
 		39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@3x.png"; path = "Resources/pduikit_rainbow@3x.png"; sourceTree = "<group>"; };
 		39FD1C191C046DAE00CC3B0C /* pduikit_rewardsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rewardsIcon.png; path = Resources/pduikit_rewardsIcon.png; sourceTree = "<group>"; };
 		39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIcon@2x.png"; path = "Resources/pduikit_rewardsIcon@2x.png"; sourceTree = "<group>"; };
+		39FD1C1C1C046F6300CC3B0C /* PDModalLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDModalLoadingView.h; path = Loading/PDModalLoadingView.h; sourceTree = "<group>"; };
+		39FD1C1D1C046F6300CC3B0C /* PDModalLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDModalLoadingView.m; path = Loading/PDModalLoadingView.m; sourceTree = "<group>"; };
+		39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rewardsIconSuccess.png; path = Resources/pduikit_rewardsIconSuccess.png; sourceTree = "<group>"; };
+		39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIconSuccess@2x.png"; path = "Resources/pduikit_rewardsIconSuccess@2x.png"; sourceTree = "<group>"; };
+		39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIKitUtils.h; path = Utilities/PDUIKitUtils.h; sourceTree = "<group>"; };
+		39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIKitUtils.m; path = Utilities/PDUIKitUtils.m; sourceTree = "<group>"; };
 		63F4E1F058416F172D304096 /* Feeds.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; name = Feeds.json; path = JSON/Feeds.json; sourceTree = "<group>"; };
 		7328E046345EC7EE3EC6B270 /* libPods-PopdeemSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,9 +321,9 @@
 			children = (
 				398E4B761C03744B00A68529 /* PDSocialLoginViewController.h */,
 				398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */,
-				398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */,
 				398E4B7A1C03766500A68529 /* PDSocialLoginViewModel.h */,
 				398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */,
+				398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -398,8 +408,28 @@
 				39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */,
 				39FD1C191C046DAE00CC3B0C /* pduikit_rewardsIcon.png */,
 				39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */,
+				39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */,
+				39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		39FD1C1B1C046F2100CC3B0C /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				39FD1C1C1C046F6300CC3B0C /* PDModalLoadingView.h */,
+				39FD1C1D1C046F6300CC3B0C /* PDModalLoadingView.m */,
+			);
+			name = Loading;
+			sourceTree = "<group>";
+		};
+		39FD1C2A1C04B24F00CC3B0C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */,
+				39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		4EF69A0328B0579398DD2DED /* Frameworks */ = {
@@ -581,6 +611,8 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				39FD1C2A1C04B24F00CC3B0C /* Utilities */,
+				39FD1C1B1C046F2100CC3B0C /* Loading */,
 				39FD1C151C046DA100CC3B0C /* Resources */,
 				398E4B751C03730100A68529 /* Login */,
 				BC67F65A4E33DADDC2CA0D1A /* PDFacebookLoginButton.h */,
@@ -703,11 +735,13 @@
 				391CE06E1BFF468400868532 /* Reward.json in Resources */,
 				391CE06A1BFF468400868532 /* Brands.json in Resources */,
 				391CE06C1BFF468400868532 /* Locations.json in Resources */,
+				39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */,
 				391CE06F1BFF468400868532 /* Rewards.json in Resources */,
 				391CE06D1BFF468400868532 /* PDFeedItem_WithPicture.json in Resources */,
 				391CE06B1BFF468400868532 /* Location.json in Resources */,
 				391CE0691BFF468400868532 /* Brand.json in Resources */,
 				63F4E9B168ED4C923CDFADFB /* Feeds.json in Resources */,
+				39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,7 +887,9 @@
 			files = (
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
+				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
 				A90FA4C11C035C9A001DA473 /* PDSocialLoginHandler.m in Sources */,
+				39FD1C1E1C046F6300CC3B0C /* PDModalLoadingView.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
