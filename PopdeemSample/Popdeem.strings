@@ -6,7 +6,9 @@
   Copyright © 2015 Popdeem. All rights reserved.
 */
 
-"popdeem.sociallogin.success" = "Connected!";
-"popdeem.sociallogin.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";
+"popdeem.sociallogin.title.loggedIn" = "Connected!";
+"popdeem.sociallogin.title.loggedOut" = "App Update";
+"popdeem.sociallogin.description.loggedIn" = "Rewards are now unlocked. You will be notified when new rewards are available!";
+"popdeem.sociallogin.description.loggedOut" = "To see what rewards you have unlocked, simply connect your Facebook account below.";
 "popdeem.common.loading" = "Loading";
 "popdeem.common.wait" = "Please Wait";

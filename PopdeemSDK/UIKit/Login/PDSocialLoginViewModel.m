@@ -153,18 +153,18 @@
 - (void) setState:(LoginState)state {
     switch (state) {
         case LoginStateContinue:
-            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.success", nil);
+            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.title.loggedIn", nil);
             self.subTitleLabelString = @"Rewards Available";
             self.iconImageName = @"pduikit_rewardsIconSuccess";
-            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description", nil);
+            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description.loggedIn", nil);
             self.loginState = LoginStateContinue;
             break;
         case LoginStateLogin:
         default:
-            self.titleLabelString = @"App Update";
+            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.title.loggedOut", nil);
             self.subTitleLabelString = @"Rewards Available";
             self.iconImageName = @"pduikit_rewardsIcon";
-            self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below.";
+            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description.loggedOut", nil);
             self.loginState = LoginStateLogin;
             break;
     }
