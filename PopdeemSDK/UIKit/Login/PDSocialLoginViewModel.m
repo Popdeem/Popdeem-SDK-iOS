@@ -10,13 +10,32 @@
 #import "PDSocialLoginViewController.h"
 #import "PDSocialMediaManager.h"
 #import "PDModalLoadingView.h"
+#import "PDUser.h"
+#import "PDAPIClient.h"
 
 @interface PDSocialLoginViewModel() {
     PDModalLoadingView *loadingView;
+    
+    void (^locationBlock)(NSError *error);
+    BOOL locationAcquired;
+    
+    CLLocationManager *manager;
 }
 
 @end
 @implementation PDSocialLoginViewModel
+
+- (id) init {
+    if (self = [super init]) {
+        self.titleLabelString = @"App Update";
+        self.subTitleLabelString = @"Rewards Available";
+        self.iconImageName = @"pduikit_rewardsIcon";
+        self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below.";
+        self.loginState = LoginStateLogin;
+        return self;
+    }
+    return nil;
+}
 
 - (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
     //Perform Popdeem User Login
@@ -31,16 +50,6 @@
     //Should clear up Popdeem User
 }
 
-
-- (void) showPublishFlowIfNeeded {
-    BOOL publish = [self checkPublishPermissions];
-    if (publish) {
-        [_viewController dismissViewControllerAnimated:YES completion:^{}];
-    } else {
-        
-    }
-}
-
 - (BOOL) checkPublishPermissions {
     return YES;
 }
@@ -51,16 +60,22 @@
     
     PDSocialMediaManager *man = [[PDSocialMediaManager alloc] init];
     [man nextStepForFacebookLoggedInUser:^(NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [loadingView hideAnimated:YES];
-        });
         if (error) {
             NSLog(@"Something went wrong: %@",error);
-//            [[PDSocialMediaManager manager] logoutFacebook];
+            [[PDSocialMediaManager manager] logoutFacebook];
             return;
         }
-        NSLog(@"Now User is Logged in...");
-        [self renderSuccess];
+
+        if (_viewController.shouldAskLocation) {
+            [self fetchLocationCompletion:^(NSError *error){
+                if (error) {
+                    NSLog(@"Something went wrong with Location: %@",error);
+                }
+                [self renderSuccess];
+            }];
+        } else {
+            [self renderSuccess];
+        }
     }];
 }
 
@@ -70,13 +85,78 @@
 }
 
 - (void) renderSuccess {
-    _viewController.titleLabel.text = NSLocalizedString(@"popdeem.sociallogin.success", nil);
-    _viewController.titleLabel.textColor = [UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000];
-    _viewController.iconView.image = [UIImage imageNamed:@"pduikit_rewardsIconSuccess"];
-    [_viewController.descriptionLabel setText:NSLocalizedString(@"popdeem.sociallogin.description", nil)];
-    [_viewController.loginButton setHidden:YES];
-    [_viewController.continueButton setHidden:NO];
-    [_viewController.view setNeedsDisplay];
+     dispatch_async(dispatch_get_main_queue(), ^{
+        [loadingView hideAnimated:YES];
+    });
+    
+    self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.success", nil);
+    self.subTitleLabelString = @"Rewards Available";
+    self.iconImageName = @"pduikit_rewardsIconSuccess";
+    self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description", nil);
+    self.loginState = LoginStateContinue;
+    [_viewController render];
+}
+
+#pragma mark - Fetch Location -
+
+- (void) fetchLocationCompletion:(void (^)(NSError *error))completion {
+    locationBlock = completion;
+    if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            [[PDGeolocationManager sharedInstance] requestWhenInUseAuthorization];
+        }
+    } else if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        //Cannot use the app without location
+        [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+        NSLog(@"The user did not allow their location");
+        NSError *locationError = [NSError errorWithDomain:@"Popdeem Location Error" code:27000 userInfo:@{@"User did not allow location":NSLocalizedDescriptionKey}];
+        locationBlock(locationError);
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self checkLocation];
+    });
+}
+
+- (void) checkLocation {
+    [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
+}
+
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    if (locationAcquired == NO) {
+        NSLog(@"Error: %@",error);
+        [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+        [self performSelector:@selector(checkLocation) withObject:nil afterDelay:0.1];
+    }
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    NSLog(@"did update location");
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    if (locationAcquired == NO) {
+        [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+        locationAcquired = YES;
+    } else {
+        return;
+    }
+    
+    CLLocation *location = [locations lastObject];
+    if (!location) {
+        return;
+    }
+    float latitude = location.coordinate.latitude;
+    float longitude = location.coordinate.longitude;
+    
+    [[PDUser sharedInstance] setLastLocation:PDGeoLocationMake(latitude, longitude)];
+    
+    [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user) {
+        NSLog(@"User Updated OK");
+        locationBlock(nil);
+    }failure:^(NSError *error) {
+        locationBlock(error);
+    }];
 }
 
 @end

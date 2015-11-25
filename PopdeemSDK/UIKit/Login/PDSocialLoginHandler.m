@@ -41,13 +41,11 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 }
 
 - (void) presentLoginModal {
-    UIViewController *topController = [self topViewController];
-
-    [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initFromNib];
-    vc.snapshotView.image = [PDUIKitUtils screenSnapshot];
-    [topController presentViewController:vc animated:YES completion:^{
-    }];
+    [[self topViewController] setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    
+    PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
+    [[self topViewController] presentViewController:vc animated:YES completion:^{}];
+    
     NSLog(@"Showing popdeem social login");
     [self setUsesCount:self.usesCount+1];
 }

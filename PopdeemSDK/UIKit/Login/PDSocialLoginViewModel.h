@@ -8,12 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "PDGeolocationManager.h"
 
 @class PDSocialLoginViewController;
 
-@interface PDSocialLoginViewModel : NSObject <FBSDKLoginButtonDelegate>
+@interface PDSocialLoginViewModel : NSObject <FBSDKLoginButtonDelegate, CLLocationManagerDelegate>
+typedef NS_ENUM(NSInteger, LoginState) {
+    LoginStateLogin = 0,
+    LoginStateContinue
+};
 
 @property (nonatomic, assign) PDSocialLoginViewController *viewController;
+
+@property (nonatomic, strong) NSString *titleLabelString;
+@property (nonatomic, strong) NSString *subTitleLabelString;
+@property (nonatomic, strong) NSString *iconImageName;
+@property (nonatomic, strong) NSString *descriptionLabelString;
+@property (nonatomic) LoginState loginState;
+
 
 - (void) proceedWithLoggedInUser;
 @end
