@@ -38,16 +38,6 @@
     //Should clear up Popdeem User
 }
 
-
-- (void) showPublishFlowIfNeeded {
-    BOOL publish = [self checkPublishPermissions];
-    if (publish) {
-        [_viewController dismissViewControllerAnimated:YES completion:^{}];
-    } else {
-        
-    }
-}
-
 - (BOOL) checkPublishPermissions {
     return YES;
 }
@@ -60,7 +50,7 @@
     [man nextStepForFacebookLoggedInUser:^(NSError *error) {
         if (error) {
             NSLog(@"Something went wrong: %@",error);
-//            [[PDSocialMediaManager manager] logoutFacebook];
+            [[PDSocialMediaManager manager] logoutFacebook];
             return;
         }
 
