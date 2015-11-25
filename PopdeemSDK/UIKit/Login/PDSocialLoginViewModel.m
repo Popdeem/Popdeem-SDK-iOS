@@ -27,11 +27,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        self.titleLabelString = @"App Update";
-        self.subTitleLabelString = @"Rewards Available";
-        self.iconImageName = @"pduikit_rewardsIcon";
-        self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below.";
-        self.loginState = LoginStateLogin;
+        [self setState:LoginStateLogin];
         return self;
     }
     return nil;
@@ -88,12 +84,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [loadingView hideAnimated:YES];
     });
-    self.titleLabelString = @"Connected";
-    self.subTitleLabelString = @"Rewards Available";
-    self.iconImageName = @"pduikit_rewardsIconSuccess";
-    self.descriptionLabelString = @"Rewards are now unlocked. You will be notified when new rewards are available!";
-    self.loginState = LoginStateContinue;
-    [_viewController render];
+    [self setState:LoginStateContinue];
+    [_viewController renderViewModelState];
 }
 
 #pragma mark - Fetch Location -
@@ -156,6 +148,26 @@
     }failure:^(NSError *error) {
         locationBlock(error);
     }];
+}
+
+- (void) setState:(LoginState)state {
+    switch (state) {
+        case LoginStateContinue:
+            self.titleLabelString = @"Connected";
+            self.subTitleLabelString = @"Rewards Available";
+            self.iconImageName = @"pduikit_rewardsIconSuccess";
+            self.descriptionLabelString = @"Rewards are now unlocked. You will be notified when new rewards are available!";
+            self.loginState = LoginStateContinue;
+            break;
+        case LoginStateLogin:
+        default:
+            self.titleLabelString = @"App Update";
+            self.subTitleLabelString = @"Rewards Available";
+            self.iconImageName = @"pduikit_rewardsIcon";
+            self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below.";
+            self.loginState = LoginStateLogin;
+            break;
+    }
 }
 
 @end

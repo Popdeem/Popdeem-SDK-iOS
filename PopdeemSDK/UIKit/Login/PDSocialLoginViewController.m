@@ -43,6 +43,7 @@
     //Backing View Dismiss Recogniser
     UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
     [_backingView addGestureRecognizer:backingTap];
+    [self renderViewModelState];
 
 }
 
@@ -75,7 +76,7 @@
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void) render {
+- (void) renderViewModelState {
     if (!_viewModel) return;
     [self.titleLabel setText:_viewModel.titleLabelString];
     [self.subtitleLabel setText:_viewModel.subTitleLabelString];
