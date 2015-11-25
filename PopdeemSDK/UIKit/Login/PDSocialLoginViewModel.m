@@ -70,10 +70,10 @@
 }
 
 - (void) renderSuccess {
-    _viewController.titleLabel.text = @"Connected!";
+    _viewController.titleLabel.text = NSLocalizedString(@"popdeem.sociallogin.success", nil);
     _viewController.titleLabel.textColor = [UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000];
     _viewController.iconView.image = [UIImage imageNamed:@"pduikit_rewardsIconSuccess"];
-    [_viewController.descriptionLabel setText:@"Rewards are now unlocked. You will be notified when new rewards are available!"];
+    [_viewController.descriptionLabel setText:NSLocalizedString(@"popdeem.sociallogin.description", nil)];
     [_viewController.loginButton setHidden:YES];
     [_viewController.continueButton setHidden:NO];
     [_viewController.view setNeedsDisplay];

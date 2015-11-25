@@ -27,6 +27,11 @@
 
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
+#import "PDTheme.h"
+
+@interface PopdeemSDK()
+@property (nonatomic, strong)id uiKitCore;
+@end
 @implementation PopdeemSDK
 
 + (id) sharedInstance {
@@ -34,6 +39,7 @@
     static dispatch_once_t sharedToken;
     dispatch_once(&sharedToken, ^{
         SDK = [[PopdeemSDK alloc] init];
+
     });
     return SDK;
 }
@@ -48,19 +54,38 @@
 }
 
 + (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts {
-    Class loginClazz = NSClassFromString(@"PDSocialLoginHandler");
-    SEL selector = NSSelectorFromString(@"showPromptIfNeededWithMaxAllowed:");
-    
-    if(loginClazz){
-        id loginHandler = [[loginClazz alloc]init];
+    id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+    SEL selector = NSSelectorFromString(@"enableSocialLoginWithNumberOfPrompts:");
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
- [loginHandler performSelector:selector withObject:@(noOfPrompts)];
-#pragma clang diagnostic pop        
-    }else{
+    [uiKitCore performSelector:selector withObject:@(noOfPrompts)];
+#pragma clang diagnostic pop
+}
+
++ (void) presentRewardViewController {
+    id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+    SEL selector = NSSelectorFromString(@"presentRewardViewController");
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [uiKitCore performSelector:selector];
+#pragma clang diagnostic pop
+
+    [self sharedInstance];
+}
+
+- (id)popdeemUIKitCore {
+    if(self.uiKitCore) return self.uiKitCore;
+    Class coreClazz = NSClassFromString(@"PopdeemUIKItCore");
+
+    if(!coreClazz){
         [NSException raise:@"Popdeem UIKit not installed - pod 'PopdeemSDK/UIKit'" format:@""];
     }
+
+    self.uiKitCore =  [[coreClazz alloc]init];
+
+    return self.uiKitCore;
 }
 
 @end

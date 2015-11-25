@@ -30,7 +30,6 @@
 - (void)setUp {
     [super setUp];
     loginHandler = [PDSocialLoginHandler new];
-
 }
 
 
