@@ -66,18 +66,12 @@
 
         if (_viewController.shouldAskLocation) {
             [self fetchLocationCompletion:^(NSError *error){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [loadingView hideAnimated:YES];
-                });
                 if (error) {
                     NSLog(@"Something went wrong with Location: %@",error);
                 }
+                [self renderSuccess];
             }];
-            [self renderSuccess];
         } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [loadingView hideAnimated:YES];
-            });
             [self renderSuccess];
         }
     }];
@@ -89,6 +83,9 @@
 }
 
 - (void) renderSuccess {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [loadingView hideAnimated:YES];
+    });
     _viewController.titleLabel.text = @"Connected!";
     _viewController.titleLabel.textColor = [UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000];
     _viewController.iconView.image = [UIImage imageNamed:@"pduikit_rewardsIconSuccess"];
@@ -109,16 +106,14 @@
     } else if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         //Cannot use the app without location
         [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Location not Authorized"
-                                                     message:@"You have not authorized the app to use your location. Sober Lane is a location based app, please go to your settings and allow location."
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-        [av setTag:0];
-        [av show];
+        NSLog(@"The user did not allow their location");
+        NSError *locationError = [NSError errorWithDomain:@"Popdeem Location Error" code:27000 userInfo:@{@"User did not allow location":NSLocalizedDescriptionKey}];
+        locationBlock(locationError);
         return;
     }
-    [self checkLocation];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self checkLocation];
+    });
 }
 
 - (void) checkLocation {
