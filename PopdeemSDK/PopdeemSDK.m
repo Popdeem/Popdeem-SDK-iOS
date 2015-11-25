@@ -27,10 +27,6 @@
 
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
-
-@interface PopdeemSDK()
-@end
-
 @implementation PopdeemSDK
 
 + (id) sharedInstance {
