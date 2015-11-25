@@ -21,6 +21,7 @@ PODS:
     - FBSDKCoreKit
   - JSONModel (1.1.2)
   - Nocilla (0.10.0)
+  - OCMock (3.2)
   - PopdeemSDK (0.1.17):
     - PopdeemSDK/Core (= 0.1.17)
   - PopdeemSDK/Core (0.1.17):
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - JSONModel
   - Nocilla
+  - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
   - PopdeemSDK/UIKit (from `../Popdeem-SDK-iOS`)
   - STTwitter
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
   Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
+  OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
   PopdeemSDK: 5be826c230c2fb3335d15b4147b7a6c1e114c5fd
   STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
 

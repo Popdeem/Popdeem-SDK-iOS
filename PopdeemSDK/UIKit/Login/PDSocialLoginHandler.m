@@ -13,21 +13,31 @@
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
-@interface PDSocialLoginHandler() {
-    BOOL shownThisLaunch;
-}
+@interface PDSocialLoginHandler()
 @property (nonatomic, assign) NSUInteger usesCount;
 @property (nonatomic, assign) NSUInteger maxPrompts;
+@property (nonatomic, strong) PDSocialMediaManager *socialManager;
 @end
 
 @implementation PDSocialLoginHandler
 
+- (instancetype)init{
+    if(self = [super init]){
+        self.socialManager = [PDSocialMediaManager manager];
+    }
+    return self;
+}
+
 - (void)showPromptIfNeededWithMaxAllowed:(NSNumber*)numberOfTimes  {
     self.maxPrompts = numberOfTimes.integerValue;
     
-    if (self.usesCount  < self.maxPrompts) {
+    if ([self shouldShowPrompt]) {
         [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.2];
     }
+}
+
+- (BOOL)shouldShowPrompt {
+    return   (self.usesCount < self.maxPrompts) && ![self.socialManager isLoggedIn];
 }
 
 - (void) presentLoginModal {
@@ -38,7 +48,6 @@ static NSString *const PDUseCountKey = @"PDUseCount";
     
     NSLog(@"Showing popdeem social login");
     [self setUsesCount:self.usesCount+1];
-
 }
 
 - (NSUInteger)usesCount {
@@ -54,9 +63,8 @@ static NSString *const PDUseCountKey = @"PDUseCount";
     return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
 }
 
+//TODO - test varying app client app types
 - (UIViewController *)topViewController {
-//TODO: this failed for single view application
-//After embedding the initial vc in a navigation controller in storboard, it worked
     return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 }
 

@@ -45,6 +45,7 @@
     return self;
 }
 
+
 -(BOOL) isLoggedIn {
     if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
         PDUser *user = [self fetchPopdeemUser];
@@ -52,8 +53,9 @@
             [[PDSocialMediaManager manager] logoutFacebook];
             return NO;
         }
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 - (PDUser*) fetchPopdeemUser {
