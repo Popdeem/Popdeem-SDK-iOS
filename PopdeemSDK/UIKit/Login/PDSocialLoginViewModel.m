@@ -153,18 +153,22 @@
 - (void) setState:(LoginState)state {
     switch (state) {
         case LoginStateContinue:
-            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.title.loggedIn", nil);
+//            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.title.loggedIn", nil);
+            self.titleLabelString = @"Connected";
             self.subTitleLabelString = @"Rewards Available";
             self.iconImageName = @"pduikit_rewardsIconSuccess";
-            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description.loggedIn", nil);
+//            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description.loggedIn", nil);
+            self.descriptionLabelString = @"Rewards are now unlocked. You will be notified when new rewards are available!";
             self.loginState = LoginStateContinue;
             break;
         case LoginStateLogin:
         default:
-            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.title.loggedOut", nil);
+//            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.title.loggedOut", nil);
+            self.titleLabelString = @"App Update";
             self.subTitleLabelString = @"Rewards Available";
             self.iconImageName = @"pduikit_rewardsIcon";
-            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description.loggedOut", nil);
+//            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description.loggedOut", nil);
+            self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below."; 
             self.loginState = LoginStateLogin;
             break;
     }
