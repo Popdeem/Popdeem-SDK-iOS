@@ -78,6 +78,7 @@
 - (void) render {
     if (!_viewModel) return;
     [self.titleLabel setText:_viewModel.titleLabelString];
+    [self.subtitleLabel setText:_viewModel.subTitleLabelString];
     [self.descriptionLabel setText:_viewModel.descriptionLabelString];
     [self.iconView setImage:[UIImage imageNamed:_viewModel.iconImageName]];
     switch (_viewModel.loginState) {

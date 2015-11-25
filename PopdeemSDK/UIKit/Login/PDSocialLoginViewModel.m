@@ -25,6 +25,18 @@
 @end
 @implementation PDSocialLoginViewModel
 
+- (id) init {
+    if (self = [super init]) {
+        self.titleLabelString = @"App Update";
+        self.subTitleLabelString = @"Rewards Available";
+        self.iconImageName = @"pduikit_rewardsIcon";
+        self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below.";
+        self.loginState = LoginStateLogin;
+        return self;
+    }
+    return nil;
+}
+
 - (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
     //Perform Popdeem User Login
     if (error) {
@@ -77,6 +89,7 @@
         [loadingView hideAnimated:YES];
     });
     self.titleLabelString = @"Connected";
+    self.subTitleLabelString = @"Rewards Available";
     self.iconImageName = @"pduikit_rewardsIconSuccess";
     self.descriptionLabelString = @"Rewards are now unlocked. You will be notified when new rewards are available!";
     self.loginState = LoginStateContinue;

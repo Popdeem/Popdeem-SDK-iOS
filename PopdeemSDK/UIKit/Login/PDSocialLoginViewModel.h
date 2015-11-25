@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, LoginState) {
 @property (nonatomic, assign) PDSocialLoginViewController *viewController;
 
 @property (nonatomic, strong) NSString *titleLabelString;
+@property (nonatomic, strong) NSString *subTitleLabelString;
 @property (nonatomic, strong) NSString *iconImageName;
 @property (nonatomic, strong) NSString *descriptionLabelString;
 @property (nonatomic) LoginState loginState;
