@@ -20,11 +20,14 @@
     if (self = [super init]) {
         self.parent = parent;
         
-        self.frame = _parent.frame;
+        self.frame = CGRectMake(0,0,parent.frame.size.width,parent.frame.size.height);
         [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
         
-        float indent = (_parent.frame.size.width-304)/2;
-        _contentView = [[UIView alloc] initWithFrame:CGRectMake(indent, 168, 304, 110)];
+        float indent = 15;
+        float width = parent.frame.size.width - 30;
+        float y = (parent.frame.size.height/2) - 55;
+        
+        _contentView = [[UIView alloc] initWithFrame:CGRectMake(indent, y, width, 110)];
         _contentView.layer.cornerRadius = 5.0;
         [_contentView setBackgroundColor:[UIColor whiteColor]];
         

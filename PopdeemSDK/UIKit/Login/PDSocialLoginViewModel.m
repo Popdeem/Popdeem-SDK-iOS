@@ -46,7 +46,7 @@
 }
 
 - (void) proceedWithLoggedInUser {
-    loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.view];
+    loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.containterView];
     [loadingView showAnimated:YES];
     
     PDSocialMediaManager *man = [[PDSocialMediaManager alloc] init];
