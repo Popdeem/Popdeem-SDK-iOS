@@ -32,9 +32,10 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 
 - (void) presentLoginModal {
     [[self topViewController] setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    
     PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initFromNib];
-    vc.snapshotView.image = [PDUIKitUtils screenSnapshot];
     [[self topViewController] presentViewController:vc animated:YES completion:^{}];
+    
     NSLog(@"Showing popdeem social login");
     [self setUsesCount:self.usesCount+1];
 

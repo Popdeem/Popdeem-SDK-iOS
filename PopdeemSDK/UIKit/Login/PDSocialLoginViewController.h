@@ -30,5 +30,6 @@
 @property (nonatomic) BOOL facebookLoginOccurring;
 
 - (id) initFromNib;
+- (id) initWithLocationServices:(BOOL)shouldAskLocation;
 
 @end

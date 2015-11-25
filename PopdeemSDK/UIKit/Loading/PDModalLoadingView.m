@@ -20,6 +20,7 @@
     if (self = [super init]) {
         self.parent = parent;
         
+        // self.view is a backing view which has 0.5 opacity and will fill the parent
         self.frame = CGRectMake(0,0,parent.frame.size.width,parent.frame.size.height);
         [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
         

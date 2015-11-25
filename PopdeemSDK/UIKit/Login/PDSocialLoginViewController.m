@@ -9,9 +9,12 @@
 #import "PDSocialLoginViewController.h"
 #import "PDSocialLoginViewModel.h"
 #import "PDSocialMediaManager.h"
+#import "PDUIKitUtils.h"
 
 @interface PDSocialLoginViewController () {
 }
+
+@property (nonatomic) BOOL shouldAskLocation;
 
 @end
 
@@ -26,13 +29,18 @@
     return nil;
 }
 
+- (id) initWithLocationServices:(BOOL)shouldAskLocation {
+    _shouldAskLocation = shouldAskLocation;
+    return [self initFromNib];
+}
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     _viewModel = [[PDSocialLoginViewModel alloc] init];
     [_viewModel setViewController:self];
     [_loginButton setDelegate:_viewModel];
-    
+    _snapshotView.image = [PDUIKitUtils screenSnapshot];
     //Backing View Dismiss Recogniser
     UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
     [_backingView addGestureRecognizer:backingTap];
