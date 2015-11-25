@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "PDGeolocationManager.h"
 
 @class PDSocialLoginViewController;
 
-@interface PDSocialLoginViewModel : NSObject <FBSDKLoginButtonDelegate>
+@interface PDSocialLoginViewModel : NSObject <FBSDKLoginButtonDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, assign) PDSocialLoginViewController *viewController;
 

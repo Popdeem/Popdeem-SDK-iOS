@@ -27,6 +27,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *continueButton;
 
+@property (nonatomic) BOOL shouldAskLocation;
 @property (nonatomic) BOOL facebookLoginOccurring;
 
 - (id) initFromNib;

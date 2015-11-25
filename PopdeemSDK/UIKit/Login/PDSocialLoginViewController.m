@@ -14,7 +14,6 @@
 @interface PDSocialLoginViewController () {
 }
 
-@property (nonatomic) BOOL shouldAskLocation;
 
 @end
 

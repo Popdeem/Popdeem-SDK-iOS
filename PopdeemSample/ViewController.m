@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "PDSocialLoginHandler.h"
+#import "PDGeoLocationManager.h"
 
 @interface ViewController ()
 
@@ -20,7 +20,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-
 }
 
 - (void)didReceiveMemoryWarning {
