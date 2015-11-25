@@ -16,16 +16,28 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 @interface PDSocialLoginHandler()
 @property (nonatomic, assign) NSUInteger usesCount;
 @property (nonatomic, assign) NSUInteger maxPrompts;
+@property (nonatomic, strong) PDSocialMediaManager *socialManager;
 @end
 
 @implementation PDSocialLoginHandler
 
+- (instancetype)init{
+    if(self = [super init]){
+        self.socialManager = [PDSocialMediaManager manager];
+    }
+    return self;
+}
+
 - (void)showPromptIfNeededWithMaxAllowed:(NSNumber*)numberOfTimes  {
     self.maxPrompts = numberOfTimes.integerValue;
     
-    if (self.usesCount  < self.maxPrompts && ![[PDSocialMediaManager manager]isLoggedIn]) {
+    if ([self shouldShowPrompt]) {
         [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.2];
     }
+}
+
+- (BOOL)shouldShowPrompt {
+    return   (self.usesCount < self.maxPrompts) && ![self.socialManager isLoggedIn];
 }
 
 - (void) presentLoginModal {
