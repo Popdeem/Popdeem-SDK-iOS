@@ -11,7 +11,7 @@
 @implementation PDModalLoadingView
 
 - (PDModalLoadingView*) initWithDefaultsForView:(UIView*)parent {
-    return [self initForView:parent titleText:@"Loading" descriptionText:@"Please Wait"];
+    return [self initForView:parent titleText:NSLocalizedString(@"popdeem.common.loading", nil) descriptionText:NSLocalizedString(@"popdeem.common.wait", nil)];
 }
 
 - (PDModalLoadingView*) initForView:(UIView*)parent

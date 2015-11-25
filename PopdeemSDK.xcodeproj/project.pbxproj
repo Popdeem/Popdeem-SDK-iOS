@@ -13,7 +13,6 @@
 		398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
-		39FD1C1E1C046F6300CC3B0C /* PDModalLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C1D1C046F6300CC3B0C /* PDModalLoadingView.m */; };
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
 		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
@@ -29,6 +28,9 @@
 		A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
 		A9582F9D1C05D15800D62456 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
 		A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */; };
+		A9582FA31C05F1DF00D62456 /* Popdeem.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9582FA21C05F1DF00D62456 /* Popdeem.strings */; };
+		BC67F05A5F7252792A093778 /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
+		BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */; };
 		BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F6855AC77922041DBC9B /* Brands.json */; };
 		BC67F1818241869ED5AE3E96 /* PDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */; };
 		BC67F192518FF25B41B22AA5 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F8BEDE7830979FC56A00 /* RewardTests.m */; };
@@ -39,6 +41,7 @@
 		BC67F2F6927DFDDC5A7CB6F9 /* Rewards.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67FE03A8AFCB2DD5111FC4 /* Rewards.json */; };
 		BC67F31395CA7C3B031AAB89 /* PDReferral.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB138AFDB8475775021B /* PDReferral.m */; };
 		BC67F348F8098F8237693F9D /* PDSocialAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */; };
+		BC67F38A59976217DB69B1F7 /* PDRewardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */; };
 		BC67F3D8B356BA2B8548D901 /* PDFeedItem_WithPicture.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67FBB6DE1EECF94167A08D /* PDFeedItem_WithPicture.json */; };
 		BC67F3E4910E36D7AE92C91E /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F065985FB8F9FEC752BD /* Brand.json */; };
 		BC67F4D6CAE34F664AF37B3C /* PDReferralAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */; };
@@ -59,6 +62,7 @@
 		BC67F99A98DBBDD2F8CC4BED /* PDLocationAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F72645898839719EF769 /* PDLocationAPIService.m */; };
 		BC67F9A48DABFAD166622B66 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F249D3810C72D8A18B89 /* User.json */; };
 		BC67FA04CB475DB604262976 /* RewardAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEBEFBF66968101E8A12 /* RewardAPIServiceTests.m */; };
+		BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FA07BBE691E3992AE323 /* PDModalLoadingView.m */; };
 		BC67FA525500547B66CBFFEF /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */; };
 		BC67FA7AA48A4DC0BBFB453F /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */; };
 		BC67FAAF23C4FF66C76369B8 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */; };
@@ -133,8 +137,6 @@
 		39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@3x.png"; path = "Resources/pduikit_rainbow@3x.png"; sourceTree = "<group>"; };
 		39FD1C191C046DAE00CC3B0C /* pduikit_rewardsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rewardsIcon.png; path = Resources/pduikit_rewardsIcon.png; sourceTree = "<group>"; };
 		39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIcon@2x.png"; path = "Resources/pduikit_rewardsIcon@2x.png"; sourceTree = "<group>"; };
-		39FD1C1C1C046F6300CC3B0C /* PDModalLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDModalLoadingView.h; path = Loading/PDModalLoadingView.h; sourceTree = "<group>"; };
-		39FD1C1D1C046F6300CC3B0C /* PDModalLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDModalLoadingView.m; path = Loading/PDModalLoadingView.m; sourceTree = "<group>"; };
 		39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rewardsIconSuccess.png; path = Resources/pduikit_rewardsIconSuccess.png; sourceTree = "<group>"; };
 		39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIconSuccess@2x.png"; path = "Resources/pduikit_rewardsIconSuccess@2x.png"; sourceTree = "<group>"; };
 		39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIKitUtils.h; path = Utilities/PDUIKitUtils.h; sourceTree = "<group>"; };
@@ -164,6 +166,8 @@
 		A90FA53E1C0368A8001DA473 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A90FA5401C0368A8001DA473 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
+		A9582FA21C05F1DF00D62456 /* Popdeem.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Popdeem.strings; sourceTree = "<group>"; };
+		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		BC67F0259BE1A6F5B3827F5D /* PDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUtils.m; sourceTree = "<group>"; };
 		BC67F043EB7A7A6156010094 /* PDSocialLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginHandler.h; path = Login/PDSocialLoginHandler.h; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 		BC67F07B38BD59459659DB91 /* PDSocialMediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaManager.h; sourceTree = "<group>"; };
 		BC67F094736671CDACEE8FAF /* APIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIServiceTests.m; sourceTree = "<group>"; };
 		BC67F09D8703806E4EB93264 /* PDBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrand.m; sourceTree = "<group>"; };
+		BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemUIKItCore.m; sourceTree = "<group>"; };
+		BC67F1CB2B233BA0D90D0C0D /* PopdeemUIKItCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemUIKItCore.h; sourceTree = "<group>"; };
 		BC67F22F7024B09BFD09D14F /* Location.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Location.json; sourceTree = "<group>"; };
 		BC67F249D3810C72D8A18B89 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		BC67F24BB5B97FD51AA2AE9E /* FeedAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedAPIServiceTests.m; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 		BC67F6499A11C2A5AB3AC2AE /* PDUserTwitterParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserTwitterParams.m; sourceTree = "<group>"; };
 		BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardActionAPIService.m; sourceTree = "<group>"; };
 		BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIClient.m; sourceTree = "<group>"; };
+		BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardHandler.m; sourceTree = "<group>"; };
 		BC67F6855AC77922041DBC9B /* Brands.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Brands.json; sourceTree = "<group>"; };
 		BC67F72645898839719EF769 /* PDLocationAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationAPIService.m; sourceTree = "<group>"; };
 		BC67F73EDD4AB36B59AF70E2 /* WalletAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletAPIServiceTests.m; sourceTree = "<group>"; };
@@ -213,9 +220,11 @@
 		BC67F8D82295C72E404956E2 /* PDReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReward.h; sourceTree = "<group>"; };
 		BC67F8FDBB256B9056C29317 /* SocialAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAPIServiceTests.m; sourceTree = "<group>"; };
 		BC67F909A48D90F8B69E19E5 /* PDReferralAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferralAPIService.h; sourceTree = "<group>"; };
+		BC67F9151C58B38184DC2385 /* PDTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDTheme.m; sourceTree = "<group>"; };
 		BC67F98E0D4534F9808FA7BD /* PDSocialMediaFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaFriend.m; sourceTree = "<group>"; };
 		BC67F9CC52DDD7973FE7517E /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		BC67F9D6AE1A1E6162AD05A9 /* PDLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocation.h; sourceTree = "<group>"; };
+		BC67FA07BBE691E3992AE323 /* PDModalLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDModalLoadingView.m; path = Loading/PDModalLoadingView.m; sourceTree = "<group>"; };
 		BC67FA50A957A3764748EF64 /* PDNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNetworkError.m; sourceTree = "<group>"; };
 		BC67FB072FF7574FC00933C0 /* PDScores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScores.m; sourceTree = "<group>"; };
 		BC67FB0C59BE46A48ABE49D6 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
@@ -226,9 +235,12 @@
 		BC67FBB6DE1EECF94167A08D /* PDFeedItem_WithPicture.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PDFeedItem_WithPicture.json; sourceTree = "<group>"; };
 		BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
 		BC67FBFC43B1F1FFB9F13D2A /* PDNetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNetworkError.h; sourceTree = "<group>"; };
+		BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardHandler.h; sourceTree = "<group>"; };
 		BC67FC8425A034478627B82B /* PDAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIClient.h; sourceTree = "<group>"; };
+		BC67FC8625D49A35878D4F85 /* PDModalLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDModalLoadingView.h; path = Loading/PDModalLoadingView.h; sourceTree = "<group>"; };
 		BC67FCC29C35A69244A61351 /* FeedItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTests.m; sourceTree = "<group>"; };
 		BC67FCD8902CC5CD75C180E1 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
+		BC67FCF8A7E7E1AF483C9757 /* PDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDTheme.h; sourceTree = "<group>"; };
 		BC67FD35C97C481E7B4E94F1 /* PDRewardActionAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardActionAPIService.h; sourceTree = "<group>"; };
 		BC67FD41F4A3215835B48282 /* PDURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDURLSession.h; sourceTree = "<group>"; };
 		BC67FD6C0C7E739CB86F6515 /* PDOpeningHoursWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursWeek.m; sourceTree = "<group>"; };
@@ -363,6 +375,7 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A9582FA51C0619A900D62456 /* default.json */,
 				39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */,
 				39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */,
 				39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */,
@@ -372,15 +385,6 @@
 				39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		39FD1C1B1C046F2100CC3B0C /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				39FD1C1C1C046F6300CC3B0C /* PDModalLoadingView.h */,
-				39FD1C1D1C046F6300CC3B0C /* PDModalLoadingView.m */,
-			);
-			name = Loading;
 			sourceTree = "<group>";
 		};
 		39FD1C2A1C04B24F00CC3B0C /* Utilities */ = {
@@ -433,6 +437,7 @@
 				A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */,
 				A90FA5401C0368A8001DA473 /* Info.plist */,
 				A90FA52F1C0368A8001DA473 /* Supporting Files */,
+				A9582FA21C05F1DF00D62456 /* Popdeem.strings */,
 			);
 			path = PopdeemSample;
 			sourceTree = "<group>";
@@ -473,6 +478,16 @@
 			path = ModelTests;
 			sourceTree = "<group>";
 		};
+		BC67F2F27DD82B87CDC1C367 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				BC67FC8625D49A35878D4F85 /* PDModalLoadingView.h */,
+				BC67FA07BBE691E3992AE323 /* PDModalLoadingView.m */,
+			);
+			name = Loading;
+			path = PopdeemSDK/UIKit;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC67F3729CD470E13CE36933 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +520,15 @@
 				BC67F3729CD470E13CE36933 /* API */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		BC67F73254683A3E6D02541E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BC67FCF8A7E7E1AF483C9757 /* PDTheme.h */,
+				BC67F9151C58B38184DC2385 /* PDTheme.m */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		BC67F8672A34563553B92EBC /* UIKit */ = {
@@ -558,6 +582,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		BC67F9FDCE6A81520AB86878 /* Reward */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */,
+				BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */,
+			);
+			path = Reward;
+			sourceTree = "<group>";
+		};
 		BC67FA5FB895CC0BDBDC7C1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +628,15 @@
 				BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BC67FA65603CD0B3A2DBADFF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F2F27DD82B87CDC1C367 /* Loading */,
+				BC67F73254683A3E6D02541E /* Theme */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		BC67FAD606D4F9BEA9EB31DD /* APIServiceTests */ = {
@@ -642,9 +684,12 @@
 			isa = PBXGroup;
 			children = (
 				39FD1C2A1C04B24F00CC3B0C /* Utilities */,
-				39FD1C1B1C046F2100CC3B0C /* Loading */,
 				39FD1C151C046DA100CC3B0C /* Resources */,
 				398E4B751C03730100A68529 /* Login */,
+				BC67FA65603CD0B3A2DBADFF /* Common */,
+				BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */,
+				BC67F1CB2B233BA0D90D0C0D /* PopdeemUIKItCore.h */,
+				BC67F9FDCE6A81520AB86878 /* Reward */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -782,6 +827,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */,
+				A9582FA31C05F1DF00D62456 /* Popdeem.strings in Resources */,
 				A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */,
 				A90FA53A1C0368A8001DA473 /* Main.storyboard in Resources */,
 			);
@@ -920,8 +966,8 @@
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
-				39FD1C1E1C046F6300CC3B0C /* PDModalLoadingView.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
+				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +1028,9 @@
 				BC67FF87A49C1EB7D4B0352D /* WalletAPIServiceTests.m in Sources */,
 				BC67FC4552707BB69A1BEEB9 /* LocationAPIServiceTests.m in Sources */,
 				BC67FE59A10D169C4E6A270D /* PDSocialLoginHandler.m in Sources */,
+				BC67F05A5F7252792A093778 /* PDTheme.m in Sources */,
+				BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */,
+				BC67F38A59976217DB69B1F7 /* PDRewardHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

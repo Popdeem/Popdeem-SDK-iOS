@@ -81,7 +81,7 @@
 }
 
 - (void) renderSuccess {
-    dispatch_async(dispatch_get_main_queue(), ^{
+     dispatch_async(dispatch_get_main_queue(), ^{
         [loadingView hideAnimated:YES];
     });
     [self setState:LoginStateContinue];
@@ -153,10 +153,10 @@
 - (void) setState:(LoginState)state {
     switch (state) {
         case LoginStateContinue:
-            self.titleLabelString = @"Connected";
+            self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.success", nil);
             self.subTitleLabelString = @"Rewards Available";
             self.iconImageName = @"pduikit_rewardsIconSuccess";
-            self.descriptionLabelString = @"Rewards are now unlocked. You will be notified when new rewards are available!";
+            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description", nil);
             self.loginState = LoginStateContinue;
             break;
         case LoginStateLogin:
