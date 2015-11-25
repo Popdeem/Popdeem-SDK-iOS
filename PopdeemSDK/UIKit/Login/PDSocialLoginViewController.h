@@ -32,5 +32,6 @@
 
 - (id) initFromNib;
 - (id) initWithLocationServices:(BOOL)shouldAskLocation;
+- (void) render;
 
 @end

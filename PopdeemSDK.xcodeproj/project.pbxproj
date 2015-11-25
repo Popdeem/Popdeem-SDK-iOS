@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
 		398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */; };
@@ -110,6 +111,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewModelTests.m; path = PopdeemSDKTests/UIKit/PDSocialLoginViewModelTests.m; sourceTree = SOURCE_ROOT; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -283,7 +285,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3927870E1C05E64200F8DCD9 /* CoreLocation.framework in Frameworks */,
 				C84EED62BDCBB0D384156028 /* libPods-PopdeemSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +395,6 @@
 		4EF69A0328B0579398DD2DED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3927870D1C05E64200F8DCD9 /* CoreLocation.framework */,
 				39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */,
 				39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */,
 				3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */,
@@ -491,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */,
+				3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -937,6 +938,7 @@
 				BC67F6BBD9FD32D05383E3C5 /* PDFeeds.m in Sources */,
 				BC67F876237D47936806AE85 /* PDReward.m in Sources */,
 				BC67FCD5547FD4C2E1FC9420 /* PDScores.m in Sources */,
+				392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */,
 				BC67FEAC806E9FE2D889DF6F /* PDFeedItem.m in Sources */,
 				BC67F2EA9AC44543E93524B5 /* PDLocation.m in Sources */,
 				BC67F31395CA7C3B031AAB89 /* PDReferral.m in Sources */,
