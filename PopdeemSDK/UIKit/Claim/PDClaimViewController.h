@@ -15,9 +15,6 @@
 
 @property (nonatomic, strong) PDClaimViewModel *viewModel;
 
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *snapshotImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet UIView *backingView;
-@property (unsafe_unretained, nonatomic) IBOutlet UIView *contentView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *rewardInfoView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *rewardDescriptionLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *rewardRulesLabel;

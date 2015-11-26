@@ -8,6 +8,7 @@
 
 #import "PDClaimViewModel.h"
 #import "PDClaimViewController.h"
+#import "PDUser.h"
 
 @implementation PDClaimViewModel
 
@@ -63,7 +64,7 @@
     if (types.count > 0) {
         if (types.count > 1) {
             //Both Networks
-            switch (reward.action) {
+            switch (_reward.action) {
                 case PDRewardActionCheckin:
                     action = @"Check-in or Tweet Required";
                     break;
@@ -78,7 +79,7 @@
             }
         } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
             //Facebook Only
-            switch (reward.action) {
+            switch (_reward.action) {
                 case PDRewardActionCheckin:
                     action = @"Check-in Required";
                     break;
@@ -93,7 +94,7 @@
             }
         } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
             //Twitter Only
-            switch (reward.action) {
+            switch (_reward.action) {
                 case PDRewardActionCheckin:
                     action = @"Tweet Required";
                     break;
@@ -108,7 +109,7 @@
             }
         }
     } else if (types.count == 0) {
-        switch (reward.action) {
+        switch (_reward.action) {
             case PDRewardActionCheckin:
                 action = @"Check-in Required";
                 break;
@@ -123,13 +124,6 @@
         }
     }
     return action;
-}
-
-- (CALayer*) textViewBordersLayer {
-    _textViewBordersLayer = [CALayer layer];
-    _textViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
-    _textViewBordersLayer.borderWidth = 0.5;
-    _textViewBordersLayer.frame = CGRectMake(-1, 0, _viewController.textView.frame.size.width+2, _viewController.textView.frame.size.height+1);
 }
 
 - (void) facebookButtonTapped {

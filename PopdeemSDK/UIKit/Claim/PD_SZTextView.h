@@ -15,13 +15,12 @@ FOUNDATION_EXPORT double PD_SZTextViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char PD_SZTextViewVersionString[];
 
 
-IB_DESIGNABLE
 
 @interface PD_SZTextView : UITextView
 
-@property (copy, nonatomic) IBInspectable NSString *placeholder;
-@property (nonatomic) IBInspectable double fadeTime;
+@property (copy, nonatomic) NSString *placeholder;
+@property (nonatomic) double fadeTime;
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
-@property (retain, nonatomic) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
+@property (retain, nonatomic) UIColor *placeholderTextColor;
 
 @end

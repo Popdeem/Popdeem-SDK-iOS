@@ -16,6 +16,10 @@
 		398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
 		39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDClaimViewModel.m */; };
+		39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */; };
+		39EDADC91C07333F001102B3 /* PDRewardListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC31C07333F001102B3 /* PDRewardListViewModel.m */; };
+		39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */; };
+		39EDADCB1C07333F001102B3 /* RewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC71C07333F001102B3 /* RewardTableViewCell.m */; };
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
 		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
@@ -158,6 +162,14 @@
 		39EDADBC1C072565001102B3 /* pduikit_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_camera@3x.png"; path = "../../../../../Desktop/uikitassets/pduikit_camera@3x.png"; sourceTree = "<group>"; };
 		39EDADBD1C072851001102B3 /* PDClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewModel.h; path = Claim/PDClaimViewModel.h; sourceTree = "<group>"; };
 		39EDADBE1C072851001102B3 /* PDClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewModel.m; path = Claim/PDClaimViewModel.m; sourceTree = "<group>"; };
+		39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRewardsTableViewCell.h; sourceTree = "<group>"; };
+		39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoRewardsTableViewCell.m; sourceTree = "<group>"; };
+		39EDADC21C07333F001102B3 /* PDRewardListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardListViewModel.h; sourceTree = "<group>"; };
+		39EDADC31C07333F001102B3 /* PDRewardListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardListViewModel.m; sourceTree = "<group>"; };
+		39EDADC41C07333F001102B3 /* PDRewardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardTableViewController.h; sourceTree = "<group>"; };
+		39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardTableViewController.m; sourceTree = "<group>"; };
+		39EDADC61C07333F001102B3 /* RewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardTableViewCell.h; sourceTree = "<group>"; };
+		39EDADC71C07333F001102B3 /* RewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTableViewCell.m; sourceTree = "<group>"; };
 		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
 		39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@2x.png"; path = "Resources/pduikit_rainbow@2x.png"; sourceTree = "<group>"; };
 		39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@3x.png"; path = "Resources/pduikit_rainbow@3x.png"; sourceTree = "<group>"; };
@@ -646,6 +658,14 @@
 			children = (
 				BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */,
 				BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */,
+				39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */,
+				39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */,
+				39EDADC21C07333F001102B3 /* PDRewardListViewModel.h */,
+				39EDADC31C07333F001102B3 /* PDRewardListViewModel.m */,
+				39EDADC41C07333F001102B3 /* PDRewardTableViewController.h */,
+				39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */,
+				39EDADC61C07333F001102B3 /* RewardTableViewCell.h */,
+				39EDADC71C07333F001102B3 /* RewardTableViewCell.m */,
 			);
 			path = Reward;
 			sourceTree = "<group>";
@@ -1026,8 +1046,12 @@
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
+				39EDADC91C07333F001102B3 /* PDRewardListViewModel.m in Sources */,
+				39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */,
+				39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
+				39EDADCB1C07333F001102B3 /* RewardTableViewCell.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
