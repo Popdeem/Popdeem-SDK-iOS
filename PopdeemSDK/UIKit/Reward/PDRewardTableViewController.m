@@ -83,7 +83,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-<<<<<<< HEAD
     if (indexPath.row > self.rewards.count-1) {
         NSLog(@"Out of bounds");
         return;
@@ -91,14 +90,6 @@
     PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
     PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward];
     [[self navigationController] pushViewController:claimController animated:YES];
-=======
-  NSLog(@"TODO - NIALL");
-  
-  UIViewController *vc = [UIViewController new];
-  UILabel *l = [UILabel new];
-  vc.title = @"Claim Screen";
-  [self.navigationController pushViewController:[UIViewController new] animated:YES];
->>>>>>> 1bf1aa8e9081620d99b5bfd46615e45f28907f10
 }
 
 @end
