@@ -1,5 +1,5 @@
 //
-// Created by John Doran Home on 25/11/2015.
+// Created by John Doran on 25/11/2015.
 // Copyright (c) 2015 Popdeem. All rights reserved.
 //
 
@@ -8,14 +8,11 @@
 #import "PDUIKitUtils.h"
 #import "PDSocialLoginViewController.h"
 
-@implementation PDRewardHandler {
+@implementation PDRewardHandler
 
-}
-
--(void)doShit {
+-(void)handleRewardsFlow {
     UIViewController *topController = [PDUIKitUtils topViewController];
     [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    
     
     //TODO not handle logged in
     if(/* DISABLES CODE */ (NO)){

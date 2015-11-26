@@ -43,8 +43,7 @@
         
         
         _mainLabel = [[UILabel alloc] init];
-//        float mainLabelHeight = (frame.size.height/2)-5;
-        
+      
         NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
         CGRect mainLabelRect = [mainAttributedText boundingRectWithSize:(CGSize){labelWidth, 40}
                                                                   options:NSStringDrawingUsesLineFragmentOrigin

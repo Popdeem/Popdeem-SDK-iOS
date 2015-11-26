@@ -31,6 +31,9 @@
 		A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53B1C0368A8001DA473 /* Assets.xcassets */; };
 		A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */; };
 		A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */; };
+		A92281E91C07369800A43320 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E21C07369800A43320 /* NoRewardsTableViewCell.m */; };
+		A92281EB1C07369800A43320 /* PDRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E61C07369800A43320 /* PDRewardTableViewController.m */; };
+		A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E81C07369800A43320 /* RewardTableViewCell.m */; };
 		A9582F9A1C05D15000D62456 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5011C036304001DA473 /* PDWallet.m */; };
 		A9582F9B1C05D15300D62456 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FF1C036304001DA473 /* PDRewardStore.m */; };
 		A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
@@ -205,6 +208,15 @@
 		A90FA5401C0368A8001DA473 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDConfirmationViewController.h; sourceTree = "<group>"; };
 		A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDConfirmationViewController.m; sourceTree = "<group>"; };
+		A92281DE1C07359E00A43320 /* starG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starG.png; path = Resources/starG.png; sourceTree = "<group>"; };
+		A92281DF1C07359E00A43320 /* starG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starG@2x.png"; path = "Resources/starG@2x.png"; sourceTree = "<group>"; };
+		A92281E01C07359E00A43320 /* starG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starG@3x.png"; path = "Resources/starG@3x.png"; sourceTree = "<group>"; };
+		A92281E11C07369800A43320 /* NoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRewardsTableViewCell.h; sourceTree = "<group>"; };
+		A92281E21C07369800A43320 /* NoRewardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoRewardsTableViewCell.m; sourceTree = "<group>"; };
+		A92281E51C07369800A43320 /* PDRewardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardTableViewController.h; sourceTree = "<group>"; };
+		A92281E61C07369800A43320 /* PDRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardTableViewController.m; sourceTree = "<group>"; };
+		A92281E71C07369800A43320 /* RewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardTableViewCell.h; sourceTree = "<group>"; };
+		A92281E81C07369800A43320 /* RewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTableViewCell.m; sourceTree = "<group>"; };
 		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
 		A9582FA21C05F1DF00D62456 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
@@ -444,6 +456,9 @@
 				392787221C07230800F8DCD9 /* pduikit_twitterbutton_selected.png */,
 				392787231C07230800F8DCD9 /* pduikit_twitterbutton_selected@2x.png */,
 				392787241C07230800F8DCD9 /* pduikit_twitterbutton_selected@3x.png */,
+				A92281DE1C07359E00A43320 /* starG.png */,
+				A92281DF1C07359E00A43320 /* starG@2x.png */,
+				A92281E01C07359E00A43320 /* starG@3x.png */,
 				A9582FA51C0619A900D62456 /* default.json */,
 				39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */,
 				39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */,
@@ -656,6 +671,12 @@
 		BC67F9FDCE6A81520AB86878 /* Reward */ = {
 			isa = PBXGroup;
 			children = (
+				A92281E11C07369800A43320 /* NoRewardsTableViewCell.h */,
+				A92281E21C07369800A43320 /* NoRewardsTableViewCell.m */,
+				A92281E51C07369800A43320 /* PDRewardTableViewController.h */,
+				A92281E61C07369800A43320 /* PDRewardTableViewController.m */,
+				A92281E71C07369800A43320 /* RewardTableViewCell.h */,
+				A92281E81C07369800A43320 /* RewardTableViewCell.m */,
 				BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */,
 				BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */,
 				39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */,
@@ -1043,8 +1064,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A92281EB1C07369800A43320 /* PDRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */,
+				A92281E91C07369800A43320 /* NoRewardsTableViewCell.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				39EDADC91C07333F001102B3 /* PDRewardListViewModel.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */,
@@ -1055,6 +1078,7 @@
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
+				A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

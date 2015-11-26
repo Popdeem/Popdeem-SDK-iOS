@@ -2,7 +2,7 @@
 //  PDRewardTableViewController.h
 //  Pods
 //
-//  Created by John Doran Home on 26/11/2015.
+//  Created by John Doran on 26/11/2015.
 //
 //
 
