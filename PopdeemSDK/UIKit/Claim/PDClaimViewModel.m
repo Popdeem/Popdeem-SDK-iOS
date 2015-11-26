@@ -9,13 +9,19 @@
 #import "PDClaimViewModel.h"
 #import "PDClaimViewController.h"
 #import "PDUser.h"
+#import "PDSocialMediaFriend.h"
 #import "PDSocialMediaManager.h"
+#import "PDModalLoadingView.h"
+#import "PDAPIClient.h"
 
 @interface PDClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
 @property (nonatomic) BOOL willTweet;
 @property (nonatomic) BOOL mustFacebook;
 @property (nonatomic) BOOL willFacebook;
+
+@property (nonatomic, strong) PDModalLoadingView *loadingView;
+@property (nonatomic, strong) UIImage *image;
 @end
 
 @implementation PDClaimViewModel
@@ -31,15 +37,18 @@
   self = [self init];
   if (!self) return nil;
   
-  if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqual: @(PDSocialMediaTypeFacebook)]) {
+  if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(FacebookOnly)]) {
     //Show only facebook button
     self.socialMediaTypesAvailable = FacebookOnly;
-  } else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0] isEqual:@(PDSocialMediaTypeTwitter)]) {
+    _willFacebook = YES;
+  } else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0] isEqualToNumber:@(TwitterOnly)]) {
     //Show only Twitter button
     self.socialMediaTypesAvailable = TwitterOnly;
+    _willTweet = YES;
   } else if (mediaTypes.count == 2) {
     //Show two buttons
     self.socialMediaTypesAvailable = FacebookAndTwitter;
+    _willFacebook = YES;
   } else {
     //too many or not enough
   }
@@ -196,10 +205,6 @@
   
 }
 
-- (void) claimAction {
-  
-}
-
 - (void) calculateTwitterCharsLeft {
   
 }
@@ -222,5 +227,149 @@
 - (void) dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+#pragma mark - Claiming -
+
+- (void) claimAction {
+  if (!_willTweet && !_willFacebook) {
+    UIAlertView *noPost = [[UIAlertView alloc] initWithTitle:@"No Network Selected" message:@"You must select at least one social network in order to complete this action." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [noPost show];
+    return;
+  }
+  
+  if (_willTweet) {
+    [[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error){
+      if (!connected) {
+        [self connectTwitter:^(){
+          [self makeClaim];
+        } failure:^(NSError *error) {
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Twitter not connected" message:@"You must connect your twitter account in order to post to Twitter" delegate:self cancelButtonTitle:@"Back" otherButtonTitles: nil];
+          [av show];
+        }];
+        return;
+      }
+      if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
+        UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:@"Tweet Too Long" message:@"You have written a post longer than the allowed 140 characters. Please shorten your post." delegate:self cancelButtonTitle:@"Back" otherButtonTitles: nil];
+        [tooMany show];
+        return;
+      }
+      [self makeClaim];
+    }];
+    return;
+  }
+  if ([_viewController.textView isFirstResponder]) {
+    [_viewController.textView resignFirstResponder];
+  }
+  [self makeClaim];
+}
+
+- (void) makeClaim {
+  
+  if (_reward.action == PDRewardActionPhoto && _image == nil) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
+                                                    message:@"A photo is required for this action. Please add a photo"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert setTag:1];
+    [alert show];
+    return;
+  }
+  
+  PDAPIClient *client = [PDAPIClient sharedInstance];
+  NSString *message = [_viewController.textView text];
+  
+  if (_reward.twitterForcedTag) {
+    message = [message stringByAppendingFormat:@" %@",_reward.twitterForcedTag];
+  }
+  
+  //    if (_reward.downloadLink) {
+  //        message = [message stringByAppendingFormat:@" %@",_reward.downloadLink];
+  //    }
+  
+  NSMutableArray *taggedFriends = [NSMutableArray array];
+  for (PDSocialMediaFriend *f in [PDUser taggableFriends]) {
+    if (f.selected) {
+      [taggedFriends addObject:f.tagIdentifier];
+    }
+  }
+  
+  __block NSInteger rewardId = _reward.identifier;
+  //location?
+  PDLocation *location = [[PDLocationStore locationsOrderedByDistanceToUser] firstObject];
+  [client claimReward:_reward.identifier location:location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet success:^(){
+    [self didClaimRewardId:rewardId];
+  } failure:^(NSError *error){
+    [self PDAPIClient:client didFailWithError:error];
+  }];
+  
+  _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:@"Claiming Reward" descriptionText:@"This could take up to 30 seconds"];
+  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+  [_loadingView showAnimated:YES];
+  
+  NSString *alertMessage = @"";
+  
+  switch (_reward.type) {
+    case PDRewardTypeCoupon:
+    case PDRewardTypeInstant:
+      alertMessage = @"Your coupon will appear in your wallet shortly";
+      break;
+    case PDRewardTypeSweepstake:
+      alertMessage = @"Your sweepstake ticket will appear in your wallet shortly";
+    default:
+      break;
+  }
+}
+
+- (void) didClaimRewardId:(NSInteger)rewardId {
+  
+  [_loadingView hideAnimated:YES];
+  
+  [PDRewardStore deleteReward:_reward.identifier];
+  
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Claimed!" message:@"You can view your reward in your wallet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  [self.viewController dismissViewControllerAnimated:YES completion:^{}];
+}
+
+
+- (void) PDAPIClient:(PDAPIClient *)client didFailWithError:(NSError *)error {
+  NSLog(@"Error: %@",error);
+  [_loadingView hideAnimated:YES];
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Something went wrong. Please try again later" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil];
+  [av show];
+}
+
+- (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
+  PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:_viewController];
+  
+  _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:@"Please Wait" descriptionText:@"Connecting Twitter"];
+  [_loadingView showAnimated:YES];
+  
+  [manager loginWithTwitter:^(void){
+    //Twitter is logged in
+    [_viewController.twitterButton setImage:[UIImage imageNamed:@"Twitter"] forState:UIControlStateNormal];
+    _willTweet = YES;
+    [_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterSelected"] forState:UIControlStateNormal];
+    [_loadingView hideAnimated:YES];
+    [self calculateTwitterCharsLeft];
+    [_viewController.facebookButton setEnabled:NO];
+    [_viewController.withLabel setHidden:YES];
+    success();
+  } failure:^(NSError *error) {
+    //Some error
+    NSLog(@"Twitter didnt log in: %@",error);
+    if (!_mustTweet) {
+      _willTweet = NO;
+      [_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
+    }
+    [_loadingView hideAnimated:YES];
+    failure(error);
+  }];
+}
+
 
 @end

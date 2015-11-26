@@ -10,7 +10,7 @@
 #import "PDReward.h"
 @class PDClaimViewController;
 
-@interface PDClaimViewModel : NSObject <UITextViewDelegate>
+@interface PDClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate>
 
 typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
     FacebookOnly = 0,
