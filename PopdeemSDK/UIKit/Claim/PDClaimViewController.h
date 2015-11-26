@@ -42,5 +42,7 @@
 
 - (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward;
 - (void) renderView;
+- (void) keyboardUp;
+- (void) keyboardDown;
 
 @end

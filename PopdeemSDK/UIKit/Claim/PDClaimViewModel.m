@@ -45,6 +45,9 @@
     }
     
     [self setupForReward:reward];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
     return self;
 }
 
@@ -199,6 +202,25 @@
 
 - (void) calculateTwitterCharsLeft {
     
+}
+
+- (void) keyboardWillShow:(NSNotification*)notification {
+    [UIView animateWithDuration:2.0
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [_viewController keyboardUp];
+                     } completion:^(BOOL finished){}];
+    
+    [self.viewController.view setNeedsLayout];
+}
+
+- (void) keyboardWillHide:(NSNotification*)notification {
+    
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
