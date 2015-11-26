@@ -27,6 +27,7 @@
 - (id) initFromNib {
     NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
     if (self = [self initWithNibName:@"PDClaimViewController" bundle:podBundle]) {
+      self.edgesForExtendedLayout = UIRectEdgeNone;
         return self;
     }
     return nil;
