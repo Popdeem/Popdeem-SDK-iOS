@@ -10,10 +10,11 @@
 #import "PDSocialLoginViewModel.h"
 #import "PDSocialMediaManager.h"
 #import "PDUIKitUtils.h"
+#import "PDUtils.h"
 
-@interface PDSocialLoginViewController () {
-}
+@interface PDSocialLoginViewController ()
 
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *poweredByLabel;
 
 @end
 
@@ -36,14 +37,14 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    _viewModel = [[PDSocialLoginViewModel alloc] init];
-    [_viewModel setViewController:self];
-    [_loginButton setDelegate:_viewModel];
-    _snapshotView.image = [PDUIKitUtils screenSnapshot];
+    self.viewModel = [[PDSocialLoginViewModel alloc] init];
+    [self.viewModel setViewController:self];
+    [self.loginButton setDelegate:self.viewModel];
+    self.snapshotView.image = [PDUIKitUtils screenSnapshot];
     //Backing View Dismiss Recogniser
     UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
-    [_backingView addGestureRecognizer:backingTap];
-
+    [self.backingView addGestureRecognizer:backingTap];
+    [self render];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -77,6 +78,8 @@
 
 - (void) render {
     if (!_viewModel) return;
+    [self.poweredByLabel setText:translationForKey(@"popdeem.sociallogin.footer", @"Powered by Popdeem")];
+    [self.continueButton setTitle:translationForKey(@"popdeem.sociallogin.continue", @"Continue to App") forState:UIControlStateNormal];
     [self.titleLabel setText:_viewModel.titleLabelString];
     [self.subtitleLabel setText:_viewModel.subTitleLabelString];
     [self.descriptionLabel setText:_viewModel.descriptionLabelString];

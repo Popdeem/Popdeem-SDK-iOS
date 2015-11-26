@@ -28,4 +28,5 @@ typedef NS_ENUM(NSInteger, LoginState) {
 
 
 - (void) proceedWithLoggedInUser;
+
 @end

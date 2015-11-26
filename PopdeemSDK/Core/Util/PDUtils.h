@@ -50,5 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (nullable NSString*) getTwitterConsumerSecret:(NSError**)err;
 
+
+extern NSString *translationForKey(NSString *key, NSString *defaultString);
+extern NSString *localizedStringForKey(NSString *key, NSString *value, NSBundle *bundle);
+
 NS_ASSUME_NONNULL_END
 @end

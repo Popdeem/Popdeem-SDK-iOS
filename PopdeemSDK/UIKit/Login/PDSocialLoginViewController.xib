@@ -12,6 +12,7 @@
                 <outlet property="descriptionLabel" destination="XJ0-lw-cgj" id="U8g-Gv-0Tc"/>
                 <outlet property="iconView" destination="obk-PH-sSJ" id="a4O-FF-8uT"/>
                 <outlet property="loginButton" destination="AGq-IQ-PkR" id="Xdg-lP-61d"/>
+                <outlet property="poweredByLabel" destination="JLv-Mb-YSP" id="oi1-nt-1Qp"/>
                 <outlet property="snapshotView" destination="FM3-9i-htF" id="yWP-zg-xZ5"/>
                 <outlet property="subtitleLabel" destination="VVY-dA-foM" id="N3r-iq-38E"/>
                 <outlet property="titleLabel" destination="jSw-bR-cZp" id="We9-8y-cuX"/>
@@ -53,16 +54,6 @@
                                 <constraint firstAttribute="height" constant="50" id="fvY-nY-Ayn"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To see what rewards you have unlocked, simply connect your Facebook account below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ0-lw-cgj">
-                            <rect key="frame" x="20" y="260" width="264" height="29"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="29" id="wyy-5c-c6S"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Update " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSw-bR-cZp">
                             <rect key="frame" x="8" y="17" width="288" height="21"/>
                             <animations/>
@@ -105,6 +96,16 @@
                                 <action selector="continueAction:" destination="-1" eventType="touchUpInside" id="J8c-iK-gwc"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To see what rewards you have unlocked, simply connect your Facebook account below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ0-lw-cgj">
+                            <rect key="frame" x="20" y="260" width="264" height="29"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="29" id="wyy-5c-c6S"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

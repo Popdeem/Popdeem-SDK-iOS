@@ -12,6 +12,7 @@
 #import "PDModalLoadingView.h"
 #import "PDUser.h"
 #import "PDAPIClient.h"
+#import "PDConstants.h"
 
 @interface PDSocialLoginViewModel() {
     PDModalLoadingView *loadingView;
@@ -27,10 +28,10 @@
 
 - (id) init {
     if (self = [super init]) {
-        self.titleLabelString = @"App Update";
-        self.subTitleLabelString = @"Rewards Available";
+        self.titleLabelString = translationForKey(@"popdeem.sociallogin.title", @"App Update");
+        self.subTitleLabelString = translationForKey(@"popdeem.sociallogin.subtitle", @"Rewards Available");
         self.iconImageName = @"pduikit_rewardsIcon";
-        self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below.";
+        self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.description", @"To see what rewards you have unlocked, simply connect your Facebook account below.");
         self.loginState = LoginStateLogin;
         return self;
     }
@@ -89,10 +90,10 @@
         [loadingView hideAnimated:YES];
     });
     
-    self.titleLabelString = NSLocalizedString(@"popdeem.sociallogin.success", nil);
-    self.subTitleLabelString = @"Rewards Available";
+    self.titleLabelString = translationForKey(@"popdeem.sociallogin.success", @"Connected!");
+    self.subTitleLabelString = translationForKey(@"popdeem.sociallogin.rewardsavailable", @"Rewards Available");
     self.iconImageName = @"pduikit_rewardsIconSuccess";
-    self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description", nil);
+    self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.success.description", @"Rewards are now unlocked. You will be notified when new rewards are available!");
     self.loginState = LoginStateContinue;
     [_viewController render];
 }
