@@ -60,8 +60,8 @@
 }
 
 - (void) proceedWithLoggedInUser {
-    self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.containterView];
-    [self.loadingView showAnimated:YES];
+  self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.containterView];
+  [self.loadingView showAnimated:YES];
   
   [[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
     if (error) {
@@ -76,14 +76,14 @@
     if (_viewController.shouldAskLocation) {
       [self fetchLocationCompletion:^(NSError *error){
         if (error) {
-            NSLog(@"Something went wrong: %@",error);
-            [[PDSocialMediaManager manager] logoutFacebook];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.loadingView hideAnimated:YES];
-            });
-            return;
+          NSLog(@"Something went wrong: %@",error);
+          [[PDSocialMediaManager manager] logoutFacebook];
+          dispatch_async(dispatch_get_main_queue(), ^{
+            [self.loadingView hideAnimated:YES];
+          });
+          return;
         }
-
+        
         [self renderSuccess];
       }];
     } else {
@@ -109,26 +109,26 @@
 #pragma mark - Fetch Location -
 
 - (void) fetchLocationCompletion:(void (^)(NSError *error))completion {
-    
-    self.locationBlock = completion;
-    if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-            [[PDGeolocationManager sharedInstance] requestWhenInUseAuthorization];
-        }
-    } else if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        //Cannot use the app without location
-        [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
-        NSLog(@"The user did not allow their location");
-        NSError *locationError = [NSError errorWithDomain:@"Popdeem Location Error" code:27000 userInfo:@{@"User did not allow location":NSLocalizedDescriptionKey}];
-        self.locationBlock(locationError);
-        return;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self checkLocation];
-        });
+  
+  self.locationBlock = completion;
+  if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+      [[PDGeolocationManager sharedInstance] requestWhenInUseAuthorization];
     }
+  } else if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+    //Cannot use the app without location
+    [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+    NSLog(@"The user did not allow their location");
+    NSError *locationError = [NSError errorWithDomain:@"Popdeem Location Error" code:27000 userInfo:@{@"User did not allow location":NSLocalizedDescriptionKey}];
+    self.locationBlock(locationError);
+    return;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self checkLocation];
+      [self checkLocation];
     });
+  }
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self checkLocation];
+  });
 }
 
 - (void) checkLocation {
@@ -136,7 +136,7 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-
+  
   if (_locationAcquired == NO) {
     NSLog(@"Error: %@",error);
     [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
@@ -149,34 +149,34 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if (self.locationAcquired == NO) {
-        [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
-        self.locationAcquired = YES;
-    } else {
-        return;
-    }
-    
-    CLLocation *location = [locations lastObject];
-    if (!location) {
-        return;
-    }
-    float latitude = location.coordinate.latitude;
-    float longitude = location.coordinate.longitude;
-    
-    [[PDUser sharedInstance] setLastLocation:PDGeoLocationMake(latitude, longitude)];
-    
-    [self updateUserLocationCompletion:^(NSError *error){
-        self.locationBlock(error);
-    }];
+  if (self.locationAcquired == NO) {
+    [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+    self.locationAcquired = YES;
+  } else {
+    return;
+  }
+  
+  CLLocation *location = [locations lastObject];
+  if (!location) {
+    return;
+  }
+  float latitude = location.coordinate.latitude;
+  float longitude = location.coordinate.longitude;
+  
+  [[PDUser sharedInstance] setLastLocation:PDGeoLocationMake(latitude, longitude)];
+  
+  [self updateUserLocationCompletion:^(NSError *error){
+    self.locationBlock(error);
+  }];
 }
 
 - (void) updateUserLocationCompletion:(void (^)(NSError *error))completion {
-    [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user) {
-        NSLog(@"User Updated OK");
-        self.locationBlock(nil);
-    }failure:^(NSError *error) {
-        self.locationBlock(error);
-    }];
+  [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user) {
+    NSLog(@"User Updated OK");
+    self.locationBlock(nil);
+  }failure:^(NSError *error) {
+    self.locationBlock(error);
+  }];
 }
 
 - (void) setState:(LoginState)state {

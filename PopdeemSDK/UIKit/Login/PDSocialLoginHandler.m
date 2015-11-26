@@ -22,45 +22,45 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 @implementation PDSocialLoginHandler
 
 - (instancetype)init{
-    if(self = [super init]){
-        self.socialManager = [PDSocialMediaManager manager];
-    }
-    return self;
+  if(self = [super init]){
+    self.socialManager = [PDSocialMediaManager manager];
+  }
+  return self;
 }
 
 - (void)showPromptIfNeededWithMaxAllowed:(NSNumber*)numberOfTimes  {
-    self.maxPrompts = numberOfTimes.integerValue;
-    
-    if ([self shouldShowPrompt]) {
-        [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.2];
-    }
+  self.maxPrompts = numberOfTimes.integerValue;
+  
+  if ([self shouldShowPrompt]) {
+    [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.2];
+  }
 }
 
 - (BOOL)shouldShowPrompt {
-    return   (self.usesCount < self.maxPrompts) && ![self.socialManager isLoggedIn];
+  return   (self.usesCount < self.maxPrompts) && ![self.socialManager isLoggedIn];
 }
 
 - (void) presentLoginModal {
-    UIViewController *topController = [PDUIKitUtils topViewController];
-    [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    
-    PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
-    [topController presentViewController:vc animated:YES completion:^{}];
-    
-    [self setUsesCount:self.usesCount+1];
+  UIViewController *topController = [PDUIKitUtils topViewController];
+  [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+  
+  PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
+  [topController presentViewController:vc animated:YES completion:^{}];
+  
+  [self setUsesCount:self.usesCount+1];
 }
 
 - (NSUInteger)usesCount {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
+  return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
 }
 
 - (void)setUsesCount:(NSUInteger)count {
-    [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)count forKey:PDUseCountKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+  [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)count forKey:PDUseCountKey];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSUInteger)numberOfPromptsAllowed {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
+  return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
 }
 
 
