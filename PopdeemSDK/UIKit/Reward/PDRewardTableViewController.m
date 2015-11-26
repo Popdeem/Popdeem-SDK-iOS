@@ -32,21 +32,17 @@
 
 - (void)renderView {
   self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:self.view];
-  [self.loadingView showAnimated:YES];
   
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance]getAllRewardsSuccess:^{
     weakSelf.rewards =  [PDRewardStore allRewards];
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.tableView reloadData];
-
-      [weakSelf.loadingView hideAnimated:YES];
     });
 
   } failure:^(NSError * _Nonnull error) {
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.tableView reloadData];      
-      [weakSelf.loadingView hideAnimated:YES];
     });
 
   }];
@@ -70,7 +66,7 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   PDReward *reward;
   if (self.rewards.count == 0) {
-    return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"There are no Rewards available right now. Please check back later."];
+    return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) text:@"There are no Rewards available right now. Please check back later."];
   } else {
     reward = [self.rewards objectAtIndex:indexPath.row];
     return [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
