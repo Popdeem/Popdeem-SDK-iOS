@@ -19,12 +19,9 @@
 @property (nonatomic, strong) CALayer *claimViewBordersLayer;
 @property (nonatomic, strong) CALayer *facebookButtonViewBordersLayer;
 
-//constraints
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
-
-
 @end
 
 @implementation PDClaimViewController
@@ -53,6 +50,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self renderView];
+  UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
+  [_keyboardHiderView addGestureRecognizer:hiderTap];
   // Do any additional setup after loading the view from its nib.
 }
 
