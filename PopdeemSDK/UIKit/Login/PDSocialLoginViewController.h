@@ -32,6 +32,6 @@
 
 - (id) initFromNib;
 - (id) initWithLocationServices:(BOOL)shouldAskLocation;
-- (void) render;
+- (void) renderViewModelState;
 
 @end

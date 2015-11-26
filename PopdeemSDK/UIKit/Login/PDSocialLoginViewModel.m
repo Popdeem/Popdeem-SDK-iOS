@@ -28,11 +28,7 @@
 
 - (id) init {
     if (self = [super init]) {
-        self.titleLabelString = translationForKey(@"popdeem.sociallogin.title", @"App Update");
-        self.subTitleLabelString = translationForKey(@"popdeem.sociallogin.subtitle", @"Rewards Available");
-        self.iconImageName = @"pduikit_rewardsIcon";
-        self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.description", @"To see what rewards you have unlocked, simply connect your Facebook account below.");
-        self.loginState = LoginStateLogin;
+        [self setState:LoginStateLogin];
         return self;
     }
     return nil;
@@ -91,13 +87,9 @@
      dispatch_async(dispatch_get_main_queue(), ^{
         [loadingView hideAnimated:YES];
     });
-    
-    self.titleLabelString = translationForKey(@"popdeem.sociallogin.success", @"Connected!");
-    self.subTitleLabelString = translationForKey(@"popdeem.sociallogin.rewardsavailable", @"Rewards Available");
-    self.iconImageName = @"pduikit_rewardsIconSuccess";
-    self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.success.description", @"Rewards are now unlocked. You will be notified when new rewards are available!");
-    self.loginState = LoginStateContinue;
-    [_viewController render];
+
+    [self setState:LoginStateContinue];
+    [self.viewController renderViewModelState];
 }
 
 #pragma mark - Fetch Location -
@@ -160,6 +152,30 @@
     }failure:^(NSError *error) {
         locationBlock(error);
     }];
+}
+
+- (void) setState:(LoginState)state {
+    self.subTitleLabelString = translationForKey(@"popdeem.sociallogin.subtitle", @"Rewards Available");
+    self.iconImageName = @"pduikit_rewardsIcon";
+    self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.description", @"To see what rewards you have unlocked, simply connect your Facebook account below.");
+
+    
+    switch (state) {
+        case LoginStateContinue:
+            self.titleLabelString = translationForKey(@"popdeem.sociallogin.success", @"Connected!");
+            self.iconImageName = @"pduikit_rewardsIconSuccess";
+            self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.success.description", @"Rewards are now unlocked. You will be notified when new rewards are available!");
+            self.loginState = LoginStateContinue;
+            break;
+        case LoginStateLogin:
+        default:
+            self.titleLabelString = translationForKey(@"popdeem.sociallogin.title", @"App Update");
+            self.iconImageName = @"pduikit_rewardsIcon";
+            self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description", nil);
+            self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below."; 
+            self.loginState = LoginStateLogin;
+            break;
+    }
 }
 
 @end

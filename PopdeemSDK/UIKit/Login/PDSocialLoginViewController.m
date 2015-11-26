@@ -43,8 +43,9 @@
     self.snapshotView.image = [PDUIKitUtils screenSnapshot];
     //Backing View Dismiss Recogniser
     UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
-    [self.backingView addGestureRecognizer:backingTap];
-    [self render];
+
+    [_backingView addGestureRecognizer:backingTap];
+    [self renderViewModelState];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -76,7 +77,7 @@
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void) render {
+- (void) renderViewModelState {
     if (!_viewModel) return;
     [self.poweredByLabel setText:translationForKey(@"popdeem.sociallogin.footer", @"Powered by Popdeem")];
     [self.continueButton setTitle:translationForKey(@"popdeem.sociallogin.continue", @"Continue to App") forState:UIControlStateNormal];
