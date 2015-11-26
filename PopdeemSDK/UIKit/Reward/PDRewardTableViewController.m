@@ -12,6 +12,8 @@
 #import "RewardTableViewCell.h"
 #import "NoRewardsTableViewCell.h"
 #import "PDAPIClient.h"
+#import "PDClaimViewController.h"
+#import "PDClaimViewModel.h"
 
 @interface PDRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
@@ -74,7 +76,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"TODO - NIALL");
+    if (indexPath.row > self.rewards.count-1) {
+        NSLog(@"Out of bounds");
+        return;
+    }
+    PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
+    PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward];
+    [[self navigationController] pushViewController:claimController animated:YES];
 }
 
 @end

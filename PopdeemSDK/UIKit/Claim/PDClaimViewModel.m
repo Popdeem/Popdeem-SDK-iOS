@@ -9,6 +9,14 @@
 #import "PDClaimViewModel.h"
 #import "PDClaimViewController.h"
 #import "PDUser.h"
+#import "PDSocialMediaManager.h"
+
+@interface PDClaimViewModel()
+@property (nonatomic) BOOL mustTweet;
+@property (nonatomic) BOOL willTweet;
+@property (nonatomic) BOOL mustFacebook;
+@property (nonatomic) BOOL willFacebook;
+@end
 
 @implementation PDClaimViewModel
 
@@ -19,7 +27,7 @@
     return nil;
 }
 
-- (id) initWithMediaTypes:(NSArray*)mediaTypes {
+- (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward {
     self = [self init];
     if (!self) return nil;
     
@@ -36,6 +44,8 @@
         //too many or not enough
     }
     
+    [self setupForReward:reward];
+    return self;
 }
 
 - (void) setupForReward:(PDReward*)reward {
@@ -126,8 +136,69 @@
     return action;
 }
 
-- (void) facebookButtonTapped {
-    //Toggle the facebook
+- (void) toggleFacebook {
+    if (_mustFacebook) {
+        _willFacebook = YES;
+        UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:@"Cannot Deselect" message:@"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [fbV show];
+        return;
+    }
+    
+    if (_willFacebook) {
+        _willFacebook = NO;
+        [_viewController.facebookButton setSelected:NO];
+        return;
+    }
+    
+    if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+        _willFacebook = YES;
+        [_viewController.facebookButton setSelected:YES];
+    } else {
+        [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"] registerWithPopdeem:YES success:^(void) {
+            _willFacebook = YES;
+            [_viewController.facebookButton setSelected:YES];
+        } failure:^(NSError *error) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"We couldnt connect you to Facebook" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [av show];
+            _willFacebook = NO;
+            [_viewController.facebookButton setSelected:NO];
+        }];
+    }
+}
+
+- (void) toggleTwitter {
+    if (_mustTweet) {
+        _willTweet = YES;
+        UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:@"Cannot Deselect" message:@"This reward must be claimed with a tweet. You can also post to Facebook if you wish" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [twitterV show];
+        return;
+    }
+    
+    if (_willTweet) {
+        _willTweet = NO;
+        [_viewController.twitterForcedTagLabel setHidden:YES];
+        [_viewController.twitterCharacterCountLabel setHidden:YES];
+        [_viewController.twitterButton setSelected:NO];
+        return;
+    }
+    
+    _willTweet = YES;
+    [_viewController.twitterButton setSelected:YES];
+    [_viewController.twitterForcedTagLabel setHidden:NO];
+    [_viewController.twitterCharacterCountLabel setHidden:NO];
+    [self calculateTwitterCharsLeft];
+}
+
+- (void) addPhotoAction {
+    
+}
+
+- (void) claimAction {
+    
+}
+
+- (void) calculateTwitterCharsLeft {
+    
 }
 
 @end

@@ -31,6 +31,10 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 
 @property (nonatomic) SocialMediaTypesAvailable socialMediaTypesAvailable;
 
-- (id) initWithMediaTypes:(NSArray*)mediaTypes;
+- (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward;
+- (void) toggleFacebook;
+- (void) toggleTwitter;
+- (void) addPhotoAction;
+- (void) claimAction;
 
 @end
