@@ -26,18 +26,18 @@
                 <outlet property="controlButtonsView" destination="QVt-fX-G8J" id="bwe-DX-Vab"/>
                 <outlet property="facebookButton" destination="gVH-YW-ic3" id="Wcv-oI-NKs"/>
                 <outlet property="facebookButtonView" destination="axK-DZ-59o" id="ET3-cz-5ib"/>
-                <outlet property="facebookButtonViewHeightConstraint" destination="ecV-IR-qT2" id="RSo-WT-50m"/>
+                <outlet property="facebookButtonViewHeightConstraint" destination="ecV-IR-qT2" id="BGW-YD-JYi"/>
                 <outlet property="keyboardHiderView" destination="ftP-Rr-EsR" id="dHt-HC-fyh"/>
                 <outlet property="rewardDescriptionLabel" destination="ghi-jG-kG9" id="NDe-1d-zFS"/>
                 <outlet property="rewardImageView" destination="jzD-WU-5kZ" id="Vtk-Ej-dBi"/>
                 <outlet property="rewardInfoLabel" destination="Tc3-My-CeY" id="Ygg-53-kin"/>
                 <outlet property="rewardInfoView" destination="URn-F7-REZ" id="6jf-PS-Uif"/>
-                <outlet property="rewardInfoViewHeightConstraint" destination="Bzn-xH-hoa" id="6Uf-iy-m0f"/>
+                <outlet property="rewardInfoViewHeightConstraint" destination="Bzn-xH-hoa" id="vFv-T3-XM5"/>
                 <outlet property="rewardRulesLabel" destination="ZDU-TG-bmp" id="dqa-Lp-Lws"/>
                 <outlet property="textView" destination="FtA-wC-9gB" id="b3w-FV-Hjd"/>
                 <outlet property="twitterButton" destination="53c-Fq-DHN" id="OzE-D7-c3q"/>
                 <outlet property="twitterButtonView" destination="bcx-cq-ec7" id="Kfc-cq-BJJ"/>
-                <outlet property="twitterButtonViewHeightConstraint" destination="rZB-AP-mxQ" id="h3P-gX-n8V"/>
+                <outlet property="twitterButtonViewHeightConstraint" destination="rZB-AP-mxQ" id="9dx-rR-zu5"/>
                 <outlet property="twitterCharacterCountLabel" destination="tbK-Jj-ibT" id="ugA-if-FEg"/>
                 <outlet property="twitterForcedTagLabel" destination="tbK-Jj-ibT" id="yBf-HL-cgg"/>
                 <outlet property="view" destination="0it-oE-mA7" id="fEa-QZ-eOT"/>
@@ -53,45 +53,61 @@
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="URn-F7-REZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Reward Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghi-jG-kG9">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reward Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghi-jG-kG9">
                             <rect key="frame" x="58" y="1" width="534" height="27"/>
                             <animations/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="27" id="rnR-JA-hde"/>
+                                <constraint firstAttribute="height" constant="27" id="41P-DY-iYo"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Check-in Required | Exp 10 Oct" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc3-My-CeY">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check-in Required | Exp 10 Oct" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc3-My-CeY">
                             <rect key="frame" x="57" y="68" width="534" height="15"/>
                             <animations/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="15" id="Gf1-bQ-e1P"/>
+                                <constraint firstAttribute="height" constant="15" id="HEa-rn-PVA"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Reward Rules" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-TG-bmp">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reward Rules" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDU-TG-bmp">
                             <rect key="frame" x="58" y="28" width="533" height="31"/>
                             <animations/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="31" id="8O2-aQ-zQu"/>
+                                <constraint firstAttribute="height" constant="31" id="SRR-F0-yaC"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="starG.png" translatesAutoresizingMaskIntoConstraints="NO" id="jzD-WU-5kZ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starG.png" translatesAutoresizingMaskIntoConstraints="NO" id="jzD-WU-5kZ">
                             <rect key="frame" x="8" y="23" width="40" height="40"/>
                             <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="rbc-dW-8db"/>
+                                <constraint firstAttribute="height" constant="40" id="u1D-OK-GfW"/>
+                            </constraints>
                         </imageView>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="ZDU-TG-bmp" firstAttribute="leading" secondItem="jzD-WU-5kZ" secondAttribute="trailing" constant="10" id="3cA-vn-LP6"/>
+                        <constraint firstItem="ghi-jG-kG9" firstAttribute="leading" secondItem="jzD-WU-5kZ" secondAttribute="trailing" constant="10" id="A2R-KR-CpZ"/>
                         <constraint firstAttribute="height" constant="86" id="Bzn-xH-hoa"/>
+                        <constraint firstItem="jzD-WU-5kZ" firstAttribute="top" secondItem="URn-F7-REZ" secondAttribute="top" constant="23" id="Fck-RS-HFY"/>
+                        <constraint firstItem="jzD-WU-5kZ" firstAttribute="leading" secondItem="URn-F7-REZ" secondAttribute="leading" constant="8" id="Jyc-1V-Tmf"/>
+                        <constraint firstItem="Tc3-My-CeY" firstAttribute="top" secondItem="ZDU-TG-bmp" secondAttribute="bottom" constant="9" id="PHm-nY-nHb"/>
+                        <constraint firstAttribute="trailing" secondItem="ZDU-TG-bmp" secondAttribute="trailing" constant="9" id="Pm3-hX-AFr"/>
+                        <constraint firstItem="Tc3-My-CeY" firstAttribute="leading" secondItem="jzD-WU-5kZ" secondAttribute="trailing" constant="9" id="Tdd-r3-gGl"/>
+                        <constraint firstItem="ghi-jG-kG9" firstAttribute="top" secondItem="URn-F7-REZ" secondAttribute="top" constant="1" id="XXJ-Xq-k7e"/>
+                        <constraint firstAttribute="trailing" secondItem="Tc3-My-CeY" secondAttribute="trailing" constant="9" id="cNK-4O-dAY"/>
+                        <constraint firstItem="ZDU-TG-bmp" firstAttribute="top" secondItem="ghi-jG-kG9" secondAttribute="bottom" id="mhR-NI-NGu"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="86" id="r2p-Gv-FxW"/>
+                        <constraint firstAttribute="trailing" secondItem="ghi-jG-kG9" secondAttribute="trailing" constant="8" id="yL2-3V-bKp"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtA-wC-9gB" customClass="PD_SZTextView">
@@ -258,6 +274,7 @@
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="0Bh-db-Xyd"/>
                 <constraint firstItem="Kh4-I8-2ik" firstAttribute="top" secondItem="FtA-wC-9gB" secondAttribute="bottom" id="0JM-0F-tjG"/>
                 <constraint firstItem="FtA-wC-9gB" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="275-d4-VUy"/>
+                <constraint firstAttribute="trailing" secondItem="URn-F7-REZ" secondAttribute="trailing" id="2nD-ej-WeM"/>
                 <constraint firstAttribute="trailing" secondItem="bcx-cq-ec7" secondAttribute="trailing" id="3e0-wa-ijB"/>
                 <constraint firstItem="FtA-wC-9gB" firstAttribute="top" secondItem="URn-F7-REZ" secondAttribute="bottom" id="4c7-nQ-zlh"/>
                 <constraint firstItem="ftP-Rr-EsR" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="7FK-Dq-97w"/>
@@ -265,6 +282,7 @@
                 <constraint firstItem="ftP-Rr-EsR" firstAttribute="top" secondItem="FtA-wC-9gB" secondAttribute="bottom" id="A8G-lG-CP4"/>
                 <constraint firstAttribute="trailing" secondItem="ftP-Rr-EsR" secondAttribute="trailing" id="EML-ga-vlT"/>
                 <constraint firstItem="bcx-cq-ec7" firstAttribute="leading" secondItem="axK-DZ-59o" secondAttribute="trailing" id="GuS-ub-22p"/>
+                <constraint firstItem="URn-F7-REZ" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="Hir-6B-CF2"/>
                 <constraint firstAttribute="trailing" secondItem="XxC-57-5PT" secondAttribute="trailing" id="JHw-qe-BVo"/>
                 <constraint firstItem="Kh4-I8-2ik" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="P83-af-KAg"/>
                 <constraint firstItem="bcx-cq-ec7" firstAttribute="width" secondItem="axK-DZ-59o" secondAttribute="width" id="RKC-Sq-53r"/>
@@ -279,13 +297,14 @@
                 <constraint firstItem="URn-F7-REZ" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="kMY-56-ATg"/>
                 <constraint firstAttribute="bottom" secondItem="ftP-Rr-EsR" secondAttribute="bottom" id="oK9-KQ-Pmp"/>
                 <constraint firstItem="URn-F7-REZ" firstAttribute="top" secondItem="0it-oE-mA7" secondAttribute="top" id="q2v-yW-dBv"/>
+                <constraint firstItem="URn-F7-REZ" firstAttribute="top" secondItem="0it-oE-mA7" secondAttribute="top" id="rXe-Dr-znj"/>
                 <constraint firstAttribute="trailing" secondItem="FtA-wC-9gB" secondAttribute="trailing" id="tkC-Gk-njh"/>
                 <constraint firstItem="XxC-57-5PT" firstAttribute="top" secondItem="bcx-cq-ec7" secondAttribute="bottom" id="vhg-dF-pRG"/>
                 <constraint firstItem="axK-DZ-59o" firstAttribute="width" secondItem="0it-oE-mA7" secondAttribute="width" multiplier="0.5" id="wo9-5g-Hb7"/>
                 <constraint firstItem="axK-DZ-59o" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="bottom" constant="8" id="ynU-bG-bF8"/>
                 <constraint firstAttribute="trailing" secondItem="QVt-fX-G8J" secondAttribute="trailing" id="zaz-Sw-3O9"/>
             </constraints>
-            <point key="canvasLocation" x="567" y="266"/>
+            <point key="canvasLocation" x="562" y="268"/>
         </view>
     </objects>
     <resources>

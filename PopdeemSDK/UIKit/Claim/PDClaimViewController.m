@@ -9,6 +9,7 @@
 #import "PDClaimViewController.h"
 #import "PDClaimViewModel.h"
 #import "PDUser.h"
+#import "PDUIKitUtils.h"
 
 @interface PDClaimViewController ()
 @property (nonatomic, strong) CALayer *textViewBordersLayer;
@@ -18,6 +19,9 @@
 @property (nonatomic, strong) CALayer *facebookButtonViewBordersLayer;
 
 //constraints
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonViewHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonViewHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
 
 
 @end
@@ -35,11 +39,13 @@
 }
 
 - (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward {
-  if (self = [self initFromNib]) {
-    _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:mediaTypes andReward:reward];
-    return self;
-  }
-  return nil;
+    if (self = [self initFromNib]) {
+        _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:mediaTypes andReward:reward];
+        [_viewModel setViewController:self];
+        [_textView setDelegate:_viewModel];
+        return self;
+    }
+    return nil;
 }
 
 - (void)viewDidLoad {
@@ -54,30 +60,29 @@
 }
 
 - (void) renderView {
-  [self.rewardDescriptionLabel setText:_viewModel.rewardTitleString];
-  [self.rewardRulesLabel setText:_viewModel.rewardRulesString];
-  [self.rewardInfoLabel setText:_viewModel.rewardActionsString];
-  [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
-  switch (_viewModel.socialMediaTypesAvailable) {
-    case FacebookOnly:
-      //Ensure Twitter Button is Hidden
-      [self.facebookButton setHidden:YES];
-      [self.twitterButton setHidden:YES];
-      break;
-    case TwitterOnly:
-      //Ensure Facebook Button is Hidden
-      [self.facebookButton setHidden:YES];
-      [self.twitterButton setHidden:NO];
-      break;
-    case FacebookAndTwitter:
-      //Ensure both buttons are shown
-      [self.facebookButton setHidden:NO];
-      [self.twitterButton setHidden:NO];
-      break;
-    default:
-      break;
-  }
-  [self drawBorders];
+    [self.rewardDescriptionLabel setText:_viewModel.rewardTitleString];
+    [self.rewardRulesLabel setText:_viewModel.rewardRulesString];
+    [self.rewardInfoLabel setText:_viewModel.rewardActionsString];
+    [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
+    switch (_viewModel.socialMediaTypesAvailable) {
+        case FacebookOnly:
+        case TwitterOnly:
+            [self.facebookButton setHidden:YES];
+            [self.twitterButton setHidden:YES];
+            self.facebookButtonViewHeightConstraint.constant = 0;
+            self.twitterButtonViewHeightConstraint.constant = 0;
+            break;
+        case FacebookAndTwitter:
+            //Ensure both buttons are shown
+            [self.facebookButton setHidden:YES];
+            [self.twitterButton setHidden:YES];
+            self.facebookButtonViewHeightConstraint.constant = 40;
+            self.twitterButtonViewHeightConstraint.constant = 40;
+            break;
+        default:
+            break;
+    }
+    [self drawBorders];
 }
 
 - (void) drawBorders {
@@ -116,5 +121,40 @@
 
 - (IBAction)claimButtonTapped:(id)sender {
   [_viewModel claimAction];
+}
+
+- (void) keyboardUp {
+    UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(hiderTap)];
+    self.navigationItem.rightBarButtonItem = typingDone;
+    self.navigationItem.hidesBackButton = YES;
+    [self.keyboardHiderView setHidden:NO];
+    [self.view bringSubviewToFront:self.keyboardHiderView];
+    [self.textView becomeFirstResponder];
+    [self.rewardImageView setHidden:YES];
+    self.rewardInfoViewHeightConstraint.constant = 0;
+    [self setTitle:@"Add Message"];
+    [self.view setNeedsDisplay];
+}
+
+- (void) hiderTap {
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         
+                         [_keyboardHiderView setHidden:YES];
+                         if (!IS_IPHONE_4_OR_LESS) {
+                             _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 86;
+                         }
+                         [_textView resignFirstResponder];
+                         [_rewardInfoView setHidden:NO];
+                         self.navigationItem.rightBarButtonItem = nil;
+                         self.navigationItem.hidesBackButton = NO;
+                         [self setTitle:@"Claim Reward"];
+                     } completion:^(BOOL finished){}];
+}
+
+- (void) keyboardDown {
+    
 }
 @end
