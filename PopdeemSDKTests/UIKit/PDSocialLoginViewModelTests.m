@@ -23,6 +23,7 @@
 
 @interface PDSocialLoginViewModel(TEST)
 - (void) renderSuccess;
+- (void) updateUserLocationCompletion:(void (^)(NSError *error))completion;
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations;
 @end
 
@@ -55,23 +56,16 @@
     expect(viewModel.iconImageName).to.equal(@"pduikit_rewardsIconSuccess");
 }
 
-//- (void) testLocationDelegateDidUpdateSuccessfully {
-//    id apiClientClassMock = [OCMockObject mockForClass:[PDAPIClient class]];
-//    id testApiClientMock = OCMClassMock([PDAPIClient class]);
-//    id locationManagerMock = OCMClassMock([PDGeolocationManager class]);
-//    NSArray *locations = [NSArray arrayWithObject:[[CLLocation alloc] initWithLatitude:0 longitude:0]];
-//    [viewModel setLoginState:LoginStateLogin];
-//    void (^successBlock)(NSError *error) = ^void(NSError *error){
-//        [viewModel setLoginState:LoginStateContinue];
-//        expect(viewModel.loginState).to.equal(LoginStateContinue);
-//    };
-//    void (^proxyBlock)(NSInvocation *) = ^(NSInvocation *invocation) {
-//        successBlock(nil);
-//    };
-//    
-//    [[[apiClientClassMock stub] andReturn:testApiClientMock] sharedInstance];
-//    [[[testApiClientMock stub] andDo:proxyBlock] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user){} failure:^(NSError *error){}];
-//    [viewModel locationManager:locationManagerMock didUpdateLocations:locations];
-//}
+- (void) testLocationDelegateDidUpdateSuccessfully {
+    id apiClientClassMock = [OCMockObject mockForClass:[PDAPIClient class]];
+    id testApiClientMock = OCMClassMock([PDAPIClient class]);
+    id locationManagerMock = OCMClassMock([PDGeolocationManager class]);
+    
+    id viewModelMock = OCMClassMock([PDSocialLoginViewModel class]);
+    
+    NSArray *locations = [NSArray arrayWithObject:[[CLLocation alloc] initWithLatitude:0 longitude:0]];
+    [viewModel setLoginState:LoginStateLogin];
+
+}
 
 @end

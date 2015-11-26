@@ -28,6 +28,7 @@
 #import "PDUtils.h"
 #import "PDCommon.h"
 #import "PDConstants.h"
+#import "PopdeemSDK.h"
 
 @implementation PDUtils
 
@@ -42,6 +43,7 @@
 }
 
 + (NSString*) getPopdeemApiKey:(NSError**)err {
+    if ([[PopdeemSDK sharedInstance] apiKey]) return [[PopdeemSDK sharedInstance] apiKey];
     NSString *apiKey = nil;
     if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"PopdeemApiKey"]) {
         apiKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"PopdeemApiKey"];

@@ -1,13 +1,27 @@
 //
-//  PD_SZTextView.h
-//  PopdeemSDK
+//  SZTextView.h
+//  SZTextView
 //
-//  Created by Niall Quinn on 26/11/2015.
-//  Copyright © 2015 Popdeem. All rights reserved.
+//  Created by glaszig on 14.03.13.
+//  Copyright (c) 2013 glaszig. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface PD_SZTextView : NSObject
+//! Project version number for SZTextView.
+FOUNDATION_EXPORT double PD_SZTextViewVersionNumber;
+
+//! Project version string for SZTextView.
+FOUNDATION_EXPORT const unsigned char PD_SZTextViewVersionString[];
+
+
+IB_DESIGNABLE
+
+@interface PD_SZTextView : UITextView
+
+@property (copy, nonatomic) IBInspectable NSString *placeholder;
+@property (nonatomic) IBInspectable double fadeTime;
+@property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
+@property (retain, nonatomic) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
 
 @end

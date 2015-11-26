@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
+		392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDClaimViewController.m */; };
+		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
 		398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
+		39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDClaimViewModel.m */; };
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
 		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
@@ -116,6 +119,23 @@
 
 /* Begin PBXFileReference section */
 		3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewModelTests.m; path = PopdeemSDKTests/UIKit/PDSocialLoginViewModelTests.m; sourceTree = SOURCE_ROOT; };
+		392787121C0716F600F8DCD9 /* PDClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewController.h; path = Claim/PDClaimViewController.h; sourceTree = "<group>"; };
+		392787131C0716F600F8DCD9 /* PDClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewController.m; path = Claim/PDClaimViewController.m; sourceTree = "<group>"; };
+		392787141C0716F600F8DCD9 /* PDClaimViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDClaimViewController.xib; path = Claim/PDClaimViewController.xib; sourceTree = "<group>"; };
+		392787161C071BFA00F8DCD9 /* PD_SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PD_SZTextView.h; path = Claim/PD_SZTextView.h; sourceTree = "<group>"; };
+		392787171C071BFA00F8DCD9 /* PD_SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PD_SZTextView.m; path = Claim/PD_SZTextView.m; sourceTree = "<group>"; };
+		392787191C07230800F8DCD9 /* pduikit_fbbutton_deselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_fbbutton_deselected.png; path = ../../../../../Desktop/uikitassets/pduikit_fbbutton_deselected.png; sourceTree = "<group>"; };
+		3927871A1C07230800F8DCD9 /* pduikit_fbbutton_deselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_deselected@2x.png"; path = "../../../../../Desktop/uikitassets/pduikit_fbbutton_deselected@2x.png"; sourceTree = "<group>"; };
+		3927871B1C07230800F8DCD9 /* pduikit_fbbutton_deselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_deselected@3x.png"; path = "../../../../../Desktop/uikitassets/pduikit_fbbutton_deselected@3x.png"; sourceTree = "<group>"; };
+		3927871C1C07230800F8DCD9 /* pduikit_fbbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_fbbutton_selected.png; path = ../../../../../Desktop/uikitassets/pduikit_fbbutton_selected.png; sourceTree = "<group>"; };
+		3927871D1C07230800F8DCD9 /* pduikit_fbbutton_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_selected@2x.png"; path = "../../../../../Desktop/uikitassets/pduikit_fbbutton_selected@2x.png"; sourceTree = "<group>"; };
+		3927871E1C07230800F8DCD9 /* pduikit_fbbutton_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_selected@3x.png"; path = "../../../../../Desktop/uikitassets/pduikit_fbbutton_selected@3x.png"; sourceTree = "<group>"; };
+		3927871F1C07230800F8DCD9 /* pduikit_twitterbutton_deselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_twitterbutton_deselected.png; path = ../../../../../Desktop/uikitassets/pduikit_twitterbutton_deselected.png; sourceTree = "<group>"; };
+		392787201C07230800F8DCD9 /* pduikit_twitterbutton_deselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_deselected@2x.png"; path = "../../../../../Desktop/uikitassets/pduikit_twitterbutton_deselected@2x.png"; sourceTree = "<group>"; };
+		392787211C07230800F8DCD9 /* pduikit_twitterbutton_deselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_deselected@3x.png"; path = "../../../../../Desktop/uikitassets/pduikit_twitterbutton_deselected@3x.png"; sourceTree = "<group>"; };
+		392787221C07230800F8DCD9 /* pduikit_twitterbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_twitterbutton_selected.png; path = ../../../../../Desktop/uikitassets/pduikit_twitterbutton_selected.png; sourceTree = "<group>"; };
+		392787231C07230800F8DCD9 /* pduikit_twitterbutton_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_selected@2x.png"; path = "../../../../../Desktop/uikitassets/pduikit_twitterbutton_selected@2x.png"; sourceTree = "<group>"; };
+		392787241C07230800F8DCD9 /* pduikit_twitterbutton_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_selected@3x.png"; path = "../../../../../Desktop/uikitassets/pduikit_twitterbutton_selected@3x.png"; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -132,6 +152,11 @@
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39EDADBA1C072565001102B3 /* pduikit_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_camera.png; path = ../../../../../Desktop/uikitassets/pduikit_camera.png; sourceTree = "<group>"; };
+		39EDADBB1C072565001102B3 /* pduikit_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_camera@2x.png"; path = "../../../../../Desktop/uikitassets/pduikit_camera@2x.png"; sourceTree = "<group>"; };
+		39EDADBC1C072565001102B3 /* pduikit_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_camera@3x.png"; path = "../../../../../Desktop/uikitassets/pduikit_camera@3x.png"; sourceTree = "<group>"; };
+		39EDADBD1C072851001102B3 /* PDClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewModel.h; path = Claim/PDClaimViewModel.h; sourceTree = "<group>"; };
+		39EDADBE1C072851001102B3 /* PDClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewModel.m; path = Claim/PDClaimViewModel.m; sourceTree = "<group>"; };
 		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
 		39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@2x.png"; path = "Resources/pduikit_rainbow@2x.png"; sourceTree = "<group>"; };
 		39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@3x.png"; path = "Resources/pduikit_rainbow@3x.png"; sourceTree = "<group>"; };
@@ -304,6 +329,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		392787111C0715DD00F8DCD9 /* Claim */ = {
+			isa = PBXGroup;
+			children = (
+				392787121C0716F600F8DCD9 /* PDClaimViewController.h */,
+				392787131C0716F600F8DCD9 /* PDClaimViewController.m */,
+				39EDADBD1C072851001102B3 /* PDClaimViewModel.h */,
+				39EDADBE1C072851001102B3 /* PDClaimViewModel.m */,
+				392787141C0716F600F8DCD9 /* PDClaimViewController.xib */,
+				392787161C071BFA00F8DCD9 /* PD_SZTextView.h */,
+				392787171C071BFA00F8DCD9 /* PD_SZTextView.m */,
+			);
+			name = Claim;
+			sourceTree = "<group>";
+		};
 		398E4B751C03730100A68529 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +414,21 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39EDADBA1C072565001102B3 /* pduikit_camera.png */,
+				39EDADBB1C072565001102B3 /* pduikit_camera@2x.png */,
+				39EDADBC1C072565001102B3 /* pduikit_camera@3x.png */,
+				392787191C07230800F8DCD9 /* pduikit_fbbutton_deselected.png */,
+				3927871A1C07230800F8DCD9 /* pduikit_fbbutton_deselected@2x.png */,
+				3927871B1C07230800F8DCD9 /* pduikit_fbbutton_deselected@3x.png */,
+				3927871C1C07230800F8DCD9 /* pduikit_fbbutton_selected.png */,
+				3927871D1C07230800F8DCD9 /* pduikit_fbbutton_selected@2x.png */,
+				3927871E1C07230800F8DCD9 /* pduikit_fbbutton_selected@3x.png */,
+				3927871F1C07230800F8DCD9 /* pduikit_twitterbutton_deselected.png */,
+				392787201C07230800F8DCD9 /* pduikit_twitterbutton_deselected@2x.png */,
+				392787211C07230800F8DCD9 /* pduikit_twitterbutton_deselected@3x.png */,
+				392787221C07230800F8DCD9 /* pduikit_twitterbutton_selected.png */,
+				392787231C07230800F8DCD9 /* pduikit_twitterbutton_selected@2x.png */,
+				392787241C07230800F8DCD9 /* pduikit_twitterbutton_selected@3x.png */,
 				A9582FA51C0619A900D62456 /* default.json */,
 				39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */,
 				39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */,
@@ -690,6 +744,7 @@
 				BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */,
 				BC67F1CB2B233BA0D90D0C0D /* PopdeemUIKItCore.h */,
 				BC67F9FDCE6A81520AB86878 /* Reward */,
+				392787111C0715DD00F8DCD9 /* Claim */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -964,10 +1019,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
+				392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
+				39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
+				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -142,11 +142,17 @@
     
     [[PDUser sharedInstance] setLastLocation:PDGeoLocationMake(latitude, longitude)];
     
+    [self updateUserLocationCompletion:^(NSError *error){
+        locationBlock(error);
+    }];
+}
+
+- (void) updateUserLocationCompletion:(void (^)(NSError *error))completion {
     [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user) {
         NSLog(@"User Updated OK");
-        locationBlock(nil);
+        completion(nil);
     }failure:^(NSError *error) {
-        locationBlock(error);
+        completion(error);
     }];
 }
 
