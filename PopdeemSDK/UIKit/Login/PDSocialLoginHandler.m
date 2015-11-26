@@ -41,12 +41,12 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 }
 
 - (void) presentLoginModal {
-    [[self topViewController] setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    UIViewController *topController = [PDUIKitUtils topViewController];
+    [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     
     PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
-    [[self topViewController] presentViewController:vc animated:YES completion:^{}];
+    [topController presentViewController:vc animated:YES completion:^{}];
     
-    NSLog(@"Showing popdeem social login");
     [self setUsesCount:self.usesCount+1];
 }
 
@@ -63,24 +63,5 @@ static NSString *const PDUseCountKey = @"PDUseCount";
     return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
 }
 
-//TODO - test varying app client app types
-- (UIViewController *)topViewController {
-    return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-}
-
-- (UIViewController *)topViewControllerWithRootViewController:(UIViewController *)rootViewController {
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        UITabBarController *tabBarController = (UITabBarController *) rootViewController;
-        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
-    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *navigationController = (UINavigationController *) rootViewController;
-        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
-    } else if (rootViewController.presentedViewController) {
-        UIViewController *presentedViewController = rootViewController.presentedViewController;
-        return [self topViewControllerWithRootViewController:presentedViewController];
-    } else {
-        return rootViewController;
-    }
-}
 
 @end

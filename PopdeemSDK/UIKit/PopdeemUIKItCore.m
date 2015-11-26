@@ -29,8 +29,9 @@
     [self.socialLoginHandler showPromptIfNeededWithMaxAllowed:@(noOfPrompts)];
 }
 
-- (void)presentRewardViewController {
+- (void)presentRewardFlow {
     NSLog(@"TODO");
+    [self.rewardHandler performSelector:@selector(doShit)];
 }
 
 @end

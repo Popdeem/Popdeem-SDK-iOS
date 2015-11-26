@@ -21,8 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL) validatePopdeemApiKey;
 
-+ (BOOL) isUiKitLoaded;
-
 /*!
  * @abstract Get Popdeem API Key
  *
@@ -49,6 +47,10 @@ NS_ASSUME_NONNULL_BEGIN
  *@return consumerSecret
  */
 + (nullable NSString*) getTwitterConsumerSecret:(NSError**)err;
+
+
+extern NSString *translationForKey(NSString *key, NSString *defaultString);
+extern NSString *localizedStringForKey(NSString *key, NSString *value, NSBundle *bundle);
 
 NS_ASSUME_NONNULL_END
 @end

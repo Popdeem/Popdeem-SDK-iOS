@@ -26,12 +26,13 @@
 		A90FA53A1C0368A8001DA473 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90FA5381C0368A8001DA473 /* Main.storyboard */; };
 		A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53B1C0368A8001DA473 /* Assets.xcassets */; };
 		A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */; };
+		A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */; };
 		A9582F9A1C05D15000D62456 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5011C036304001DA473 /* PDWallet.m */; };
 		A9582F9B1C05D15300D62456 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FF1C036304001DA473 /* PDRewardStore.m */; };
 		A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
 		A9582F9D1C05D15800D62456 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
 		A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */; };
-		A9582FA31C05F1DF00D62456 /* Popdeem.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9582FA21C05F1DF00D62456 /* Popdeem.strings */; };
+		A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9582FA21C05F1DF00D62456 /* Localizable.strings */; };
 		BC67F05A5F7252792A093778 /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
 		BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */; };
 		BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F6855AC77922041DBC9B /* Brands.json */; };
@@ -171,7 +172,7 @@
 		9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7148E7293ED54A945519DA3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PopdeemSDK.podspec; sourceTree = "<group>"; };
-		A90FA4F91C0361F5001DA473 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A90FA4F91C0361F5001DA473 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A90FA4FA1C036304001DA473 /* PDBrandStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDBrandStore.h; path = Core/Store/PDBrandStore.h; sourceTree = "<group>"; };
 		A90FA4FB1C036304001DA473 /* PDBrandStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDBrandStore.m; path = Core/Store/PDBrandStore.m; sourceTree = "<group>"; };
 		A90FA4FC1C036304001DA473 /* PDLocationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDLocationStore.h; path = Core/Store/PDLocationStore.h; sourceTree = "<group>"; };
@@ -190,8 +191,10 @@
 		A90FA53B1C0368A8001DA473 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A90FA53E1C0368A8001DA473 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A90FA5401C0368A8001DA473 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDConfirmationViewController.h; sourceTree = "<group>"; };
+		A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDConfirmationViewController.m; sourceTree = "<group>"; };
 		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
-		A9582FA21C05F1DF00D62456 /* Popdeem.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Popdeem.strings; sourceTree = "<group>"; };
+		A9582FA21C05F1DF00D62456 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		BC67F0259BE1A6F5B3827F5D /* PDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUtils.m; sourceTree = "<group>"; };
@@ -491,7 +494,9 @@
 				A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */,
 				A90FA5401C0368A8001DA473 /* Info.plist */,
 				A90FA52F1C0368A8001DA473 /* Supporting Files */,
-				A9582FA21C05F1DF00D62456 /* Popdeem.strings */,
+				A9582FA21C05F1DF00D62456 /* Localizable.strings */,
+				A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */,
+				A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */,
 			);
 			path = PopdeemSample;
 			sourceTree = "<group>";
@@ -639,8 +644,8 @@
 		BC67F9FDCE6A81520AB86878 /* Reward */ = {
 			isa = PBXGroup;
 			children = (
-				BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */,
 				BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */,
+				BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */,
 			);
 			path = Reward;
 			sourceTree = "<group>";
@@ -882,7 +887,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */,
-				A9582FA31C05F1DF00D62456 /* Popdeem.strings in Resources */,
+				A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */,
 				A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */,
 				A90FA53A1C0368A8001DA473 /* Main.storyboard in Resources */,
 			);
@@ -1097,6 +1102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90FA5371C0368A8001DA473 /* ViewController.m in Sources */,
+				A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */,
 				A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */,
 				A90FA5311C0368A8001DA473 /* main.m in Sources */,
 			);

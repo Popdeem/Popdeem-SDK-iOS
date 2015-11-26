@@ -7,11 +7,12 @@
 //
 
 #import "PDModalLoadingView.h"
+#import "PDUtils.h"
 
 @implementation PDModalLoadingView
 
 - (PDModalLoadingView*) initWithDefaultsForView:(UIView*)parent {
-    return [self initForView:parent titleText:NSLocalizedString(@"popdeem.common.loading", nil) descriptionText:NSLocalizedString(@"popdeem.common.wait", nil)];
+    return [self initForView:parent titleText:translationForKey(@"popdeem.common.loading", @"Loading") descriptionText:translationForKey(@"popdeem.common.wait", @"Please wait...")];
 }
 
 - (PDModalLoadingView*) initForView:(UIView*)parent

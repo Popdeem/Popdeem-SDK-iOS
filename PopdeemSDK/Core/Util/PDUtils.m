@@ -82,4 +82,35 @@
     return twitterConsumerSecret;
 }
 
+NSString * const kLocalizedStringNotFound = @"kLocalizedStringNotFound";
+
+NSString* translationForKey(NSString *key, NSString *defaultString) {
+    return localizedStringForKey(key, defaultString, [NSBundle bundleForClass:[PDUtils class]]);
+}
+
+
+NSString *localizedStringForKey(NSString *key, NSString *value, NSBundle *bundle) {
+    // First try main bundle
+    NSString * string = [[NSBundle mainBundle] localizedStringForKey:key
+                                                               value:kLocalizedStringNotFound
+                                                               table:nil];
+    
+    // Then try the backup bundle
+    if ([string isEqualToString:kLocalizedStringNotFound])
+    {
+        string = [bundle localizedStringForKey:key
+                                         value:kLocalizedStringNotFound
+                                         table:nil];
+    }
+    
+    // Still not found?
+    if ([string isEqualToString:kLocalizedStringNotFound])
+    {
+        NSLog(@"No localized string for '%@'", key);
+        string = value.length > 0 ? value : key;
+    }
+    
+    return string;
+}
+
 @end

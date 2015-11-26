@@ -14,7 +14,6 @@
  */
 @interface PDRewardStore : NSObject
 
-+ (id) store;
 + (void) add:(PDReward *)reward;
 + (PDReward *) find:(NSInteger)identifier;
 
