@@ -1,3 +1,5 @@
 {
-  "" : ""
+  "popdeem.nav.background" : "#D12139",
+  "popdeem.nav.buttonTextColor" : "#FFFFFF",
+  "popdeem.nav.titleColor" : "#FFFFFF"
 }

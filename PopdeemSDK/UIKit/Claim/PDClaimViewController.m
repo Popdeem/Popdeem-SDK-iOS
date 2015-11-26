@@ -10,6 +10,7 @@
 #import "PDClaimViewModel.h"
 #import "PDUser.h"
 #import "PDUIKitUtils.h"
+#import "PDUtils.h"
 
 @interface PDClaimViewController ()
 @property (nonatomic, strong) CALayer *textViewBordersLayer;
@@ -32,6 +33,7 @@
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
   if (self = [self initWithNibName:@"PDClaimViewController" bundle:podBundle]) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.title = translationForKey(@"popdeem.claims.title", @"Claims");
     return self;
   }
   return nil;

@@ -19,3 +19,8 @@
 "popdeem.sociallogin.subtitle" = "Rewards Available";
 "popdeem.sociallogin.footer" = "Powered by Popdeem";
 "popdeem.sociallogin.continue" = "Continue to App";
+
+"popdeem.claims.title" = "Claims";
+"popdeem.rewards.title" = "Rewards";
+
+"popdeem.rewards.notavailable" = "There are no rewards available right now. Please check back later.";
