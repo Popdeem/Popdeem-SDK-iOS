@@ -59,11 +59,13 @@
     loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.containterView];
     [loadingView showAnimated:YES];
     
-    PDSocialMediaManager *man = [[PDSocialMediaManager alloc] init];
-    [man nextStepForFacebookLoggedInUser:^(NSError *error) {
+    [[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
         if (error) {
             NSLog(@"Something went wrong: %@",error);
             [[PDSocialMediaManager manager] logoutFacebook];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [loadingView hideAnimated:YES];
+            });
             return;
         }
 

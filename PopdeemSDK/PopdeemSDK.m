@@ -63,9 +63,9 @@
 #pragma clang diagnostic pop
 }
 
-+ (void) presentRewardViewController {
++ (void) presentRewardFlow {
     id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
-    SEL selector = NSSelectorFromString(@"presentRewardViewController");
+    SEL selector = NSSelectorFromString(@"presentRewardFlow");
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"

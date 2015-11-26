@@ -10,6 +10,6 @@
 
 - (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts;
 
-- (void) presentRewardViewController;
+- (void) presentRewardFlow;
 
 @end

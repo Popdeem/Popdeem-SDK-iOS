@@ -13,4 +13,6 @@
 
 + (UIImage*) screenSnapshot;
 
++ (UIViewController *)topViewController;
+
 @end

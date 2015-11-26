@@ -5,6 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface PDRewardHandler : NSObject
+
 @end

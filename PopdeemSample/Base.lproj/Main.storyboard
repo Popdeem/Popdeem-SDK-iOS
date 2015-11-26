@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--My App-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="My App" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,11 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is my app." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKR-WT-q1m">
-                                <rect key="frame" x="243" y="86" width="115" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6D0-Yo-iD7">
+                                <rect key="frame" x="244" y="285" width="112" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Go into app flow"/>
+                                <connections>
+                                    <segue destination="QCl-k7-RpN" kind="show" id="6Xw-nS-fYq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X62-KU-fpe">
+                                <rect key="frame" x="271" y="132" width="59" height="21"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="hpo-q5-Bu0"/>
+                                    <constraint firstAttribute="height" constant="21" id="0nT-Fk-eEb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -31,15 +40,52 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MKR-WT-q1m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Npg-Kh-l1K"/>
-                            <constraint firstItem="MKR-WT-q1m" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="22" id="XBc-mu-JFt"/>
+                            <constraint firstItem="X62-KU-fpe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="87J-Xg-sCV"/>
+                            <constraint firstItem="X62-KU-fpe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="68" id="X74-UM-DZK"/>
+                            <constraint firstItem="X62-KU-fpe" firstAttribute="centerX" secondItem="6D0-Yo-iD7" secondAttribute="centerX" id="rtd-te-wXC"/>
+                            <constraint firstItem="6D0-Yo-iD7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tlZ-M5-IdH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="B7h-EK-uhd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="450"/>
+            <point key="canvasLocation" x="273" y="726"/>
+        </scene>
+        <!--Confirmation Screen-->
+        <scene sceneID="oCZ-jv-nBA">
+            <objects>
+                <viewController title="Confirmation Screen" id="QCl-k7-RpN" customClass="PDConfirmationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cSZ-uL-Mov"/>
+                        <viewControllerLayoutGuide type="bottom" id="8n6-MQ-ejc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="52O-Tp-f9l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4K0-mW-8d1">
+                                <rect key="frame" x="41" y="99" width="559" height="372"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4K0-mW-8d1" secondAttribute="trailing" id="FTr-EO-7zq"/>
+                            <constraint firstItem="4K0-mW-8d1" firstAttribute="top" secondItem="cSZ-uL-Mov" secondAttribute="bottom" constant="35" id="Kdv-KY-I96"/>
+                            <constraint firstItem="8n6-MQ-ejc" firstAttribute="top" secondItem="4K0-mW-8d1" secondAttribute="bottom" constant="129" id="sTa-8y-DhP"/>
+                            <constraint firstItem="4K0-mW-8d1" firstAttribute="leading" secondItem="52O-Tp-f9l" secondAttribute="leadingMargin" constant="21" id="vbQ-rz-fMr"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9A-iL-i1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1170" y="726"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C1L-3Y-oqe">

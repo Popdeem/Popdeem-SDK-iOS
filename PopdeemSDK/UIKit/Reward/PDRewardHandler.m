@@ -4,9 +4,36 @@
 //
 
 #import "PDRewardHandler.h"
-
+#import "PDRewardTableViewController.h"
+#import "PDUIKitUtils.h"
+#import "PDSocialLoginViewController.h"
 
 @implementation PDRewardHandler {
 
 }
+
+-(void)doShit {
+    UIViewController *topController = [PDUIKitUtils topViewController];
+    [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    
+    
+    //TODO not handle logged in
+    if(/* DISABLES CODE */ (NO)){
+        PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
+        [topController presentViewController:vc animated:YES completion:^{
+            [self presentRewardFlow];
+        }];
+    }else{
+        [self presentRewardFlow];
+    }
+}
+
+- (void)presentRewardFlow {
+    UIViewController *topController = [PDUIKitUtils topViewController];
+    [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    
+    PDRewardTableViewController *vc = [[PDRewardTableViewController alloc] init];
+    [topController presentViewController:[[UINavigationController alloc]initWithRootViewController:vc] animated:YES completion:^{}];
+}
+
 @end
