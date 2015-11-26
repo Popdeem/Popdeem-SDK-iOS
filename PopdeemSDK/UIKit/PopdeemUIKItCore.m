@@ -1,5 +1,5 @@
 //
-// Created by John Doran Home on 25/11/2015.
+// Created by John Doran on 25/11/2015.
 // Copyright (c) 2015 Popdeem. All rights reserved.
 //
 
@@ -16,22 +16,21 @@
 @implementation PopdeemUIKItCore
 
 - (id)init {
-    if (self = [super init]) {
-        [PDTheme setupWithFileName:@"default"];
-        self.socialLoginHandler = [PDSocialLoginHandler new];
-        self.rewardHandler = [PDRewardHandler new];
-    }
-
-    return self;
+  if (self = [super init]) {
+    [PDTheme setupWithFileName:@"default"];
+    self.socialLoginHandler = [PDSocialLoginHandler new];
+    self.rewardHandler = [PDRewardHandler new];
+  }
+  
+  return self;
 }
 
 - (void)enableSocialLoginWithNumberOfPrompts:(NSInteger)noOfPrompts {
-    [self.socialLoginHandler showPromptIfNeededWithMaxAllowed:@(noOfPrompts)];
+  [self.socialLoginHandler showPromptIfNeededWithMaxAllowed:@(noOfPrompts)];
 }
 
 - (void)presentRewardFlow {
-    NSLog(@"TODO");
-    [self.rewardHandler performSelector:@selector(doShit)];
+  [self.rewardHandler handleRewardsFlow];
 }
 
 @end

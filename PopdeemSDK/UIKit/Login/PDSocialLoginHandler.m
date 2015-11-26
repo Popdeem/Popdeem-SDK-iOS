@@ -2,7 +2,7 @@
 //  PDSocialLoginHandler.m
 //  PopdeemSDK
 //
-//  Created by John Doran Home on 23/11/2015.
+//  Created by John Doran on 23/11/2015.
 //  Copyright © 2015 Popdeem. All rights reserved.
 //
 
