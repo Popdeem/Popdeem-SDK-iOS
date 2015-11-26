@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.title = @"Rewards";
+  
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
   [self renderView];
  }
@@ -33,13 +35,18 @@
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance]getAllRewardsSuccess:^{
     weakSelf.rewards =  [PDRewardStore allRewards];
-    [weakSelf.tableView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.tableView reloadData];
+
       [weakSelf.loadingView hideAnimated:YES];
     });
 
   } failure:^(NSError * _Nonnull error) {
-    [weakSelf.loadingView hideAnimated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.tableView reloadData];      
+      [weakSelf.loadingView hideAnimated:YES];
+    });
+
   }];
   
 }
@@ -75,6 +82,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"TODO - NIALL");
+  
+  UIViewController *vc = [UIViewController new];
+  UILabel *l = [UILabel new];
+  vc.title = @"Claim Screen";
+  [self.navigationController pushViewController:[UIViewController new] animated:YES];
 }
 
 @end

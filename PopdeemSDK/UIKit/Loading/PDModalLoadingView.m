@@ -30,6 +30,7 @@
         float y = (parent.frame.size.height/2) - 55;
         
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(indent, y, width, 110)];
+
         _contentView.layer.cornerRadius = 5.0;
         [_contentView setBackgroundColor:[UIColor whiteColor]];
         

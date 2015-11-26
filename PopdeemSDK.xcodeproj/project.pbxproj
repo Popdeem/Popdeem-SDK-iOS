@@ -27,6 +27,8 @@
 		A92281E91C07369800A43320 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E21C07369800A43320 /* NoRewardsTableViewCell.m */; };
 		A92281EB1C07369800A43320 /* PDRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E61C07369800A43320 /* PDRewardTableViewController.m */; };
 		A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E81C07369800A43320 /* RewardTableViewCell.m */; };
+		A92281F11C07465700A43320 /* PDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281F01C07465700A43320 /* PDNavigationController.m */; };
+		A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281F31C074C2D00A43320 /* PDModalTransitionHandler.m */; };
 		A9582F9A1C05D15000D62456 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5011C036304001DA473 /* PDWallet.m */; };
 		A9582F9B1C05D15300D62456 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FF1C036304001DA473 /* PDRewardStore.m */; };
 		A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
@@ -180,6 +182,10 @@
 		A92281E61C07369800A43320 /* PDRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardTableViewController.m; sourceTree = "<group>"; };
 		A92281E71C07369800A43320 /* RewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardTableViewCell.h; sourceTree = "<group>"; };
 		A92281E81C07369800A43320 /* RewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTableViewCell.m; sourceTree = "<group>"; };
+		A92281EF1C07465700A43320 /* PDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNavigationController.h; sourceTree = "<group>"; };
+		A92281F01C07465700A43320 /* PDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNavigationController.m; sourceTree = "<group>"; };
+		A92281F21C074C2D00A43320 /* PDModalTransitionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDModalTransitionHandler.h; sourceTree = "<group>"; };
+		A92281F31C074C2D00A43320 /* PDModalTransitionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDModalTransitionHandler.m; sourceTree = "<group>"; };
 		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
 		A9582FA21C05F1DF00D62456 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
@@ -613,6 +619,10 @@
 				A92281E81C07369800A43320 /* RewardTableViewCell.m */,
 				BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */,
 				BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */,
+				A92281EF1C07465700A43320 /* PDNavigationController.h */,
+				A92281F01C07465700A43320 /* PDNavigationController.m */,
+				A92281F21C074C2D00A43320 /* PDModalTransitionHandler.h */,
+				A92281F31C074C2D00A43320 /* PDModalTransitionHandler.m */,
 			);
 			path = Reward;
 			sourceTree = "<group>";
@@ -991,6 +1001,8 @@
 			files = (
 				A92281EB1C07369800A43320 /* PDRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
+				A92281F11C07465700A43320 /* PDNavigationController.m in Sources */,
+				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
 				A92281E91C07369800A43320 /* NoRewardsTableViewCell.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,

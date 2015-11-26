@@ -15,7 +15,7 @@
 
 @implementation PDUser
 
-+ (id) sharedInstance {
++ (instancetype) sharedInstance {
     static PDUser *globalUser;
     static dispatch_once_t sharedToken;
     dispatch_once(&sharedToken, ^{
@@ -62,6 +62,8 @@
     } else {
         user.isTester = NO;
     }
+  
+  
     
     return user;
 }

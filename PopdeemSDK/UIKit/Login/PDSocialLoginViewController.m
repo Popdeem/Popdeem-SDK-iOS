@@ -74,7 +74,13 @@
 }
 
 - (IBAction) continueAction:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES completion:^{
+      if(self.viewModel.loginState == LoginStateContinue){
+        if([self.delegate respondsToSelector:@selector(loginDidSucceed)]){
+          [self.delegate loginDidSucceed];
+        }
+      }
+    }];
 }
 
 - (void) renderViewModelState {

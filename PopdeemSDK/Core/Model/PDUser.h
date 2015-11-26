@@ -118,7 +118,7 @@ The users last name
 @property (nonatomic, copy) void(^_callback)(BOOL response);
 
 @property (nonatomic) BOOL isTester;
-+ (id) sharedInstance;
++ (instancetype) sharedInstance;
 
 /**
  Creates an instance of the PDUser object from the API params.
