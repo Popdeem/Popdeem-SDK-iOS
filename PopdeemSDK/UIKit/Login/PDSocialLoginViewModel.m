@@ -34,7 +34,7 @@
 
 @implementation PDSocialLoginViewModel
 
-- (id) init {
+- (instancetype) init {
   if (self = [super init]) {
     [self setState:LoginStateLogin];
     return self;

@@ -20,7 +20,7 @@
 
 @implementation PDSocialLoginViewController
 
-- (id) initFromNib {
+- (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
   if (self = [self initWithNibName:@"PDSocialLoginViewController" bundle:podBundle]) {
     self.view.backgroundColor = [UIColor clearColor];
@@ -29,7 +29,7 @@
   return nil;
 }
 
-- (id) initWithLocationServices:(BOOL)shouldAskLocation {
+- (instancetype) initWithLocationServices:(BOOL)shouldAskLocation {
   _shouldAskLocation = shouldAskLocation;
   return [self initFromNib];
 }

@@ -37,8 +37,8 @@
 @property (nonatomic) BOOL shouldAskLocation;
 @property (nonatomic) BOOL facebookLoginOccurring;
 
-- (id) initFromNib;
-- (id) initWithLocationServices:(BOOL)shouldAskLocation;
+- (instancetype) initFromNib;
+- (instancetype) initWithLocationServices:(BOOL)shouldAskLocation;
 - (void) renderViewModelState;
 
 @end

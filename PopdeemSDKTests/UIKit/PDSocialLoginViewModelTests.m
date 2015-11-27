@@ -39,7 +39,7 @@
 
 - (void) testInitState {
     expect(viewModel.loginState).to.equal(LoginStateLogin);
-    expect(viewModel.titleLabelString).to.equal(@"App Update");
+  expect(viewModel.titleLabelString).to.equal(translationForKey(@"popdeem.sociallogin.title", @"App Update"));
     expect(viewModel.subTitleLabelString).to.equal(@"Rewards Available");
     expect(viewModel.descriptionLabelString).to.equal(@"To see what rewards you have unlocked, simply connect your Facebook account below.");
     expect(viewModel.iconImageName).to.equal(@"pduikit_rewardsIcon");
@@ -50,9 +50,9 @@
     OCMStub([mockController renderViewModelState]);
     [viewModel renderSuccess];
     expect(viewModel.loginState).to.equal(LoginStateContinue);
-    expect(viewModel.titleLabelString).to.equal(@"Connected!");
+    expect(viewModel.titleLabelString).to.equal(translationForKey(@"popdeem.sociallogin.success", @"Connected!"));
     expect(viewModel.subTitleLabelString).to.equal(@"Rewards Available");
-    expect(viewModel.descriptionLabelString).to.equal(@"Rewards are now unlocked. You will be notified when new rewards are available!");
+    expect(viewModel.descriptionLabelString).to.equal(translationForKey(@"popdeem.sociallogin.success.description", @"Rewards are now unlocked. You will be notified when new rewards are available!"));
     expect(viewModel.iconImageName).to.equal(@"pduikit_rewardsIconSuccess");
 }
 
