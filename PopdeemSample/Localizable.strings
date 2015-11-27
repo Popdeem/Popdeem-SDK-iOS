@@ -10,10 +10,13 @@
 
 "popdeem.common.loading" = "Loading";
 "popdeem.common.wait" = "Please Wait";
+"popdeem.common.sorry" = "Sorry";
+"popdeem.common.back" = "Back";
+"popdeem.common.ok" = "OK";
+"popdeem.common.something.wrong" = "Something went wrong. Please try again later";
 
 "popdeem.sociallogin.success" = "Connected!";
 "popdeem.sociallogin.success.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";
-"popdeem.sociallogin.rewardsavailable" = "Rewards Available";
 "popdeem.sociallogin.description"= "To see what rewards you have unlocked, simply connect your Facebook account below.";
 "popdeem.sociallogin.subtitle" = "Rewards Available";
 "popdeem.sociallogin.footer" = "Powered by Popdeem";
@@ -32,7 +35,18 @@
 "popdeem.claim.action.none" = "No action required";
 "popdeem.claim.action.checkin" = "Check-In required";
 "popdeem.claim.action.tweet" = "Tweet Required";
-
 "popdeem.claim.action.tweet.photo" = "Tweet with Photo required";
 
 "popdeem.claim.twitter.connect" = "Connecting Twitter";
+"popdeem.claim.facebook.connect" = "We couldnt connect you to Facebook";
+"popdeem.claim.connect.message" = "This reward must be claimed with a tweet. You can also post to Facebook if you wish";
+
+"popdeem.claim.reward.claimed" = "Reward Claimed!";
+"popdeem.claim.reward.cant.deselect" = "Cannot Deselect";
+"popdeem.claim.reward.success" = "You can view your reward in your wallet";
+"popdeem.claim.reward.claiming" = "Claiming Reward";
+"popdeem.claim.reward.claiming.message" = "This could take up to 30 seconds";
+"popdeem.claim.tweet.toolong" = "Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.";
+"popdeem.claim.twitter.notconnected" = "Twitter not connected, you must connect your twitter account in order to post to Twitter";
+"popdeem.claim.networkerror" = "No Network Selected, you must select at least one social network in order to complete this action.";
+

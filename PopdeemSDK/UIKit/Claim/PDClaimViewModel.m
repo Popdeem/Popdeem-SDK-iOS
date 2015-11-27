@@ -37,7 +37,7 @@
 - (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward {
   self = [self init];
   if (!self) return nil;
-  
+
   if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(FacebookOnly)]) {
     //Show only facebook button
     self.socialMediaTypesAvailable = FacebookOnly;
@@ -53,7 +53,7 @@
   } else {
     //too many or not enough
   }
-  
+
   [self setupForReward:reward];
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(keyboardWillShow:)
@@ -78,7 +78,7 @@
   if (_reward.twitterForcedTag) {
     _forcedTagString = _reward.twitterForcedTag;
   }
-  
+
 }
 
 - (NSString*) actionText {
@@ -156,17 +156,17 @@
 - (void) toggleFacebook {
   if (_mustFacebook) {
     _willFacebook = YES;
-    UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:@"Cannot Deselect" message:@"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:@"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish" delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
     [fbV show];
     return;
   }
-  
+
   if (_willFacebook) {
     _willFacebook = NO;
     [_viewController.facebookButton setSelected:NO];
     return;
   }
-  
+
   if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
     _willFacebook = YES;
     [_viewController.facebookButton setSelected:YES];
@@ -175,7 +175,7 @@
       _willFacebook = YES;
       [_viewController.facebookButton setSelected:YES];
     } failure:^(NSError *error) {
-      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"We couldnt connect you to Facebook" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.storry", @"Sorry") message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook") delegate:nil cancelButtonTitle:nil otherButtonTitles:translationForKey(@"common.ok", @"OK"), nil];
       [av show];
       _willFacebook = NO;
       [_viewController.facebookButton setSelected:NO];
@@ -186,11 +186,11 @@
 - (void) toggleTwitter {
   if (_mustTweet) {
     _willTweet = YES;
-    UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:@"Cannot Deselect" message:@"This reward must be claimed with a tweet. You can also post to Facebook if you wish" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.message", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
     [twitterV show];
     return;
   }
-  
+
   if (_willTweet) {
     _willTweet = NO;
     [_viewController.twitterForcedTagLabel setHidden:YES];
@@ -198,7 +198,7 @@
     [_viewController.twitterButton setSelected:NO];
     return;
   }
-  
+
   _willTweet = YES;
   [_viewController.twitterButton setSelected:YES];
   [_viewController.twitterForcedTagLabel setHidden:NO];
@@ -207,11 +207,11 @@
 }
 
 - (void) addPhotoAction {
-  
+
 }
 
 - (void) calculateTwitterCharsLeft {
-  
+
 }
 
 - (void) keyboardWillShow:(NSNotification*)notification {
@@ -221,12 +221,8 @@
                    animations:^{
                      [_viewController keyboardUp];
                    } completion:^(BOOL finished){}];
-  
-  [self.viewController.view setNeedsLayout];
-}
 
-- (void) keyboardWillHide:(NSNotification*)notification {
-  
+  [self.viewController.view setNeedsLayout];
 }
 
 - (void) dealloc {
@@ -237,24 +233,24 @@
 
 - (void) claimAction {
   if (!_willTweet && !_willFacebook) {
-    UIAlertView *noPost = [[UIAlertView alloc] initWithTitle:@"No Network Selected" message:@"You must select at least one social network in order to complete this action." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *noPost = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.error", @"Error") message:translationForKey(@"popdeem.claim.networkerror",  @"No Network Selected, you must select at least one social network in order to complete this action.") delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
     [noPost show];
     return;
   }
-  
+
   if (_willTweet) {
     [[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error){
       if (!connected) {
         [self connectTwitter:^(){
           [self makeClaim];
         } failure:^(NSError *error) {
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Twitter not connected" message:@"You must connect your twitter account in order to post to Twitter" delegate:self cancelButtonTitle:@"Back" otherButtonTitles: nil];
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.error", @"Error") message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles: nil];
           [av show];
         }];
         return;
       }
       if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
-        UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:@"Tweet Too Long" message:@"You have written a post longer than the allowed 140 characters. Please shorten your post." delegate:self cancelButtonTitle:@"Back" otherButtonTitles: nil];
+        UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.error", @"Error") message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles: nil];
         [tooMany show];
         return;
       }
@@ -269,7 +265,7 @@
 }
 
 - (void) makeClaim {
-  
+
   if (_reward.action == PDRewardActionPhoto && _image == nil) {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
                                                     message:@"A photo is required for this action. Please add a photo"
@@ -280,21 +276,21 @@
     [alert show];
     return;
   }
-  
+
   PDAPIClient *client = [PDAPIClient sharedInstance];
   NSString *message = [_viewController.textView text];
-  
+
   if (_reward.twitterForcedTag) {
     message = [message stringByAppendingFormat:@" %@",_reward.twitterForcedTag];
   }
-    
+
   NSMutableArray *taggedFriends = [NSMutableArray array];
   for (PDSocialMediaFriend *f in [PDUser taggableFriends]) {
     if (f.selected) {
       [taggedFriends addObject:f.tagIdentifier];
     }
   }
-  
+
   __block NSInteger rewardId = _reward.identifier;
   //location?
   PDLocation *location = [[PDLocationStore locationsOrderedByDistanceToUser] firstObject];
@@ -303,19 +299,19 @@
   } failure:^(NSError *error){
     [self PDAPIClient:client didFailWithError:error];
   }];
-  
-  _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:@"Claiming Reward" descriptionText:@"This could take up to 30 seconds"];
+
+  _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward") descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
   [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
   [_loadingView showAnimated:YES];
 }
 
 - (void) didClaimRewardId:(NSInteger)rewardId {
-  
+
   [_loadingView hideAnimated:YES];
-  
+
   [PDRewardStore deleteReward:_reward.identifier];
-  
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:@"You can view your reward in your wallet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
   [av show];
 }
 
@@ -327,16 +323,16 @@
 - (void) PDAPIClient:(PDAPIClient *)client didFailWithError:(NSError *)error {
   NSLog(@"Error: %@",error);
   [_loadingView hideAnimated:YES];
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:@"Something went wrong. Please try again later" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil];
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.common.something.wrong", @"Something went wrong. Please try again later") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles:nil];
   [av show];
 }
 
 - (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
   PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:_viewController];
-  
+
   _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:translationForKey(@"popdeem.common.wait", @"Please wait") descriptionText:translationForKey(@"popdeem.claim.twitter.connect", @"Connecting Twitter")];
   [_loadingView showAnimated:YES];
-  
+
   [manager loginWithTwitter:^(void){
     //Twitter is logged in
     [_viewController.twitterButton setImage:[UIImage imageNamed:@"Twitter"] forState:UIControlStateNormal];
