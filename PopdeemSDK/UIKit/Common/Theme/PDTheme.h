@@ -7,10 +7,10 @@
 #import <UIKit/UIKit.h>
 
 #define PopdeemImage(key) \
-[[WLTheme sharedInstance] imageForKey:(key)]
+[[PDTheme sharedInstance] imageForKey:(key)]
 
 #define PopdeemColor(key) \
-[[WLTheme sharedInstance] colorForKey:(key)]
+[[PDTheme sharedInstance] colorForKey:(key)]
 
 @interface PDTheme : NSObject
 

@@ -8,6 +8,7 @@
 
 #import "PDNavigationController.h"
 #import "PDModalTransitionHandler.h"
+#import "PDTheme.h"
 
 @interface PDNavigationController()<UIViewControllerTransitioningDelegate>
 @end
@@ -23,6 +24,11 @@
   self.transitioningDelegate = self;
   self.modalPresentationStyle = UIModalPresentationCustom;
   [self defaults];
+  
+  
+  [[self navigationBar]setBarTintColor:PopdeemColor(@"popdeem.nav.background")];//[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];
+  [[self navigationBar]setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
+  self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.nav.titleColor")};
 }
 
 

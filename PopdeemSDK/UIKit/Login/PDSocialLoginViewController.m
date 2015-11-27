@@ -41,6 +41,8 @@
   [self.viewModel setViewController:self];
   [self.loginButton setDelegate:self.viewModel];
   self.snapshotView.image = [PDUIKitUtils screenSnapshot];
+  
+
   //Backing View Dismiss Recogniser
   UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
   
@@ -54,16 +56,22 @@
     [_viewModel proceedWithLoggedInUser];
   }
 }
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
 
 - (void) didMoveToParentViewController:(UIViewController *)parent {
   [parent.view addSubview:self.view];
   self.view.frame = parent.view.frame;
 }
 
-- (void) viewWillLayoutSubviews {
+-(void)viewWillAppear:(BOOL)animated{
+  [super viewWillAppear:animated];
+  
+  self.snapshotView.alpha = 0;
+  self.backingView.alpha = 0;
+  
+  [UIView animateWithDuration:.4 animations:^{
+    self.snapshotView.alpha = 1;
+    self.backingView.alpha = 1;
+  }];
   
 }
 

@@ -19,7 +19,7 @@
   UIViewController *topController = [PDUIKitUtils topViewController];
   [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
-  //TODO not handle logged in
+  //TODO not handle logged in better
   if(![[PDSocialMediaManager manager] isLoggedIn]){
     PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
     vc.delegate = self;
@@ -37,10 +37,8 @@
 - (void)presentRewardFlow {
   UIViewController *topController = [PDUIKitUtils topViewController];
   
-  
   PDNavigationController *navController = [[PDNavigationController alloc]initWithRootViewController:[[PDRewardTableViewController alloc] init]];
   navController.view.frame = CGRectMake(0, 0, topController.view.frame.size.width, CGRectGetHeight(topController.view.frame)-80);
-  
   
   [topController presentViewController:navController animated:YES completion:^{
   }];

@@ -13,6 +13,7 @@
 #import "PDSocialMediaManager.h"
 #import "PDModalLoadingView.h"
 #import "PDAPIClient.h"
+#import "PDUtils.h"
 
 @interface PDClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
@@ -70,7 +71,7 @@
   } else {
     //TODO: Some Default
   }
-  _textviewPlaceholder = @"What are you up to?";
+  _textviewPlaceholder = localizedStringForKey(@"popdeem.claim.text.placeholder", @"What are you up to?";
   if (_reward.twitterPrefilledMessage) {
     _textviewPrepopulatedString = _reward.twitterPrefilledMessage;
   }
@@ -88,60 +89,64 @@
       //Both Networks
       switch (_reward.action) {
         case PDRewardActionCheckin:
-          action = @"Check-in or Tweet Required";
+          action = translationForKey(@"popdeem.claim.action.tweet.checkin", @"Check-in or Tweet Required");
           break;
         case PDRewardActionPhoto:
-          action = @"Photo Required";
+          action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
           break;
         case PDRewardActionNone:
-          action = @"No Action Required";
+          action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
+              break;
         default:
-          action = @"No Action Required";
+          action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
           break;
       }
     } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
       //Facebook Only
       switch (_reward.action) {
         case PDRewardActionCheckin:
-          action = @"Check-in Required";
+          action = translationForKey(@"popdeem.claim.action.checkin", @"Check-In required");
           break;
         case PDRewardActionPhoto:
-          action = @"Photo Required";
+          action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
           break;
         case PDRewardActionNone:
-          action = @"No Action Required";
+          action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
+              break;
         default:
-          action = @"No Action Required";
+          action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
           break;
       }
     } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
       //Twitter Only
       switch (_reward.action) {
         case PDRewardActionCheckin:
-          action = @"Tweet Required";
+          action = translationForKey(@"popdeem.claim.action.tweet", @"Tweet Required");
           break;
         case PDRewardActionPhoto:
-          action = @"Tweet with Photo Required";
+          action = translationForKey(@"popdeem.claim.action.tweet.photo", @"Tweet with Photo Required");
           break;
         case PDRewardActionNone:
-          action = @"No Action Required";
+          action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
+              break;
         default:
-          action = @"No Action Required";
+          action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
           break;
       }
     }
   } else if (types.count == 0) {
     switch (_reward.action) {
       case PDRewardActionCheckin:
-        action = @"Check-in Required";
+        action = translationForKey(@"popdeem.claim.action.checkin", @"Check-In required");
         break;
       case PDRewardActionPhoto:
-        action = @"Photo Required";
+        action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
         break;
       case PDRewardActionNone:
-        action = @"No Action Required";
+        action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
+        break;
       default:
-        action = @"No Action Required";
+        action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
         break;
     }
   }
@@ -282,11 +287,7 @@
   if (_reward.twitterForcedTag) {
     message = [message stringByAppendingFormat:@" %@",_reward.twitterForcedTag];
   }
-  
-  //    if (_reward.downloadLink) {
-  //        message = [message stringByAppendingFormat:@" %@",_reward.downloadLink];
-  //    }
-  
+    
   NSMutableArray *taggedFriends = [NSMutableArray array];
   for (PDSocialMediaFriend *f in [PDUser taggableFriends]) {
     if (f.selected) {
@@ -314,7 +315,7 @@
   
   [PDRewardStore deleteReward:_reward.identifier];
   
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Claimed!" message:@"You can view your reward in your wallet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:@"You can view your reward in your wallet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
   [av show];
 }
 
@@ -326,14 +327,14 @@
 - (void) PDAPIClient:(PDAPIClient *)client didFailWithError:(NSError *)error {
   NSLog(@"Error: %@",error);
   [_loadingView hideAnimated:YES];
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Something went wrong. Please try again later" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil];
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:@"Something went wrong. Please try again later" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:nil];
   [av show];
 }
 
 - (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
   PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:_viewController];
   
-  _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:@"Please Wait" descriptionText:@"Connecting Twitter"];
+  _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:translationForKey(@"popdeem.common.wait", @"Please wait") descriptionText:translationForKey(@"popdeem.claim.twitter.connect", @"Connecting Twitter")];
   [_loadingView showAnimated:YES];
   
   [manager loginWithTwitter:^(void){

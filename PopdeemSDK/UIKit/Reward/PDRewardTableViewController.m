@@ -14,6 +14,7 @@
 #import "PDAPIClient.h"
 #import "PDClaimViewController.h"
 #import "PDClaimViewModel.h"
+#import "PDUtils.h"
 
 @interface PDRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
@@ -24,7 +25,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.title = @"Rewards";
+  self.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
   
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
   [self renderView];
@@ -66,7 +67,7 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   PDReward *reward;
   if (self.rewards.count == 0) {
-    return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) text:@"There are no Rewards available right now. Please check back later."];
+    return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) text:translationForKey(@"popdeem.rewards.notavailable", @"There are no rewards available right now. Please check back later.")];
   } else {
     reward = [self.rewards objectAtIndex:indexPath.row];
     return [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
@@ -79,13 +80,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row > self.rewards.count-1) {
-        NSLog(@"Out of bounds");
-        return;
+    if ([self.rewards objectAtIndex:indexPath.row]) {
+      PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
+      PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward];
+      [[self navigationController] pushViewController:claimController animated:YES];
     }
-    PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
-    PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward];
-    [[self navigationController] pushViewController:claimController animated:YES];
 }
 
 @end

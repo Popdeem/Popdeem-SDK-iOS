@@ -32,7 +32,7 @@ static NSString *const PDUseCountKey = @"PDUseCount";
   self.maxPrompts = numberOfTimes.integerValue;
   
   if ([self shouldShowPrompt]) {
-    [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.2];
+    [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.4];
   }
 }
 
