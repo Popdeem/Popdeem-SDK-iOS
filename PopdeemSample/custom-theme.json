@@ -1,5 +1,15 @@
 {
-  "popdeem.nav.background" : "#EF4DB6",
-  "popdeem.nav.buttonTextColor" : "#DBDDDE",
-  "popdeem.nav.titleColor" : "#DBDDDE"
+  "popdeem" : {
+    "login" : {
+      "continueButton" : {
+        "background" : "#3C9915",
+        "textColor" : "#FFFFFF"
+      }
+    },
+    "nav" : {
+      "titleColor" : "#FFFFFF",
+      "background" : "#D12139",
+      "buttonTextColor" : "#FFFFFF"
+    }
+  }
 }

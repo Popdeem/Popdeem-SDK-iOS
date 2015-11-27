@@ -19,6 +19,7 @@
 @interface PDRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
 @property (nonatomic, strong)PDModalLoadingView *loadingView;
+@property (nonatomic, strong)PDLocation *closestLocation;
 @end
 
 @implementation PDRewardTableViewController
@@ -37,10 +38,7 @@
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance]getAllRewardsSuccess:^{
     weakSelf.rewards =  [PDRewardStore allRewards];
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.tableView reloadData];
-    });
-
+    [weakSelf fetchLocations];
   } failure:^(NSError * _Nonnull error) {
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.tableView reloadData];      
@@ -82,9 +80,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.rewards objectAtIndex:indexPath.row]) {
       PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
-      PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward];
+      PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
       [[self navigationController] pushViewController:claimController animated:YES];
     }
+}
+
+- (void) fetchLocations {
+  [[PDAPIClient sharedInstance] getAllLocationsSuccess:^{
+    NSArray *locations = [PDLocationStore locationsOrderedByDistanceToUser];
+    _closestLocation = [locations firstObject];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self.tableView reloadData];
+    });
+  } failure:^(NSError *error){
+    NSLog(@"Locations Fail: %@",error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [self.tableView reloadData];
+    });
+  }];
 }
 
 @end

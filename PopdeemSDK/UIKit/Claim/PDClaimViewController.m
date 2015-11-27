@@ -34,17 +34,16 @@
     return self;
   }
   return nil;
-  
 }
 
-- (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward {
-    if (self = [self initFromNib]) {
-        _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:mediaTypes andReward:reward];
-        [_viewModel setViewController:self];
-        [_textView setDelegate:_viewModel];
-        return self;
-    }
-    return nil;
+- (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location {
+  if (self = [self initFromNib]) {
+    _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:mediaTypes andReward:reward location:location];
+    [_viewModel setViewController:self];
+    [_textView setDelegate:_viewModel];
+    return self;
+  }
+  return nil;
 }
 
 - (void)viewDidLoad {
@@ -52,7 +51,10 @@
   [self renderView];
   UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
   [_keyboardHiderView addGestureRecognizer:hiderTap];
-  // Do any additional setup after loading the view from its nib.
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+  [self drawBorders];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,29 +63,28 @@
 }
 
 - (void) renderView {
-    [self.rewardDescriptionLabel setText:_viewModel.rewardTitleString];
-    [self.rewardRulesLabel setText:_viewModel.rewardRulesString];
-    [self.rewardInfoLabel setText:_viewModel.rewardActionsString];
-    [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
-    switch (_viewModel.socialMediaTypesAvailable) {
-        case FacebookOnly:
-        case TwitterOnly:
-            [self.facebookButton setHidden:YES];
-            [self.twitterButton setHidden:YES];
-            self.facebookButtonViewHeightConstraint.constant = 0;
-            self.twitterButtonViewHeightConstraint.constant = 0;
-            break;
-        case FacebookAndTwitter:
-            //Ensure both buttons are shown
-            [self.facebookButton setHidden:YES];
-            [self.twitterButton setHidden:YES];
-            self.facebookButtonViewHeightConstraint.constant = 40;
-            self.twitterButtonViewHeightConstraint.constant = 40;
-            break;
-        default:
-            break;
-    }
-    [self drawBorders];
+  [self.rewardDescriptionLabel setText:_viewModel.rewardTitleString];
+  [self.rewardRulesLabel setText:_viewModel.rewardRulesString];
+  [self.rewardInfoLabel setText:_viewModel.rewardActionsString];
+  [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
+  switch (_viewModel.socialMediaTypesAvailable) {
+    case FacebookOnly:
+    case TwitterOnly:
+      [self.facebookButton setHidden:YES];
+      [self.twitterButton setHidden:YES];
+      self.facebookButtonViewHeightConstraint.constant = 0;
+      self.twitterButtonViewHeightConstraint.constant = 0;
+      break;
+    case FacebookAndTwitter:
+      //Ensure both buttons are shown
+      [self.facebookButton setHidden:YES];
+      [self.twitterButton setHidden:YES];
+      self.facebookButtonViewHeightConstraint.constant = 40;
+      self.twitterButtonViewHeightConstraint.constant = 40;
+      break;
+    default:
+      break;
+  }
 }
 
 - (void) drawBorders {
@@ -125,39 +126,39 @@
 }
 
 - (void) keyboardUp {
-    UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hiderTap)];
-
-    self.navigationItem.rightBarButtonItem = typingDone;
-    self.navigationItem.hidesBackButton = YES;
-    [self.keyboardHiderView setHidden:NO];
-    [self.view bringSubviewToFront:self.keyboardHiderView];
-    [self.textView becomeFirstResponder];
-    [self.rewardImageView setHidden:YES];
-    self.rewardInfoViewHeightConstraint.constant = 0;
-    [self setTitle:translationForKey(@"popdeem.claim.addmessage", @"Add Message")];
-    [self.view setNeedsDisplay];
+  UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hiderTap)];
+  
+  self.navigationItem.rightBarButtonItem = typingDone;
+  self.navigationItem.hidesBackButton = YES;
+  [self.keyboardHiderView setHidden:NO];
+  [self.view bringSubviewToFront:self.keyboardHiderView];
+  [self.textView becomeFirstResponder];
+  [self.rewardImageView setHidden:YES];
+  self.rewardInfoViewHeightConstraint.constant = 0;
+  [self setTitle:translationForKey(@"popdeem.claim.addmessage", @"Add Message")];
+  [self.view setNeedsDisplay];
 }
 
 - (void) hiderTap {
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options: UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         
-                         [_keyboardHiderView setHidden:YES];
-                         if (!IS_IPHONE_4_OR_LESS) {
-                             _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 86;
-                         }
-                         [_textView resignFirstResponder];
-                         [_rewardInfoView setHidden:NO];
-                         self.navigationItem.rightBarButtonItem = nil;
-                         self.navigationItem.hidesBackButton = NO;
-                         [self setTitle:translationForKey(@"popdeem.claim.getreward", @"Claim Reward")];
-                     } completion:^(BOOL finished){}];
+  [UIView animateWithDuration:0.5
+                        delay:0.0
+                      options: UIViewAnimationOptionCurveEaseInOut
+                   animations:^{
+                     
+                     [_keyboardHiderView setHidden:YES];
+                     if (!IS_IPHONE_4_OR_LESS) {
+                       _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 86;
+                     }
+                     [_textView resignFirstResponder];
+                     [_rewardInfoView setHidden:NO];
+                     self.navigationItem.rightBarButtonItem = nil;
+                     self.navigationItem.hidesBackButton = NO;
+                     [self setTitle:translationForKey(@"popdeem.claim.getreward", @"Claim Reward")];
+                   } completion:^(BOOL finished){}];
 }
 
 - (void) keyboardDown {
-    
+  
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

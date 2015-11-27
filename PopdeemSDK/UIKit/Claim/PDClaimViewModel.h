@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PDReward.h"
+#import "PDLocation.h";
 @class PDClaimViewController;
 
 @interface PDClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate>
@@ -29,9 +30,11 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) NSString *forcedTagString;
 @property (nonatomic, strong) NSString *twitterCharCountString;
 
+@property (nonatomic, strong) PDLocation *location;
+
 @property (nonatomic) SocialMediaTypesAvailable socialMediaTypesAvailable;
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward;
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location;
 - (void) toggleFacebook;
 - (void) toggleTwitter;
 - (void) addPhotoAction;

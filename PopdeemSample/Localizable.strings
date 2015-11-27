@@ -29,9 +29,9 @@
 "popdeem.claim.addmessage" = "Add Message";
 "popdeem.claim.getreward" = "Claim Reward";
 
-"popdeem.claim.text.placeholder.tweet" = "What are you up to?";
+"popdeem.claim.text.placeholder" = "What are you up to?";
 "popdeem.claim.action.tweet.checkin" = "Check-in or Tweet Required";
-"popdeem.claim.action.photo" = "What are you up to?";
+"popdeem.claim.action.photo" = "Photo required";
 "popdeem.claim.action.none" = "No action required";
 "popdeem.claim.action.checkin" = "Check-In required";
 "popdeem.claim.action.tweet" = "Tweet Required";

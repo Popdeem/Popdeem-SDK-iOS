@@ -138,7 +138,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVt-fX-G8J">
                     <rect key="frame" x="0.0" y="216" width="600" height="40"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rur-5r-Gdk">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rur-5r-Gdk">
                             <rect key="frame" x="5" y="0.0" width="50" height="40"/>
                             <animations/>
                             <constraints>
@@ -152,7 +152,7 @@
                                 <action selector="cameraButtonTapped:" destination="-1" eventType="touchUpInside" id="6PZ-j7-Nr5"/>
                             </connections>
                         </button>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-35-sSP">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-35-sSP">
                             <rect key="frame" x="113" y="0.0" width="479" height="20"/>
                             <animations/>
                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
@@ -174,12 +174,9 @@
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Rur-5r-Gdk" firstAttribute="bottom" secondItem="tbK-Jj-ibT" secondAttribute="bottom" id="8f1-6Z-6Fm"/>
                         <constraint firstAttribute="height" constant="40" id="9U0-fQ-KVt"/>
-                        <constraint firstItem="Rur-5r-Gdk" firstAttribute="top" secondItem="1Cd-35-sSP" secondAttribute="top" id="ChH-3D-k4y"/>
-                        <constraint firstItem="tbK-Jj-ibT" firstAttribute="top" secondItem="1Cd-35-sSP" secondAttribute="bottom" id="L7f-pH-wH0"/>
-                        <constraint firstItem="1Cd-35-sSP" firstAttribute="leading" secondItem="Rur-5r-Gdk" secondAttribute="trailing" constant="58" id="f4x-EQ-0ix"/>
-                        <constraint firstItem="tbK-Jj-ibT" firstAttribute="trailing" secondItem="1Cd-35-sSP" secondAttribute="trailing" id="jpi-Eq-6hv"/>
+                        <constraint firstItem="Rur-5r-Gdk" firstAttribute="leading" secondItem="QVt-fX-G8J" secondAttribute="leading" constant="5" id="Dru-tU-amP"/>
+                        <constraint firstItem="Rur-5r-Gdk" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="top" id="kNy-Yb-sLf"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axK-DZ-59o">
@@ -202,7 +199,6 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="ecV-IR-qT2"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="yYx-C0-6LV"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcx-cq-ec7">
@@ -228,7 +224,6 @@
                         <constraint firstAttribute="trailing" secondItem="53c-Fq-DHN" secondAttribute="trailing" id="0bz-Zb-xZM"/>
                         <constraint firstItem="53c-Fq-DHN" firstAttribute="leading" secondItem="bcx-cq-ec7" secondAttribute="leading" id="A36-dn-l65"/>
                         <constraint firstItem="53c-Fq-DHN" firstAttribute="top" secondItem="bcx-cq-ec7" secondAttribute="top" id="C10-CH-wYj"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="fyb-0l-TWb"/>
                         <constraint firstAttribute="height" constant="40" id="rZB-AP-mxQ"/>
                         <constraint firstAttribute="bottom" secondItem="53c-Fq-DHN" secondAttribute="bottom" id="rnK-TQ-xk1"/>
                     </constraints>

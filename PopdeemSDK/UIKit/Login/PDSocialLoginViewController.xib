@@ -88,7 +88,7 @@
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGq-gb-tr0">
                             <rect key="frame" x="8" y="297" width="288" height="50"/>
                             <animations/>
-                            <color key="backgroundColor" red="0.23368233827734952" green="0.59999999999999998" blue="0.08333561250086341" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.23529411764705882" green="0.59999999999999998" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Continue to App">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>

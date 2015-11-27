@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @class PDSocialLoginViewModel;
 
@@ -29,7 +30,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *iconView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-@property (unsafe_unretained, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+@property (nonatomic, strong) IBOutlet FBSDKLoginButton *loginButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *continueButton;
 @property (nonatomic, weak) id delegate;
 

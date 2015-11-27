@@ -49,7 +49,7 @@
 -(BOOL) isLoggedIn {
     if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
         if (![PDUser sharedInstance].userToken) {
-            [[PDSocialMediaManager manager] logoutFacebook];
+//            [[PDSocialMediaManager manager] logoutFacebook];
             return NO;
         }
         return YES;

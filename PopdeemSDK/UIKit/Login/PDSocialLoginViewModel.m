@@ -48,6 +48,7 @@
     //Show error message
     return;
   }
+  NSDictionary *dict = [NSUserDefaults standardUserDefaults];
   [self proceedWithLoggedInUser];
 }
 

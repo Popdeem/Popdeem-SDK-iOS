@@ -38,10 +38,10 @@
   return nil;
 }
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward {
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location {
   self = [self init];
   if (!self) return nil;
-
+  _location = location;
   if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(FacebookOnly)]) {
     //Show only facebook button
     self.socialMediaTypesAvailable = FacebookOnly;
@@ -297,8 +297,7 @@
 
   __block NSInteger rewardId = _reward.identifier;
   //location?
-  PDLocation *location = [[PDLocationStore locationsOrderedByDistanceToUser] firstObject];
-  [client claimReward:_reward.identifier location:location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet success:^(){
+  [client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet success:^(){
     [self didClaimRewardId:rewardId];
   } failure:^(NSError *error){
     [self PDAPIClient:client didFailWithError:error];

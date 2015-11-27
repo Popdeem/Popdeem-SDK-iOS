@@ -11,6 +11,7 @@
 #import "PDSocialMediaManager.h"
 #import "PDUIKitUtils.h"
 #import "PDUtils.h"
+#import "PDTheme.h"
 
 @interface PDSocialLoginViewController ()
 
@@ -39,15 +40,18 @@
   [super viewDidLoad];
   self.viewModel = [[PDSocialLoginViewModel alloc] init];
   [self.viewModel setViewController:self];
+  self.loginButton.readPermissions= @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
   [self.loginButton setDelegate:self.viewModel];
   self.snapshotView.image = [PDUIKitUtils screenSnapshot];
   
-
   //Backing View Dismiss Recogniser
   UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
   
   [_backingView addGestureRecognizer:backingTap];
   [self renderViewModelState];
+  
+  [self.continueButton setBackgroundColor:PopdeemColor(@"popdeem.login.continueButton.background")];
+  [self.continueButton setTitleColor:PopdeemColor(@"popdeem.login.continueButton.textColor") forState:UIControlStateNormal];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

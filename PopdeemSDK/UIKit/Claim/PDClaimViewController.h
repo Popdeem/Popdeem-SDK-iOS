@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PD_SZTextView.h"
 #import "PDReward.h"
+#import "PDLocation.h"
 
 @class PDClaimViewModel;
 
@@ -40,7 +41,7 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *keyboardHiderView;
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward;
+- (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location;
 - (void) renderView;
 - (void) keyboardUp;
 - (void) keyboardDown;
