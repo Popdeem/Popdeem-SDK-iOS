@@ -26,14 +26,14 @@
 
 @implementation PDClaimViewModel
 
-- (id) init {
+- (instancetype) init {
   if (self = [super init]) {
     return self;
   }
   return nil;
 }
 
-- (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward {
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward {
   self = [self init];
   if (!self) return nil;
   

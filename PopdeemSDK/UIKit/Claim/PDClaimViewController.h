@@ -40,7 +40,7 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *keyboardHiderView;
 
-- (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward;
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward;
 - (void) renderView;
 - (void) keyboardUp;
 - (void) keyboardDown;

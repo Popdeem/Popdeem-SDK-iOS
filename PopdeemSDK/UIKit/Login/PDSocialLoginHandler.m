@@ -21,7 +21,7 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 
 @implementation PDSocialLoginHandler
 
-- (instancetype)init{
+- (instancetype) init{
   if(self = [super init]){
     self.socialManager = [PDSocialMediaManager manager];
   }
