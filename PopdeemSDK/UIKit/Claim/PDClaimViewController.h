@@ -12,7 +12,7 @@
 
 @class PDClaimViewModel;
 
-@interface PDClaimViewController : UIViewController
+@interface PDClaimViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) PDClaimViewModel *viewModel;
 

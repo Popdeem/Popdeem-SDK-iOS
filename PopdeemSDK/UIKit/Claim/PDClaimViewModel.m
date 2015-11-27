@@ -23,6 +23,10 @@
 
 @property (nonatomic, strong) PDModalLoadingView *loadingView;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIWindow *alertWindow;
+
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic) BOOL didAddPhoto;
 @end
 
 @implementation PDClaimViewModel
@@ -71,7 +75,7 @@
   } else {
     //TODO: Some Default
   }
-  _textviewPlaceholder = localizedStringForKey(@"popdeem.claim.text.placeholder", @"What are you up to?";
+  _textviewPlaceholder = translationForKey(@"popdeem.claim.text.placeholder", @"What are you up to?");
   if (_reward.twitterPrefilledMessage) {
     _textviewPrepopulatedString = _reward.twitterPrefilledMessage;
   }
@@ -207,7 +211,7 @@
 }
 
 - (void) addPhotoAction {
-  
+  [self showPhotoActionSheet];
 }
 
 - (void) calculateTwitterCharsLeft {
@@ -331,6 +335,7 @@
   [av show];
 }
 
+#pragma mark - Connecting Twitter -
 - (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
   PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:_viewController];
   
@@ -359,5 +364,137 @@
   }];
 }
 
+#pragma mark - Adding Photo -
+
+- (void) showPhotoActionSheet {
+  //    if ([claimTextView isFirstResponder]) {
+  //        [claimTextView resignFirstResponder];
+  //    }
+  
+  _alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  _alertWindow.rootViewController = [UIViewController new];
+  _alertWindow.windowLevel = 10000001;
+  _alertWindow.hidden = NO;
+  
+  __weak __typeof(self) weakSelf = self;
+  
+  UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Test" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    weakSelf.alertWindow.hidden = YES;
+    weakSelf.alertWindow = nil;
+  }]];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    weakSelf.alertWindow.hidden = YES;
+    weakSelf.alertWindow = nil;
+    [weakSelf takePhoto];
+    if ([_viewController.textView isFirstResponder]) {
+      [_viewController.textView resignFirstResponder];
+    }
+  }]];
+  [alert addAction:[UIAlertAction actionWithTitle:@"Camera Roll" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    weakSelf.alertWindow.hidden = YES;
+    weakSelf.alertWindow = nil;
+    [weakSelf selectPhoto];
+    if ([_viewController.textView isFirstResponder]) {
+      [_viewController.textView resignFirstResponder];
+    }
+  }]];
+  
+  [_alertWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)takePhoto {
+  
+  UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+  picker.delegate = _viewController;
+  picker.allowsEditing = NO;
+  picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+  picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+  picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  [_viewController presentViewController:picker animated:YES completion:NULL];
+  
+}
+
+- (void)selectPhoto {
+  
+  UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+  picker.delegate = _viewController;
+  picker.allowsEditing = YES;
+  picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+  picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  [_viewController presentViewController:picker animated:YES completion:NULL];
+  
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+  if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
+    
+  }
+  
+  if (!_imageView) {
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
+    [_viewController.textView addSubview:_imageView];
+    [_imageView setClipsToBounds:YES];
+    [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+    [_imageView setHidden:YES];
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhotoActionSheet)];
+    [_imageView addGestureRecognizer:imageTap];
+    [_imageView setUserInteractionEnabled:YES];
+  }
+  
+  UIImage *img = info[UIImagePickerControllerOriginalImage];
+  
+  _image = [self resizeImage:img withMinDimension:480];
+  _imageView.image = img;
+  _imageView.contentMode = UIViewContentModeScaleAspectFit;
+  _imageView.backgroundColor = [UIColor blackColor];
+  _imageView.layer.masksToBounds = YES;
+  _imageView.layer.shadowColor = [UIColor colorWithRed:0.831 green:0.831 blue:0.831 alpha:1.000].CGColor;
+  _imageView.layer.shadowOpacity = 0.9;
+  _imageView.layer.shadowRadius = 1.0;
+  _imageView.clipsToBounds = YES;
+  _imageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+  _imageView.layer.borderWidth = 2.0f;
+  [_imageView setHidden:NO];
+  [picker dismissViewControllerAnimated:YES completion:NULL];
+  
+  _didAddPhoto = YES;
+  
+  [UIView animateWithDuration:0.5
+                        delay:1.0
+                      options: UIViewAnimationOptionCurveEaseInOut
+                   animations:^{
+                     [_viewController.textView setTextContainerInset:UIEdgeInsetsMake(10, 8, 10, 70)];
+                   }
+                   completion:^(BOOL finished){
+                     NSLog(@"Done!");
+                   }];
+  
+  [_viewController.textView becomeFirstResponder];
+  
+  [self calculateTwitterCharsLeft];
+}
+
+- (UIImage *)resizeImage:(UIImage *)inImage
+        withMinDimension:(CGFloat)minDimension
+{
+  
+  CGFloat aspect = inImage.size.width / inImage.size.height;
+  CGSize newSize;
+  
+  if (inImage.size.width > inImage.size.height) {
+    newSize = CGSizeMake(minDimension*aspect, minDimension);
+  } else {
+    newSize = CGSizeMake(minDimension, minDimension/aspect);
+  }
+  
+  UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
+  CGRect newImageRect = CGRectMake(0.0, 0.0, newSize.width, newSize.height);
+  [inImage drawInRect:newImageRect];
+  UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return newImage;
+}
 
 @end
