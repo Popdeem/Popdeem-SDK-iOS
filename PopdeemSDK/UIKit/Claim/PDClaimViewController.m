@@ -125,7 +125,8 @@
 }
 
 - (void) keyboardUp {
-    UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(hiderTap)];
+    UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hiderTap)];
+
     self.navigationItem.rightBarButtonItem = typingDone;
     self.navigationItem.hidesBackButton = YES;
     [self.keyboardHiderView setHidden:NO];
@@ -133,7 +134,7 @@
     [self.textView becomeFirstResponder];
     [self.rewardImageView setHidden:YES];
     self.rewardInfoViewHeightConstraint.constant = 0;
-    [self setTitle:@"Add Message"];
+    [self setTitle:translationForKey(@"popdeem.claim.addmessage", @"Add Message")];
     [self.view setNeedsDisplay];
 }
 
@@ -151,7 +152,7 @@
                          [_rewardInfoView setHidden:NO];
                          self.navigationItem.rightBarButtonItem = nil;
                          self.navigationItem.hidesBackButton = NO;
-                         [self setTitle:@"Claim Reward"];
+                         [self setTitle:translationForKey(@"popdeem.claim.getreward", @"Claim Reward")];
                      } completion:^(BOOL finished){}];
 }
 

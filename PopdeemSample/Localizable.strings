@@ -8,19 +8,31 @@
 
 "popdeem.sociallogin.title" = "App Update";
 
-"popdeem.sociallogin.success" = "Connected!";
-"popdeem.sociallogin.success.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";
 "popdeem.common.loading" = "Loading";
 "popdeem.common.wait" = "Please Wait";
+
+"popdeem.sociallogin.success" = "Connected!";
+"popdeem.sociallogin.success.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";
 "popdeem.sociallogin.rewardsavailable" = "Rewards Available";
-
 "popdeem.sociallogin.description"= "To see what rewards you have unlocked, simply connect your Facebook account below.";
-
 "popdeem.sociallogin.subtitle" = "Rewards Available";
 "popdeem.sociallogin.footer" = "Powered by Popdeem";
 "popdeem.sociallogin.continue" = "Continue to App";
 
-"popdeem.claims.title" = "Claims";
 "popdeem.rewards.title" = "Rewards";
-
 "popdeem.rewards.notavailable" = "There are no rewards available right now. Please check back later.";
+
+"popdeem.claims.title" = "Claims";
+"popdeem.claim.addmessage" = "Add Message";
+"popdeem.claim.getreward" = "Claim Reward";
+
+"popdeem.claim.text.placeholder.tweet" = "What are you up to?";
+"popdeem.claim.action.tweet.checkin" = "Check-in or Tweet Required";
+"popdeem.claim.action.photo" = "What are you up to?";
+"popdeem.claim.action.none" = "No action required";
+"popdeem.claim.action.checkin" = "Check-In required";
+"popdeem.claim.action.tweet" = "Tweet Required";
+
+"popdeem.claim.action.tweet.photo" = "Tweet with Photo required";
+
+"popdeem.claim.twitter.connect" = "Connecting Twitter";
