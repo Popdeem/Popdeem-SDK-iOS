@@ -45,9 +45,19 @@
     return self;
 }
 
+
+-(BOOL) isLoggedIn {
+    if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+        if (![PDUser sharedInstance].userToken) {
+//            [[PDSocialMediaManager manager] logoutFacebook];
+            return NO;
+        }
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - Facebook -
-
-
 
 - (void) loginWithFacebookReadPermissions:(NSArray*)permissions
                       registerWithPopdeem:(BOOL)reg
@@ -87,6 +97,8 @@
             } failure:^(NSError *error) {
                 failure(error);
             }];
+         } else {
+             failure(error);
          }
      }];
 }
@@ -148,7 +160,19 @@
 }
 
 - (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error completion:(void (^)(NSError *error))completion {
-    
+    [self registerAfterLogin:^{
+        completion(nil);
+    } failure:^(NSError *error){
+        completion(error);
+    }];
+}
+
+- (void) nextStepForFacebookLoggedInUser:(void (^)(NSError *error))completion {
+    [self registerAfterLogin:^{
+        completion(nil);
+    } failure:^(NSError *error){
+        completion(error);
+    }];
 }
 
 #pragma mark - Twitter -

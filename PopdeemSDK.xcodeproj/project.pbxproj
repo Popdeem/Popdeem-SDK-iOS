@@ -7,71 +7,117 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		391CE0471BFDF8A100868532 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0461BFDF8A100868532 /* UserTests.m */; };
-		391CE0491BFE080D00868532 /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0481BFE080D00868532 /* UserAPIServiceTests.m */; };
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
-		391CE04F1BFF274600868532 /* APIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE04E1BFF274600868532 /* APIServiceTests.m */; };
-		391CE0511BFF27CD00868532 /* SocialAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */; };
-		391CE0531BFF29E800868532 /* LocationAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */; };
-		391CE0571BFF332E00868532 /* BrandAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */; };
-		391CE05B1BFF360300868532 /* RewardAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */; };
-		391CE05F1BFF427400868532 /* WalletAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE05E1BFF427400868532 /* WalletAPIServiceTests.m */; };
-		391CE0611BFF466200868532 /* FeedAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 391CE0601BFF466200868532 /* FeedAPIServiceTests.m */; };
-		391CE0691BFF468400868532 /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0621BFF468400868532 /* Brand.json */; };
-		391CE06A1BFF468400868532 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0631BFF468400868532 /* Brands.json */; };
-		391CE06B1BFF468400868532 /* Location.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0641BFF468400868532 /* Location.json */; };
-		391CE06C1BFF468400868532 /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0651BFF468400868532 /* Locations.json */; };
-		391CE06D1BFF468400868532 /* PDFeedItem_WithPicture.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0661BFF468400868532 /* PDFeedItem_WithPicture.json */; };
-		391CE06E1BFF468400868532 /* Reward.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0671BFF468400868532 /* Reward.json */; };
-		391CE06F1BFF468400868532 /* Rewards.json in Resources */ = {isa = PBXBuildFile; fileRef = 391CE0681BFF468400868532 /* Rewards.json */; };
+		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
+		392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDClaimViewController.m */; };
+		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
+		398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */; };
+		398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
-		39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92781B8F125400D16F18 /* BrandTests.m */; };
-		39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92791B8F125400D16F18 /* FeedItemTests.m */; };
-		39EF92851B8F125D00D16F18 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF927E1B8F125D00D16F18 /* LocationTests.m */; };
-		39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */; };
-		39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF92821B8F125D00D16F18 /* RewardTests.m */; };
-		39EF928D1B8F126F00D16F18 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EF928C1B8F126F00D16F18 /* User.json */; };
+		39A7771E1C0756CD004A4E92 /* pduikit_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7770F1C0756CD004A4E92 /* pduikit_camera.png */; };
+		39A7771F1C0756CD004A4E92 /* pduikit_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777101C0756CD004A4E92 /* pduikit_camera@2x.png */; };
+		39A777201C0756CD004A4E92 /* pduikit_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777111C0756CD004A4E92 /* pduikit_camera@3x.png */; };
+		39A777211C0756CD004A4E92 /* pduikit_fbbutton_deselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777121C0756CD004A4E92 /* pduikit_fbbutton_deselected.png */; };
+		39A777221C0756CD004A4E92 /* pduikit_fbbutton_deselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777131C0756CD004A4E92 /* pduikit_fbbutton_deselected@2x.png */; };
+		39A777231C0756CD004A4E92 /* pduikit_fbbutton_deselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777141C0756CD004A4E92 /* pduikit_fbbutton_deselected@3x.png */; };
+		39A777241C0756CD004A4E92 /* pduikit_fbbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777151C0756CD004A4E92 /* pduikit_fbbutton_selected.png */; };
+		39A777251C0756CD004A4E92 /* pduikit_fbbutton_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777161C0756CD004A4E92 /* pduikit_fbbutton_selected@2x.png */; };
+		39A777261C0756CD004A4E92 /* pduikit_fbbutton_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777171C0756CD004A4E92 /* pduikit_fbbutton_selected@3x.png */; };
+		39A777271C0756CD004A4E92 /* pduikit_twitterbutton_deselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777181C0756CD004A4E92 /* pduikit_twitterbutton_deselected.png */; };
+		39A777281C0756CD004A4E92 /* pduikit_twitterbutton_deselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777191C0756CD004A4E92 /* pduikit_twitterbutton_deselected@2x.png */; };
+		39A777291C0756CD004A4E92 /* pduikit_twitterbutton_deselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771A1C0756CD004A4E92 /* pduikit_twitterbutton_deselected@3x.png */; };
+		39A7772A1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771B1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png */; };
+		39A7772B1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png */; };
+		39A7772C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771D1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png */; };
+		39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDClaimViewModel.m */; };
+		39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */; };
+		39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */; };
+		39EDADCB1C07333F001102B3 /* RewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC71C07333F001102B3 /* RewardTableViewCell.m */; };
+		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
+		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
+		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
 		55E0F480843FAE4040696615 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */; };
-		63F4E9B168ED4C923CDFADFB /* Feeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 63F4E1F058416F172D304096 /* Feeds.json */; };
-		A90FA5021C036304001DA473 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
-		A90FA5031C036304001DA473 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
-		A90FA5041C036304001DA473 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FF1C036304001DA473 /* PDRewardStore.m */; };
-		A90FA5051C036304001DA473 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5011C036304001DA473 /* PDWallet.m */; };
+		A90FA5311C0368A8001DA473 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5301C0368A8001DA473 /* main.m */; };
+		A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5331C0368A8001DA473 /* AppDelegate.m */; };
+		A90FA5371C0368A8001DA473 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5361C0368A8001DA473 /* ViewController.m */; };
+		A90FA53A1C0368A8001DA473 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90FA5381C0368A8001DA473 /* Main.storyboard */; };
+		A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53B1C0368A8001DA473 /* Assets.xcassets */; };
+		A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */; };
+		A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */; };
+		A92281E91C07369800A43320 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E21C07369800A43320 /* NoRewardsTableViewCell.m */; };
+		A92281EB1C07369800A43320 /* PDRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E61C07369800A43320 /* PDRewardTableViewController.m */; };
+		A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E81C07369800A43320 /* RewardTableViewCell.m */; };
+		A92281F11C07465700A43320 /* PDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281F01C07465700A43320 /* PDNavigationController.m */; };
+		A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281F31C074C2D00A43320 /* PDModalTransitionHandler.m */; };
+		A9582F9A1C05D15000D62456 /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5011C036304001DA473 /* PDWallet.m */; };
+		A9582F9B1C05D15300D62456 /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FF1C036304001DA473 /* PDRewardStore.m */; };
+		A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
+		A9582F9D1C05D15800D62456 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
+		A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */; };
+		A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9582FA21C05F1DF00D62456 /* Localizable.strings */; };
+		A9B2AA4B1C0872F500EFDE93 /* custom-theme.json in Resources */ = {isa = PBXBuildFile; fileRef = A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */; };
+		BC67F05A5F7252792A093778 /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
+		BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */; };
+		BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F6855AC77922041DBC9B /* Brands.json */; };
 		BC67F1818241869ED5AE3E96 /* PDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */; };
+		BC67F192518FF25B41B22AA5 /* RewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F8BEDE7830979FC56A00 /* RewardTests.m */; };
 		BC67F1F58689AA2729A0B6CF /* PDBrandApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF0E6854328471162315 /* PDBrandApiService.m */; };
 		BC67F2A1D8DBA60B62E3649F /* PDUser+Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F89FF91371885F0B43F6 /* PDUser+Facebook.m */; };
 		BC67F2B019190563963D9DFA /* PDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDF77E9C2BC42F475282 /* PDConstants.m */; };
 		BC67F2EA9AC44543E93524B5 /* PDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F866213BA9B492FB005B /* PDLocation.m */; };
+		BC67F2F6927DFDDC5A7CB6F9 /* Rewards.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67FE03A8AFCB2DD5111FC4 /* Rewards.json */; };
 		BC67F31395CA7C3B031AAB89 /* PDReferral.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB138AFDB8475775021B /* PDReferral.m */; };
 		BC67F348F8098F8237693F9D /* PDSocialAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */; };
-		BC67F4363103CF33FE89C5BC /* PDFacebookLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FE603F2F3D5DB84F340A /* PDFacebookLoginButton.m */; };
+		BC67F38A59976217DB69B1F7 /* PDRewardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */; };
+		BC67F3D8B356BA2B8548D901 /* PDFeedItem_WithPicture.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67FBB6DE1EECF94167A08D /* PDFeedItem_WithPicture.json */; };
+		BC67F3E4910E36D7AE92C91E /* Brand.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F065985FB8F9FEC752BD /* Brand.json */; };
 		BC67F4D6CAE34F664AF37B3C /* PDReferralAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */; };
+		BC67F50730E04DB414EAA6CF /* Reward.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67FB1E76BFDFC2827246B5 /* Reward.json */; };
+		BC67F512A3564C7B983B5D9F /* SocialAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F8FDBB256B9056C29317 /* SocialAPIServiceTests.m */; };
+		BC67F515E89D7A1F237683AA /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB0C59BE46A48ABE49D6 /* LocationTests.m */; };
+		BC67F5164CFC9BBC1A40B385 /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F0691EFA9CABA1A4D997 /* Locations.json */; };
 		BC67F589520EE25D681D091B /* PDRewardAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F27493A67F748B19C2F6 /* PDRewardAPIService.m */; };
 		BC67F5BB09D851870D18E285 /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FA50A957A3764748EF64 /* PDNetworkError.m */; };
 		BC67F612E0F34A0EF06B04C7 /* PDOpeningHoursWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6C0C7E739CB86F6515 /* PDOpeningHoursWeek.m */; };
+		BC67F63A1001BCDAB7969549 /* APIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F094736671CDACEE8FAF /* APIServiceTests.m */; };
 		BC67F6BBD9FD32D05383E3C5 /* PDFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FFE3DB5E8203430170C6 /* PDFeeds.m */; };
 		BC67F709A15ADAAFDAE09585 /* PDFeedAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6E966611691DB623D7 /* PDFeedAPIService.m */; };
+		BC67F7C25FB37CBFC5F6386C /* BrandAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F35E9416BF3B358046CB /* BrandAPIServiceTests.m */; };
 		BC67F876237D47936806AE85 /* PDReward.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB3FE741B22C74D4A257 /* PDReward.m */; };
 		BC67F8BE30DE8BB1D7F93097 /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0521517D04945EBCFDE /* NSURLSession+Popdeem.m */; };
+		BC67F9863680AAAAA60756B9 /* Location.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F22F7024B09BFD09D14F /* Location.json */; };
 		BC67F99A98DBBDD2F8CC4BED /* PDLocationAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F72645898839719EF769 /* PDLocationAPIService.m */; };
+		BC67F9A48DABFAD166622B66 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F249D3810C72D8A18B89 /* User.json */; };
+		BC67FA04CB475DB604262976 /* RewardAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEBEFBF66968101E8A12 /* RewardAPIServiceTests.m */; };
+		BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FA07BBE691E3992AE323 /* PDModalLoadingView.m */; };
 		BC67FA525500547B66CBFFEF /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */; };
 		BC67FA7AA48A4DC0BBFB453F /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */; };
 		BC67FAAF23C4FF66C76369B8 /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */; };
 		BC67FABEDA5987CB6DAA7880 /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */; };
 		BC67FAE361700CE9FCF09E94 /* PDRewardActionAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */; };
+		BC67FBA32D12A3E2F0D79FEB /* BrandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F89C70E9DE531B0C656A /* BrandTests.m */; };
+		BC67FC4552707BB69A1BEEB9 /* LocationAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F46C450DF11CE9660B4C /* LocationAPIServiceTests.m */; };
 		BC67FC59C9F0E8F553AB4748 /* PDOpeningHoursDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F48B372E10AF910E9DF7 /* PDOpeningHoursDay.m */; };
+		BC67FC7089D548E9FF043436 /* FeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FCC29C35A69244A61351 /* FeedItemTests.m */; };
 		BC67FCD5547FD4C2E1FC9420 /* PDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB072FF7574FC00933C0 /* PDScores.m */; };
+		BC67FD13BC5374AB728F195C /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9CC52DDD7973FE7517E /* UserTests.m */; };
 		BC67FD9C148569401EA363B3 /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */; };
+		BC67FDA81508C1312DE78A2E /* FeedAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F24BB5B97FD51AA2AE9E /* FeedAPIServiceTests.m */; };
 		BC67FDCC4C43D980D5D6D7C2 /* PDBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F09D8703806E4EB93264 /* PDBrand.m */; };
 		BC67FDFD1FA0B0A0808CC6CA /* PDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0259BE1A6F5B3827F5D /* PDUtils.m */; };
+		BC67FE59A10D169C4E6A270D /* PDSocialLoginHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF08261302BD08EC80D6 /* PDSocialLoginHandler.m */; };
 		BC67FE9BC86BF5C034E8FEEA /* PDURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDA747BB4787ACBCC9A9 /* PDURLSession.m */; };
+		BC67FE9CF5599C1F321D14B5 /* Feeds.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F84E45D61C25DB1961F0 /* Feeds.json */; };
 		BC67FEAC806E9FE2D889DF6F /* PDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FE5072EA22D083C45380 /* PDFeedItem.m */; };
 		BC67FF0016DDE85E2428E787 /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6499A11C2A5AB3AC2AE /* PDUserTwitterParams.m */; };
 		BC67FF6F0C9145D3F47766D7 /* PDWalletAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEC0CFB9324C3DE2AAA0 /* PDWalletAPIService.m */; };
 		BC67FF75453A8113C8B79578 /* PDSocialMediaFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F98E0D4534F9808FA7BD /* PDSocialMediaFriend.m */; };
+		BC67FF87A49C1EB7D4B0352D /* WalletAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F73EDD4AB36B59AF70E2 /* WalletAPIServiceTests.m */; };
+		BC67FF8D2B030DD6410173B2 /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F7563AA957CD78C051E7 /* UserAPIServiceTests.m */; };
 		BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
 		BC67FFAF6CF0555B014F2D5B /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
+		C84EED62BDCBB0D384156028 /* libPods-PopdeemSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7328E046345EC7EE3EC6B270 /* libPods-PopdeemSample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,44 +143,66 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		391CE0461BFDF8A100868532 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
-		391CE0481BFE080D00868532 /* UserAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE04E1BFF274600868532 /* APIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIServiceTests.m; sourceTree = "<group>"; };
-		391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE05E1BFF427400868532 /* WalletAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE0601BFF466200868532 /* FeedAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedAPIServiceTests.m; sourceTree = "<group>"; };
-		391CE0621BFF468400868532 /* Brand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Brand.json; path = JSON/Brand.json; sourceTree = "<group>"; };
-		391CE0631BFF468400868532 /* Brands.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Brands.json; path = JSON/Brands.json; sourceTree = "<group>"; };
-		391CE0641BFF468400868532 /* Location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Location.json; path = JSON/Location.json; sourceTree = "<group>"; };
-		391CE0651BFF468400868532 /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Locations.json; path = JSON/Locations.json; sourceTree = "<group>"; };
-		391CE0661BFF468400868532 /* PDFeedItem_WithPicture.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PDFeedItem_WithPicture.json; path = JSON/PDFeedItem_WithPicture.json; sourceTree = "<group>"; };
-		391CE0671BFF468400868532 /* Reward.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Reward.json; path = JSON/Reward.json; sourceTree = "<group>"; };
-		391CE0681BFF468400868532 /* Rewards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Rewards.json; path = JSON/Rewards.json; sourceTree = "<group>"; };
+		3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewModelTests.m; path = PopdeemSDKTests/UIKit/PDSocialLoginViewModelTests.m; sourceTree = SOURCE_ROOT; };
+		392787121C0716F600F8DCD9 /* PDClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewController.h; path = Claim/PDClaimViewController.h; sourceTree = "<group>"; };
+		392787131C0716F600F8DCD9 /* PDClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewController.m; path = Claim/PDClaimViewController.m; sourceTree = "<group>"; };
+		392787141C0716F600F8DCD9 /* PDClaimViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDClaimViewController.xib; path = Claim/PDClaimViewController.xib; sourceTree = "<group>"; };
+		392787161C071BFA00F8DCD9 /* PD_SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PD_SZTextView.h; path = Claim/PD_SZTextView.h; sourceTree = "<group>"; };
+		392787171C071BFA00F8DCD9 /* PD_SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PD_SZTextView.m; path = Claim/PD_SZTextView.m; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
+		398E4B761C03744B00A68529 /* PDSocialLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginViewController.h; path = Login/PDSocialLoginViewController.h; sourceTree = "<group>"; };
+		398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewController.m; path = Login/PDSocialLoginViewController.m; sourceTree = "<group>"; };
+		398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDSocialLoginViewController.xib; path = Login/PDSocialLoginViewController.xib; sourceTree = "<group>"; };
+		398E4B7A1C03766500A68529 /* PDSocialLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginViewModel.h; path = Login/PDSocialLoginViewModel.h; sourceTree = "<group>"; };
+		398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewModel.m; path = Login/PDSocialLoginViewModel.m; sourceTree = "<group>"; };
 		39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDKTests.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDKTests.a"; sourceTree = "<group>"; };
+		39A7770F1C0756CD004A4E92 /* pduikit_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_camera.png; path = Resources/pduikit_camera.png; sourceTree = "<group>"; };
+		39A777101C0756CD004A4E92 /* pduikit_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_camera@2x.png"; path = "Resources/pduikit_camera@2x.png"; sourceTree = "<group>"; };
+		39A777111C0756CD004A4E92 /* pduikit_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_camera@3x.png"; path = "Resources/pduikit_camera@3x.png"; sourceTree = "<group>"; };
+		39A777121C0756CD004A4E92 /* pduikit_fbbutton_deselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_fbbutton_deselected.png; path = Resources/pduikit_fbbutton_deselected.png; sourceTree = "<group>"; };
+		39A777131C0756CD004A4E92 /* pduikit_fbbutton_deselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_deselected@2x.png"; path = "Resources/pduikit_fbbutton_deselected@2x.png"; sourceTree = "<group>"; };
+		39A777141C0756CD004A4E92 /* pduikit_fbbutton_deselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_deselected@3x.png"; path = "Resources/pduikit_fbbutton_deselected@3x.png"; sourceTree = "<group>"; };
+		39A777151C0756CD004A4E92 /* pduikit_fbbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_fbbutton_selected.png; path = Resources/pduikit_fbbutton_selected.png; sourceTree = "<group>"; };
+		39A777161C0756CD004A4E92 /* pduikit_fbbutton_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_selected@2x.png"; path = "Resources/pduikit_fbbutton_selected@2x.png"; sourceTree = "<group>"; };
+		39A777171C0756CD004A4E92 /* pduikit_fbbutton_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_fbbutton_selected@3x.png"; path = "Resources/pduikit_fbbutton_selected@3x.png"; sourceTree = "<group>"; };
+		39A777181C0756CD004A4E92 /* pduikit_twitterbutton_deselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_twitterbutton_deselected.png; path = Resources/pduikit_twitterbutton_deselected.png; sourceTree = "<group>"; };
+		39A777191C0756CD004A4E92 /* pduikit_twitterbutton_deselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_deselected@2x.png"; path = "Resources/pduikit_twitterbutton_deselected@2x.png"; sourceTree = "<group>"; };
+		39A7771A1C0756CD004A4E92 /* pduikit_twitterbutton_deselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_deselected@3x.png"; path = "Resources/pduikit_twitterbutton_deselected@3x.png"; sourceTree = "<group>"; };
+		39A7771B1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_twitterbutton_selected.png; path = Resources/pduikit_twitterbutton_selected.png; sourceTree = "<group>"; };
+		39A7771C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_selected@2x.png"; path = "Resources/pduikit_twitterbutton_selected@2x.png"; sourceTree = "<group>"; };
+		39A7771D1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_selected@3x.png"; path = "Resources/pduikit_twitterbutton_selected@3x.png"; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39EF92781B8F125400D16F18 /* BrandTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandTests.m; sourceTree = "<group>"; };
-		39EF92791B8F125400D16F18 /* FeedItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTests.m; sourceTree = "<group>"; };
-		39EF927E1B8F125D00D16F18 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
-		39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDKTests.m; sourceTree = "<group>"; };
-		39EF92821B8F125D00D16F18 /* RewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTests.m; sourceTree = "<group>"; };
-		39EF928C1B8F126F00D16F18 /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = User.json; path = JSON/User.json; sourceTree = "<group>"; };
-		63F4E1F058416F172D304096 /* Feeds.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; name = Feeds.json; path = JSON/Feeds.json; sourceTree = "<group>"; };
+		39EDADBD1C072851001102B3 /* PDClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewModel.h; path = Claim/PDClaimViewModel.h; sourceTree = "<group>"; };
+		39EDADBE1C072851001102B3 /* PDClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewModel.m; path = Claim/PDClaimViewModel.m; sourceTree = "<group>"; };
+		39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRewardsTableViewCell.h; sourceTree = "<group>"; };
+		39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoRewardsTableViewCell.m; sourceTree = "<group>"; };
+		39EDADC41C07333F001102B3 /* PDRewardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardTableViewController.h; sourceTree = "<group>"; };
+		39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardTableViewController.m; sourceTree = "<group>"; };
+		39EDADC61C07333F001102B3 /* RewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardTableViewCell.h; sourceTree = "<group>"; };
+		39EDADC71C07333F001102B3 /* RewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTableViewCell.m; sourceTree = "<group>"; };
+		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
+		39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@2x.png"; path = "Resources/pduikit_rainbow@2x.png"; sourceTree = "<group>"; };
+		39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rainbow@3x.png"; path = "Resources/pduikit_rainbow@3x.png"; sourceTree = "<group>"; };
+		39FD1C191C046DAE00CC3B0C /* pduikit_rewardsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rewardsIcon.png; path = Resources/pduikit_rewardsIcon.png; sourceTree = "<group>"; };
+		39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIcon@2x.png"; path = "Resources/pduikit_rewardsIcon@2x.png"; sourceTree = "<group>"; };
+		39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rewardsIconSuccess.png; path = Resources/pduikit_rewardsIconSuccess.png; sourceTree = "<group>"; };
+		39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIconSuccess@2x.png"; path = "Resources/pduikit_rewardsIconSuccess@2x.png"; sourceTree = "<group>"; };
+		39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIKitUtils.h; path = Utilities/PDUIKitUtils.h; sourceTree = "<group>"; };
+		39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIKitUtils.m; path = Utilities/PDUIKitUtils.m; sourceTree = "<group>"; };
+		7328E046345EC7EE3EC6B270 /* libPods-PopdeemSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7148E7293ED54A945519DA3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PopdeemSDK.podspec; sourceTree = "<group>"; };
+		A90FA4F91C0361F5001DA473 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A90FA4FA1C036304001DA473 /* PDBrandStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDBrandStore.h; path = Core/Store/PDBrandStore.h; sourceTree = "<group>"; };
 		A90FA4FB1C036304001DA473 /* PDBrandStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDBrandStore.m; path = Core/Store/PDBrandStore.m; sourceTree = "<group>"; };
 		A90FA4FC1C036304001DA473 /* PDLocationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDLocationStore.h; path = Core/Store/PDLocationStore.h; sourceTree = "<group>"; };
@@ -143,15 +211,55 @@
 		A90FA4FF1C036304001DA473 /* PDRewardStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDRewardStore.m; path = Core/Store/PDRewardStore.m; sourceTree = "<group>"; };
 		A90FA5001C036304001DA473 /* PDWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDWallet.h; path = Core/Store/PDWallet.h; sourceTree = "<group>"; };
 		A90FA5011C036304001DA473 /* PDWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDWallet.m; path = Core/Store/PDWallet.m; sourceTree = "<group>"; };
+		A90FA52D1C0368A8001DA473 /* PopdeemSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopdeemSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90FA5301C0368A8001DA473 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A90FA5321C0368A8001DA473 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A90FA5331C0368A8001DA473 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A90FA5351C0368A8001DA473 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A90FA5361C0368A8001DA473 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A90FA5391C0368A8001DA473 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A90FA53B1C0368A8001DA473 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A90FA53E1C0368A8001DA473 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A90FA5401C0368A8001DA473 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDConfirmationViewController.h; sourceTree = "<group>"; };
+		A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDConfirmationViewController.m; sourceTree = "<group>"; };
+		A92281DE1C07359E00A43320 /* starG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starG.png; path = Resources/starG.png; sourceTree = "<group>"; };
+		A92281DF1C07359E00A43320 /* starG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starG@2x.png"; path = "Resources/starG@2x.png"; sourceTree = "<group>"; };
+		A92281E01C07359E00A43320 /* starG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starG@3x.png"; path = "Resources/starG@3x.png"; sourceTree = "<group>"; };
+		A92281E11C07369800A43320 /* NoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRewardsTableViewCell.h; sourceTree = "<group>"; };
+		A92281E21C07369800A43320 /* NoRewardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoRewardsTableViewCell.m; sourceTree = "<group>"; };
+		A92281E51C07369800A43320 /* PDRewardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardTableViewController.h; sourceTree = "<group>"; };
+		A92281E61C07369800A43320 /* PDRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardTableViewController.m; sourceTree = "<group>"; };
+		A92281E71C07369800A43320 /* RewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardTableViewCell.h; sourceTree = "<group>"; };
+		A92281E81C07369800A43320 /* RewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTableViewCell.m; sourceTree = "<group>"; };
+		A92281EF1C07465700A43320 /* PDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNavigationController.h; sourceTree = "<group>"; };
+		A92281F01C07465700A43320 /* PDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNavigationController.m; sourceTree = "<group>"; };
+		A92281F21C074C2D00A43320 /* PDModalTransitionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDModalTransitionHandler.h; sourceTree = "<group>"; };
+		A92281F31C074C2D00A43320 /* PDModalTransitionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDModalTransitionHandler.m; sourceTree = "<group>"; };
+		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
+		A9582FA21C05F1DF00D62456 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
+		A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "custom-theme.json"; sourceTree = "<group>"; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		BC67F0259BE1A6F5B3827F5D /* PDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUtils.m; sourceTree = "<group>"; };
+		BC67F043EB7A7A6156010094 /* PDSocialLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginHandler.h; path = Login/PDSocialLoginHandler.h; sourceTree = "<group>"; };
 		BC67F0521517D04945EBCFDE /* NSURLSession+Popdeem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+Popdeem.m"; sourceTree = "<group>"; };
+		BC67F065985FB8F9FEC752BD /* Brand.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Brand.json; sourceTree = "<group>"; };
+		BC67F0691EFA9CABA1A4D997 /* Locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		BC67F07B38BD59459659DB91 /* PDSocialMediaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaManager.h; sourceTree = "<group>"; };
+		BC67F094736671CDACEE8FAF /* APIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIServiceTests.m; sourceTree = "<group>"; };
 		BC67F09D8703806E4EB93264 /* PDBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrand.m; sourceTree = "<group>"; };
+		BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemUIKItCore.m; sourceTree = "<group>"; };
+		BC67F1CB2B233BA0D90D0C0D /* PopdeemUIKItCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemUIKItCore.h; sourceTree = "<group>"; };
+		BC67F22F7024B09BFD09D14F /* Location.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Location.json; sourceTree = "<group>"; };
+		BC67F249D3810C72D8A18B89 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
+		BC67F24BB5B97FD51AA2AE9E /* FeedAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedAPIServiceTests.m; sourceTree = "<group>"; };
 		BC67F27493A67F748B19C2F6 /* PDRewardAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardAPIService.m; sourceTree = "<group>"; };
 		BC67F2830CA3AB87C33E47AB /* PDCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCommon.h; sourceTree = "<group>"; };
 		BC67F32784B6CE0B0F6826CD /* PDUserTwitterParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserTwitterParams.h; sourceTree = "<group>"; };
 		BC67F32C9F68BBD8CAC67A6B /* PDLocationAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationAPIService.h; sourceTree = "<group>"; };
+		BC67F35E9416BF3B358046CB /* BrandAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandAPIServiceTests.m; sourceTree = "<group>"; };
+		BC67F46C450DF11CE9660B4C /* LocationAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAPIServiceTests.m; sourceTree = "<group>"; };
 		BC67F48B372E10AF910E9DF7 /* PDOpeningHoursDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursDay.m; sourceTree = "<group>"; };
 		BC67F4A09A24DC6F9C77D440 /* PDUserAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserAPIService.h; sourceTree = "<group>"; };
 		BC67F4AA7FCF897050B6FE6A /* PDBrandApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrandApiService.h; sourceTree = "<group>"; };
@@ -166,28 +274,45 @@
 		BC67F61D2DAFF16950F2F11C /* PDScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScores.h; sourceTree = "<group>"; };
 		BC67F6499A11C2A5AB3AC2AE /* PDUserTwitterParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserTwitterParams.m; sourceTree = "<group>"; };
 		BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardActionAPIService.m; sourceTree = "<group>"; };
-		BC67F65A4E33DADDC2CA0D1A /* PDFacebookLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFacebookLoginButton.h; sourceTree = "<group>"; };
 		BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIClient.m; sourceTree = "<group>"; };
+		BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRewardHandler.m; sourceTree = "<group>"; };
+		BC67F6855AC77922041DBC9B /* Brands.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Brands.json; sourceTree = "<group>"; };
 		BC67F72645898839719EF769 /* PDLocationAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationAPIService.m; sourceTree = "<group>"; };
+		BC67F73EDD4AB36B59AF70E2 /* WalletAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletAPIServiceTests.m; sourceTree = "<group>"; };
+		BC67F7563AA957CD78C051E7 /* UserAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIServiceTests.m; sourceTree = "<group>"; };
 		BC67F782A6DC710569DD5DB0 /* PDUserFacebookParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUserFacebookParams.h; sourceTree = "<group>"; };
 		BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialAPIService.m; sourceTree = "<group>"; };
 		BC67F7DF66DB5FA8514BC364 /* PDAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIService.h; sourceTree = "<group>"; };
+		BC67F84E45D61C25DB1961F0 /* Feeds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Feeds.json; sourceTree = "<group>"; };
 		BC67F85574F43691853864E0 /* PDSocialMediaFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialMediaFriend.h; sourceTree = "<group>"; };
 		BC67F866213BA9B492FB005B /* PDLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocation.m; sourceTree = "<group>"; };
+		BC67F89C70E9DE531B0C656A /* BrandTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandTests.m; sourceTree = "<group>"; };
 		BC67F89FF91371885F0B43F6 /* PDUser+Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDUser+Facebook.m"; sourceTree = "<group>"; };
+		BC67F8BEDE7830979FC56A00 /* RewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardTests.m; sourceTree = "<group>"; };
 		BC67F8D82295C72E404956E2 /* PDReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReward.h; sourceTree = "<group>"; };
+		BC67F8FDBB256B9056C29317 /* SocialAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAPIServiceTests.m; sourceTree = "<group>"; };
 		BC67F909A48D90F8B69E19E5 /* PDReferralAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferralAPIService.h; sourceTree = "<group>"; };
+		BC67F9151C58B38184DC2385 /* PDTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDTheme.m; sourceTree = "<group>"; };
 		BC67F98E0D4534F9808FA7BD /* PDSocialMediaFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaFriend.m; sourceTree = "<group>"; };
+		BC67F9CC52DDD7973FE7517E /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		BC67F9D6AE1A1E6162AD05A9 /* PDLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocation.h; sourceTree = "<group>"; };
+		BC67FA07BBE691E3992AE323 /* PDModalLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDModalLoadingView.m; path = Loading/PDModalLoadingView.m; sourceTree = "<group>"; };
 		BC67FA50A957A3764748EF64 /* PDNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNetworkError.m; sourceTree = "<group>"; };
 		BC67FB072FF7574FC00933C0 /* PDScores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScores.m; sourceTree = "<group>"; };
+		BC67FB0C59BE46A48ABE49D6 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
 		BC67FB138AFDB8475775021B /* PDReferral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReferral.m; sourceTree = "<group>"; };
+		BC67FB1E76BFDFC2827246B5 /* Reward.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Reward.json; sourceTree = "<group>"; };
 		BC67FB3FE741B22C74D4A257 /* PDReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReward.m; sourceTree = "<group>"; };
 		BC67FB8A5D1136F33891E72B /* PDSocialAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSocialAPIService.h; sourceTree = "<group>"; };
+		BC67FBB6DE1EECF94167A08D /* PDFeedItem_WithPicture.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PDFeedItem_WithPicture.json; sourceTree = "<group>"; };
 		BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUserAPIService.m; sourceTree = "<group>"; };
 		BC67FBFC43B1F1FFB9F13D2A /* PDNetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNetworkError.h; sourceTree = "<group>"; };
+		BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardHandler.h; sourceTree = "<group>"; };
 		BC67FC8425A034478627B82B /* PDAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAPIClient.h; sourceTree = "<group>"; };
+		BC67FC8625D49A35878D4F85 /* PDModalLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDModalLoadingView.h; path = Loading/PDModalLoadingView.h; sourceTree = "<group>"; };
+		BC67FCC29C35A69244A61351 /* FeedItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTests.m; sourceTree = "<group>"; };
 		BC67FCD8902CC5CD75C180E1 /* PDRewardCustomAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardCustomAvailability.h; sourceTree = "<group>"; };
+		BC67FCF8A7E7E1AF483C9757 /* PDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDTheme.h; sourceTree = "<group>"; };
 		BC67FD35C97C481E7B4E94F1 /* PDRewardActionAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRewardActionAPIService.h; sourceTree = "<group>"; };
 		BC67FD41F4A3215835B48282 /* PDURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDURLSession.h; sourceTree = "<group>"; };
 		BC67FD6C0C7E739CB86F6515 /* PDOpeningHoursWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDOpeningHoursWeek.m; sourceTree = "<group>"; };
@@ -198,14 +323,16 @@
 		BC67FDD74A2E45FB36948272 /* PDOpeningHoursDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDOpeningHoursDay.h; sourceTree = "<group>"; };
 		BC67FDF77E9C2BC42F475282 /* PDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDConstants.m; sourceTree = "<group>"; };
 		BC67FDF824643AEEF7E9F2A1 /* PDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUtils.h; sourceTree = "<group>"; };
+		BC67FE03A8AFCB2DD5111FC4 /* Rewards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rewards.json; sourceTree = "<group>"; };
 		BC67FE5072EA22D083C45380 /* PDFeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeedItem.m; sourceTree = "<group>"; };
-		BC67FE603F2F3D5DB84F340A /* PDFacebookLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFacebookLoginButton.m; sourceTree = "<group>"; };
 		BC67FE7E0D2E0BA29BB80554 /* PDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDConstants.h; sourceTree = "<group>"; };
 		BC67FEA2B5B08F1F2099935B /* PDWalletAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWalletAPIService.h; sourceTree = "<group>"; };
 		BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSocialMediaManager.m; sourceTree = "<group>"; };
+		BC67FEBEFBF66968101E8A12 /* RewardAPIServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardAPIServiceTests.m; sourceTree = "<group>"; };
 		BC67FEC0CFB9324C3DE2AAA0 /* PDWalletAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDWalletAPIService.m; sourceTree = "<group>"; };
 		BC67FEC3F75949725292F426 /* PDBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrand.h; sourceTree = "<group>"; };
 		BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGeolocationManager.m; sourceTree = "<group>"; };
+		BC67FF08261302BD08EC80D6 /* PDSocialLoginHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandler.m; path = Login/PDSocialLoginHandler.m; sourceTree = "<group>"; };
 		BC67FF0E6854328471162315 /* PDBrandApiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrandApiService.m; sourceTree = "<group>"; };
 		BC67FF59F96E53614CB77B90 /* PDFeeds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFeeds.h; sourceTree = "<group>"; };
 		BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAPIService.m; sourceTree = "<group>"; };
@@ -213,7 +340,9 @@
 		BC67FFB094C0C5B47033A565 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
 		BC67FFE3DB5E8203430170C6 /* PDFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeeds.m; sourceTree = "<group>"; };
 		BE04372CD53224E09F2B49A9 /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		CDFD57B87FB970CED39657BE /* Pods-PopdeemSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample.release.xcconfig"; sourceTree = "<group>"; };
 		D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
+		DDDC138BC16F65A2F11F6EB9 /* Pods-PopdeemSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample.debug.xcconfig"; sourceTree = "<group>"; };
 		E2C76181153169D6ED342DB5 /* Pods-PopdeemSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -236,42 +365,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A90FA52A1C0368A8001DA473 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C84EED62BDCBB0D384156028 /* libPods-PopdeemSample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3957060B1BFC84050027B3A4 /* APIServiceTests */ = {
+		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
-				391CE04E1BFF274600868532 /* APIServiceTests.m */,
-				391CE0481BFE080D00868532 /* UserAPIServiceTests.m */,
-				391CE0501BFF27CD00868532 /* SocialAPIServiceTests.m */,
-				391CE0521BFF29E800868532 /* LocationAPIServiceTests.m */,
-				391CE0561BFF332E00868532 /* BrandAPIServiceTests.m */,
-				391CE05A1BFF360300868532 /* RewardAPIServiceTests.m */,
-				391CE05E1BFF427400868532 /* WalletAPIServiceTests.m */,
-				391CE0601BFF466200868532 /* FeedAPIServiceTests.m */,
+				392787121C0716F600F8DCD9 /* PDClaimViewController.h */,
+				392787131C0716F600F8DCD9 /* PDClaimViewController.m */,
+				39EDADBD1C072851001102B3 /* PDClaimViewModel.h */,
+				39EDADBE1C072851001102B3 /* PDClaimViewModel.m */,
+				392787141C0716F600F8DCD9 /* PDClaimViewController.xib */,
+				392787161C071BFA00F8DCD9 /* PD_SZTextView.h */,
+				392787171C071BFA00F8DCD9 /* PD_SZTextView.m */,
 			);
-			name = APIServiceTests;
+			name = Claim;
 			sourceTree = "<group>";
 		};
-		3957060C1BFC84120027B3A4 /* ModelTests */ = {
+		398E4B751C03730100A68529 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				391CE0461BFDF8A100868532 /* UserTests.m */,
-				39EF92821B8F125D00D16F18 /* RewardTests.m */,
-				39EF927E1B8F125D00D16F18 /* LocationTests.m */,
-				39EF92781B8F125400D16F18 /* BrandTests.m */,
-				39EF92791B8F125400D16F18 /* FeedItemTests.m */,
+				398E4B761C03744B00A68529 /* PDSocialLoginViewController.h */,
+				398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */,
+				398E4B7A1C03766500A68529 /* PDSocialLoginViewModel.h */,
+				398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */,
+				398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */,
+				BC67F043EB7A7A6156010094 /* PDSocialLoginHandler.h */,
+				BC67FF08261302BD08EC80D6 /* PDSocialLoginHandler.m */,
 			);
-			name = ModelTests;
+			name = Login;
 			sourceTree = "<group>";
 		};
 		39D7D05C1B8F0DCF00E45D0B = {
 			isa = PBXGroup;
 			children = (
+				A90FA4F91C0361F5001DA473 /* Podfile */,
 				A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */,
 				39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */,
 				39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */,
+				A90FA52E1C0368A8001DA473 /* PopdeemSample */,
 				39D7D0661B8F0DCF00E45D0B /* Products */,
 				5DBE05A8A8516121F073643A /* Pods */,
 				4EF69A0328B0579398DD2DED /* Frameworks */,
@@ -283,6 +423,7 @@
 			children = (
 				39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */,
 				39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */,
+				A90FA52D1C0368A8001DA473 /* PopdeemSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,11 +443,9 @@
 		39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				3957060C1BFC84120027B3A4 /* ModelTests */,
-				3957060B1BFC84050027B3A4 /* APIServiceTests */,
-				39EF928B1B8F126100D16F18 /* JSON */,
-				39EF92801B8F125D00D16F18 /* PopdeemSDKTests.m */,
 				39D7D0751B8F0DCF00E45D0B /* Supporting Files */,
+				BC67FD5C9234789562DE361C /* Core */,
+				BC67F8672A34563553B92EBC /* UIKit */,
 			);
 			path = PopdeemSDKTests;
 			sourceTree = "<group>";
@@ -319,20 +458,46 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		39EF928B1B8F126100D16F18 /* JSON */ = {
+		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				391CE0621BFF468400868532 /* Brand.json */,
-				391CE0631BFF468400868532 /* Brands.json */,
-				391CE0641BFF468400868532 /* Location.json */,
-				391CE0651BFF468400868532 /* Locations.json */,
-				391CE0661BFF468400868532 /* PDFeedItem_WithPicture.json */,
-				391CE0671BFF468400868532 /* Reward.json */,
-				391CE0681BFF468400868532 /* Rewards.json */,
-				39EF928C1B8F126F00D16F18 /* User.json */,
-				63F4E1F058416F172D304096 /* Feeds.json */,
+				39A7770F1C0756CD004A4E92 /* pduikit_camera.png */,
+				39A777101C0756CD004A4E92 /* pduikit_camera@2x.png */,
+				39A777111C0756CD004A4E92 /* pduikit_camera@3x.png */,
+				39A777121C0756CD004A4E92 /* pduikit_fbbutton_deselected.png */,
+				39A777131C0756CD004A4E92 /* pduikit_fbbutton_deselected@2x.png */,
+				39A777141C0756CD004A4E92 /* pduikit_fbbutton_deselected@3x.png */,
+				39A777151C0756CD004A4E92 /* pduikit_fbbutton_selected.png */,
+				39A777161C0756CD004A4E92 /* pduikit_fbbutton_selected@2x.png */,
+				39A777171C0756CD004A4E92 /* pduikit_fbbutton_selected@3x.png */,
+				39A777181C0756CD004A4E92 /* pduikit_twitterbutton_deselected.png */,
+				39A777191C0756CD004A4E92 /* pduikit_twitterbutton_deselected@2x.png */,
+				39A7771A1C0756CD004A4E92 /* pduikit_twitterbutton_deselected@3x.png */,
+				39A7771B1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png */,
+				39A7771C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png */,
+				39A7771D1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png */,
+				A92281DE1C07359E00A43320 /* starG.png */,
+				A92281DF1C07359E00A43320 /* starG@2x.png */,
+				A92281E01C07359E00A43320 /* starG@3x.png */,
+				A9582FA51C0619A900D62456 /* default.json */,
+				39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */,
+				39FD1C171C046DAE00CC3B0C /* pduikit_rainbow@2x.png */,
+				39FD1C181C046DAE00CC3B0C /* pduikit_rainbow@3x.png */,
+				39FD1C191C046DAE00CC3B0C /* pduikit_rewardsIcon.png */,
+				39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */,
+				39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */,
+				39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */,
 			);
-			name = JSON;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		39FD1C2A1C04B24F00CC3B0C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */,
+				39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		4EF69A0328B0579398DD2DED /* Frameworks */ = {
@@ -346,6 +511,7 @@
 				E8369B5DD3FF16BCA8E6F86F /* libPods-PopdeemSDK.a */,
 				90A3A6E75049DAEA657DB4AD /* libPods-PopdeemSDKTests.a */,
 				A7148E7293ED54A945519DA3 /* libPods.a */,
+				7328E046345EC7EE3EC6B270 /* libPods-PopdeemSample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,8 +523,38 @@
 				D4BBDE704D166B2EC73753A3 /* Pods-PopdeemSDK.release.xcconfig */,
 				9F6B690FF5C4DB7F2D19E79D /* Pods-PopdeemSDKTests.debug.xcconfig */,
 				E2C76181153169D6ED342DB5 /* Pods-PopdeemSDKTests.release.xcconfig */,
+				DDDC138BC16F65A2F11F6EB9 /* Pods-PopdeemSample.debug.xcconfig */,
+				CDFD57B87FB970CED39657BE /* Pods-PopdeemSample.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A90FA52E1C0368A8001DA473 /* PopdeemSample */ = {
+			isa = PBXGroup;
+			children = (
+				A90FA5321C0368A8001DA473 /* AppDelegate.h */,
+				A90FA5331C0368A8001DA473 /* AppDelegate.m */,
+				A90FA5351C0368A8001DA473 /* ViewController.h */,
+				A90FA5361C0368A8001DA473 /* ViewController.m */,
+				A90FA5381C0368A8001DA473 /* Main.storyboard */,
+				A90FA53B1C0368A8001DA473 /* Assets.xcassets */,
+				A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */,
+				A90FA5401C0368A8001DA473 /* Info.plist */,
+				A90FA52F1C0368A8001DA473 /* Supporting Files */,
+				A9582FA21C05F1DF00D62456 /* Localizable.strings */,
+				A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */,
+				A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */,
+				A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */,
+			);
+			path = PopdeemSample;
+			sourceTree = "<group>";
+		};
+		A90FA52F1C0368A8001DA473 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A90FA5301C0368A8001DA473 /* main.m */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		BC67F00548709376630E993B /* Util */ = {
@@ -377,6 +573,28 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		BC67F152C1364A17971BA8F1 /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F9CC52DDD7973FE7517E /* UserTests.m */,
+				BC67F89C70E9DE531B0C656A /* BrandTests.m */,
+				BC67F8BEDE7830979FC56A00 /* RewardTests.m */,
+				BC67FCC29C35A69244A61351 /* FeedItemTests.m */,
+				BC67FB0C59BE46A48ABE49D6 /* LocationTests.m */,
+			);
+			path = ModelTests;
+			sourceTree = "<group>";
+		};
+		BC67F2F27DD82B87CDC1C367 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				BC67FC8625D49A35878D4F85 /* PDModalLoadingView.h */,
+				BC67FA07BBE691E3992AE323 /* PDModalLoadingView.m */,
+			);
+			name = Loading;
+			path = PopdeemSDK/UIKit;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC67F3729CD470E13CE36933 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +609,15 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		BC67F4675004CC13CFD34E98 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */,
+				3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		BC67F591CB1E9DF1136B7D20 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +627,39 @@
 				BC67F3729CD470E13CE36933 /* API */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		BC67F73254683A3E6D02541E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BC67FCF8A7E7E1AF483C9757 /* PDTheme.h */,
+				BC67F9151C58B38184DC2385 /* PDTheme.m */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		BC67F8672A34563553B92EBC /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F4675004CC13CFD34E98 /* Login */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		BC67F973B2E265588E701970 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F249D3810C72D8A18B89 /* User.json */,
+				BC67F065985FB8F9FEC752BD /* Brand.json */,
+				BC67F84E45D61C25DB1961F0 /* Feeds.json */,
+				BC67F6855AC77922041DBC9B /* Brands.json */,
+				BC67FB1E76BFDFC2827246B5 /* Reward.json */,
+				BC67FE03A8AFCB2DD5111FC4 /* Rewards.json */,
+				BC67F22F7024B09BFD09D14F /* Location.json */,
+				BC67F0691EFA9CABA1A4D997 /* Locations.json */,
+				BC67FBB6DE1EECF94167A08D /* PDFeedItem_WithPicture.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		BC67F9F9215A562BABAB2207 /* Services */ = {
@@ -427,6 +687,31 @@
 				BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BC67F9FDCE6A81520AB86878 /* Reward */ = {
+			isa = PBXGroup;
+			children = (
+				A92281E11C07369800A43320 /* NoRewardsTableViewCell.h */,
+				A92281E21C07369800A43320 /* NoRewardsTableViewCell.m */,
+				A92281E51C07369800A43320 /* PDRewardTableViewController.h */,
+				A92281E61C07369800A43320 /* PDRewardTableViewController.m */,
+				A92281E71C07369800A43320 /* RewardTableViewCell.h */,
+				A92281E81C07369800A43320 /* RewardTableViewCell.m */,
+				BC67FC69818A9182CEE9B128 /* PDRewardHandler.h */,
+				BC67F67EBFF83E0EAC95D1C9 /* PDRewardHandler.m */,
+				39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */,
+				39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */,
+				39EDADC41C07333F001102B3 /* PDRewardTableViewController.h */,
+				39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */,
+				39EDADC61C07333F001102B3 /* RewardTableViewCell.h */,
+				39EDADC71C07333F001102B3 /* RewardTableViewCell.m */,
+				A92281EF1C07465700A43320 /* PDNavigationController.h */,
+				A92281F01C07465700A43320 /* PDNavigationController.m */,
+				A92281F21C074C2D00A43320 /* PDModalTransitionHandler.h */,
+				A92281F31C074C2D00A43320 /* PDModalTransitionHandler.m */,
+			);
+			path = Reward;
 			sourceTree = "<group>";
 		};
 		BC67FA5FB895CC0BDBDC7C1B /* Model */ = {
@@ -468,6 +753,40 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BC67FA65603CD0B3A2DBADFF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F2F27DD82B87CDC1C367 /* Loading */,
+				BC67F73254683A3E6D02541E /* Theme */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BC67FAD606D4F9BEA9EB31DD /* APIServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F094736671CDACEE8FAF /* APIServiceTests.m */,
+				BC67F24BB5B97FD51AA2AE9E /* FeedAPIServiceTests.m */,
+				BC67F7563AA957CD78C051E7 /* UserAPIServiceTests.m */,
+				BC67F35E9416BF3B358046CB /* BrandAPIServiceTests.m */,
+				BC67FEBEFBF66968101E8A12 /* RewardAPIServiceTests.m */,
+				BC67F8FDBB256B9056C29317 /* SocialAPIServiceTests.m */,
+				BC67F73EDD4AB36B59AF70E2 /* WalletAPIServiceTests.m */,
+				BC67F46C450DF11CE9660B4C /* LocationAPIServiceTests.m */,
+			);
+			path = APIServiceTests;
+			sourceTree = "<group>";
+		};
+		BC67FD5C9234789562DE361C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BC67F973B2E265588E701970 /* JSON */,
+				BC67F152C1364A17971BA8F1 /* ModelTests */,
+				BC67FAD606D4F9BEA9EB31DD /* APIServiceTests */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		BC67FEB8A2F92A9F8B4D84FE /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,8 +806,14 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				BC67F65A4E33DADDC2CA0D1A /* PDFacebookLoginButton.h */,
-				BC67FE603F2F3D5DB84F340A /* PDFacebookLoginButton.m */,
+				39FD1C2A1C04B24F00CC3B0C /* Utilities */,
+				39FD1C151C046DA100CC3B0C /* Resources */,
+				398E4B751C03730100A68529 /* Login */,
+				392787111C0715DD00F8DCD9 /* Claim */,
+				BC67F9FDCE6A81520AB86878 /* Reward */,
+				BC67FA65603CD0B3A2DBADFF /* Common */,
+				BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */,
+				BC67F1CB2B233BA0D90D0C0D /* PopdeemUIKItCore.h */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -536,6 +861,26 @@
 			productReference = 39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A90FA52C1C0368A8001DA473 /* PopdeemSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A90FA5411C0368A8001DA473 /* Build configuration list for PBXNativeTarget "PopdeemSample" */;
+			buildPhases = (
+				B059FB30285B05071B697E27 /* Check Pods Manifest.lock */,
+				A90FA5291C0368A8001DA473 /* Sources */,
+				A90FA52A1C0368A8001DA473 /* Frameworks */,
+				A90FA52B1C0368A8001DA473 /* Resources */,
+				DE9CB16225DD9925DFDA2E71 /* Embed Pods Frameworks */,
+				97E0BAB73F3ADC5CE1F8A731 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopdeemSample;
+			productName = PopdeemSample;
+			productReference = A90FA52D1C0368A8001DA473 /* PopdeemSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -550,6 +895,15 @@
 					};
 					39D7D06F1B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
+					};
+					A90FA52C1C0368A8001DA473 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = S648X26U8J;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -568,6 +922,7 @@
 			targets = (
 				39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */,
 				39D7D06F1B8F0DCF00E45D0B /* PopdeemSDKTests */,
+				A90FA52C1C0368A8001DA473 /* PopdeemSample */,
 			);
 		};
 /* End PBXProject section */
@@ -577,15 +932,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39EF928D1B8F126F00D16F18 /* User.json in Resources */,
-				391CE06E1BFF468400868532 /* Reward.json in Resources */,
-				391CE06A1BFF468400868532 /* Brands.json in Resources */,
-				391CE06C1BFF468400868532 /* Locations.json in Resources */,
-				391CE06F1BFF468400868532 /* Rewards.json in Resources */,
-				391CE06D1BFF468400868532 /* PDFeedItem_WithPicture.json in Resources */,
-				391CE06B1BFF468400868532 /* Location.json in Resources */,
-				391CE0691BFF468400868532 /* Brand.json in Resources */,
-				63F4E9B168ED4C923CDFADFB /* Feeds.json in Resources */,
+				39A777291C0756CD004A4E92 /* pduikit_twitterbutton_deselected@3x.png in Resources */,
+				39A7772A1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png in Resources */,
+				39A777231C0756CD004A4E92 /* pduikit_fbbutton_deselected@3x.png in Resources */,
+				39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */,
+				39A777221C0756CD004A4E92 /* pduikit_fbbutton_deselected@2x.png in Resources */,
+				39A777281C0756CD004A4E92 /* pduikit_twitterbutton_deselected@2x.png in Resources */,
+				39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */,
+				39A7772C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png in Resources */,
+				39A777251C0756CD004A4E92 /* pduikit_fbbutton_selected@2x.png in Resources */,
+				39A777211C0756CD004A4E92 /* pduikit_fbbutton_deselected.png in Resources */,
+				BC67F9A48DABFAD166622B66 /* User.json in Resources */,
+				BC67F3E4910E36D7AE92C91E /* Brand.json in Resources */,
+				BC67FE9CF5599C1F321D14B5 /* Feeds.json in Resources */,
+				BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */,
+				39A777261C0756CD004A4E92 /* pduikit_fbbutton_selected@3x.png in Resources */,
+				39A777241C0756CD004A4E92 /* pduikit_fbbutton_selected.png in Resources */,
+				BC67F50730E04DB414EAA6CF /* Reward.json in Resources */,
+				39A7772B1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png in Resources */,
+				39A7771E1C0756CD004A4E92 /* pduikit_camera.png in Resources */,
+				BC67F2F6927DFDDC5A7CB6F9 /* Rewards.json in Resources */,
+				BC67F9863680AAAAA60756B9 /* Location.json in Resources */,
+				BC67F5164CFC9BBC1A40B385 /* Locations.json in Resources */,
+				39A7771F1C0756CD004A4E92 /* pduikit_camera@2x.png in Resources */,
+				BC67F3D8B356BA2B8548D901 /* PDFeedItem_WithPicture.json in Resources */,
+				39A777201C0756CD004A4E92 /* pduikit_camera@3x.png in Resources */,
+				39A777271C0756CD004A4E92 /* pduikit_twitterbutton_deselected.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A90FA52B1C0368A8001DA473 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9B2AA4B1C0872F500EFDE93 /* custom-theme.json in Resources */,
+				A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */,
+				A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */,
+				A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */,
+				A90FA53A1C0368A8001DA473 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +1006,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		97E0BAB73F3ADC5CE1F8A731 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A98231D874CEE4DFACCFC815 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -635,6 +1034,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B059FB30285B05071B697E27 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D5C72A9033B689A657046C12 /* Check Pods Manifest.lock */ = {
@@ -667,6 +1081,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		DE9CB16225DD9925DFDA2E71 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -674,11 +1103,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90FA5051C036304001DA473 /* PDWallet.m in Sources */,
-				A90FA5041C036304001DA473 /* PDRewardStore.m in Sources */,
+				A92281EB1C07369800A43320 /* PDRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
-				A90FA5021C036304001DA473 /* PDBrandStore.m in Sources */,
-				A90FA5031C036304001DA473 /* PDLocationStore.m in Sources */,
+				392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */,
+				A92281F11C07465700A43320 /* PDNavigationController.m in Sources */,
+				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
+				A92281E91C07369800A43320 /* NoRewardsTableViewCell.m in Sources */,
+				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
+				39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */,
+				39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */,
+				39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */,
+				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
+				39EDADCB1C07333F001102B3 /* RewardTableViewCell.m in Sources */,
+				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
+				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
+				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
+				A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,21 +1126,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39EF927C1B8F125400D16F18 /* FeedItemTests.m in Sources */,
-				391CE05B1BFF360300868532 /* RewardAPIServiceTests.m in Sources */,
-				39EF92851B8F125D00D16F18 /* LocationTests.m in Sources */,
-				391CE04F1BFF274600868532 /* APIServiceTests.m in Sources */,
-				391CE0611BFF466200868532 /* FeedAPIServiceTests.m in Sources */,
-				391CE0471BFDF8A100868532 /* UserTests.m in Sources */,
-				391CE0491BFE080D00868532 /* UserAPIServiceTests.m in Sources */,
-				391CE05F1BFF427400868532 /* WalletAPIServiceTests.m in Sources */,
-				39EF92891B8F125D00D16F18 /* RewardTests.m in Sources */,
-				39EF927B1B8F125400D16F18 /* BrandTests.m in Sources */,
-				39EF92871B8F125D00D16F18 /* PopdeemSDKTests.m in Sources */,
-				391CE0511BFF27CD00868532 /* SocialAPIServiceTests.m in Sources */,
-				391CE0531BFF29E800868532 /* LocationAPIServiceTests.m in Sources */,
-				391CE0571BFF332E00868532 /* BrandAPIServiceTests.m in Sources */,
-				BC67F4363103CF33FE89C5BC /* PDFacebookLoginButton.m in Sources */,
 				BC67FDFD1FA0B0A0808CC6CA /* PDUtils.m in Sources */,
 				BC67F2B019190563963D9DFA /* PDConstants.m in Sources */,
 				BC67FA7AA48A4DC0BBFB453F /* PDGeolocationManager.m in Sources */,
@@ -710,6 +1135,7 @@
 				BC67F6BBD9FD32D05383E3C5 /* PDFeeds.m in Sources */,
 				BC67F876237D47936806AE85 /* PDReward.m in Sources */,
 				BC67FCD5547FD4C2E1FC9420 /* PDScores.m in Sources */,
+				392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */,
 				BC67FEAC806E9FE2D889DF6F /* PDFeedItem.m in Sources */,
 				BC67F2EA9AC44543E93524B5 /* PDLocation.m in Sources */,
 				BC67F31395CA7C3B031AAB89 /* PDReferral.m in Sources */,
@@ -717,6 +1143,7 @@
 				BC67F2A1D8DBA60B62E3649F /* PDUser+Facebook.m in Sources */,
 				BC67FC59C9F0E8F553AB4748 /* PDOpeningHoursDay.m in Sources */,
 				BC67F612E0F34A0EF06B04C7 /* PDOpeningHoursWeek.m in Sources */,
+				A9582F9D1C05D15800D62456 /* PDBrandStore.m in Sources */,
 				BC67FF75453A8113C8B79578 /* PDSocialMediaFriend.m in Sources */,
 				BC67FF0016DDE85E2428E787 /* PDUserTwitterParams.m in Sources */,
 				BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */,
@@ -724,8 +1151,10 @@
 				BC67F1818241869ED5AE3E96 /* PDAPIService.m in Sources */,
 				BC67F709A15ADAAFDAE09585 /* PDFeedAPIService.m in Sources */,
 				BC67FA525500547B66CBFFEF /* PDUserAPIService.m in Sources */,
+				A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */,
 				BC67F1F58689AA2729A0B6CF /* PDBrandApiService.m in Sources */,
 				BC67F589520EE25D681D091B /* PDRewardAPIService.m in Sources */,
+				A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */,
 				BC67F348F8098F8237693F9D /* PDSocialAPIService.m in Sources */,
 				BC67FF6F0C9145D3F47766D7 /* PDWalletAPIService.m in Sources */,
 				BC67F99A98DBBDD2F8CC4BED /* PDLocationAPIService.m in Sources */,
@@ -733,7 +1162,37 @@
 				BC67FAE361700CE9FCF09E94 /* PDRewardActionAPIService.m in Sources */,
 				BC67FABEDA5987CB6DAA7880 /* PDAPIClient.m in Sources */,
 				BC67F5BB09D851870D18E285 /* PDNetworkError.m in Sources */,
+				A9582F9B1C05D15300D62456 /* PDRewardStore.m in Sources */,
 				BC67F8BE30DE8BB1D7F93097 /* NSURLSession+Popdeem.m in Sources */,
+				A9582F9A1C05D15000D62456 /* PDWallet.m in Sources */,
+				BC67FD13BC5374AB728F195C /* UserTests.m in Sources */,
+				BC67FBA32D12A3E2F0D79FEB /* BrandTests.m in Sources */,
+				BC67F192518FF25B41B22AA5 /* RewardTests.m in Sources */,
+				BC67FC7089D548E9FF043436 /* FeedItemTests.m in Sources */,
+				BC67F515E89D7A1F237683AA /* LocationTests.m in Sources */,
+				BC67F63A1001BCDAB7969549 /* APIServiceTests.m in Sources */,
+				BC67FDA81508C1312DE78A2E /* FeedAPIServiceTests.m in Sources */,
+				BC67FF8D2B030DD6410173B2 /* UserAPIServiceTests.m in Sources */,
+				BC67F7C25FB37CBFC5F6386C /* BrandAPIServiceTests.m in Sources */,
+				BC67FA04CB475DB604262976 /* RewardAPIServiceTests.m in Sources */,
+				BC67F512A3564C7B983B5D9F /* SocialAPIServiceTests.m in Sources */,
+				BC67FF87A49C1EB7D4B0352D /* WalletAPIServiceTests.m in Sources */,
+				BC67FC4552707BB69A1BEEB9 /* LocationAPIServiceTests.m in Sources */,
+				BC67FE59A10D169C4E6A270D /* PDSocialLoginHandler.m in Sources */,
+				BC67F05A5F7252792A093778 /* PDTheme.m in Sources */,
+				BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */,
+				BC67F38A59976217DB69B1F7 /* PDRewardHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A90FA5291C0368A8001DA473 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90FA5371C0368A8001DA473 /* ViewController.m in Sources */,
+				A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */,
+				A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */,
+				A90FA5311C0368A8001DA473 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +1205,25 @@
 			targetProxy = 39D7D0721B8F0DCF00E45D0B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A90FA5381C0368A8001DA473 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A90FA5391C0368A8001DA473 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A90FA53E1C0368A8001DA473 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		39D7D0771B8F0DCF00E45D0B /* Debug */ = {
@@ -994,6 +1472,39 @@
 			};
 			name = Release;
 		};
+		A90FA5421C0368A8001DA473 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDDC138BC16F65A2F11F6EB9 /* Pods-PopdeemSample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = PopdeemSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.popdeem.PopdeemSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A90FA5431C0368A8001DA473 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDFD57B87FB970CED39657BE /* Pods-PopdeemSample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PopdeemSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.popdeem.PopdeemSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1020,6 +1531,15 @@
 			buildConfigurations = (
 				39D7D07D1B8F0DCF00E45D0B /* Debug */,
 				39D7D07E1B8F0DCF00E45D0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A90FA5411C0368A8001DA473 /* Build configuration list for PBXNativeTarget "PopdeemSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A90FA5421C0368A8001DA473 /* Debug */,
+				A90FA5431C0368A8001DA473 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

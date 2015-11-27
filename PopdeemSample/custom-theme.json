@@ -1,0 +1,15 @@
+{
+  "popdeem" : {
+    "login" : {
+      "continueButton" : {
+        "background" : "#3C9915",
+        "textColor" : "#FFFFFF"
+      }
+    },
+    "nav" : {
+      "titleColor" : "#FFFFFF",
+      "background" : "#D12139",
+      "buttonTextColor" : "#FFFFFF"
+    }
+  }
+}

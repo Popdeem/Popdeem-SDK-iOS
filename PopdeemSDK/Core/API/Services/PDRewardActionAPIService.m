@@ -15,13 +15,6 @@
 
 @implementation PDRewardActionAPIService
 
--(id) init {
-    if (self = [super init]) {
-        return self;
-    }
-    return nil;
-}
-
 - (void) claimReward:(NSInteger)rewardId
             location:(PDLocation*)location
          withMessage:(NSString*)message
@@ -121,8 +114,6 @@
                                                    userInfo:userDictionary];
         completion(endError);
     }
-    
-    PDUser *_user = [PDUser sharedInstance];
     
     [session POST:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
         if (error) {

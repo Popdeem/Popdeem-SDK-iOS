@@ -56,7 +56,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id) sharedInstance;
 + (void) withAPIKey:(NSString*)apiKey;
+
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier;
+
++ (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts;
+
++ (void) setUpThemeFile:(NSString*)themeName;
+
++ (void) presentRewardFlow;
 
 @end
 NS_ASSUME_NONNULL_END

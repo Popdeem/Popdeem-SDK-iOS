@@ -27,7 +27,11 @@
 
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
+#import "PDTheme.h"
 
+@interface PopdeemSDK()
+@property (nonatomic, strong)id uiKitCore;
+@end
 @implementation PopdeemSDK
 
 + (id) sharedInstance {
@@ -35,6 +39,7 @@
     static dispatch_once_t sharedToken;
     dispatch_once(&sharedToken, ^{
         SDK = [[PopdeemSDK alloc] init];
+
     });
     return SDK;
 }
@@ -44,8 +49,52 @@
     [SDK setApiKey:apiKey];
 }
 
-+ (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier {
++ (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*) verifier {
     [[PDSocialMediaManager manager] setOAuthToken:token oauthVerifier:verifier];
+}
+
++ (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts {
+    id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+    SEL selector = NSSelectorFromString(@"enableSocialLoginWithNumberOfPrompts:");
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [uiKitCore performSelector:selector withObject:@(noOfPrompts)];
+#pragma clang diagnostic pop
+}
+
++ (void) setUpThemeFile:(NSString*)themeName {
+  id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+  SEL selector = NSSelectorFromString(@"setThemeFile:");
+  
+  
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+  [uiKitCore performSelector:selector withObject:themeName];
+#pragma clang diagnostic pop
+}
+
++ (void) presentRewardFlow {
+    id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+    SEL selector = NSSelectorFromString(@"presentRewardFlow");
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [uiKitCore performSelector:selector];
+#pragma clang diagnostic pop
+}
+
+- (id)popdeemUIKitCore {
+    if(self.uiKitCore) return self.uiKitCore;
+    Class coreClazz = NSClassFromString(@"PopdeemUIKItCore");
+
+    if(!coreClazz){
+        [NSException raise:@"Popdeem UIKit not installed - pod 'PopdeemSDK/UIKit'" format:@""];
+    }
+
+    self.uiKitCore =  [[coreClazz alloc]init];
+
+    return self.uiKitCore;
 }
 
 @end

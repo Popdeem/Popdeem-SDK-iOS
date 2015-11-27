@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  # s.resources = "Resources/*.png"
+  s.resources = "PopdeemSDK/UIKit/Resources/*.png", "PopdeemSDK/UIKit/Resources/*.json", "PopdeemSDK/UIKit/*{xib,png}", "PopdeemSDK/UIKit/**/*.{xib,png}", "PopdeemSDK/UIKit/**/**/*.{xib,png}"
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'Core'
 
   s.subspec 'Core' do |core|
-    core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}"
+    core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
     core.dependency "FBSDKLoginKit"
     core.dependency "FBSDKCoreKit"

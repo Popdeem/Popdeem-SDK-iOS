@@ -34,9 +34,6 @@
     [self setDelegate:delegate];
     self.distanceFilter = distanceFilter;
     self.desiredAccuracy = accuracy;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-        [self requestWhenInUseAuthorization];
-    }
     [self startUpdatingLocation];
 }
 
