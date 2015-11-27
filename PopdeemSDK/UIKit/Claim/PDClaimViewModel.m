@@ -306,19 +306,6 @@
   _loadingView = [[PDModalLoadingView alloc] initForView:self.viewController.view titleText:@"Claiming Reward" descriptionText:@"This could take up to 30 seconds"];
   [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
   [_loadingView showAnimated:YES];
-  
-  NSString *alertMessage = @"";
-  
-  switch (_reward.type) {
-    case PDRewardTypeCoupon:
-    case PDRewardTypeInstant:
-      alertMessage = @"Your coupon will appear in your wallet shortly";
-      break;
-    case PDRewardTypeSweepstake:
-      alertMessage = @"Your sweepstake ticket will appear in your wallet shortly";
-    default:
-      break;
-  }
 }
 
 - (void) didClaimRewardId:(NSInteger)rewardId {
