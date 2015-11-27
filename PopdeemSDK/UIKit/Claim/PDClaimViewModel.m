@@ -366,11 +366,7 @@
 
 #pragma mark - Adding Photo -
 
-- (void) showPhotoActionSheet {
-  //    if ([claimTextView isFirstResponder]) {
-  //        [claimTextView resignFirstResponder];
-  //    }
-  
+- (void) showPhotoActionSheet {  
   _alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   _alertWindow.rootViewController = [UIViewController new];
   _alertWindow.windowLevel = 10000001;
