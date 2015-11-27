@@ -30,7 +30,7 @@
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
   if (self = [self initWithNibName:@"PDClaimViewController" bundle:podBundle]) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.title = translationForKey(@"popdeem.claims.title", @"Claims");
+    self.title = translationForKey(@"popdeem.claims.title", @"Claim");
     return self;
   }
   return nil;
@@ -158,5 +158,9 @@
 
 - (void) keyboardDown {
     
+}
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+  [_viewModel imagePickerController:picker didFinishPickingMediaWithInfo:info];
 }
 @end
