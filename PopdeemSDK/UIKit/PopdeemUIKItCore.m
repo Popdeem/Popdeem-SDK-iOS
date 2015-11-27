@@ -25,6 +25,10 @@
   return self;
 }
 
+- (void) setThemeFile:(NSString*)fileName {
+  [PDTheme setupWithFileName:fileName];
+}
+
 - (void)enableSocialLoginWithNumberOfPrompts:(NSInteger)noOfPrompts {
   [self.socialLoginHandler showPromptIfNeededWithMaxAllowed:@(noOfPrompts)];
 }

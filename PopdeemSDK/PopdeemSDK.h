@@ -61,6 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts;
 
++ (void) setUpThemeFile:(NSString*)themeName;
+
 + (void) presentRewardFlow;
 
 @end

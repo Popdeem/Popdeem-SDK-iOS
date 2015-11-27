@@ -24,7 +24,10 @@
                              didFinishLaunchingWithOptions:launchOptions];
     
     [PopdeemSDK withAPIKey:@"913e91e9-35d0-46de-8c92-ac3bedf4f503"];
-    [PopdeemSDK enableSocialLoginWithNumberOfPrompts:300];
+  
+    // UIKIT
+    [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
+    [PopdeemSDK setUpThemeFile:@"custom-theme"];
     
     return YES;
 }

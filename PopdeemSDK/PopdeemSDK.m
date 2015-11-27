@@ -63,6 +63,17 @@
 #pragma clang diagnostic pop
 }
 
++ (void) setUpThemeFile:(NSString*)themeName {
+  id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+  SEL selector = NSSelectorFromString(@"setThemeFile:");
+  
+  
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+  [uiKitCore performSelector:selector withObject:themeName];
+#pragma clang diagnostic pop
+}
+
 + (void) presentRewardFlow {
     id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
     SEL selector = NSSelectorFromString(@"presentRewardFlow");
@@ -71,8 +82,6 @@
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [uiKitCore performSelector:selector];
 #pragma clang diagnostic pop
-
-    [self sharedInstance];
 }
 
 - (id)popdeemUIKitCore {

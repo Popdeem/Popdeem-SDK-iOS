@@ -56,6 +56,7 @@
 		A9582F9D1C05D15800D62456 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
 		A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */; };
 		A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9582FA21C05F1DF00D62456 /* Localizable.strings */; };
+		A9B2AA4B1C0872F500EFDE93 /* custom-theme.json in Resources */ = {isa = PBXBuildFile; fileRef = A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */; };
 		BC67F05A5F7252792A093778 /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
 		BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */; };
 		BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F6855AC77922041DBC9B /* Brands.json */; };
@@ -238,6 +239,7 @@
 		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
 		A9582FA21C05F1DF00D62456 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
+		A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "custom-theme.json"; sourceTree = "<group>"; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		BC67F0259BE1A6F5B3827F5D /* PDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUtils.m; sourceTree = "<group>"; };
 		BC67F043EB7A7A6156010094 /* PDSocialLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginHandler.h; path = Login/PDSocialLoginHandler.h; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				A9582FA21C05F1DF00D62456 /* Localizable.strings */,
 				A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */,
 				A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */,
+				A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */,
 			);
 			path = PopdeemSample;
 			sourceTree = "<group>";
@@ -962,6 +965,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B2AA4B1C0872F500EFDE93 /* custom-theme.json in Resources */,
 				A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */,
 				A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */,
 				A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */,
