@@ -58,7 +58,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'UIKit' do |uikit|
-    uikit.source_files = "PopdeemSDK", 'PopdeemSDK/UIKit/*.{h,m}', 'PopdeemSDK/UIKit/**/*.{h,m}'
+    uikit.source_files = "PopdeemSDK", 'PopdeemSDK/UIKit/*.{h,m}', 'PopdeemSDK/UIKit/**/*.{h,m}', 'PopdeemSDK/UIKit/**/**/*.{h,m}'
     uikit.dependency "PopdeemSDK/Core"
   end
 

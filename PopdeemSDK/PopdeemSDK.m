@@ -27,7 +27,6 @@
 
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
-#import "PDTheme.h"
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
