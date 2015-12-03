@@ -110,6 +110,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong, nullable) UIImage *logoImage;
 
+@property (nonatomic) BOOL verifyLocation;
+
 /*!
  * @abstract Init brand from API params.
  *
