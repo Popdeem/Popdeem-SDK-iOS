@@ -99,6 +99,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, strong, nullable) NSString *downloadLink;
 @property (nonatomic, strong, nullable) NSString *twitterPrefilledMessage;
 @property (nonatomic) NSInteger twitterMediaLength;
+@property (nonatomic) BOOL verifyLocation;
 
 - (id) initFromApi:(NSDictionary*)params;
 

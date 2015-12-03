@@ -107,6 +107,14 @@
         } else {
             self.twitterMediaLength = 25;
         }
+      
+      self.verifyLocation = YES;
+      NSString *locationVerification = params[@"location_verification"];
+      if ([locationVerification isEqualToString:@"false"]) {
+        self.verifyLocation = NO;
+      } else {
+        self.verifyLocation = YES;
+      }
         
         return self;
     }
