@@ -53,14 +53,14 @@
     NSString *rewardsAvail = params[@"number_of_rewards_available"];
     _rewardsAvailable = [rewardsAvail isKindOfClass:[NSString class]] ? rewardsAvail.integerValue : 0;
     
-    self.verifyLocation = YES;
+    self.verifyLocation = NO;
     NSString *locationVerification = params[@"location_verification"];
     if ([locationVerification isEqualToString:@"false"]) {
       self.verifyLocation = NO;
     } else {
       self.verifyLocation = YES;
     }
-    
+
     [self calculateDistanceFromUser];
     return self;
   }
