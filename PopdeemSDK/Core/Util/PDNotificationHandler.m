@@ -7,6 +7,7 @@
 //
 
 #import "PDNotificationHandler.h"
+#import "PDAPIClient.h"
 
 @interface PDNotificationHandler()
 @property (nonatomic) BOOL shouldGoToUrl;
@@ -35,6 +36,19 @@
   return sharedInstance;
 }
 
+- (void) registerForPushNotificationsApplication:(UIApplication *)application {
+  if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+  } else {
+    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+  }
+}
+
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [[PDAPIClient sharedInstance] setDeviceToken:deviceToken.description];
+}
+
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion {
   _completionBlock = completion;
   NSString *imageUrl = [userInfo objectForKey:@"image_url"];
@@ -46,7 +60,7 @@
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
     image = [UIImage imageWithData:imageData];
   }
-  
+  image = [UIImage imageNamed:@"message_icon"];
   _alertView = [[PDCustomIOS7AlertView alloc] init];
   
   UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 160)];
@@ -80,8 +94,8 @@
   [_alertView setContainerView:contentView];
   if ([userInfo objectForKey:@"target_url"]) {
     [self presentUrlAlert:_alertView url:[userInfo objectForKey:@"target_url"]];
-  } else if ([userInfo objectForKey:@"deeplink"]) {
-    
+  } else if ([userInfo objectForKey:@"deep_link"]) {
+    [self presentDeepLinkAlert:_alertView deepLink:[userInfo objectForKey:@"deep_link"]];
   } else {
     [self presentAppAlert:_alertView];
   }
@@ -89,8 +103,8 @@
 
 - (void) presentUrlAlert:(PDCustomIOS7AlertView*)alertView url:(NSString*)url {
   _url = url;
-  _shouldGoToDeepLink = YES;
-  _shouldGoToUrl = NO;
+  _shouldGoToUrl = YES;
+  _shouldGoToDeepLink = NO;
   [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"Dismiss", @"GO", nil]];
   [alertView setUseMotionEffects:TRUE];
   [alertView setDelegate:self];
@@ -99,8 +113,8 @@
 
 - (void) presentDeepLinkAlert:(PDCustomIOS7AlertView*)alertView deepLink:(NSString*)deepLink {
   _deeplink = deepLink;
-  _shouldGoToUrl = YES;
-  _shouldGoToDeepLink = NO;
+  _shouldGoToDeepLink = YES;
+  _shouldGoToUrl = NO;
   [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"Dismiss", @"GO", nil]];
   [alertView setUseMotionEffects:TRUE];
   [alertView setDelegate:self];

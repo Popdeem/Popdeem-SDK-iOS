@@ -65,6 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) presentRewardFlow;
 
++ (void) registerForPushNotificationsApplication:(UIApplication *)application;
++ (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 + (void) handleRemoteNotification:(NSDictionary*)userInfo;
 @end
 NS_ASSUME_NONNULL_END

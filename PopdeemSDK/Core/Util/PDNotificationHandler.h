@@ -11,5 +11,7 @@
 
 @interface PDNotificationHandler : NSObject <PDCustomIOS7AlertViewDelegate>
 + (instancetype) sharedInstance;
+- (void) registerForPushNotificationsApplication:(UIApplication *)application;
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion;
 @end

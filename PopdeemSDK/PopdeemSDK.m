@@ -28,6 +28,7 @@
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
 #import "PDNotificationHandler.h"
+#import "PDMessageAPIService.h"
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
@@ -97,9 +98,21 @@
     return self.uiKitCore;
 }
 
++ (void) registerForPushNotificationsApplication:(UIApplication *)application {
+  [[PDNotificationHandler sharedInstance] registerForPushNotificationsApplication:application];
+}
+
++ (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [[PDNotificationHandler sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
 + (void) handleRemoteNotification:(NSDictionary*)userInfo {
   PDNotificationHandler *handler = [PDNotificationHandler sharedInstance];
   [handler showRemoteNotification:userInfo completion:^(BOOL success){
+
+  }];
+  PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
+  [service markMessageAsRead:[userInfo[@"message_id"] integerValue] completion:^(NSError *error){
     
   }];
 }
