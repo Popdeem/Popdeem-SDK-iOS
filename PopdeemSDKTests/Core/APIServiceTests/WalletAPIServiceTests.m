@@ -14,6 +14,7 @@
 #import "PDWallet.h"
 #import "PDConstants.h"
 #import "PopdeemSDK.h"
+#import "PDConstants.h"
 
 @interface WalletAPIServiceTests : XCTestCase
 
@@ -43,8 +44,8 @@
 
 - (void) testGetAllRewardsInWallet_500Error {
     XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 500 Error"];
-    
-    stubRequest(@"GET", @"http://staging.popdeem.com/api/v2/rewards/wallet")
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",API_URL,REWARDS_PATH];
+    stubRequest(@"GET", requestString)
     .andReturn(500)
     .withHeaders(@{@"Content-Type": @"application/json"});
     
@@ -63,8 +64,8 @@
 
 - (void) testGetAllRewardsInWallet_504Error {
     XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 504 Error"];
-    
-    stubRequest(@"GET", @"http://staging.popdeem.com/api/v2/rewards/wallet")
+    NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",API_URL,REWARDS_PATH];
+    stubRequest(@"GET", requestString)
     .andReturn(504)
     .withHeaders(@{@"Content-Type": @"application/json"});
     
@@ -85,8 +86,8 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 504 Error"];
     NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Rewards" ofType:@"json"];
     NSString *rewardsJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
-
-    stubRequest(@"GET", @"http://staging.popdeem.com/api/v2/rewards/wallet")
+    NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",API_URL,REWARDS_PATH];
+    stubRequest(@"GET", requestString)
     .andReturn(200)
     .withBody(rewardsJSON)
     .withHeaders(@{@"Content-Type": @"application/json"});
