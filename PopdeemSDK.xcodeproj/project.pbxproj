@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		392423731C230BE70038D953 /* LazyLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE61C1ED722000BF32E /* LazyLoader.m */; };
 		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
 		392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDClaimViewController.m */; };
 		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
@@ -1216,6 +1217,7 @@
 				A90FA5371C0368A8001DA473 /* ViewController.m in Sources */,
 				A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */,
 				A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */,
+				392423731C230BE70038D953 /* LazyLoader.m in Sources */,
 				A90FA5311C0368A8001DA473 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
