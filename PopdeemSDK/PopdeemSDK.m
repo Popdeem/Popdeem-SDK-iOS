@@ -27,6 +27,7 @@
 
 #import "PopdeemSDK.h"
 #import "PDSocialMediaManager.h"
+#import "PDNotificationHandler.h"
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
@@ -94,6 +95,13 @@
     self.uiKitCore =  [[coreClazz alloc]init];
 
     return self.uiKitCore;
+}
+
++ (void) handleRemoteNotification:(NSDictionary*)userInfo {
+  PDNotificationHandler *handler = [PDNotificationHandler sharedInstance];
+  [handler showRemoteNotification:userInfo completion:^(BOOL success){
+    
+  }];
 }
 
 @end

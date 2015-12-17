@@ -15,6 +15,7 @@
 #import "PDClaimViewController.h"
 #import "PDClaimViewModel.h"
 #import "PDUtils.h"
+#import "LazyLoader.h"
 
 @interface PDRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
@@ -39,15 +40,20 @@
   [[PDAPIClient sharedInstance]getAllRewardsSuccess:^{
     weakSelf.rewards =  [PDRewardStore allRewards];
     [weakSelf fetchLocations];
+    [LazyLoader loadAllRewardCoverImagesCompletion:^(BOOL success){
+      [weakSelf brandImageDidDownload];
+    }];
   } failure:^(NSError * _Nonnull error) {
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.tableView reloadData];      
     });
-
   }];
-  
 }
 
+- (void) brandImageDidDownload {
+  [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+   
 -(void)close{
   [self dismissViewControllerAnimated:YES completion:nil];
 }

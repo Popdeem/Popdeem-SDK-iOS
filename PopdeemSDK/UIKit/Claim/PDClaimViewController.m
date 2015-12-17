@@ -67,6 +67,7 @@
   [self.rewardRulesLabel setText:_viewModel.rewardRulesString];
   [self.rewardInfoLabel setText:_viewModel.rewardActionsString];
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
+  [self.rewardImageView setImage:_viewModel.reward.coverImage];
   switch (_viewModel.socialMediaTypesAvailable) {
     case FacebookOnly:
     case TwitterOnly:

@@ -30,6 +30,10 @@
 		39A7772A1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771B1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png */; };
 		39A7772B1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png */; };
 		39A7772C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771D1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png */; };
+		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
+		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
+		39BF5AE71C1ED722000BF32E /* LazyLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE61C1ED722000BF32E /* LazyLoader.m */; };
+		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
 		39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDClaimViewModel.m */; };
 		39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */; };
 		39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */; };
@@ -177,6 +181,14 @@
 		39A7771B1C0756CD004A4E92 /* pduikit_twitterbutton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_twitterbutton_selected.png; path = Resources/pduikit_twitterbutton_selected.png; sourceTree = "<group>"; };
 		39A7771C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_selected@2x.png"; path = "Resources/pduikit_twitterbutton_selected@2x.png"; sourceTree = "<group>"; };
 		39A7771D1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_twitterbutton_selected@3x.png"; path = "Resources/pduikit_twitterbutton_selected@3x.png"; sourceTree = "<group>"; };
+		39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNotificationHandler.h; sourceTree = "<group>"; };
+		39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNotificationHandler.m; sourceTree = "<group>"; };
+		39BF5AE21C1ED3B0000BF32E /* PDCustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCustomIOS7AlertView.h; sourceTree = "<group>"; };
+		39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCustomIOS7AlertView.m; sourceTree = "<group>"; };
+		39BF5AE51C1ED722000BF32E /* LazyLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LazyLoader.h; path = "../../../PopdeemBaseAppV2/popdeem-base-project/Popdeem Base/Core/Utilities/LazyLoader/LazyLoader.h"; sourceTree = "<group>"; };
+		39BF5AE61C1ED722000BF32E /* LazyLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LazyLoader.m; path = "../../../PopdeemBaseAppV2/popdeem-base-project/Popdeem Base/Core/Utilities/LazyLoader/LazyLoader.m"; sourceTree = "<group>"; };
+		39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessageAPIService.h; sourceTree = "<group>"; };
+		39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessageAPIService.m; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -494,6 +506,8 @@
 		39FD1C2A1C04B24F00CC3B0C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				39BF5AE51C1ED722000BF32E /* LazyLoader.h */,
+				39BF5AE61C1ED722000BF32E /* LazyLoader.m */,
 				39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */,
 				39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */,
 			);
@@ -569,6 +583,10 @@
 				BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */,
 				BC67F07B38BD59459659DB91 /* PDSocialMediaManager.h */,
 				BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */,
+				39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */,
+				39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */,
+				39BF5AE21C1ED3B0000BF32E /* PDCustomIOS7AlertView.h */,
+				39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -685,6 +703,8 @@
 				BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */,
 				BC67FD35C97C481E7B4E94F1 /* PDRewardActionAPIService.h */,
 				BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */,
+				39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */,
+				39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1103,9 +1123,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */,
 				A92281EB1C07369800A43320 /* PDRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */,
+				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				A92281F11C07465700A43320 /* PDNavigationController.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
 				A92281E91C07369800A43320 /* NoRewardsTableViewCell.m in Sources */,
@@ -1117,8 +1139,10 @@
 				39EDADCB1C07333F001102B3 /* RewardTableViewCell.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
+				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */,
+				39BF5AE71C1ED722000BF32E /* LazyLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
