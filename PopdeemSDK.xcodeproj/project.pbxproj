@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
-		392423731C230BE70038D953 /* LazyLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE61C1ED722000BF32E /* LazyLoader.m */; };
+		392423761C230F4E0038D953 /* LazyLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 392423751C230F4E0038D953 /* LazyLoader.m */; };
 		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
 		392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDClaimViewController.m */; };
 		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
@@ -33,7 +33,6 @@
 		39A7772C1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7771D1C0756CD004A4E92 /* pduikit_twitterbutton_selected@3x.png */; };
 		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
 		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
-		39BF5AE71C1ED722000BF32E /* LazyLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE61C1ED722000BF32E /* LazyLoader.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
 		39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDClaimViewModel.m */; };
 		39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */; };
@@ -148,6 +147,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		392423741C230F4E0038D953 /* LazyLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LazyLoader.h; path = Utilities/LazyLoader.h; sourceTree = "<group>"; };
+		392423751C230F4E0038D953 /* LazyLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LazyLoader.m; path = Utilities/LazyLoader.m; sourceTree = "<group>"; };
 		3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewModelTests.m; path = PopdeemSDKTests/UIKit/PDSocialLoginViewModelTests.m; sourceTree = SOURCE_ROOT; };
 		392787121C0716F600F8DCD9 /* PDClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewController.h; path = Claim/PDClaimViewController.h; sourceTree = "<group>"; };
 		392787131C0716F600F8DCD9 /* PDClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewController.m; path = Claim/PDClaimViewController.m; sourceTree = "<group>"; };
@@ -186,8 +187,6 @@
 		39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNotificationHandler.m; sourceTree = "<group>"; };
 		39BF5AE21C1ED3B0000BF32E /* PDCustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCustomIOS7AlertView.h; sourceTree = "<group>"; };
 		39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCustomIOS7AlertView.m; sourceTree = "<group>"; };
-		39BF5AE51C1ED722000BF32E /* LazyLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LazyLoader.h; path = "../../../PopdeemBaseAppV2/popdeem-base-project/Popdeem Base/Core/Utilities/LazyLoader/LazyLoader.h"; sourceTree = "<group>"; };
-		39BF5AE61C1ED722000BF32E /* LazyLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LazyLoader.m; path = "../../../PopdeemBaseAppV2/popdeem-base-project/Popdeem Base/Core/Utilities/LazyLoader/LazyLoader.m"; sourceTree = "<group>"; };
 		39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessageAPIService.h; sourceTree = "<group>"; };
 		39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessageAPIService.m; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,8 +506,8 @@
 		39FD1C2A1C04B24F00CC3B0C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				39BF5AE51C1ED722000BF32E /* LazyLoader.h */,
-				39BF5AE61C1ED722000BF32E /* LazyLoader.m */,
+				392423741C230F4E0038D953 /* LazyLoader.h */,
+				392423751C230F4E0038D953 /* LazyLoader.m */,
 				39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */,
 				39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */,
 			);
@@ -1142,8 +1141,8 @@
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
+				392423761C230F4E0038D953 /* LazyLoader.m in Sources */,
 				A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */,
-				39BF5AE71C1ED722000BF32E /* LazyLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,7 +1216,6 @@
 				A90FA5371C0368A8001DA473 /* ViewController.m in Sources */,
 				A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */,
 				A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */,
-				392423731C230BE70038D953 /* LazyLoader.m in Sources */,
 				A90FA5311C0368A8001DA473 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

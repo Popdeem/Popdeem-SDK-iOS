@@ -15,6 +15,7 @@
 #import "PDClaimViewController.h"
 #import "PDClaimViewModel.h"
 #import "PDUtils.h"
+#import "LazyLoader.h"
 
 @interface PDRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
