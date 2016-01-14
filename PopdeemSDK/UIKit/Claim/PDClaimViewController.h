@@ -10,6 +10,7 @@
 #import "PD_SZTextView.h"
 #import "PDReward.h"
 #import "PDLocation.h"
+#import "PDClaimViewModel.h"
 
 @class PDClaimViewModel;
 

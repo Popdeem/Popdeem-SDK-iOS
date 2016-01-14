@@ -7,6 +7,7 @@
 //
 
 #import "NoRewardsTableViewCell.h"
+#import "PDTheme.h"
 
 @implementation NoRewardsTableViewCell
 
@@ -25,6 +26,8 @@
         float indent = (frame.size.height - labelH)/2;
         [infoLabel setFrame:CGRectMake(10, indent, frame.size.width-20, labelH)];
         [self addSubview:infoLabel];
+      [self setBackgroundColor:PopdeemColor(@"popdeem.rewards.cell.backgroundColor")];
+      [infoLabel setTextColor:PopdeemColor(@"popdeem.rewards.cell.titleTextColor")];
         return self;
     }
     return nil;

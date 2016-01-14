@@ -44,7 +44,7 @@
 
 #pragma mark - Actions
 
-- (void)dismissWasTapped{
+- (void)dismissWasTapped {
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 

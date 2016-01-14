@@ -16,6 +16,7 @@
 #import "PDClaimViewModel.h"
 #import "PDUtils.h"
 #import "LazyLoader.h"
+#import "PDTheme.h"
 
 @interface PDRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
@@ -48,7 +49,11 @@
       [weakSelf.tableView reloadData];      
     });
   }];
+  [self.view setBackgroundColor:PopdeemColor(@"popdeem.rewardsHome.backgroundColor")];
+  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.rewardsHome.tableView.backgroundColor")];
+  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.rewardsHome.tableView.seperatorColor")];
 }
+
 
 - (void) brandImageDidDownload {
   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
@@ -76,7 +81,6 @@
     reward = [self.rewards objectAtIndex:indexPath.row];
     return [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
   }
-  
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

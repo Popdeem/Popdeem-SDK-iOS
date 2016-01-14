@@ -7,6 +7,7 @@
 #import "PDTheme.h"
 #import "PDSocialLoginHandler.h"
 #import "PDRewardHandler.h"
+#import "PDRewardTableViewController.h"
 
 @interface PopdeemUIKItCore ()
 @property(nonatomic, strong) PDSocialLoginHandler *socialLoginHandler;
@@ -36,5 +37,10 @@
 - (void)presentRewardFlow {
   [self.rewardHandler handleRewardsFlow];
 }
+
+- (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated {
+  [navController pushViewController:[[PDRewardTableViewController alloc] init] animated:animated];
+}
+
 
 @end

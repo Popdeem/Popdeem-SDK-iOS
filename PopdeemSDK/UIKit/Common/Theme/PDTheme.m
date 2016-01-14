@@ -47,13 +47,11 @@ static const NSString *kVariablesKey = @"Variables";
     return image;
 }
 
-
 - (id)objectForKey:(NSString *)key {
     if (self.theme == nil) {
         [NSException raise:@"Theme not setup" format:@""];
         return nil;
     }
-
 
     id value = [self.theme valueForKeyPath:key];
 
@@ -64,6 +62,14 @@ static const NSString *kVariablesKey = @"Variables";
     return [self resolveVariable:value];
 }
 
+- (BOOL) hasValueForKey:(NSString *)key {
+  if (self.theme == nil) {
+    [NSException raise:@"Theme not setup" format:@""];
+    return NO;
+  }
+  id value = [self.theme valueForKeyPath:key];
+  return value != nil;
+}
 
 + (NSDictionary *)jsonDictionaryFromData:(NSData *)data {
     if (!data) {

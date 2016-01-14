@@ -13,5 +13,6 @@
 + (instancetype) sharedInstance;
 - (void) registerForPushNotificationsApplication:(UIApplication *)application;
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion;
 @end

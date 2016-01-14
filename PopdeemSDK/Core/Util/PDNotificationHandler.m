@@ -49,6 +49,10 @@
   [[PDAPIClient sharedInstance] setDeviceToken:deviceToken.description];
 }
 
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  
+}
+
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion {
   _completionBlock = completion;
   NSString *imageUrl = [userInfo objectForKey:@"image_url"];

@@ -9,6 +9,7 @@
 #import "PDSocialLoginViewController.h"
 #import "PDNavigationController.h"
 #import "PDSocialMediaManager.h"
+#import "PDRewardHomeTableViewController.h"
 
 @interface PDRewardHandler()<PDSocialLoginDelegate>
 @end
@@ -37,7 +38,7 @@
 - (void)presentRewardFlow {
   UIViewController *topController = [PDUIKitUtils topViewController];
   
-  PDNavigationController *navController = [[PDNavigationController alloc]initWithRootViewController:[[PDRewardTableViewController alloc] init]];
+  PDNavigationController *navController = [[PDNavigationController alloc]initWithRootViewController:[[PDRewardHomeTableViewController alloc] init]];
   navController.view.frame = CGRectMake(0, 0, topController.view.frame.size.width, CGRectGetHeight(topController.view.frame)-80);
   
   [topController presentViewController:navController animated:YES completion:^{

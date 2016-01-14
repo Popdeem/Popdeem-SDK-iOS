@@ -1,0 +1,85 @@
+{
+  "popdeem" : {
+    "tableView" : {
+      "backgroundColor" : "#EBEBF2",
+      "seperatorColor" : "#C0C0C0",
+      "header" : {
+        "backgroundImage" : "popdeemHeader",
+        "backgroundColor" : "FFFFFF",
+        "textColor" : "000000"
+      },
+      "rewardsCell" : {
+        "backgroundColor" : "#FFFFFF",
+        "titleTextColor" : "000000",
+        "rulesTextColor" : "#A2A2A1",
+        "infoTextColor" : "B32D40"
+      },
+      "feedCell" : {
+        "backgroundColor" : "#FFFFFF",
+        "nameTextColor" : "#B32D40",
+        "defaultTextColor" : "#343333",
+        "titleTextColor" : "#000000",
+        "timeTextColor" : "#000000"
+      },
+      "walletCell" : {
+        "backgroundColor" : "FFFFFF",
+        "titleTextColor" : "#000000",
+        "defaultTextColor" : "#000000",
+        "howToTitleTextColor" : "#000000",
+        "howToBodyTextColor" : "#000000",
+        "redeemButtonColor" : "#B32D40",
+        "redeemButtonTextColor" : "#FFFFFF"
+      }
+    },
+    "login" : {
+      "continueButton" : {
+        "background" : "#3C9915",
+        "textColor" : "#FFFFFF"
+      }
+    },
+    "nav" : {
+      "titleColor" : "#FFFFFF",
+      "background" : "#092359",
+      "buttonTextColor" : "#FFFFFF"
+    },
+    "segmentedControl" : {
+      "selectedIndicator" : "#EBAA09",
+      "backgroundColor" : "#092359",
+      "textColor" : "#FFFFFF",
+    },
+    "global" : {
+      "backgroundGradientBaseColor" : "#FFFFFF"
+    },
+    "rewards" : {
+      "cell" : {
+        "titleTextColor" : "#FFFFFF",
+        "subtitleTextColor" : "#EBAA09",
+        "infoTextColor" : "#EBAA09",
+        "backgroundColor" : "#092359"
+      }
+    },
+    "rewardsHome" : {
+      "header" : {
+        "backgroundImageName" : "rewardsHomeHeaderImage",
+        "backgroundColor" : "#092359",
+        "textColor" : "#FFFFFF"
+      },
+      "backgroundImage" : "#C0C0C0",
+      "backgroundColor" : "#092359",
+      "tableView" : {
+        "backgroundColor" : "#092359",
+        "seperatorColor" : "#C0C0C0",
+      }
+    },
+    "feed" : {
+      "cell" : {
+        "normalTextColor" : "#FFFFFF",
+        "nameTextColor" : "#EBAA09",
+        "timeTextColor" : "#EBAA09",
+        "boldTextColor" : "#FFFFFF",
+        "actionTextColor" : "#FFFFFF",
+        "backgroundColor" : "#092359"
+      }
+    }
+  }
+}

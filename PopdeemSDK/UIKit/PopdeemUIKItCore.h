@@ -14,4 +14,6 @@
 
 - (void) setThemeFile:(NSString*)fileName;
 
+- (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated;
+
 @end

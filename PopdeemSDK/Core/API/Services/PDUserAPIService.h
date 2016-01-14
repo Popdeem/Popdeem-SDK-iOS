@@ -22,4 +22,6 @@
                                   completion:(void (^)(PDUser *user, NSError *error))completion;
 
 - (void) updateUserWithCompletion:(void (^)(PDUser *user, NSError *error))completion;
+
+- (void) nonSocialUserInitWithCompletion:(void (^)(NSError *error))completion;
 @end

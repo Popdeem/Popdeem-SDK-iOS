@@ -12,6 +12,9 @@
 #define PopdeemColor(key) \
 [[PDTheme sharedInstance] colorForKey:(key)]
 
+#define PopdeemThemeHasValueForKey(key) \
+[[PDTheme sharedInstance] hasValueForKey:(key)]
+
 @interface PDTheme : NSObject
 
 + (instancetype)sharedInstance;
@@ -19,5 +22,5 @@
 
 - (UIImage*)imageForKey:(NSString*)key;
 - (UIColor*)colorForKey:(NSString*)key;
-
+- (BOOL) hasValueForKey:(NSString*)key;
 @end

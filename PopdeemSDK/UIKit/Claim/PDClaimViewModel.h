@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PDReward.h"
-#import "PDLocation.h";
+#import "PDLocation.h"
 @class PDClaimViewController;
 
 @interface PDClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate>
