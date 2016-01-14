@@ -24,6 +24,7 @@
 }
 @property (nonatomic) UIView *tableHeaderView;
 @property (nonatomic) UILabel *tableHeaderLabel;
+@property (nonatomic) UIImageView *tableHeaderImageView;
 @property (nonatomic, strong) NSArray *rewards;
 @property (nonatomic, strong) NSArray *feed;
 @property (nonatomic, strong) NSArray *wallet;
@@ -129,9 +130,9 @@
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
   
-  [self.view setBackgroundColor:PopdeemColor(@"popdeem.rewardsHome.backgroundColor")];
-  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.rewardsHome.tableView.backgroundColor")];
-  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.rewardsHome.tableView.seperatorColor")];
+  [self.view setBackgroundColor:PopdeemColor(@"popdeem.tableView.backgroundColor")];
+  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.tableView.backgroundColor")];
+  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.tableView.seperatorColor")];
   
   [self renderView];
 }
@@ -155,11 +156,16 @@
   }
   [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
   [self.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.rewardsHome.header.backgroundColor")];
-  if (PopdeemThemeHasValueForKey(@"popdeem.tableView.header.backgroundImage")) {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
-    [imageView setImage:PopdeemImage(@"popdeem.tableView.header.backgroundImage")];
-    [imageView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.tableView addSubview:imageView];
+  if (!_tableHeaderImageView) {
+    if (PopdeemThemeHasValueForKey(@"popdeem.tableView.header.backgroundImage")) {
+      _tableHeaderImageView = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
+      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.tableView.header.backgroundImage")];
+      [_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
+      UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
+      [gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+      [self.tableView.tableHeaderView addSubview:_tableHeaderImageView];
+      [self.tableView.tableHeaderView addSubview:gradientView];
+    }
   }
   if (!_tableHeaderLabel) {
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, self.tableView.tableHeaderView.frame.size.width-20, 50)];

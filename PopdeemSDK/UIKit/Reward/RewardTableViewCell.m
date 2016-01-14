@@ -196,11 +196,11 @@
     [self addSubview:_infoLabel];
     
     //Apply Theme
-    [self setBackgroundColor:PopdeemColor(@"popdeem.rewards.cell.backgroundColor")];
-    self.contentView.backgroundColor = PopdeemColor(@"popdeem.rewards.cell.backgroundColor");
-    [_mainLabel setTextColor:PopdeemColor(@"popdeem.rewards.cell.titleTextColor")];
-    [_rulesLabel setTextColor:PopdeemColor(@"popdeem.rewards.cell.subtitleTextColor")];
-    [_infoLabel setTextColor:PopdeemColor(@"popdeem.rewards.cell.infoTextColor")];
+    [self setBackgroundColor:PopdeemColor(@"popdeem.tableView.rewardsCell.backgroundColor")];
+    self.contentView.backgroundColor = PopdeemColor(@"popdeem.tableView.rewardsCell.backgroundColor");
+    [_mainLabel setTextColor:PopdeemColor(@"popdeem.tableView.rewardsCell.titleTextColor")];
+    [_rulesLabel setTextColor:PopdeemColor(@"popdeem.tableView.rewardsCell.rulesTextColor")];
+    [_infoLabel setTextColor:PopdeemColor(@"popdeem.tableView.rewardsCell.infoTextColor")];
     
     return self;
   }

@@ -5,14 +5,14 @@
       "seperatorColor" : "#C0C0C0",
       "header" : {
         "backgroundImage" : "popdeemHeader",
-        "backgroundColor" : "FFFFFF",
-        "textColor" : "000000"
+        "backgroundColor" : "#FFFFFF",
+        "textColor" : "#FFFFFF"
       },
       "rewardsCell" : {
         "backgroundColor" : "#FFFFFF",
-        "titleTextColor" : "000000",
+        "titleTextColor" : "#000000",
         "rulesTextColor" : "#A2A2A1",
-        "infoTextColor" : "B32D40"
+        "infoTextColor" : "#B32D40"
       },
       "feedCell" : {
         "backgroundColor" : "#FFFFFF",
@@ -29,7 +29,7 @@
         "howToBodyTextColor" : "#000000",
         "redeemButtonColor" : "#B32D40",
         "redeemButtonTextColor" : "#FFFFFF"
-      }
+      },
     },
     "login" : {
       "continueButton" : {
@@ -43,9 +43,10 @@
       "buttonTextColor" : "#FFFFFF"
     },
     "segmentedControl" : {
-      "selectedIndicator" : "#EBAA09",
-      "backgroundColor" : "#092359",
-      "textColor" : "#FFFFFF",
+      "selectedIndicator" : "#B32D40",
+      "backgroundColor" : "#FFFFFF",
+      "textColor" : "#272626",
+      "selectedTextColor" : "#272626"
     },
     "global" : {
       "backgroundGradientBaseColor" : "#FFFFFF"
