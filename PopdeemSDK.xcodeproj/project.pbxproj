@@ -51,6 +51,8 @@
 		39ABA65C1C47BE010057088E /* popdeemHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 39ABA6591C47BE010057088E /* popdeemHeader.png */; };
 		39ABA65D1C47BE010057088E /* popdeemHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39ABA65A1C47BE010057088E /* popdeemHeader@2x.png */; };
 		39ABA65E1C47BE010057088E /* popdeemHeader@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39ABA65B1C47BE010057088E /* popdeemHeader@3x.png */; };
+		39ABA6621C4D06ED0057088E /* PDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA6611C4D06ED0057088E /* PDHomeViewController.m */; };
+		39ABA6651C4D073D0057088E /* PDHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA6641C4D073D0057088E /* PDHomeViewModel.m */; };
 		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
 		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
@@ -236,6 +238,10 @@
 		39ABA6591C47BE010057088E /* popdeemHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = popdeemHeader.png; path = Resources/popdeemHeader.png; sourceTree = "<group>"; };
 		39ABA65A1C47BE010057088E /* popdeemHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeader@2x.png"; path = "Resources/popdeemHeader@2x.png"; sourceTree = "<group>"; };
 		39ABA65B1C47BE010057088E /* popdeemHeader@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeader@3x.png"; path = "Resources/popdeemHeader@3x.png"; sourceTree = "<group>"; };
+		39ABA6601C4D06ED0057088E /* PDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDHomeViewController.h; path = Home/PDHomeViewController.h; sourceTree = "<group>"; };
+		39ABA6611C4D06ED0057088E /* PDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDHomeViewController.m; path = Home/PDHomeViewController.m; sourceTree = "<group>"; };
+		39ABA6631C4D073D0057088E /* PDHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDHomeViewModel.h; path = Home/PDHomeViewModel.h; sourceTree = "<group>"; };
+		39ABA6641C4D073D0057088E /* PDHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDHomeViewModel.m; path = Home/PDHomeViewModel.m; sourceTree = "<group>"; };
 		39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNotificationHandler.h; sourceTree = "<group>"; };
 		39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNotificationHandler.m; sourceTree = "<group>"; };
 		39BF5AE21C1ED3B0000BF32E /* PDCustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCustomIOS7AlertView.h; sourceTree = "<group>"; };
@@ -547,6 +553,17 @@
 				39ABA6501C47A1850057088E /* WalletTableViewCell.m */,
 			);
 			name = Wallet;
+			sourceTree = "<group>";
+		};
+		39ABA65F1C4D06A80057088E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				39ABA6601C4D06ED0057088E /* PDHomeViewController.h */,
+				39ABA6611C4D06ED0057088E /* PDHomeViewController.m */,
+				39ABA6631C4D073D0057088E /* PDHomeViewModel.h */,
+				39ABA6641C4D073D0057088E /* PDHomeViewModel.m */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		39D7D05C1B8F0DCF00E45D0B = {
@@ -967,6 +984,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				39ABA65F1C4D06A80057088E /* Home */,
 				39FD1C2A1C04B24F00CC3B0C /* Utilities */,
 				39FD1C151C046DA100CC3B0C /* Resources */,
 				398E4B751C03730100A68529 /* Login */,
@@ -1378,6 +1396,7 @@
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				A92281F11C07465700A43320 /* PDNavigationController.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PhotoCell.m in Sources */,
+				39ABA6651C4D073D0057088E /* PDHomeViewModel.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */,
@@ -1387,6 +1406,7 @@
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
+				39ABA6621C4D06ED0057088E /* PDHomeViewController.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				39A989921C3BED98002AF910 /* PDRewardHomeViewModel.m in Sources */,
 				392423761C230F4E0038D953 /* LazyLoader.m in Sources */,

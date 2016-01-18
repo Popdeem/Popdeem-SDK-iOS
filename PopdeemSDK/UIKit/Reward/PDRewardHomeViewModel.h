@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *headerText;
 @property (nonatomic, strong) UIImage *headerImage;
 
+
 - (void) setup;
 
 @end
