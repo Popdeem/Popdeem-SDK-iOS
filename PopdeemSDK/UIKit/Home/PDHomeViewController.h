@@ -13,7 +13,6 @@
 
 @interface PDHomeViewController : UITableViewController
 
-@property (nonatomic, strong) PDRewardHomeViewModel *viewModel;
 @property (nonatomic, retain) PDSegmentedControl *segmentedControl;
 @property (nonatomic, strong) PDRewardTableViewController *rewardTableViewController;
 @property (nonatomic, strong) UITableViewCell *rewardsCell;

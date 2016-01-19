@@ -23,7 +23,7 @@
 @interface PDHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
 }
-@property (nonatomic) PDHomeViewModel *model;
+@property (nonatomic, strong) PDHomeViewModel *model;
 @property (nonatomic) PDModalLoadingView *loadingView;
 @property (nonatomic) PDLocation *closestLocation;
 @end
@@ -32,7 +32,15 @@
 
 - (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
-  if (self = [self initWithNibName:@"PDRewardHomeTableViewController" bundle:podBundle]) {
+  if (self = [self initWithNibName:@"PDHomeViewController" bundle:podBundle]) {
+    self.model = [[PDHomeViewModel alloc] initWithController:self];
+    return self;
+  }
+  return nil;
+}
+
+- (instancetype) init {
+  if (self = [super init]) {
     self.model = [[PDHomeViewModel alloc] initWithController:self];
     return self;
   }
@@ -41,15 +49,12 @@
 
 - (void)renderView {
   self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:self.view];
-  [_model fetchRewards];
-  [_model fetchFeed];
-  [_model fetchWallet];
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
-  self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+  self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110)];
   [self renderView];
 }
 
@@ -79,17 +84,11 @@
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  if (section == 0) {
-    return _segmentedControl;
-  }
-  return nil;
+  return (section == 0) ? _segmentedControl : nil;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  if (section == 0) {
-    return 40;
-  }
-  return 0;
+  return (section == 0) ? 40 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -195,14 +194,13 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards
       if ([_model.rewards objectAtIndex:indexPath.row]) {
         PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
         PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
-        [[self navigationController] pushViewController:claimController animated:YES];
+        [[self navigationController] pushViewController:claimController animated:NO];
       }
       break;
     case 1:

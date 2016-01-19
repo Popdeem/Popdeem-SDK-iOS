@@ -30,16 +30,25 @@
 }
 
 - (void) setup {
+  
+  [self fetchRewards];
+  [self fetchFeed];
+  [self fetchWallet];
+  
   //Set up colors etc
+  _controller.navigationController.navigationBar.backgroundColor = PopdeemColor(@"popdeem.nav.backgroundColor");
+  _controller.navigationController.navigationBar.barTintColor = PopdeemColor(@"popdeem.nav.textColor");
+  
+  [[[_controller navigationController] navigationBar] setBarTintColor:PopdeemColor(@"popdeem.nav.textColor")];
+  [[[_controller navigationController] navigationBar] setBarTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
+  [[[_controller navigationController] navigationBar] setTranslucent:NO];
+  _controller.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.nav.textColor")};
+  
   _controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
   [_controller.navigationController setNavigationBarHidden:NO animated:YES];
   [_controller.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [_controller.tableView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [_controller.tableView setSeparatorColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
-  
-  if (PopdeemThemeHasValueForKey(@"popdeem.home.header.backgroundImage")){
-    
-  }
 }
 
 - (void) fetchRewards {
@@ -137,13 +146,13 @@
     [_controller.segmentedControl.layer addSublayer:topBottomBorders];
     [_controller.segmentedControl addTarget:_controller action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
-  [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 100)];
+  [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 110)];
   [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.home.header.backgroundColor")];
   
   if (!_tableHeaderImageView) {
-    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.header.backgroundImage")) {
+    if (PopdeemThemeHasValueForKey(@"popdeem.home.header.backgroundImage")) {
       _tableHeaderImageView = [[UIImageView alloc] initWithFrame:_controller.tableView.tableHeaderView.frame];
-      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.home.tableView.header.backgroundImage")];
+      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.home.header.backgroundImage")];
       [_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
       UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
       [gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
@@ -152,11 +161,11 @@
     }
   }
   if (!_tableHeaderLabel) {
-    _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, _controller.tableView.tableHeaderView.frame.size.width-20, 50)];
+    _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 27.5, _controller.tableView.tableHeaderView.frame.size.width-20, 50)];
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
     [_tableHeaderLabel setNumberOfLines:3];
     [_tableHeaderLabel setFont:[UIFont systemFontOfSize:16]];
-    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.header.textColor")];
+    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
     [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
     [_controller.tableView.tableHeaderView addSubview:_tableHeaderLabel];
   }

@@ -50,6 +50,6 @@
 "popdeem.claim.twitter.notconnected" = "Twitter not connected, you must connect your twitter account in order to post to Twitter";
 "popdeem.claim.networkerror" = "No Network Selected, you must select at least one social network in order to complete this action.";
 
-"popdeem.rewardsHome.header.titleText" = "Share your Popdeem experience on social networks to earn more rewards.";
-"popdeem.rewardsHome.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
+"popdeem.home.header.titleText" = "Share your Popdeem experience on social networks to earn more rewards.";
+"popdeem.home.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
 

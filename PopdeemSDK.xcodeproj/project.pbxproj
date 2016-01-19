@@ -196,6 +196,7 @@
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
+		397E10751C4D253800B924D0 /* PDHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDHomeViewController.xib; path = Home/PDHomeViewController.xib; sourceTree = "<group>"; };
 		398E4B761C03744B00A68529 /* PDSocialLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginViewController.h; path = Login/PDSocialLoginViewController.h; sourceTree = "<group>"; };
 		398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewController.m; path = Login/PDSocialLoginViewController.m; sourceTree = "<group>"; };
 		398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDSocialLoginViewController.xib; path = Login/PDSocialLoginViewController.xib; sourceTree = "<group>"; };
@@ -473,7 +474,6 @@
 			children = (
 				393D2B7B1C3AD0D300F1E253 /* AppDelegate.h */,
 				393D2B7C1C3AD0D300F1E253 /* AppDelegate.m */,
-				396B15681C3BC66900FC774D /* Localizable.strings */,
 				393D2B7E1C3AD0D300F1E253 /* ViewController.h */,
 				393D2B7F1C3AD0D300F1E253 /* ViewController.m */,
 				396B15651C3BC40600FC774D /* PDViewController.h */,
@@ -484,6 +484,7 @@
 				393D2B891C3AD0D300F1E253 /* Info.plist */,
 				393D2B781C3AD0D300F1E253 /* Supporting Files */,
 				393D2B8D1C3AD1A100F1E253 /* theme.json */,
+				396B15681C3BC66900FC774D /* Localizable.strings */,
 			);
 			path = NavigationSample;
 			sourceTree = "<group>";
@@ -560,6 +561,7 @@
 			children = (
 				39ABA6601C4D06ED0057088E /* PDHomeViewController.h */,
 				39ABA6611C4D06ED0057088E /* PDHomeViewController.m */,
+				397E10751C4D253800B924D0 /* PDHomeViewController.xib */,
 				39ABA6631C4D073D0057088E /* PDHomeViewModel.h */,
 				39ABA6641C4D073D0057088E /* PDHomeViewModel.m */,
 			);

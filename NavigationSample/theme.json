@@ -1,14 +1,14 @@
 {
   "popdeem" : {
     "home" : {
-      "backgroundColor" : "#EBEBF2",
-      "seperatorColor" : "#C0C0C0",
       "header" : {
         "backgroundImage" : "popdeemHeader",
         "backgroundColor" : "#FFFFFF",
         "textColor" : "#FFFFFF"
       },
       "tableView" : {
+        "backgroundColor" : "#EBEBF2",
+        "seperatorColor" : "#C0C0C0",
         "rewardsCell" : {
           "backgroundColor" : "#FFFFFF",
           "titleTextColor" : "#000000",
@@ -40,8 +40,8 @@
       }
     },
     "nav" : {
-      "titleColor" : "#FFFFFF",
-      "background" : "#092359",
+      "textColor" : "#FFFFFF",
+      "backgroundColor" : "#092359",
       "buttonTextColor" : "#FFFFFF"
     },
     "segmentedControl" : {
