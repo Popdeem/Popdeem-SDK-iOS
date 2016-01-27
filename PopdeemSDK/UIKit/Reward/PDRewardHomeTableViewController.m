@@ -17,6 +17,8 @@
 #import "CheckinCell.h"
 #import "PDClaimViewController.h"
 #import "WalletTableViewCell.h"
+#import "PDSocialLoginViewController.h"
+#import "PDSocialMediaManager.h"
 
 
 @interface PDRewardHomeTableViewController () {
@@ -323,9 +325,17 @@
     case 0:
       //Rewards
       if ([self.rewards objectAtIndex:indexPath.row]) {
-        PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
-        PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
-        [[self navigationController] pushViewController:claimController animated:YES];
+        if(![[PDSocialMediaManager manager] isLoggedIn]){
+          PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
+          vc.delegate = self;
+          [self presentViewController:vc animated:YES completion:^{
+            
+          }];
+        } else{
+          PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
+          PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
+          [[self navigationController] pushViewController:claimController animated:YES];
+        }
       }
       break;
     case 1:

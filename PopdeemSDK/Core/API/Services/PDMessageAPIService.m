@@ -11,6 +11,22 @@
 
 @implementation PDMessageAPIService
 
+- (void) fetchMessagesCompletion:(void (^)(NSArray *messages, NSError *error))completion {
+  NSURLSession *session = [NSURLSession createPopdeemSession];
+  NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,MESSAGES_PATH];
+  [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
+    NSError *jsonError;
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+    if (!jsonObject) {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+      });
+      return;
+    }
+    
+  }];
+}
+
 - (void) markMessageAsRead:(NSInteger)messageId
                 completion:(void (^)(NSError *error))completion {
   NSURLSession *session = [NSURLSession createPopdeemSession];

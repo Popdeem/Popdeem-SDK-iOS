@@ -41,6 +41,7 @@
         });
         return;
       }
+      [PDRewardStore removeAllRewards];
       for (id attributes in jsonObject[@"rewards"]) {
         PDReward *reward = [[PDReward alloc] initFromApi:attributes];
         [PDRewardStore add:reward];

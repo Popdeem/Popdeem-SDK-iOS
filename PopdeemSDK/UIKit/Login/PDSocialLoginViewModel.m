@@ -13,6 +13,7 @@
 #import "PDUser.h"
 #import "PDAPIClient.h"
 #import "PDConstants.h"
+#import "PDMessageAPIService.h"
 
 
 @interface PDSocialLoginViewModel()
@@ -64,6 +65,7 @@
   self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.containterView];
   [self.loadingView showAnimated:YES];
   
+
   [[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
     if (error) {
       NSLog(@"Something went wrong: %@",error);

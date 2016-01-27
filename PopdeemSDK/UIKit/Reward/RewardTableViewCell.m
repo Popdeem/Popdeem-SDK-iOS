@@ -25,7 +25,7 @@
     float imageSize = 40;
     float indent = 10;
     
-    _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, 2*indent, imageSize, imageSize)];
+    _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, (frame.size.height - 40)/2, imageSize, imageSize)];
     if (reward.coverImage) {
       [_logoImageView setImage:reward.coverImage];
     } else {
@@ -43,7 +43,7 @@
     
     _mainLabel = [[UILabel alloc] init];
     
-    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
+    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
     CGRect mainLabelRect = [mainAttributedText boundingRectWithSize:(CGSize){labelWidth, 40}
                                                             options:NSStringDrawingUsesLineFragmentOrigin
                                                             context:nil];
@@ -56,11 +56,7 @@
       padding = (40 - mainLabelsize.height)/2;
     }
     
-    if (rules ) {
-      [_mainLabel setFrame:CGRectMake(labelX, (2*padding)-3, labelWidth, mainLabelsize.height)];
-    } else {
-      [_mainLabel setFrame: CGRectMake(labelX, centerLineY-(mainLabelsize.height), labelWidth, mainLabelsize.height)];
-    }
+    [_mainLabel setFrame: CGRectMake(labelX, centerLineY-(mainLabelsize.height)-5, labelWidth, mainLabelsize.height)];
     [_mainLabel setText:reward.rewardDescription];
     [_mainLabel setFont:[UIFont systemFontOfSize:14]];
     [_mainLabel setTextColor:[UIColor blackColor]];
@@ -68,7 +64,7 @@
     [_mainLabel setNumberOfLines:0];
     [_mainLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
     [self addSubview:_mainLabel];
-    
+    CGSize rulesLabelsize;
     if (rules) {
       _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _mainLabel.frame.origin.y+_mainLabel.frame.size.height, labelWidth, 30)];
       NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
@@ -76,7 +72,7 @@
                                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                                                 context:nil];
       
-      CGSize rulesLabelsize = rulesLabelRect.size;
+      rulesLabelsize = rulesLabelRect.size;
       padding = 0;
       if (rulesLabelsize.height < 30) {
         padding = (30-rulesLabelsize.height)/2;
@@ -85,18 +81,20 @@
       if (mainLabelsize.height < 30) {
         rulesPadding = 4;
       }
-      [_rulesLabel setFrame:CGRectMake(labelX, _mainLabel.frame.origin.y + _mainLabel.frame.size.height+rulesPadding, labelWidth, rulesLabelsize.height)];
+      [_rulesLabel setFrame:CGRectMake(labelX, centerLineY-5, labelWidth, rulesLabelsize.height)];
       [_rulesLabel setFont:[UIFont systemFontOfSize:12]];
       [_rulesLabel setTextColor:[UIColor blackColor]];
       [_rulesLabel setText:reward.rewardRules];
       [_rulesLabel setNumberOfLines:0];
       [self addSubview:_rulesLabel];
+      
+      [_mainLabel setFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y-mainLabelsize.height-5, labelWidth, mainLabelsize.height)];
     }
     
     if (rules) {
-      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, frame.size.height-12-padding, labelWidth, 10)];
+      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y+rulesLabelsize.height+5, labelWidth, 15)];
     } else {
-      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, frame.size.height-12-padding, labelWidth, 10)];
+      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, centerLineY+5, labelWidth, 15)];
     }
     
     NSString *action;
@@ -201,6 +199,7 @@
     [_mainLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.titleTextColor")];
     [_rulesLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.rulesTextColor")];
     [_infoLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.infoTextColor")];
+    
     
     return self;
   }

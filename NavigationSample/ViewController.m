@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "PopdeemSDK.h"
 #import "PDHomeViewController.h"
+#import "PDMessageAPIService.h"
 
 @interface ViewController ()
 
@@ -28,6 +29,11 @@
 }
 
 - (IBAction) pushIt:(id)sender {
+  PDMessageAPIService *messages = [[PDMessageAPIService alloc] init];
+  [messages fetchMessagesCompletion:^(NSArray *messages, NSError *error){
+    
+  }];
+  
   [self.navigationController pushViewController:[[PDHomeViewController alloc] initFromNib] animated:YES];
 }
 

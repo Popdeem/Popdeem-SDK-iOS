@@ -18,10 +18,12 @@
 #import "PDClaimViewController.h"
 #import "WalletTableViewCell.h"
 #import "PDHomeViewModel.h"
-
+#import "PDSocialMediaManager.h"
+#import "PDSocialLoginViewController.h"
 
 @interface PDHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
+  NSIndexPath *walletSelectedIndex;
 }
 @property (nonatomic, strong) PDHomeViewModel *model;
 @property (nonatomic) PDModalLoadingView *loadingView;
@@ -185,7 +187,24 @@
       break;
     case 2:
       //Wallet
-      return 85;
+      if (walletSelectedIndex && index == walletSelectedIndex.row) {
+        if (index < _model.wallet.count) {
+          PDReward *r = _model.wallet[index];
+          switch (r.type) {
+            case PDRewardTypeInstant:
+            case PDRewardTypeCoupon:
+              return 255;
+              break;
+            case PDRewardTypeSweepstake:
+              return 185;
+              break;
+            default:
+              break;
+          }
+        }
+        return 255;
+      }
+      return 65;
       break;
     default:
       break;
@@ -194,20 +213,51 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  WalletTableViewCell *wcell;
+  WalletTableViewCell *lastCell;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards
       if ([_model.rewards objectAtIndex:indexPath.row]) {
-        PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
-        PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
-        [[self navigationController] pushViewController:claimController animated:NO];
+        if(![[PDSocialMediaManager manager] isLoggedIn]){
+          PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
+          vc.delegate = self;
+          [self presentViewController:vc animated:YES completion:^{
+            [_model fetchRewards];
+          }];
+        } else{
+          PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
+          PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
+          [[self navigationController] pushViewController:claimController animated:YES];
+        }
       }
       break;
     case 1:
       //Feed
       break;
     case 2:
-      //Wallet
+      wcell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+      [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
+      if (_model.wallet.count > 7 && indexPath.row > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+      }
+      
+      if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
+        lastCell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+        [lastCell rotateArrowRight];
+        walletSelectedIndex = nil;
+        [wcell rotateArrowRight];
+      } else {
+        if (walletSelectedIndex) {
+          //Rotate the previous cell back to right
+          WalletTableViewCell *lastCell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+          [lastCell rotateArrowRight];
+        }
+        walletSelectedIndex = indexPath;
+        [wcell rotateArrowDown];
+      }
+      [self.tableView beginUpdates];
+      [self.tableView endUpdates];
       break;
     default:
       break;

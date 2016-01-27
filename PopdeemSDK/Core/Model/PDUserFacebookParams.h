@@ -67,6 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSMutableArray *favouriteBrandIds;
 
+@property (nonatomic, strong) NSString *defaultPrivacySetting;
 
 /**
  Creates an instance of the PDUserFacebookParams from the given API paramaters
