@@ -8,6 +8,8 @@
 
 #import "PDMessageAPIService.h"
 #import "PDConstants.h"
+#import "PDMessage.h"
+#import "PDMessageStore.h"
 
 @implementation PDMessageAPIService
 
@@ -23,7 +25,15 @@
       });
       return;
     }
-    
+    [PDMessageStore removeAllObjects];
+    for (id messJson in [jsonObject objectForKey:@"messages"]) {
+      NSData *jsonData = [NSJSONSerialization dataWithJSONObject:messJson
+                                                         options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                           error:&error];
+      NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+      PDMessage *message = [[PDMessage alloc] initWithJSON:jsonString];
+      [PDMessageStore add:message];
+    }
   }];
 }
 

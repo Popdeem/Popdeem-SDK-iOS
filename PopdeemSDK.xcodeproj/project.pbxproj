@@ -12,6 +12,8 @@
 		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
 		392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDClaimViewController.m */; };
 		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
+		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
+		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
 		393D2B7A1C3AD0D300F1E253 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 393D2B791C3AD0D300F1E253 /* main.m */; };
 		393D2B7D1C3AD0D300F1E253 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 393D2B7C1C3AD0D300F1E253 /* AppDelegate.m */; };
 		393D2B801C3AD0D300F1E253 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393D2B7F1C3AD0D300F1E253 /* ViewController.m */; };
@@ -176,6 +178,10 @@
 		392787141C0716F600F8DCD9 /* PDClaimViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDClaimViewController.xib; path = Claim/PDClaimViewController.xib; sourceTree = "<group>"; };
 		392787161C071BFA00F8DCD9 /* PD_SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PD_SZTextView.h; path = Claim/PD_SZTextView.h; sourceTree = "<group>"; };
 		392787171C071BFA00F8DCD9 /* PD_SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PD_SZTextView.m; path = Claim/PD_SZTextView.m; sourceTree = "<group>"; };
+		393A8C401C591E30001F650C /* PDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessage.h; sourceTree = "<group>"; };
+		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
+		393A8C431C5923D0001F650C /* PDMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMessageStore.h; path = Core/Store/PDMessageStore.h; sourceTree = "<group>"; };
+		393A8C441C5923D0001F650C /* PDMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMessageStore.m; path = Core/Store/PDMessageStore.m; sourceTree = "<group>"; };
 		393D2B761C3AD0D300F1E253 /* NavigationSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		393D2B791C3AD0D300F1E253 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		393D2B7B1C3AD0D300F1E253 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -910,6 +916,8 @@
 				BC67FE5072EA22D083C45380 /* PDFeedItem.m */,
 				BC67F9D6AE1A1E6162AD05A9 /* PDLocation.h */,
 				BC67F866213BA9B492FB005B /* PDLocation.m */,
+				393A8C401C591E30001F650C /* PDMessage.h */,
+				393A8C411C591E30001F650C /* PDMessage.m */,
 				BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */,
 				BC67FB138AFDB8475775021B /* PDReferral.m */,
 				BC67FD41F4A3215835B48282 /* PDURLSession.h */,
@@ -978,6 +986,8 @@
 				A90FA4FF1C036304001DA473 /* PDRewardStore.m */,
 				A90FA5001C036304001DA473 /* PDWallet.h */,
 				A90FA5011C036304001DA473 /* PDWallet.m */,
+				393A8C431C5923D0001F650C /* PDMessageStore.h */,
+				393A8C441C5923D0001F650C /* PDMessageStore.m */,
 			);
 			name = Store;
 			path = PopdeemSDK;
@@ -1405,10 +1415,12 @@
 				39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */,
 				39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
+				393A8C421C591E30001F650C /* PDMessage.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDHomeViewController.m in Sources */,
+				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				39A989921C3BED98002AF910 /* PDRewardHomeViewModel.m in Sources */,
 				392423761C230F4E0038D953 /* LazyLoader.m in Sources */,

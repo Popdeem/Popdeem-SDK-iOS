@@ -60,6 +60,12 @@
   [self renderView];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+  [self.model fetchRewards];
+  [self.model fetchFeed];
+  [self.model fetchWallet];
+}
+
 - (void) viewWillLayoutSubviews {
   [_model viewWillLayoutSubviews];
 }

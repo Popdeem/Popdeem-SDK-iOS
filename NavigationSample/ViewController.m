@@ -38,7 +38,7 @@
 }
 
 - (IBAction) popIt:(id)sender {
-  [PopdeemSDK presentRewardFlow];
+  
 }
 
 @end
