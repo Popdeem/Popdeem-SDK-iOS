@@ -124,6 +124,9 @@
 }
 
 + (void) handleRemoteNotification:(NSDictionary*)userInfo {
+  if (NSClassFromString(@"PopdeemUIKItCore")){
+    
+  }
   PDNotificationHandler *handler = [PDNotificationHandler sharedInstance];
   [handler showRemoteNotification:userInfo completion:^(BOOL success){
     

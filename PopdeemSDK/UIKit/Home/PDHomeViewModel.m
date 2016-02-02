@@ -159,6 +159,9 @@
       [_controller.tableView.tableHeaderView addSubview:_tableHeaderImageView];
       [_controller.tableView.tableHeaderView addSubview:gradientView];
     }
+    UIButton *messagesButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    [messagesButton setTintColor:[UIColor whiteColor]];
+    [messagesButton addTarget:self.controller action:@selector(messagesTapped) forControlEvents:UIControlEventTouchUpInside];
   }
   if (!_tableHeaderLabel) {
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 27.5, _controller.tableView.tableHeaderView.frame.size.width-20, 50)];

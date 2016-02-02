@@ -270,4 +270,13 @@
   }
 }
 
+- (void) messagesTapped {
+  if (!_messageCenter) {
+    _messageCenter = [[PDMsgCntrTblViewController alloc] initFromNib];
+  }
+  [self.navigationController presentViewController:_messageCenter animated:YES completion:^(){
+  
+  }];
+}
+
 @end

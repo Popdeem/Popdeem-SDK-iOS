@@ -33,6 +33,16 @@
         }
       }
     },
+    "messageCenter" {
+      "tableView" : {
+        "backgroundColor" : "#EBEBF2",
+        "seperatorColor" : "#C0C0C0",
+        "messageCell" : {
+          "backgroundColor" : "#FFFFFF",
+          "bodyTextColor" : "#000000",
+          "timeTextColor" : "#A2A2A1"
+        },
+    },
     "login" : {
       "continueButton" : {
         "background" : "#3C9915",

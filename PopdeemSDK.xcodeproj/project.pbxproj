@@ -21,9 +21,12 @@
 		393D2B851C3AD0D300F1E253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B841C3AD0D300F1E253 /* Assets.xcassets */; };
 		393D2B881C3AD0D300F1E253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B861C3AD0D300F1E253 /* LaunchScreen.storyboard */; };
 		393D2B8E1C3AD1A100F1E253 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B8D1C3AD1A100F1E253 /* theme.json */; };
+		3966F6A91C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
 		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
+		398A11DB1C60B748002CB4B6 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11D91C60B748002CB4B6 /* MessageCell.m */; };
+		398A11DE1C60BD09002CB4B6 /* MsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* MsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDSocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDSocialLoginViewModel.m */; };
 		39A772DA1BECB930007ED334 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */; };
@@ -196,6 +199,9 @@
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
+		3966F6A61C5B85DD00DFFF9B /* PDMsgCntrTblViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMsgCntrTblViewController.h; path = MessageCenter/PDMsgCntrTblViewController.h; sourceTree = "<group>"; };
+		3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMsgCntrTblViewController.m; path = MessageCenter/PDMsgCntrTblViewController.m; sourceTree = "<group>"; };
+		3966F6A81C5B85DD00DFFF9B /* PDMsgCntrTblViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDMsgCntrTblViewController.xib; path = MessageCenter/PDMsgCntrTblViewController.xib; sourceTree = "<group>"; };
 		396B15651C3BC40600FC774D /* PDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDViewController.h; sourceTree = "<group>"; };
 		396B15661C3BC40600FC774D /* PDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDViewController.m; sourceTree = "<group>"; };
 		396B15681C3BC66900FC774D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -203,6 +209,11 @@
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
 		397E10751C4D253800B924D0 /* PDHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDHomeViewController.xib; path = Home/PDHomeViewController.xib; sourceTree = "<group>"; };
+		398A11D81C60B748002CB4B6 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageCell.h; path = MessageCenter/MessageCell.h; sourceTree = "<group>"; };
+		398A11D91C60B748002CB4B6 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageCell.m; path = MessageCenter/MessageCell.m; sourceTree = "<group>"; };
+		398A11DA1C60B748002CB4B6 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageCell.xib; path = MessageCenter/MessageCell.xib; sourceTree = "<group>"; };
+		398A11DC1C60BD09002CB4B6 /* MsgCntrViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MsgCntrViewModel.h; path = MessageCenter/MsgCntrViewModel.h; sourceTree = "<group>"; };
+		398A11DD1C60BD09002CB4B6 /* MsgCntrViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MsgCntrViewModel.m; path = MessageCenter/MsgCntrViewModel.m; sourceTree = "<group>"; };
 		398E4B761C03744B00A68529 /* PDSocialLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSocialLoginViewController.h; path = Login/PDSocialLoginViewController.h; sourceTree = "<group>"; };
 		398E4B771C03744B00A68529 /* PDSocialLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewController.m; path = Login/PDSocialLoginViewController.m; sourceTree = "<group>"; };
 		398E4B781C03744B00A68529 /* PDSocialLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDSocialLoginViewController.xib; path = Login/PDSocialLoginViewController.xib; sourceTree = "<group>"; };
@@ -501,6 +512,21 @@
 				393D2B791C3AD0D300F1E253 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3966F69E1C5B84E500DFFF9B /* MessageCenter */ = {
+			isa = PBXGroup;
+			children = (
+				3966F6A61C5B85DD00DFFF9B /* PDMsgCntrTblViewController.h */,
+				3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */,
+				398A11DC1C60BD09002CB4B6 /* MsgCntrViewModel.h */,
+				398A11DD1C60BD09002CB4B6 /* MsgCntrViewModel.m */,
+				3966F6A81C5B85DD00DFFF9B /* PDMsgCntrTblViewController.xib */,
+				398A11D81C60B748002CB4B6 /* MessageCell.h */,
+				398A11D91C60B748002CB4B6 /* MessageCell.m */,
+				398A11DA1C60B748002CB4B6 /* MessageCell.xib */,
+			);
+			name = MessageCenter;
 			sourceTree = "<group>";
 		};
 		398E4B751C03730100A68529 /* Login */ = {
@@ -996,6 +1022,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3966F69E1C5B84E500DFFF9B /* MessageCenter */,
 				39ABA65F1C4D06A80057088E /* Home */,
 				39FD1C2A1C04B24F00CC3B0C /* Utilities */,
 				39FD1C151C046DA100CC3B0C /* Resources */,
@@ -1404,9 +1431,11 @@
 				39ABA6511C47A1850057088E /* WalletTableViewCell.m in Sources */,
 				39A98A651C3E6B9F002AF910 /* CheckinCell.m in Sources */,
 				39A98A661C3E6B9F002AF910 /* FeedCell.m in Sources */,
+				3966F6A91C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m in Sources */,
 				39A989861C3BD857002AF910 /* PDSegmentedControl.m in Sources */,
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				A92281F11C07465700A43320 /* PDNavigationController.m in Sources */,
+				398A11DB1C60B748002CB4B6 /* MessageCell.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PhotoCell.m in Sources */,
 				39ABA6651C4D073D0057088E /* PDHomeViewModel.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
@@ -1425,6 +1454,7 @@
 				39A989921C3BED98002AF910 /* PDRewardHomeViewModel.m in Sources */,
 				392423761C230F4E0038D953 /* LazyLoader.m in Sources */,
 				A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */,
+				398A11DE1C60BD09002CB4B6 /* MsgCntrViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

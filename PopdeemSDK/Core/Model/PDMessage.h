@@ -16,6 +16,7 @@
 @property (nonatomic) NSInteger rewardId;
 @property (nonatomic) BOOL read;
 @property (nonatomic, strong) NSString *imageUrl;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic) NSInteger createdAt;
 @property (nonatomic, strong) NSString *body;
 
