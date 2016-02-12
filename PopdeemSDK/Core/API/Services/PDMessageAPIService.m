@@ -34,6 +34,7 @@
       PDMessage *message = [[PDMessage alloc] initWithJSON:jsonString];
       [PDMessageStore add:message];
     }
+    completion([PDMessageStore orderedByDate], nil);
   }];
 }
 

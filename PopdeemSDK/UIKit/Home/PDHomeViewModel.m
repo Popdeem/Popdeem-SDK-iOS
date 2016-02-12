@@ -23,7 +23,6 @@
 - (instancetype) initWithController:(PDHomeViewController*)controller {
   if (self = [super init]){
     self.controller = controller;
-    [self setup];
     return self;
   }
   return nil;
@@ -49,6 +48,9 @@
   [_controller.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [_controller.tableView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [_controller.tableView setSeparatorColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
+  
+  UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Inbox" style:UIBarButtonItemStylePlain target:_controller action:@selector(messagesTapped)];
+  self.controller.navigationItem.rightBarButtonItem = anotherButton;
 }
 
 - (void) fetchRewards {
@@ -62,10 +64,12 @@
     }];
     _rewardsLoading = NO;
     [weakSelf.controller.tableView reloadData];
+    [weakSelf.controller.refreshControl endRefreshing];
   } failure:^(NSError * _Nonnull error) {
     dispatch_async(dispatch_get_main_queue(), ^{
       _rewardsLoading = NO;
       [weakSelf.controller.tableView reloadData];
+      [weakSelf.controller.refreshControl endRefreshing];
     });
   }];
 }
@@ -93,11 +97,14 @@
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^(){
     _wallet = [[PDWallet wallet] copy];
+    [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    [weakSelf.controller.refreshControl endRefreshing];
     [LazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
       [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }];
   } failure:^(NSError *error) {
     //TODO: Handle Error
+    [weakSelf.controller.refreshControl endRefreshing];
   }];
 }
 
@@ -121,11 +128,13 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pd_feeds.fd"];
-    [NSKeyedArchiver archiveRootObject:_feed toFile:appFile];
+    [NSKeyedArchiver archiveRootObject:weakSelf.feed toFile:appFile];
     [self.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    [weakSelf.controller.refreshControl endRefreshing];
   } failure:^(NSError *error){
     //TODO: Handle Error
     _feedLoading = NO;
+    [weakSelf.controller.refreshControl endRefreshing];
   }];
 }
 
@@ -159,9 +168,6 @@
       [_controller.tableView.tableHeaderView addSubview:_tableHeaderImageView];
       [_controller.tableView.tableHeaderView addSubview:gradientView];
     }
-    UIButton *messagesButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
-    [messagesButton setTintColor:[UIColor whiteColor]];
-    [messagesButton addTarget:self.controller action:@selector(messagesTapped) forControlEvents:UIControlEventTouchUpInside];
   }
   if (!_tableHeaderLabel) {
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 27.5, _controller.tableView.tableHeaderView.frame.size.width-20, 50)];
@@ -172,7 +178,6 @@
     [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
     [_controller.tableView.tableHeaderView addSubview:_tableHeaderLabel];
   }
-
 }
 
 @end

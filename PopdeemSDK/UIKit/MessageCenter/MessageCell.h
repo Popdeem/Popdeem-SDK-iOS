@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDMessage.h"
 
 @interface MessageCell : UITableViewCell
 
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *logoView;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *bodyLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *timeLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UIView *indicatorView;
+@property (nonatomic) UIImageView *logoView;
+@property (nonatomic) UILabel *bodyLabel;
+@property (nonatomic) UILabel *timeLabel;
+@property (nonatomic) UIView *indicatorView;
 
+- (void) configureForMessage:(PDMessage*)message;
+- (instancetype) initWithFrame:(CGRect)frame message:(PDMessage*)message;
 
 @end

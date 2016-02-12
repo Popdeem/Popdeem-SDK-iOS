@@ -28,6 +28,7 @@
 @property (nonatomic, strong) PDHomeViewModel *model;
 @property (nonatomic) PDModalLoadingView *loadingView;
 @property (nonatomic) PDLocation *closestLocation;
+@property (nonatomic) PDClaimViewController *claimVC;
 @end
 
 @implementation PDHomeViewController
@@ -42,11 +43,14 @@
 }
 
 - (instancetype) init {
-  if (self = [super init]) {
-    self.model = [[PDHomeViewModel alloc] initWithController:self];
+  if (self = [self initFromNib]) {
     return self;
   }
   return nil;
+}
+
+- (void) awakeFromNib {
+  self.model = [[PDHomeViewModel alloc] initWithController:self];
 }
 
 - (void)renderView {
@@ -64,6 +68,26 @@
   [self.model fetchRewards];
   [self.model fetchFeed];
   [self.model fetchWallet];
+  self.refreshControl = [[UIRefreshControl alloc]init];
+  [self.refreshControl setTintColor:[UIColor darkGrayColor]];
+  [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+  [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) reloadAction {
+  switch (_segmentedControl.selectedSegmentIndex) {
+    case 0:
+      [self.model fetchRewards];
+      break;
+    case 1:
+      [_model fetchFeed];
+      break;
+    case 2:
+      [_model fetchWallet];
+      break;
+    default:
+      break;
+  }
 }
 
 - (void) viewWillLayoutSubviews {
@@ -88,7 +112,9 @@
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-  return [[UIView alloc] init];
+  UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1.0f)];
+  [footerView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
+  return footerView;
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -97,6 +123,10 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   return (section == 0) ? 40 : 0;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+  return 0.5f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -185,6 +215,9 @@
       break;
     case 1:
       //Feed
+      if (_model.feed.count == 0) {
+        return 75;
+      }
       if ([(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
         return 120;
       } else {
@@ -224,6 +257,7 @@
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards
+      if (_model.rewards.count == 0) return;
       if ([_model.rewards objectAtIndex:indexPath.row]) {
         if(![[PDSocialMediaManager manager] isLoggedIn]){
           PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
@@ -232,16 +266,20 @@
             [_model fetchRewards];
           }];
         } else{
-          PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
-          PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
-          [[self navigationController] pushViewController:claimController animated:YES];
+          dispatch_async(dispatch_get_main_queue(), ^{
+            PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
+            PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
+            [[self navigationController] pushViewController:claimController animated:YES];
+          });
         }
       }
       break;
     case 1:
       //Feed
+      if (_model.feed.count == 0) return;
       break;
     case 2:
+      if (_model.wallet.count == 0) return;
       wcell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
       [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
       if (_model.wallet.count > 7 && indexPath.row > 0) {
@@ -274,9 +312,7 @@
   if (!_messageCenter) {
     _messageCenter = [[PDMsgCntrTblViewController alloc] initFromNib];
   }
-  [self.navigationController presentViewController:_messageCenter animated:YES completion:^(){
-  
-  }];
+  [self.navigationController pushViewController:_messageCenter animated:YES];
 }
 
 @end

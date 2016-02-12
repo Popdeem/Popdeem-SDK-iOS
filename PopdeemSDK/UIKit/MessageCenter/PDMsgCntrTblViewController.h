@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MsgCntrViewModel.h"
 
 @interface PDMsgCntrTblViewController : UITableViewController
-
-@property (nonatomic) MsgCntrViewModel *model;
 
 - (instancetype) initFromNib;
 

@@ -48,7 +48,10 @@
       return;
     }
     self.messages = messages;
-    [self.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    _messagesLoading = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [_controller.tableView reloadData];
+    });
   }];
 }
 

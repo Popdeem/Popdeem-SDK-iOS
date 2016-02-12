@@ -8,15 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
+#import <UIKit/UIKit.h>
 
 @interface PDMessage : JSONModel
 
 @property (nonatomic) NSInteger identifier;
-@property (nonatomic) NSInteger brandId;
-@property (nonatomic) NSInteger rewardId;
+@property (nonatomic,strong) NSNumber<Optional> *brandId;
+@property (nonatomic,strong) NSNumber<Optional> *rewardId;
 @property (nonatomic) BOOL read;
-@property (nonatomic, strong) NSString *imageUrl;
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSString<Optional> *imageUrl;
+@property (nonatomic, strong) UIImage<Optional> *image;
 @property (nonatomic) NSInteger createdAt;
 @property (nonatomic, strong) NSString *body;
 

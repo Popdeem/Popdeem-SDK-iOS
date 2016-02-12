@@ -15,6 +15,7 @@
   NSError *err;
   if (self = [super initWithString:json error:&err]) {
     [self fetchLogoImage];
+    self.image = nil;
     return  self;
   }
   NSLog(@"JSONModel Error on Score: %@",err);

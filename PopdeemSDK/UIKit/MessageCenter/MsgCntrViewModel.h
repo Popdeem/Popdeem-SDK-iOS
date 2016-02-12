@@ -11,9 +11,10 @@
 
 @interface MsgCntrViewModel : NSObject
 
-@property (nonatomic) NSArray *messages;
-@property (nonatomic) PDMsgCntrTblViewController *controller;
+@property (nonatomic, strong) NSArray *messages;
+@property (nonatomic, assign) PDMsgCntrTblViewController *controller;
 @property (nonatomic) BOOL messagesLoading;
 
+- (instancetype) initWithController:(PDMsgCntrTblViewController*)controller;
 - (void) fetchMessages;
 @end

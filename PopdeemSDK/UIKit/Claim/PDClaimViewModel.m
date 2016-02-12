@@ -67,22 +67,14 @@
 
 - (void) setupForReward:(PDReward*)reward {
   _reward = reward;
-  _rewardTitleString = _reward.rewardDescription;
-  _rewardRulesString = _reward.rewardRules;
-  _rewardActionsString = [self actionText];
-  if (_reward.coverImage) {
-    _rewardImage = _reward.coverImage;
-  } else {
-    //TODO: Some Default
-  }
   _textviewPlaceholder = translationForKey(@"popdeem.claim.text.placeholder", @"What are you up to?");
+  
   if (_reward.twitterPrefilledMessage) {
     _textviewPrepopulatedString = _reward.twitterPrefilledMessage;
   }
   if (_reward.twitterForcedTag) {
     _forcedTagString = _reward.twitterForcedTag;
   }
-
 }
 
 - (NSString*) actionText {

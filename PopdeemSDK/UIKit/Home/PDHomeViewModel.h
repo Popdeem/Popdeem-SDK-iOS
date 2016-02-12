@@ -38,6 +38,7 @@
 @property (nonatomic) BOOL walletLoading;
 
 - (instancetype) initWithController:(PDHomeViewController*)controller;
+- (void) setup;
 - (void) fetchRewards;
 - (void) fetchWallet;
 - (void) fetchFeed;

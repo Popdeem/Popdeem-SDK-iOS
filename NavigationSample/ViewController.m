@@ -34,7 +34,7 @@
     
   }];
   
-  [self.navigationController pushViewController:[[PDHomeViewController alloc] initFromNib] animated:YES];
+  [self.navigationController pushViewController:[[PDHomeViewController alloc] init] animated:YES];
 }
 
 - (IBAction) popIt:(id)sender {

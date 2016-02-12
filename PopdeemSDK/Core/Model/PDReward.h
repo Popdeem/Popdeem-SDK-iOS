@@ -104,6 +104,8 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) BOOL verifyLocation;
 @property (nonatomic) BOOL revoked;
 
+@property (nonatomic, strong) NSMutableArray *locations;
+
 - (id) initFromApi:(NSDictionary*)params;
 
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion;

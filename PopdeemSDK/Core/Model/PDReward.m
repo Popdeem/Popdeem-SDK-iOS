@@ -8,7 +8,7 @@
 
 #import "PDReward.h"
 #import "PDUser.h"
-
+#import "PDLocation.h"
 @interface PDReward () {
   BOOL isDownloadingCover;
 }
@@ -85,18 +85,6 @@
       self.unlimitedAvailability = FALSE;
     }
     
-    self.locationIds = [NSMutableArray array];
-    /*
-     "tweet_options" =     {
-     "download_link" = "http://bit.ly/1iIe5Q3";
-     "force_tag" = true;
-     "forced_tag" = "#forcedTag";
-     "free_form" = false;
-     "include_download_link" = true;
-     prefill = true;
-     "prefilled_message" = "This can be deleted";
-     };
-     */
     id tweet_options = params[@"tweet_options"];
     if ([tweet_options isKindOfClass:[NSDictionary class]]) {
       NSString *downloadLink = tweet_options[@"download_link"];
@@ -127,6 +115,13 @@
       self.revoked = NO;
     }
     
+    self.locations = [NSMutableArray array];
+    if (params[@"locations"]) {
+      for (id location in params[@"locations"]) {
+        PDLocation *l = [[PDLocation alloc] initFromApi:location];
+        [self.locations addObject:l];
+      }
+    }
     return self;
   }
   return nil;

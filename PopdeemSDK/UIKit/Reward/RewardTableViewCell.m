@@ -22,10 +22,10 @@
     self.separatorInset = UIEdgeInsetsZero;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    float imageSize = 40;
-    float indent = 10;
+    float imageSize = 35;
+    float indent = 20;
     
-    _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, (frame.size.height - 40)/2, imageSize, imageSize)];
+    _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, (frame.size.height - 35)/2, imageSize, imageSize)];
     if (reward.coverImage) {
       [_logoImageView setImage:reward.coverImage];
     } else {
@@ -37,7 +37,7 @@
     [self addSubview:_logoImageView];
     
     float centerLineY = frame.size.height/2;
-    float labelX = imageSize + 2*indent;
+    float labelX = imageSize + indent + 10;
     float labelWidth = frame.size.width - labelX - indent;
     
     
@@ -56,7 +56,7 @@
       padding = (40 - mainLabelsize.height)/2;
     }
     
-    [_mainLabel setFrame: CGRectMake(labelX, centerLineY-(mainLabelsize.height)-5, labelWidth, mainLabelsize.height)];
+    [_mainLabel setFrame: CGRectMake(labelX, centerLineY-(mainLabelsize.height), labelWidth, mainLabelsize.height)];
     [_mainLabel setText:reward.rewardDescription];
     [_mainLabel setFont:[UIFont systemFontOfSize:14]];
     [_mainLabel setTextColor:[UIColor blackColor]];
@@ -88,11 +88,11 @@
       [_rulesLabel setNumberOfLines:0];
       [self addSubview:_rulesLabel];
       
-      [_mainLabel setFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y-mainLabelsize.height-5, labelWidth, mainLabelsize.height)];
+      [_mainLabel setFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y-mainLabelsize.height, labelWidth, mainLabelsize.height)];
     }
     
     if (rules) {
-      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y+rulesLabelsize.height+5, labelWidth, 15)];
+      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y+rulesLabelsize.height, labelWidth, 15)];
     } else {
       _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, centerLineY+5, labelWidth, 15)];
     }
