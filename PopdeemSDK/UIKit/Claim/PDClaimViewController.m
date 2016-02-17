@@ -11,8 +11,14 @@
 #import "PDUser.h"
 #import "PDUIKitUtils.h"
 #import "PDUtils.h"
+#import "RewardTableViewCell.h"
+#import "PDLocationValidator.h"
 
-@interface PDClaimViewController ()
+@interface PDClaimViewController () {
+  NSArray *_mediaTypes;
+  PDReward *_reward;
+  PDLocation *_location;
+}
 @property (nonatomic, strong) CALayer *textViewBordersLayer;
 @property (nonatomic, strong) CALayer *buttonsViewBordersLayer;
 @property (nonatomic, strong) CALayer *twitterButtonViewBordersLayer;
@@ -37,24 +43,40 @@
 }
 
 - (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location {
+  CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
   if (self = [self initFromNib]) {
-    _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:mediaTypes andReward:reward location:location];
-    [_viewModel setViewController:self];
-    [_textView setDelegate:_viewModel];
+    _mediaTypes = mediaTypes;
+    _reward = reward;
     return self;
   }
   return nil;
 }
 
+- (void) verifyLocation {
+  PDLocationValidator *validator = [[PDLocationValidator alloc] init];
+  [validator validateLocationForReward:_reward completion:^(BOOL validated){
+    if (validated) {
+      NSLog(@"All OK");
+    } else {
+      NSLog(@"Not Here");
+    }
+  }];
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
+  _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+  [_viewModel setViewController:self];
+  [_textView setDelegate:_viewModel];
+  [_textView setFont:[UIFont systemFontOfSize:14]];
   [self renderView];
-  UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
-  [_keyboardHiderView addGestureRecognizer:hiderTap];
+  [self drawBorders];
+  [self verifyLocation];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-  [self drawBorders];
+  UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
+  [_keyboardHiderView addGestureRecognizer:hiderTap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,23 +85,37 @@
 }
 
 - (void) renderView {
-  [self.rewardDescriptionLabel setText:_viewModel.rewardTitleString];
-  [self.rewardRulesLabel setText:_viewModel.rewardRulesString];
-  [self.rewardInfoLabel setText:_viewModel.rewardActionsString];
+  [self.rewardInfoView addSubview:[[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:_viewModel.reward]];
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
   [self.rewardImageView setImage:_viewModel.reward.coverImage];
+  
+  [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
+  [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
+  [_facebookButton setTitleColor:[UIColor colorWithRed:0.169 green:0.247 blue:0.537 alpha:1.000] forState:UIControlStateSelected];
+  [_facebookButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  
+  [_twitterButton setImage:[UIImage imageNamed:@"pduikit_twitterbutton_deselected"] forState:UIControlStateNormal];
+  [_twitterButton setImage:[UIImage imageNamed:@"pduikit_twitterbutton_selected"] forState:UIControlStateSelected];
+  [_twitterButton setTitleColor:[UIColor colorWithRed:0.200 green:0.412 blue:0.596 alpha:1.000] forState:UIControlStateSelected];
+  [_twitterButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  
   switch (_viewModel.socialMediaTypesAvailable) {
     case FacebookOnly:
+      [self.facebookButton setHidden:NO];
+      [self.twitterButton setHidden:NO];
+      [self.facebookButton setSelected:YES];
+      [self.twitterButton setSelected:NO];
+      break;
     case TwitterOnly:
-      [self.facebookButton setHidden:YES];
-      [self.twitterButton setHidden:YES];
-      self.facebookButtonViewHeightConstraint.constant = 0;
-      self.twitterButtonViewHeightConstraint.constant = 0;
+      [self.facebookButton setHidden:NO];
+      [self.twitterButton setHidden:NO];
+      [self.facebookButton setSelected:NO];
+      [self.twitterButton setSelected:YES];
       break;
     case FacebookAndTwitter:
       //Ensure both buttons are shown
-      [self.facebookButton setHidden:YES];
-      [self.twitterButton setHidden:YES];
+      [self.facebookButton setHidden:NO];
+      [self.twitterButton setHidden:NO];
       self.facebookButtonViewHeightConstraint.constant = 40;
       self.twitterButtonViewHeightConstraint.constant = 40;
       break;
@@ -108,6 +144,13 @@
   _facebookButtonViewBordersLayer.frame = CGRectMake(-1, 0, _facebookButton.frame.size.width+1, _facebookButton.frame.size.height);
   [_facebookButton.layer addSublayer:_facebookButtonViewBordersLayer];
   _facebookButton.clipsToBounds = YES;
+  
+  _twitterButtonViewBordersLayer = [CALayer layer];
+  _twitterButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
+  _twitterButtonViewBordersLayer.borderWidth = 0.5;
+  _twitterButtonViewBordersLayer.frame = CGRectMake(0, 0, _twitterButton.frame.size.width+1, _twitterButton.frame.size.height);
+  [_twitterButton.layer addSublayer:_twitterButtonViewBordersLayer];
+  _twitterButton.clipsToBounds = YES;
 }
 
 - (IBAction)cameraButtonTapped:(id)sender {
@@ -148,7 +191,7 @@
                      
                      [_keyboardHiderView setHidden:YES];
                      if (!IS_IPHONE_4_OR_LESS) {
-                       _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 86;
+                       _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 65;
                      }
                      [_textView resignFirstResponder];
                      [_rewardInfoView setHidden:NO];

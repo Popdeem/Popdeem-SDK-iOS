@@ -120,6 +120,8 @@ The users last name
 @property (nonatomic) BOOL isTester;
 + (instancetype) sharedInstance;
 
+@property (nonatomic) BOOL *suspended;
+
 /**
  Creates an instance of the PDUser object from the API params.
  This user will be globally accessible by + sharedInstance

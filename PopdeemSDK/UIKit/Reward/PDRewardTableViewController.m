@@ -17,6 +17,7 @@
 #import "PDUtils.h"
 #import "LazyLoader.h"
 #import "PDTheme.h"
+#import "PDLocationValidator.h"
 
 @interface PDRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
@@ -32,7 +33,7 @@
   
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
   [self renderView];
- }
+}
 
 - (void)renderView {
   self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:self.view];

@@ -84,6 +84,8 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 
 @property (nonatomic) long createdAt;
 @property (nonatomic) long availableUntil;
+@property (nonatomic) BOOL unlimitedAvailability;
+
 
 @property (nonatomic) PDRewardAction action;
 @property (nonatomic) PDRewardStatus status;
@@ -100,6 +102,9 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, strong, nullable) NSString *twitterPrefilledMessage;
 @property (nonatomic) NSInteger twitterMediaLength;
 @property (nonatomic) BOOL verifyLocation;
+@property (nonatomic) BOOL revoked;
+
+@property (nonatomic, strong) NSMutableArray *locations;
 
 - (id) initFromApi:(NSDictionary*)params;
 

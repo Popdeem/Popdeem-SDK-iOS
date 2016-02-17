@@ -7,7 +7,7 @@
 		<key>NavigationSample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>2</integer>
 		</dict>
 		<key>PopdeemSDK.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,12 +17,22 @@
 		<key>PopdeemSample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>1</integer>
+		</dict>
+		<key>TabbedTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>393D2B751C3AD0D300F1E253</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39537BC21C639B79001C6796</key>
 		<dict>
 			<key>primary</key>
 			<true/>

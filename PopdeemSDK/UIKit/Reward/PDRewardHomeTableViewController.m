@@ -17,6 +17,8 @@
 #import "CheckinCell.h"
 #import "PDClaimViewController.h"
 #import "WalletTableViewCell.h"
+#import "PDSocialLoginViewController.h"
+#import "PDSocialMediaManager.h"
 
 
 @interface PDRewardHomeTableViewController () {
@@ -92,11 +94,7 @@
   } failure:^(NSError *error) {
     //TODO: Handle Error
   }];
-  
-  UIImageView *bgView = [[UIImageView alloc] initWithFrame:self.view.frame];
-  [bgView setImage:PopdeemImage(@"popdeem.rewardsHome.backgroundImage")];
-  [bgView setContentMode:UIViewContentModeScaleAspectFill];
-  [self.tableView setBackgroundView:bgView];
+
   [self setupHeader];
 }
 
@@ -130,9 +128,9 @@
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
   
-  [self.view setBackgroundColor:PopdeemColor(@"popdeem.tableView.backgroundColor")];
-  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.tableView.backgroundColor")];
-  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.tableView.seperatorColor")];
+  [self.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
+  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
+  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
   
   [self renderView];
 }
@@ -143,7 +141,7 @@
   }
   
   if (!_segmentedControl) {
-    _segmentedControl = [[PDSegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"History"]];
+    _segmentedControl = [[PDSegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"Wallet"]];
     _segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
     _segmentedControl.clipsToBounds = YES;
     
@@ -155,11 +153,11 @@
     [_segmentedControl addTarget:self action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
   [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
-  [self.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.rewardsHome.header.backgroundColor")];
+  [self.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.home.header.backgroundColor")];
   if (!_tableHeaderImageView) {
-    if (PopdeemThemeHasValueForKey(@"popdeem.tableView.header.backgroundImage")) {
+    if (PopdeemThemeHasValueForKey(@"popdeem.home.header.backgroundImage")) {
       _tableHeaderImageView = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
-      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.tableView.header.backgroundImage")];
+      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.home.header.backgroundImage")];
       [_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
       UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
       [gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
@@ -172,8 +170,8 @@
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
     [_tableHeaderLabel setNumberOfLines:3];
     [_tableHeaderLabel setFont:[UIFont systemFontOfSize:16]];
-    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.tableView.header.textColor")];
-    [_tableHeaderLabel setText:translationForKey(@"popdeem.rewardsHome.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
+    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
+    [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
     [self.tableView.tableHeaderView addSubview:_tableHeaderLabel];
   }
 }
@@ -327,9 +325,17 @@
     case 0:
       //Rewards
       if ([self.rewards objectAtIndex:indexPath.row]) {
-        PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
-        PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
-        [[self navigationController] pushViewController:claimController animated:YES];
+        if(![[PDSocialMediaManager manager] isLoggedIn]){
+          PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
+          vc.delegate = self;
+          [self presentViewController:vc animated:YES completion:^{
+            
+          }];
+        } else{
+          PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
+          PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
+          [[self navigationController] pushViewController:claimController animated:YES];
+        }
       }
       break;
     case 1:

@@ -46,14 +46,18 @@
     //Show only facebook button
     self.socialMediaTypesAvailable = FacebookOnly;
     _willFacebook = YES;
+    _mustFacebook = YES;
   } else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0] isEqualToNumber:@(TwitterOnly)]) {
     //Show only Twitter button
     self.socialMediaTypesAvailable = TwitterOnly;
+    _mustTweet = YES;
     _willTweet = YES;
   } else if (mediaTypes.count == 2) {
     //Show two buttons
     self.socialMediaTypesAvailable = FacebookAndTwitter;
     _willFacebook = YES;
+    _mustTweet = NO;
+    _mustFacebook = NO;
   } else {
     //too many or not enough
   }
@@ -67,22 +71,14 @@
 
 - (void) setupForReward:(PDReward*)reward {
   _reward = reward;
-  _rewardTitleString = _reward.rewardDescription;
-  _rewardRulesString = _reward.rewardRules;
-  _rewardActionsString = [self actionText];
-  if (_reward.coverImage) {
-    _rewardImage = _reward.coverImage;
-  } else {
-    //TODO: Some Default
-  }
   _textviewPlaceholder = translationForKey(@"popdeem.claim.text.placeholder", @"What are you up to?");
+  
   if (_reward.twitterPrefilledMessage) {
     _textviewPrepopulatedString = _reward.twitterPrefilledMessage;
   }
   if (_reward.twitterForcedTag) {
     _forcedTagString = _reward.twitterForcedTag;
   }
-
 }
 
 - (NSString*) actionText {
@@ -280,7 +276,23 @@
     [alert show];
     return;
   }
-
+  
+  if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+//    [self postToFacebook:nil];
+  } else {
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+      if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+        [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+//        [self postToFacebook:nil];
+      } else {
+        UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions" message:@"You must grant publish permissions in order to make this action" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [noperm show];
+      }
+    }];
+    
+  }
+  
   PDAPIClient *client = [PDAPIClient sharedInstance];
   NSString *message = [_viewController.textView text];
 

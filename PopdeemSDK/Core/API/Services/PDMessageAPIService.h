@@ -12,6 +12,7 @@
 @interface PDMessageAPIService : PDAPIService
 
 - (void) markMessageAsRead:(NSInteger)messageId
-           completion:(void (^)(NSError *error))completion;
+                completion:(void (^)(NSError *error))completion;
+- (void) fetchMessagesCompletion:(void (^)(NSArray *messages, NSError *error))completion;
 
 @end

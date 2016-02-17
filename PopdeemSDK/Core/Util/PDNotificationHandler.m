@@ -67,7 +67,7 @@
   image = [UIImage imageNamed:@"message_icon"];
   _alertView = [[PDCustomIOS7AlertView alloc] init];
   
-  UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 160)];
+  UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 180)];
   
   UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-40,5, 80, 80)];
   imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -86,9 +86,9 @@
   [title setTextColor:[UIColor blackColor]];
   [contentView addSubview:title];
   
-  UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(10, 115, contentView.frame.size.width-20, 35)];
+  UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(10, 115, contentView.frame.size.width-20, 55)];
   message.lineBreakMode = NSLineBreakByWordWrapping;
-  message.numberOfLines = 2;
+  message.numberOfLines = 4;
   [message setTextAlignment:NSTextAlignmentCenter];
   [message setFont:[UIFont systemFontOfSize:14]];
   [message setText:[userInfo objectForKey:@"content"]];

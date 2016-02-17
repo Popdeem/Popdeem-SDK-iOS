@@ -88,6 +88,16 @@
 #pragma clang diagnostic pop
 }
 
++ (void) presentHomeFlowInNavigationController:(UINavigationController*)navController {
+  id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+  SEL selector = NSSelectorFromString(@"presentHomeFlowInNavigationController:");
+  
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+  [uiKitCore performSelector:selector];
+#pragma clang diagnostic pop
+}
+
 + (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated {
   id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
   SEL selector = NSSelectorFromString(@"pushRewardsToNavigationController:animated");
@@ -124,6 +134,9 @@
 }
 
 + (void) handleRemoteNotification:(NSDictionary*)userInfo {
+  if (NSClassFromString(@"PopdeemUIKItCore")){
+    
+  }
   PDNotificationHandler *handler = [PDNotificationHandler sharedInstance];
   [handler showRemoteNotification:userInfo completion:^(BOOL success){
     

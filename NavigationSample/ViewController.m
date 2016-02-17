@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "PopdeemSDK.h"
-#import "PDRewardHomeTableViewController.h"
+#import "PDHomeViewController.h"
+#import "PDMessageAPIService.h"
 
 @interface ViewController ()
 
@@ -18,7 +19,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self.navigationController setNavigationBarHidden:YES animated:YES];
+  [self.navigationController setNavigationBarHidden:NO animated:YES];
   // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -28,11 +29,17 @@
 }
 
 - (IBAction) pushIt:(id)sender {
-  [self.navigationController pushViewController:[[PDRewardHomeTableViewController alloc] initFromNib] animated:YES];
+  PDMessageAPIService *messages = [[PDMessageAPIService alloc] init];
+  [messages fetchMessagesCompletion:^(NSArray *messages, NSError *error){
+    
+  }];
+  
+  [self.navigationController pushViewController:[[PDHomeViewController alloc] init] animated:YES];
+  [PopdeemSDK presentHomeFlowInNavigationController:self.navigationController];
 }
 
 - (IBAction) popIt:(id)sender {
-  [PopdeemSDK presentRewardFlow];
+  
 }
 
 @end

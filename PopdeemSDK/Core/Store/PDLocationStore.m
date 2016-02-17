@@ -7,6 +7,7 @@
 //
 
 #import "PDLocationStore.h"
+#import "PDReward.h"
 
 @implementation PDLocationStore
 
@@ -51,6 +52,16 @@
         }
     }
     return rarr;
+}
+
++ (nonnull NSArray*) locationsForReward:(PDReward*)reward {
+  NSMutableArray *rarr = [NSMutableArray array];
+  for (PDLocation *l in [[PDLocationStore store] allValues]) {
+    if (l.brandIdentifier == reward.brandId) {
+      [rarr addObject:l];
+    }
+  }
+  return rarr;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder {

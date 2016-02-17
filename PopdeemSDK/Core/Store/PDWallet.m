@@ -33,7 +33,7 @@
     //Returning only the wallet rewards in the future
     NSDate *now = [NSDate date];
     NSDate *until = [NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil];
-    if ([now compare:until] == NSOrderedAscending) {
+    if ([now compare:until] == NSOrderedAscending || reward.unlimitedAvailability == YES) {
         [[PDWallet wallet] addObject:reward];
     }
 }
