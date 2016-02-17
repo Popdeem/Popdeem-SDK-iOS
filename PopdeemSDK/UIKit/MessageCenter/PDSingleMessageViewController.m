@@ -54,8 +54,6 @@
   [self.titleLabel setText:_model.titleBodyString];
   [self.bodyTaglabel setText:_model.bodyTagString];
   [self.bodyLabel setText:_model.bodyBodyString];
-  
-  ]
   [self.view setNeedsDisplay];
 }
 
