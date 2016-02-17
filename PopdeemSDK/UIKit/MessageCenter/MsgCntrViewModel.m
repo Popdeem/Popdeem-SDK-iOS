@@ -10,6 +10,7 @@
 #import "PDMessageAPIService.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDMessageStore.h"
 
 @implementation MsgCntrViewModel
 
@@ -37,12 +38,19 @@
   [_controller.view setBackgroundColor:PopdeemColor(@"popdeem.messageCenter.tableView.backgroundColor")];
   [_controller.tableView setBackgroundColor:PopdeemColor(@"popdeem.messageCenter.tableView.backgroundColor")];
   [_controller.tableView setSeparatorColor:PopdeemColor(@"popdeem.messageCenter.tableView.seperatorColor")];
+  
+  if ([[PDMessageStore store] count] > 0) {
+    _messages = [PDMessageStore orderedByDate];
+  }
 }
 
 - (void) fetchMessages {
   _messagesLoading = YES;
   PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
   [service fetchMessagesCompletion:^(NSArray *messages, NSError *error){
+    if ([_controller.refreshControl isRefreshing]) {
+      [_controller.refreshControl endRefreshing];
+    }
     if (error) {
       NSLog(@"Error while fetching messages");
       return;

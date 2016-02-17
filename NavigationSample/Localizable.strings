@@ -25,7 +25,7 @@
 "popdeem.rewards.title" = "Rewards";
 "popdeem.rewards.notavailable" = "There are no rewards available right now. Please check back later.";
 
-"popdeem.claims.title" = "Claims";
+"popdeem.claims.title" = "Claim";
 "popdeem.claim.addmessage" = "Add Message";
 "popdeem.claim.getreward" = "Claim Reward";
 
@@ -52,4 +52,9 @@
 
 "popdeem.home.header.titleText" = "Share your Popdeem experience on social networks to earn more rewards.";
 "popdeem.home.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
+
+"popdeem.message.detail.senderTag" = "Sender:";
+"popdeem.message.detail.dateTag" = "Date:";
+"popdeem.message.detail.titleTag" = "Title:";
+"popdeem.message.detail.bodyTag" = "Body:";
 

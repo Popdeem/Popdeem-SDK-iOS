@@ -64,6 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) setUpThemeFile:(NSString*)themeName;
 
 + (void) presentRewardFlow;
++ (void) presentHomeFlowInNavigationController:(UINavigationController*)navController;
 + (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated;
 
 + (void) registerForPushNotificationsApplication:(UIApplication *)application;

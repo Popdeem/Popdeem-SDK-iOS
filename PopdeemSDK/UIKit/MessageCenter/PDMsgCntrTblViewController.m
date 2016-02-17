@@ -10,6 +10,7 @@
 #import "MessageCell.h"
 #import "NoRewardsTableViewCell.h"
 #import "MsgCntrViewModel.h"
+#import "PDSingleMessageViewController.h"
 
 @interface PDMsgCntrTblViewController ()
 @property (nonatomic, strong) MsgCntrViewModel *model;
@@ -30,6 +31,14 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self.tableView reloadData];
+  self.refreshControl = [[UIRefreshControl alloc]init];
+  [self.refreshControl setTintColor:[UIColor darkGrayColor]];
+  [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+  [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) reloadAction {
+  [self.model fetchMessages];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +79,11 @@
 
  // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+  if ([_model.messages objectAtIndex:indexPath.row]) {
+    PDSingleMessageViewController *svc = [[PDSingleMessageViewController alloc] initFromNib];
+    [svc setMessage:_model.messages[indexPath.row]];
+    [self.navigationController pushViewController:svc animated:YES];
+  }
 }
 
 @end

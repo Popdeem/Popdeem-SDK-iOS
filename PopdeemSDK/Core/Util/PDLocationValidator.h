@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PDGeolocationManager.h"
+#import "PDReward.h"
 
-@interface PDLocationValidator : NSObject
+@interface PDLocationValidator : NSObject <CLLocationManagerDelegate>
+
+- (void) validateLocationForReward:(PDReward*)reward completion:(void (^)(BOOL valdated))completion;
 
 @end

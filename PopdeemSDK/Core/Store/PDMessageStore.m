@@ -34,7 +34,7 @@
   sortedArray = [[[[PDMessageStore store] copy] allValues] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
     NSInteger first = [(PDMessage*)a createdAt];
     NSInteger second = [(PDMessage*)b createdAt];
-    return [@(first) compare:@(second)];
+    return [@(second) compare:@(first)];
   }];
   return sortedArray;
 }

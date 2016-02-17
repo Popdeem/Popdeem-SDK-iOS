@@ -9,12 +9,10 @@
 #define LOCATION_RADIUS 25.0f;
 
 #import "PDLocationValidator.h"
-#import "PDReward.h"
 #import "PDLocationStore.h"
 #import "PDBrand.h"
 #import "PDBrandStore.h"
 #import "PDUser.h"
-#import "PDGeolocationManager.h"
 #import "PDAPIClient.h"
 #import "PDUserAPIService.h"
 #import <CoreLocation/CLGeocoder.h>
@@ -36,10 +34,12 @@
   PDBrand *b = [PDBrandStore findBrandByIdentifier:reward.brandId];
   if (b.verifyLocation == NO) {
     _completionBlock(YES);
+    return;
   }
   
   if ([[PDUser sharedInstance] isTester]) {
     _completionBlock(YES);
+    return;
   }
   
   _locationAcquired = NO;
@@ -53,17 +53,18 @@
   NSLog(@"Error: %@",error);
   [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
   
-  if (!locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 30)) {
+  if (!_locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 30)) {
     [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
   } else {
     _completionBlock(NO);
+    return;
   }
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-  if (locationAcquired == NO) {
+  if (_locationAcquired == NO) {
     [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
-    locationAcquired = YES;
+    _locationAcquired = YES;
   } else {
     return;
   }
@@ -94,7 +95,7 @@
 
 - (CLLocationDistance) distanceToClosestLocation:(float)lat long:(float)longi {
   CLLocationDistance closest = DBL_MAX;
-  CLLocation userLocation = [[CLLocation alloc] initWithLatitude:lat longitude:longi];
+  CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:lat longitude:longi];
   
   for (PDLocation *l in _reward.locations) {
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:lat longitude:longi];

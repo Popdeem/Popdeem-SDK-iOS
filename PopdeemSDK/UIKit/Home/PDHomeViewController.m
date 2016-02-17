@@ -20,6 +20,7 @@
 #import "PDHomeViewModel.h"
 #import "PDSocialMediaManager.h"
 #import "PDSocialLoginViewController.h"
+#import "FeedImageViewController.h"
 
 @interface PDHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -61,17 +62,27 @@
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110)];
-  [self renderView];
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-  [self.model fetchRewards];
-  [self.model fetchFeed];
-  [self.model fetchWallet];
   self.refreshControl = [[UIRefreshControl alloc]init];
   [self.refreshControl setTintColor:[UIColor darkGrayColor]];
   [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
+  
+  UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Inbox" style:UIBarButtonItemStylePlain target:self action:@selector(inboxAction)];
+  self.navigationItem.rightBarButtonItem = anotherButton;
+  
+  [self.model fetchRewards];
+  [self.model fetchFeed];
+  [self.model fetchWallet];
+  [self renderView];
+}
+
+- (void) inboxAction {
+  PDMsgCntrTblViewController *mvc = [[PDMsgCntrTblViewController alloc] initFromNib];
+  [self.navigationController pushViewController:mvc animated:YES];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+  [self.view setUserInteractionEnabled:YES];
 }
 
 - (void) reloadAction {
@@ -266,17 +277,23 @@
             [_model fetchRewards];
           }];
         } else{
-          dispatch_async(dispatch_get_main_queue(), ^{
+//          dispatch_async(dispatch_get_main_queue(), ^{
             PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
-            PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
+            PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
             [[self navigationController] pushViewController:claimController animated:YES];
-          });
+//          });
         }
       }
       break;
     case 1:
       //Feed
       if (_model.feed.count == 0) return;
+      if ([(PDFeedItem*)_model.feed[indexPath.row] actionImage]) {
+        [self.view setUserInteractionEnabled:NO];
+        FeedImageViewController *ivc = [[FeedImageViewController alloc] init];
+        ivc.item = _model.feed[indexPath.row];
+        [[self navigationController] pushViewController:ivc animated:YES];
+      }
       break;
     case 2:
       if (_model.wallet.count == 0) return;

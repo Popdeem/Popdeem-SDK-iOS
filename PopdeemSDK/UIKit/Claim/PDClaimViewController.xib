@@ -42,6 +42,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftP-Rr-EsR">
+                    <rect key="frame" x="0.0" y="98" width="600" height="405"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                </view>
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="URn-F7-REZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,10 +191,6 @@
                         <constraint firstItem="MT4-ac-r3V" firstAttribute="leading" secondItem="XxC-57-5PT" secondAttribute="leading" constant="8" id="uID-M3-dok"/>
                         <constraint firstAttribute="height" constant="65" id="zcj-gQ-lYB"/>
                     </constraints>
-                </view>
-                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftP-Rr-EsR">
-                    <rect key="frame" x="0.0" y="98" width="600" height="405"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>

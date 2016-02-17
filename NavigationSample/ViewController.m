@@ -35,6 +35,7 @@
   }];
   
   [self.navigationController pushViewController:[[PDHomeViewController alloc] init] animated:YES];
+  [PopdeemSDK presentHomeFlowInNavigationController:self.navigationController];
 }
 
 - (IBAction) popIt:(id)sender {

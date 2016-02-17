@@ -12,6 +12,7 @@
 #import "PDUIKitUtils.h"
 #import "PDUtils.h"
 #import "RewardTableViewCell.h"
+#import "PDLocationValidator.h"
 
 @interface PDClaimViewController () {
   NSArray *_mediaTypes;
@@ -51,6 +52,17 @@
   return nil;
 }
 
+- (void) verifyLocation {
+  PDLocationValidator *validator = [[PDLocationValidator alloc] init];
+  [validator validateLocationForReward:_reward completion:^(BOOL validated){
+    if (validated) {
+      NSLog(@"All OK");
+    } else {
+      NSLog(@"Not Here");
+    }
+  }];
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
@@ -59,6 +71,7 @@
   [_textView setFont:[UIFont systemFontOfSize:14]];
   [self renderView];
   [self drawBorders];
+  [self verifyLocation];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -75,12 +88,24 @@
   [self.rewardInfoView addSubview:[[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:_viewModel.reward]];
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
   [self.rewardImageView setImage:_viewModel.reward.coverImage];
+  
+  [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
+  [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
+  [_facebookButton setTitleColor:[UIColor colorWithRed:0.169 green:0.247 blue:0.537 alpha:1.000] forState:UIControlStateSelected];
+  [_facebookButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  
+  [_twitterButton setImage:[UIImage imageNamed:@"pduikit_twitterbutton_deselected"] forState:UIControlStateNormal];
+  [_twitterButton setImage:[UIImage imageNamed:@"pduikit_twitterbutton_selected"] forState:UIControlStateSelected];
+  [_twitterButton setTitleColor:[UIColor colorWithRed:0.200 green:0.412 blue:0.596 alpha:1.000] forState:UIControlStateSelected];
+  [_twitterButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+  
   switch (_viewModel.socialMediaTypesAvailable) {
     case FacebookOnly:
       [self.facebookButton setHidden:NO];
       [self.twitterButton setHidden:NO];
       [self.facebookButton setSelected:YES];
       [self.twitterButton setSelected:NO];
+      break;
     case TwitterOnly:
       [self.facebookButton setHidden:NO];
       [self.twitterButton setHidden:NO];
@@ -89,8 +114,8 @@
       break;
     case FacebookAndTwitter:
       //Ensure both buttons are shown
-      [self.facebookButton setHidden:YES];
-      [self.twitterButton setHidden:YES];
+      [self.facebookButton setHidden:NO];
+      [self.twitterButton setHidden:NO];
       self.facebookButtonViewHeightConstraint.constant = 40;
       self.twitterButtonViewHeightConstraint.constant = 40;
       break;

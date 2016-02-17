@@ -10,6 +10,9 @@
 		3685C9C34EA4316DC4C9D41D /* libPods-TabbedTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 752C77BF7111EC607974B9FD /* libPods-TabbedTest.a */; };
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E3071C6DEA51000120D4 /* PDLocationValidator.m */; };
+		3921E30C1C71D84B000120D4 /* FeedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E30B1C71D84B000120D4 /* FeedImageViewController.m */; };
+		3921E3111C71DD68000120D4 /* PDSingleMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E30F1C71DD68000120D4 /* PDSingleMessageViewController.m */; };
+		3921E3141C71E1BB000120D4 /* PDSingleMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E3131C71E1BB000120D4 /* PDSingleMessageViewModel.m */; };
 		392423761C230F4E0038D953 /* LazyLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 392423751C230F4E0038D953 /* LazyLoader.m */; };
 		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
 		392787151C0716F600F8DCD9 /* PDClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDClaimViewController.m */; };
@@ -182,6 +185,13 @@
 /* Begin PBXFileReference section */
 		3921E3061C6DEA51000120D4 /* PDLocationValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationValidator.h; sourceTree = "<group>"; };
 		3921E3071C6DEA51000120D4 /* PDLocationValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationValidator.m; sourceTree = "<group>"; };
+		3921E30A1C71D84B000120D4 /* FeedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedImageViewController.h; path = Feed/FeedImageViewController.h; sourceTree = "<group>"; };
+		3921E30B1C71D84B000120D4 /* FeedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedImageViewController.m; path = Feed/FeedImageViewController.m; sourceTree = "<group>"; };
+		3921E30E1C71DD68000120D4 /* PDSingleMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSingleMessageViewController.h; path = MessageCenter/PDSingleMessageViewController.h; sourceTree = "<group>"; };
+		3921E30F1C71DD68000120D4 /* PDSingleMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSingleMessageViewController.m; path = MessageCenter/PDSingleMessageViewController.m; sourceTree = "<group>"; };
+		3921E3101C71DD68000120D4 /* PDSingleMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDSingleMessageViewController.xib; path = MessageCenter/PDSingleMessageViewController.xib; sourceTree = "<group>"; };
+		3921E3121C71E1BB000120D4 /* PDSingleMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDSingleMessageViewModel.h; path = MessageCenter/PDSingleMessageViewModel.h; sourceTree = "<group>"; };
+		3921E3131C71E1BB000120D4 /* PDSingleMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSingleMessageViewModel.m; path = MessageCenter/PDSingleMessageViewModel.m; sourceTree = "<group>"; };
 		392423741C230F4E0038D953 /* LazyLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LazyLoader.h; path = Utilities/LazyLoader.h; sourceTree = "<group>"; };
 		392423751C230F4E0038D953 /* LazyLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LazyLoader.m; path = Utilities/LazyLoader.m; sourceTree = "<group>"; };
 		3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginViewModelTests.m; path = PopdeemSDKTests/UIKit/PDSocialLoginViewModelTests.m; sourceTree = SOURCE_ROOT; };
@@ -500,6 +510,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3921E3091C71D825000120D4 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				3921E30A1C71D84B000120D4 /* FeedImageViewController.h */,
+				3921E30B1C71D84B000120D4 /* FeedImageViewController.m */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		3921E30D1C71DD4E000120D4 /* SingleMessage */ = {
+			isa = PBXGroup;
+			children = (
+				3921E30E1C71DD68000120D4 /* PDSingleMessageViewController.h */,
+				3921E30F1C71DD68000120D4 /* PDSingleMessageViewController.m */,
+				3921E3101C71DD68000120D4 /* PDSingleMessageViewController.xib */,
+				3921E3121C71E1BB000120D4 /* PDSingleMessageViewModel.h */,
+				3921E3131C71E1BB000120D4 /* PDSingleMessageViewModel.m */,
+			);
+			name = SingleMessage;
+			sourceTree = "<group>";
+		};
 		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +598,7 @@
 		3966F69E1C5B84E500DFFF9B /* MessageCenter */ = {
 			isa = PBXGroup;
 			children = (
+				3921E30D1C71DD4E000120D4 /* SingleMessage */,
 				3966F6A61C5B85DD00DFFF9B /* PDMsgCntrTblViewController.h */,
 				3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */,
 				398A11DC1C60BD09002CB4B6 /* MsgCntrViewModel.h */,
@@ -1079,6 +1111,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3921E3091C71D825000120D4 /* Feed */,
 				3966F69E1C5B84E500DFFF9B /* MessageCenter */,
 				39ABA65F1C4D06A80057088E /* Home */,
 				39FD1C2A1C04B24F00CC3B0C /* Utilities */,
@@ -1583,6 +1616,7 @@
 				398A11DB1C60B748002CB4B6 /* MessageCell.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PhotoCell.m in Sources */,
 				39ABA6651C4D073D0057088E /* PDHomeViewModel.m in Sources */,
+				3921E3141C71E1BB000120D4 /* PDSingleMessageViewModel.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */,
@@ -1595,10 +1629,12 @@
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDHomeViewController.m in Sources */,
+				3921E3111C71DD68000120D4 /* PDSingleMessageViewController.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				39A989921C3BED98002AF910 /* PDRewardHomeViewModel.m in Sources */,
 				392423761C230F4E0038D953 /* LazyLoader.m in Sources */,
+				3921E30C1C71D84B000120D4 /* FeedImageViewController.m in Sources */,
 				A92281EC1C07369800A43320 /* RewardTableViewCell.m in Sources */,
 				398A11DE1C60BD09002CB4B6 /* MsgCntrViewModel.m in Sources */,
 			);

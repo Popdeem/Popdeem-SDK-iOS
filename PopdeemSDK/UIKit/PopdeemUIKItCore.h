@@ -15,6 +15,8 @@
 
 - (void) setThemeFile:(NSString*)fileName;
 
+- (void) presentHomeFlowInNavigationController:(UINavigationController*)navController;
+
 - (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated;
 
 @end

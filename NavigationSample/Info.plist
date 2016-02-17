@@ -97,7 +97,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We use your location to deliver local rewards"</string>
+	<string>&quot;We use your location to deliver local rewards&quot;</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -114,5 +114,11 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>TwitterAppConsumerKey</key>
+	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
+	<key>TwitterAppConsumerSecret</key>
+	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
+	<key>PopdeemTwitterCallbackScheme</key>
+	<string>popdeemstagingtwitter</string>
 </dict>
 </plist>

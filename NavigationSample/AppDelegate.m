@@ -10,6 +10,7 @@
 #import "PopdeemSDK.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PDSocialLoginHandler.h"
+#import "PDSocialMediaManager.h"
 
 @interface AppDelegate ()
 
@@ -48,6 +49,21 @@
    sourceApplication:(NSString *)sourceApplication
           annotation:(id)annotation {
   
+  if ([[url scheme] isEqualToString:@"popdeemstagingtwitter"]) {
+    NSDictionary *d = [self parametersDictionaryFromQueryString:[url query]];
+    PDSocialMediaManager *man = [PDSocialMediaManager manager];
+    if (d[@"denied"]) {
+      //User denied
+      NSLog(@"User cancelled");
+      [man userCancelledTwitterLogin];
+    } else {
+      NSString *token = d[@"oauth_token"];
+      NSString *verifier = d[@"oauth_verifier"];
+      [man setOAuthToken:token oauthVerifier:verifier];
+    }
+    return YES;
+  }
+  
   // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
   //TODO: We could maybe take this into a Popdeem class and lighten the FB integration burden?
   BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
@@ -58,6 +74,25 @@
   // You can add your app-specific url handling code here if needed
   
   return wasHandled;
+}
+
+- (NSDictionary *)parametersDictionaryFromQueryString:(NSString *)queryString {
+  
+  NSMutableDictionary *md = [NSMutableDictionary dictionary];
+  
+  NSArray *queryComponents = [queryString componentsSeparatedByString:@"&"];
+  
+  for(NSString *s in queryComponents) {
+    NSArray *pair = [s componentsSeparatedByString:@"="];
+    if([pair count] != 2) continue;
+    
+    NSString *key = pair[0];
+    NSString *value = pair[1];
+    
+    md[key] = value;
+  }
+  
+  return md;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
