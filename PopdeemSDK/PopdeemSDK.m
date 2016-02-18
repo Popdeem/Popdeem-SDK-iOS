@@ -94,7 +94,7 @@
   
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-  [uiKitCore performSelector:selector];
+  [uiKitCore performSelector:selector withObject:navController];
 #pragma clang diagnostic pop
 }
 
