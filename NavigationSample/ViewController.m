@@ -33,8 +33,6 @@
   [messages fetchMessagesCompletion:^(NSArray *messages, NSError *error){
     
   }];
-  
-  [self.navigationController pushViewController:[[PDHomeViewController alloc] init] animated:YES];
   [PopdeemSDK presentHomeFlowInNavigationController:self.navigationController];
 }
 

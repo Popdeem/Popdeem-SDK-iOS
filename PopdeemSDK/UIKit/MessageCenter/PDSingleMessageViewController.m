@@ -40,6 +40,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewDidLayoutSubviews {
+}
+
 - (void) renderView {
   if (_model.image) {
     [self.imageView setImage:_model.image];
@@ -54,6 +57,19 @@
   [self.titleLabel setText:_model.titleBodyString];
   [self.bodyTaglabel setText:_model.bodyTagString];
   [self.bodyLabel setText:_model.bodyBodyString];
+  
+  NSAttributedString *titleAttString = [[NSAttributedString alloc] initWithString:self.titleLabel.text attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
+  CGRect rulesLabelRect = [titleAttString boundingRectWithSize:(CGSize){self.titleLabel.frame.size.width, 40}
+                                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                                       context:nil];
+  [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y, rulesLabelRect.size.width, rulesLabelRect.size.height)];
+  
+  NSAttributedString *bodyAttString = [[NSAttributedString alloc] initWithString:self.bodyLabel.text attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
+  CGRect bodyLabelRect = [bodyAttString boundingRectWithSize:(CGSize){self.bodyLabel.frame.size.width, 150}
+                                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                                     context:nil];
+  [self.bodyLabel setFrame:CGRectMake(self.bodyLabel.frame.origin.x, self.bodyLabel.frame.origin.y, bodyLabelRect.size.width, bodyLabelRect.size.height)];
+  
   [self.view setNeedsDisplay];
 }
 
