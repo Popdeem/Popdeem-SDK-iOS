@@ -18,7 +18,7 @@
     [infoLabel setNumberOfLines:2];
     [infoLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [infoLabel setTextColor:[UIColor blackColor]];
-    [infoLabel setFont:[UIFont systemFontOfSize:16]];
+    [infoLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.rewardsCell.fontName") size:16]];
     [infoLabel setTextAlignment:NSTextAlignmentCenter];
     [infoLabel setText:text];
     [infoLabel sizeToFit];

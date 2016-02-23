@@ -15,6 +15,9 @@
 #define PopdeemThemeHasValueForKey(key) \
 [[PDTheme sharedInstance] hasValueForKey:(key)]
 
+#define PopdeemFontName(key)\
+[[PDTheme sharedInstance] fontNameForKey:(key)]
+
 @interface PDTheme : NSObject
 
 + (instancetype)sharedInstance;
@@ -22,5 +25,6 @@
 
 - (UIImage*)imageForKey:(NSString*)key;
 - (UIColor*)colorForKey:(NSString*)key;
+- (NSString*)fontNameForKey:(NSString*)key;
 - (BOOL) hasValueForKey:(NSString*)key;
 @end

@@ -22,8 +22,8 @@
     [self setBackgroundImage:selectedImage forState:UIControlStateSelected
                                              barMetrics:UIBarMetricsDefault];
     
-    [self setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14], NSForegroundColorAttributeName : PopdeemColor(@"popdeem.segmentedControl.textColor")} forState:UIControlStateNormal];
-    [self setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:14], NSForegroundColorAttributeName : PopdeemColor(@"popdeem.segmentedControl.selectedTextColor")} forState:UIControlStateSelected];
+    [self setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:PopdeemFontName(@"popdeem.segmentedControl.fontName") size:14], NSForegroundColorAttributeName : PopdeemColor(@"popdeem.segmentedControl.textColor")} forState:UIControlStateNormal];
+    [self setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:PopdeemFontName(@"popdeem.segmentedControl.fontName") size:14], NSForegroundColorAttributeName : PopdeemColor(@"popdeem.segmentedControl.selectedTextColor")} forState:UIControlStateSelected];
     
     //Remove Divider Image
     [self setDividerImage:[UIImage new] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:(UIBarMetricsDefault)];

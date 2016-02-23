@@ -1139,6 +1139,7 @@
 				393D2B741C3AD0D300F1E253 /* Resources */,
 				F34A8F5EA48CCB7D28C304EA /* Embed Pods Frameworks */,
 				58ABE55CA6AD341BEED9C7B3 /* Copy Pods Resources */,
+				39ADEC491C772423004C7C6E /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -1377,6 +1378,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		39ADEC491C772423004C7C6E /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
 		};
 		58ABE55CA6AD341BEED9C7B3 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

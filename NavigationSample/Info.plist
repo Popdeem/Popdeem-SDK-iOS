@@ -29,6 +29,20 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>f3e1331a9e08ff100bf63475f5ac2f67675253d6</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>
@@ -97,7 +111,13 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;We use your location to deliver local rewards&quot;</string>
+	<string>"We use your location to deliver local rewards"</string>
+	<key>PopdeemTwitterCallbackScheme</key>
+	<string>popdeemstagingtwitter</string>
+	<key>TwitterAppConsumerKey</key>
+	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
+	<key>TwitterAppConsumerSecret</key>
+	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -114,11 +134,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>TwitterAppConsumerKey</key>
-	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
-	<key>TwitterAppConsumerSecret</key>
-	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
-	<key>PopdeemTwitterCallbackScheme</key>
-	<string>popdeemstagingtwitter</string>
 </dict>
 </plist>
