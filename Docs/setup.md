@@ -3,7 +3,7 @@
 Getting set up couldnt be easier.
 
 ### Installing Dependencies
-We use ** *cocoapods* ** to deliver the Popdeem SDK. To include the SDK in your project, add the following lines to your ** *Podfile* **
+We use ***cocoapods*** to deliver the Popdeem SDK. To include the SDK in your project, add the following lines to your ** *Podfile* **
 
 	pod 'PopdeemSDK'
 	pod 'PopdeemSDK/UIKit'
