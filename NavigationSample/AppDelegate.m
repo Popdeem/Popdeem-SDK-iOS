@@ -11,6 +11,9 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PDSocialLoginHandler.h"
 #import "PDSocialMediaManager.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate ()
 
@@ -26,6 +29,7 @@
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
+  [Fabric with:@[[Crashlytics class]]];
   return YES;
 }
 

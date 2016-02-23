@@ -146,7 +146,26 @@
 }
 
 - (void) checkLocation {
+#if (TARGET_IPHONE_SIMULATOR)
+  if (self.locationAcquired == NO) {
+    [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+    self.locationAcquired = YES;
+  } else {
+    return;
+  }
+  
+  float latitude = 53.3356002f;
+  float longitude = -6.2674742;
+  
+  [[PDUser sharedInstance] setLastLocation:PDGeoLocationMake(latitude, longitude)];
+  
+  [self updateUserLocationCompletion:^(NSError *error){
+    self.locationBlock(error);
+  }];
+  return;
+#else
   [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
+#endif
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

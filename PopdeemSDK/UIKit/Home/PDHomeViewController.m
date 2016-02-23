@@ -67,8 +67,18 @@
   [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
   
-  UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Inbox" style:UIBarButtonItemStylePlain target:self action:@selector(inboxAction)];
+  UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:translationForKey(@"popdeem.nav.inbox", @"Inbox") style:UIBarButtonItemStylePlain target:self action:@selector(inboxAction)];
   self.navigationItem.rightBarButtonItem = anotherButton;
+  self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+  
+  self.title = translationForKey(@"popdeem.home.title", @"Social Rewards");
+  [[UINavigationBar appearance] setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
+  [[UINavigationBar appearance] setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
+  
+  [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"), NSFontAttributeName : [UIFont fontWithName:PopdeemFontName(@"popdeem.nav.fontName") size:16]}];
+  [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"), NSFontAttributeName : [UIFont fontWithName:PopdeemFontName(@"popdeem.nav.fontName") size:16]} forState:UIControlStateNormal];
+  
+  //[_tableHeaderLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.header.fontName") size:16]];
   
   [self.model fetchRewards];
   [self.model fetchFeed];

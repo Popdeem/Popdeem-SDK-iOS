@@ -170,4 +170,14 @@ static const NSString *kVariablesKey = @"Variables";
     return nil;
 }
 
+- (NSString *)fontNameForKey:(NSString *)key {
+  id value = [self objectForKey:key];
+  if (value){
+    if ([value isKindOfClass:[NSString class]]){
+      return value;
+    }
+  }
+  return nil;
+}
+
 @end

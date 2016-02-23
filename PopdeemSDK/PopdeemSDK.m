@@ -147,6 +147,43 @@
   }];
 }
 
++ (BOOL) application:(UIApplication *)application
+             openURL:(NSURL *)url
+   sourceApplication:(NSString *)sourceApplication
+          annotation:(id)annotation {
+  NSDictionary *d = [PopdeemSDK parametersDictionaryFromQueryString:[url query]];
+  PDSocialMediaManager *man = [PDSocialMediaManager manager];
+  if (d[@"denied"]) {
+    //User denied
+    NSLog(@"User cancelled");
+    [man userCancelledTwitterLogin];
+  } else {
+    NSString *token = d[@"oauth_token"];
+    NSString *verifier = d[@"oauth_verifier"];
+    [man setOAuthToken:token oauthVerifier:verifier];
+  }
+  return YES;
+}
+
++ (NSDictionary *) parametersDictionaryFromQueryString:(NSString *)queryString {
+  
+  NSMutableDictionary *md = [NSMutableDictionary dictionary];
+  
+  NSArray *queryComponents = [queryString componentsSeparatedByString:@"&"];
+  
+  for(NSString *s in queryComponents) {
+    NSArray *pair = [s componentsSeparatedByString:@"="];
+    if([pair count] != 2) continue;
+    
+    NSString *key = pair[0];
+    NSString *value = pair[1];
+    
+    md[key] = value;
+  }
+  
+  return md;
+}
+
 - (void) nonSocialRegister {
   if ([[NSUserDefaults standardUserDefaults] objectForKey:@"PopdeemNonSocialRegistered"] == nil) {
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
