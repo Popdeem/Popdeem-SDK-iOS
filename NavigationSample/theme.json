@@ -2,8 +2,7 @@
   "popdeem" : {
     "home" : {
       "header" : {
-        "backgroundImage" : "popdeemHeader",
-        "backgroundColor" : "#FFFFFF",
+        "backgroundColor" : "#2980b9",
         "textColor" : "#FFFFFF",
         "fontName" : "Avenir-Book"
       },
@@ -14,12 +13,12 @@
           "backgroundColor" : "#FFFFFF",
           "titleTextColor" : "#000000",
           "rulesTextColor" : "#A2A2A1",
-          "infoTextColor" : "#B32D40",
+          "infoTextColor" : "#2980b9",
           "fontName" : "Avenir-Book"
         },
         "feedCell" : {
           "backgroundColor" : "#FFFFFF",
-          "nameTextColor" : "#B32D40",
+          "nameTextColor" : "#2980b9",
           "defaultTextColor" : "#343333",
           "titleTextColor" : "#000000",
           "timeTextColor" : "#000000",
@@ -31,7 +30,7 @@
           "defaultTextColor" : "#000000",
           "howToTitleTextColor" : "#000000",
           "howToBodyTextColor" : "#000000",
-          "redeemButtonColor" : "#B32D40",
+          "redeemButtonColor" : "#2980b9",
           "redeemButtonTextColor" : "#FFFFFF",
           "fontName" : "Avenir-Book"
         }
@@ -58,12 +57,12 @@
     },
     "nav" : {
       "textColor" : "#FFFFFF",
-      "backgroundColor" : "#092359",
+      "backgroundColor" : "#2980b9",
       "buttonTextColor" : "#FFFFFF",
       "fontName" : "Avenir-Book"
     },
     "segmentedControl" : {
-      "selectedIndicator" : "#B32D40",
+      "selectedIndicator" : "#2980b9",
       "backgroundColor" : "#FFFFFF",
       "textColor" : "#272626",
       "selectedTextColor" : "#272626",

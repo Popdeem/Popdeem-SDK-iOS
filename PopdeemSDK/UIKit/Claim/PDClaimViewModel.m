@@ -42,12 +42,12 @@
   self = [self init];
   if (!self) return nil;
   _location = location;
-  if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(FacebookOnly)]) {
+  if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(PDSocialMediaTypeFacebook)]) {
     //Show only facebook button
     self.socialMediaTypesAvailable = FacebookOnly;
     _willFacebook = YES;
     _mustFacebook = YES;
-  } else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0] isEqualToNumber:@(TwitterOnly)]) {
+  } else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
     //Show only Twitter button
     self.socialMediaTypesAvailable = TwitterOnly;
     _mustTweet = YES;
@@ -175,7 +175,7 @@
       _willFacebook = YES;
       [_viewController.facebookButton setSelected:YES];
     } failure:^(NSError *error) {
-      UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.storry", @"Sorry") message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook") delegate:nil cancelButtonTitle:nil otherButtonTitles:translationForKey(@"common.ok", @"OK"), nil];
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook") delegate:nil cancelButtonTitle:nil otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
       [av show];
       _willFacebook = NO;
       [_viewController.facebookButton setSelected:NO];
@@ -186,7 +186,7 @@
 - (void) toggleTwitter {
   if (_mustTweet) {
     _willTweet = YES;
-    UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.message", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
+    UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.message", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
     [twitterV show];
     return;
   }
@@ -233,7 +233,7 @@
 
 - (void) claimAction {
   if (!_willTweet && !_willFacebook) {
-    UIAlertView *noPost = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.error", @"Error") message:translationForKey(@"popdeem.claim.networkerror",  @"No Network Selected, you must select at least one social network in order to complete this action.") delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
+    UIAlertView *noPost = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.networkerror",  @"No Network Selected, you must select at least one social network in order to complete this action.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
     [noPost show];
     return;
   }
@@ -244,13 +244,13 @@
         [self connectTwitter:^(){
           [self makeClaim];
         } failure:^(NSError *error) {
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.error", @"Error") message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles: nil];
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back") otherButtonTitles: nil];
           [av show];
         }];
         return;
       }
       if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
-        UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"common.error", @"Error") message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles: nil];
+        UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back") otherButtonTitles: nil];
         [tooMany show];
         return;
       }

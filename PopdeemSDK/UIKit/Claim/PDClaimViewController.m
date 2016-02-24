@@ -116,6 +116,7 @@
       //Ensure both buttons are shown
       [self.facebookButton setHidden:NO];
       [self.twitterButton setHidden:NO];
+      [self.facebookButton setSelected:YES];
       self.facebookButtonViewHeightConstraint.constant = 40;
       self.twitterButtonViewHeightConstraint.constant = 40;
       break;

@@ -296,6 +296,9 @@
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39DD9EBA1C7DD36500A67ED2 /* popdeemHeaderLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = popdeemHeaderLight.png; path = Resources/popdeemHeaderLight.png; sourceTree = "<group>"; };
+		39DD9EBB1C7DD36500A67ED2 /* popdeemHeaderLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeaderLight@2x.png"; path = "Resources/popdeemHeaderLight@2x.png"; sourceTree = "<group>"; };
+		39DD9EBC1C7DD36500A67ED2 /* popdeemHeaderLight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeaderLight@3x.png"; path = "Resources/popdeemHeaderLight@3x.png"; sourceTree = "<group>"; };
 		39EDADBD1C072851001102B3 /* PDClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewModel.h; path = Claim/PDClaimViewModel.h; sourceTree = "<group>"; };
 		39EDADBE1C072851001102B3 /* PDClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewModel.m; path = Claim/PDClaimViewModel.m; sourceTree = "<group>"; };
 		39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRewardsTableViewCell.h; sourceTree = "<group>"; };
@@ -743,6 +746,9 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39DD9EBA1C7DD36500A67ED2 /* popdeemHeaderLight.png */,
+				39DD9EBB1C7DD36500A67ED2 /* popdeemHeaderLight@2x.png */,
+				39DD9EBC1C7DD36500A67ED2 /* popdeemHeaderLight@3x.png */,
 				39ABA6591C47BE010057088E /* popdeemHeader.png */,
 				39ABA65A1C47BE010057088E /* popdeemHeader@2x.png */,
 				39ABA65B1C47BE010057088E /* popdeemHeader@3x.png */,
