@@ -30,7 +30,11 @@
   self.bodyTagString = translationForKey(@"popdeem.message.detail.bodyTag", @"Body:");
   self.bodyBodyString = _message.body;
   
-  self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];
+  if (_message.imageUrl) {
+    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];
+  } else {
+    self.image = [UIImage imageNamed:@"starG"];
+  }
   if (!_message.read) {
     _message.markAsRead;
   }
