@@ -111,7 +111,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We use your location to deliver local rewards"</string>
+	<string>&quot;We use your location to deliver local rewards&quot;</string>
 	<key>PopdeemTwitterCallbackScheme</key>
 	<string>popdeemstagingtwitter</string>
 	<key>TwitterAppConsumerKey</key>
