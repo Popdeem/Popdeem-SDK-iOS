@@ -13,14 +13,17 @@
 @interface PDMessage : JSONModel
 
 @property (nonatomic) NSInteger identifier;
+@property (nonatomic) NSString *senderName;
 @property (nonatomic,strong) NSNumber<Optional> *brandId;
 @property (nonatomic,strong) NSNumber<Optional> *rewardId;
 @property (nonatomic) BOOL read;
 @property (nonatomic, strong) NSString<Optional> *imageUrl;
 @property (nonatomic, strong) UIImage<Optional> *image;
 @property (nonatomic) NSInteger createdAt;
+@property (nonatomic, strong) NSString<Optional> *title;
 @property (nonatomic, strong) NSString *body;
 
 - (id) initWithJSON:(NSString*)json;
+- (void) markAsRead;
 
 @end

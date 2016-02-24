@@ -22,15 +22,18 @@
 
 - (void) setup {
   self.senderTagLabelString = translationForKey(@"popdeem.message.detail.senderTag", @"Sender:");
-  self.senderBodyString = @"Sender - awaiting serverside implementation";
+  self.senderBodyString = _message.senderName;
   self.dateTagString = translationForKey(@"popdeem.message.detail.dateTag", @"Date:");
   self.dateBodyString = [self formattedSentTime:_message.createdAt];
   self.titleTagString = translationForKey(@"popdeem.message.detail.titleTag", @"Title:");
-  self.titleBodyString = @"Title - awaiting server side implementation";
+  self.titleBodyString = _message.title ? _message.title : @"";
   self.bodyTagString = translationForKey(@"popdeem.message.detail.bodyTag", @"Body:");
   self.bodyBodyString = _message.body;
   
   self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];
+  if (!_message.read) {
+    _message.markAsRead;
+  }
 }
 
 - (NSString*) formattedSentTime:(NSInteger)absTime {

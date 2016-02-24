@@ -33,6 +33,7 @@ fontForKey(key,size)
 - (NSString*)fontNameForKey:(NSString*)key;
 - (UIFont*) fontForKey:(NSString*)key size:(CGFloat)size;
 - (BOOL) hasValueForKey:(NSString*)key;
+
 extern UIFont *fontForKey(NSString *key, CGFloat size);
 
 @end

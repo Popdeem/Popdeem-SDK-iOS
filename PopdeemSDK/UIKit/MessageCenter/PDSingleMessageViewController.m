@@ -71,6 +71,7 @@
   [self.bodyLabel setFrame:CGRectMake(self.bodyLabel.frame.origin.x, self.bodyLabel.frame.origin.y, bodyLabelRect.size.width, bodyLabelRect.size.height)];
   
   [self.view setNeedsDisplay];
+  
 }
 
 - (void) updateImage {

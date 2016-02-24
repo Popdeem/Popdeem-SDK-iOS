@@ -56,7 +56,11 @@
     float labelX = 70;
     
     [_bodyLabel setFrame: CGRectMake(labelX, centerlineY-(mainLabelsize.height/2), labelWidth, mainLabelsize.height)];
-    [_bodyLabel setText:message.body];
+    if (message.title) {
+      [_bodyLabel setText:message.title];
+    } else {
+      [_bodyLabel setText:message.body];
+    }
     [_bodyLabel setTextColor:PopdeemColor(@"popdeem.messageCenter.tableView.messageCell.bodyTextColor")];
     [_bodyLabel setFont:[UIFont systemFontOfSize:14]];
     [_bodyLabel setNumberOfLines:3];

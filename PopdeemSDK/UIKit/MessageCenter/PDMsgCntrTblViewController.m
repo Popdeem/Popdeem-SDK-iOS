@@ -37,6 +37,11 @@
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+  [self.tableView reloadData];
+  [self.tableView reloadInputViews];
+}
+
 - (void) reloadAction {
   [self.model fetchMessages];
 }

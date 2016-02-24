@@ -5,7 +5,7 @@
         "backgroundImage" : "popdeemHeader",
         "backgroundColor" : "#FFFFFF",
         "textColor" : "#FFFFFF",
-        "fontName" : "SanFranciscoText-Regular"
+        "fontName" : "Avenir-Book"
       },
       "tableView" : {
         "backgroundColor" : "#EBEBF2",
@@ -15,7 +15,7 @@
           "titleTextColor" : "#000000",
           "rulesTextColor" : "#A2A2A1",
           "infoTextColor" : "#B32D40",
-          "fontName" : "SanFranciscoText-Regular"
+          "fontName" : "Avenir-Book"
         },
         "feedCell" : {
           "backgroundColor" : "#FFFFFF",
@@ -23,7 +23,7 @@
           "defaultTextColor" : "#343333",
           "titleTextColor" : "#000000",
           "timeTextColor" : "#000000",
-          "fontName" : "SanFranciscoText-Regular"
+          "fontName" : "Avenir-Book"
         },
         "walletCell" : {
           "backgroundColor" : "FFFFFF",
@@ -33,7 +33,7 @@
           "howToBodyTextColor" : "#000000",
           "redeemButtonColor" : "#B32D40",
           "redeemButtonTextColor" : "#FFFFFF",
-          "fontName" : "SanFranciscoText-Regular"
+          "fontName" : "Avenir-Book"
         }
       }
     },
@@ -45,7 +45,7 @@
           "backgroundColor" : "#FFFFFF",
           "bodyTextColor" : "#000000",
           "timeTextColor" : "#A2A2A1",
-          "fontName" : "SanFranciscoText-Regular"
+          "fontName" : "Avenir-Book"
         }
       }
     },
@@ -53,25 +53,25 @@
       "continueButton" : {
         "background" : "#3C9915",
         "textColor" : "#FFFFFF",
-        "fontName" : "SanFranciscoText-Regular"
+        "fontName" : "Avenir-Book"
       }
     },
     "nav" : {
       "textColor" : "#FFFFFF",
       "backgroundColor" : "#092359",
       "buttonTextColor" : "#FFFFFF",
-      "fontName" : "SanFranciscoText-Regular"
+      "fontName" : "Avenir-Book"
     },
     "segmentedControl" : {
       "selectedIndicator" : "#B32D40",
       "backgroundColor" : "#FFFFFF",
       "textColor" : "#272626",
       "selectedTextColor" : "#272626",
-      "fontName" : "SanFranciscoText-Regular"
+      "fontName" : "Avenir-Book"
     },
     "global" : {
       "backgroundGradientBaseColor" : "#FFFFFF",
-      "fontName" : "SanFranciscoText-Regular"
+      "fontName" : "Avenir-Book"
     },
     "rewards" : {
       "cell" : {
@@ -79,7 +79,7 @@
         "subtitleTextColor" : "#EBAA09",
         "infoTextColor" : "#EBAA09",
         "backgroundColor" : "#092359",
-        "fontName" : "SanFranciscoText-Regular"
+        "fontName" : "Avenir-Book"
       }
     },
     "rewardsHome" : {
@@ -87,7 +87,7 @@
         "backgroundImageName" : "rewardsHomeHeaderImage",
         "backgroundColor" : "#092359",
         "textColor" : "#FFFFFF",
-        "fontName" : "SanFranciscoText-Regular"
+        "fontName" : "Avenir-Book"
       },
       "backgroundImage" : "#C0C0C0",
       "backgroundColor" : "#092359",
@@ -104,7 +104,7 @@
         "boldTextColor" : "#FFFFFF",
         "actionTextColor" : "#FFFFFF",
         "backgroundColor" : "#092359",
-        "fontName" : "SanFranciscoText-Regular"
+        "fontName" : "Avenir-Book"
       }
     }
   }

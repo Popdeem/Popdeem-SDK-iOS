@@ -8,7 +8,7 @@
 
 #import "PDMessage.h"
 #import <UIKit/UIKit.h>
-
+#import "PDMessageAPIService.h"
 @implementation PDMessage
 
 - (id) initWithJSON:(NSString*)json {
@@ -34,7 +34,9 @@
 
 + (JSONKeyMapper*)keyMapper {
   return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                     @"title": @"title",
                                                      @"body": @"body",
+                                                     @"sender_name": @"senderName",
                                                      @"brand_id": @"brandId",
                                                      @"created_at": @"createdAt",
                                                      @"id": @"identifier",
@@ -42,6 +44,17 @@
                                                      @"read": @"read",
                                                      @"reward_id": @"rewardId"
                                                      }];
+}
+
+- (void) markAsRead {
+  PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
+  [service markMessageAsRead:self.identifier completion:^(NSError *error){
+    if (error) {
+      NSLog(@"Error while marking message %@ as read",self.identifier);
+    } else {
+      self.read = YES;
+    }
+  }];
 }
 
 @end

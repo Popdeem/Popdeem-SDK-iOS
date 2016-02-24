@@ -13,7 +13,7 @@
 
 @interface PDSingleMessageViewModel : NSObject
 
-@property (nonatomic, strong) PDMessage *message;
+@property (nonatomic, assign) PDMessage *message;
 @property (nonatomic, assign) PDSingleMessageViewController *controller;
 @property (nonatomic, strong) NSString *senderTagLabelString;
 @property (nonatomic, strong) NSString *senderBodyString;
