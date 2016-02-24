@@ -173,7 +173,7 @@
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 27.5, _controller.tableView.tableHeaderView.frame.size.width-20, 50)];
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
     [_tableHeaderLabel setNumberOfLines:3];
-    [_tableHeaderLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.header.fontName") size:16]];
+    [_tableHeaderLabel setFont:PopdeemFont(@"popdeem.home.header.fontName",16)];
     [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
     [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
     [_controller.tableView.tableHeaderView addSubview:_tableHeaderLabel];

@@ -56,7 +56,7 @@ static const NSString *kVariablesKey = @"Variables";
     id value = [self.theme valueForKeyPath:key];
 
     if (value == nil) {
-        [NSException raise:@"Value is not defined!" format:@""];
+        [NSException raise:@"Value is not defined!" format:key];
     }
 
     return [self resolveVariable:value];
@@ -172,12 +172,54 @@ static const NSString *kVariablesKey = @"Variables";
 
 - (NSString *)fontNameForKey:(NSString *)key {
   id value = [self objectForKey:key];
-  if (value){
+  if (value) {
     if ([value isKindOfClass:[NSString class]]){
       return value;
+    }
+  } else {
+    NSString *globalFont = [self objectForKey:@"popdeem.global.fontName"];
+    if ([globalFont isKindOfClass:[NSString class]]) {
+      NSLog(@"PDTheme: No font specified for path: %@, returning global font",key);
+      return globalFont;
+    } else {
+      [NSException raise:@"Font name not found and no global font name defined" format:@""];
     }
   }
   return nil;
 }
+
+UIFont* fontForKey(NSString *key, CGFloat size) {
+  if ([[PDTheme sharedInstance] hasValueForKey:key]) {
+    id value = [[PDTheme sharedInstance] objectForKey:key];
+    if ([value isKindOfClass:[NSString class]]){
+      UIFont *font = [UIFont fontWithName:value size:size];
+      if (font) {
+        return font;
+      } else {
+        NSLog(@"Font with name: %@ does not exist. Returning system font",value);
+      }
+    }
+  } else {
+    NSLog(@"No font defined for key: %@, returning system font",key);
+  }
+  return [UIFont systemFontOfSize:size];
+}
+
+//- (UIFont*) fontForKey:(NSString*)key size:(CGFloat)size {
+//  if ([self hasValueForKey:key]) {
+//    id value = [self objectForKey:key];
+//    if ([value isKindOfClass:[NSString class]]){
+//      UIFont *font = [UIFont fontWithName:value size:size];
+//      if (font) {
+//        return font;
+//      } else {
+//        NSLog(@"Font with name: %@ does not exist. Returning system font",value);
+//      }
+//    }
+//  } else {
+//    NSLog(@"No font defined for key: %@, returning system font",key);
+//  }
+//  return [UIFont systemFontOfSize:size];
+//}
 
 @end

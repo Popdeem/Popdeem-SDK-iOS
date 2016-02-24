@@ -42,7 +42,7 @@
     float labelWidth = viewWidth-indent-indent-imageSize-arrowSize;
     _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, centerY-15, labelWidth, 20)];
     [self addSubview:_descriptionLabel];
-    [_descriptionLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.walletCell.fontName") size:14]];
+    [_descriptionLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
     [_descriptionLabel setTextColor:[UIColor blackColor]];
     
     if (![reward.rewardDescription isKindOfClass:[NSNull class]]) {
@@ -50,7 +50,7 @@
     }
     
     _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, centerY, labelWidth, 20)];
-    [_rulesLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.walletCell.fontName") size:14]];
+    [_rulesLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
     [_rulesLabel setTextColor:[UIColor blackColor]];
     [self addSubview:_rulesLabel];
     if (![reward.rewardRules isKindOfClass:[NSNull class]]) {
@@ -122,12 +122,12 @@
     [self addSubview:backingView];
     
     UILabel *howToTitle = [[UILabel alloc] initWithFrame:CGRectMake(indent, 5, viewWidth-2*indent, 20)];
-    [howToTitle setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.walletCell.fontName") size:14]];
+    [howToTitle setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
     [howToTitle setTextColor:[UIColor blackColor]];
     [backingView addSubview:howToTitle];
     
     UILabel *howToLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent, 25, viewWidth-2*indent, 190-120)];
-    [howToLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.walletCell.fontName") size:14]];
+    [howToLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
     [howToLabel setTextColor:[UIColor blackColor]];
     [howToLabel setNumberOfLines:6];
     if (reward.type == PDRewardTypeCoupon || reward.type == PDRewardTypeInstant) {
@@ -146,7 +146,7 @@
       UIButton *redeemButton = [[UIButton alloc] initWithFrame:CGRectMake(30, backingView.frame.size.height-55, viewWidth-60, 40)];
       [redeemButton setBackgroundColor:[UIColor blackColor]];
       [redeemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-      [redeemButton.titleLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.walletCell.fontName") size:16]];
+      [redeemButton.titleLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 16)];
       [redeemButton setTitle:@"Redeem" forState:UIControlStateNormal];
       [redeemButton addTarget:parent action:@selector(redeemButtonPressed) forControlEvents:UIControlEventTouchUpInside];
       [backingView addSubview:redeemButton];

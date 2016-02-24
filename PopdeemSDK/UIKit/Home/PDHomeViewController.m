@@ -70,15 +70,23 @@
   UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:translationForKey(@"popdeem.nav.inbox", @"Inbox") style:UIBarButtonItemStylePlain target:self action:@selector(inboxAction)];
   self.navigationItem.rightBarButtonItem = anotherButton;
   self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+  self.navigationController.navigationBar.translucent = NO;
+  [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
+  [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
+  [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
+                                                                    NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
+  
+  [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"), NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
   
   self.title = translationForKey(@"popdeem.home.title", @"Social Rewards");
   [[UINavigationBar appearance] setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
   [[UINavigationBar appearance] setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
+  [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
+                                                         NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
+  [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"),
+                                                         NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
   
-  [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"), NSFontAttributeName : [UIFont fontWithName:PopdeemFontName(@"popdeem.nav.fontName") size:16]}];
-  [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"), NSFontAttributeName : [UIFont fontWithName:PopdeemFontName(@"popdeem.nav.fontName") size:16]} forState:UIControlStateNormal];
-  
-  //[_tableHeaderLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.header.fontName") size:16]];
+  //[_tableHeaderLabel setFont:PopdeemFont(@"popdeem.nav.fontName", 16.0f)];
   
   [self.model fetchRewards];
   [self.model fetchFeed];

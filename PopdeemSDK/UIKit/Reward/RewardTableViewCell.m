@@ -43,7 +43,7 @@
     
     _mainLabel = [[UILabel alloc] init];
     
-    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: [UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.rewardsCell.fontName") size:14]}];
+    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 14)}];
     CGRect mainLabelRect = [mainAttributedText boundingRectWithSize:(CGSize){labelWidth, 40}
                                                             options:NSStringDrawingUsesLineFragmentOrigin
                                                             context:nil];
@@ -58,7 +58,7 @@
     
     [_mainLabel setFrame: CGRectMake(labelX, centerLineY-(mainLabelsize.height), labelWidth, mainLabelsize.height)];
     [_mainLabel setText:reward.rewardDescription];
-    [_mainLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.rewardsCell.fontName") size:14]];
+    [_mainLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 14)];
     [_mainLabel setTextColor:[UIColor blackColor]];
     [_mainLabel setTextAlignment:NSTextAlignmentLeft];
     [_mainLabel setNumberOfLines:0];
@@ -67,7 +67,7 @@
     CGSize rulesLabelsize;
     if (rules) {
       _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _mainLabel.frame.origin.y+_mainLabel.frame.size.height, labelWidth, 30)];
-      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: [UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.rewardsCell.fontName") size:12]}];
+      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 12)}];
       CGRect rulesLabelRect = [rulesAttributedText boundingRectWithSize:(CGSize){labelWidth, 30}
                                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                                                 context:nil];
@@ -189,7 +189,7 @@
     }
     
     [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
-    [_infoLabel setFont:[UIFont fontWithName:PopdeemFontName(@"popdeem.home.tableView.rewardsCell.fontName") size:12]];
+    [_infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 12)];
     [_infoLabel setTextAlignment:NSTextAlignmentLeft];
     [self addSubview:_infoLabel];
     
