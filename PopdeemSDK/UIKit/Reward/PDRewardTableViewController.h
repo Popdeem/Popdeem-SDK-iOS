@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LazyLoader.h"
 
 @interface PDRewardTableViewController : UITableViewController
 @end

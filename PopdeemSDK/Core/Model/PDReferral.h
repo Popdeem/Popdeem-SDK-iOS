@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, PDReferralType) {
 @property (nonatomic) NSInteger requestId;
 
 - (id) initWithSenderId:(NSInteger)senderId senderApp:(NSString*)senderApp type:(PDReferralType)type;
-- (id) initWithUrl:(NSURL*)url appRef:(UIApplication*)application;
+- (id) initWithUrl:(NSURL*)url appRef:(NSString*)application;
 - (NSString*) typeString;
 + (void) logReferral:(PDReferral*)referral;
 

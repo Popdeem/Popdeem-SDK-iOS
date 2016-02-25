@@ -8,7 +8,6 @@
 
 #import "PDHomeViewModel.h"
 #import "PDAPIClient.h"
-#import "LazyLoader.h"
 #import "PDTheme.h"
 
 @implementation PDHomeViewModel

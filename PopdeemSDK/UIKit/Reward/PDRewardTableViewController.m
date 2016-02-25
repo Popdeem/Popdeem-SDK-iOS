@@ -15,7 +15,6 @@
 #import "PDClaimViewController.h"
 #import "PDClaimViewModel.h"
 #import "PDUtils.h"
-#import "LazyLoader.h"
 #import "PDTheme.h"
 #import "PDLocationValidator.h"
 

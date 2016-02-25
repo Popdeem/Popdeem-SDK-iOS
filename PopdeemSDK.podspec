@@ -1,16 +1,8 @@
-#
-#  Be sure to run `pod spec lint PopdeemSDK.podspec' to ensure this is a
-#  valid spec and to remove all comments including this before submitting the spec.
-#
-#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
-#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
-#
-
 Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "PopdeemSDK"
-  s.version      = "0.2.3"
+  s.version      = "0.3.0"
   s.summary      = "PopdeemSDK is used to interact with the Popdeem API on iOS."
   s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
   s.homepage     = "https://github.com/Popdeem/Popdeem-SDK-iOS.git"
