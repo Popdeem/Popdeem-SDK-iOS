@@ -29,7 +29,6 @@
 #import "PDSocialMediaManager.h"
 #import "PDNotificationHandler.h"
 #import "PDMessageAPIService.h"
-#import "PDRewardTableViewController.h"
 #import "PDUserAPIService.h"
 
 @interface PopdeemSDK()
