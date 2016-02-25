@@ -23,8 +23,8 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
-    cocoapods
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+    # cocoapods
   end
 
   desc "Runs all the tests"
@@ -34,13 +34,26 @@ platform :ios do
 
   desc "Deploy a new version to the App Store"
   lane :deploy do
-    # snapshot
-  desc "**Deploying PopdeemSDK**"
-  #Need to do full cocoapods release cycle here
+    desc "**Deploying PopdeemSDK**"
+    before_version = version_get_podspec(path: "PopdeemSDK.podspec")
+    puts "Before bump Pods Version: #{before_version}"
+    new_version = version_bump_podspec(path: "PopdeemSDK.podspec", bump_type: "patch")
+    puts "After bump Pods Version: #{new_version}"
+
+    sh "git add ."
+    sh "git commit -m \"Deploying via Fastlane - version #{new_version}\""
+    sh "git push origin master"
+    sh "git tag #{new_version}"
+    sh "git push --tags"
+
+    clean_cocoapods_cache
+
+    sh "pod trunk push PopdeemSDK.podspec --allow-warnings --use-libraries"
+
     puts(current_version)
     slack(
       channel: "mobile",
-      message: "Deploying PopdeemSDK.... :rocket:",
+      message: "Deployed PopdeemSDK.... :rocket:",
       success: true
     )
   end

@@ -3,27 +3,27 @@
   <testsuite name="run">
     
       
-      <testcase name="0: Verifying required fastlane version" time="0.00035">
+      <testcase name="0: Verifying required fastlane version" time="0.0003">
         
       </testcase>
     
       
-      <testcase name="1: default_platform" time="0.00015">
+      <testcase name="1: default_platform" time="0.000165">
         
       </testcase>
     
       
-      <testcase name="2: cocoapods" time="19.484911">
+      <testcase name="2: version_get_podspec" time="0.000628">
         
       </testcase>
     
       
-      <testcase name="3: Switch to ios current_version lane" time="0.000328">
+      <testcase name="3: version_bump_podspec" time="0.000997">
         
       </testcase>
     
       
-      <testcase name="4: slack" time="3.8679">
+      <testcase name="4: Switch to ios current_version lane" time="0.000179">
         
       </testcase>
     
