@@ -48,7 +48,7 @@ platform :ios do
 
     clean_cocoapods_cache
 
-    sh "pod trunk push PopdeemSDK.podspec --allow-warnings --use-libraries"
+    sh "pod trunk push ../PopdeemSDK.podspec --allow-warnings --use-libraries"
 
     puts(current_version)
     slack(
