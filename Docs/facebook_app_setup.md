@@ -1,5 +1,7 @@
 # Facebook App Setup
 
+*In some cases, Popdeem will handle Facebook app registration for clients, to minimise integration time for client.*
+
 ---
 
 You will need to set up a Facebook application at the Facebook Dev Centre. You can do so by following this [Tutorial](https://developers.facebook.com/docs/apps/register "Facebook Tutorial"). You will need some details from your project first:
@@ -22,11 +24,13 @@ You then need to create *two* Open Graph stories using these objects:
 
 When you have your Facebook app set up, make note of your Facebook App ID. Back in your *info.plist* file in your XCode Project, add the following key-value pairs:
 
+```
     "FacebookAppId": YOUR_FACEBOOK_APP_ID
     "FacebookDisplayName" : YOUR_FACEBOOK_APP_DISPLAY_NAME
+```
 
 Then, you need to add an Array called "URL Types". Inside you put a Dictionary, with an Array for Key "URL Schemes". Inside the Array you need to add a string of "fb" followed by your Facebook App ID. The info.plist file should look like the image below:
 
-![Alt text](/assets/facebook_keys_plist.png)
+![Facebook Keys](https://github.com/Popdeem/Popdeem-SDK-iOS/Docs/assets/facebook_keys_plist.png)
 
 Since iOS9, you must also make some additional entries in your *info.plist* for Facebook to work correctly.
