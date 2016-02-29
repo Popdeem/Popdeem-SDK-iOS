@@ -1,7 +1,8 @@
 # Facebook App Setup
 
 *In some cases, Popdeem will handle Facebook app registration for clients, to minimise integration time for client.*
-Skip to [Trigger Login Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/login_flow.md "Login Flow")
+Skip to [Trigger Login Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/login_flow.md "Login Flow")  
+
 ---
 
 You will need to set up a Facebook application at the Facebook Dev Centre. You can do so by following this [Tutorial](https://developers.facebook.com/docs/apps/register "Facebook Tutorial"). You will need some details from your project first:
