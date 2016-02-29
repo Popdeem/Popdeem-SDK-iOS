@@ -31,6 +31,6 @@ When you have your Facebook app set up, make note of your Facebook App ID. Back 
 
 Then, you need to add an Array called "URL Types". Inside you put a Dictionary, with an Array for Key "URL Schemes". Inside the Array you need to add a string of "fb" followed by your Facebook App ID. The info.plist file should look like the image below:
 
-![Facebook Keys](https://9ba8132fae9818edf2a4a87a4d76ad20d8553cc4.googledrive.com/host/0BybHx9-1eNB4NDgwUW9aZTJNVEE/apiDocs_plistFacebook.png)
+![Facebook Keys](https://9ba8132fae9818edf2a4a87a4d76ad20d8553cc4.googledrive.com/host/0BybHx9-1eNB4NDgwUW9aZTJNVEE/apiDocs_plistFacebook.png)  
 
-
+Next, [Trigger Login Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/login_flow.md "Login Flow")
