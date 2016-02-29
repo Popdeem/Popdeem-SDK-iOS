@@ -44,12 +44,13 @@ platform :ios do
     new_version = version_bump_podspec(path: "PopdeemSDK.podspec", bump_type: "patch")
     puts "After bump Pods Version: #{new_version}"
 
-    sh "git add ../PopdeemSDK.podspec"
+    sh "git add ../."
     sh "git commit -m \"Deploying via Fastlane - version #{new_version}\""
     sh "git push origin master"
     sh "git tag #{new_version}"
     sh "git push --tags"
 
+    ensure_git_status_clean
     clean_cocoapods_cache
 
     sh "pod trunk push ../PopdeemSDK.podspec --allow-warnings --use-libraries"
@@ -67,11 +68,11 @@ platform :ios do
             )
 
     puts(current_version)
-    slack(
-      channel: "mobile",
-      message: ":pdlogo: Deployed PopdeemSDK.... :rocket:",
-      success: true
-    )
+    # slack(
+    #   channel: "mobile",
+    #   message: ":pdlogo: Deployed PopdeemSDK.... :rocket:",
+    #   success: true
+    # )
   end
 
   after_all do |lane|
@@ -83,13 +84,13 @@ platform :ios do
   end
 
   error do |lane, exception|
-    if ENV['SLACK_URL']
-      slack(
-        channel: "mobile",
-        message: ":bangbang: Fastlane error in PopdeemSDK: " + exception.message,
-        success: false
-        )
-    end
+    # if ENV['SLACK_URL']
+    #   slack(
+    #     channel: "mobile",
+    #     message: ":bangbang: Fastlane error in PopdeemSDK: " + exception.message,
+    #     success: false
+    #     )
+    # end
   end
 
   private_lane :current_version do |options|
