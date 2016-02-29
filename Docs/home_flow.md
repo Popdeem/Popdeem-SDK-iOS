@@ -1,3 +1,7 @@
+#Social Home
+
+---
+
 All of Popdeem's core mobile features are contained in the `Home` flow. There are various scenarios in which you may launch the Home flow.
 
 #### Navigation Controller
