@@ -39,6 +39,7 @@ xcuserdata
 #
 Pods/
 build/
+fastlane/
 
 # Carthage
 #
