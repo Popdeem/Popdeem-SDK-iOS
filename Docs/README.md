@@ -2,41 +2,10 @@
 
 ---
 
-## Getting Started
+1 - [Getting Started](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs "Getting Started")  
+2 - [Facebook App Setup](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/facebook_app_setup.md "Facebook App Setup") 
+3 - [Login Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/login_flow.md "Login Flow")  
+4 - [Home Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/home_flow.md "Home Flow")  
+5 - [Theming](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/theme.md "Theming")
 
-Getting set up couldnt be easier.
-
-### Installing Dependencies
-We use ***cocoapods*** to deliver the Popdeem SDK. To include the SDK in your project, add the following lines to your ***Podfile***
-
-	pod 'PopdeemSDK'
-	pod 'PopdeemSDK/UIKit'
-
-The ***PopdeemSDK*** pod is our core SDK library, and the ***PopdeemSDK/UIKit*** contains our prebuilt UI flow to get you up and running in no time.
-
-### Initialise SDK
-
-Initializing the SDK is as simple as adding one line to your `application: didFinishLaunchingWithOptions:` method in `AppDelegate.m`:
-
-	[PopdeemSDK withAPIKey:@"YOUR_POPDEEM_API_KEY"];
-
-Still in your `AppDelegate.m` file, to use the Popdeem Push Notification and Broadcast features, you must include the following Delegate Methods:
-
-```
-  - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [PopdeemSDK application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-  }
-
-  - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [PopdeemSDK application:application didFailToRegisterForRemoteNotificationsWithError:error];
-  }
-
-  - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    if ([[userInfo objectForKey:@"sender"] isEqualToString:@"popdeem"]) {
-      [PopdeemSDK handleRemoteNotification:userInfo];
-      return;
-    }   
-  }
-```
-
-These are the default methods for handling push notifications in iOS. If you are delivering push notifications to your app seperately, include the Popdeem code alongside your own code.
+---
