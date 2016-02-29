@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/Popdeem/Popdeem-SDK-iOS.svg)](https://travis-ci.org/Popdeem/Popdeem-SDK-iOS)  
 ![Pod Version](https://img.shields.io/cocoapods/v/PopdeemSDK.svg)
 
-Full documentation at the [Popdeem Developer](http://www.popdeem.com/developer/iosdocs "iOS Docs") Portal.
+Full documentation in the [Docs](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs "iOS Docs") section.
 -----
 #### Changelog
 -----
@@ -12,5 +12,4 @@ This is currently in development. Users of the SDK should monitor the changelog 
 Any questions can be directed to me at niall@popdeem.com
 
 -----
-Sample project can be found [here](https://github.com/Popdeem/Popdeem-Social-Login-Example "here")
-
+Sample projects can be built using this XCode project.

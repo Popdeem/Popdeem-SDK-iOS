@@ -14,6 +14,7 @@
 "popdeem.common.back" = "Back";
 "popdeem.common.ok" = "OK";
 "popdeem.common.something.wrong" = "Something went wrong. Please try again later";
+//"popdeem.common.suspended" = "You have been suspended. Your account will become active on %@ at %@"
 
 "popdeem.sociallogin.success" = "Connected!";
 "popdeem.sociallogin.success.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";

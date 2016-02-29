@@ -121,6 +121,7 @@ The users last name
 + (instancetype) sharedInstance;
 
 @property (nonatomic) BOOL *suspended;
+@property (nonatomic, strong) NSDate *suspendedUntil;
 
 /**
  Creates an instance of the PDUser object from the API params.

@@ -1,25 +1,5 @@
-# Customise this file, documentation can be found here:
-# https://github.com/KrauseFx/fastlane/tree/master/docs
-# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
-# can also be listed using the `fastlane actions` command
-
-# Change the syntax highlighting to Ruby
-# All lines starting with a # are ignored when running `fastlane`
-
-# By default, fastlane will send which actions are used
-# No personal data is shared, more information on https://github.com/fastlane/enhancer
-# Uncomment the following line to opt out
-# opt_out_usage
-
-# If you want to automatically update fastlane if a new version is available:
-# update_fastlane
-
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
-fastlane_version "1.37.0"
-
+fastlane_version "1.63.0"
 default_platform :ios
-
 
 platform :ios do
   before_all do
@@ -27,16 +7,24 @@ platform :ios do
     # cocoapods
   end
 
-  desc "Runs all the tests"
   lane :test do
-    # snapshot
+    scan(:scheme => "PopdeemSDK")
   end
 
-  desc "Deploy a new version to the App Store"
+  lane :podtest do
+    test
+    desc "**Checking cocoapods all OK**"
+    sh "pod spec lint ../PopdeemSDK.podspec --allow-warnings --use-libraries"
+    sh "pod lib lint ../PopdeemSDK.podspec --allow-warnings --use-libraries"
+    slack(
+      channel: "mobile",
+      message: "PopdeemSDK podpec and lib linted OK",
+      success: "true"
+    )
+  end
+
   lane :deploy do
     desc "**Deploying PopdeemSDK**"
-    before_version = version_get_podspec(path: "PopdeemSDK.podspec")
-    puts "Before bump Pods Version: #{before_version}"
     new_version = version_bump_podspec(path: "PopdeemSDK.podspec", bump_type: "patch")
     puts "After bump Pods Version: #{new_version}"
 
@@ -53,12 +41,10 @@ platform :ios do
     puts(current_version)
     slack(
       channel: "mobile",
-      message: "Deployed PopdeemSDK.... :rocket:",
+      message: ":pdlogo: Deployed PopdeemSDK.... :rocket:",
       success: true
     )
   end
-
-  # You can define as many lanes as you want
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
@@ -69,18 +55,13 @@ platform :ios do
   end
 
   error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
     if ENV['SLACK_URL']
-    slack(
-      channel: "mobile",
-      message: "Fastlane error in PopdeemSDK: " + exception.message,
-      success: false
-    )
-  end
-
+      slack(
+        channel: "mobile",
+        message: ":bangbang: Fastlane error in PopdeemSDK: " + exception.message,
+        success: false
+        )
+    end
   end
 
   private_lane :current_version do |options|

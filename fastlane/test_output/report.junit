@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites tests='86' failures='0'>
+  <testsuite name='APIServiceTests' tests='1' failures='0'>
+    <testcase classname='APIServiceTests' name='testAPIURL' time='0.017'/>
+  </testsuite>
+  <testsuite name='BrandAPIServiceTests' tests='3' failures='0'>
+    <testcase classname='BrandAPIServiceTests' name='testGetBrands_200OK' time='0.191'/>
+    <testcase classname='BrandAPIServiceTests' name='testGetBrands_500Error' time='0.003'/>
+    <testcase classname='BrandAPIServiceTests' name='testGetBrands_504Error' time='0.002'/>
+  </testsuite>
+  <testsuite name='BrandTests' tests='7' failures='0'>
+    <testcase classname='BrandTests' name='testBrandName' time='0.001'/>
+    <testcase classname='BrandTests' name='testContacts' time='0.000'/>
+    <testcase classname='BrandTests' name='testCoverUrlString' time='0.000'/>
+    <testcase classname='BrandTests' name='testExists' time='0.000'/>
+    <testcase classname='BrandTests' name='testIdentifier' time='0.000'/>
+    <testcase classname='BrandTests' name='testLogoUrlString' time='0.000'/>
+    <testcase classname='BrandTests' name='testOpeningHours' time='0.001'/>
+  </testsuite>
+  <testsuite name='FeedAPIServiceTests' tests='3' failures='0'>
+    <testcase classname='FeedAPIServiceTests' name='testGetFeeds_200OK' time='0.016'/>
+    <testcase classname='FeedAPIServiceTests' name='testGetFeeds_500Error' time='0.002'/>
+    <testcase classname='FeedAPIServiceTests' name='testGetFeeds_504Error' time='0.003'/>
+  </testsuite>
+  <testsuite name='FeedItemTests' tests='10' failures='0'>
+    <testcase classname='FeedItemTests' name='testBrandLogo' time='0.108'/>
+    <testcase classname='FeedItemTests' name='testBrandName' time='0.050'/>
+    <testcase classname='FeedItemTests' name='testItemExists' time='0.046'/>
+    <testcase classname='FeedItemTests' name='testPictureUrl' time='0.075'/>
+    <testcase classname='FeedItemTests' name='testRewardDescription' time='0.130'/>
+    <testcase classname='FeedItemTests' name='testRewardType' time='0.048'/>
+    <testcase classname='FeedItemTests' name='testTimeAgo' time='0.129'/>
+    <testcase classname='FeedItemTests' name='testUserIdentifier' time='0.182'/>
+    <testcase classname='FeedItemTests' name='testUserName' time='0.014'/>
+    <testcase classname='FeedItemTests' name='testUserProfilePic' time='0.019'/>
+  </testsuite>
+  <testsuite name='LocationAPIServiceTests' tests='9' failures='0'>
+    <testcase classname='LocationAPIServiceTests' name='testGetAllLocations_200OK' time='0.005'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetAllLocations_500Error' time='0.002'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetAllLocations_504Error' time='0.002'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetLocationForID_200OK' time='0.002'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetLocationForID_500Error' time='0.002'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetLocationForID_504Error' time='0.002'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetLocationsForBrandId_200OK' time='0.002'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetLocationsForBrandId_500Error' time='0.002'/>
+    <testcase classname='LocationAPIServiceTests' name='testGetLocationsForBrandId_504Error' time='0.002'/>
+  </testsuite>
+  <testsuite name='LocationTests' tests='7' failures='0'>
+    <testcase classname='LocationTests' name='testBrandId' time='0.000'/>
+    <testcase classname='LocationTests' name='testBrandName' time='0.000'/>
+    <testcase classname='LocationTests' name='testFacebookPageId' time='0.000'/>
+    <testcase classname='LocationTests' name='testIdentifier' time='0.000'/>
+    <testcase classname='LocationTests' name='testLocation' time='0.000'/>
+    <testcase classname='LocationTests' name='testNumberOfRewards' time='0.000'/>
+    <testcase classname='LocationTests' name='testTwitterPageId' time='0.001'/>
+  </testsuite>
+  <testsuite name='PDSocialLoginHandlerTest' tests='4' failures='0'>
+    <testcase classname='PDSocialLoginHandlerTest' name='testShouldNotPromptLoginUserWhenIsLoggedIn' time='0.011'/>
+    <testcase classname='PDSocialLoginHandlerTest' name='testShouldNotPromptLoginWhenMoreThanMaxPrompts' time='0.002'/>
+    <testcase classname='PDSocialLoginHandlerTest' name='testShouldPromptLoginUserWhenIsNotLoggedIn' time='0.002'/>
+    <testcase classname='PDSocialLoginHandlerTest' name='testShouldPromptLoginWhenNotUsed' time='0.003'/>
+  </testsuite>
+  <testsuite name='PDSocialLoginViewModelTests' tests='3' failures='0'>
+    <testcase classname='PDSocialLoginViewModelTests' name='testInitState' time='0.003'/>
+    <testcase classname='PDSocialLoginViewModelTests' name='testLocationDelegateDidUpdateSuccessfully' time='0.002'/>
+    <testcase classname='PDSocialLoginViewModelTests' name='testRenderSuccessState' time='0.005'/>
+  </testsuite>
+  <testsuite name='RewardAPIServiceTests' tests='9' failures='0'>
+    <testcase classname='RewardAPIServiceTests' name='testGetAllRewards_200OK' time='0.007'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetAllRewards_500Error' time='0.004'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetAllRewards_504Error' time='0.002'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetRewardsForBrandID_200OK' time='0.003'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetRewardsForBrandID_500Error' time='0.003'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetRewardsForBrandID_504Error' time='0.003'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetRewardsForLocationID_200OK' time='0.003'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetRewardsForLocationID_500Error' time='0.003'/>
+    <testcase classname='RewardAPIServiceTests' name='testGetRewardsForLocationID_504Error' time='0.003'/>
+  </testsuite>
+  <testsuite name='RewardTests' tests='13' failures='0'>
+    <testcase classname='RewardTests' name='testAction' time='0.000'/>
+    <testcase classname='RewardTests' name='testAvailability' time='0.000'/>
+    <testcase classname='RewardTests' name='testCoverImageUrl' time='0.000'/>
+    <testcase classname='RewardTests' name='testCreatedAt' time='0.000'/>
+    <testcase classname='RewardTests' name='testIdentifier' time='0.005'/>
+    <testcase classname='RewardTests' name='testLocations' time='0.001'/>
+    <testcase classname='RewardTests' name='testRemainingCount' time='0.001'/>
+    <testcase classname='RewardTests' name='testRewardDescription' time='0.001'/>
+    <testcase classname='RewardTests' name='testRewardExists' time='0.001'/>
+    <testcase classname='RewardTests' name='testRewardRules' time='0.001'/>
+    <testcase classname='RewardTests' name='testRewardType' time='0.001'/>
+    <testcase classname='RewardTests' name='testSocialMediaType' time='0.001'/>
+    <testcase classname='RewardTests' name='testStatus' time='0.001'/>
+  </testsuite>
+  <testsuite name='SocialAPIServiceTests' tests='3' failures='0'>
+    <testcase classname='SocialAPIServiceTests' name='testConnectTwitterAccount_200OK' time='0.004'/>
+    <testcase classname='SocialAPIServiceTests' name='testConnectTwitterAccount_500Error' time='0.003'/>
+    <testcase classname='SocialAPIServiceTests' name='testConnectTwitterAccount_504Error' time='0.003'/>
+  </testsuite>
+  <testsuite name='UserAPIServiceTests' tests='9' failures='0'>
+    <testcase classname='UserAPIServiceTests' name='testGetUserDetails_200OK' time='0.004'/>
+    <testcase classname='UserAPIServiceTests' name='testGetUserDetails_500Error' time='0.002'/>
+    <testcase classname='UserAPIServiceTests' name='testGetUserDetails_504Error' time='0.003'/>
+    <testcase classname='UserAPIServiceTests' name='testRegisterUser_200OK' time='0.004'/>
+    <testcase classname='UserAPIServiceTests' name='testRegisterUser_500Error' time='0.004'/>
+    <testcase classname='UserAPIServiceTests' name='testRegisterUser_504Error' time='0.003'/>
+    <testcase classname='UserAPIServiceTests' name='testUpdateUser_200OK' time='0.003'/>
+    <testcase classname='UserAPIServiceTests' name='testUpdateUser_500Error' time='0.002'/>
+    <testcase classname='UserAPIServiceTests' name='testUpdateUser_504Error' time='0.003'/>
+  </testsuite>
+  <testsuite name='UserTests' tests='2' failures='0'>
+    <testcase classname='UserTests' name='testNames' time='0.001'/>
+    <testcase classname='UserTests' name='testUserExists' time='0.001'/>
+  </testsuite>
+  <testsuite name='WalletAPIServiceTests' tests='3' failures='0'>
+    <testcase classname='WalletAPIServiceTests' name='testGetAllRewardsInWallet_200OK' time='0.004'/>
+    <testcase classname='WalletAPIServiceTests' name='testGetAllRewardsInWallet_500Error' time='0.003'/>
+    <testcase classname='WalletAPIServiceTests' name='testGetAllRewardsInWallet_504Error' time='0.003'/>
+  </testsuite>
+</testsuites>

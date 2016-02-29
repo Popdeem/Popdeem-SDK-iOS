@@ -1,4 +1,8 @@
-# Setup
+# Popdeem iOS SDK documentation
+
+---
+
+## Getting Started
 
 Getting set up couldnt be easier.
 

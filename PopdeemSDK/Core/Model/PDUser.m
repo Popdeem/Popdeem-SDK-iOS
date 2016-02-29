@@ -65,6 +65,8 @@
   
   if ([params[@"suspend_until"] length] > 0) {
     user.suspended = YES;
+    NSString *suspendedUntil = params[@"suspend_until"];
+    user.suspendedUntil = [NSDate dateWithTimeIntervalSince1970:suspendedUntil.integerValue];
   } else {
     user.suspended = NO;
   }
