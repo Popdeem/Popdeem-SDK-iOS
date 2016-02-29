@@ -4,7 +4,9 @@
 
 To trigger the Popdeem login flow, add the following line of code:
 
+```
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:5];
+```
 
 The numberOfPrompts parameter denotes how many times you wish to ask the user to log in if they have dismissed the login pop-up.
 
@@ -14,4 +16,6 @@ On app launch, if the user has been previously logged in, the Popdeem SDK will t
 
 ## Non-Social Users
 
-When you initialize the Popdeem SDK, a non-social user is created and registered on Popdeem. This allows you to track which of your app users have converted to Social.
+When you initialize the Popdeem SDK, a non-social user is created and registered on Popdeem. This allows you to track which of your app users have converted to Social.  
+
+Next, [Trigger Home Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/home_flow.md "Home Flow")
