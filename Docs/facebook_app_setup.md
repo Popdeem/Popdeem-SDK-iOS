@@ -34,3 +34,6 @@ Then, you need to add an Array called "URL Types". Inside you put a Dictionary, 
 ![Facebook Keys](https://9ba8132fae9818edf2a4a87a4d76ad20d8553cc4.googledrive.com/host/0BybHx9-1eNB4NDgwUW9aZTJNVEE/apiDocs_plistFacebook.png)  
 
 Next, [Trigger Login Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/login_flow.md "Login Flow")
+
+---
+[Docs Home](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/README.md "Docs Home")
