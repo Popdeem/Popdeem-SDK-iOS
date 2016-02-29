@@ -18,6 +18,8 @@ Initializing the SDK is as simple as adding one line to your `application: didFi
 	[PopdeemSDK withAPIKey:@"YOUR_POPDEEM_API_KEY"];
 ```
 
+### Broadcast Features
+
 Still in your `AppDelegate.m` file, to use the Popdeem Push Notification and Broadcast features, you must include the following Delegate Methods:  
 
 ```
@@ -36,6 +38,8 @@ Still in your `AppDelegate.m` file, to use the Popdeem Push Notification and Bro
     }   
   }
 ```
+
+### Strings
 
 You will also need to add the strings used in the PopdeemSDK to your project. Add the contents of our [Strings](https://gist.github.com/NQuinn27/d66bf7962ab837c1b1d7 "Strings") file to your project, with the name `Popdeem.strings`. See our [Strings](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/strings.md "Strings") section for more info.  
 
