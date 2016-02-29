@@ -2,7 +2,7 @@
 
 ---
 
-To integrate Popdeem into your iOS application, you can make use of our theming system. To implement your own theme, copy the *theme.json* file from this [link](https://gist.github.com/NQuinn27/df08250c6a9c7464b4e4 "Popdeem Theme"), and change the colours to suit. When you are done, include this theme file in your project, and add the following to your `application: didFinishLaunchingWithOptions:` method in `AppDelegate.m`:
+To integrate Popdeem into your iOS application, you can make use of our theming system. To implement your own theme, copy the *theme.json* file from this [link](https://gist.github.com/NQuinn27/df08250c6a9c7464b4e4 "Popdeem Theme"), or below, and change the colours to suit. When you are done, include this theme file in your project, and add the following to your `application: didFinishLaunchingWithOptions:` method in `AppDelegate.m`:
 
 	[PopdeemSDK setUpThemeFile:@"theme"];
 
@@ -15,3 +15,7 @@ Next, you may want to customize the [Strings](https://github.com/Popdeem/Popdeem
 ---
 
 [Docs Home](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/README.md "Docs Home")
+
+---
+
+<script src="https://gist.github.com/NQuinn27/df08250c6a9c7464b4e4.js"></script>
