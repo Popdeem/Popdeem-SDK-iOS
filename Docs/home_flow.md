@@ -22,3 +22,6 @@ To customize the look and feel of the Popdeem SDK, check out the [Theming](https
 
 ---
 [Docs Home](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/README.md "Docs Home")
+
+---
+![Popdeem Home](https://drive.google.com/file/d/0BybHx9-1eNB4TG1VTXJBNkMzRnc/view?usp=sharing)
