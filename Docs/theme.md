@@ -8,3 +8,11 @@ To integrate our interface more seamlessly into your iOS application, you can ma
 	[PopdeemSDK setUpThemeFile:@"theme"];
 
 where *theme* is the name of the theme file included in your application bundle.
+
+---
+
+Next, you may want to customize the [Strings](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/strings.md "Strings") throughout the PopdeemSDK
+
+---
+
+[Docs Home](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/README.md "Docs Home")
