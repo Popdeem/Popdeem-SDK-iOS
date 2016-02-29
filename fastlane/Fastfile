@@ -44,7 +44,7 @@ platform :ios do
     new_version = version_bump_podspec(path: "PopdeemSDK.podspec", bump_type: "patch")
     puts "After bump Pods Version: #{new_version}"
 
-    sh "git add ."
+    sh "git add ../PopdeemSDK.podspec"
     sh "git commit -m \"Deploying via Fastlane - version #{new_version}\""
     sh "git push origin master"
     sh "git tag #{new_version}"
