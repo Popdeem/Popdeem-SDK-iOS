@@ -1,5 +1,7 @@
 # Popdeem iOS SDK documentation
 
+*This guide will take you through all of the steps necessary to integrate Popdeem into your iOS application. To see it in action, check out this repository and build the Sample projects.*
+
 ---
 
 1 - [Getting Started](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/getting_started.md "Getting Started")  
