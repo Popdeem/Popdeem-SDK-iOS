@@ -6,14 +6,19 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## iOS
-### ios test
-```
-fastlane ios test
-```
-
 ### ios podtest
 ```
 fastlane ios podtest
+```
+
+### ios build_static_library
+```
+fastlane ios build_static_library
+```
+
+### ios test
+```
+fastlane ios test
 ```
 
 ### ios deploy

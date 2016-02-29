@@ -299,6 +299,8 @@
 		39DD9EBA1C7DD36500A67ED2 /* popdeemHeaderLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = popdeemHeaderLight.png; path = Resources/popdeemHeaderLight.png; sourceTree = "<group>"; };
 		39DD9EBB1C7DD36500A67ED2 /* popdeemHeaderLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeaderLight@2x.png"; path = "Resources/popdeemHeaderLight@2x.png"; sourceTree = "<group>"; };
 		39DD9EBC1C7DD36500A67ED2 /* popdeemHeaderLight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeaderLight@3x.png"; path = "Resources/popdeemHeaderLight@3x.png"; sourceTree = "<group>"; };
+		39EB99011C84B75E00BB0DD8 /* libPopdeemSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libPopdeemSDK.h; sourceTree = "<group>"; };
+		39EB99031C84B75E00BB0DD8 /* libPopdeemSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libPopdeemSDK.m; sourceTree = "<group>"; };
 		39EDADBD1C072851001102B3 /* PDClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewModel.h; path = Claim/PDClaimViewModel.h; sourceTree = "<group>"; };
 		39EDADBE1C072851001102B3 /* PDClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewModel.m; path = Claim/PDClaimViewModel.m; sourceTree = "<group>"; };
 		39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRewardsTableViewCell.h; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 				A90FA52E1C0368A8001DA473 /* PopdeemSample */,
 				393D2B771C3AD0D300F1E253 /* NavigationSample */,
 				39537BC41C639B79001C6796 /* TabbedTest */,
+				39EB99001C84B75E00BB0DD8 /* libPopdeemSDK */,
 				39D7D0661B8F0DCF00E45D0B /* Products */,
 				5DBE05A8A8516121F073643A /* Pods */,
 				4EF69A0328B0579398DD2DED /* Frameworks */,
@@ -741,6 +744,15 @@
 				39D7D0761B8F0DCF00E45D0B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39EB99001C84B75E00BB0DD8 /* libPopdeemSDK */ = {
+			isa = PBXGroup;
+			children = (
+				39EB99011C84B75E00BB0DD8 /* libPopdeemSDK.h */,
+				39EB99031C84B75E00BB0DD8 /* libPopdeemSDK.m */,
+			);
+			path = libPopdeemSDK;
 			sourceTree = "<group>";
 		};
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
@@ -1954,7 +1966,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -1971,7 +1983,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};

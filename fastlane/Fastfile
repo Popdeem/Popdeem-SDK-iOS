@@ -4,15 +4,10 @@ default_platform :ios
 platform :ios do
   before_all do
     ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
-    # cocoapods
-  end
-
-  lane :test do
-    scan(:scheme => "PopdeemSDK")
+    ENV["GITHUB_TOKEN"] = "75edf67be15cda9c710fa0e22014731ec247eaf5"
   end
 
   lane :podtest do
-    test
     desc "**Checking cocoapods all OK**"
     sh "pod spec lint ../PopdeemSDK.podspec --allow-warnings --use-libraries"
     sh "pod lib lint ../PopdeemSDK.podspec --allow-warnings --use-libraries"
@@ -23,20 +18,51 @@ platform :ios do
     )
   end
 
+  lane :build_static_library do
+    sh "xctool -workspace ../PopdeemSDK.xcworkspace \
+                -scheme PopdeemSDK \
+                clean"
+    sh "xctool -workspace ../PopdeemSDK.xcworkspace \
+                -scheme PopdeemSDK \
+                -configuration Release \
+                -sdk 'iphoneos9.3' \
+                TARGET_BUILD_DIR='../build' \
+                BUILT_PRODUCTS_DIR='../build' \
+                build"
+  end
+
+  lane :test do
+  end
+
   lane :deploy do
     desc "**Deploying PopdeemSDK**"
+
+    podtest
+
     new_version = version_bump_podspec(path: "PopdeemSDK.podspec", bump_type: "patch")
     puts "After bump Pods Version: #{new_version}"
 
-    sh "git add ."
-    sh "git commit -m \"Deploying via Fastlane - version #{new_version}\""
-    sh "git push origin master"
-    sh "git tag #{new_version}"
-    sh "git push --tags"
+    ensure_git_status_clean
+    git_commit(message: "Deploying via Fastlane - version #{new_version}")
+    push_to_git_remote
+    add_git_tag(build_number: "#{new_version}")
+    push_git_tags
 
     clean_cocoapods_cache
 
     sh "pod trunk push ../PopdeemSDK.podspec --allow-warnings --use-libraries"
+
+    #Release to github
+    build_static_library
+    github_release = set_github_release(
+            repository_name: "Popdeem/Popdeem-SDK-iOS",
+            api_token: ENV['GITHUB_TOKEN'],
+            name: "Release #{new_version}",
+            tag_name: "#{new_version}",
+            description: "PopdeemSDK Latest Release",
+            commitish: "master",
+            upload_assets: ["../build/libPopdeemSDK.a"]
+            )
 
     puts(current_version)
     slack(
@@ -68,8 +94,3 @@ platform :ios do
     puts "Checking the latest version on Cocoapods"
   end
 end
-
-
-
-# More information about multiple platforms in fastlane: https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
-# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
