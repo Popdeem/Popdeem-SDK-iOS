@@ -36,3 +36,4 @@ Still in your `AppDelegate.m` file, to use the Popdeem Push Notification and Bro
     }   
   }
 ```
+Next, set up your [Facebook App](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/facebook_app_setup.md "Facebook App")
