@@ -21,9 +21,6 @@ platform :ios do
   lane :build_static_library do
     sh "xctool -workspace ../PopdeemSDK.xcworkspace \
                 -scheme PopdeemSDK \
-                clean"
-    sh "xctool -workspace ../PopdeemSDK.xcworkspace \
-                -scheme PopdeemSDK \
                 -configuration Release \
                 -sdk 'iphoneos9.3' \
                 TARGET_BUILD_DIR='../build' \
@@ -32,6 +29,7 @@ platform :ios do
   end
 
   lane :test do
+    build_static_library
   end
 
   lane :deploy do
@@ -56,23 +54,22 @@ platform :ios do
     sh "pod trunk push ../PopdeemSDK.podspec --allow-warnings --use-libraries"
 
     #Release to github
-    build_static_library
-    github_release = set_github_release(
-            repository_name: "Popdeem/Popdeem-SDK-iOS",
-            api_token: ENV['GITHUB_TOKEN'],
-            name: "Release #{new_version}",
-            tag_name: "#{new_version}",
-            description: "PopdeemSDK Latest Release",
-            commitish: "master",
-            upload_assets: ["../build/libPopdeemSDK.a"]
-            )
+    # build_static_library
+    # github_release = set_github_release(
+    #         repository_name: "Popdeem/Popdeem-SDK-iOS",
+    #         api_token: ENV['GITHUB_TOKEN'],
+    #         name: "Release #{new_version}",
+    #         tag_name: "#{new_version}",
+    #         description: "PopdeemSDK Latest Release",
+    #         commitish: "master",
+    #         upload_assets: ["../build/libPopdeemSDK.a"]
+    #         )
 
-    puts(current_version)
-    # slack(
-    #   channel: "mobile",
-    #   message: ":pdlogo: Deployed PopdeemSDK.... :rocket:",
-    #   success: true
-    # )
+    slack(
+      channel: "mobile",
+      message: ":pdlogo: Deployed PopdeemSDK.... :rocket:",
+      success: true
+    )
   end
 
   after_all do |lane|
@@ -84,13 +81,13 @@ platform :ios do
   end
 
   error do |lane, exception|
-    # if ENV['SLACK_URL']
-    #   slack(
-    #     channel: "mobile",
-    #     message: ":bangbang: Fastlane error in PopdeemSDK: " + exception.message,
-    #     success: false
-    #     )
-    # end
+    if ENV['SLACK_URL']
+      slack(
+        channel: "mobile",
+        message: ":bangbang: Fastlane error in PopdeemSDK: " + exception.message,
+        success: false
+        )
+    end
   end
 
   private_lane :current_version do |options|
