@@ -44,10 +44,11 @@ platform :ios do
     new_version = version_bump_podspec(path: "PopdeemSDK.podspec", bump_type: "patch")
     puts "After bump Pods Version: #{new_version}"
 
-    # git_commit(message: "Deploying via Fastlane - version #{new_version}")
-    push_to_git_remote
-    add_git_tag(build_number: "#{new_version}")
-    push_git_tags
+    sh "git add ."
+    sh "git commit -m \"Deploying via Fastlane - version #{new_version}\""
+    sh "git push origin master"
+    sh "git tag #{new_version}"
+    sh "git push --tags"
 
     clean_cocoapods_cache
 
