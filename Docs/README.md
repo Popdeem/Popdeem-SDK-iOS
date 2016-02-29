@@ -7,5 +7,6 @@
 3 - [Login Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/login_flow.md "Login Flow")   
 4 - [Home Flow](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/home_flow.md "Home Flow")  
 5 - [Theming](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/theme.md "Theming")  
+6 - [Strings](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/strings.md "Strings")  
 
 ---
