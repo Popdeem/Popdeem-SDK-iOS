@@ -18,7 +18,7 @@ If you are setting the Popdeem Rewards Home as a view on your Nav Bar, there is 
 
 ---
 
-To customize the look and feel of the Popdeem SDK, check out the [Theming](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/theming.md "Theming") section.  
+To customize the look and feel of the Popdeem SDK, check out the [Theming](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/theme.md "Theming") section.  
 
 ---
 [Docs Home](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/README.md "Docs Home")
