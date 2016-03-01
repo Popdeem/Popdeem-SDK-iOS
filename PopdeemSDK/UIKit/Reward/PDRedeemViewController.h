@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
 
-@interface PDRedeemViewController : NSObject
+@interface PDRedeemViewController : UIViewController
 @property (unsafe_unretained) IBOutlet UILabel *timerLabel;
 
 @property (unsafe_unretained) IBOutlet UIView *cardView;
@@ -22,5 +22,7 @@
 @property (unsafe_unretained) IBOutlet UILabel *bottomInfoLabel;
 @property (unsafe_unretained) IBOutlet UILabel *brandLabel;
 @property (unsafe_unretained) IBOutlet UIView *doneButton;
+
+- (instancetype) initFromNib;
 
 @end

@@ -8,9 +8,9 @@
 
 #import "PDRedeemViewController.h"
 #import <PopdeemSDK/PDBrandStore.h>
-#import "FlurryLogger.h"
 
-@interface RedeemViewController () {
+
+@interface PDRedeemViewController () {
   int secondsLeft;
   NSTimer *timer;
   
@@ -20,6 +20,15 @@
 
 @end
 @implementation PDRedeemViewController
+
+- (instancetype) initFromNib {
+  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  if (self = [self initWithNibName:@"PDRedeemViewController" bundle:podBundle]) {
+    return self;
+  }
+  return nil;
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self setNeedsStatusBarAppearanceUpdate];
@@ -92,11 +101,11 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-  [FlurryLogger logEvent:@"Redeem Page Opened" params:nil];
+  
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-  [FlurryLogger logEvent:@"Redeem Page Closed" params:nil];
+  
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

@@ -8,13 +8,12 @@
 
 #import "WalletTableViewCell.h"
 #import "WalletCache.h"
-#import "PDRewardHomeTableViewController.h"
 #import "PDTheme.h"
 
 
 @implementation WalletTableViewCell
 
-- (WalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDRewardHomeTableViewController*)parent {
+- (WalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDHomeViewController*)parent {
   frame.size = CGSizeMake(frame.size.width, frame.size.height+190);
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   if (self = [super initWithFrame:frame]) {

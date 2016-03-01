@@ -21,10 +21,13 @@
 #import "PDSocialMediaManager.h"
 #import "PDSocialLoginViewController.h"
 #import "FeedImageViewController.h"
+#import "PDRewardActionAPIService.h"
+#import "PDRedeemViewController.h"
 
 @interface PDHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
   NSIndexPath *walletSelectedIndex;
+  PDReward *selectedWalletReward;
 }
 @property (nonatomic, strong) PDHomeViewModel *model;
 @property (nonatomic) PDModalLoadingView *loadingView;
@@ -340,6 +343,48 @@
       break;
     default:
       break;
+  }
+}
+
+- (void) redeemButtonPressed {
+  selectedWalletReward = [_model.wallet objectAtIndex:walletSelectedIndex.row];
+  if (selectedWalletReward.revoked) {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked" message:@"This reward has been revoked" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [av show];
+    return;
+  }
+  //For sweepstakes we dont show the alert
+  if (selectedWalletReward.type == PDRewardTypeSweepstake) {
+    [self performSegueWithIdentifier:@"walletToRedeem" sender:self];
+    return;
+  }
+  
+  walletSelectedIndex = [self.tableView indexPathForSelectedRow];
+  
+  if (selectedWalletReward.type != PDRewardTypeSweepstake) {
+    PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
+    _loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
+    [_loadingView showAnimated:YES];
+    PDRedeemViewController *rvc = [[PDRedeemViewController alloc] initFromNib];
+    [rvc setReward:selectedWalletReward];
+    [self.navigationController pushViewController:rvc animated:YES];
+    [PDWallet remove:selectedWalletReward.identifier];
+    _model.wallet = [PDWallet wallet];
+    [self.tableView reloadData];
+//    [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
+//      [_loadingView hideAnimated:YES];
+//      if (error) {
+//        NSLog(@"Something went wrong: %@",error);
+//      } else {
+//        
+//        PDRedeemViewController *rvc = [[PDRedeemViewController alloc] initFromNib];
+//        [rvc setReward:selectedWalletReward];
+//        [self.navigationController pushViewController:rvc animated:YES];
+//        [PDWallet remove:selectedWalletReward.identifier];
+//        _model.wallet = [PDWallet wallet];
+//        [self.tableView reloadData];
+//      }
+//    }];
   }
 }
 

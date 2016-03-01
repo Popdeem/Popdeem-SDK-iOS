@@ -21,5 +21,6 @@
 
 - (instancetype) initFromNib;
 - (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender;
+- (void) redeemButtonPressed;
 
 @end
