@@ -12,3 +12,6 @@ This is currently in development. Users of the SDK should monitor the changelog 
 Any questions can be directed to me at niall@popdeem.com
 
 Sample projects can be built using this XCode project.
+
+---
+*Updated by Fastlane on 01/Mar/2016 at 12:15:41
