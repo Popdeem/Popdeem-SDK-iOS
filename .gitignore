@@ -38,8 +38,6 @@ xcuserdata
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 Pods/
-build/
-fastlane/
 
 # Carthage
 #
@@ -47,3 +45,6 @@ fastlane/
 # Carthage/Checkouts
 
 Carthage/Build
+
+build/
+fastlane/
