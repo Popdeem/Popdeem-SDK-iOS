@@ -156,6 +156,18 @@
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
     return YES;
   }
+  for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:scheme
+                                                        options:0
+                                                          range:NSMakeRange(0, [scheme length])];
+    if (numberOfMatches > 0) {
+      return YES;
+    }
+  }
   return NO;
 }
 
@@ -171,7 +183,18 @@
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
     return [PopdeemSDK processReferral:application url:url sourceApplication:sourceApplication annotation:annotation];
   }
-
+  for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:scheme
+                                                        options:0
+                                                          range:NSMakeRange(0, [scheme length])];
+    if (numberOfMatches > 0) {
+      return [PopdeemSDK processReferral:application url:url sourceApplication:sourceApplication annotation:annotation];
+    }
+  }
   return YES;
 }
 
