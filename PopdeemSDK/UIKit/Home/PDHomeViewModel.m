@@ -179,4 +179,19 @@
   }
 }
 
+- (void) claimNoAction:(PDReward*)reward {
+  [[PDAPIClient sharedInstance] claimReward:reward.identifier
+                                   location:nil
+                                withMessage:nil
+                              taggedFriends:nil
+                                      image:nil
+                                   facebook:YES
+                                    twitter:NO
+                                    success:^(){
+                                      
+                                    } failure:^(NSError *error) {
+                                      
+                                    }];
+}
+
 @end

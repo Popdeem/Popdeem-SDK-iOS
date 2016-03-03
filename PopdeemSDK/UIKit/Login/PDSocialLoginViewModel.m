@@ -75,17 +75,6 @@
       });
       return;
     }
-    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-    [loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self.viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-      if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-        [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-        //        [self postToFacebook:nil];
-      } else {
-        UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions" message:@"You must grant publish permissions in order to make this action" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [noperm show];
-      }
-    }];
-
     
     if (_viewController.shouldAskLocation) {
       [self fetchLocationCompletion:^(NSError *error){
@@ -118,6 +107,7 @@
   
   [self setState:LoginStateContinue];
   [self.viewController renderViewModelState];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PopdeemUserLoggedInNotification" object:nil];
 }
 
 #pragma mark - Fetch Location -

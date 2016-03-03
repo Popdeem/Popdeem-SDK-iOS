@@ -10,6 +10,10 @@
 #import "PopdeemSDK.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PDSocialLoginHandler.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
+
 
 @interface AppDelegate ()
 
@@ -19,11 +23,48 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [application setStatusBarStyle:UIStatusBarStyleLightContent];
   [PopdeemSDK withAPIKey:@"43507f68-eeab-49e7-abf0-da099b14f17f"];
-  // UIKIT
+  [PopdeemSDK enableSocialLoginWithNumberOfPrompts:5];
   [PopdeemSDK registerForPushNotificationsApplication:application];
-//  [PopdeemSDK setUpThemeFile:@"theme"];
+  [PopdeemSDK setUpThemeFile:@"theme"];
+  [Fabric with:@[[Crashlytics class]]];
   return YES;
+}
+
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [PopdeemSDK application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [PopdeemSDK application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  if ([[userInfo objectForKey:@"sender"] isEqualToString:@"popdeem"]) {
+    [PopdeemSDK handleRemoteNotification:userInfo];
+    return;
+  }
+}
+
+- (BOOL) application:(UIApplication *)application
+             openURL:(NSURL *)url
+   sourceApplication:(NSString *)sourceApplication
+          annotation:(id)annotation {
+  
+  if ([PopdeemSDK canOpenUrl:url sourceApplication:sourceApplication annotation:annotation]) {
+    return [PopdeemSDK application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+  }
+  // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+  //TODO: We could maybe take this into a Popdeem class and lighten the FB integration burden?
+  BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                   openURL:url
+                                                         sourceApplication:sourceApplication
+                                                                annotation:annotation];
+  
+  // You can add your app-specific url handling code here if needed
+  
+  return wasHandled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -42,6 +83,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+  [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

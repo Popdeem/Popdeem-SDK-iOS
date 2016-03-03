@@ -2,7 +2,7 @@
   Localizable.strings
   PopdeemSDK
 
-  Created by Niall Quinn on 05/01/2016.
+  Created by Niall Quinn on 02/03/2016.
   Copyright © 2016 Popdeem. All rights reserved.
 */
 
@@ -64,4 +64,3 @@
 "popdeem.redeem.doneAlert.okButtonText" = "Yes, go!";
 "popdeem.redeem.doneAlert.cancelButtonText" = "Cancel";
 "popdeem.redeem.timer.doneText" = "Timer Done";
-

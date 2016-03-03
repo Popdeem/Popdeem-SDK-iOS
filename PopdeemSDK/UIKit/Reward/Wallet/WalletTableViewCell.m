@@ -32,6 +32,8 @@
     [self addSubview:_logoImageView];
     if (reward.coverImage) {
       [self.logoImageView setImage:reward.coverImage];
+    } else {
+      [self.logoImageView setImage:[UIImage imageNamed:@"starG"]];
     }
     [self.logoImageView setContentMode:UIViewContentModeScaleAspectFit];
     self.logoImageView.layer.cornerRadius = imageSize/2;
@@ -142,9 +144,10 @@
     [backingView addSubview:howToLabel];
     
     if (reward.type == PDRewardTypeCoupon  || reward.type == PDRewardTypeInstant) {
-      UIButton *redeemButton = [[UIButton alloc] initWithFrame:CGRectMake(30, backingView.frame.size.height-55, viewWidth-60, 40)];
+      UIButton *redeemButton = [[UIButton alloc] initWithFrame:CGRectMake(30, backingView.frame.size.height-45, viewWidth-60, 40)];
       [redeemButton setBackgroundColor:[UIColor blackColor]];
-      [redeemButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+      [redeemButton setBackgroundColor:PopdeemColor(@"popdeem.redeem.redeemButton.backgroundColor")];
+      [redeemButton setTitleColor:PopdeemColor(@"popdeem.redeem.redeemButton.fontColor") forState:UIControlStateNormal];
       [redeemButton.titleLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 16)];
       [redeemButton setTitle:@"Redeem" forState:UIControlStateNormal];
       [redeemButton addTarget:parent action:@selector(redeemButtonPressed) forControlEvents:UIControlEventTouchUpInside];

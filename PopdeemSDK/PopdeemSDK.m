@@ -30,6 +30,7 @@
 #import "PDNotificationHandler.h"
 #import "PDMessageAPIService.h"
 #import "PDUserAPIService.h"
+#import "PDReferral.h";
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
@@ -146,10 +147,37 @@
   }];
 }
 
++ (BOOL) canOpenUrl:(NSURL*)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
+    return YES;
+  }
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
+    return YES;
+  }
+  return NO;
+}
+
 + (BOOL) application:(UIApplication *)application
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
           annotation:(id)annotation {
+  //Twitter Login Callback
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
+    return [PopdeemSDK handleTwitterCallback:url sourceApplication:sourceApplication annotation:annotation];
+  }
+  //Facebook Deep Linking Handling
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
+    return [PopdeemSDK processReferral:application url:url sourceApplication:sourceApplication annotation:annotation];
+  }
+
+  return YES;
+}
+
++ (BOOL) handleTwitterCallback:(NSURL *)url
+             sourceApplication:(NSString *)sourceApplication
+                    annotation:(id)annotation {
   NSDictionary *d = [PopdeemSDK parametersDictionaryFromQueryString:[url query]];
   PDSocialMediaManager *man = [PDSocialMediaManager manager];
   if (d[@"denied"]) {
@@ -161,6 +189,15 @@
     NSString *verifier = d[@"oauth_verifier"];
     [man setOAuthToken:token oauthVerifier:verifier];
   }
+  return YES;
+}
+
++ (BOOL) processReferral:(UIApplication *)application
+                     url:(NSURL *)url
+       sourceApplication:(NSString *)sourceApplication
+              annotation:(id)annotation {
+  PDReferral *r = [[PDReferral alloc] initWithUrl:url appRef:application];
+  [PDReferral logReferral:r];
   return YES;
 }
 

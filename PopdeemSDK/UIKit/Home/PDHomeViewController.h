@@ -18,6 +18,8 @@
 @property (nonatomic, strong) PDRewardTableViewController *rewardTableViewController;
 @property (nonatomic, strong) UITableViewCell *rewardsCell;
 @property (nonatomic, strong) PDMsgCntrTblViewController *messageCenter;
+@property (nonatomic) BOOL didClaim;
+@property (nonatomic) NSInteger claimedRewardId;
 
 - (instancetype) initFromNib;
 - (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender;

@@ -72,6 +72,8 @@
 		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
 		39EB990A1C85DA4600BB0DD8 /* PDRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDRedeemViewController.m */; };
+		39EB990E1C86F78600BB0DD8 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990D1C86F78600BB0DD8 /* theme.json */; };
+		39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990F1C86F7F000BB0DD8 /* Localizable.strings */; };
 		39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDClaimViewModel.m */; };
 		39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* NoRewardsTableViewCell.m */; };
 		39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC51C07333F001102B3 /* PDRewardTableViewController.m */; };
@@ -305,6 +307,8 @@
 		39EB99081C85DA4600BB0DD8 /* PDRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRedeemViewController.h; sourceTree = "<group>"; };
 		39EB99091C85DA4600BB0DD8 /* PDRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRedeemViewController.m; sourceTree = "<group>"; };
 		39EB990C1C85E46D00BB0DD8 /* PDRedeemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDRedeemViewController.xib; sourceTree = "<group>"; };
+		39EB990D1C86F78600BB0DD8 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
+		39EB990F1C86F7F000BB0DD8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		39EDADBD1C072851001102B3 /* PDClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDClaimViewModel.h; path = Claim/PDClaimViewModel.h; sourceTree = "<group>"; };
 		39EDADBE1C072851001102B3 /* PDClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDClaimViewModel.m; path = Claim/PDClaimViewModel.m; sourceTree = "<group>"; };
 		39EDADC01C07333F001102B3 /* NoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoRewardsTableViewCell.h; sourceTree = "<group>"; };
@@ -592,6 +596,8 @@
 				39537BD61C639B79001C6796 /* LaunchScreen.storyboard */,
 				39537BD91C639B79001C6796 /* Info.plist */,
 				39537BC51C639B79001C6796 /* Supporting Files */,
+				39EB990D1C86F78600BB0DD8 /* theme.json */,
+				39EB990F1C86F7F000BB0DD8 /* Localizable.strings */,
 			);
 			path = TabbedTest;
 			sourceTree = "<group>";
@@ -1185,6 +1191,7 @@
 				39537BC11C639B79001C6796 /* Resources */,
 				186515F95F79ABE10B1B35AE /* Embed Pods Frameworks */,
 				E02A4FE86CFE0791CECCAD41 /* Copy Pods Resources */,
+				39EB99121C86FEE900BB0DD8 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -1275,6 +1282,12 @@
 					};
 					39537BC21C639B79001C6796 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = S648X26U8J;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					39D7D0641B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
@@ -1332,7 +1345,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */,
 				39537BD81C639B79001C6796 /* LaunchScreen.storyboard in Resources */,
+				39EB990E1C86F78600BB0DD8 /* theme.json in Resources */,
 				39537BD51C639B79001C6796 /* Assets.xcassets in Resources */,
 				39537BD31C639B79001C6796 /* Main.storyboard in Resources */,
 			);
@@ -1405,6 +1420,20 @@
 			showEnvVarsInLog = 0;
 		};
 		39ADEC491C772423004C7C6E /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
+		};
+		39EB99121C86FEE900BB0DD8 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1826,7 +1855,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = NavigationSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.NavigationSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1842,7 +1871,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NavigationSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.NavigationSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1855,13 +1884,15 @@
 			baseConfigurationReference = 457473740718BBCAE8501F37 /* Pods-TabbedTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = TabbedTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "856a43a1-6d29-4b7e-b1a5-766ca6eca688";
 			};
 			name = Debug;
 		};
@@ -1870,12 +1901,14 @@
 			baseConfigurationReference = CB4D5F7DCB20DA692EB2EA0B /* Pods-TabbedTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TabbedTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "856a43a1-6d29-4b7e-b1a5-766ca6eca688";
 			};
 			name = Release;
 		};

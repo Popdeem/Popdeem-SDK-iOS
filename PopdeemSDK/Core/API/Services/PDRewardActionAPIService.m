@@ -84,7 +84,10 @@
     }
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     NSInteger responseStatusCode = [httpResponse statusCode];
-    if (responseStatusCode < 500) {
+    NSError *jsonError;
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+    
+    if (responseStatusCode < 400) {
       [PDRewardStore deleteReward:rewardId];
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
@@ -125,7 +128,8 @@
     }
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     NSInteger responseStatusCode = [httpResponse statusCode];
-    if (responseStatusCode < 500) {
+  
+    if (responseStatusCode < 400) {
       [PDWallet remove:rewardId];
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{

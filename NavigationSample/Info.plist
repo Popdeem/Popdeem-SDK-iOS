@@ -111,7 +111,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;We use your location to deliver local rewards&quot;</string>
+	<string>"We use your location to deliver local rewards"</string>
 	<key>PopdeemTwitterCallbackScheme</key>
 	<string>popdeemstagingtwitter</string>
 	<key>TwitterAppConsumerKey</key>
@@ -130,6 +130,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

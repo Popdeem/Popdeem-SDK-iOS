@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "PDHomeViewController.h"
 #import "PDLocation.h"
+#import "PDReward.h"
 
 @interface PDHomeViewModel : NSObject
 
@@ -43,5 +44,6 @@
 - (void) fetchWallet;
 - (void) fetchFeed;
 - (void) viewWillLayoutSubviews;
+- (void) claimNoAction:(PDReward*)reward;
 
 @end

@@ -41,7 +41,7 @@ Still in your `AppDelegate.m` file, to use the Popdeem Push Notification and Bro
 
 ### Strings
 
-You will also need to add the strings used in the PopdeemSDK to your project. Add the contents of our [Strings](https://gist.github.com/NQuinn27/d66bf7962ab837c1b1d7 "Strings") file to your project, with the name `Popdeem.strings`. See our [Strings](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/strings.md "Strings") section for more info.  
+You will also need to add the strings used in the PopdeemSDK to your project. Add the contents of our [Strings](https://gist.github.com/NQuinn27/d66bf7962ab837c1b1d7 "Strings") file to your localized strings file, (Localizable.strings)). See our [Strings](https://github.com/Popdeem/Popdeem-SDK-iOS/blob/master/Docs/strings.md "Strings") section for more info.  
 
 Next, set up your [Facebook App](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs/facebook_app_setup.md "Facebook App")  
 

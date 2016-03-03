@@ -42,6 +42,7 @@
   self = [self init];
   if (!self) return nil;
   _location = location;
+  
   if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(PDSocialMediaTypeFacebook)]) {
     //Show only facebook button
     self.socialMediaTypesAvailable = FacebookOnly;
@@ -171,15 +172,7 @@
     _willFacebook = YES;
     [_viewController.facebookButton setSelected:YES];
   } else {
-    [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"] registerWithPopdeem:YES success:^(void) {
-      _willFacebook = YES;
-      [_viewController.facebookButton setSelected:YES];
-    } failure:^(NSError *error) {
-      UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook") delegate:nil cancelButtonTitle:nil otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
-      [av show];
-      _willFacebook = NO;
-      [_viewController.facebookButton setSelected:NO];
-    }];
+    [self loginWithReadAndWritePerms];
   }
 }
 
@@ -277,20 +270,14 @@
     return;
   }
   
-  if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-//    [self postToFacebook:nil];
-  } else {
-    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-    [loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-      if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-        [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-//        [self postToFacebook:nil];
-      } else {
-        UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions" message:@"You must grant publish permissions in order to make this action" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [noperm show];
-      }
-    }];
-    
+  if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+    [self loginWithReadAndWritePerms];
+    return;
+  }
+  
+  if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+    [self loginWithWritePerms];
+    return;
   }
   
   PDAPIClient *client = [PDAPIClient sharedInstance];
@@ -320,18 +307,46 @@
   [_loadingView showAnimated:YES];
 }
 
+- (void) loginWithReadAndWritePerms {
+  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"] registerWithPopdeem:YES success:^(void) {
+    _willFacebook = YES;
+    [_viewController.facebookButton setSelected:YES];
+    [self loginWithWritePerms];
+  } failure:^(NSError *error) {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook") delegate:nil cancelButtonTitle:nil otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
+    [av show];
+    _willFacebook = NO;
+    [_viewController.facebookButton setSelected:NO];
+  }];
+}
+
+- (void) loginWithWritePerms {
+  FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+  [loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self.viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+      [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+      [self makeClaim];
+    } else {
+      UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions" message:@"You must grant publish permissions in order to make this action" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+      [noperm show];
+    }
+  }];
+}
+
 - (void) didClaimRewardId:(NSInteger)rewardId {
 
   [_loadingView hideAnimated:YES];
 
   [PDRewardStore deleteReward:_reward.identifier];
 
+  _viewController.homeController.didClaim = YES;
+  
   UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
   [av show];
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-  [self.viewController dismissViewControllerAnimated:YES completion:^{}];
+  [self.viewController.navigationController popViewControllerAnimated:YES];
 }
 
 

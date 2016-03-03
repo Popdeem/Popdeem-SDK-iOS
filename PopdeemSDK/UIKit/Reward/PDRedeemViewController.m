@@ -8,7 +8,8 @@
 
 #import "PDRedeemViewController.h"
 #import <PopdeemSDK/PDBrandStore.h>
-
+#import "PDUtils.h"
+#import "PDTheme.h"
 
 @interface PDRedeemViewController () {
   int secondsLeft;
@@ -49,9 +50,6 @@
   
   [_brandLabel setText:@""];
   
-  [self.titleLabel setText:_reward.rewardDescription];
-  [self.rulesLabel setText:_reward.rewardRules];
-  
   NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
   NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
                                                       fromDate:[NSDate date]
@@ -59,45 +57,26 @@
                                                        options:0];
   
   NSInteger days = [components day];
-  
+  [_timerLabel setFont:PopdeemFont(@"popdeem.redeem.timer.fontName", 55)];
   switch (_reward.type) {
     case PDRewardTypeSweepstake:
-      [self.topInfoLabel setText:@"Draw takes place in"];
-      [self.bottomInfoLabel setText:@""];
-      [self.doneButton setHidden:YES];
-      if (days > 1) {
-        [_timerLabel setText:[NSString stringWithFormat:@"%ld days",(long)days]];
-      }
-      if (days == 1) {
-        [_timerLabel setText:@"1 day"];
-      }
-      if (days == 0) {
-        NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitHour
-                                                            fromDate:[NSDate date]
-                                                              toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
-                                                             options:0];
-        NSInteger hours = [components hour];
-        [_timerLabel setText:[NSString stringWithFormat:@"%ld hours",(long)hours]];
-      }
-      if (days < 0) {
-        [_timerLabel setText:@""];
-        [self.topInfoLabel setText:@"Draw has taken place"];
-        [self.topInfoLabel setText:@"stand by for notification."];
-      }
-      
       break;
     case PDRewardTypeCoupon:
     case PDRewardTypeInstant:
-      [self.topInfoLabel setText:@"Show this screen at the location"];
-      [self.bottomInfoLabel setText:@"before the timer runs out"];
+//      [self.topInfoLabel setText:@"Show this screen at the location"];
+//      [self.bottomInfoLabel setText:@"before the timer runs out"];
       [self countDownTimer];
       break;
     default:
       break;
   }
   
-  
+  [self.titleLabel setFont:PopdeemFont(@"popdeem.redeem.titleLabel.fontName", 21)];
+  [self.titleLabel setTextColor:PopdeemColor(@"popdeem.redeem.titleLabel.fontColor")];
+  [self.titleLabel setText:_reward.rewardDescription];
+  [self.rulesLabel setFont:PopdeemFont(@"popdeem.redeem.descriptionLabel.fontName", 21)];
+  [self.rulesLabel setTextColor:PopdeemColor(@"popdeem.redeem.descriptionLabel.fontColor")];
+  [self.rulesLabel setText:_reward.rewardRules];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -118,7 +97,7 @@
         
       case 1:
         [timer invalidate];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
       default:
         break;
     }
@@ -142,17 +121,17 @@
     int seconds = (secondsLeft%3600)%60;
     [_timerLabel setText:[NSString stringWithFormat:@"%02d:%02d",minutes,seconds]];
   } else {
-    [_timerLabel setText:@"Timer Done"];
-    [_timerLabel setFont:[UIFont systemFontOfSize:14]];
+    [_timerLabel setText:translationForKey(@"popdeem.redeem.timer.doneText", @"Timer Done")];
+    [_timerLabel setFont:PopdeemFont(@"popdeem.redeem.timer.fontName", 14)];
   }
 }
 
 - (IBAction)doneAction:(id)sender {
-  doneAlertView = [[UIAlertView alloc] initWithTitle:@"Have you redeemed your reward?"
-                                             message:@"You will not be able to redeem your reward after leaving this screen"
+  doneAlertView = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.redeem.doneAlert.title", @"Have you redeemed your reward?")
+                                             message:translationForKey(@"popdeem.redeem.doneAlert.body", @"You will not be able to redeem your reward after leaving this screen")
                                             delegate:self
-                                   cancelButtonTitle:@"Cancel"
-                                   otherButtonTitles:@"Yes, go!", nil];
+                                   cancelButtonTitle:translationForKey(@"popdeem.redeem.doneAlert.cancelButtonText", @"Cancel")
+                                   otherButtonTitles:translationForKey(@"popdeem.redeem.doneAlert.okButtonText", @"Yes, Go!"), nil];
   [doneAlertView show];
 }
 

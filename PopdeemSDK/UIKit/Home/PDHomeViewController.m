@@ -28,6 +28,7 @@
   BOOL rewardsLoading, feedLoading, walletLoading;
   NSIndexPath *walletSelectedIndex;
   PDReward *selectedWalletReward;
+  BOOL claimAction;
 }
 @property (nonatomic, strong) PDHomeViewModel *model;
 @property (nonatomic) PDModalLoadingView *loadingView;
@@ -62,6 +63,8 @@
 }
 
 - (void)viewDidLoad {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"PopdeemUserLoggedInNotification" object:nil];
+  
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110)];
@@ -72,7 +75,6 @@
   
   UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:translationForKey(@"popdeem.nav.inbox", @"Inbox") style:UIBarButtonItemStylePlain target:self action:@selector(inboxAction)];
   self.navigationItem.rightBarButtonItem = anotherButton;
-  self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
   self.navigationController.navigationBar.translucent = NO;
   [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
   [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
@@ -104,6 +106,15 @@
 
 - (void) viewDidAppear:(BOOL)animated {
   [self.view setUserInteractionEnabled:YES];
+  if (_didClaim) {
+    claimAction = NO;
+    _didClaim = NO;
+    [_model fetchWallet];
+    [_segmentedControl setSelectedSegmentIndex:2];
+    _model.rewards = [PDRewardStore allRewards];
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
+  }
 }
 
 - (void) reloadAction {
@@ -291,18 +302,13 @@
       //Rewards
       if (_model.rewards.count == 0) return;
       if ([_model.rewards objectAtIndex:indexPath.row]) {
-        if(![[PDSocialMediaManager manager] isLoggedIn]){
-          PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
-          vc.delegate = self;
-          [self presentViewController:vc animated:YES completion:^{
-            [_model fetchRewards];
-          }];
-        } else{
-//          dispatch_async(dispatch_get_main_queue(), ^{
-            PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
-            PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
-            [[self navigationController] pushViewController:claimController animated:YES];
-//          });
+        PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
+        if (reward.action == PDRewardActionNone) {
+          [self.model claimNoAction:reward];
+        } else {
+          PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+          [claimController setHomeController:self];
+          [[self navigationController] pushViewController:claimController animated:YES];
         }
       }
       break;
@@ -365,26 +371,21 @@
     PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
     _loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
     [_loadingView showAnimated:YES];
-    PDRedeemViewController *rvc = [[PDRedeemViewController alloc] initFromNib];
-    [rvc setReward:selectedWalletReward];
-    [self.navigationController pushViewController:rvc animated:YES];
-    [PDWallet remove:selectedWalletReward.identifier];
-    _model.wallet = [PDWallet wallet];
-    [self.tableView reloadData];
-//    [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
-//      [_loadingView hideAnimated:YES];
-//      if (error) {
-//        NSLog(@"Something went wrong: %@",error);
-//      } else {
-//        
-//        PDRedeemViewController *rvc = [[PDRedeemViewController alloc] initFromNib];
-//        [rvc setReward:selectedWalletReward];
-//        [self.navigationController pushViewController:rvc animated:YES];
-//        [PDWallet remove:selectedWalletReward.identifier];
-//        _model.wallet = [PDWallet wallet];
-//        [self.tableView reloadData];
-//      }
-//    }];
+
+    [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
+      [_loadingView hideAnimated:YES];
+      if (error) {
+        NSLog(@"Something went wrong: %@",error);
+      } else {
+        
+        PDRedeemViewController *rvc = [[PDRedeemViewController alloc] initFromNib];
+        [rvc setReward:selectedWalletReward];
+        [self.navigationController pushViewController:rvc animated:YES];
+        [PDWallet remove:selectedWalletReward.identifier];
+        _model.wallet = [PDWallet wallet];
+        [self.tableView reloadData];
+      }
+    }];
   }
 }
 
@@ -393,6 +394,16 @@
     _messageCenter = [[PDMsgCntrTblViewController alloc] initFromNib];
   }
   [self.navigationController pushViewController:_messageCenter animated:YES];
+}
+
+- (void) userDidLogin {
+  [self.model fetchRewards];
+  [self.model fetchFeed];
+  [self.model fetchWallet];
+}
+
+- (void) dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

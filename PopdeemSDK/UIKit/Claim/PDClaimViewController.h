@@ -11,6 +11,7 @@
 #import "PDReward.h"
 #import "PDLocation.h"
 #import "PDClaimViewModel.h"
+#import "PDHomeViewController.h"
 
 @class PDClaimViewModel;
 
@@ -41,6 +42,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *twitterButton;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *keyboardHiderView;
+
+@property (nonatomic, assign) PDHomeViewController *homeController;
 
 - (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location;
 - (void) renderView;
