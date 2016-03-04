@@ -45,6 +45,7 @@
 - (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location {
   CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
   if (self = [self initFromNib]) {
+    _location = location;
     _mediaTypes = mediaTypes;
     _reward = reward;
     return self;

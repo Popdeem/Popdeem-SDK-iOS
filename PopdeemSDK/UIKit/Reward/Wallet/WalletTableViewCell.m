@@ -59,7 +59,7 @@
     }
     
     _arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-35, centerY-10, 20, 20)];
-    [_arrowImageView setImage:[UIImage imageNamed:@"arrowB"]];
+    [_arrowImageView setImage:[UIImage imageNamed:@"popdeemArrowB"]];
     [self addSubview:_arrowImageView];
     
     switch (reward.type) {

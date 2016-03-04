@@ -47,18 +47,19 @@
 - (void) fetchMessages {
   _messagesLoading = YES;
   PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
+  __weak typeof(self) weakSelf = self;
   [service fetchMessagesCompletion:^(NSArray *messages, NSError *error){
-    if ([_controller.refreshControl isRefreshing]) {
-      [_controller.refreshControl endRefreshing];
+    if ([weakSelf.controller.refreshControl isRefreshing]) {
+      [weakSelf.controller.refreshControl endRefreshing];
     }
     if (error) {
       NSLog(@"Error while fetching messages");
       return;
     }
-    self.messages = messages;
-    _messagesLoading = NO;
+    weakSelf.messages = messages;
+    weakSelf.messagesLoading = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_controller.tableView reloadData];
+      [weakSelf.controller.tableView reloadData];
     });
   }];
 }

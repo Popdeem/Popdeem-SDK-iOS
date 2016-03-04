@@ -78,16 +78,18 @@
 }
 
 - (void) fetchLocations {
+  __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getAllLocationsSuccess:^{
     NSArray *locations = [PDLocationStore locationsOrderedByDistanceToUser];
-    _closestLocation = [locations firstObject];
+    weakSelf.controller.closestLocation = [locations firstObject];
+    weakSelf.closestLocation = [locations firstObject];
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_controller.tableView reloadData];
+      [weakSelf.controller.tableView reloadData];
     });
   } failure:^(NSError *error){
     NSLog(@"Locations Fail: %@",error);
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_controller.tableView reloadData];
+      [weakSelf.controller.tableView reloadData];
     });
   }];
 }
@@ -95,7 +97,7 @@
 - (void) fetchWallet {
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^(){
-    _wallet = [[PDWallet wallet] copy];
+    weakSelf.wallet = [[PDWallet wallet] copy];
     [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [weakSelf.controller.refreshControl endRefreshing];
     [LazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
@@ -121,14 +123,14 @@
   
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getFeedsSuccess:^{
-    _feedLoading = NO;
+    weakSelf.feedLoading = NO;
     weakSelf.feed = [PDFeeds feed];
     [LazyLoader loadFeedImages];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pd_feeds.fd"];
     [NSKeyedArchiver archiveRootObject:weakSelf.feed toFile:appFile];
-    [self.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [weakSelf.controller.refreshControl endRefreshing];
   } failure:^(NSError *error){
     //TODO: Handle Error

@@ -11,6 +11,7 @@
 #import "PDRewardHomeViewModel.h"
 #import "PDRewardTableViewController.h"
 #import "PDMsgCntrTblViewController.h"
+#import "PDLocation.h"
 
 @interface PDHomeViewController : UITableViewController
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) PDMsgCntrTblViewController *messageCenter;
 @property (nonatomic) BOOL didClaim;
 @property (nonatomic) NSInteger claimedRewardId;
+@property (nonatomic) PDLocation *closestLocation;
 
 - (instancetype) initFromNib;
 - (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender;

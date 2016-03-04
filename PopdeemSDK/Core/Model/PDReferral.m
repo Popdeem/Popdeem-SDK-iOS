@@ -63,13 +63,13 @@
 }
 
 + (void) logReferral:(PDReferral*)referral {
-    [[PDAPIClient sharedInstance] setReferral:referral];
+  [[PDAPIClient sharedInstance] setReferral:referral];
   if ([PDUser sharedInstance] != nil) {
     //App is already open, update immediately
     [[[PDAPIClient sharedInstance] referral] setReferralType:PDReferralTypeReopen];
     [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user){
     } failure:^(NSError *error){
-      
+      NSLog(@"Something went wrong while updating the user");
     }];
   }
 }

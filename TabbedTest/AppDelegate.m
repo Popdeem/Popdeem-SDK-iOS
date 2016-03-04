@@ -12,7 +12,7 @@
 #import "PDSocialLoginHandler.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
+#import <Bolts/Bolts.h>
 
 
 @interface AppDelegate ()
@@ -57,6 +57,17 @@
                                                          sourceApplication:sourceApplication
                                                                 annotation:annotation];
   if (wasHandled) return wasHandled;
+  
+  BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:sourceApplication];
+  if ([parsedUrl appLinkData]) {
+    // this is an applink url, handle it here
+    NSURL *targetUrl = [parsedUrl targetURL];
+    [[[UIAlertView alloc] initWithTitle:@"Received link:"
+                                message:[targetUrl absoluteString]
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+  }
   
   if ([PopdeemSDK canOpenUrl:url sourceApplication:sourceApplication annotation:annotation]) {
     return [PopdeemSDK application:application openURL:url sourceApplication:sourceApplication annotation:annotation];

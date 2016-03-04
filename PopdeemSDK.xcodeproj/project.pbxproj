@@ -290,6 +290,9 @@
 		39ABA6611C4D06ED0057088E /* PDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDHomeViewController.m; path = Home/PDHomeViewController.m; sourceTree = "<group>"; };
 		39ABA6631C4D073D0057088E /* PDHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDHomeViewModel.h; path = Home/PDHomeViewModel.h; sourceTree = "<group>"; };
 		39ABA6641C4D073D0057088E /* PDHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDHomeViewModel.m; path = Home/PDHomeViewModel.m; sourceTree = "<group>"; };
+		39BB0DDC1C89DBF5008FCB8C /* popdeemArrowB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popdeemArrowB.png; sourceTree = "<group>"; };
+		39BB0DDD1C89DBF5008FCB8C /* popdeemArrowB@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popdeemArrowB@2x.png"; sourceTree = "<group>"; };
+		39BB0DDE1C89DBF5008FCB8C /* popdeemArrowB@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popdeemArrowB@3x.png"; sourceTree = "<group>"; };
 		39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNotificationHandler.h; sourceTree = "<group>"; };
 		39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNotificationHandler.m; sourceTree = "<group>"; };
 		39BF5AE21C1ED3B0000BF32E /* PDCustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCustomIOS7AlertView.h; sourceTree = "<group>"; };
@@ -768,6 +771,9 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39BB0DDC1C89DBF5008FCB8C /* popdeemArrowB.png */,
+				39BB0DDD1C89DBF5008FCB8C /* popdeemArrowB@2x.png */,
+				39BB0DDE1C89DBF5008FCB8C /* popdeemArrowB@3x.png */,
 				39DD9EBA1C7DD36500A67ED2 /* popdeemHeaderLight.png */,
 				39DD9EBB1C7DD36500A67ED2 /* popdeemHeaderLight@2x.png */,
 				39DD9EBC1C7DD36500A67ED2 /* popdeemHeaderLight@3x.png */,

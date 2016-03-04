@@ -32,7 +32,6 @@
 }
 @property (nonatomic, strong) PDHomeViewModel *model;
 @property (nonatomic) PDModalLoadingView *loadingView;
-@property (nonatomic) PDLocation *closestLocation;
 @property (nonatomic) PDClaimViewController *claimVC;
 @end
 
@@ -164,6 +163,7 @@
   return (section == 0) ? _segmentedControl : nil;
 }
 
+
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   return (section == 0) ? 40 : 0;
 }
@@ -230,14 +230,6 @@
           return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching your Wallet."];
         }
       } else {
-        if (indexPath.row == _model.wallet.count) {
-//          static NSString *footerIdentifier = @"footerCell";
-//          WalletFooterTableViewCell *cell = (WalletFooterTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:footerIdentifier];
-//          if (cell == nil) {
-//            cell = [[WalletFooterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:footerIdentifier];
-//          }
-//          return cell;
-        }
         return [[WalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
       }
     default:
@@ -327,8 +319,9 @@
       wcell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
       [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
       if (_model.wallet.count > 7 && indexPath.row > 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
       }
+      
       
       if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
         lastCell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
@@ -346,10 +339,17 @@
       }
       [self.tableView beginUpdates];
       [self.tableView endUpdates];
+      if (_model.wallet.count > 7 && (_model.wallet.count - indexPath.row < 3)) {
+        [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
+      }
       break;
     default:
       break;
   }
+}
+
+- (void) scrollToIndexPath:(NSIndexPath*)path {
+  [self.tableView scrollRectToVisible:[self.tableView rectForRowAtIndexPath:path] animated:YES];
 }
 
 - (void) redeemButtonPressed {
@@ -361,7 +361,6 @@
   }
   //For sweepstakes we dont show the alert
   if (selectedWalletReward.type == PDRewardTypeSweepstake) {
-    [self performSegueWithIdentifier:@"walletToRedeem" sender:self];
     return;
   }
   
