@@ -305,6 +305,9 @@
 		39DD9EBA1C7DD36500A67ED2 /* popdeemHeaderLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = popdeemHeaderLight.png; path = Resources/popdeemHeaderLight.png; sourceTree = "<group>"; };
 		39DD9EBB1C7DD36500A67ED2 /* popdeemHeaderLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeaderLight@2x.png"; path = "Resources/popdeemHeaderLight@2x.png"; sourceTree = "<group>"; };
 		39DD9EBC1C7DD36500A67ED2 /* popdeemHeaderLight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popdeemHeaderLight@3x.png"; path = "Resources/popdeemHeaderLight@3x.png"; sourceTree = "<group>"; };
+		39E35DCA1C8F138500AA0BCD /* pd_default_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pd_default_login.png; sourceTree = "<group>"; };
+		39E35DCB1C8F138500AA0BCD /* pd_default_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pd_default_login@2x.png"; sourceTree = "<group>"; };
+		39E35DCC1C8F138500AA0BCD /* pd_default_login@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pd_default_login@3x.png"; sourceTree = "<group>"; };
 		39EB99011C84B75E00BB0DD8 /* libPopdeemSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libPopdeemSDK.h; sourceTree = "<group>"; };
 		39EB99031C84B75E00BB0DD8 /* libPopdeemSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libPopdeemSDK.m; sourceTree = "<group>"; };
 		39EB99081C85DA4600BB0DD8 /* PDRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRedeemViewController.h; sourceTree = "<group>"; };
@@ -771,6 +774,9 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39E35DCA1C8F138500AA0BCD /* pd_default_login.png */,
+				39E35DCB1C8F138500AA0BCD /* pd_default_login@2x.png */,
+				39E35DCC1C8F138500AA0BCD /* pd_default_login@3x.png */,
 				39BB0DDC1C89DBF5008FCB8C /* popdeemArrowB.png */,
 				39BB0DDD1C89DBF5008FCB8C /* popdeemArrowB@2x.png */,
 				39BB0DDE1C89DBF5008FCB8C /* popdeemArrowB@3x.png */,
