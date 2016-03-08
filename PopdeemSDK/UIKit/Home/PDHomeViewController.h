@@ -12,6 +12,7 @@
 #import "PDRewardTableViewController.h"
 #import "PDMsgCntrTblViewController.h"
 #import "PDLocation.h"
+#import "PDModalLoadingView.h"
 
 @interface PDHomeViewController : UITableViewController
 
@@ -22,6 +23,7 @@
 @property (nonatomic) BOOL didClaim;
 @property (nonatomic) NSInteger claimedRewardId;
 @property (nonatomic) PDLocation *closestLocation;
+@property (nonatomic) PDModalLoadingView *loadingView;
 
 - (instancetype) initFromNib;
 - (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender;

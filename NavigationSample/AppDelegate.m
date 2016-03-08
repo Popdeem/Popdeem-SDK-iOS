@@ -53,50 +53,28 @@
    sourceApplication:(NSString *)sourceApplication
           annotation:(id)annotation {
   
-  if ([[url scheme] isEqualToString:@"popdeemstagingtwitter"]) {
-    NSDictionary *d = [self parametersDictionaryFromQueryString:[url query]];
-    PDSocialMediaManager *man = [PDSocialMediaManager manager];
-    if (d[@"denied"]) {
-      //User denied
-      NSLog(@"User cancelled");
-      [man userCancelledTwitterLogin];
-    } else {
-      NSString *token = d[@"oauth_token"];
-      NSString *verifier = d[@"oauth_verifier"];
-      [man setOAuthToken:token oauthVerifier:verifier];
-    }
-    return YES;
-  }
-  
-  // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-  //TODO: We could maybe take this into a Popdeem class and lighten the FB integration burden?
   BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                                    openURL:url
                                                          sourceApplication:sourceApplication
                                                                 annotation:annotation];
+  if (wasHandled) return wasHandled;
   
-  // You can add your app-specific url handling code here if needed
-  
-  return wasHandled;
-}
-
-- (NSDictionary *)parametersDictionaryFromQueryString:(NSString *)queryString {
-  
-  NSMutableDictionary *md = [NSMutableDictionary dictionary];
-  
-  NSArray *queryComponents = [queryString componentsSeparatedByString:@"&"];
-  
-  for(NSString *s in queryComponents) {
-    NSArray *pair = [s componentsSeparatedByString:@"="];
-    if([pair count] != 2) continue;
-    
-    NSString *key = pair[0];
-    NSString *value = pair[1];
-    
-    md[key] = value;
+  BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:sourceApplication];
+  if ([parsedUrl appLinkData]) {
+    // this is an applink url, handle it here
+    NSURL *targetUrl = [parsedUrl targetURL];
+    [[[UIAlertView alloc] initWithTitle:@"Received link:"
+                                message:[targetUrl absoluteString]
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
   }
   
-  return md;
+  if ([PopdeemSDK canOpenUrl:url sourceApplication:sourceApplication annotation:annotation]) {
+    return [PopdeemSDK application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+  }
+  
+  return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

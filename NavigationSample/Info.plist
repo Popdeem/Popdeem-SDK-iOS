@@ -24,6 +24,8 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb370441856449418</string>
+				<string>popdeemstaging</string>
+				<string>popdeemstagingtwitter</string>
 			</array>
 		</dict>
 	</array>
@@ -111,7 +113,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We use your location to deliver local rewards"</string>
+	<string>&quot;We use your location to deliver local rewards&quot;</string>
 	<key>PopdeemTwitterCallbackScheme</key>
 	<string>popdeemstagingtwitter</string>
 	<key>TwitterAppConsumerKey</key>

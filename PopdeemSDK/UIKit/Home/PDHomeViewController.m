@@ -31,7 +31,6 @@
   BOOL claimAction;
 }
 @property (nonatomic, strong) PDHomeViewModel *model;
-@property (nonatomic) PDModalLoadingView *loadingView;
 @property (nonatomic) PDClaimViewController *claimVC;
 @end
 
@@ -117,6 +116,7 @@
 }
 
 - (void) reloadAction {
+  [self.tableView setUserInteractionEnabled:NO];
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       [self.model fetchRewards];
@@ -178,6 +178,7 @@
       return _model.rewards.count > 0 ? _model.rewards.count : 1;
       break;
     case 1:
+      NSLog(@"%i",_model.feed.count);
       return _model.feed.count > 0 ? _model.feed.count : 1;
       break;
     case 2:
@@ -214,6 +215,12 @@
           return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching the Feed."];
         }
       } else {
+        if (feedLoading) {
+          return nil;
+        }
+        if (indexPath.row >= _model.feed.count) {
+          return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching the Feed."];
+        }
         feedItem = [_model.feed objectAtIndex:indexPath.row];
         if (feedItem.actionImage) {
           return [[PhotoCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 165) forFeedItem:feedItem];
@@ -368,9 +375,9 @@
   
   if (selectedWalletReward.type != PDRewardTypeSweepstake) {
     PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
-    _loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
+    _loadingView = [[PDModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
     [_loadingView showAnimated:YES];
-
+    
     [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
       [_loadingView hideAnimated:YES];
       if (error) {
@@ -381,6 +388,9 @@
         [rvc setReward:selectedWalletReward];
         [self.navigationController pushViewController:rvc animated:YES];
         [PDWallet remove:selectedWalletReward.identifier];
+        selectedWalletReward = nil;
+        walletSelectedIndex = nil;
+        
         _model.wallet = [PDWallet wallet];
         [self.tableView reloadData];
       }

@@ -30,6 +30,7 @@
 
 + (void) populateFromAPI:(NSArray*)items {
     [PDFeeds clearFeed];
+  NSLog(@"Feed Items Count: %i",items.count);
     for (NSMutableDictionary *itemDict in items) {
         PDFeedItem *item = [[PDFeedItem alloc] initFromAPI:itemDict];
         [PDFeeds add:item];

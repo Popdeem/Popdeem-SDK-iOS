@@ -62,13 +62,17 @@
       [weakSelf brandImageDidDownload];
     }];
     _rewardsLoading = NO;
-    [weakSelf.controller.tableView reloadData];
-    [weakSelf.controller.refreshControl endRefreshing];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.controller.tableView reloadData];
+      [weakSelf.controller.refreshControl endRefreshing];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    });
   } failure:^(NSError * _Nonnull error) {
     dispatch_async(dispatch_get_main_queue(), ^{
       _rewardsLoading = NO;
       [weakSelf.controller.tableView reloadData];
       [weakSelf.controller.refreshControl endRefreshing];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
     });
   }];
 }
@@ -96,16 +100,24 @@
 
 - (void) fetchWallet {
   __weak typeof(self) weakSelf = self;
-  [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^(){
+  [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
     weakSelf.wallet = [[PDWallet wallet] copy];
     [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [weakSelf.controller.refreshControl endRefreshing];
     [LazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
-      [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.controller.tableView reloadData];
+        [weakSelf.controller.refreshControl endRefreshing];
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      });
     }];
   } failure:^(NSError *error) {
     //TODO: Handle Error
-    [weakSelf.controller.refreshControl endRefreshing];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.controller.tableView reloadData];
+      [weakSelf.controller.refreshControl endRefreshing];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    });
   }];
 }
 
@@ -113,7 +125,7 @@
   _feedLoading = YES;
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   NSString *documentsDirectory = [paths objectAtIndex:0];
-  NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"feeds.fd"];
+  NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pdfeeds.fd"];
   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:appFile];
   if (fileExists) {
     NSMutableArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
@@ -125,17 +137,25 @@
   [[PDAPIClient sharedInstance] getFeedsSuccess:^{
     weakSelf.feedLoading = NO;
     weakSelf.feed = [PDFeeds feed];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.controller.tableView reloadData];
+      [weakSelf.controller.refreshControl endRefreshing];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    });
+    NSLog(@"%i",weakSelf.feed.count);
     [LazyLoader loadFeedImages];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pd_feeds.fd"];
     [NSKeyedArchiver archiveRootObject:weakSelf.feed toFile:appFile];
-    [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-    [weakSelf.controller.refreshControl endRefreshing];
   } failure:^(NSError *error){
     //TODO: Handle Error
     _feedLoading = NO;
-    [weakSelf.controller.refreshControl endRefreshing];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.controller.tableView reloadData];
+      [weakSelf.controller.refreshControl endRefreshing];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    });
   }];
 }
 
@@ -182,6 +202,17 @@
 }
 
 - (void) claimNoAction:(PDReward*)reward {
+  __weak typeof(reward) weakReward = reward;
+  __weak typeof(self) weakSelf = self;
+  if (_controller.loadingView) {
+    [_controller.loadingView hideAnimated:YES];
+  }
+  _controller.loadingView = [[PDModalLoadingView alloc]
+                             initForView:self.controller.navigationController.view
+                             titleText:@"Please Wait"
+                             descriptionText:@"Claiming your Reward"];
+  
+  [_controller.loadingView showAnimated:YES];
   [[PDAPIClient sharedInstance] claimReward:reward.identifier
                                    location:nil
                                 withMessage:nil
@@ -190,9 +221,26 @@
                                    facebook:YES
                                     twitter:NO
                                     success:^(){
-                                      
+                                      NSLog(@"No Action Reward Was CLaimed");
+                                      [PDRewardStore deleteReward:weakReward.identifier];
+                                      weakSelf.rewards = [PDRewardStore allRewards];
+                                      [weakSelf.controller.tableView reloadData];
+                                      if (weakSelf.controller.loadingView) {
+                                        [weakSelf.controller.loadingView hideAnimated:YES];
+                                      }
+                                      UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Reward Claimed"
+                                                                                        message:@"You have claimed your reward. It will be displayed in your wallet shortly"
+                                                                                       delegate:self.controller
+                                                                              cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+                                      [success show];
                                     } failure:^(NSError *error) {
-                                      
+                                      NSLog(@"An error occurred when Claiming No Action Reward;");
+                                      [weakSelf.controller.loadingView hideAnimated:YES];
+                                      UIAlertView *failure = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                                                        message:@"Something went wrong when claiming your reward. Please try again later."
+                                                                                       delegate:self.controller
+                                                                              cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+                                      [failure show];
                                     }];
 }
 
