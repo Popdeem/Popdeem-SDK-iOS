@@ -37,7 +37,7 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 }
 
 - (BOOL)shouldShowPrompt {
-  return   (self.usesCount < self.maxPrompts) && ![self.socialManager isLoggedIn];
+  return  ([self usesCount] < self.maxPrompts) && ![self.socialManager isLoggedIn];
 }
 
 - (void) presentLoginModal {
@@ -46,12 +46,15 @@ static NSString *const PDUseCountKey = @"PDUseCount";
   
   PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
   [topController presentViewController:vc animated:YES completion:^{}];
-  
   [self setUsesCount:self.usesCount+1];
+  NSLog(@"Login Count: %i",self.usesCount);
 }
 
 - (NSUInteger)usesCount {
-  return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
+  if ([[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]) {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey];
+  }
+  return 0;
 }
 
 - (void)setUsesCount:(NSUInteger)count {

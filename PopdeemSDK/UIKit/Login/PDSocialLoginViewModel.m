@@ -50,6 +50,17 @@
     //Show error message
     return;
   }
+  
+  if (result.isCancelled) {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
+                                                 message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
+                                                delegate:self.viewController
+                                       cancelButtonTitle:@"OK"
+                                       otherButtonTitles: nil];
+    [av show];
+    return;
+  }
+  
   NSDictionary *dict = [NSUserDefaults standardUserDefaults];
   [self proceedWithLoggedInUser];
 }
@@ -57,6 +68,8 @@
 - (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
   //Should clear up Popdeem User
 }
+
+
 
 - (BOOL) checkPublishPermissions {
   return YES;

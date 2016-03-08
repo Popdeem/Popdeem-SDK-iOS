@@ -65,6 +65,8 @@
       self.action = PDRewardActionPhoto;
     } else if ([action isEqualToString:@"checkin"]) {
       self.action = PDRewardActionCheckin;
+    } else if ([action isEqualToString:@"social_login"]) {
+      self.action = PDRewardActionSocialLogin;
     } else {
       self.action = PDRewardActionNone;
     }

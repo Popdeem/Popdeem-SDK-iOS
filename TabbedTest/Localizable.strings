@@ -14,6 +14,8 @@
 "popdeem.common.back" = "Back";
 "popdeem.common.ok" = "OK";
 "popdeem.common.something.wrong" = "Something went wrong. Please try again later";
+"popdeem.common.facebookLoginCancelledTitle" = "Login Cancelled";
+"popdeem.common.facebookLoginCancelledBody" = "You may browse the app before connecting your Facebook, but you must log in with Facebook to avail of social rewards.";
 //"popdeem.common.suspended" = "You have been suspended. Your account will become active on %@ at %@"
 
 "popdeem.sociallogin.success" = "Connected!";
@@ -22,6 +24,9 @@
 "popdeem.sociallogin.body" = "Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.";
 "popdeem.sociallogin.footer" = "Powered by Popdeem";
 "popdeem.sociallogin.continue" = "Continue to App";
+"popdeem.sociallogin.tagline" = "NEW: SOCIAL FEATURES.";
+"popdeem.sociallogin.terms" = "By signing in with Facebook you accept the terms of our privacy policy.";
+
 
 "popdeem.rewards.title" = "Rewards";
 "popdeem.rewards.notavailable" = "There are no rewards available right now. Please check back later.";

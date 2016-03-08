@@ -55,7 +55,8 @@ typedef NS_ENUM(NSInteger, PDRewardAction){
     PDRewardActionPhoto,
     PDRewardActionTweet,
     ///No action needed. May claim on item tap.
-    PDRewardActionNone
+    PDRewardActionNone,
+  PDRewardActionSocialLogin
 };
 
 /**

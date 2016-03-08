@@ -8,6 +8,7 @@
 
 #import "PDHomeViewController.h"
 #import "PDTheme.h"
+#import "PDUtils.h"
 #import "PDModalLoadingView.h"
 #import "PDAPIClient.h"
 #import "LazyLoader.h"
@@ -296,19 +297,35 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   WalletTableViewCell *wcell;
   WalletTableViewCell *lastCell;
+  __block UIAlertView *av;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards
       if (_model.rewards.count == 0) return;
       if ([_model.rewards objectAtIndex:indexPath.row]) {
-        PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
-        if (reward.action == PDRewardActionNone) {
-          [self.model claimNoAction:reward];
-        } else {
-          PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
-          [claimController setHomeController:self];
-          [[self navigationController] pushViewController:claimController animated:YES];
+        if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+          _loadingView = [[PDModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Logging in" descriptionText:@"Please Wait"];
+          [_loadingView showAnimated:YES];
+          [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"] registerWithPopdeem:YES success:^{
+            [_loadingView hideAnimated:YES];
+            [self.model fetchRewards];
+            [self.model fetchWallet];
+            [self processClaimForIndexPath:indexPath];
+          } failure:^(NSError *err) {
+            if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
+              av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
+                                              message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
+                                             delegate:self
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles: nil];
+              [av show];
+            }
+            [_loadingView hideAnimated:YES];
+            NSLog(@"Error when logging in");
+          }];
+          return;
         }
+        [self processClaimForIndexPath:indexPath];
       }
       break;
     case 1:
@@ -353,6 +370,20 @@
     default:
       break;
   }
+}
+
+- (void) processClaimForIndexPath:(NSIndexPath*)indexPath {
+  PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
+  if (reward.action == PDRewardActionSocialLogin) {
+    return;
+  } else if (reward.action == PDRewardActionNone) {
+    [self.model claimNoAction:reward];
+  } else {
+    PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+    [claimController setHomeController:self];
+    [[self navigationController] pushViewController:claimController animated:YES];
+  }
+
 }
 
 - (void) scrollToIndexPath:(NSIndexPath*)path {
