@@ -74,7 +74,7 @@
         "fontName" : "Avenir-Book"
       },
       "imageView" : {
-        "imageName" : "pd_default_login",
+        "imageName" : "kure-image",
         "backgroundColor" : "#FFFFFF"
       },
       "tagline" : {
@@ -82,7 +82,7 @@
         "color" : "#000000"
       },
       "heading" : {
-        "font" : "Avenir-Book",
+        "font" : "Avenir-Heavy",
         "color" : "#000000"
       },
       "body" : {

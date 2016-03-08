@@ -48,7 +48,7 @@
   [self.taglineLabel setFont:PopdeemFont(@"popdeem.login.tagline.font", 15)];
   [self.taglineLabel setTextColor:PopdeemColor(@"popdeem.login.tagline.color")];
   
-  [self.headingLabel setFont:PopdeemFont(@"popdeem.login.heading.font", 17)];
+  [self.headingLabel setFont:PopdeemFont(@"popdeem.login.heading.font", 18)];
   [self.headingLabel setTextColor:PopdeemColor(@"popdeem.login.heading.color")];
   
   [self.bodylabel setFont:PopdeemFont(@"popdeem.login.body.font", 14)];
@@ -75,6 +75,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
   [super viewWillAppear:animated];
+}
+
+- (IBAction) dismissAction:(id)sender {
+  [self dismissViewControllerAnimated:YES completion:^{
+    //Any cleanup to do?
+  }];
 }
 
 - (void) backingViewTapped {
