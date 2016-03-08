@@ -72,6 +72,26 @@
         "background" : "#3C9915",
         "textColor" : "#FFFFFF",
         "fontName" : "Avenir-Book"
+      },
+      "imageView" : {
+        "imageName" : "pd_default_login",
+        "backgroundColor" : "#FFFFFF"
+      },
+      "tagline" : {
+        "font" : "Avenir-Medium",
+        "color" : "#000000"
+      },
+      "heading" : {
+        "font" : "Avenir-Book",
+        "color" : "#000000"
+      },
+      "body" : {
+        "font" : "Avenir-Book",
+        "color" : "#454444"
+      },
+      "terms" : {
+        "font" : "Avenir-Book",
+        "color" : "#454444"
       }
     },
     "nav" : {

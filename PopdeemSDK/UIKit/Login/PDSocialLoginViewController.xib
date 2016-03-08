@@ -6,9 +6,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDSocialLoginViewController">
             <connections>
+                <outlet property="bodylabel" destination="nqk-QM-VR0" id="sFZ-cn-828"/>
                 <outlet property="containterView" destination="6N2-o4-zDa" id="jdG-7X-5gH"/>
                 <outlet property="continueButton" destination="bGq-gb-tr0" id="bfE-6F-O9I"/>
+                <outlet property="headingLabel" destination="jrh-48-9Jy" id="CNu-Sj-02g"/>
+                <outlet property="imageView" destination="x3c-Dr-fDM" id="CIy-Pt-m36"/>
                 <outlet property="loginButton" destination="AGq-IQ-PkR" id="Xdg-lP-61d"/>
+                <outlet property="taglineLabel" destination="GWk-uI-JAo" id="B87-eG-1KM"/>
+                <outlet property="termsLabel" destination="FCL-kP-3nr" id="7E0-QC-nLP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -100,8 +105,9 @@
                         <constraint firstAttribute="trailing" secondItem="FCL-kP-3nr" secondAttribute="trailing" constant="8" id="vok-6F-uNk"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x3c-Dr-fDM">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pd_default_login.png" translatesAutoresizingMaskIntoConstraints="NO" id="x3c-Dr-fDM">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="350"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -117,4 +123,7 @@
             <point key="canvasLocation" x="814" y="474"/>
         </view>
     </objects>
+    <resources>
+        <image name="pd_default_login.png" width="495" height="528"/>
+    </resources>
 </document>

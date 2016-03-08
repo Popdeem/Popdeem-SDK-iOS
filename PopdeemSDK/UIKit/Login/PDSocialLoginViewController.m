@@ -42,13 +42,20 @@
   [self.viewModel setViewController:self];
   self.loginButton.readPermissions= @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
   [self.loginButton setDelegate:self.viewModel];
-  self.snapshotView.image = [PDUIKitUtils screenSnapshot];
-  
-  //Backing View Dismiss Recogniser
-  UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backingViewTapped)];
-  
-  [_backingView addGestureRecognizer:backingTap];
+  self.imageView.backgroundColor = PopdeemColor(@"popdeem.login.imageView.backgroundColor");
   [self renderViewModelState];
+  
+  [self.taglineLabel setFont:PopdeemFont(@"popdeem.login.tagline.font", 15)];
+  [self.taglineLabel setTextColor:PopdeemColor(@"popdeem.login.tagline.color")];
+  
+  [self.headingLabel setFont:PopdeemFont(@"popdeem.login.heading.font", 17)];
+  [self.headingLabel setTextColor:PopdeemColor(@"popdeem.login.heading.color")];
+  
+  [self.bodylabel setFont:PopdeemFont(@"popdeem.login.body.font", 14)];
+  [self.bodylabel setTextColor:PopdeemColor(@"popdeem.login.body.color")];
+  
+  [self.termsLabel setFont:PopdeemFont(@"popdeem.login.terms.font", 7)];
+  [self.termsLabel setTextColor:PopdeemColor(@"popdeem.login.terms.color")];
   
   [self.continueButton setBackgroundColor:PopdeemColor(@"popdeem.login.continueButton.background")];
   [self.continueButton setTitleColor:PopdeemColor(@"popdeem.login.continueButton.textColor") forState:UIControlStateNormal];
@@ -68,15 +75,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
   [super viewWillAppear:animated];
-  
-  self.snapshotView.alpha = 0;
-  self.backingView.alpha = 0;
-  
-  [UIView animateWithDuration:.4 animations:^{
-    self.snapshotView.alpha = 1;
-    self.backingView.alpha = 1;
-  }];
-  
 }
 
 - (void) backingViewTapped {
@@ -99,21 +97,19 @@
   if (!_viewModel) return;
   [self.poweredByLabel setText:translationForKey(@"popdeem.sociallogin.footer", @"Powered by Popdeem")];
   [self.continueButton setTitle:translationForKey(@"popdeem.sociallogin.continue", @"Continue to App") forState:UIControlStateNormal];
-  [self.titleLabel setText:_viewModel.titleLabelString];
-  [self.subtitleLabel setText:_viewModel.subTitleLabelString];
-  [self.descriptionLabel setText:_viewModel.descriptionLabelString];
-  [self.iconView setImage:[UIImage imageNamed:_viewModel.iconImageName]];
+  [self.taglineLabel setText:_viewModel.taglineString];
+  [self.headingLabel setText:_viewModel.headingString];
+  [self.bodylabel setText:_viewModel.bodyString];
+  [self.imageView setImage:_viewModel.image];
   switch (_viewModel.loginState) {
     case LoginStateContinue:
       [self.loginButton setHidden:YES];
       [self.continueButton setHidden:NO];
-      [_titleLabel setTextColor:[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];
       break;
     case LoginStateLogin:
     default:
       [self.loginButton setHidden:NO];
       [self.continueButton setHidden:YES];
-      [_titleLabel setTextColor:[UIColor colorWithRed:0.745 green:0.251 blue:0.286 alpha:1.000]];
       break;
       break;
   }

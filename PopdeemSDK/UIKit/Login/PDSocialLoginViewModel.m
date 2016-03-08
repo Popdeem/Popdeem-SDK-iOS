@@ -14,6 +14,7 @@
 #import "PDAPIClient.h"
 #import "PDConstants.h"
 #import "PDMessageAPIService.h"
+#import "PDTheme.h"
 
 
 @interface PDSocialLoginViewModel()
@@ -62,7 +63,7 @@
 }
 
 - (void) proceedWithLoggedInUser {
-  self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.containterView];
+  self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.view];
   [self.loadingView showAnimated:YES];
   
 
@@ -203,24 +204,25 @@
 }
 
 - (void) setState:(LoginState)state {
-  self.subTitleLabelString = translationForKey(@"popdeem.sociallogin.subtitle", @"Rewards Available");
-  self.iconImageName = @"pduikit_rewardsIcon";
-  self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.description", @"To see what rewards you have unlocked, simply connect your Facebook account below.");
-  
+  self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
+  self.image = PopdeemImage(@"popdeem.login.imageView.imageName");
+  self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"NEW: SOCIAL FEATURES.");
+  self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Facebook to earn additional Rewards.");
+  self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
+  self.termsLabelString = translationForKey(@"popdeem.sociallogin.terms", @"By signing in with Facebook you accept the terms of our privacy policy.");
   
   switch (state) {
     case LoginStateContinue:
-      self.titleLabelString = translationForKey(@"popdeem.sociallogin.success", @"Connected!");
-      self.iconImageName = @"pduikit_rewardsIconSuccess";
-      self.descriptionLabelString = translationForKey(@"popdeem.sociallogin.success.description", @"Rewards are now unlocked. You will be notified when new rewards are available!");
+      self.headingString = translationForKey(@"popdeem.sociallogin.success", @"Connected!");
+      self.bodyString = translationForKey(@"popdeem.sociallogin.success.description", @"Rewards are now unlocked. You will be notified when new rewards are available!");
       self.loginState = LoginStateContinue;
       break;
     case LoginStateLogin:
     default:
-      self.titleLabelString = translationForKey(@"popdeem.sociallogin.title", @"App Update");
-      self.iconImageName = @"pduikit_rewardsIcon";
-      self.descriptionLabelString = NSLocalizedString(@"popdeem.sociallogin.description", nil);
-      self.descriptionLabelString = @"To see what rewards you have unlocked, simply connect your Facebook account below.";
+      self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"NEW: SOCIAL FEATURES.");
+      self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Facebook to earn additional Rewards.");
+      self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
+      self.termsLabelString = translationForKey(@"popdeem.sociallogin.terms", @"By signing in with Facebook you accept the terms of our privacy policy.");
       self.loginState = LoginStateLogin;
       break;
   }

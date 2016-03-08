@@ -1,6 +1,6 @@
 //
 //  PDSocialLoginViewModel.h
-//  PopdeemSDK
+//  ;
 //
 //  Created by Niall Quinn on 23/11/2015.
 //  Copyright © 2015 Popdeem. All rights reserved.
@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "PDGeolocationManager.h"
+#import <UIKit/UIKit.h>
 
 @class PDSocialLoginViewController;
 
@@ -20,10 +21,12 @@ typedef NS_ENUM(NSInteger, LoginState) {
 
 @property (nonatomic, assign) PDSocialLoginViewController *viewController;
 
-@property (nonatomic, strong) NSString *titleLabelString;
-@property (nonatomic, strong) NSString *subTitleLabelString;
-@property (nonatomic, strong) NSString *iconImageName;
-@property (nonatomic, strong) NSString *descriptionLabelString;
+@property (nonatomic, strong) NSString *taglineString;
+@property (nonatomic, strong) NSString *headingString;
+@property (nonatomic, strong) NSString *bodyString;
+@property (nonatomic, strong) NSString *termsLabelString;
+@property (nonatomic, strong) UIImage *image;
+
 @property (nonatomic) LoginState loginState;
 
 

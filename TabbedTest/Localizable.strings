@@ -18,8 +18,8 @@
 
 "popdeem.sociallogin.success" = "Connected!";
 "popdeem.sociallogin.success.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";
-"popdeem.sociallogin.description"= "To see what rewards you have unlocked, simply connect your Facebook account below.";
-"popdeem.sociallogin.subtitle" = "Rewards Available";
+"popdeem.sociallogin.heading" = "Connect your Facebook to earn additional Rewards.";
+"popdeem.sociallogin.body" = "Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.";
 "popdeem.sociallogin.footer" = "Powered by Popdeem";
 "popdeem.sociallogin.continue" = "Continue to App";
 
