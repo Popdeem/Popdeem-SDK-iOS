@@ -46,8 +46,8 @@
                     <rect key="frame" x="0.0" y="98" width="600" height="405"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                 </view>
-                <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="URn-F7-REZ">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URn-F7-REZ">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="65" id="Bzn-xH-hoa"/>

@@ -342,9 +342,14 @@
       if (_model.wallet.count == 0) return;
       wcell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
       [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
-      if (_model.wallet.count > 7 && indexPath.row > 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-      }
+//      if (_model.wallet.count > 7 && indexPath.row > 0 && walletSelectedIndex == nil) {
+//        [UIView animateWithDuration:1.0
+//                         animations:^{
+//                           [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//                         }
+//                         completion:^(BOOL finished){
+//                         }];
+//      }
       
       
       if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
@@ -363,9 +368,10 @@
       }
       [self.tableView beginUpdates];
       [self.tableView endUpdates];
-      if (_model.wallet.count > 7 && (_model.wallet.count - indexPath.row < 3)) {
-        [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
-      }
+//      if (_model.wallet.count > 7 && (_model.wallet.count - indexPath.row < 3)) {
+//        [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
+//      }
+      [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
       break;
     default:
       break;

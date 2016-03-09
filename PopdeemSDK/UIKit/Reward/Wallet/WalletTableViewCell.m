@@ -41,7 +41,8 @@
     float viewWidth = frame.size.width;
     float arrowSize = 30;
     float labelWidth = viewWidth-indent-indent-imageSize-arrowSize;
-    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, centerY-15, labelWidth, 20)];
+    _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, centerY-20, labelWidth, 40)];
+    _descriptionLabel.numberOfLines = 2;
     [self addSubview:_descriptionLabel];
     [_descriptionLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
     [_descriptionLabel setTextColor:[UIColor blackColor]];
@@ -50,13 +51,13 @@
       [self.descriptionLabel setText:reward.rewardDescription];
     }
     
-    _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, centerY, labelWidth, 20)];
-    [_rulesLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
-    [_rulesLabel setTextColor:[UIColor blackColor]];
-    [self addSubview:_rulesLabel];
-    if (![reward.rewardRules isKindOfClass:[NSNull class]]) {
-      [self.rulesLabel setText:reward.rewardRules];
-    }
+//    _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, centerY, labelWidth, 20)];
+//    [_rulesLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
+//    [_rulesLabel setTextColor:[UIColor blackColor]];
+//    [self addSubview:_rulesLabel];
+//    if (![reward.rewardRules isKindOfClass:[NSNull class]]) {
+//      [self.rulesLabel setText:reward.rewardRules];
+//    }
     
     _arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-35, centerY-10, 20, 20)];
     [_arrowImageView setImage:[UIImage imageNamed:@"popdeemArrowB"]];
