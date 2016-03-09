@@ -91,7 +91,7 @@
                                                          NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
   
   //[_tableHeaderLabel setFont:PopdeemFont(@"popdeem.nav.fontName", 16.0f)];
-  
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.model fetchRewards];
   [self.model fetchFeed];
   [self.model fetchWallet];
@@ -376,6 +376,10 @@
     default:
       break;
   }
+  [tableView beginUpdates];
+  [tableView deselectRowAtIndexPath:indexPath animated:NO];
+  //if you are doing any animation you have deselect the row here inside.
+  [tableView endUpdates];
 }
 
 - (void) processClaimForIndexPath:(NSIndexPath*)indexPath {
