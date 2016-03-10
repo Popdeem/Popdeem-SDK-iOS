@@ -75,6 +75,20 @@
   [self verifyLocation];
 }
 
+- (void) setupView {
+  [self.view setBackgroundColor:[UIColor colorWithRed:239/255 green:239/255 blue:244/255 alpha:1.0]];
+  float currentY = 0;
+  float viewWidth = self.view.frame.size.width;
+  RewardTableViewCell *rewardCell = [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 85) reward:_reward];
+  [self.view addSubview:rewardCell];
+  currentY += 85;
+  _textView = [[PD_SZTextView alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 130)];
+  [self.view addSubview:_textView];
+  currentY += 130;
+  _withLabelView = [[UIView alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 21)];
+  
+}
+
 - (void) viewDidAppear:(BOOL)animated {
   UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
   [_keyboardHiderView addGestureRecognizer:hiderTap];
