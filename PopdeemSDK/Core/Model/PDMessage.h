@@ -25,5 +25,6 @@
 
 - (id) initWithJSON:(NSString*)json;
 - (void) markAsRead;
+- (void) downloadLogoImageCompletion:(void (^)(BOOL Success))completion;
 
 @end

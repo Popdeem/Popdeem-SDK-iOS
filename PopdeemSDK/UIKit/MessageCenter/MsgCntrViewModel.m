@@ -11,6 +11,7 @@
 #import "PDTheme.h"
 #import "PDUtils.h"
 #import "PDMessageStore.h"
+#import "LazyLoader.h"
 
 @implementation MsgCntrViewModel
 
@@ -58,6 +59,11 @@
     }
     weakSelf.messages = messages;
     weakSelf.messagesLoading = NO;
+    [LazyLoader loadMessageImagesCompletion:^(BOOL success){
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.controller.tableView reloadData];
+      });
+    }];
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.controller.tableView reloadData];
     });

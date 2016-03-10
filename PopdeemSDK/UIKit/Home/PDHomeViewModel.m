@@ -56,8 +56,7 @@
   __weak typeof(self) weakSelf = self;
   _rewardsLoading = YES;
   [[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
-    weakSelf.rewards =  [PDRewardStore allRewards];
-    [weakSelf fetchLocations];
+    weakSelf.rewards =  [PDRewardStore orderedByDistanceFromUser];
     [LazyLoader loadAllRewardCoverImagesCompletion:^(BOOL success){
       [weakSelf brandImageDidDownload];
     }];

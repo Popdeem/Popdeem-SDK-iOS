@@ -188,7 +188,11 @@
       exp = [NSString stringWithFormat:@"Exp %ld hours",(long)intervalHours];
     }
     
-    [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
+    if (reward.verifyLocation == YES) {
+      [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@ | %@",action,exp,reward.localizedDistanceToUserString]];
+    } else {
+      [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
+    }
     [_infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 12)];
     [_infoLabel setTextAlignment:NSTextAlignmentLeft];
     [self addSubview:_infoLabel];

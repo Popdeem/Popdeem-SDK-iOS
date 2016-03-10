@@ -13,6 +13,8 @@
 #import <PopdeemSDK/PDWallet.h>
 #import <PopdeemSDK/PDRewardStore.h>
 #import "PDFeeds.h"
+#import "PDMessageStore.h"
+
 
 @implementation LazyLoader
 
@@ -80,6 +82,14 @@
         completion(success);
       }];
     }
+  }
+}
+
++ (void) loadMessageImagesCompletion:(void (^)(BOOL success))completion {
+  for (PDMessage *m in [PDMessageStore orderedByDate]) {
+    [m downloadLogoImageCompletion:^(BOOL success){
+      completion(success);
+    }];
   }
 }
 

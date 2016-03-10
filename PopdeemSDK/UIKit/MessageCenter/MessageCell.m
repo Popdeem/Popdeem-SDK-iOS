@@ -31,12 +31,11 @@
     [_logoView setFrame:CGRectMake(10, centerlineY-25, 50, 50)];
     _logoView.layer.cornerRadius = 25;
     [_logoView setContentMode:UIViewContentModeScaleAspectFill];
-    if (message.imageUrl) {
-      [_logoView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:message.imageUrl]]]];
+    if (message.image) {
+      [_logoView setImage:message.image];
     } else {
       [_logoView setImage:[UIImage imageNamed:@"starG"]];
     }
-    [_logoView setImage:[UIImage imageNamed:@"starG"]];
     [self addSubview:_logoView];
     
     _bodyLabel = [[UILabel alloc] init];

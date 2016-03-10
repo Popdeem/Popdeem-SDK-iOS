@@ -79,4 +79,8 @@
     [[PDRewardStore store] removeAllObjects];
 }
 
++ (NSArray *) orderedByDistanceFromUser {
+  return [[[PDRewardStore store] allValues] sortedArrayUsingSelector:@selector(compareDistance:)];
+}
+
 @end

@@ -9,12 +9,16 @@
 #import "PDMessage.h"
 #import <UIKit/UIKit.h>
 #import "PDMessageAPIService.h"
-@implementation PDMessage
+
+@interface PDMessage()
+@end
+@implementation PDMessage {
+  BOOL _isDownloadingLogo;
+}
 
 - (id) initWithJSON:(NSString*)json {
   NSError *err;
   if (self = [super initWithString:json error:&err]) {
-    [self fetchLogoImage];
     self.image = nil;
     return  self;
   }
@@ -55,6 +59,26 @@
       self.read = YES;
     }
   }];
+}
+
+- (void) downloadLogoImageCompletion:(void (^)(BOOL Success))completion {
+  if (_isDownloadingLogo) completion(NO);
+  
+  if ([self.imageUrl isKindOfClass:[NSString class]]) {
+    if ([self.imageUrl.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
+      _isDownloadingLogo = YES;
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrl]];
+        UIImage *logoImage = [UIImage imageWithData:imageData];
+        
+        self.image = logoImage;
+        _isDownloadingLogo = NO;
+        completion(YES);
+      });
+    } else {
+      completion(NO);
+    }
+  }
 }
 
 @end

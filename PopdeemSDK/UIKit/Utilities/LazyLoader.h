@@ -22,4 +22,6 @@
 + (void) loadFeedImages;
 
 + (void) loadAllRewardCoverImagesCompletion:(void (^)(BOOL success))completion;
+
++ (void) loadMessageImagesCompletion:(void (^)(BOOL success))completion;
 @end

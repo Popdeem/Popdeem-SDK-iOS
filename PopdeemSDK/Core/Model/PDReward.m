@@ -9,6 +9,8 @@
 #import "PDReward.h"
 #import "PDUser.h"
 #import "PDLocation.h"
+#import <CoreLocation/CoreLocation.h>
+
 @interface PDReward () {
   BOOL isDownloadingCover;
 }
@@ -104,8 +106,8 @@
     }
     
     self.verifyLocation = YES;
-    NSString *locationVerification = params[@"location_verification"];
-    if ([locationVerification isEqualToString:@"false"]) {
+    NSString *locationVerification = params[@"disable_location_verification"];
+    if ([locationVerification isEqualToString:@"true"]) {
       self.verifyLocation = NO;
     } else {
       self.verifyLocation = YES;
@@ -116,7 +118,7 @@
     } else {
       self.revoked = NO;
     }
-    
+  
     self.locations = [NSMutableArray array];
     if (params[@"locations"]) {
       for (id location in params[@"locations"]) {
@@ -124,13 +126,32 @@
         [self.locations addObject:l];
       }
     }
+    [self calculateDistanceToUser];
     return self;
   }
   return nil;
 }
 
+- (void) calculateDistanceToUser {
+  if (self.locations.count == 0 || self.verifyLocation == NO) {
+    self.distanceFromUser = 0.0f;
+    return;
+  }
+  CGFloat closestDistance = CGFLOAT_MAX;
+  PDUser *user = [PDUser sharedInstance];
+  CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:user.lastLocation.latitude longitude:user.lastLocation.longitude];
+  for (PDLocation *loc in self.locations) {
+    CLLocation *thisLocation = [[CLLocation alloc] initWithLatitude:loc.geoLocation.latitude longitude:loc.geoLocation.longitude];
+    
+    double distance = [userLocation distanceFromLocation:thisLocation];
+    if (distance < closestDistance) {
+      closestDistance = distance;
+    }
+  }
+  self.distanceFromUser = closestDistance;
+}
+
 - (void) encodeWithCoder:(NSCoder *)aCoder {
-  
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
@@ -155,6 +176,26 @@
     } else {
       completion(NO);
     }
+  }
+}
+
+- (NSComparisonResult)compareDistance:(PDReward *)otherObject {
+  if (otherObject.distanceFromUser == self.distanceFromUser) {
+    return NSOrderedSame;
+  }
+  if (otherObject.distanceFromUser < self.distanceFromUser) {
+    return NSOrderedDescending;
+  }
+  return NSOrderedAscending;
+}
+
+- (NSString*) localizedDistanceToUserString {
+  NSLocale *locale = [NSLocale currentLocale];
+  BOOL isMetric = [[locale objectForKey:NSLocaleUsesMetricSystem] boolValue];
+  if (isMetric) {
+    return [NSString stringWithFormat:@"%.2fkm",self.distanceFromUser/1000];
+  } else {
+    return [NSString stringWithFormat:@"%.2fmiles",self.distanceFromUser/1609.344];
   }
 }
 

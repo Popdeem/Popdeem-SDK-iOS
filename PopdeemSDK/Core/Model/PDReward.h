@@ -104,12 +104,15 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) NSInteger twitterMediaLength;
 @property (nonatomic) BOOL verifyLocation;
 @property (nonatomic) BOOL revoked;
+@property (nonatomic) CGFloat distanceFromUser;
 
 @property (nonatomic, strong) NSMutableArray *locations;
 
 - (id) initFromApi:(NSDictionary*)params;
 
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion;
+
+- (NSString*) localizedDistanceToUserString;
 
 @end
 NS_ASSUME_NONNULL_END
