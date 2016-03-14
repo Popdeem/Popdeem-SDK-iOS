@@ -126,6 +126,12 @@
         [self.locations addObject:l];
       }
     }
+    
+    self.countdownTimerDuration = 300;
+    if ([params[@"countown_timer"] isKindOfClass:[NSString class]]) {
+      self.countdownTimerDuration = [params[@"countdown_timer"] integerValue];
+    }
+    
     [self calculateDistanceToUser];
     return self;
   }

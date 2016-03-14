@@ -72,7 +72,6 @@
 		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
 		39E35DD21C91884900AA0BCD /* LocationVerficationVisor.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35DD11C91884900AA0BCD /* LocationVerficationVisor.m */; };
-		39E35DD51C918C9F00AA0BCD /* ClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35DD41C918C9F00AA0BCD /* ClaimViewController.m */; };
 		39EB990A1C85DA4600BB0DD8 /* PDRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDRedeemViewController.m */; };
 		39EB990E1C86F78600BB0DD8 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990D1C86F78600BB0DD8 /* theme.json */; };
 		39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990F1C86F7F000BB0DD8 /* Localizable.strings */; };
@@ -315,8 +314,6 @@
 		39E35DCF1C8F263D00AA0BCD /* pd_cancelbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pd_cancelbutton@3x.png"; sourceTree = "<group>"; };
 		39E35DD01C91884900AA0BCD /* LocationVerficationVisor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationVerficationVisor.h; path = Claim/LocationVerficationVisor.h; sourceTree = "<group>"; };
 		39E35DD11C91884900AA0BCD /* LocationVerficationVisor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationVerficationVisor.m; path = Claim/LocationVerficationVisor.m; sourceTree = "<group>"; };
-		39E35DD31C918C9F00AA0BCD /* ClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClaimViewController.h; path = Claim/ClaimViewController.h; sourceTree = "<group>"; };
-		39E35DD41C918C9F00AA0BCD /* ClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClaimViewController.m; path = Claim/ClaimViewController.m; sourceTree = "<group>"; };
 		39EB99011C84B75E00BB0DD8 /* libPopdeemSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libPopdeemSDK.h; sourceTree = "<group>"; };
 		39EB99031C84B75E00BB0DD8 /* libPopdeemSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libPopdeemSDK.m; sourceTree = "<group>"; };
 		39EB99081C85DA4600BB0DD8 /* PDRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRedeemViewController.h; sourceTree = "<group>"; };
@@ -562,8 +559,6 @@
 		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
-				39E35DD31C918C9F00AA0BCD /* ClaimViewController.h */,
-				39E35DD41C918C9F00AA0BCD /* ClaimViewController.m */,
 				392787121C0716F600F8DCD9 /* PDClaimViewController.h */,
 				392787131C0716F600F8DCD9 /* PDClaimViewController.m */,
 				39EDADBD1C072851001102B3 /* PDClaimViewModel.h */,
@@ -1741,7 +1736,6 @@
 				BC67FA1D98852C3D1CE13D66 /* PDModalLoadingView.m in Sources */,
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
-				39E35DD51C918C9F00AA0BCD /* ClaimViewController.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDHomeViewController.m in Sources */,
 				3921E3111C71DD68000120D4 /* PDSingleMessageViewController.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDRedeemViewController.m in Sources */,

@@ -105,6 +105,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) BOOL verifyLocation;
 @property (nonatomic) BOOL revoked;
 @property (nonatomic) CGFloat distanceFromUser;
+@property (nonatomic) NSInteger countdownTimerDuration;
 
 @property (nonatomic, strong) NSMutableArray *locations;
 

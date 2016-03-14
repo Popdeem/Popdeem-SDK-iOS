@@ -36,7 +36,7 @@
   // Do any additional setup after loading the view.
   
   //Time left in seconds
-  secondsLeft = 600;
+  secondsLeft = _reward.countdownTimerDuration;
   
   if (_reward.coverImage) {
     [_logoImageView setImage:_reward.coverImage];

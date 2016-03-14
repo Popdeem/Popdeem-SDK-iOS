@@ -144,6 +144,13 @@
         "backgroundColor" : "#092359",
         "fontName" : "Avenir-Book"
       }
+    },
+    "claim" : {
+      "fontName" : "Avenir-Book",
+      "fontColor" : "#000000",
+      "withLabel" : {
+        "namesColor" : "#092359",
+      }
     }
   }
 }
