@@ -31,6 +31,8 @@
 		39537BD31C639B79001C6796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD11C639B79001C6796 /* Main.storyboard */; };
 		39537BD51C639B79001C6796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD41C639B79001C6796 /* Assets.xcassets */; };
 		39537BD81C639B79001C6796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD61C639B79001C6796 /* LaunchScreen.storyboard */; };
+		395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
+		395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
 		3966F6A91C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
 		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
@@ -230,6 +232,10 @@
 		39537BD41C639B79001C6796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39537BD71C639B79001C6796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39537BD91C639B79001C6796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentsManager.h; sourceTree = "<group>"; };
+		395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMomentsManager.m; sourceTree = "<group>"; };
+		395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentAPIService.h; sourceTree = "<group>"; };
+		395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMomentAPIService.m; sourceTree = "<group>"; };
 		3966F6A61C5B85DD00DFFF9B /* PDMsgCntrTblViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMsgCntrTblViewController.h; path = MessageCenter/PDMsgCntrTblViewController.h; sourceTree = "<group>"; };
 		3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMsgCntrTblViewController.m; path = MessageCenter/PDMsgCntrTblViewController.m; sourceTree = "<group>"; };
 		3966F6A81C5B85DD00DFFF9B /* PDMsgCntrTblViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDMsgCntrTblViewController.xib; path = MessageCenter/PDMsgCntrTblViewController.xib; sourceTree = "<group>"; };
@@ -921,6 +927,8 @@
 				39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */,
 				3921E3061C6DEA51000120D4 /* PDLocationValidator.h */,
 				3921E3071C6DEA51000120D4 /* PDLocationValidator.m */,
+				395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */,
+				395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1039,6 +1047,8 @@
 				BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */,
 				39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */,
 				39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */,
+				395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */,
+				395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1719,9 +1729,11 @@
 				39A98A661C3E6B9F002AF910 /* FeedCell.m in Sources */,
 				3966F6A91C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m in Sources */,
 				39A989861C3BD857002AF910 /* PDSegmentedControl.m in Sources */,
+				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				A92281F11C07465700A43320 /* PDNavigationController.m in Sources */,
 				398A11DB1C60B748002CB4B6 /* MessageCell.m in Sources */,
+				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PhotoCell.m in Sources */,
 				39ABA6651C4D073D0057088E /* PDHomeViewModel.m in Sources */,
 				3921E3141C71E1BB000120D4 /* PDSingleMessageViewModel.m in Sources */,

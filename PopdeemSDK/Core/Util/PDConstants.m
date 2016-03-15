@@ -21,6 +21,7 @@ NSString *const WALLET_PATH = @"api/v2/rewards/wallet";
 NSString *const MESSAGES_PATH = @"api/v2/messages";
 NSString *const FEEDS_PATH = @"api/v2/feeds";
 NSString *const BRANDS_PATH = @"api/v2/brands";
+NSString *const MOMENTS_PATH = @"api/v2/moments";
 /*
  End API URL Strings
  */

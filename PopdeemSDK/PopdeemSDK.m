@@ -30,7 +30,8 @@
 #import "PDNotificationHandler.h"
 #import "PDMessageAPIService.h"
 #import "PDUserAPIService.h"
-#import "PDReferral.h";
+#import "PDReferral.h"
+#import "PDMomentsManager.h"
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
@@ -254,6 +255,10 @@
       }
     }];
   }
+}
+
++ (void) logMoment:(NSString*)momentString {
+  [PDMoment]
 }
 
 @end
