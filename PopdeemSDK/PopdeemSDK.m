@@ -32,6 +32,7 @@
 #import "PDUserAPIService.h"
 #import "PDReferral.h"
 #import "PDMomentsManager.h"
+#import "PDAPIClient.h"
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
@@ -259,6 +260,19 @@
 
 + (void) logMoment:(NSString*)momentString {
   [PDMomentsManager logMoment:momentString];
+}
+
++ (void) setThirdPartyUserToken:(NSString*)userToken {
+  [[PDAPIClient sharedInstance] setThirdPartyToken:userToken];
+  if ([PDUser sharedInstance] == nil) {
+    return;
+  }
+  PDUserAPIService *service = [[PDUserAPIService alloc] init];
+  [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+    if (error) {
+      NSLog(@"Error updating User");
+    }
+  }];
 }
 
 @end

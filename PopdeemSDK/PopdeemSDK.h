@@ -79,5 +79,6 @@ NS_ASSUME_NONNULL_BEGIN
    sourceApplication:(NSString *)sourceApplication
           annotation:(id)annotation;
 + (void) logMoment:(NSString*)momentString;
++ (void) setThirdPartyUserToken:(NSString*)userToken;
 @end
 NS_ASSUME_NONNULL_END

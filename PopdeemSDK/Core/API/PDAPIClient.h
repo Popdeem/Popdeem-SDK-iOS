@@ -54,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong, nullable) NSString *deviceToken;
 @property (nonatomic, strong, nullable) PDReferral *referral;
+@property (nonatomic, strong, nullable) NSString *thirdPartyToken;
 
 /*!
  * @abstract Return the shared API Client

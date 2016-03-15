@@ -148,6 +148,10 @@
     [[PDAPIClient sharedInstance] setReferral:nil];
   }
   
+  if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
+    [params setObject:[[PDAPIClient sharedInstance] thirdPartyToken] forKey:@"third_party_user_token"];
+  }
+  
   [params setObject:user forKey:@"user"];
   
   [session PUT:putPath params:params completion:^(NSData *data, NSURLResponse *response, NSError *error) {
