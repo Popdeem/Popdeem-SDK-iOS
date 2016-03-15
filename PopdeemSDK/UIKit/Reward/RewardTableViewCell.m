@@ -162,36 +162,43 @@
           break;
       }
     }
-    
-    
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[NSDate date]
-                                                          toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
-                                                         options:0];
-    
-    NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]];
-    
-    NSInteger days = [components day];
-    
-    NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
-    int intervalHours = interval/60/60;
-    int intervalDays = interval/60/60/24;
-    
-    
-    NSString *exp;
-    if (days>6) {
-      exp = [NSString stringWithFormat:@"Exp %ld %@",(long)untilComponents.day, [self monthforIndex:untilComponents.month]];
-    } else if (intervalDays < 7 && intervalHours > 23) {
-      exp = [NSString stringWithFormat:@"Exp %ld days",(long)intervalDays];
-    } else {
-      exp = [NSString stringWithFormat:@"Exp %ld hours",(long)intervalHours];
+    NSString *exp = nil;
+    if (reward.unlimitedAvailability == NO) {
+      NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+      NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                          fromDate:[NSDate date]
+                                                            toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
+                                                           options:0];
+      
+      NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]];
+      
+      NSInteger days = [components day];
+      
+      NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
+      int intervalHours = interval/60/60;
+      int intervalDays = interval/60/60/24;
+      
+      if (days>6) {
+        exp = [NSString stringWithFormat:@"Exp %ld %@",(long)untilComponents.day, [self monthforIndex:untilComponents.month]];
+      } else if (intervalDays < 7 && intervalHours > 23) {
+        exp = [NSString stringWithFormat:@"Exp %ld days",(long)intervalDays];
+      } else {
+        exp = [NSString stringWithFormat:@"Exp %ld hours",(long)intervalHours];
+      }
     }
     
     if (reward.verifyLocation == YES) {
-      [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@ | %@",action,exp,reward.localizedDistanceToUserString]];
+      if (reward.unlimitedAvailability) {
+        [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,reward.localizedDistanceToUserString]];
+      } else {
+        [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@ | %@",action,exp,reward.localizedDistanceToUserString]];
+      }
     } else {
-      [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
+      if (reward.unlimitedAvailability) {
+        [_infoLabel setText:[NSString stringWithFormat:@"%@",action]];
+      } else {
+        [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
+      }
     }
     [_infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 12)];
     [_infoLabel setTextAlignment:NSTextAlignmentLeft];

@@ -86,7 +86,7 @@
     if ([params[@"no_time_limit"] isEqualToString:@"true"]) {
       self.unlimitedAvailability = YES;
     } else {
-      self.unlimitedAvailability = FALSE;
+      self.unlimitedAvailability = NO;
     }
     
     id tweet_options = params[@"tweet_options"];
