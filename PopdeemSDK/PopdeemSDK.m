@@ -258,7 +258,7 @@
 }
 
 + (void) logMoment:(NSString*)momentString {
-  [PDMoment]
+  [PDMomentsManager logMoment:momentString];
 }
 
 @end

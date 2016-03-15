@@ -78,5 +78,6 @@ NS_ASSUME_NONNULL_BEGIN
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
           annotation:(id)annotation;
++ (void) logMoment:(NSString*)momentString;
 @end
 NS_ASSUME_NONNULL_END

@@ -15,7 +15,7 @@
   NSURLSession *session = [NSURLSession createPopdeemSession];
   NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,MOMENTS_PATH];
   NSDictionary *params = [NSDictionary dictionaryWithObject:momentString forKey:@"trigger_action"];
-  [session POST:path params:params completion:completion:^(NSData *data, NSURLResponse *response, NSError *error){
+  [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
     NSError *jsonError;
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
     if (!jsonObject) {

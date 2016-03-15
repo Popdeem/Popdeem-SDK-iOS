@@ -36,6 +36,7 @@ extern NSString *const WALLET_PATH;
 extern NSString *const MESSAGES_PATH;
 extern NSString *const FEEDS_PATH;
 extern NSString *const BRANDS_PATH;
+extern NSString *const MOMENTS_PATH;
 
 //
 //NSNotificationCenter Strings
