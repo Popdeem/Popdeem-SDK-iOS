@@ -29,6 +29,8 @@
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
   [Fabric with:@[[Crashlytics class]]];
+  //Test Moments
+//  [PopdeemSDK logMoment:@"post_payment"];
   return YES;
 }
 
