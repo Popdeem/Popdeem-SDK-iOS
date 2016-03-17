@@ -174,7 +174,15 @@
         });
         return;
       }
-      PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+      else if (jsonObject[@"error"]) {
+        [session invalidateAndCancel];
+        dispatch_async(dispatch_get_main_queue(), ^{
+          completion(nil, [NSError errorWithDomain:@"User Not Found" code:27500 userInfo:nil]);
+        });
+      }
+      if (jsonObject[@"user"]) {
+        PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+      }
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
         completion(user, nil);

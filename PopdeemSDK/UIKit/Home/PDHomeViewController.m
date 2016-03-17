@@ -41,6 +41,7 @@
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
   if (self = [self initWithNibName:@"PDHomeViewController" bundle:podBundle]) {
     self.model = [[PDHomeViewModel alloc] initWithController:self];
+    self.claimVC = [[PDClaimViewController alloc] initFromNib];
     return self;
   }
   return nil;
@@ -55,6 +56,7 @@
 
 - (void) awakeFromNib {
   self.model = [[PDHomeViewModel alloc] initWithController:self];
+  self.claimVC = [[PDClaimViewController alloc] initFromNib];
 }
 
 - (void)renderView {
@@ -310,7 +312,9 @@
             [_loadingView hideAnimated:YES];
             [self.model fetchRewards];
             [self.model fetchWallet];
-            [self processClaimForIndexPath:indexPath];
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [self processClaimForIndexPath:indexPath];
+            });
           } failure:^(NSError *err) {
             if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
               av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
@@ -325,7 +329,9 @@
           }];
           return;
         }
-        [self processClaimForIndexPath:indexPath];
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [self processClaimForIndexPath:indexPath];
+        });
       }
       break;
     case 1:
@@ -389,9 +395,10 @@
   } else if (reward.action == PDRewardActionNone) {
     [self.model claimNoAction:reward];
   } else {
-    PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+//    PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
 //    [claimController setHomeController:self];
-    [[self navigationController] pushViewController:claimController animated:YES];
+    [_claimVC setupWithReward:reward];
+    [[self navigationController] pushViewController:_claimVC animated:YES];
   }
 
 }

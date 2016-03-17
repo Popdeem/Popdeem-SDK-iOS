@@ -53,6 +53,18 @@
   return nil;
 }
 
+- (void) setupWithReward:(PDReward*)reward {
+  _reward = reward;
+  _mediaTypes = reward.socialMediaTypes;
+  _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+  [_viewModel setViewController:self];
+  [_textView setDelegate:_viewModel];
+  [_textView setFont:[UIFont systemFontOfSize:14]];
+  [self renderView];
+  [self drawBorders];
+  [self verifyLocation];
+}
+
 - (void) verifyLocation {
   PDLocationValidator *validator = [[PDLocationValidator alloc] init];
   [validator validateLocationForReward:_reward completion:^(BOOL validated){

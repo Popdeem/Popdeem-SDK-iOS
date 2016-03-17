@@ -45,9 +45,12 @@
 
 @property (nonatomic, assign) PDHomeViewController *homeController;
 
+- (instancetype) initFromNib;
 - (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location;
 - (void) renderView;
 - (void) keyboardUp;
 - (void) keyboardDown;
+- (void) setUpWithMediaTypes:(NSArray*)mediaTypes reward:(PDReward*)reward;
+- (void) setupWithReward:(PDReward*)reward;
 
 @end

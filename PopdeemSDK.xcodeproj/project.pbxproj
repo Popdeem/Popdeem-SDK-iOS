@@ -33,6 +33,7 @@
 		39537BD81C639B79001C6796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD61C639B79001C6796 /* LaunchScreen.storyboard */; };
 		395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
 		395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
+		395DD7221C9B5533007DAFE2 /* LocationVisor.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD7211C9B5533007DAFE2 /* LocationVisor.m */; };
 		3966F6A91C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
 		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
@@ -236,6 +237,14 @@
 		395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMomentsManager.m; sourceTree = "<group>"; };
 		395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentAPIService.h; sourceTree = "<group>"; };
 		395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMomentAPIService.m; sourceTree = "<group>"; };
+		395DD7201C9B5533007DAFE2 /* LocationVisor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationVisor.h; path = Claim/LocationVisor.h; sourceTree = "<group>"; };
+		395DD7211C9B5533007DAFE2 /* LocationVisor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationVisor.m; path = Claim/LocationVisor.m; sourceTree = "<group>"; };
+		395DD7231C9B5754007DAFE2 /* pd_tickG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_tickG.png; path = Resources/pd_tickG.png; sourceTree = "<group>"; };
+		395DD7241C9B5754007DAFE2 /* pd_tickG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_tickG@2x.png"; path = "Resources/pd_tickG@2x.png"; sourceTree = "<group>"; };
+		395DD7251C9B5754007DAFE2 /* pd_tickG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_tickG@3x.png"; path = "Resources/pd_tickG@3x.png"; sourceTree = "<group>"; };
+		395DD7261C9B577C007DAFE2 /* pd_tickGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_tickGrey.png; path = Resources/pd_tickGrey.png; sourceTree = "<group>"; };
+		395DD7271C9B577C007DAFE2 /* pd_tickGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_tickGrey@2x.png"; path = "Resources/pd_tickGrey@2x.png"; sourceTree = "<group>"; };
+		395DD7281C9B577C007DAFE2 /* pd_tickGrey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_tickGrey@3x.png"; path = "Resources/pd_tickGrey@3x.png"; sourceTree = "<group>"; };
 		3966F6A61C5B85DD00DFFF9B /* PDMsgCntrTblViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMsgCntrTblViewController.h; path = MessageCenter/PDMsgCntrTblViewController.h; sourceTree = "<group>"; };
 		3966F6A71C5B85DD00DFFF9B /* PDMsgCntrTblViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMsgCntrTblViewController.m; path = MessageCenter/PDMsgCntrTblViewController.m; sourceTree = "<group>"; };
 		3966F6A81C5B85DD00DFFF9B /* PDMsgCntrTblViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDMsgCntrTblViewController.xib; path = MessageCenter/PDMsgCntrTblViewController.xib; sourceTree = "<group>"; };
@@ -574,6 +583,8 @@
 				392787171C071BFA00F8DCD9 /* PD_SZTextView.m */,
 				39E35DD01C91884900AA0BCD /* LocationVerficationVisor.h */,
 				39E35DD11C91884900AA0BCD /* LocationVerficationVisor.m */,
+				395DD7201C9B5533007DAFE2 /* LocationVisor.h */,
+				395DD7211C9B5533007DAFE2 /* LocationVisor.m */,
 			);
 			name = Claim;
 			sourceTree = "<group>";
@@ -829,6 +840,12 @@
 				39FD1C1A1C046DAE00CC3B0C /* pduikit_rewardsIcon@2x.png */,
 				39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */,
 				39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */,
+				395DD7231C9B5754007DAFE2 /* pd_tickG.png */,
+				395DD7241C9B5754007DAFE2 /* pd_tickG@2x.png */,
+				395DD7251C9B5754007DAFE2 /* pd_tickG@3x.png */,
+				395DD7261C9B577C007DAFE2 /* pd_tickGrey.png */,
+				395DD7271C9B577C007DAFE2 /* pd_tickGrey@2x.png */,
+				395DD7281C9B577C007DAFE2 /* pd_tickGrey@3x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1735,6 +1752,7 @@
 				398A11DB1C60B748002CB4B6 /* MessageCell.m in Sources */,
 				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PhotoCell.m in Sources */,
+				395DD7221C9B5533007DAFE2 /* LocationVisor.m in Sources */,
 				39ABA6651C4D073D0057088E /* PDHomeViewModel.m in Sources */,
 				3921E3141C71E1BB000120D4 /* PDSingleMessageViewModel.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
