@@ -13,6 +13,7 @@
 #import "PDUtils.h"
 #import "RewardTableViewCell.h"
 #import "PDLocationValidator.h"
+#import "LocationVisor.h"
 
 @interface PDClaimViewController () {
   NSArray *_mediaTypes;
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) CALayer *twitterButtonViewBordersLayer;
 @property (nonatomic, strong) CALayer *claimViewBordersLayer;
 @property (nonatomic, strong) CALayer *facebookButtonViewBordersLayer;
+
+@property (nonatomic, strong) LocationVisor *locationVisor;
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonViewHeightConstraint;
@@ -70,10 +73,17 @@
   [validator validateLocationForReward:_reward completion:^(BOOL validated){
     if (validated) {
       NSLog(@"All OK");
+      _locationVisor = [[LocationVisor alloc] initForView:self.view verified:YES];
+      [_locationVisor showAnimated:YES];
+      [self performSelector:@selector(hideVisor) withObject:nil afterDelay:1.0];
     } else {
       NSLog(@"Not Here");
     }
   }];
+}
+
+- (void) hideVisor {
+  [_locationVisor hideAnimated:YES];
 }
 
 - (void)viewDidLoad {

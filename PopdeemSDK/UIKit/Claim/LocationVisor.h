@@ -14,4 +14,8 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIButton *refreshButton;
 @property (nonatomic, strong) UIView *parent;
+
+- (instancetype) initForView:(UIView*)view verified:(BOOL)verified;
+- (void) showAnimated:(BOOL)animated;
+- (void) hideAnimated:(BOOL)animated;
 @end
