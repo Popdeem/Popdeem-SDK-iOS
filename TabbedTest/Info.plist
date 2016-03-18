@@ -18,32 +18,12 @@
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb370441856449418</string>
-				<string>popdeemstaging</string>
-			</array>
-		</dict>
-	</array>
-	<key>CFBundleVersion</key>
-	<string>181</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>f3e1331a9e08ff100bf63475f5ac2f67675253d6</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
+	<key>TwitterAppConsumerKey</key>
+	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
+	<key>TwitterAppConsumerSecret</key>
+	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
+	<key>TwitterCallbackScheme</key>
+	<string>popdeemstagingtwitter</string>
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>
@@ -66,6 +46,32 @@
 		<string>fbauth2</string>
 		<string>fb-messenger-api20140430</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb370441856449418</string>
+				<string>popdeemstaging</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>220</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>f3e1331a9e08ff100bf63475f5ac2f67675253d6</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -114,13 +120,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We use your location to deliver local rewards"</string>
-	<key>TwitterAppConsumerKey</key>
-	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
-	<key>TwitterAppConsumerSecret</key>
-	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
-	<key>TwitterCallbackScheme</key>
-	<string>popdeemstagingtwitter</string>
+	<string>&quot;We use your location to deliver local rewards&quot;</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -150,6 +150,11 @@
       "fontColor" : "#000000",
       "withLabel" : {
         "namesColor" : "#092359",
+      },
+      "locationVisor" : {
+        "backgroundColor" : "#34495e",
+        "fontColor" : "#FFFFFF",
+        "font" : "Avenir-Book"
       }
     }
   }

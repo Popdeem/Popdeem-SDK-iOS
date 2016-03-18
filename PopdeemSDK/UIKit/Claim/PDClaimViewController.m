@@ -65,7 +65,6 @@
   [_textView setFont:[UIFont systemFontOfSize:14]];
   [self renderView];
   [self drawBorders];
-  [self verifyLocation];
 }
 
 - (void) verifyLocation {
@@ -73,9 +72,10 @@
   [validator validateLocationForReward:_reward completion:^(BOOL validated){
     if (validated) {
       NSLog(@"All OK");
-      _locationVisor = [[LocationVisor alloc] initForView:self.view verified:YES];
+      if (_locationVisor) [_locationVisor hideAnimated:YES];
+      _locationVisor = [[LocationVisor alloc] initForView:self.view verified:NO];
       [_locationVisor showAnimated:YES];
-      [self performSelector:@selector(hideVisor) withObject:nil afterDelay:1.0];
+      [self performSelector:@selector(hideVisor) withObject:nil afterDelay:3.0];
     } else {
       NSLog(@"Not Here");
     }
@@ -94,7 +94,6 @@
   [_textView setFont:[UIFont systemFontOfSize:14]];
   [self renderView];
   [self drawBorders];
-  [self verifyLocation];
 }
 
 - (void) setupView {
@@ -114,6 +113,7 @@
 - (void) viewDidAppear:(BOOL)animated {
   UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
   [_keyboardHiderView addGestureRecognizer:hiderTap];
+  [self verifyLocation];
 }
 
 - (void)didReceiveMemoryWarning {
