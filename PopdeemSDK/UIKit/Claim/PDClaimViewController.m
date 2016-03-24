@@ -88,12 +88,12 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
-  [_viewModel setViewController:self];
-  [_textView setDelegate:_viewModel];
-  [_textView setFont:[UIFont systemFontOfSize:14]];
-  [self renderView];
-  [self drawBorders];
+//  _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+//  [_viewModel setViewController:self];
+//  [_textView setDelegate:_viewModel];
+//  [_textView setFont:[UIFont systemFontOfSize:14]];
+//  [self renderView];
+//  [self drawBorders];
 }
 
 - (void) setupView {

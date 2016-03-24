@@ -24,6 +24,7 @@
 #import "FeedImageViewController.h"
 #import "PDRewardActionAPIService.h"
 #import "PDRedeemViewController.h"
+#import "ClaimViewController.h"
 
 @interface PDHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -56,7 +57,7 @@
 
 - (void) awakeFromNib {
   self.model = [[PDHomeViewModel alloc] initWithController:self];
-  self.claimVC = [[PDClaimViewController alloc] initFromNib];
+//  self.claimVC = [[PDClaimViewController alloc] initFromNib];
 }
 
 - (void)renderView {
@@ -390,8 +391,10 @@
   } else {
 //    PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
 //    [claimController setHomeController:self];
-    [_claimVC setupWithReward:reward];
-    [[self navigationController] pushViewController:_claimVC animated:YES];
+//    [claimController setupWithReward:reward];
+//    [[self navigationController] pushViewController:claimController animated:YES];
+    PDClaimViewController *claimVC = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:reward.locations.firstObject];
+    [self.navigationController pushViewController:claimVC animated:YES];
   }
 
 }

@@ -26,6 +26,7 @@
 		393D2B851C3AD0D300F1E253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B841C3AD0D300F1E253 /* Assets.xcassets */; };
 		393D2B881C3AD0D300F1E253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B861C3AD0D300F1E253 /* LaunchScreen.storyboard */; };
 		393D2B8E1C3AD1A100F1E253 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B8D1C3AD1A100F1E253 /* theme.json */; };
+		39434C181CA4041F0006666D /* ClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39434C171CA4041F0006666D /* ClaimViewController.m */; };
 		39537BC71C639B79001C6796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC61C639B79001C6796 /* main.m */; };
 		39537BCA1C639B79001C6796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC91C639B79001C6796 /* AppDelegate.m */; };
 		39537BD31C639B79001C6796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD11C639B79001C6796 /* Main.storyboard */; };
@@ -222,6 +223,8 @@
 		393D2B871C3AD0D300F1E253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		393D2B891C3AD0D300F1E253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393D2B8D1C3AD1A100F1E253 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
+		39434C161CA4041F0006666D /* ClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClaimViewController.h; path = Claim/ClaimViewController.h; sourceTree = "<group>"; };
+		39434C171CA4041F0006666D /* ClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClaimViewController.m; path = Claim/ClaimViewController.m; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -574,6 +577,8 @@
 		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
+				39434C161CA4041F0006666D /* ClaimViewController.h */,
+				39434C171CA4041F0006666D /* ClaimViewController.m */,
 				392787121C0716F600F8DCD9 /* PDClaimViewController.h */,
 				392787131C0716F600F8DCD9 /* PDClaimViewController.m */,
 				39EDADBD1C072851001102B3 /* PDClaimViewModel.h */,
@@ -1758,6 +1763,7 @@
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */,
+				39434C181CA4041F0006666D /* ClaimViewController.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */,
 				39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
