@@ -9,6 +9,7 @@
 #import "WalletTableViewCell.h"
 #import "WalletCache.h"
 #import "PDTheme.h"
+#import "PDUtils.h"
 
 
 @implementation WalletTableViewCell
@@ -48,73 +49,83 @@
     [_descriptionLabel setTextColor:[UIColor blackColor]];
     
     if (![reward.rewardDescription isKindOfClass:[NSNull class]]) {
-      [self.descriptionLabel setText:reward.rewardDescription];
+      if (reward.type == PDRewardTypeCredit) {
+        [self.descriptionLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.wallet.creditRewardText", @"%@ was added to your balance."), reward.creditString]];
+      } else {
+        [self.descriptionLabel setText:reward.rewardDescription];
+      }
     }
     
-//    _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, centerY, labelWidth, 20)];
-//    [_rulesLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
-//    [_rulesLabel setTextColor:[UIColor blackColor]];
-//    [self addSubview:_rulesLabel];
-//    if (![reward.rewardRules isKindOfClass:[NSNull class]]) {
-//      [self.rulesLabel setText:reward.rewardRules];
-//    }
-    
-    _arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-35, centerY-10, 20, 20)];
-    [_arrowImageView setImage:[UIImage imageNamed:@"popdeemArrowB"]];
-    [self addSubview:_arrowImageView];
+    if (reward.type != PDRewardTypeCredit) {
+      _arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-35, centerY-10, 20, 20)];
+      [_arrowImageView setImage:[UIImage imageNamed:@"popdeemArrowB"]];
+      [self addSubview:_arrowImageView];
+    }
     
     switch (reward.type) {
       case PDRewardTypeSweepstake:
-        [self.redeemLabel setText:@"You will be notified if you are the winner"];
+        [self.redeemLabel setText:translationForKey(@"popdeem.wallet.sweepstake.redeemText", @"You will be notified if you are the winner.")];
+        break;
+      case PDRewardTypeCredit:
+        [self.redeemLabel setText:translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.")];
         break;
       case PDRewardTypeCoupon:
       case PDRewardTypeInstant:
-        [self.redeemLabel setText:@"Redeem at the bar"];
+        [self.redeemLabel setText:translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.")];
         break;
     }
     
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[NSDate date]
-                                                          toDate:[NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil]
-                                                         options:0];
     
-    NSInteger days = [components day];
-    
-    NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
-    int intervalHours = interval/60/60;
-    int intervalDays = interval/60/60/24;
     
     NSString *expiresString;
-    
-    if (intervalDays > 1) {
+    if (reward.unlimitedAvailability) {
       if (reward.type == PDRewardTypeSweepstake) {
-        expiresString = [NSString stringWithFormat:@"Draw in %ld days",(long)intervalDays];
+        expiresString = translationForKey(@"popdeem.wallet.unlimitedReward.sweepstake.expiryString", @"There is no date set for this draw.");
       } else {
-        expiresString = [NSString stringWithFormat:@"Expires in %ld days",(long)intervalDays];
+        expiresString = translationForKey(@"popdeem.wallet.unlimitedReward.coupon.expiryString", @"This reward has no expiry date.");
       }
-    }
-    if (intervalDays == 1) {
-      expiresString = @"Expires in 1 day";
-      if (reward.type == PDRewardTypeSweepstake) {
-        expiresString = @"Draw in 1 day";
-      } else {
-        expiresString = @"Expires in 1 day";
-      }
-    }
-    if (intervalDays == 0) {
+    } else {
+      NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+      NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                          fromDate:[NSDate date]
+                                                            toDate:[NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil]
+                                                           options:0];
       
-      if (intervalHours == 0) {
+      NSInteger days = [components day];
+      
+      NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
+      int intervalHours = interval/60/60;
+      int intervalDays = interval/60/60/24;
+      
+      if (intervalDays > 1) {
         if (reward.type == PDRewardTypeSweepstake) {
-          expiresString = @"Draw has happened. Standy by.";
+          expiresString = [NSString stringWithFormat:@"Draw in %ld days",(long)intervalDays];
         } else {
-          expiresString = @"Expired";
+          expiresString = [NSString stringWithFormat:@"Expires in %ld days",(long)intervalDays];
         }
-      } else {
+      }
+      if (intervalDays == 1) {
+        expiresString = @"Expires in 1 day";
         if (reward.type == PDRewardTypeSweepstake) {
-          expiresString = [NSString stringWithFormat:@"Draw in %ld hours",(long)intervalHours];
+          expiresString = @"Draw in 1 day";
         } else {
-          expiresString = [NSString stringWithFormat:@"Expires in %ld hours",(long)intervalHours];
+          expiresString = @"Expires in 1 day";
+        }
+      }
+      if (intervalDays == 0) {
+        
+        if (intervalHours == 0) {
+          if (reward.type == PDRewardTypeSweepstake) {
+            expiresString = @"Draw has happened. Standy by.";
+          } else {
+            expiresString = @"Expired";
+          }
+        } else {
+          if (reward.type == PDRewardTypeSweepstake) {
+            expiresString = [NSString stringWithFormat:@"Draw in %ld hours",(long)intervalHours];
+          } else {
+            expiresString = [NSString stringWithFormat:@"Expires in %ld hours",(long)intervalHours];
+          }
         }
       }
     }
@@ -128,17 +139,17 @@
     [howToTitle setTextColor:[UIColor blackColor]];
     [backingView addSubview:howToTitle];
     
-    UILabel *howToLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent, 25, viewWidth-2*indent, 190-120)];
-    [howToLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
+    UILabel *howToLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+5, 25, viewWidth-(2*indent)-5, 190-120)];
+    [howToLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 12)];
     [howToLabel setTextColor:[UIColor blackColor]];
     [howToLabel setNumberOfLines:6];
-    if (reward.type == PDRewardTypeCoupon || reward.type == PDRewardTypeInstant) {
+    howToLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    if (reward.type == PDRewardTypeCoupon || reward.type == PDRewardTypeInstant || reward.type == PDRewardTypeCredit) {
       [howToTitle setText:@"How to Redeem"];
-      [howToLabel setText:[NSString stringWithFormat:@"- Once you're ready to redeem your Reward, tap \"Redeem\".\n- After tapping \"Redeem\" you have 10 minutes to get the Reward.\n- You must show the cashier the following screen within 10 minutes.\n- %@", expiresString]];
-      
+      [howToLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.wallet.coupon.infoText", @"- Once you're ready to redeem your Reward, tap \"Redeem\".\n- After tapping \"Redeem\" you have 10 minutes to get the Reward.\n- You must show the cashier the following screen within 10 minutes.\n- %@"), expiresString]];
     } else {
       [howToTitle setText:@"Sweepstake Reward"];
-      [howToLabel setText:[NSString stringWithFormat:@"- You are now in the draw!\n- You will be notified if you are the winner.\n- %@.",expiresString]];
+      [howToLabel setText:[NSString stringWithFormat:@"You are now in the draw!\nYou will be notified if you are the winner.\n%@.",expiresString]];
       
     }
     [howToLabel sizeToFit];

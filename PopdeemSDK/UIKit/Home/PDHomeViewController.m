@@ -299,6 +299,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   WalletTableViewCell *wcell;
   WalletTableViewCell *lastCell;
+  PDReward *walletReward;
   __block UIAlertView *av;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
@@ -346,18 +347,9 @@
       break;
     case 2:
       if (_model.wallet.count == 0) return;
+      walletReward = [_model.wallet objectAtIndex:indexPath.row];
       wcell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
       [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
-//      if (_model.wallet.count > 7 && indexPath.row > 0 && walletSelectedIndex == nil) {
-//        [UIView animateWithDuration:1.0
-//                         animations:^{
-//                           [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//                         }
-//                         completion:^(BOOL finished){
-//                         }];
-//      }
-      
-      
       if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
         lastCell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
         [lastCell rotateArrowRight];
@@ -369,14 +361,15 @@
           WalletTableViewCell *lastCell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
           [lastCell rotateArrowRight];
         }
-        walletSelectedIndex = indexPath;
-        [wcell rotateArrowDown];
+        if (walletReward.type == PDRewardTypeCredit) {
+          walletSelectedIndex = nil;
+        } else {
+          walletSelectedIndex = indexPath;
+          [wcell rotateArrowDown];
+        }
       }
       [self.tableView beginUpdates];
       [self.tableView endUpdates];
-//      if (_model.wallet.count > 7 && (_model.wallet.count - indexPath.row < 3)) {
-//        [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
-//      }
       [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
       break;
     default:

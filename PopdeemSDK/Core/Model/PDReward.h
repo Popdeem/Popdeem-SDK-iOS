@@ -42,7 +42,8 @@ typedef NS_ENUM(NSInteger, PDRewardType){
     PDRewardTypeSweepstake,
     ///Instant Reward
     ///An instant reward can be claimed without any social action.
-    PDRewardTypeInstant
+    PDRewardTypeInstant,
+    PDRewardTypeCredit
 };
 
 /**
@@ -106,6 +107,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) BOOL revoked;
 @property (nonatomic) CGFloat distanceFromUser;
 @property (nonatomic) NSInteger countdownTimerDuration;
+@property (nonatomic, strong, nullable) NSString *creditString;
 
 @property (nonatomic, strong) NSMutableArray *locations;
 

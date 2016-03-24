@@ -28,6 +28,8 @@
       self.type = PDRewardTypeSweepstake;
     } else if ([rewardType isEqualToString:@"instant"]) {
       self.type = PDRewardTypeInstant;
+    } else if ([rewardType isEqualToString:@"credit"]) {
+      self.type = PDRewardTypeCredit;
     } else {
       self.type = PDRewardTypeCoupon;
     }
@@ -130,6 +132,10 @@
     self.countdownTimerDuration = 300;
     if ([params[@"countown_timer"] isKindOfClass:[NSString class]]) {
       self.countdownTimerDuration = [params[@"countdown_timer"] integerValue];
+    }
+    
+    if ([params[@"credit"] isKindOfClass:[NSString class]]) {
+      self.creditString = params[@"credit"];
     }
     
     [self calculateDistanceToUser];
