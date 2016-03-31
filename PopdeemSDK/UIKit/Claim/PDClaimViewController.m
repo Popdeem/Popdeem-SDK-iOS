@@ -72,9 +72,6 @@
   [validator validateLocationForReward:_reward completion:^(BOOL validated){
     if (validated) {
       NSLog(@"All OK");
-      if (_locationVisor) [_locationVisor hideAnimated:YES];
-      _locationVisor = [[LocationVisor alloc] initForView:self.view verified:NO];
-      [_locationVisor showAnimated:YES];
       [self performSelector:@selector(hideVisor) withObject:nil afterDelay:3.0];
     } else {
       NSLog(@"Not Here");
@@ -88,6 +85,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self setupView];
 //  _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
 //  [_viewModel setViewController:self];
 //  [_textView setDelegate:_viewModel];
@@ -97,7 +95,7 @@
 }
 
 - (void) setupView {
-  [self.view setBackgroundColor:[UIColor colorWithRed:239/255 green:239/255 blue:244/255 alpha:1.0]];
+//  [self.view setBackgroundColor:[UIColor colorWithRed:239/255 green:239/255 blue:244/255 alpha:1.0]];
   float currentY = 0;
   float viewWidth = self.view.frame.size.width;
   RewardTableViewCell *rewardCell = [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 85) reward:_reward];
