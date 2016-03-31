@@ -11,19 +11,19 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "PDUser+Facebook.h"
-#import "NQLoadingView.h"
-#import "BrandRewardListVC.h"
+#import "PDModalLoadingView.h"
 #import "PDSocialMediaFriend.h"
 #import "PDSocialMediaManager.h"
-#import "AppConfig.h"
-#import "FlurryLogger.h"
+#import "PDUtils.h"
+#import "PDTheme.h"
+#import "PD_SZTextView.h"
 
 #define TEXTFIELD_MAX_LENGTH 140
 #define isiPhone5OrNewer  ([[UIScreen mainScreen] bounds].size.height >= 568)?TRUE:FALSE
 
 @interface ClaimViewController() {
     
-    __weak IBOutlet SZTextView *claimTextView;
+    __weak IBOutlet PD_SZTextView *claimTextView;
     __weak IBOutlet UILabel *rewardDescriptionLabel;
     __weak IBOutlet UILabel *rewardRulesLabel;
     __weak IBOutlet UILabel *rewardInfoLabel;
@@ -67,7 +67,7 @@
     BOOL didAddPhoto;
     UIImage *image;
     UIView *bgDisablerView;
-    NQLoadingView *loadingView;
+    PDModalLoadingView *loadingView;
     BOOL goingToTag;
     UIImageView *imageView;
     float fullHeight;
@@ -84,6 +84,16 @@
 @end
 
 @implementation ClaimViewController
+
+- (instancetype) initFromNib {
+  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  if (self = [self initWithNibName:@"ClaimViewController" bundle:podBundle]) {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.title = translationForKey(@"popdeem.claims.title", @"Claim");
+    return self;
+  }
+  return nil;
+}
 
 - (void) viewDidLoad {
     
@@ -174,8 +184,6 @@
     [claimTextView setPlaceholder:@"What are you up to?"];
     [claimTextView setTintColor:[UIColor darkGrayColor]];
     claimTextView.textContainerInset = UIEdgeInsetsMake(10, 8, 5, 10);
-    [claimTextView setFont:[AppConfig claimTextViewFont]];
-    [claimTextView setTextColor:[AppConfig claimTextViewFontColor]];
 
     [addPhotoButton setEnabled:YES];
     [addPhotoButton addTarget:self action:@selector(showPhotoActionSheet) forControlEvents:UIControlEventTouchUpInside];
@@ -218,13 +226,13 @@
     UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
     [keyboardHider addGestureRecognizer:hiderTap];
     
-    if (!IS_IPHONE_4_OR_LESS) {
-        RewardTableViewCell *tvc = [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:_reward];
-        [rewardView addSubview:tvc];
-        rewardViewHeightConstraint.constant = 80;
-    } else {
-        rewardViewHeightConstraint.constant = 0;
-    }
+//    if (!IS_IPHONE_4_OR_LESS) {
+//        RewardTableViewCell *tvc = [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:_reward];
+//        [rewardView addSubview:tvc];
+//        rewardViewHeightConstraint.constant = 80;
+//    } else {
+//        rewardViewHeightConstraint.constant = 0;
+//    }
 
     
 }
@@ -237,9 +245,9 @@
                      animations:^{
     
         [keyboardHider setHidden:YES];
-        if (!IS_IPHONE_4_OR_LESS) {
-            rewardViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 80;
-        }
+//        if (!IS_IPHONE_4_OR_LESS) {
+//            rewardViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 80;
+//        }
         [claimTextView resignFirstResponder];
         [rewardView setHidden:NO];
                          self.navigationItem.rightBarButtonItem = nil;
@@ -292,7 +300,6 @@
 
 - (void) viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    [claimButton setBackgroundColor:[AppConfig topBarColor]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -333,17 +340,15 @@
         [withLabel setHidden:YES];
     }
     
-    NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:[AppConfig claimWithLabelLightFontColor],NSFontAttributeName:[AppConfig claimWithLabelFont]}];
-    
-    NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:[AppConfig claimWithLabelHighlightedFontColor],NSFontAttributeName:[AppConfig claimWithLabelFont]}];
-    
-    NSMutableAttributedString *whole = [[NSMutableAttributedString alloc] initWithAttributedString:attWith];
-    [whole appendAttributedString:attNames];
-    
-    [withLabel setAttributedText:whole];
+//    NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:[AppConfig claimWithLabelLightFontColor],NSFontAttributeName:[AppConfig claimWithLabelFont]}];
+//    
+//    NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:[AppConfig claimWithLabelHighlightedFontColor],NSFontAttributeName:[AppConfig claimWithLabelFont]}];
+  
+//    NSMutableAttributedString *whole = [[NSMutableAttributedString alloc] initWithAttributedString:attWith];
+//    [whole appendAttributedString:attNames];
+  
+//    [withLabel setAttributedText:whole];
     [self.view bringSubviewToFront:withLabel];
-    [FlurryLogger logEvent:@"Claim Page Opened" params:nil];
-    
     
 }
 
@@ -623,8 +628,9 @@
     bgDisablerView = [[UIView alloc] initWithFrame:self.view.frame];
     [bgDisablerView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
     [self.view addSubview:bgDisablerView];
-    
-    loadingView = [[NQLoadingView alloc] initSmallDarkForView:self.view titleText:@"Claiming Reward" descriptionText:@"This could take up to 30 seconds"];
+  
+  loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Claiming Reward" descriptionText:@"This could take up to 30 seconds"];
+  
     [loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
     [loadingView showAnimated:YES];
     
@@ -686,11 +692,7 @@
     [alertView setDelegate:self];
     [alertView setTag:0];
     [alertView show];
-    
-    NSMutableDictionary *flurryParams = [NSMutableDictionary dictionary];
-    [flurryParams setObject:[NSString stringWithFormat:@"Reward: %li",_reward.identifier] forKey:@"Reward Id"];
-    [FlurryLogger logEvent:@"Claim Reward" params:flurryParams];
-    
+  
     [PDRewardStore deleteReward:_reward.identifier];
 }
 
@@ -770,25 +772,6 @@
 }
 
 - (void) dismissToWallet {
-
-    NSArray * stack = self.navigationController.viewControllers;
-    BrandRewardListVC *_parent;
-    for (int i=(int)stack.count-1; i > 0; --i) {
-        if (stack[i] == self) {
-            _parent = (BrandRewardListVC*)stack[i-1];
-        }
-    }
-    
-    for (PDReward *r in _parent.tableData) {
-        if (r.identifier == _reward.identifier) {
-            [_parent.tableData removeObject:r];
-            break;
-        }
-    }
-    [_parent.tableView reloadData];
-    [_parent.tableView reloadInputViews];
-    [_parent setShouldGoToWallet:YES];
-    [self.navigationController popViewControllerAnimated:YES];
 
 }
 
@@ -893,9 +876,9 @@
 
 - (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
     PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
-    
-    loadingView = [[NQLoadingView alloc] initSmallDarkForView:self.view titleText:@"Please Wait" descriptionText:@"Connecting Twitter"];
-    [loadingView showAnimated:YES];
+  
+  loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Connecting Twitter"];
+  [loadingView showAnimated:YES];
     
     [manager loginWithTwitter:^(void){
             //Twitter is logged in

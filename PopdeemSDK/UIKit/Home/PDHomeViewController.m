@@ -24,6 +24,7 @@
 #import "FeedImageViewController.h"
 #import "PDRewardActionAPIService.h"
 #import "PDRedeemViewController.h"
+#import "ClaimViewController.h"
 
 @interface PDHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -392,10 +393,7 @@
     [claimController setHomeController:self];
     [claimController setupWithReward:reward];
     [[self navigationController] pushViewController:claimController animated:YES];
-//    PDClaimViewController *claimVC = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:reward.locations.firstObject];
-//    [self.navigationController pushViewController:claimVC animated:YES];
   }
-
 }
 
 - (void) scrollToIndexPath:(NSIndexPath*)path {

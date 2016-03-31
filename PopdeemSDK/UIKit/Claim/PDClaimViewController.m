@@ -28,9 +28,8 @@
 
 @property (nonatomic, strong) LocationVisor *locationVisor;
 
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonViewHeightConstraint;
-@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationVerificationViewHeightConstraint;
 @end
 
 @implementation PDClaimViewController
@@ -152,8 +151,6 @@
       [self.facebookButton setHidden:NO];
       [self.twitterButton setHidden:NO];
       [self.facebookButton setSelected:YES];
-      self.facebookButtonViewHeightConstraint.constant = 40;
-      self.twitterButtonViewHeightConstraint.constant = 40;
       break;
     default:
       break;

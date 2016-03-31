@@ -74,7 +74,6 @@
 		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
 		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
-		39D3F8101CAD81DB00A69575 /* ClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F80F1CAD81DB00A69575 /* ClaimViewController.m */; };
 		39E35DD21C91884900AA0BCD /* LocationVerficationVisor.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35DD11C91884900AA0BCD /* LocationVerficationVisor.m */; };
 		39EB990A1C85DA4600BB0DD8 /* PDRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDRedeemViewController.m */; };
 		39EB990E1C86F78600BB0DD8 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990D1C86F78600BB0DD8 /* theme.json */; };
@@ -316,8 +315,6 @@
 		39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCustomIOS7AlertView.m; sourceTree = "<group>"; };
 		39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessageAPIService.h; sourceTree = "<group>"; };
 		39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessageAPIService.m; sourceTree = "<group>"; };
-		39D3F80E1CAD81DB00A69575 /* ClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClaimViewController.h; path = Claim/ClaimViewController.h; sourceTree = "<group>"; };
-		39D3F80F1CAD81DB00A69575 /* ClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClaimViewController.m; path = Claim/ClaimViewController.m; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -577,8 +574,6 @@
 		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
-				39D3F80E1CAD81DB00A69575 /* ClaimViewController.h */,
-				39D3F80F1CAD81DB00A69575 /* ClaimViewController.m */,
 				392787121C0716F600F8DCD9 /* PDClaimViewController.h */,
 				392787131C0716F600F8DCD9 /* PDClaimViewController.m */,
 				39EDADBD1C072851001102B3 /* PDClaimViewModel.h */,
@@ -1763,7 +1758,6 @@
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,
 				398E4B791C03744B00A68529 /* PDSocialLoginViewController.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDRewardTableViewController.m in Sources */,
-				39D3F8101CAD81DB00A69575 /* ClaimViewController.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDClaimViewModel.m in Sources */,
 				39EDADC81C07333F001102B3 /* NoRewardsTableViewCell.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,

@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) PDClaimViewModel *viewModel;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *locationVerificationView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *rewardInfoView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *controlButtonsView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *withLabelView;
