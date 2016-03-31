@@ -318,6 +318,10 @@
 		39D3F8121CADC31400A69575 /* pd_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_x.png; path = Resources/pd_x.png; sourceTree = "<group>"; };
 		39D3F8131CADC31400A69575 /* pd_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_x@2x.png"; path = "Resources/pd_x@2x.png"; sourceTree = "<group>"; };
 		39D3F8141CADC31400A69575 /* pd_x@3x copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_x@3x copy.png"; path = "Resources/pd_x@3x copy.png"; sourceTree = "<group>"; };
+		39D3F8151CADC3C700A69575 /* pd_x_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_x_icon.png; path = Resources/pd_x_icon.png; sourceTree = "<group>"; };
+		39D3F8161CADC5B200A69575 /* pd_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_refresh.png; path = Resources/pd_refresh.png; sourceTree = "<group>"; };
+		39D3F8171CADC5B200A69575 /* pd_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_refresh@2x.png"; path = "Resources/pd_refresh@2x.png"; sourceTree = "<group>"; };
+		39D3F8181CADC5B200A69575 /* pd_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_refresh@3x.png"; path = "Resources/pd_refresh@3x.png"; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -802,6 +806,7 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39D3F8151CADC3C700A69575 /* pd_x_icon.png */,
 				39D3F8121CADC31400A69575 /* pd_x.png */,
 				39D3F8131CADC31400A69575 /* pd_x@2x.png */,
 				39D3F8141CADC31400A69575 /* pd_x@3x copy.png */,
@@ -852,6 +857,9 @@
 				395DD7261C9B577C007DAFE2 /* pd_tickGrey.png */,
 				395DD7271C9B577C007DAFE2 /* pd_tickGrey@2x.png */,
 				395DD7281C9B577C007DAFE2 /* pd_tickGrey@3x.png */,
+				39D3F8161CADC5B200A69575 /* pd_refresh.png */,
+				39D3F8171CADC5B200A69575 /* pd_refresh@2x.png */,
+				39D3F8181CADC5B200A69575 /* pd_refresh@3x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

@@ -188,9 +188,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6DK-Kf-jDl">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pd_x" translatesAutoresizingMaskIntoConstraints="NO" id="JD7-m8-hUj">
-                            <rect key="frame" x="8" y="8" width="34" height="34"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pd_x_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="uiz-A7-fdX">
+                            <rect key="frame" x="8" y="15" width="20" height="20"/>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rq-0F-nkv">
+                            <rect key="frame" x="36" y="14" width="500" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0z-jL-L75">
+                            <rect key="frame" x="550" y="13" width="22" height="22"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
@@ -207,11 +216,11 @@
                 <constraint firstItem="URn-F7-REZ" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="SoN-uK-NUR"/>
                 <constraint firstItem="6DK-Kf-jDl" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="b0Z-w5-M3W"/>
             </constraints>
-            <point key="canvasLocation" x="562" y="268"/>
+            <point key="canvasLocation" x="569" y="265"/>
         </view>
     </objects>
     <resources>
-        <image name="pd_x" width="20" height="20"/>
+        <image name="pd_x_icon.png" width="256" height="256"/>
         <image name="pduikit_camera.png" width="20" height="20"/>
         <image name="pduikit_fbbutton_selected.png" width="20" height="20"/>
         <image name="pduikit_twitterbutton_selected.png" width="20" height="20"/>
