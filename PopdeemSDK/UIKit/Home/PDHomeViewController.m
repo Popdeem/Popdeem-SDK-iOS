@@ -108,6 +108,9 @@
 
 - (void) viewDidAppear:(BOOL)animated {
   [self.view setUserInteractionEnabled:YES];
+  if (_loadingView) {
+    [_loadingView hideAnimated:YES];
+  }
   if (_didClaim) {
     claimAction = NO;
     _didClaim = NO;
@@ -138,6 +141,16 @@
 
 - (void) viewWillLayoutSubviews {
   [_model viewWillLayoutSubviews];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+  
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+  if (_loadingView) {
+    [_loadingView hideAnimated:YES];
+  }
 }
 
 - (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender {
@@ -331,6 +344,8 @@
           }];
           return;
         }
+        _loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Loading" descriptionText:@"We are preparing your reward"];
+        [_loadingView showAnimated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
           [self processClaimForIndexPath:indexPath];
         });
@@ -389,9 +404,8 @@
   } else if (reward.action == PDRewardActionNone) {
     [self.model claimNoAction:reward];
   } else {
-    PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+      PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
     [claimController setHomeController:self];
-    [claimController setupWithReward:reward];
     [[self navigationController] pushViewController:claimController animated:YES];
   }
 }

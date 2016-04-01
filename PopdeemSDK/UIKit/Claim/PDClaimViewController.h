@@ -28,10 +28,9 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *twitterButtonView;
 @property (unsafe_unretained, nonatomic) IBOutlet PD_SZTextView *textView;
 
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *rewardDescriptionLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *rewardInfoLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *rewardRulesLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *verifyLocationLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *refreshLocationButton;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *withLabel;
 
@@ -43,6 +42,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *twitterButton;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *keyboardHiderView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *locationFailedView;
 
 @property (nonatomic, assign) PDHomeViewController *homeController;
 

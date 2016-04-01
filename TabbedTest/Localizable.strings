@@ -34,6 +34,7 @@
 "popdeem.claims.title" = "Claim";
 "popdeem.claim.addmessage" = "Add Message";
 "popdeem.claim.getreward" = "Claim Reward";
+"popdeem.claim.verifyLocationFailed" = "You must be at this location to claim this reward. Please come back later, or refresh your location.";
 
 "popdeem.claim.text.placeholder" = "What are you up to?";
 "popdeem.claim.action.tweet.checkin" = "Check-in or Tweet Required";

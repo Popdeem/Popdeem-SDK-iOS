@@ -151,9 +151,9 @@
       "withLabel" : {
         "namesColor" : "#092359",
       },
-      "locationVisor" : {
+      "locationVerification" : {
         "backgroundColor" : "#34495e",
-        "fontColor" : "#FFFFFF",
+        "fontColor" : "#000000",
         "font" : "Avenir-Book"
       }
     }

@@ -14,6 +14,8 @@
 #import "RewardTableViewCell.h"
 #import "PDLocationValidator.h"
 #import "LocationVisor.h"
+#import "PDTheme.h"
+#import "PDModalLoadingView.h"
 
 @interface PDClaimViewController () {
   NSArray *_mediaTypes;
@@ -26,7 +28,11 @@
 @property (nonatomic, strong) CALayer *claimViewBordersLayer;
 @property (nonatomic, strong) CALayer *facebookButtonViewBordersLayer;
 
+@property (nonatomic, strong) PDLocationValidator *locationValidator;
+
 @property (nonatomic, strong) LocationVisor *locationVisor;
+
+@property (nonatomic, strong) PDModalLoadingView *loadingView;
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationVerificationViewHeightConstraint;
@@ -50,6 +56,7 @@
     _location = location;
     _mediaTypes = mediaTypes;
     _reward = reward;
+    self.locationVerificationViewHeightConstraint.constant = 0;
     return self;
   }
   return nil;
@@ -67,15 +74,32 @@
 }
 
 - (void) verifyLocation {
-  PDLocationValidator *validator = [[PDLocationValidator alloc] init];
-  [validator validateLocationForReward:_reward completion:^(BOOL validated){
+  _locationValidator = [[PDLocationValidator alloc] init];
+  [_locationValidator validateLocationForReward:_reward completion:^(BOOL validated){
+    if (_loadingView) {
+      [_loadingView hideAnimated:YES];
+    }
     if (validated) {
-      NSLog(@"All OK");
-      [self performSelector:@selector(hideVisor) withObject:nil afterDelay:3.0];
+      _viewModel.locationVerified = YES;
+      [_locationFailedView setHidden:YES];
+      [UIView animateWithDuration:1.0 animations:^{
+        self.locationVerificationViewHeightConstraint.constant = 0;
+      }];
     } else {
-      NSLog(@"Not Here");
+      _viewModel.locationVerified = NO;
+      [_locationFailedView setHidden:NO];
+      [self.view bringSubviewToFront:_locationFailedView];
+      [UIView animateWithDuration:1.0 animations:^{
+        self.locationVerificationViewHeightConstraint.constant = 50;
+      }];
     }
   }];
+}
+
+- (void) refreshLocationTapped {
+  _loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Checking Location" descriptionText:@"Please wait a moment while we verify your location"];
+  [_loadingView showAnimated:YES];
+  [self performSelector:@selector(verifyLocation) withObject:nil afterDelay:1.0];
 }
 
 - (void) hideVisor {
@@ -84,17 +108,22 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [_locationFailedView setHidden:YES];
   [self setupView];
-//  _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
-//  [_viewModel setViewController:self];
-//  [_textView setDelegate:_viewModel];
-//  [_textView setFont:[UIFont systemFontOfSize:14]];
-//  [self renderView];
-//  [self drawBorders];
+  _viewModel = [[PDClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+  [_viewModel setViewController:self];
+  [_textView setDelegate:_viewModel];
+  [_textView setFont:[UIFont systemFontOfSize:14]];
+  self.locationVerificationViewHeightConstraint.constant = 0;
+  [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
+  [_refreshLocationButton setUserInteractionEnabled:YES];
+  [self renderView];
+  [self drawBorders];
 }
 
 - (void) setupView {
 //  [self.view setBackgroundColor:[UIColor colorWithRed:239/255 green:239/255 blue:244/255 alpha:1.0]];
+  /*
   float currentY = 0;
   float viewWidth = self.view.frame.size.width;
   RewardTableViewCell *rewardCell = [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 85) reward:_reward];
@@ -104,7 +133,7 @@
   [self.view addSubview:_textView];
   currentY += 130;
   _withLabelView = [[UIView alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 21)];
-  
+  */
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -121,7 +150,10 @@
 - (void) renderView {
   [self.rewardInfoView addSubview:[[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:_viewModel.reward]];
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
-  [self.rewardImageView setImage:_viewModel.reward.coverImage];
+
+  [_verifyLocationLabel setText:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please come back later, or refresh your location.")];
+  [_verifyLocationLabel setTextColor:PopdeemColor(@"popdeem.claim.locationVerification.fontColor")];
+  [_verifyLocationLabel setFont:PopdeemFont(@"popdeem.claim.locationVerification.font", 10)];
   
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
@@ -210,8 +242,8 @@
   [self.keyboardHiderView setHidden:NO];
   [self.view bringSubviewToFront:self.keyboardHiderView];
   [self.textView becomeFirstResponder];
-  [self.rewardImageView setHidden:YES];
   self.rewardInfoViewHeightConstraint.constant = 0;
+  self.locationVerificationViewHeightConstraint.constant = 0;
   [self setTitle:translationForKey(@"popdeem.claim.addmessage", @"Add Message")];
   [self.view setNeedsDisplay];
 }
@@ -226,6 +258,7 @@
                      if (!IS_IPHONE_4_OR_LESS) {
                        _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 65;
                      }
+                     self.locationVerificationViewHeightConstraint.constant = _viewModel.locationVerified ? 0 : 50;
                      [_textView resignFirstResponder];
                      [_rewardInfoView setHidden:NO];
                      self.navigationItem.rightBarButtonItem = nil;

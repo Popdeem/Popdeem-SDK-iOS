@@ -32,6 +32,8 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 
 @property (nonatomic, strong) PDLocation *location;
 
+@property (nonatomic) BOOL locationVerified;
+
 @property (nonatomic) SocialMediaTypesAvailable socialMediaTypesAvailable;
 
 - (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location;

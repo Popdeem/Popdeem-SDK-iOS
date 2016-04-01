@@ -32,9 +32,11 @@
   self.completionBlock = completion;
   self.reward = reward;
   PDBrand *b = [PDBrandStore findBrandByIdentifier:reward.brandId];
-  if (b.verifyLocation == NO) {
-    _completionBlock(YES);
-    return;
+  if (b) {
+    if (b.verifyLocation == NO) {
+      _completionBlock(YES);
+      return;
+    }
   }
   
   if ([[PDUser sharedInstance] isTester]) {
@@ -98,7 +100,7 @@
   CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:lat longitude:longi];
   
   for (PDLocation *l in _reward.locations) {
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:lat longitude:longi];
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:l.geoLocation.latitude longitude:l.geoLocation.longitude];
     CLLocationDistance distance = [userLocation distanceFromLocation:loc];
     if (distance < closest) {
       closest = distance;
