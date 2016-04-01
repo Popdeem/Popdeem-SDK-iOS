@@ -34,6 +34,9 @@
           "redeemButtonTextColor" : "#FFFFFF",
           "fontName" : "Avenir-Book"
         }
+      },
+      "inboxButton" : {
+        "tintColor" : "#FFFFFF"
       }
     },
     "messageCenter" : {

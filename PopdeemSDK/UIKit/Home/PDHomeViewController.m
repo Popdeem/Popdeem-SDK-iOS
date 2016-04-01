@@ -75,8 +75,6 @@
   [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
   
-  UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:translationForKey(@"popdeem.nav.inbox", @"Inbox") style:UIBarButtonItemStylePlain target:self action:@selector(inboxAction)];
-  self.navigationItem.rightBarButtonItem = anotherButton;
   self.navigationController.navigationBar.translucent = NO;
   [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
   [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];

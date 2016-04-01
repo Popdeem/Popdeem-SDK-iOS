@@ -24,6 +24,7 @@
 @property (nonatomic) NSInteger claimedRewardId;
 @property (nonatomic) PDLocation *closestLocation;
 @property (nonatomic) PDModalLoadingView *loadingView;
+@property (nonatomic, strong) UIButton *inboxButton;
 
 - (instancetype) initFromNib;
 - (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender;

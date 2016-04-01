@@ -178,6 +178,14 @@
   [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 110)];
   [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.home.header.backgroundColor")];
   
+  CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
+  _controller.inboxButton = [UIButton buttonWithType:UIButtonTypeSystem];
+  [_controller.inboxButton setFrame:inboxButtonFrame];
+  _controller.inboxButton.tintColor = PopdeemColor(@"popdeem.home.inboxButton.tintColor");
+  [_controller.inboxButton setImage:[UIImage imageNamed:@"pd_message"] forState:UIControlStateNormal];
+  [_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
+  [_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
+  
   if (!_tableHeaderImageView) {
     if (PopdeemThemeHasValueForKey(@"popdeem.home.header.backgroundImage")) {
       _tableHeaderImageView = [[UIImageView alloc] initWithFrame:_controller.tableView.tableHeaderView.frame];
