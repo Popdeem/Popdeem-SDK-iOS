@@ -182,7 +182,7 @@
   _controller.inboxButton = [UIButton buttonWithType:UIButtonTypeSystem];
   [_controller.inboxButton setFrame:inboxButtonFrame];
   _controller.inboxButton.tintColor = PopdeemColor(@"popdeem.home.inboxButton.tintColor");
-  [_controller.inboxButton setImage:[UIImage imageNamed:@"pd_message"] forState:UIControlStateNormal];
+  [_controller.inboxButton setImage:[UIImage imageNamed:@"pd_mail"] forState:UIControlStateNormal];
   [_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
   [_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
   

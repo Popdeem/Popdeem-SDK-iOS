@@ -322,9 +322,6 @@
 		39D3F8161CADC5B200A69575 /* pd_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_refresh.png; path = Resources/pd_refresh.png; sourceTree = "<group>"; };
 		39D3F8171CADC5B200A69575 /* pd_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_refresh@2x.png"; path = "Resources/pd_refresh@2x.png"; sourceTree = "<group>"; };
 		39D3F8181CADC5B200A69575 /* pd_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_refresh@3x.png"; path = "Resources/pd_refresh@3x.png"; sourceTree = "<group>"; };
-		39D3F8191CAE91EB00A69575 /* pd_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_message.png; path = Resources/pd_message.png; sourceTree = "<group>"; };
-		39D3F81A1CAE91EB00A69575 /* pd_message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_message@2x.png"; path = "Resources/pd_message@2x.png"; sourceTree = "<group>"; };
-		39D3F81B1CAE91EB00A69575 /* pd_message@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_message@3x.png"; path = "Resources/pd_message@3x.png"; sourceTree = "<group>"; };
 		39D3F81C1CAE994600A69575 /* pd_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_mail.png; path = Resources/pd_mail.png; sourceTree = "<group>"; };
 		39D3F81D1CAE994600A69575 /* pd_mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_mail@2x.png"; path = "Resources/pd_mail@2x.png"; sourceTree = "<group>"; };
 		39D3F81E1CAE994600A69575 /* pd_mail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_mail@3x.png"; path = "Resources/pd_mail@3x.png"; sourceTree = "<group>"; };
@@ -815,9 +812,6 @@
 				39D3F81C1CAE994600A69575 /* pd_mail.png */,
 				39D3F81D1CAE994600A69575 /* pd_mail@2x.png */,
 				39D3F81E1CAE994600A69575 /* pd_mail@3x.png */,
-				39D3F8191CAE91EB00A69575 /* pd_message.png */,
-				39D3F81A1CAE91EB00A69575 /* pd_message@2x.png */,
-				39D3F81B1CAE91EB00A69575 /* pd_message@3x.png */,
 				39D3F8151CADC3C700A69575 /* pd_x_icon.png */,
 				39D3F8121CADC31400A69575 /* pd_x.png */,
 				39D3F8131CADC31400A69575 /* pd_x@2x.png */,

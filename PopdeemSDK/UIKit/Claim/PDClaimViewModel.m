@@ -79,6 +79,7 @@
   }
   if (_reward.twitterForcedTag) {
     _forcedTagString = _reward.twitterForcedTag;
+    [_viewController.twitterForcedTagLabel setTextColor:[UIColor colorWithRed:0.204 green:0.506 blue:0.996 alpha:1.000]];
   }
 }
 
@@ -195,6 +196,9 @@
   _willTweet = YES;
   [_viewController.twitterButton setSelected:YES];
   [_viewController.twitterForcedTagLabel setHidden:NO];
+  if (_forcedTagString) {
+    [_viewController.twitterForcedTagLabel setText:_forcedTagString];
+  }
   [_viewController.twitterCharacterCountLabel setHidden:NO];
   [self calculateTwitterCharsLeft];
 }
@@ -204,7 +208,32 @@
 }
 
 - (void) calculateTwitterCharsLeft {
-
+  //Build the string
+  NSString *endString = [NSString stringWithString:_viewController.textView.text];
+  if (_reward.twitterForcedTag) {
+    endString = [endString stringByAppendingString:[NSString stringWithFormat:@" %@",_reward.twitterForcedTag]];
+  }
+  NSString *sampleMediaString = @"";
+  for (int i = 0 ; i < _reward.twitterMediaLength ; i++) {
+    sampleMediaString = [sampleMediaString stringByAppendingString:@" "];
+  }
+  
+  //All rewards have a download link now, so deduct this media string length
+  endString = [endString stringByAppendingString:[NSString stringWithFormat:@" %@",sampleMediaString]];
+  
+  if (_rewardImage) {
+    endString = [endString stringByAppendingString:[NSString stringWithFormat:@" %@",sampleMediaString]];
+  }
+  
+  int charsLeft = 140 - (int)endString.length;
+  
+  if (charsLeft < 1) {
+    [_viewController.twitterCharacterCountLabel setTextColor:[UIColor redColor]];
+  } else {
+    [_viewController.twitterCharacterCountLabel setTextColor:[UIColor colorWithRed:0.204 green:0.506 blue:0.996 alpha:1.000]];
+  }
+  
+  [_viewController.twitterCharacterCountLabel setText:[NSString stringWithFormat:@"%d",charsLeft]];
 }
 
 - (void) keyboardWillShow:(NSNotification*)notification {
@@ -244,6 +273,7 @@
       }
       if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
         UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back") otherButtonTitles: nil];
+        [tooMany setTag:2];
         [tooMany show];
         return;
       }
@@ -255,6 +285,10 @@
     [_viewController.textView resignFirstResponder];
   }
   [self makeClaim];
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+  [self calculateTwitterCharsLeft];
 }
 
 - (void) makeClaim {
@@ -346,6 +380,9 @@
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (alertView.tag == 2) {
+    return;
+  }
   [self.viewController.navigationController popViewControllerAnimated:YES];
 }
 

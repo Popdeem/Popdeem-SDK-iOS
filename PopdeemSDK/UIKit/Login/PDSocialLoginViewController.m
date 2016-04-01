@@ -12,6 +12,7 @@
 #import "PDUIKitUtils.h"
 #import "PDUtils.h"
 #import "PDTheme.h"
+#import "PDUser.h"
 
 @interface PDSocialLoginViewController ()
 

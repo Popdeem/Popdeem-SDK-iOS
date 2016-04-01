@@ -79,7 +79,6 @@
   self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:_viewController.view];
   [self.loadingView showAnimated:YES];
   
-
   [[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
     if (error) {
       NSLog(@"Something went wrong: %@",error);
@@ -118,7 +117,7 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
   });
-  
+  [self addUserToUserDefaults:[PDUser sharedInstance]];
   [self setState:LoginStateContinue];
   [self.viewController renderViewModelState];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PopdeemUserLoggedInNotification" object:nil];
@@ -239,6 +238,10 @@
       self.loginState = LoginStateLogin;
       break;
   }
+}
+
+- (void) addUserToUserDefaults:(PDUser*)user {
+  [[NSUserDefaults standardUserDefaults] setObject:[user dictionaryRepresentation] forKey:@"popdeemUser"];
 }
 
 @end

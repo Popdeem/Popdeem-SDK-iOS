@@ -31,7 +31,7 @@
                 <outlet property="twitterButton" destination="53c-Fq-DHN" id="OzE-D7-c3q"/>
                 <outlet property="twitterButtonView" destination="bcx-cq-ec7" id="Kfc-cq-BJJ"/>
                 <outlet property="twitterCharacterCountLabel" destination="tbK-Jj-ibT" id="ugA-if-FEg"/>
-                <outlet property="twitterForcedTagLabel" destination="tbK-Jj-ibT" id="yBf-HL-cgg"/>
+                <outlet property="twitterForcedTagLabel" destination="1Cd-35-sSP" id="iK9-ir-ILC"/>
                 <outlet property="verifyLocationLabel" destination="1rq-0F-nkv" id="rU4-kL-yKO"/>
                 <outlet property="view" destination="0it-oE-mA7" id="fEa-QZ-eOT"/>
                 <outlet property="withLabel" destination="lPt-KQ-xFh" id="64E-oJ-97n"/>
@@ -135,8 +135,11 @@
                                 <action selector="cameraButtonTapped:" destination="-1" eventType="touchUpInside" id="6PZ-j7-Nr5"/>
                             </connections>
                         </button>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-35-sSP">
-                            <rect key="frame" x="592" y="20" width="0.0" height="0.0"/>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-35-sSP">
+                            <rect key="frame" x="310" y="0.0" width="282" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="282" id="lrc-z1-gtS"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                             <color key="textColor" red="0.1101988458" green="0.71167123889999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -155,11 +158,14 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="tbK-Jj-ibT" secondAttribute="bottom" id="0op-f3-qUv"/>
+                        <constraint firstAttribute="trailing" secondItem="1Cd-35-sSP" secondAttribute="trailing" constant="8" id="2Bk-Xz-Wrd"/>
                         <constraint firstAttribute="trailing" secondItem="tbK-Jj-ibT" secondAttribute="trailing" constant="8" id="2PS-Pv-BE4"/>
                         <constraint firstItem="Rur-5r-Gdk" firstAttribute="leading" secondItem="QVt-fX-G8J" secondAttribute="leading" constant="5" id="693-La-uB4"/>
+                        <constraint firstItem="1Cd-35-sSP" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="top" id="KGe-Zx-hoQ"/>
                         <constraint firstItem="Rur-5r-Gdk" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="top" id="LV3-b8-SZP"/>
                         <constraint firstAttribute="height" constant="40" id="eoZ-zF-krC"/>
                         <constraint firstAttribute="bottom" secondItem="Rur-5r-Gdk" secondAttribute="bottom" id="nEK-te-I3F"/>
+                        <constraint firstItem="tbK-Jj-ibT" firstAttribute="top" secondItem="1Cd-35-sSP" secondAttribute="bottom" id="xOg-C1-eci"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axK-DZ-59o">

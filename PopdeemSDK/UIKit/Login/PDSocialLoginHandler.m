@@ -10,6 +10,8 @@
 #import "PDSocialLoginViewController.h"
 #import "PDSocialMediaManager.h"
 #import "PDUIKitUtils.h"
+#import "PDUser.h"
+#import "PDUserAPIService.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
@@ -30,6 +32,18 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 
 - (void)showPromptIfNeededWithMaxAllowed:(NSNumber*)numberOfTimes  {
   self.maxPrompts = numberOfTimes.integerValue;
+  
+  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"popdeemUser"]){
+    [PDUser initFromUserDefaults:[[NSUserDefaults standardUserDefaults] objectForKey:@"popdeemUser"]];
+    PDUserAPIService *apiService = [[PDUserAPIService alloc] init];
+    PDUser *user = [PDUser sharedInstance];
+    [apiService getUserDetailsForId:[NSString stringWithFormat:@"%ld",(long)user.identifier] authenticationToken:user.userToken completion:^(PDUser *user, NSError *error){
+      if (error) {
+        NSLog(@"Something went wrong");
+      }
+    }];
+    return;
+  }
   
   if ([self shouldShowPrompt]) {
     [self performSelector:@selector(presentLoginModal) withObject:nil afterDelay:0.4];
