@@ -331,6 +331,8 @@
 		39D3F8231CB2BDFD00A69575 /* addFriend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addFriend.png; path = Resources/addFriend.png; sourceTree = "<group>"; };
 		39D3F8241CB2BDFD00A69575 /* addFriend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addFriend@2x.png"; path = "Resources/addFriend@2x.png"; sourceTree = "<group>"; };
 		39D3F8251CB2BDFD00A69575 /* addFriend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addFriend@3x.png"; path = "Resources/addFriend@3x.png"; sourceTree = "<group>"; };
+		39D3F8271CB2C25500A69575 /* FriendPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerViewController.xib; path = "Friend Picker/FriendPickerViewController.xib"; sourceTree = "<group>"; };
+		39D3F8281CB2C34000A69575 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = Resources/search.png; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -749,6 +751,7 @@
 			children = (
 				39D3F8201CB2BDB900A69575 /* FriendPickerViewController.h */,
 				39D3F8211CB2BDB900A69575 /* FriendPickerViewController.m */,
+				39D3F8271CB2C25500A69575 /* FriendPickerViewController.xib */,
 			);
 			name = "Friend Picker";
 			sourceTree = "<group>";
@@ -824,6 +827,7 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39D3F8281CB2C34000A69575 /* search.png */,
 				39D3F8231CB2BDFD00A69575 /* addFriend.png */,
 				39D3F8241CB2BDFD00A69575 /* addFriend@2x.png */,
 				39D3F8251CB2BDFD00A69575 /* addFriend@3x.png */,

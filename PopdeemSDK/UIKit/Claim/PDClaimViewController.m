@@ -16,6 +16,7 @@
 #import "LocationVisor.h"
 #import "PDTheme.h"
 #import "PDModalLoadingView.h"
+#import "FriendPickerViewController.h"
 
 @interface PDClaimViewController () {
   NSArray *_mediaTypes;
@@ -33,6 +34,8 @@
 @property (nonatomic, strong) LocationVisor *locationVisor;
 
 @property (nonatomic, strong) PDModalLoadingView *loadingView;
+
+@property (nonatomic, strong) FriendPickerViewController *friendPicker;
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationVerificationViewHeightConstraint;
@@ -56,6 +59,7 @@
     _location = location;
     _mediaTypes = mediaTypes;
     _reward = reward;
+    
     self.locationVerificationViewHeightConstraint.constant = 0;
     return self;
   }
