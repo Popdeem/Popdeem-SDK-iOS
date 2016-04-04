@@ -17,4 +17,6 @@
 
 @property (unsafe_unretained) IBOutlet UITextField *textField;
 
+- (instancetype) initFromNib;
+
 @end

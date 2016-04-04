@@ -36,6 +36,14 @@
 
 @implementation FriendPickerViewController
 
+- (instancetype) initFromNib {
+  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  if (self = [self initWithNibName:@"FriendPickerViewController" bundle:podBundle]) {
+    return self;
+  }
+  return nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];

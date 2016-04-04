@@ -333,6 +333,12 @@
 		39D3F8251CB2BDFD00A69575 /* addFriend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "addFriend@3x.png"; path = "Resources/addFriend@3x.png"; sourceTree = "<group>"; };
 		39D3F8271CB2C25500A69575 /* FriendPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendPickerViewController.xib; path = "Friend Picker/FriendPickerViewController.xib"; sourceTree = "<group>"; };
 		39D3F8281CB2C34000A69575 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = Resources/search.png; sourceTree = "<group>"; };
+		39D3F8291CB2CED900A69575 /* deselectedCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deselectedCheck.png; path = Resources/deselectedCheck.png; sourceTree = "<group>"; };
+		39D3F82A1CB2CED900A69575 /* deselectedCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "deselectedCheck@2x.png"; path = "Resources/deselectedCheck@2x.png"; sourceTree = "<group>"; };
+		39D3F82B1CB2CED900A69575 /* deselectedCheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "deselectedCheck@3x.png"; path = "Resources/deselectedCheck@3x.png"; sourceTree = "<group>"; };
+		39D3F82C1CB2CF0500A69575 /* selectedCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectedCheck.png; path = Resources/selectedCheck.png; sourceTree = "<group>"; };
+		39D3F82D1CB2CF0500A69575 /* selectedCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selectedCheck@2x.png"; path = "Resources/selectedCheck@2x.png"; sourceTree = "<group>"; };
+		39D3F82E1CB2CF0500A69575 /* selectedCheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selectedCheck@3x.png"; path = "Resources/selectedCheck@3x.png"; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -827,6 +833,12 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39D3F8291CB2CED900A69575 /* deselectedCheck.png */,
+				39D3F82A1CB2CED900A69575 /* deselectedCheck@2x.png */,
+				39D3F82B1CB2CED900A69575 /* deselectedCheck@3x.png */,
+				39D3F82C1CB2CF0500A69575 /* selectedCheck.png */,
+				39D3F82D1CB2CF0500A69575 /* selectedCheck@2x.png */,
+				39D3F82E1CB2CF0500A69575 /* selectedCheck@3x.png */,
 				39D3F8281CB2C34000A69575 /* search.png */,
 				39D3F8231CB2BDFD00A69575 /* addFriend.png */,
 				39D3F8241CB2BDFD00A69575 /* addFriend@2x.png */,

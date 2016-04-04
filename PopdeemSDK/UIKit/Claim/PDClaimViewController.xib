@@ -43,12 +43,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftP-Rr-EsR">
-                    <rect key="frame" x="0.0" y="215" width="600" height="385"/>
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-kG-OCo">
+                    <rect key="frame" x="0.0" y="50" width="600" height="550"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-kG-OCo">
-                    <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftP-Rr-EsR">
+                    <rect key="frame" x="0.0" y="215" width="600" height="385"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6DK-Kf-jDl">
@@ -154,15 +154,34 @@
                             <color key="textColor" red="0.1101988458" green="0.71167123889999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uox-N7-Qef">
+                            <rect key="frame" x="63" y="0.0" width="50" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Agm-6m-kRC"/>
+                                <constraint firstAttribute="width" constant="50" id="B7E-8N-fZa"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="M7v-eI-JRh"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="OHI-aN-jvv"/>
+                                <constraint firstAttribute="height" constant="40" id="ZvG-m9-RTq"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="qDC-6x-KBA"/>
+                            </constraints>
+                            <state key="normal" image="addFriend.png">
+                                <color key="titleColor" red="0.12183041040000001" green="0.1195442925" blue="0.1221788194" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="addFriendsButtonTapped:" destination="-1" eventType="touchUpInside" id="pnQ-g5-mxX"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="tbK-Jj-ibT" secondAttribute="bottom" id="0op-f3-qUv"/>
                         <constraint firstAttribute="trailing" secondItem="1Cd-35-sSP" secondAttribute="trailing" constant="8" id="2Bk-Xz-Wrd"/>
+                        <constraint firstItem="uox-N7-Qef" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="top" id="2FN-kq-xID"/>
                         <constraint firstAttribute="trailing" secondItem="tbK-Jj-ibT" secondAttribute="trailing" constant="8" id="2PS-Pv-BE4"/>
                         <constraint firstItem="Rur-5r-Gdk" firstAttribute="leading" secondItem="QVt-fX-G8J" secondAttribute="leading" constant="5" id="693-La-uB4"/>
                         <constraint firstItem="1Cd-35-sSP" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="top" id="KGe-Zx-hoQ"/>
                         <constraint firstItem="Rur-5r-Gdk" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="top" id="LV3-b8-SZP"/>
+                        <constraint firstItem="uox-N7-Qef" firstAttribute="leading" secondItem="Rur-5r-Gdk" secondAttribute="trailing" constant="8" id="ZVy-Gy-5d7"/>
                         <constraint firstAttribute="height" constant="40" id="eoZ-zF-krC"/>
                         <constraint firstAttribute="bottom" secondItem="Rur-5r-Gdk" secondAttribute="bottom" id="nEK-te-I3F"/>
                         <constraint firstItem="tbK-Jj-ibT" firstAttribute="top" secondItem="1Cd-35-sSP" secondAttribute="bottom" id="xOg-C1-eci"/>
@@ -263,7 +282,6 @@
                 <constraint firstItem="gVH-YW-ic3" firstAttribute="width" secondItem="QVt-fX-G8J" secondAttribute="width" multiplier="0.5" id="0RV-5k-kA0"/>
                 <constraint firstAttribute="trailing" secondItem="Kh4-I8-2ik" secondAttribute="trailing" id="58G-bI-bsS"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="top" secondItem="Kh4-I8-2ik" secondAttribute="bottom" id="5P8-Mc-fMi"/>
-                <constraint firstItem="2OT-kG-OCo" firstAttribute="top" secondItem="6DK-Kf-jDl" secondAttribute="bottom" id="C1Q-mE-4qm"/>
                 <constraint firstAttribute="trailing" secondItem="URn-F7-REZ" secondAttribute="trailing" id="Chg-V7-iui"/>
                 <constraint firstItem="axK-DZ-59o" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="GwF-7O-47X"/>
                 <constraint firstItem="bcx-cq-ec7" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="bottom" constant="8" id="J6c-rX-1PK"/>
@@ -276,18 +294,15 @@
                 <constraint firstItem="ftP-Rr-EsR" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="Qeg-3D-ANO"/>
                 <constraint firstItem="axK-DZ-59o" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="bottom" constant="8" id="RHF-2b-xX3"/>
                 <constraint firstItem="URn-F7-REZ" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="SoN-uK-NUR"/>
-                <constraint firstAttribute="trailing" secondItem="2OT-kG-OCo" secondAttribute="trailing" id="Uyc-eA-BpE"/>
                 <constraint firstItem="Kh4-I8-2ik" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="WZi-3Z-eqE"/>
                 <constraint firstItem="ftP-Rr-EsR" firstAttribute="top" secondItem="FtA-wC-9gB" secondAttribute="bottom" id="WfZ-N3-a1H"/>
                 <constraint firstAttribute="trailing" secondItem="Kh4-I8-2ik" secondAttribute="trailing" id="XPu-v0-6KE"/>
                 <constraint firstItem="bcx-cq-ec7" firstAttribute="leading" secondItem="axK-DZ-59o" secondAttribute="trailing" id="XVa-c6-wcP"/>
                 <constraint firstItem="53c-Fq-DHN" firstAttribute="width" secondItem="gVH-YW-ic3" secondAttribute="width" id="XXU-zt-KAc"/>
                 <constraint firstItem="FtA-wC-9gB" firstAttribute="top" secondItem="URn-F7-REZ" secondAttribute="bottom" id="YQc-dH-Haa"/>
-                <constraint firstItem="2OT-kG-OCo" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="azI-TG-9AV"/>
                 <constraint firstItem="6DK-Kf-jDl" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="b0Z-w5-M3W"/>
                 <constraint firstAttribute="trailing" secondItem="XxC-57-5PT" secondAttribute="trailing" id="eoA-sQ-4OK"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="gok-GE-FcQ"/>
-                <constraint firstAttribute="bottom" secondItem="2OT-kG-OCo" secondAttribute="bottom" id="iDb-ZF-Hh1"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="top" secondItem="Kh4-I8-2ik" secondAttribute="bottom" id="kCH-w5-qJt"/>
                 <constraint firstItem="FtA-wC-9gB" firstAttribute="top" secondItem="URn-F7-REZ" secondAttribute="bottom" id="mxq-K0-dAS"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="nOL-VY-pkt"/>
@@ -306,6 +321,7 @@
         </view>
     </objects>
     <resources>
+        <image name="addFriend.png" width="20" height="20"/>
         <image name="pd_refresh.png" width="50" height="50"/>
         <image name="pd_x_icon.png" width="256" height="256"/>
         <image name="pduikit_camera.png" width="20" height="20"/>

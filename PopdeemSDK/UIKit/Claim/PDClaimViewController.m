@@ -48,6 +48,7 @@
   if (self = [self initWithNibName:@"PDClaimViewController" bundle:podBundle]) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");
+    self.friendPicker = [[FriendPickerViewController alloc] initFromNib];
     return self;
   }
   return nil;
@@ -278,4 +279,9 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
   [_viewModel imagePickerController:picker didFinishPickingMediaWithInfo:info];
 }
+
+- (IBAction)addFriendsButtonTapped:(id)sender {
+  [self.navigationController pushViewController:_friendPicker animated:YES];
+}
+
 @end

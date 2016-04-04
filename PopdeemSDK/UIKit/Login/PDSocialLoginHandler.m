@@ -12,6 +12,7 @@
 #import "PDUIKitUtils.h"
 #import "PDUser.h"
 #import "PDUserAPIService.h"
+#import "PDUser+Facebook.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
@@ -41,6 +42,9 @@ static NSString *const PDUseCountKey = @"PDUseCount";
       if (error) {
         NSLog(@"Something went wrong");
       }
+      [[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
+        NSLog(@"Facebook Friends Updated");
+      }];
     }];
     return;
   }
