@@ -30,6 +30,7 @@
     _logoView = [[UIImageView alloc] init];
     [_logoView setFrame:CGRectMake(10, centerlineY-25, 50, 50)];
     _logoView.layer.cornerRadius = 25;
+    _logoView.clipsToBounds = YES;
     [_logoView setContentMode:UIViewContentModeScaleAspectFill];
     if (message.image) {
       [_logoView setImage:message.image];

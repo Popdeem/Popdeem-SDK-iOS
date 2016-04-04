@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) NSString *forcedTagString;
 @property (nonatomic, strong) NSString *twitterCharCountString;
 
+
 @property (nonatomic, strong) PDLocation *location;
 
 @property (nonatomic) BOOL locationVerified;

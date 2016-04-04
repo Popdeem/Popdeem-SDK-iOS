@@ -443,7 +443,6 @@
         [PDWallet remove:selectedWalletReward.identifier];
         selectedWalletReward = nil;
         walletSelectedIndex = nil;
-        
         _model.wallet = [PDWallet wallet];
         [self.tableView reloadData];
       }

@@ -74,6 +74,7 @@
 		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
 		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
+		39D3F8221CB2BDB900A69575 /* FriendPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F8211CB2BDB900A69575 /* FriendPickerViewController.m */; };
 		39E35DD21C91884900AA0BCD /* LocationVerficationVisor.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35DD11C91884900AA0BCD /* LocationVerficationVisor.m */; };
 		39EB990A1C85DA4600BB0DD8 /* PDRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDRedeemViewController.m */; };
 		39EB990E1C86F78600BB0DD8 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990D1C86F78600BB0DD8 /* theme.json */; };
@@ -325,6 +326,8 @@
 		39D3F81C1CAE994600A69575 /* pd_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pd_mail.png; path = Resources/pd_mail.png; sourceTree = "<group>"; };
 		39D3F81D1CAE994600A69575 /* pd_mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_mail@2x.png"; path = "Resources/pd_mail@2x.png"; sourceTree = "<group>"; };
 		39D3F81E1CAE994600A69575 /* pd_mail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pd_mail@3x.png"; path = "Resources/pd_mail@3x.png"; sourceTree = "<group>"; };
+		39D3F8201CB2BDB900A69575 /* FriendPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendPickerViewController.h; path = "Friend Picker/FriendPickerViewController.h"; sourceTree = "<group>"; };
+		39D3F8211CB2BDB900A69575 /* FriendPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendPickerViewController.m; path = "Friend Picker/FriendPickerViewController.m"; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -736,6 +739,15 @@
 				39ABA6641C4D073D0057088E /* PDHomeViewModel.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		39D3F81F1CB2BDAC00A69575 /* Friend Picker */ = {
+			isa = PBXGroup;
+			children = (
+				39D3F8201CB2BDB900A69575 /* FriendPickerViewController.h */,
+				39D3F8211CB2BDB900A69575 /* FriendPickerViewController.m */,
+			);
+			name = "Friend Picker";
 			sourceTree = "<group>";
 		};
 		39D7D05C1B8F0DCF00E45D0B = {
@@ -1212,6 +1224,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				39D3F81F1CB2BDAC00A69575 /* Friend Picker */,
 				3921E3091C71D825000120D4 /* Feed */,
 				3966F69E1C5B84E500DFFF9B /* MessageCenter */,
 				39ABA65F1C4D06A80057088E /* Home */,
@@ -1773,6 +1786,7 @@
 				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PhotoCell.m in Sources */,
 				395DD7221C9B5533007DAFE2 /* LocationVisor.m in Sources */,
+				39D3F8221CB2BDB900A69575 /* FriendPickerViewController.m in Sources */,
 				39ABA6651C4D073D0057088E /* PDHomeViewModel.m in Sources */,
 				3921E3141C71E1BB000120D4 /* PDSingleMessageViewModel.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDModalTransitionHandler.m in Sources */,

@@ -68,6 +68,11 @@
       "descriptionLabel" : {
         "fontName" : "Avenir-Book",
         "fontColor" : "#000000"
+      },
+      "doneButton" : {
+        "backgroundColor" : "#2980b9",
+        "fontColor" : "#FFFFFF",
+        "font" : "Avenir-Book"
       }
     },
     "login" : {

@@ -21,7 +21,7 @@
 @property (unsafe_unretained) IBOutlet UILabel *topInfoLabel;
 @property (unsafe_unretained) IBOutlet UILabel *bottomInfoLabel;
 @property (unsafe_unretained) IBOutlet UILabel *brandLabel;
-@property (unsafe_unretained) IBOutlet UIView *doneButton;
+@property (unsafe_unretained) IBOutlet UIButton *doneButton;
 
 - (instancetype) initFromNib;
 

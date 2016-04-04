@@ -33,6 +33,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self setNeedsStatusBarAppearanceUpdate];
+  [self.navigationItem setHidesBackButton:YES];
+  self.title = translationForKey(@"popdeem.redeem.title", @"Redeem");
   // Do any additional setup after loading the view.
   
   //Time left in seconds
@@ -41,11 +43,11 @@
   if (_reward.coverImage) {
     [_logoImageView setImage:_reward.coverImage];
   } else {
-    [_logoImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_reward.coverImageUrl]]]];
+    [_logoImageView setImage:[UIImage imageNamed:@"starG"]];
   }
   
   _logoImageView.layer.borderWidth = 0;
-  _logoImageView.layer.cornerRadius = 25;
+  _logoImageView.layer.cornerRadius = 22;
   _logoImageView.clipsToBounds = YES;
   
   [_brandLabel setText:@""];
@@ -77,6 +79,11 @@
   [self.rulesLabel setFont:PopdeemFont(@"popdeem.redeem.descriptionLabel.fontName", 21)];
   [self.rulesLabel setTextColor:PopdeemColor(@"popdeem.redeem.descriptionLabel.fontColor")];
   [self.rulesLabel setText:_reward.rewardRules];
+  
+  [self.doneButton setBackgroundColor:PopdeemColor(@"popdeem.redeem.doneButton.backgroundColor")];
+  [self.doneButton setTitle:translationForKey(@"popdeem.redeem.doneButton.title", @"Done") forState:UIControlStateNormal];
+  [self.doneButton setTitleColor:PopdeemColor(@"popdeem.redeem.doneButton.fontColor") forState:UIControlStateNormal];
+  [self.doneButton.titleLabel setFont:PopdeemFont(@"popdeem.redeem.doneButton.font", 18.0)];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -123,6 +130,7 @@
   } else {
     [_timerLabel setText:translationForKey(@"popdeem.redeem.timer.doneText", @"Timer Done")];
     [_timerLabel setFont:PopdeemFont(@"popdeem.redeem.timer.fontName", 14)];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{}];
   }
 }
 

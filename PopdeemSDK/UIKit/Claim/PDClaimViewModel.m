@@ -552,4 +552,8 @@
   return newImage;
 }
 
+- (IBAction)taggedFriendsButtonPressed:(id)sender {
+  
+}
+
 @end

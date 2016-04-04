@@ -60,6 +60,8 @@
   
   [self.continueButton setBackgroundColor:PopdeemColor(@"popdeem.login.continueButton.background")];
   [self.continueButton setTitleColor:PopdeemColor(@"popdeem.login.continueButton.textColor") forState:UIControlStateNormal];
+  
+  self.imageView.clipsToBounds = YES;
 }
 
 - (void) viewDidAppear:(BOOL)animated {

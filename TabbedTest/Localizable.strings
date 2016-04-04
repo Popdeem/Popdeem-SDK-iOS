@@ -70,6 +70,7 @@
 "popdeem.redeem.doneAlert.okButtonText" = "Yes, go!";
 "popdeem.redeem.doneAlert.cancelButtonText" = "Cancel";
 "popdeem.redeem.timer.doneText" = "Timer Done";
+"popdeem.redeem.title" = "Redeem";
 
 "popdeem.wallet.sweepstake.redeemText" = "You will be notified if you are the winner.";
 "popdeem.wallet.coupon.redeemText" = "Redeem at the point of sale.";
