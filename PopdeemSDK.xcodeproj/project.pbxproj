@@ -339,6 +339,7 @@
 		39D3F82C1CB2CF0500A69575 /* selectedCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectedCheck.png; path = Resources/selectedCheck.png; sourceTree = "<group>"; };
 		39D3F82D1CB2CF0500A69575 /* selectedCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selectedCheck@2x.png"; path = "Resources/selectedCheck@2x.png"; sourceTree = "<group>"; };
 		39D3F82E1CB2CF0500A69575 /* selectedCheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selectedCheck@3x.png"; path = "Resources/selectedCheck@3x.png"; sourceTree = "<group>"; };
+		39D3F82F1CB3BEB500A69575 /* tagGoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tagGoButton.png; path = Resources/tagGoButton.png; sourceTree = "<group>"; };
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -833,6 +834,7 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				39D3F82F1CB3BEB500A69575 /* tagGoButton.png */,
 				39D3F8291CB2CED900A69575 /* deselectedCheck.png */,
 				39D3F82A1CB2CED900A69575 /* deselectedCheck@2x.png */,
 				39D3F82B1CB2CED900A69575 /* deselectedCheck@3x.png */,

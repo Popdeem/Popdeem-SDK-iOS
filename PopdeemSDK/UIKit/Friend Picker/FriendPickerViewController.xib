@@ -40,8 +40,8 @@
                         <constraint firstAttribute="height" constant="50" id="eLd-ze-zhH"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="zWg-zm-eGq">
-                    <rect key="frame" x="0.0" y="85" width="600" height="515"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="zWg-zm-eGq">
+                    <rect key="frame" x="0.0" y="35" width="600" height="565"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="0.0" y="85" width="400" height="666"/>
@@ -59,13 +59,9 @@
                 <constraint firstItem="U4r-Yy-1rC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8xe-Ih-FCw"/>
                 <constraint firstItem="7uW-iq-Mn0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="GJ7-nv-2J4"/>
                 <constraint firstItem="U4r-Yy-1rC" firstAttribute="top" secondItem="AUS-12-CNd" secondAttribute="bottom" id="N8K-vM-Uhj"/>
-                <constraint firstAttribute="bottom" secondItem="zWg-zm-eGq" secondAttribute="bottom" id="ZJd-0n-852"/>
-                <constraint firstItem="zWg-zm-eGq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZpT-3H-D6V"/>
                 <constraint firstAttribute="trailing" secondItem="U4r-Yy-1rC" secondAttribute="trailing" id="dVj-qC-4Jj"/>
                 <constraint firstItem="AUS-12-CNd" firstAttribute="leading" secondItem="7uW-iq-Mn0" secondAttribute="trailing" constant="8" id="h2w-2n-oMM"/>
-                <constraint firstItem="zWg-zm-eGq" firstAttribute="top" secondItem="U4r-Yy-1rC" secondAttribute="bottom" id="lMC-O6-ouo"/>
                 <constraint firstAttribute="trailing" secondItem="AUS-12-CNd" secondAttribute="trailing" id="uai-DW-C2L"/>
-                <constraint firstAttribute="trailing" secondItem="zWg-zm-eGq" secondAttribute="trailing" id="ztY-hr-6ol"/>
             </constraints>
             <point key="canvasLocation" x="5302" y="-688"/>
         </view>

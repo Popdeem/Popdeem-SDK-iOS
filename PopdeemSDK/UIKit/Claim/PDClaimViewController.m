@@ -17,11 +17,15 @@
 #import "PDTheme.h"
 #import "PDModalLoadingView.h"
 #import "FriendPickerViewController.h"
+#import "PDUser+Facebook.h"
+#import "PDSocialMediaFriend.h"
+#import "PDTheme.h"
 
 @interface PDClaimViewController () {
   NSArray *_mediaTypes;
   PDReward *_reward;
   PDLocation *_location;
+  BOOL goingToTag;
 }
 @property (nonatomic, strong) CALayer *textViewBordersLayer;
 @property (nonatomic, strong) CALayer *buttonsViewBordersLayer;
@@ -142,9 +146,38 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+  goingToTag = NO;
   UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
   [_keyboardHiderView addGestureRecognizer:hiderTap];
   [self verifyLocation];
+  NSMutableArray *friendsTagged = [NSMutableArray array];
+  for (PDSocialMediaFriend *friend in [PDUser taggableFriends]) {
+    if (friend.selected) {
+      [friendsTagged addObject:friend];
+      [_withLabel setHidden:NO];
+    }
+  }
+  
+  NSMutableString *withString = [[NSMutableString alloc] init];
+  if (friendsTagged.count > 2) {
+    withString = [NSMutableString stringWithFormat:@"%@ and %lu others.",[[friendsTagged objectAtIndex:0] name], [friendsTagged count]-1];
+  } else if (friendsTagged.count == 2) {
+    withString = [NSMutableString stringWithFormat:@"%@ and %@",[[friendsTagged objectAtIndex:0] name], [[friendsTagged objectAtIndex:1] name]];
+  } else if (friendsTagged.count == 1) {
+    withString = [NSMutableString stringWithFormat:@"%@",[[friendsTagged objectAtIndex:0] name]];
+  } else {
+    [_withLabel setHidden:YES];
+  }
+  
+  NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.claim.withLabel.fontColor"),NSFontAttributeName:PopdeemFont(@"popdeem.claim.friendsLabel.font", 10)}];
+  
+  NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.claim.withLabel.highlightedFontColor"),NSFontAttributeName:PopdeemFont(@"popdeem.claim.friendsLabel.font", 10)}];
+  
+  NSMutableAttributedString *whole = [[NSMutableAttributedString alloc] initWithAttributedString:attWith];
+  [whole appendAttributedString:attNames];
+  
+  [_withLabel setAttributedText:whole];
+  [self.view bringSubviewToFront:_withLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -281,7 +314,19 @@
 }
 
 - (IBAction)addFriendsButtonTapped:(id)sender {
+  goingToTag = YES;
   [self.navigationController pushViewController:_friendPicker animated:YES];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+  if (!goingToTag) {
+    for (PDSocialMediaFriend *f in [PDUser taggableFriends]) {
+      if (f.selected) {
+        f.selected = NO;
+      }
+    }
+  }
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -157,7 +157,9 @@
       "fontName" : "Avenir-Book",
       "fontColor" : "#000000",
       "withLabel" : {
-        "namesColor" : "#092359",
+        "highlightedFontColor" : "#EBAA09",
+        "fontColor" : "#C0C0C0",
+        "font" : "Avenir-Book"
       },
       "locationVerification" : {
         "backgroundColor" : "#34495e",
