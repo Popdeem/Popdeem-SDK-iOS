@@ -33,23 +33,11 @@
   [self fetchFeed];
   [self fetchWallet];
   
-  //Set up colors etc
-  _controller.navigationController.navigationBar.backgroundColor = PopdeemColor(@"popdeem.nav.backgroundColor");
-  _controller.navigationController.navigationBar.barTintColor = PopdeemColor(@"popdeem.nav.textColor");
-  
-  [[[_controller navigationController] navigationBar] setBarTintColor:PopdeemColor(@"popdeem.nav.textColor")];
-  [[[_controller navigationController] navigationBar] setBarTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
-  [[[_controller navigationController] navigationBar] setTranslucent:NO];
-  _controller.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.nav.textColor")};
-  
   _controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
-  [_controller.navigationController setNavigationBarHidden:NO animated:YES];
   [_controller.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [_controller.tableView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [_controller.tableView setSeparatorColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
   
-  UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Inbox" style:UIBarButtonItemStylePlain target:_controller action:@selector(messagesTapped)];
-  self.controller.navigationItem.rightBarButtonItem = anotherButton;
 }
 
 - (void) fetchRewards {

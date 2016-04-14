@@ -17,7 +17,7 @@
 
 @interface PDClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
-@property (nonatomic) BOOL willTweet;
+
 @property (nonatomic) BOOL mustFacebook;
 @property (nonatomic) BOOL willFacebook;
 
@@ -376,14 +376,14 @@
   _viewController.homeController.didClaim = YES;
   
   UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av setTag:9];
   [av show];
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-  if (alertView.tag == 2) {
-    return;
+  if (alertView.tag == 9) {
+    [self.viewController.navigationController popViewControllerAnimated:YES];
   }
-  [self.viewController.navigationController popViewControllerAnimated:YES];
 }
 
 

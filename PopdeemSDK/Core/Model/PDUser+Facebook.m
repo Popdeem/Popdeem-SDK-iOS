@@ -44,7 +44,7 @@
 - (void) refreshFacebookFriendsCallback:(void(^)(BOOL response))callback {
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me/taggable_friends?limit=5000"
-                                      parameters:nil
+                                      parameters:@{@"fields": @"id, name"}
                                       HTTPMethod:@"GET"]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
          if (!error) {

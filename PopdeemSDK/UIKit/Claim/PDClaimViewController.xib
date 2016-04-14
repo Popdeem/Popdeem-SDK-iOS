@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDClaimViewController">
             <connections>
+                <outlet property="addFriendsButton" destination="uox-N7-Qef" id="g6R-QO-OE7"/>
                 <outlet property="addPhotoButton" destination="Rur-5r-Gdk" id="4xV-0Z-UPf"/>
                 <outlet property="claimButtonView" destination="XxC-57-5PT" id="Xb9-mt-2gv"/>
                 <outlet property="controlButtonsView" destination="QVt-fX-G8J" id="bwe-DX-Vab"/>
@@ -154,7 +155,7 @@
                             <color key="textColor" red="0.1101988458" green="0.71167123889999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uox-N7-Qef">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uox-N7-Qef">
                             <rect key="frame" x="63" y="0.0" width="50" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Agm-6m-kRC"/>
@@ -317,7 +318,7 @@
                 <constraint firstItem="FtA-wC-9gB" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="ykw-iU-UdJ"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="top" secondItem="Kh4-I8-2ik" secondAttribute="bottom" id="ysZ-lM-vwU"/>
             </constraints>
-            <point key="canvasLocation" x="545" y="265"/>
+            <point key="canvasLocation" x="632" y="240"/>
         </view>
     </objects>
     <resources>

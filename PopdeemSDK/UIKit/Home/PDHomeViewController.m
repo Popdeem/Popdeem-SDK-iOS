@@ -75,24 +75,26 @@
   [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
   
-  self.navigationController.navigationBar.translucent = NO;
-  [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
-  [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
-  [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
-                                                                    NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
-  
-  [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"), NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
-  
+  if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
+                                                                      NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"), NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
+    
+    [[UINavigationBar appearance] setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
+    [[UINavigationBar appearance] setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
+                                                           NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"),
+                                                           NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
+  }
   self.title = translationForKey(@"popdeem.home.title", @"Social Rewards");
-  [[UINavigationBar appearance] setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
-  [[UINavigationBar appearance] setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
-  [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
-                                                         NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
-  [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"),
-                                                         NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
-  
   //[_tableHeaderLabel setFont:PopdeemFont(@"popdeem.nav.fontName", 16.0f)];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+  [self.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [self.model fetchRewards];
   [self.model fetchFeed];
   [self.model fetchWallet];
@@ -142,13 +144,12 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-  
-}
-
-- (void) viewDidDisappear:(BOOL)animated {
   if (_loadingView) {
     [_loadingView hideAnimated:YES];
   }
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
 }
 
 - (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender {
@@ -342,7 +343,7 @@
           }];
           return;
         }
-        _loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Loading" descriptionText:@"We are preparing your reward"];
+        _loadingView = [[PDModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Loading" descriptionText:@"We are preparing your reward"];
         [_loadingView showAnimated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
           [self processClaimForIndexPath:indexPath];

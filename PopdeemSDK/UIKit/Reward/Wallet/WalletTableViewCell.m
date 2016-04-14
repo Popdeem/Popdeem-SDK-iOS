@@ -27,7 +27,7 @@
     
     float imageSize = visibleHeight * 0.60;
     float indent = visibleHeight *0.20;
-    
+    [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.walletCell.backgroundColor")];
     _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, indent, imageSize, imageSize)];
     [self.logoImageView setClipsToBounds:YES];
     [self addSubview:_logoImageView];
@@ -46,7 +46,7 @@
     _descriptionLabel.numberOfLines = 2;
     [self addSubview:_descriptionLabel];
     [_descriptionLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
-    [_descriptionLabel setTextColor:[UIColor blackColor]];
+    [_descriptionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.walletCell.titleTextColor")];
     
     if (![reward.rewardDescription isKindOfClass:[NSNull class]]) {
       if (reward.type == PDRewardTypeCredit) {
@@ -157,7 +157,6 @@
     
     if (reward.type == PDRewardTypeCoupon  || reward.type == PDRewardTypeInstant) {
       UIButton *redeemButton = [[UIButton alloc] initWithFrame:CGRectMake(30, backingView.frame.size.height-45, viewWidth-60, 40)];
-      [redeemButton setBackgroundColor:[UIColor blackColor]];
       [redeemButton setBackgroundColor:PopdeemColor(@"popdeem.redeem.redeemButton.backgroundColor")];
       [redeemButton setTitleColor:PopdeemColor(@"popdeem.redeem.redeemButton.fontColor") forState:UIControlStateNormal];
       [redeemButton.titleLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 16)];

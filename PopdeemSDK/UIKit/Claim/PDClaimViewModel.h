@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) NSString *textviewPrepopulatedString;
 @property (nonatomic, strong) NSString *forcedTagString;
 @property (nonatomic, strong) NSString *twitterCharCountString;
-
+@property (nonatomic) BOOL willTweet;
 
 @property (nonatomic, strong) PDLocation *location;
 
@@ -43,5 +43,5 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 - (void) addPhotoAction;
 - (void) claimAction;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
-
+- (void) calculateTwitterCharsLeft;
 @end

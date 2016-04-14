@@ -35,6 +35,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *withLabel;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *addPhotoButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *addFriendsButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *twitterForcedTagLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *twitterCharacterCountLabel;
 

@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendPickerViewController">
             <connections>
+                <outlet property="goButton" destination="J5Q-aK-t91" id="Oop-gj-nb4"/>
                 <outlet property="tableView" destination="zWg-zm-eGq" id="sbT-d7-7kL"/>
                 <outlet property="textField" destination="AUS-12-CNd" id="aIP-Hc-GdQ"/>
                 <outlet property="topView" destination="U4r-Yy-1rC" id="xoN-Pz-Mfj"/>
@@ -24,6 +25,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="searchAction:" destination="-1" eventType="editingChanged" id="r37-ZL-86N"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uW-iq-Mn0">
                     <rect key="frame" x="10" y="8" width="19" height="19"/>
@@ -35,13 +39,29 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4r-Yy-1rC">
                     <rect key="frame" x="0.0" y="35" width="600" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5Q-aK-t91">
+                            <rect key="frame" x="552" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="ZDV-Z2-mO2"/>
+                                <constraint firstAttribute="width" constant="40" id="d2T-4p-rox"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="tagGoButton.png"/>
+                            <connections>
+                                <action selector="goButtonPressed:" destination="-1" eventType="touchUpInside" id="9eO-2e-nlU"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="0.23921568630000001" green="0.6588235294" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="eLd-ze-zhH"/>
+                        <constraint firstAttribute="trailing" secondItem="J5Q-aK-t91" secondAttribute="trailing" constant="8" id="5yJ-5S-JNz"/>
+                        <constraint firstItem="J5Q-aK-t91" firstAttribute="top" secondItem="U4r-Yy-1rC" secondAttribute="top" constant="5" id="Hta-eA-Wdn"/>
+                        <constraint firstAttribute="height" constant="50" id="LrJ-B1-wSv"/>
+                        <constraint firstAttribute="bottom" secondItem="J5Q-aK-t91" secondAttribute="bottom" constant="5" id="T6W-g4-NGS"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="zWg-zm-eGq">
-                    <rect key="frame" x="0.0" y="35" width="600" height="565"/>
+                    <rect key="frame" x="0.0" y="88" width="600" height="512"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="0.0" y="85" width="400" height="666"/>
@@ -56,11 +76,11 @@
             <constraints>
                 <constraint firstItem="AUS-12-CNd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3G9-4p-m8G"/>
                 <constraint firstItem="7uW-iq-Mn0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="7bR-dC-yc5"/>
-                <constraint firstItem="U4r-Yy-1rC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8xe-Ih-FCw"/>
                 <constraint firstItem="7uW-iq-Mn0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="GJ7-nv-2J4"/>
-                <constraint firstItem="U4r-Yy-1rC" firstAttribute="top" secondItem="AUS-12-CNd" secondAttribute="bottom" id="N8K-vM-Uhj"/>
-                <constraint firstAttribute="trailing" secondItem="U4r-Yy-1rC" secondAttribute="trailing" id="dVj-qC-4Jj"/>
+                <constraint firstItem="U4r-Yy-1rC" firstAttribute="top" secondItem="AUS-12-CNd" secondAttribute="bottom" id="Nl3-Tc-iYX"/>
+                <constraint firstItem="U4r-Yy-1rC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Oos-hX-ofk"/>
                 <constraint firstItem="AUS-12-CNd" firstAttribute="leading" secondItem="7uW-iq-Mn0" secondAttribute="trailing" constant="8" id="h2w-2n-oMM"/>
+                <constraint firstAttribute="trailing" secondItem="U4r-Yy-1rC" secondAttribute="trailing" id="pcp-g7-M36"/>
                 <constraint firstAttribute="trailing" secondItem="AUS-12-CNd" secondAttribute="trailing" id="uai-DW-C2L"/>
             </constraints>
             <point key="canvasLocation" x="5302" y="-688"/>
@@ -68,5 +88,6 @@
     </objects>
     <resources>
         <image name="search.png" width="50" height="50"/>
+        <image name="tagGoButton.png" width="200" height="200"/>
     </resources>
 </document>

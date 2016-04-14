@@ -27,6 +27,7 @@
   UIScrollView *namesScrollView;
   
   IBOutlet UIView *topView;
+  __unsafe_unretained IBOutlet UIButton *goButton;
   
   BOOL keyboardIsUp;
   float keyboardHeight;
@@ -49,7 +50,7 @@
   [self setNeedsStatusBarAppearanceUpdate];
   _searchData = [NSMutableArray array];
   _selectedFriends = [NSMutableArray array];
-  
+  self.edgesForExtendedLayout = UIRectEdgeNone;
   viewHeight = self.view.frame.size.height;
   
   for (PDSocialMediaFriend *f in [PDUser taggableFriends]) {
@@ -60,17 +61,10 @@
   
   [topView setFrame:CGRectMake(topView.frame.origin.x, topView.frame.origin.y, self.view.frame.size.width, topView.frame.size.height)];
   [_tableView setFrame:CGRectMake(topView.frame.origin.x, topView.frame.origin.y, self.view.frame.size.width, _tableView.frame.size.height)];
-  
-  UIButton *goButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 5, 40, 40)];
-  [goButton setImage:[UIImage imageNamed:@"tagGoButton"] forState:UIControlStateNormal];
-  [goButton addTarget:self action:@selector(goButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-  [goButton.imageView setContentMode:UIViewContentModeScaleToFill];
-  [topView addSubview:goButton];
-  
+
   
   [self setTitle:@"Tag Friends"];
   [self reloadTableData];
-  [self setupFriendsView];
   // Do any additional setup after loading the view.
 }
 
@@ -85,11 +79,11 @@
                                                name:UIKeyboardDidHideNotification
                                              object:nil];
   [self reloadSelectedFriends];
-  [self setupFriendsView];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
   [self setupFriendsView];
+  [self.view setNeedsDisplay];
 }
 
 - (void) keyboardWillHide:(NSNotification*)notification {
@@ -273,7 +267,7 @@
   [self setupFriendsView];
 }
 
-- (void) goButtonPressed {
+- (IBAction)goButtonPressed:(id)sender {
   [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -353,10 +347,8 @@
       [_tableView setFrame:CGRectMake(_tableView.frame.origin.x, topView.frame.origin.y, _tableView.frame.size.width, self.view.frame.size.height-35)];
     }
   }
-  NSLog(@"Top View Frame: %f",topView.frame.size.height);
-  [topView setNeedsDisplay];
-  [self.view setNeedsDisplay];
-  [_tableView setNeedsDisplay];
+  NSLog(@"Top View Frame Height: %f",topView.frame.size.height);
+  NSLog(@"Table View Frame Origin: %f",_tableView.frame.origin.y);
 }
 
 /*

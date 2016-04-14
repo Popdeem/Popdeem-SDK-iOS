@@ -56,13 +56,19 @@
       padding = (40 - mainLabelsize.height)/2;
     }
     
-    [_mainLabel setFrame: CGRectMake(labelX, centerLineY-(mainLabelsize.height), labelWidth, mainLabelsize.height)];
+    float mainY = centerLineY-(mainLabelsize.height)-3;
+    if (mainLabelsize.height > 25) {
+      mainY = 10;
+    }
+    
+    [_mainLabel setFrame: CGRectMake(labelX, mainY, labelWidth, mainLabelsize.height)];
     [_mainLabel setText:reward.rewardDescription];
     [_mainLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 14)];
     [_mainLabel setTextColor:[UIColor blackColor]];
     [_mainLabel setTextAlignment:NSTextAlignmentLeft];
     [_mainLabel setNumberOfLines:0];
     [_mainLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
+    [_mainLabel sizeToFit];
     [self addSubview:_mainLabel];
     CGSize rulesLabelsize;
     if (rules) {
@@ -81,18 +87,19 @@
       if (mainLabelsize.height < 30) {
         rulesPadding = 4;
       }
-      [_rulesLabel setFrame:CGRectMake(labelX, centerLineY-5, labelWidth, rulesLabelsize.height)];
+      [_rulesLabel sizeToFit];
+      [_rulesLabel setFrame:CGRectMake(labelX, _mainLabel.frame.origin.y+_mainLabel.frame.size.height, labelWidth, rulesLabelsize.height)];
       [_rulesLabel setFont:[UIFont systemFontOfSize:12]];
       [_rulesLabel setTextColor:[UIColor blackColor]];
       [_rulesLabel setText:reward.rewardRules];
       [_rulesLabel setNumberOfLines:0];
       [self addSubview:_rulesLabel];
       
-      [_mainLabel setFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y-mainLabelsize.height, labelWidth, mainLabelsize.height)];
+//      [_mainLabel setFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y-mainLabelsize.height, labelWidth, mainLabelsize.height)];
     }
     
     if (rules) {
-      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y+rulesLabelsize.height, labelWidth, 15)];
+      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y+rulesLabelsize.height+3, labelWidth, 15)];
     } else {
       _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, centerLineY+5, labelWidth, 15)];
     }
@@ -187,19 +194,12 @@
       }
     }
     
-    if (reward.verifyLocation == YES) {
-      if (reward.unlimitedAvailability) {
-        [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,reward.localizedDistanceToUserString]];
-      } else {
-        [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@ | %@",action,exp,reward.localizedDistanceToUserString]];
-      }
+    if (reward.unlimitedAvailability) {
+      [_infoLabel setText:[NSString stringWithFormat:@"%@",action]];
     } else {
-      if (reward.unlimitedAvailability) {
-        [_infoLabel setText:[NSString stringWithFormat:@"%@",action]];
-      } else {
-        [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
-      }
+      [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
     }
+    
     [_infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 12)];
     [_infoLabel setTextAlignment:NSTextAlignmentLeft];
     [self addSubview:_infoLabel];

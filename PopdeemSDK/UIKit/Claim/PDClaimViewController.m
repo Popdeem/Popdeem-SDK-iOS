@@ -84,6 +84,14 @@
 
 - (void) verifyLocation {
   _locationValidator = [[PDLocationValidator alloc] init];
+  if (_reward.verifyLocation == NO) {
+    _viewModel.locationVerified = YES;
+    [_locationFailedView setHidden:YES];
+    [UIView animateWithDuration:1.0 animations:^{
+      self.locationVerificationViewHeightConstraint.constant = 0;
+    }];
+    return;
+  }
   [_locationValidator validateLocationForReward:_reward completion:^(BOOL validated){
     if (_loadingView) {
       [_loadingView hideAnimated:YES];
@@ -158,6 +166,10 @@
     }
   }
   
+  if ([[PDUser taggableFriends] count] > 0) {
+    [_addFriendsButton setHidden:NO];
+  }
+  
   NSMutableString *withString = [[NSMutableString alloc] init];
   if (friendsTagged.count > 2) {
     withString = [NSMutableString stringWithFormat:@"%@ and %lu others.",[[friendsTagged objectAtIndex:0] name], [friendsTagged count]-1];
@@ -178,6 +190,15 @@
   
   [_withLabel setAttributedText:whole];
   [self.view bringSubviewToFront:_withLabel];
+  
+  if (_viewModel.willTweet) {
+    [self.twitterForcedTagLabel setHidden:NO];
+    if (_viewModel.reward.twitterForcedTag) {
+      [self.twitterForcedTagLabel setText:_viewModel.reward.twitterForcedTag];
+    }
+    [self.twitterCharacterCountLabel setHidden:NO];
+    [_viewModel calculateTwitterCharsLeft];
+  }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -52,7 +52,7 @@
 + (void) withAPIKey:(NSString*)apiKey {
   PopdeemSDK *SDK = [[self class] sharedInstance];
   [SDK setApiKey:apiKey];
-//  [SDK nonSocialRegister];
+  [SDK nonSocialRegister];
 }
 
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*) verifier {
@@ -250,7 +250,7 @@
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
     [service nonSocialUserInitWithCompletion:^(NSError *error){
       if (!error) {
-//        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"PopdeemNonSocialRegistered"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"PopdeemNonSocialRegistered"];
       } else {
         NSLog(@"Error registering non-social user: %@",error.localizedDescription);
       }

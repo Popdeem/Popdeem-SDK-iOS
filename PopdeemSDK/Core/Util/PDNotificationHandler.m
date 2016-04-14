@@ -8,6 +8,8 @@
 
 #import "PDNotificationHandler.h"
 #import "PDAPIClient.h"
+#import "PDTheme.h"
+#import "PDUtils.h"
 
 @interface PDNotificationHandler()
 @property (nonatomic) BOOL shouldGoToUrl;
@@ -55,34 +57,40 @@
 
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion {
   _completionBlock = completion;
+  
   NSString *imageUrl = [userInfo objectForKey:@"image_url"];
   UIImage *image;
   if ([imageUrl isKindOfClass:[NSNull class]]) {
-    image = [UIImage imageNamed:@"message_icon"];
+    image = [UIImage imageNamed:@"starG"];
   } else {
     imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"popdeem-dev" withString:@"popdeem"];
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
     image = [UIImage imageWithData:imageData];
   }
-  image = [UIImage imageNamed:@"message_icon"];
+  
   _alertView = [[PDCustomIOS7AlertView alloc] init];
   
   UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 180)];
   
-  UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-40,5, 80, 80)];
+  UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, contentView.frame.size.width, 25)];
+  [header setTextAlignment:NSTextAlignmentCenter];
+  [header setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  [header setText:@"New Message"];
+  [header setTextColor:[UIColor blackColor]];
+  [contentView addSubview:header];
+  
+  UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-25,35, 50, 50)];
   imageView.contentMode = UIViewContentModeScaleAspectFill;
   imageView.layer.cornerRadius = 5.0;
   imageView.layer.masksToBounds = YES;
-  imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-  imageView.layer.borderWidth = 1.0f;
   [imageView setImage:image];
   
   [contentView addSubview:imageView];
   
-  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, contentView.frame.size.width, 25)];
+  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, contentView.frame.size.width, 25)];
   [title setTextAlignment:NSTextAlignmentCenter];
-  [title setFont:[UIFont boldSystemFontOfSize:16]];
-  [title setText:[userInfo objectForKey:@"title"]];
+  [title setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  [title setText:[userInfo objectForKey:@"body"]];
   [title setTextColor:[UIColor blackColor]];
   [contentView addSubview:title];
   
@@ -90,7 +98,7 @@
   message.lineBreakMode = NSLineBreakByWordWrapping;
   message.numberOfLines = 4;
   [message setTextAlignment:NSTextAlignmentCenter];
-  [message setFont:[UIFont systemFontOfSize:14]];
+  [message setFont:PopdeemFont(@"popdeem.messagePopup.font", 12)];
   [message setText:[userInfo objectForKey:@"content"]];
   [message setTextColor:[UIColor darkGrayColor]];
   [contentView addSubview:message];

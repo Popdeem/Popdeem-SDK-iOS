@@ -343,7 +343,7 @@
   _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:twConsumerKey
                                               consumerSecret:twConsumerSecret];
   
-  NSString *callback = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"PopdeemTwitterCallbackScheme"];
+  NSString *callback = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterCallbackScheme"];
   NSString *fullCallback = [NSString stringWithFormat:@"%@://twitter_access_tokens/",callback];
   [_twitterAPI postTokenRequest:^(NSURL *url, NSString *oauthToken) {
     NSLog(@"-- url: %@", url);
