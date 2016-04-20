@@ -92,7 +92,9 @@
     }];
     return;
   }
-  [_locationValidator validateLocationForReward:_reward completion:^(BOOL validated){
+  [_locationValidator validateLocationForReward:_reward completion:^(BOOL validated, PDLocation *closestLocation){
+    _location = closestLocation;
+    _viewModel.location = closestLocation;
     if (_loadingView) {
       [_loadingView hideAnimated:YES];
     }

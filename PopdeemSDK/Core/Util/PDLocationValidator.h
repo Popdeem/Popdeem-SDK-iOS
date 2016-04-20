@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "PDGeolocationManager.h"
 #import "PDReward.h"
+#import "PDLocation.h"
 
 @interface PDLocationValidator : NSObject <CLLocationManagerDelegate>
 
-- (void) validateLocationForReward:(PDReward*)reward completion:(void (^)(BOOL valdated))completion;
+- (void) validateLocationForReward:(PDReward*)reward completion:(void (^)(BOOL valdated, PDLocation *closestLocation))completion;
 
 @end

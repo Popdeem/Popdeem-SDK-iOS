@@ -91,7 +91,7 @@
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"),
                                                            NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
   }
-  self.title = translationForKey(@"popdeem.home.title", @"Social Rewards");
+  self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   //[_tableHeaderLabel setFont:PopdeemFont(@"popdeem.nav.fontName", 16.0f)];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];

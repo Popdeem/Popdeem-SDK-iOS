@@ -19,29 +19,32 @@
 
 @interface PDLocationValidator()
 
-@property (nonatomic, copy) void (^completionBlock)(BOOL);
+@property (nonatomic, copy) void (^completionBlock)(BOOL validated, PDLocation *closestLocation);
 @property (nonatomic) BOOL locationAcquired;
 @property (nonatomic) float timeStart;
 @property (nonatomic, strong) PDReward *reward;
+@property (nonatomic, strong) PDLocation *closestLocation;
 
 @end
 
 @implementation PDLocationValidator
 
-- (void) validateLocationForReward:(PDReward*)reward completion:(void (^)(BOOL valdated))completion {
+- (void) validateLocationForReward:(PDReward*)reward completion:(void (^)(BOOL valdated, PDLocation *closestLocation))completion {
   self.completionBlock = completion;
   self.reward = reward;
   PDBrand *b = [PDBrandStore findBrandByIdentifier:reward.brandId];
   if (b) {
     if (b.verifyLocation == NO) {
-      _completionBlock(YES);
+      [self calculateClosestLocationToUser];
+      _completionBlock(YES, _closestLocation);
       return;
     }
   }
   
   if ([[PDUser sharedInstance] isTester]) {
-    _completionBlock(YES);
-    return;
+      [self calculateClosestLocationToUser];
+      _completionBlock(YES, _closestLocation);
+      return;
   }
   
   _locationAcquired = NO;
@@ -58,7 +61,7 @@
   if (!_locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 30)) {
     [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
   } else {
-    _completionBlock(NO);
+    _completionBlock(NO, nil);
     return;
   }
 }
@@ -87,10 +90,10 @@
   float checkAccuracy = (accuracy > 750) ? accuracy : 500;
   if (distance < checkAccuracy) {
     NSLog(@"User is at location: Distance: %f meters",distance);
-    _completionBlock(YES);
+    _completionBlock(YES, _closestLocation);
   } else {
     NSLog(@"User is NOT at location: Distance: %f meters",distance);
-    _completionBlock(NO);
+    _completionBlock(NO, _closestLocation);
   }
   [[PDUser sharedInstance] setLastLocation:PDGeoLocationMake(lat, longi)];
 }
@@ -104,9 +107,25 @@
     CLLocationDistance distance = [userLocation distanceFromLocation:loc];
     if (distance < closest) {
       closest = distance;
+      _closestLocation = l;
     }
   }
   return closest;
+}
+
+- (void) calculateClosestLocationToUser {
+  float lat = [[PDUser sharedInstance] lastLocation].latitude;
+  float longi = [[PDUser sharedInstance] lastLocation].longitude;
+  float closest = MAXFLOAT;
+  CLLocation *userLocation = [[CLLocation alloc] initWithLatitude:lat longitude:longi];
+  for (PDLocation *l in _reward.locations) {
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:l.geoLocation.latitude longitude:l.geoLocation.longitude];
+    CLLocationDistance distance = [userLocation distanceFromLocation:loc];
+    if (distance < closest) {
+      closest = distance;
+      _closestLocation = l;
+    }
+  }
 }
 
 @end

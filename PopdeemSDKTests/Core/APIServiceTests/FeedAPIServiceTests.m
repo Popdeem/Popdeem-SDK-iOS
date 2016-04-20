@@ -23,7 +23,7 @@
 
 - (void)setUp {
     [super setUp];
-    [PopdeemSDK withAPIKey:@"8abcb2bd-edf2-4007-bb40-97e43b8a9498"];
+  [PopdeemSDK testingWithAPIKey:@"8abcb2bd-edf2-4007-bb40-97e43b8a9498"];
     [[LSNocilla sharedInstance] start];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }

@@ -32,7 +32,6 @@
   [PopdeemSDK setUpThemeFile:@"theme"];
   [Fabric with:@[[Crashlytics class]]];
   //Test Moments
-//  [PopdeemSDK logMoment:@"post_payment"];
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
   return YES;
 }

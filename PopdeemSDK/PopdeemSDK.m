@@ -52,7 +52,12 @@
 + (void) withAPIKey:(NSString*)apiKey {
   PopdeemSDK *SDK = [[self class] sharedInstance];
   [SDK setApiKey:apiKey];
-//  [SDK nonSocialRegister];
+  [SDK nonSocialRegister];
+}
+
++ (void) testingWithAPIKey:(NSString*)apiKey {
+  PopdeemSDK *SDK = [[self class] sharedInstance];
+  [SDK setApiKey:apiKey];
 }
 
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*) verifier {

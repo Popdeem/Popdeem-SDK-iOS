@@ -29,7 +29,7 @@
     float left = indent+logoSize+10;
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(left, 10, frame.size.width-(left + 20), cellHeight-20)];
     [self.label setNumberOfLines:2];
-    [self.label setFont:[UIFont systemFontOfSize:16]];
+    [self.label setFont:PopdeemFont(@"popdeem.home.tableView.feedcell.font", 16)];
     [self addSubview:self.label];
     [self.label setAttributedText:[self stringForItem:feedItem]];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
