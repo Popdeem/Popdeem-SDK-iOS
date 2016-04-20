@@ -64,7 +64,7 @@ static const NSString *kVariablesKey = @"Variables";
 
 - (BOOL) hasValueForKey:(NSString *)key {
   if (self.theme == nil) {
-    [NSException raise:@"Theme not setup" format:@""];
+    NSLog(@"Theme not setup");
     return NO;
   }
   id value = [self.theme valueForKeyPath:key];

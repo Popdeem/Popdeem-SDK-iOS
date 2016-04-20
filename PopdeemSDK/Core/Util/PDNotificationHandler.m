@@ -74,7 +74,11 @@
   
   UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, contentView.frame.size.width, 25)];
   [header setTextAlignment:NSTextAlignmentCenter];
-  [header setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  if (PopdeemThemeHasValueForKey(@"popdeem.messagePopup.font")) {
+    [header setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  } else {
+    [header setFont:[UIFont systemFontOfSize:16]];
+  }
   [header setText:@"New Message"];
   [header setTextColor:[UIColor blackColor]];
   [contentView addSubview:header];
@@ -89,7 +93,11 @@
   
   UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, contentView.frame.size.width, 25)];
   [title setTextAlignment:NSTextAlignmentCenter];
-  [title setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  if (PopdeemThemeHasValueForKey(@"popdeem.messagePopup.font")) {
+    [title setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  } else {
+    [title setFont:[UIFont systemFontOfSize:16]];
+  }
   [title setText:[userInfo objectForKey:@"body"]];
   [title setTextColor:[UIColor blackColor]];
   [contentView addSubview:title];
@@ -98,7 +106,7 @@
   message.lineBreakMode = NSLineBreakByWordWrapping;
   message.numberOfLines = 4;
   [message setTextAlignment:NSTextAlignmentCenter];
-  [message setFont:PopdeemFont(@"popdeem.messagePopup.font", 12)];
+//  [message setFont:PopdeemFont(@"popdeem.messagePopup.font", 12)];
   [message setText:[userInfo objectForKey:@"content"]];
   [message setTextColor:[UIColor darkGrayColor]];
   [contentView addSubview:message];
