@@ -86,6 +86,9 @@
       float rulesPadding = 0;
       if (mainLabelsize.height < 30) {
         rulesPadding = 4;
+        if (rulesLabelsize.height > 25) {
+          [_mainLabel setFrame:CGRectMake(labelX, centerLineY-(rulesLabelsize.height), labelWidth, mainLabelsize.height)];
+        }
       }
       [_rulesLabel sizeToFit];
       [_rulesLabel setFrame:CGRectMake(labelX, _mainLabel.frame.origin.y+_mainLabel.frame.size.height, labelWidth, rulesLabelsize.height)];
