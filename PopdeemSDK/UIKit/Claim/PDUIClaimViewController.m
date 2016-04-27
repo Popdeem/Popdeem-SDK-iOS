@@ -312,7 +312,7 @@
                      
                      [_keyboardHiderView setHidden:YES];
                      if (!IS_IPHONE_4_OR_LESS) {
-                       _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 65;
+                       _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 100;
                      }
                      self.locationVerificationViewHeightConstraint.constant = _viewModel.locationVerified ? 0 : 50;
                      [_textView resignFirstResponder];
