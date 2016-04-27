@@ -36,7 +36,11 @@
           "howToBodyTextColor" : "#000000",
           "redeemButtonColor" : "#0B1C39",
           "redeemButtonTextColor" : "#FFFFFF",
-          "fontName" : "Avenir-Book"
+          "fontName" : "Avenir-Book",
+          "subtitleLabel" : {
+            "fontColor" : "#89C22E",
+            "fontName" : "GothamRounded-Book"
+          }
         }
       },
       "inboxButton" : {

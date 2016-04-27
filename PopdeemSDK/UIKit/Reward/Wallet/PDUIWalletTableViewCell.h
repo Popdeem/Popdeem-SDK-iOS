@@ -15,6 +15,7 @@
 @property (nonatomic, retain) UIView *bgView;
 @property (nonatomic, retain) UIView *tabView;
 @property (nonatomic, retain) UILabel *descriptionLabel;
+@property (nonatomic, retain) UILabel *subtitleLabel;
 @property (nonatomic, retain) UILabel *rulesLabel;
 @property (nonatomic, retain) UILabel *brandLabel;
 @property (nonatomic, retain) UIView *redeemTag;

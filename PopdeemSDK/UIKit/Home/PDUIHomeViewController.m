@@ -257,12 +257,12 @@
     case 2:
       if (_model.wallet.count == 0) {
         if (!_model.walletLoading) {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"You have no items in your Wallet right now."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"You have no items in your Wallet right now."];
         } else {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching your Wallet."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"Fetching your Wallet."];
         }
       } else {
-        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
+        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
       }
     default:
       break;
@@ -310,7 +310,7 @@
         }
         return 255;
       }
-      return 65;
+      return 85;
       break;
     default:
       break;
@@ -372,29 +372,65 @@
     case 2:
       if (_model.wallet.count == 0) return;
       walletReward = [_model.wallet objectAtIndex:indexPath.row];
-      wcell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-      [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
-      if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
-        lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
-        [lastCell rotateArrowRight];
-        walletSelectedIndex = nil;
-        [wcell rotateArrowRight];
-      } else {
-        if (walletSelectedIndex) {
-          //Rotate the previous cell back to right
-          PDUIWalletTableViewCell *lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
-          [lastCell rotateArrowRight];
+      if (walletReward) {
+        if (walletReward.revoked) {
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked" message:@"This reward has been revoked" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+          [av show];
+          return;
         }
-        if (walletReward.type == PDRewardTypeCredit) {
-          walletSelectedIndex = nil;
-        } else {
-          walletSelectedIndex = indexPath;
-          [wcell rotateArrowDown];
+        //For sweepstakes we dont show the alert
+        if (walletReward.type == PDRewardTypeSweepstake || walletReward.type == PDRewardTypeCredit) {
+          return;
+        }
+        
+        walletSelectedIndex = [self.tableView indexPathForSelectedRow];
+        
+        if (walletReward.type != PDRewardTypeSweepstake) {
+          PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
+          _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
+          [_loadingView showAnimated:YES];
+          
+          [service redeemReward:walletReward.identifier completion:^(NSError *error){
+            [_loadingView hideAnimated:YES];
+            if (error) {
+              NSLog(@"Something went wrong: %@",error);
+            } else {
+              
+              PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
+              [rvc setReward:walletReward];
+              [self.navigationController pushViewController:rvc animated:YES];
+              [PDWallet remove:walletReward.identifier];
+              selectedWalletReward = nil;
+              walletSelectedIndex = nil;
+              _model.wallet = [PDWallet wallet];
+              [self.tableView reloadData];
+            }
+          }];
         }
       }
-      [self.tableView beginUpdates];
-      [self.tableView endUpdates];
-      [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
+//      wcell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+//      [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//      if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
+//        lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+//        [lastCell rotateArrowRight];
+//        walletSelectedIndex = nil;
+//        [wcell rotateArrowRight];
+//      } else {
+//        if (walletSelectedIndex) {
+//          //Rotate the previous cell back to right
+//          PDUIWalletTableViewCell *lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+//          [lastCell rotateArrowRight];
+//        }
+//        if (walletReward.type == PDRewardTypeCredit) {
+//          walletSelectedIndex = nil;
+//        } else {
+//          walletSelectedIndex = indexPath;
+//          [wcell rotateArrowDown];
+//        }
+//      }
+//      [self.tableView beginUpdates];
+//      [self.tableView endUpdates];
+//      [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
       break;
     default:
       break;

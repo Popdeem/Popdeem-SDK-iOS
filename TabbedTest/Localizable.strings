@@ -74,7 +74,7 @@
 
 "popdeem.wallet.sweepstake.redeemText" = "You will be notified if you are the winner.";
 "popdeem.wallet.coupon.redeemText" = "Redeem at the point of sale.";
-"popdeem.wallet.credit.redeemText" = "Redeem at the point of sale.";
+"popdeem.wallet.credit.redeemText" = "mm/dd";
 "popdeem.wallet.coupon.infoText" = "Once you're ready to redeem your Reward, tap \"Redeem\".\nAfter tapping \"Redeem\" you have 10 minutes to get the Reward.\nYou must show the cashier the following screen within 10 minutes.\n%@";
 "popdeem.wallet.creditRewardText" = "%@ was added to your balance.";
 "popdeem.wallet.unlimitedReward.coupon.expiryString" = "This reward has no expiry date.";
