@@ -6,10 +6,10 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
-#import "PDSingleMessageViewModel.h"
+#import "PDUISingleMessageViewModel.h"
 #import "PDUtils.h"
 
-@implementation PDSingleMessageViewModel
+@implementation PDUISingleMessageViewModel
 
 - (instancetype) initWithMessage:(PDMessage*)message {
   if (self = [super init]) {

@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Niall Quinn. All rights reserved.
 //
 
-#import "FeedImageViewController.h"
+#import "PDUIFeedImageViewController.h"
 #import "CheckinCell.h"
 
-@implementation FeedImageViewController
+@implementation PDUIFeedImageViewController
 
 - (void) viewDidLoad {
     [super viewDidLoad];

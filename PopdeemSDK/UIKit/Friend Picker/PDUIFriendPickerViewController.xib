@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendPickerViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUIFriendPickerViewController">
             <connections>
                 <outlet property="goButton" destination="J5Q-aK-t91" id="Oop-gj-nb4"/>
                 <outlet property="tableView" destination="zWg-zm-eGq" id="sbT-d7-7kL"/>

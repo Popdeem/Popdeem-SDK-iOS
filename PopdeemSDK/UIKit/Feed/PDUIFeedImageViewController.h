@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDFeedItem.h"
 
-@interface FeedImageViewController : UIViewController
+@interface PDUIFeedImageViewController : UIViewController
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) PDFeedItem *item;

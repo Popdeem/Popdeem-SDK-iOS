@@ -11,7 +11,7 @@
 #import "PDRewardHomeViewModel.h"
 #import "PDRewardTableViewController.h"
 
-@interface PDRewardHomeTableViewController : UITableViewController
+@interface PDUIRewardHomeTableViewController : UITableViewController
 
 @property (nonatomic, strong) PDRewardHomeViewModel *viewModel;
 @property (nonatomic, retain) PDSegmentedControl *segmentedControl;

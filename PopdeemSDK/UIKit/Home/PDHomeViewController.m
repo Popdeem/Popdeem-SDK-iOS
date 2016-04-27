@@ -12,16 +12,16 @@
 #import "PDModalLoadingView.h"
 #import "PDAPIClient.h"
 #import "LazyLoader.h"
-#import "RewardTableViewCell.h"
+#import "PDRewardTableViewCell.h"
 #import "NoRewardsTableViewCell.h"
 #import "PhotoCell.h"
 #import "CheckinCell.h"
 #import "PDClaimViewController.h"
-#import "WalletTableViewCell.h"
+#import "PDUIWalletTableViewCell.h"
 #import "PDHomeViewModel.h"
 #import "PDSocialMediaManager.h"
 #import "PDSocialLoginViewController.h"
-#import "FeedImageViewController.h"
+#import "PDUIFeedImageViewController.h"
 #import "PDRewardActionAPIService.h"
 #import "PDRedeemViewController.h"
 #import "ClaimViewController.h"
@@ -69,11 +69,7 @@
   
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
-  self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110)];
-  self.refreshControl = [[UIRefreshControl alloc]init];
-  [self.refreshControl setTintColor:[UIColor darkGrayColor]];
-  [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
-  [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
+  self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
   
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
     self.navigationController.navigationBar.translucent = NO;
@@ -91,6 +87,19 @@
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"),
                                                            NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
   }
+  
+  if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.backgroundImageName")) {
+    UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.tableView.frame];
+    [tvbg setImage:PopdeemImage(@"popdeem.home.tableView.backgroundImageName")];
+    [self.tableView setBackgroundView:tvbg];
+  }
+  
+  self.refreshControl = [[UIRefreshControl alloc]init];
+  [self.refreshControl setTintColor:[UIColor darkGrayColor]];
+  [self.refreshControl setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+  [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
+  self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
+  
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   //[_tableHeaderLabel setFont:PopdeemFont(@"popdeem.nav.fontName", 16.0f)];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -219,7 +228,7 @@
         }
       } else {
         reward = [_model.rewards objectAtIndex:indexPath.row];
-        return [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
+        return [[PDRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:reward];
       }
       break;
     case 1:
@@ -253,7 +262,7 @@
           return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching your Wallet."];
         }
       } else {
-        return [[WalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
+        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
       }
     default:
       break;
@@ -269,7 +278,7 @@
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards
-      return 85;
+      return 100;
       break;
     case 1:
       //Feed
@@ -310,8 +319,8 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  WalletTableViewCell *wcell;
-  WalletTableViewCell *lastCell;
+  PDUIWalletTableViewCell *wcell;
+  PDUIWalletTableViewCell *lastCell;
   PDReward *walletReward;
   __block UIAlertView *av;
   switch (_segmentedControl.selectedSegmentIndex) {
@@ -355,7 +364,7 @@
       if (_model.feed.count == 0) return;
       if ([(PDFeedItem*)_model.feed[indexPath.row] actionImage]) {
         [self.view setUserInteractionEnabled:NO];
-        FeedImageViewController *ivc = [[FeedImageViewController alloc] init];
+        PDUIFeedImageViewController *ivc = [[PDUIFeedImageViewController alloc] init];
         ivc.item = _model.feed[indexPath.row];
         [[self navigationController] pushViewController:ivc animated:YES];
       }
@@ -363,17 +372,17 @@
     case 2:
       if (_model.wallet.count == 0) return;
       walletReward = [_model.wallet objectAtIndex:indexPath.row];
-      wcell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+      wcell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
       [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
       if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
-        lastCell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+        lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
         [lastCell rotateArrowRight];
         walletSelectedIndex = nil;
         [wcell rotateArrowRight];
       } else {
         if (walletSelectedIndex) {
           //Rotate the previous cell back to right
-          WalletTableViewCell *lastCell = (WalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+          PDUIWalletTableViewCell *lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
           [lastCell rotateArrowRight];
         }
         if (walletReward.type == PDRewardTypeCredit) {

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDUser.h"
 
-@interface FriendPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PDUIFriendPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (unsafe_unretained) IBOutlet UITableView *tableView;
 

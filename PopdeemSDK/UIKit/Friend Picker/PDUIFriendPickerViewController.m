@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Niall Quinn. All rights reserved.
 //
 
-#import "FriendPickerViewController.h"
+#import "PDUIFriendPickerViewController.h"
 #import "PDSocialMediaFriend.h"
 #import "PDUser.h"
 #import "PDUser+Facebook.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-@interface FriendPickerViewController () {
+@interface PDUIFriendPickerViewController () {
   
   BOOL searchMode;
   NSMutableArray *_searchData;
@@ -35,11 +35,11 @@
 
 @end
 
-@implementation FriendPickerViewController
+@implementation PDUIFriendPickerViewController
 
 - (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
-  if (self = [self initWithNibName:@"FriendPickerViewController" bundle:podBundle]) {
+  if (self = [self initWithNibName:@"PDUIFriendPickerViewController" bundle:podBundle]) {
     return self;
   }
   return nil;

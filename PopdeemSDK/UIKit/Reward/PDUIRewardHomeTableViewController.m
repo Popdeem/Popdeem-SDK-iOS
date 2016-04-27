@@ -6,22 +6,22 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
-#import "PDRewardHomeTableViewController.h"
+#import "PDUIRewardHomeTableViewController.h"
 #import "PDTheme.h"
 #import "PDModalLoadingView.h"
 #import "PDAPIClient.h"
 #import "LazyLoader.h"
-#import "RewardTableViewCell.h"
+#import "PDRewardTableViewCell.h"
 #import "NoRewardsTableViewCell.h"
 #import "PhotoCell.h"
 #import "CheckinCell.h"
 #import "PDClaimViewController.h"
-#import "WalletTableViewCell.h"
+#import "PDUIWalletTableViewCell.h"
 #import "PDSocialLoginViewController.h"
 #import "PDSocialMediaManager.h"
 
 
-@interface PDRewardHomeTableViewController () {
+@interface PDUIRewardHomeTableViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
 }
 @property (nonatomic) UIView *tableHeaderView;
@@ -34,11 +34,11 @@
 @property (nonatomic) PDLocation *closestLocation;
 @end
 
-@implementation PDRewardHomeTableViewController
+@implementation PDUIRewardHomeTableViewController
 
 - (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
-  if (self = [self initWithNibName:@"PDRewardHomeTableViewController" bundle:podBundle]) {
+  if (self = [self initWithNibName:@"PDUIRewardHomeTableViewController" bundle:podBundle]) {
     return self;
   }
   return nil;
@@ -247,7 +247,7 @@
         }
       } else {
         reward = [_rewards objectAtIndex:indexPath.row];
-        return [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
+        return [[PDRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
       }
       break;
     case 1:
@@ -283,7 +283,7 @@
 //          }
 //          return cell;
         }
-        return [[WalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:[_wallet objectAtIndex:indexPath.row] parent:self];
+        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:[_wallet objectAtIndex:indexPath.row] parent:self];
       }
     default:
       break;

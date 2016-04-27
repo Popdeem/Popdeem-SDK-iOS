@@ -6,18 +6,18 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
-#import "PDSingleMessageViewController.h"
-#import "PDSingleMessageViewModel.h"
+#import "PDUISingleMessageViewController.h"
+#import "PDUISingleMessageViewModel.h"
 
-@interface PDSingleMessageViewController ()
-@property (nonatomic, strong) PDSingleMessageViewModel *model;
+@interface PDUISingleMessageViewController ()
+@property (nonatomic, strong) PDUISingleMessageViewModel *model;
 @end
 
-@implementation PDSingleMessageViewController
+@implementation PDUISingleMessageViewController
 
 - (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
-  if (self = [self initWithNibName:@"PDSingleMessageViewController" bundle:podBundle]) {
+  if (self = [self initWithNibName:@"PDUISingleMessageViewController" bundle:podBundle]) {
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     return self;
@@ -26,7 +26,7 @@
 }
 
 - (void) setMessage:(PDMessage*)message {
-  _model = [[PDSingleMessageViewModel alloc] initWithMessage:message];
+  _model = [[PDUISingleMessageViewModel alloc] initWithMessage:message];
 }
 
 - (void)viewDidLoad {

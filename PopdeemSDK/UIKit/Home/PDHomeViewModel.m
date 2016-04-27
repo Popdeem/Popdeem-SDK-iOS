@@ -91,13 +91,15 @@
     weakSelf.wallet = [[PDWallet wallet] copy];
     [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [weakSelf.controller.refreshControl endRefreshing];
-    [LazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.controller.tableView reloadData];
-        [weakSelf.controller.refreshControl endRefreshing];
-        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-      });
-    }];
+    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    if ([[PDWallet wallet] count] > 0) {
+      [LazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [weakSelf.controller.tableView reloadData];
+          [weakSelf.controller.refreshControl endRefreshing];
+        });
+      }];
+    }
   } failure:^(NSError *error) {
     //TODO: Handle Error
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -163,7 +165,7 @@
     [_controller.segmentedControl.layer addSublayer:topBottomBorders];
     [_controller.segmentedControl addTarget:_controller action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
-  [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 110)];
+  [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
   [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.home.header.backgroundColor")];
   
   CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
@@ -179,6 +181,7 @@
       _tableHeaderImageView = [[UIImageView alloc] initWithFrame:_controller.tableView.tableHeaderView.frame];
       [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.home.header.backgroundImage")];
       [_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
+      [_tableHeaderImageView setClipsToBounds:YES];
       UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
       [gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
       [_controller.tableView.tableHeaderView addSubview:_tableHeaderImageView];
@@ -186,12 +189,14 @@
     }
   }
   if (!_tableHeaderLabel) {
-    _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 27.5, _controller.tableView.tableHeaderView.frame.size.width-20, 50)];
+    _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 50)];
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
     [_tableHeaderLabel setNumberOfLines:3];
     [_tableHeaderLabel setFont:PopdeemFont(@"popdeem.home.header.fontName",16)];
     [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
     [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
+    [_tableHeaderLabel sizeToFit];
+    [_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];
     [_controller.tableView.tableHeaderView addSubview:_tableHeaderLabel];
   }
 }

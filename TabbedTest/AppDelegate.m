@@ -33,6 +33,18 @@
   [Fabric with:@[[Crashlytics class]]];
   //Test Moments
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
+  
+  for (NSString* family in [UIFont familyNames])
+  {
+    NSLog(@"%@", family);
+    
+    for (NSString* name in [UIFont fontNamesForFamilyName: family])
+    {
+      NSLog(@"  %@", name);
+    }
+  }
+
+  
   return YES;
 }
 
@@ -60,6 +72,7 @@
                                                                    openURL:url
                                                          sourceApplication:sourceApplication
                                                                 annotation:annotation];
+  
   if (wasHandled) return wasHandled;
   
   if ([PopdeemSDK canOpenUrl:url sourceApplication:sourceApplication annotation:annotation]) {

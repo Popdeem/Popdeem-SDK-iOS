@@ -10,7 +10,7 @@
 #import "MessageCell.h"
 #import "NoRewardsTableViewCell.h"
 #import "MsgCntrViewModel.h"
-#import "PDSingleMessageViewController.h"
+#import "PDUISingleMessageViewController.h"
 
 @interface PDMsgCntrTblViewController ()
 @property (nonatomic, strong) MsgCntrViewModel *model;
@@ -85,7 +85,7 @@
  // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   if ([_model.messages objectAtIndex:indexPath.row]) {
-    PDSingleMessageViewController *svc = [[PDSingleMessageViewController alloc] initFromNib];
+    PDUISingleMessageViewController *svc = [[PDUISingleMessageViewController alloc] initFromNib];
     [svc setMessage:_model.messages[indexPath.row]];
     [self.navigationController pushViewController:svc animated:YES];
   }

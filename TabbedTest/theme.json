@@ -11,16 +11,18 @@
       },
       "tableView" : {
         "backgroundColor" : "#EBEBF2",
+        "backgroundImageName" : "KURE-bg",
         "seperatorColor" : "#C0C0C0",
         "rewardsCell" : {
-          "backgroundColor" : "#FFFFFF",
           "titleTextColor" : "#000000",
+          "titleFontName" : "GothamRounded-Medium",
           "rulesTextColor" : "#A2A2A1",
-          "infoTextColor" : "#0B1C39",
+          "rulesFontName" : "GothamRounded-Book",
+          "infoTextColor" : "#89C22E",
+          "infoFontName" : "GothamRounded-Book",
           "fontName" : "Avenir-Book"
         },
         "feedCell" : {
-          "backgroundColor" : "#FFFFFF",
           "nameTextColor" : "#0B1C39",
           "defaultTextColor" : "#343333",
           "titleTextColor" : "#000000",
@@ -28,7 +30,6 @@
           "fontName" : "Avenir-Book"
         },
         "walletCell" : {
-          "backgroundColor" : "#FFFFFF",
           "titleTextColor" : "#000000",
           "defaultTextColor" : "#000000",
           "howToTitleTextColor" : "#000000",

@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Niall Quinn. All rights reserved.
 //
 
-#import "RewardTableViewCell.h"
+#import "PDRewardTableViewCell.h"
 #import "PDUser.h"
 #import "PDTheme.h"
 
-@implementation RewardTableViewCell
+@implementation PDRewardTableViewCell
 
 - (id) initWithFrame:(CGRect)frame reward:(PDReward*)reward {
   if (self = [super initWithFrame:frame]){
@@ -22,28 +22,29 @@
     self.separatorInset = UIEdgeInsetsZero;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    float imageSize = 35;
-    float indent = 20;
+    float imageSize = 60;
+    float indent = (self.frame.size.height - imageSize)/2;
+    float leftIndent = indent *0.75;
     
-    _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, (frame.size.height - 35)/2, imageSize, imageSize)];
+    _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(leftIndent, indent, imageSize, imageSize)];
     if (reward.coverImage) {
       [_logoImageView setImage:reward.coverImage];
     } else {
       [_logoImageView setImage:[UIImage imageNamed:@"starG"]];
     }
     [_logoImageView setContentMode:UIViewContentModeScaleAspectFit];
-    _logoImageView.layer.cornerRadius = imageSize/2;
+    _logoImageView.backgroundColor = [UIColor clearColor];
     _logoImageView.clipsToBounds = YES;
     [self addSubview:_logoImageView];
     
     float centerLineY = frame.size.height/2;
-    float labelX = imageSize + indent + 10;
+    float labelX = imageSize + 2*leftIndent;
     float labelWidth = frame.size.width - labelX - indent;
     
     
     _mainLabel = [[UILabel alloc] init];
     
-    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 14)}];
+    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.titleFontName", 14)}];
     CGRect mainLabelRect = [mainAttributedText boundingRectWithSize:(CGSize){labelWidth, 40}
                                                             options:NSStringDrawingUsesLineFragmentOrigin
                                                             context:nil];
@@ -52,60 +53,42 @@
     
     //The max is 40, so pad it out if needed
     float padding = 0;
-    if (mainLabelsize.height < 40) {
-      padding = (40 - mainLabelsize.height)/2;
-    }
+    float currentY = 0;
     
-    float mainY = centerLineY-(mainLabelsize.height)-3;
-    if (mainLabelsize.height > 25) {
-      mainY = 10;
-    }
-    
-    [_mainLabel setFrame: CGRectMake(labelX, mainY, labelWidth, mainLabelsize.height)];
+    [_mainLabel setFrame: CGRectMake(labelX, currentY, labelWidth, mainLabelsize.height)];
     [_mainLabel setText:reward.rewardDescription];
-    [_mainLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 14)];
+    [_mainLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.titleFontName", 14)];
     [_mainLabel setTextColor:[UIColor blackColor]];
     [_mainLabel setTextAlignment:NSTextAlignmentLeft];
     [_mainLabel setNumberOfLines:0];
-    [_mainLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
+    [_mainLabel setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];
     [_mainLabel sizeToFit];
     [self addSubview:_mainLabel];
+    currentY += mainLabelsize.height + 3;
     CGSize rulesLabelsize;
     if (rules) {
-      _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _mainLabel.frame.origin.y+_mainLabel.frame.size.height, labelWidth, 30)];
-      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 12)}];
+      _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, labelWidth, 30)];
+      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.rulesFontName", 12)}];
       CGRect rulesLabelRect = [rulesAttributedText boundingRectWithSize:(CGSize){labelWidth, 30}
                                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                                                 context:nil];
       
       rulesLabelsize = rulesLabelRect.size;
       padding = 0;
-      if (rulesLabelsize.height < 30) {
-        padding = (30-rulesLabelsize.height)/2;
-      }
       float rulesPadding = 0;
-      if (mainLabelsize.height < 30) {
-        rulesPadding = 4;
-        if (rulesLabelsize.height > 25) {
-          [_mainLabel setFrame:CGRectMake(labelX, centerLineY-(rulesLabelsize.height), labelWidth, mainLabelsize.height)];
-        }
-      }
       [_rulesLabel sizeToFit];
-      [_rulesLabel setFrame:CGRectMake(labelX, _mainLabel.frame.origin.y+_mainLabel.frame.size.height, labelWidth, rulesLabelsize.height)];
-      [_rulesLabel setFont:[UIFont systemFontOfSize:12]];
+      [_rulesLabel setFrame:CGRectMake(labelX, currentY, labelWidth, rulesLabelsize.height)];
+      [_rulesLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.rulesFontName", 12)];
       [_rulesLabel setTextColor:[UIColor blackColor]];
       [_rulesLabel setText:reward.rewardRules];
       [_rulesLabel setNumberOfLines:0];
+      currentY += _rulesLabel.frame.size.height+3;
       [self addSubview:_rulesLabel];
       
 //      [_mainLabel setFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y-mainLabelsize.height, labelWidth, mainLabelsize.height)];
     }
     
-    if (rules) {
-      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y+rulesLabelsize.height+3, labelWidth, 15)];
-    } else {
-      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, centerLineY+5, labelWidth, 15)];
-    }
+    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, labelWidth, 15)];
     
     NSString *action;
     
@@ -203,17 +186,39 @@
       [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
     }
     
-    [_infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 12)];
+    [_infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.infoFontName", 12)];
     [_infoLabel setTextAlignment:NSTextAlignmentLeft];
+    [_infoLabel sizeToFit];
     [self addSubview:_infoLabel];
     
     //Apply Theme
-    [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor")];
-    self.contentView.backgroundColor = PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor");
+    [self setBackgroundColor:[UIColor clearColor]];
+    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.rewardsCell.backgroundColor")) {
+      [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor")];
+      self.contentView.backgroundColor = PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor");
+    }
     [_mainLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.titleTextColor")];
     [_rulesLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.rulesTextColor")];
     [_infoLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.infoTextColor")];
   
+    
+    //Layout
+    float labelsHeight = _mainLabel.frame.size.height ;
+    if (rules) {
+      labelsHeight += _rulesLabel.frame.size.height;
+    }
+    labelsHeight += _infoLabel.frame.size.height;
+    labelsHeight += 10;
+    
+    float topPadding = (self.frame.size.height - labelsHeight)/2;
+    currentY = topPadding;
+    [_mainLabel setFrame:CGRectMake(_mainLabel.frame.origin.x, currentY, _mainLabel.frame.size.width, _mainLabel.frame.size.height)];
+    currentY += _mainLabel.frame.size.height + 5;
+    if (rules) {
+      [_rulesLabel setFrame:CGRectMake(_rulesLabel.frame.origin.x, currentY, _rulesLabel.frame.size.width, _rulesLabel.frame.size.height)];
+      currentY += _rulesLabel.frame.size.height + 5;
+    }
+    [_infoLabel setFrame:CGRectMake(_infoLabel.frame.origin.x, currentY, _infoLabel.frame.size.width, _infoLabel.frame.size.height)];
     return self;
   }
   return nil;

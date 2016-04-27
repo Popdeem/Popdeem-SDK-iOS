@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PDMessage.h"
-#import "PDSingleMessageViewController.h"
+#import "PDUISingleMessageViewController.h"
 
-@interface PDSingleMessageViewModel : NSObject
+@interface PDUISingleMessageViewModel : NSObject
 
 @property (nonatomic, assign) PDMessage *message;
-@property (nonatomic, assign) PDSingleMessageViewController *controller;
+@property (nonatomic, assign) PDUISingleMessageViewController *controller;
 @property (nonatomic, strong) NSString *senderTagLabelString;
 @property (nonatomic, strong) NSString *senderBodyString;
 @property (nonatomic, strong) NSString *dateTagString;

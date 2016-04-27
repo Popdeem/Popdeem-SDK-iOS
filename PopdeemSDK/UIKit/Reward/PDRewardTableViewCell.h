@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
 
-@interface RewardTableViewCell : UITableViewCell
+@interface PDRewardTableViewCell : UITableViewCell
 
 @property (nonatomic, assign) PDReward *reward;
 @property (nonatomic, retain) UIImageView *logoImageView;

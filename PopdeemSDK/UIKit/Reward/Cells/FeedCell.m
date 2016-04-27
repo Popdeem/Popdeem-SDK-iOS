@@ -35,7 +35,10 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //Apply Theme
-    [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.feedCell.backgroundColor")];
+    [self setBackgroundColor:[UIColor clearColor]];
+    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.feedCell.backgroundColor")) {
+      [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.feedCell.backgroundColor")];
+    }
     return self;
   }
   return nil;

@@ -9,7 +9,7 @@
 #import "PDRewardTableViewController.h"
 #import "PDReward.h"
 #import "PDModalLoadingView.h"
-#import "RewardTableViewCell.h"
+#import "PDRewardTableViewCell.h"
 #import "NoRewardsTableViewCell.h"
 #import "PDAPIClient.h"
 #import "PDClaimViewController.h"
@@ -79,7 +79,7 @@
     return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) text:translationForKey(@"popdeem.rewards.notavailable", @"There are no rewards available right now. Please check back later.")];
   } else {
     reward = [self.rewards objectAtIndex:indexPath.row];
-    return [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
+    return [[PDRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
   }
 }
 

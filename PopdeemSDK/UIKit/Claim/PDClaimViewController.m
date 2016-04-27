@@ -11,12 +11,12 @@
 #import "PDUser.h"
 #import "PDUIKitUtils.h"
 #import "PDUtils.h"
-#import "RewardTableViewCell.h"
+#import "PDRewardTableViewCell.h"
 #import "PDLocationValidator.h"
 #import "LocationVisor.h"
 #import "PDTheme.h"
 #import "PDModalLoadingView.h"
-#import "FriendPickerViewController.h"
+#import "PDUIFriendPickerViewController.h"
 #import "PDUser+Facebook.h"
 #import "PDSocialMediaFriend.h"
 #import "PDTheme.h"
@@ -39,7 +39,7 @@
 
 @property (nonatomic, strong) PDModalLoadingView *loadingView;
 
-@property (nonatomic, strong) FriendPickerViewController *friendPicker;
+@property (nonatomic, strong) PDUIFriendPickerViewController *friendPicker;
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationVerificationViewHeightConstraint;
@@ -52,7 +52,7 @@
   if (self = [self initWithNibName:@"PDClaimViewController" bundle:podBundle]) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");
-    self.friendPicker = [[FriendPickerViewController alloc] initFromNib];
+    self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
     return self;
   }
   return nil;
@@ -145,7 +145,7 @@
   /*
   float currentY = 0;
   float viewWidth = self.view.frame.size.width;
-  RewardTableViewCell *rewardCell = [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 85) reward:_reward];
+  PDRewardTableViewCell *rewardCell = [[PDRewardTableViewCell alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 85) reward:_reward];
   [self.view addSubview:rewardCell];
   currentY += 85;
   _textView = [[PD_SZTextView alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 130)];
@@ -209,7 +209,7 @@
 }
 
 - (void) renderView {
-  [self.rewardInfoView addSubview:[[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) reward:_viewModel.reward]];
+  [self.rewardInfoView addSubview:[[PDRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:_viewModel.reward]];
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
 
   [_verifyLocationLabel setText:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please come back later, or refresh your location.")];

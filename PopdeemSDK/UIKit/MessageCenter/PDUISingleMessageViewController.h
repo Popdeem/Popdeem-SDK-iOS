@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDMessage.h"
 
-@interface PDSingleMessageViewController : UIViewController
+@interface PDUISingleMessageViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *senderTagLabel;

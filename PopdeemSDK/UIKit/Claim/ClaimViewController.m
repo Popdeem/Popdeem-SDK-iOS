@@ -7,7 +7,7 @@
 //
 
 #import "ClaimViewController.h"
-#import "RewardTableViewCell.h"
+#import "PDRewardTableViewCell.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "PDUser+Facebook.h"
@@ -227,7 +227,7 @@
     [keyboardHider addGestureRecognizer:hiderTap];
     
 //    if (!IS_IPHONE_4_OR_LESS) {
-//        RewardTableViewCell *tvc = [[RewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:_reward];
+//        PDRewardTableViewCell *tvc = [[PDRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:_reward];
 //        [rewardView addSubview:tvc];
 //        rewardViewHeightConstraint.constant = 80;
 //    } else {

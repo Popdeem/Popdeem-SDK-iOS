@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Niall Quinn. All rights reserved.
 //
 
-#import "WalletTableViewCell.h"
+#import "PDUIWalletTableViewCell.h"
 #import "WalletCache.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
 
 
-@implementation WalletTableViewCell
+@implementation PDUIWalletTableViewCell
 
-- (WalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDHomeViewController*)parent {
+- (PDUIWalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDHomeViewController*)parent {
   frame.size = CGSizeMake(frame.size.width, frame.size.height+190);
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   if (self = [super initWithFrame:frame]) {
@@ -27,7 +27,10 @@
     
     float imageSize = visibleHeight * 0.60;
     float indent = visibleHeight *0.20;
-    [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.walletCell.backgroundColor")];
+    [self setBackgroundColor:[UIColor clearColor]];
+    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.walletCell.backgroundColor")) {
+      [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.walletCell.backgroundColor")];
+    }
     _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, indent, imageSize, imageSize)];
     [self.logoImageView setClipsToBounds:YES];
     [self addSubview:_logoImageView];
