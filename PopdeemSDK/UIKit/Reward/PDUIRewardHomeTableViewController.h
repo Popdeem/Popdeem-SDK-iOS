@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDSegmentedControl.h"
+#import "PDUISegmentedControl.h"
 #import "PDRewardHomeViewModel.h"
-#import "PDRewardTableViewController.h"
+#import "PDUIRewardTableViewController.h"
 
 @interface PDUIRewardHomeTableViewController : UITableViewController
 
 @property (nonatomic, strong) PDRewardHomeViewModel *viewModel;
-@property (nonatomic, retain) PDSegmentedControl *segmentedControl;
-@property (nonatomic, strong) PDRewardTableViewController *rewardTableViewController;
+@property (nonatomic, retain) PDUISegmentedControl *segmentedControl;
+@property (nonatomic, strong) PDUIRewardTableViewController *rewardTableViewController;
 @property (nonatomic, strong) UITableViewCell *rewardsCell;
 
 - (instancetype) initFromNib;

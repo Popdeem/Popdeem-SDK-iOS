@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "PDSocialLoginViewModel.h"
-#import "PDSocialLoginViewController.h"
+#import "PDUISocialLoginViewModel.h"
+#import "PDUISocialLoginViewController.h"
 #import "PDAPIClient.h"
 #import "PDUser.h"
 #import <Expecta/Expecta.h>
@@ -16,12 +16,12 @@
 #import "Nocilla.h"
 
 @interface PDSocialLoginViewModelTests : XCTestCase {
-    PDSocialLoginViewModel *viewModel;
+    PDUISocialLoginViewModel *viewModel;
 }
 
 @end
 
-@interface PDSocialLoginViewModel(TEST)
+@interface PDUISocialLoginViewModel(TEST)
 - (void) renderSuccess;
 - (void) updateUserLocationCompletion:(void (^)(NSError *error))completion;
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations;

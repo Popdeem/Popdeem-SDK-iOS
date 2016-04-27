@@ -7,11 +7,11 @@
 //
 
 #import "ClaimViewController.h"
-#import "PDRewardTableViewCell.h"
+#import "PDUIRewardTableViewCell.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "PDUser+Facebook.h"
-#import "PDModalLoadingView.h"
+#import "PDUIModalLoadingView.h"
 #import "PDSocialMediaFriend.h"
 #import "PDSocialMediaManager.h"
 #import "PDUtils.h"
@@ -67,7 +67,7 @@
     BOOL didAddPhoto;
     UIImage *image;
     UIView *bgDisablerView;
-    PDModalLoadingView *loadingView;
+    PDUIModalLoadingView *loadingView;
     BOOL goingToTag;
     UIImageView *imageView;
     float fullHeight;
@@ -629,7 +629,7 @@
     [bgDisablerView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
     [self.view addSubview:bgDisablerView];
   
-  loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Claiming Reward" descriptionText:@"This could take up to 30 seconds"];
+  loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Claiming Reward" descriptionText:@"This could take up to 30 seconds"];
   
     [loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
     [loadingView showAnimated:YES];
@@ -877,7 +877,7 @@
 - (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
     PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
   
-  loadingView = [[PDModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Connecting Twitter"];
+  loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Connecting Twitter"];
   [loadingView showAnimated:YES];
     
     [manager loginWithTwitter:^(void){

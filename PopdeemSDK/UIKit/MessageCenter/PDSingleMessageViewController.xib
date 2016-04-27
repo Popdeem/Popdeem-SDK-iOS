@@ -41,7 +41,7 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starG.png" translatesAutoresizingMaskIntoConstraints="NO" id="XyA-ae-PCa">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_starG.png" translatesAutoresizingMaskIntoConstraints="NO" id="XyA-ae-PCa">
                             <rect key="frame" x="8" y="18" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="28n-Hx-sKF"/>
@@ -141,6 +141,6 @@
         </view>
     </objects>
     <resources>
-        <image name="starG.png" width="40" height="40"/>
+        <image name="pduikit_starG.png" width="40" height="40"/>
     </resources>
 </document>

@@ -7,17 +7,17 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "PDSocialLoginHandler.h"
+#import "PDUISocialLoginHandler.h"
 #import <Expecta/Expecta.h>
 #import <OCMock/OCMock.h>
 #import "PDSocialMediaManager.h"
 
 @interface PDSocialLoginHandlerTest : XCTestCase {
-  PDSocialLoginHandler *loginHandler;
+  PDUISocialLoginHandler *loginHandler;
 }
 @end
 
-@interface PDSocialLoginHandler(TEST)
+@interface PDUISocialLoginHandler(TEST)
 @property (nonatomic, strong) PDSocialMediaManager *socialManager;
 @property (nonatomic, assign) NSUInteger maxPrompts;
 @property (nonatomic, assign) NSUInteger usesCount;
@@ -29,7 +29,7 @@
 
 - (void)setUp {
     [super setUp];
-    loginHandler = [PDSocialLoginHandler new];
+    loginHandler = [PDUISocialLoginHandler new];
 }
 
 

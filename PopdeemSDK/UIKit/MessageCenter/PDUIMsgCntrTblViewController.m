@@ -1,0 +1,94 @@
+//
+//  PDMsgCntrTblViewController.m
+//  PopdeemSDK
+//
+//  Created by Niall Quinn on 29/01/2016.
+//  Copyright © 2016 Popdeem. All rights reserved.
+//
+
+#import "PDUIMsgCntrTblViewController.h"
+#import "PDUIMessageCell.h"
+#import "PDUINoRewardsTableViewCell.h"
+#import "PDUIMsgCntrViewModel.h"
+#import "PDUISingleMessageViewController.h"
+
+@interface PDUIMsgCntrTblViewController ()
+@property (nonatomic, strong) PDUIMsgCntrViewModel *model;
+@end
+
+@implementation PDUIMsgCntrTblViewController
+
+- (instancetype) initFromNib {
+  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  if (self = [self initWithNibName:@"PDUIMsgCntrTblViewController" bundle:podBundle]) {
+    self.model = [[PDUIMsgCntrViewModel alloc] initWithController:self];
+    [self.model fetchMessages];
+    return self;
+  }
+  return nil;
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  [self.tableView reloadData];
+  self.refreshControl = [[UIRefreshControl alloc]init];
+  [self.refreshControl setTintColor:[UIColor darkGrayColor]];
+  [self.refreshControl setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+  [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+  [self.tableView reloadData];
+  [self.tableView reloadInputViews];
+}
+
+- (void) reloadAction {
+  [self.model fetchMessages];
+}
+
+- (void)didReceiveMemoryWarning {
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return (_model.messages.count > 0) ? _model.messages.count : 1;
+}
+
+- (PDUIMessageCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (_model.messages.count > 0) {
+    if ([_model.messages objectAtIndex:indexPath.row]) {
+      PDUIMessageCell *cell = [[PDUIMessageCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) message:[_model.messages objectAtIndex:indexPath.row]];
+      return cell;
+    } else {
+      return nil;
+    }
+  } else if (_model.messagesLoading) {
+    return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching messages..."];
+  } else {
+    return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"You have no messages right now..."];
+  }
+}
+
+ #pragma mark - Table view delegate
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 85;
+}
+
+ // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if ([_model.messages objectAtIndex:indexPath.row]) {
+    PDUISingleMessageViewController *svc = [[PDUISingleMessageViewController alloc] initFromNib];
+    [svc setMessage:_model.messages[indexPath.row]];
+    [self.navigationController pushViewController:svc animated:YES];
+  }
+}
+
+@end

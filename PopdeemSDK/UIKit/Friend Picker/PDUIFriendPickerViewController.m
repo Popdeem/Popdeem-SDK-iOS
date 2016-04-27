@@ -291,9 +291,9 @@
   
   UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 20, 20)];
   if (friend.selected) {
-    [imageView setImage:[UIImage imageNamed:@"selectedCheck"]];
+    [imageView setImage:[UIImage imageNamed:@"pduikit_selectedCheck"]];
   } else {
-    [imageView setImage:[UIImage imageNamed:@"deselectedCheck"]];
+    [imageView setImage:[UIImage imageNamed:@"pduikit_deselectedCheck"]];
   }
   
   UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.view.frame.size.width-55, 50)];

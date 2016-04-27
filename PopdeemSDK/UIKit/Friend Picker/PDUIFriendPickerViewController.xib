@@ -35,7 +35,7 @@
                         <constraint firstAttribute="width" constant="19" id="26n-Bk-mqx"/>
                         <constraint firstAttribute="height" constant="19" id="wXE-Bu-Da2"/>
                     </constraints>
-                    <state key="normal" image="search.png"/>
+                    <state key="normal" image="pduikit_search.png"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4r-Yy-1rC">
                     <rect key="frame" x="0.0" y="35" width="600" height="50"/>
@@ -46,7 +46,7 @@
                                 <constraint firstAttribute="height" constant="40" id="ZDV-Z2-mO2"/>
                                 <constraint firstAttribute="width" constant="40" id="d2T-4p-rox"/>
                             </constraints>
-                            <state key="normal" title="Button" image="tagGoButton.png"/>
+                            <state key="normal" title="Button" image="pduikit_tagGoButton.png"/>
                             <connections>
                                 <action selector="goButtonPressed:" destination="-1" eventType="touchUpInside" id="9eO-2e-nlU"/>
                             </connections>
@@ -87,7 +87,7 @@
         </view>
     </objects>
     <resources>
-        <image name="search.png" width="50" height="50"/>
-        <image name="tagGoButton.png" width="200" height="200"/>
+        <image name="pduikit_search.png" width="50" height="50"/>
+        <image name="pduikit_tagGoButton.png" width="200" height="200"/>
     </resources>
 </document>

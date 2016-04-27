@@ -8,16 +8,16 @@
 
 #import "PDUIRewardHomeTableViewController.h"
 #import "PDTheme.h"
-#import "PDModalLoadingView.h"
+#import "PDUIModalLoadingView.h"
 #import "PDAPIClient.h"
-#import "LazyLoader.h"
-#import "PDRewardTableViewCell.h"
-#import "NoRewardsTableViewCell.h"
-#import "PhotoCell.h"
-#import "CheckinCell.h"
-#import "PDClaimViewController.h"
+#import "PDUILazyLoader.h"
+#import "PDUIRewardTableViewCell.h"
+#import "PDUINoRewardsTableViewCell.h"
+#import "PDUIPhotoCell.h"
+#import "PDUICheckinCell.h"
+#import "PDUIClaimViewController.h"
 #import "PDUIWalletTableViewCell.h"
-#import "PDSocialLoginViewController.h"
+#import "PDUISocialLoginViewController.h"
 #import "PDSocialMediaManager.h"
 
 
@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSArray *rewards;
 @property (nonatomic, strong) NSArray *feed;
 @property (nonatomic, strong) NSArray *wallet;
-@property (nonatomic) PDModalLoadingView *loadingView;
+@property (nonatomic) PDUIModalLoadingView *loadingView;
 @property (nonatomic) PDLocation *closestLocation;
 @end
 
@@ -45,13 +45,13 @@
 }
 
 - (void)renderView {
-  self.loadingView = [[PDModalLoadingView alloc] initWithDefaultsForView:self.view];
+  self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
   
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
     weakSelf.rewards =  [PDRewardStore allRewards];
     [weakSelf fetchLocations];
-    [LazyLoader loadAllRewardCoverImagesCompletion:^(BOOL success){
+    [PDUILazyLoader loadAllRewardCoverImagesCompletion:^(BOOL success){
       [weakSelf brandImageDidDownload];
     }];
     [weakSelf.tableView reloadData];
@@ -75,7 +75,7 @@
   [[PDAPIClient sharedInstance] getFeedsSuccess:^{
     feedLoading = NO;
     weakSelf.feed = [PDFeeds feed];
-    [LazyLoader loadFeedImages];
+    [PDUILazyLoader loadFeedImages];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pd_feeds.fd"];
@@ -88,7 +88,7 @@
   
   [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^(){
     _wallet = [[PDWallet wallet] copy];
-    [LazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
+    [PDUILazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
       [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }];
   } failure:^(NSError *error) {
@@ -123,7 +123,7 @@
   [self.navigationController setNavigationBarHidden:NO animated:YES];
   self.viewModel = [[PDRewardHomeViewModel alloc] init];
   [self.viewModel setup];
-  self.rewardTableViewController = [[PDRewardTableViewController alloc] init];
+  self.rewardTableViewController = [[PDUIRewardTableViewController alloc] init];
   self.rewardsCell = [[UITableViewCell alloc] init];
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
@@ -141,7 +141,7 @@
   }
   
   if (!_segmentedControl) {
-    _segmentedControl = [[PDSegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"Wallet"]];
+    _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"Wallet"]];
     _segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
     _segmentedControl.clipsToBounds = YES;
     
@@ -180,7 +180,7 @@
   
 }
 
-- (void) segmentedControlDidChangeValue:(PDSegmentedControl*)sender {
+- (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender {
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
 //  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -241,38 +241,38 @@
       //Rewards
       if (_rewards.count == 0) {
         if (!rewardsLoading) {
-          return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"There are no Rewards available right now. Please check back later."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"There are no Rewards available right now. Please check back later."];
         } else {
-          return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching your Rewards."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching your Rewards."];
         }
       } else {
         reward = [_rewards objectAtIndex:indexPath.row];
-        return [[PDRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
+        return [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80) reward:reward];
       }
       break;
     case 1:
       //Feeds
       if (_feed.count == 0) {
         if (!feedLoading) {
-          return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"There is no Feed available right now. Please check back later."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"There is no Feed available right now. Please check back later."];
         } else {
-          return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching the Feed."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching the Feed."];
         }
       } else {
         feedItem = [_feed objectAtIndex:indexPath.row];
         if (feedItem.actionImage) {
-          return [[PhotoCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 165) forFeedItem:feedItem];
+          return [[PDUIPhotoCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 165) forFeedItem:feedItem];
         } else {
-          return [[CheckinCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) forFeedItem:feedItem];
+          return [[PDUICheckinCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) forFeedItem:feedItem];
         }
       }
       break;
     case 2:
       if (_wallet.count == 0) {
         if (!walletLoading) {
-          return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"You have no items in your Wallet right now."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"You have no items in your Wallet right now."];
         } else {
-          return [[NoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching your Wallet."];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:@"Fetching your Wallet."];
         }
       } else {
         if (indexPath.row == _wallet.count) {
@@ -326,14 +326,14 @@
       //Rewards
       if ([self.rewards objectAtIndex:indexPath.row]) {
         if(![[PDSocialMediaManager manager] isLoggedIn]){
-          PDSocialLoginViewController *vc = [[PDSocialLoginViewController alloc] initWithLocationServices:YES];
+          PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
           vc.delegate = self;
           [self presentViewController:vc animated:YES completion:^{
             
           }];
         } else{
           PDReward *reward = [self.rewards objectAtIndex:indexPath.row];
-          PDClaimViewController *claimController = [[PDClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
+          PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:@[@(FacebookOnly)] andReward:reward location:_closestLocation];
           [[self navigationController] pushViewController:claimController animated:YES];
         }
       }

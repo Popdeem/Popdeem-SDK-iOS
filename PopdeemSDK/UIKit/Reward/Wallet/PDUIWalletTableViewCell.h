@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
-#import "PDHomeViewController.h"
+#import "PDUIHomeViewController.h"
 
 @interface PDUIWalletTableViewCell : UITableViewCell
 
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) UILabel *expiresLabel;
 @property (nonatomic, retain) PDReward *reward;
 
-- (PDUIWalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDHomeViewController*)parent;
+- (PDUIWalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDUIHomeViewController*)parent;
 - (void) rotateArrowRight;
 - (void) rotateArrowDown;
 

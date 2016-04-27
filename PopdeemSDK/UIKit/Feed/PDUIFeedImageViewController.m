@@ -7,7 +7,7 @@
 //
 
 #import "PDUIFeedImageViewController.h"
-#import "CheckinCell.h"
+#import "PDUICheckinCell.h"
 
 @implementation PDUIFeedImageViewController
 
@@ -27,7 +27,7 @@
     self.imageView.clipsToBounds = YES;
     [self.view addSubview:self.imageView];
     
-    CheckinCell *cell = [[CheckinCell alloc] initWithFrame:CGRectMake(0, imageHeight, imageWidth, 75) forFeedItem:_item];
+    PDUICheckinCell *cell = [[PDUICheckinCell alloc] initWithFrame:CGRectMake(0, imageHeight, imageWidth, 75) forFeedItem:_item];
     [cell setFrame:CGRectMake(0, imageHeight+5, imageWidth, 75)];
     [self.view addSubview:cell];
     

@@ -47,7 +47,7 @@
   if (_model.image) {
     [self.imageView setImage:_model.image];
   } else {
-    [self.imageView setImage:[UIImage imageNamed:@"starG"]];
+    [self.imageView setImage:[UIImage imageNamed:@"pduikit_starG"]];
   }
   [self.senderTagLabel setText:_model.senderTagLabelString];
   [self.senderLabel setText:_model.senderBodyString];

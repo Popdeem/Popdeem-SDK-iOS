@@ -5,13 +5,13 @@
 
 #import "PopdeemUIKItCore.h"
 #import "PDTheme.h"
-#import "PDSocialLoginHandler.h"
+#import "PDUISocialLoginHandler.h"
 #import "PDRewardHandler.h"
-#import "PDRewardTableViewController.h"
-#import "PDHomeViewController.h"
+#import "PDUIRewardTableViewController.h"
+#import "PDUIHomeViewController.h"
 
 @interface PopdeemUIKItCore ()
-@property(nonatomic, strong) PDSocialLoginHandler *socialLoginHandler;
+@property(nonatomic, strong) PDUISocialLoginHandler *socialLoginHandler;
 @property(nonatomic, strong) PDRewardHandler *rewardHandler;
 @end
 
@@ -20,7 +20,7 @@
 - (id)init {
   if (self = [super init]) {
     [PDTheme setupWithFileName:@"default"];
-    self.socialLoginHandler = [PDSocialLoginHandler new];
+    self.socialLoginHandler = [PDUISocialLoginHandler new];
     self.rewardHandler = [PDRewardHandler new];
   }
   
@@ -40,11 +40,11 @@
 }
 
 - (void) presentHomeFlowInNavigationController:(UINavigationController*)navController {
-  [navController pushViewController:[[PDHomeViewController alloc] init] animated:YES];
+  [navController pushViewController:[[PDUIHomeViewController alloc] init] animated:YES];
 }
 
 - (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated {
-  [navController pushViewController:[[PDRewardTableViewController alloc] init] animated:animated];
+  [navController pushViewController:[[PDUIRewardTableViewController alloc] init] animated:animated];
 }
 
 

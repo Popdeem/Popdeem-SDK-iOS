@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "PopdeemSDK.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import "PDSocialLoginHandler.h"
+#import "PDUISocialLoginHandler.h"
 
 @interface AppDelegate ()
 

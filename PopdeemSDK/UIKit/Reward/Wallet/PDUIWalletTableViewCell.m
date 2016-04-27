@@ -7,14 +7,14 @@
 //
 
 #import "PDUIWalletTableViewCell.h"
-#import "WalletCache.h"
+#import "PDUIWalletCache.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
 
 
 @implementation PDUIWalletTableViewCell
 
-- (PDUIWalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDHomeViewController*)parent {
+- (PDUIWalletTableViewCell*) initWithFrame:(CGRect)frame reward:(PDReward*)reward parent:(PDUIHomeViewController*)parent {
   frame.size = CGSizeMake(frame.size.width, frame.size.height+190);
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   if (self = [super initWithFrame:frame]) {
@@ -37,7 +37,7 @@
     if (reward.coverImage) {
       [self.logoImageView setImage:reward.coverImage];
     } else {
-      [self.logoImageView setImage:[UIImage imageNamed:@"starG"]];
+      [self.logoImageView setImage:[UIImage imageNamed:@"pduikit_starG"]];
     }
     [self.logoImageView setContentMode:UIViewContentModeScaleAspectFit];
     self.logoImageView.layer.cornerRadius = imageSize/2;
@@ -61,7 +61,7 @@
     
     if (reward.type != PDRewardTypeCredit) {
       _arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width-35, centerY-10, 20, 20)];
-      [_arrowImageView setImage:[UIImage imageNamed:@"popdeemArrowB"]];
+      [_arrowImageView setImage:[UIImage imageNamed:@"pduikit_popdeemArrowB"]];
       [self addSubview:_arrowImageView];
     }
     

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDRewardTableViewController.h"
+#import "PDUIRewardTableViewController.h"
 
-@interface PDViewController : PDRewardTableViewController
+@interface PDViewController : PDUIRewardTableViewController
 
 @end

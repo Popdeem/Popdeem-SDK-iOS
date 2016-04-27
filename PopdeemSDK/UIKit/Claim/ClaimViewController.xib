@@ -4,6 +4,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Montserrat-Light.ttf">
+            <string>Montserrat-Light</string>
+            <string>Montserrat-Light</string>
+        </mutableArray>
+        <mutableArray key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+            <string>Montserrat-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -46,7 +56,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starG" translatesAutoresizingMaskIntoConstraints="NO" id="zOE-th-fXv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_starG.png" translatesAutoresizingMaskIntoConstraints="NO" id="zOE-th-fXv">
                                 <rect key="frame" x="8" y="23" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51.5" id="7HG-FW-bAe"/>
@@ -57,9 +67,9 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="K8m-QB-ML8"/>
                                         <exclude reference="7HG-FW-bAe"/>
                                         <exclude reference="Dfe-sk-U0a"/>
+                                        <exclude reference="K8m-QB-ML8"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -90,8 +100,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0Vv-e4-9gs"/>
-                                <exclude reference="xnF-O3-eXc"/>
                                 <exclude reference="gLF-6L-z4h"/>
+                                <exclude reference="xnF-O3-eXc"/>
                                 <exclude reference="MMX-IP-iip"/>
                                 <exclude reference="9AB-uR-Xpk"/>
                                 <exclude reference="er3-ob-OoU"/>
@@ -340,7 +350,7 @@
         <image name="addFriend" width="20" height="20"/>
         <image name="cameraGray" width="20" height="20"/>
         <image name="facebookSelected" width="20" height="20"/>
-        <image name="starG" width="20" height="20"/>
+        <image name="pduikit_starG.png" width="40" height="40"/>
         <image name="twitterDeselected" width="20" height="20"/>
     </resources>
 </document>

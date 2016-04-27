@@ -33,7 +33,7 @@
   if (_message.imageUrl) {
 //    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];
   } else {
-    self.image = [UIImage imageNamed:@"starG"];
+    self.image = [UIImage imageNamed:@"pduikit_starG"];
   }
   if (!_message.read) {
     _message.markAsRead;

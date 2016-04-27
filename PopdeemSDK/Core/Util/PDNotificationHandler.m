@@ -61,7 +61,7 @@
   NSString *imageUrl = [userInfo objectForKey:@"image_url"];
   UIImage *image;
   if ([imageUrl isKindOfClass:[NSNull class]]) {
-    image = [UIImage imageNamed:@"starG"];
+    image = [UIImage imageNamed:@"pduikit_starG"];
   } else {
     imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"popdeem-dev" withString:@"popdeem"];
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];

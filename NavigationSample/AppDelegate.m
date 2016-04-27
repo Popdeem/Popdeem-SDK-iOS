@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "PopdeemSDK.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import "PDSocialLoginHandler.h"
+#import "PDUISocialLoginHandler.h"
 #import "PDSocialMediaManager.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
