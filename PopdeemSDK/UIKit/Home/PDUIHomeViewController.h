@@ -14,7 +14,7 @@
 #import "PDLocation.h"
 #import "PDUIModalLoadingView.h"
 
-@interface PDUIHomeViewController : UITableViewController
+@interface PDUIHomeViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (nonatomic, retain) PDUISegmentedControl *segmentedControl;
 @property (nonatomic, strong) PDUIRewardTableViewController *rewardTableViewController;

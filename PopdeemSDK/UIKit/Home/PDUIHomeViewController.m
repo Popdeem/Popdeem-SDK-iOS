@@ -286,7 +286,7 @@
         return 75;
       }
       if ([(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
-        return 120;
+        return 175;
       } else {
         return 75;
       }
@@ -371,42 +371,26 @@
       break;
     case 2:
       if (_model.wallet.count == 0) return;
-      walletReward = [_model.wallet objectAtIndex:indexPath.row];
-      if (walletReward) {
-        if (walletReward.revoked) {
+      selectedWalletReward = [_model.wallet objectAtIndex:indexPath.row];
+      if (selectedWalletReward) {
+        if (selectedWalletReward.revoked) {
           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked" message:@"This reward has been revoked" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
           [av show];
           return;
         }
         //For sweepstakes we dont show the alert
-        if (walletReward.type == PDRewardTypeSweepstake || walletReward.type == PDRewardTypeCredit) {
+        if (selectedWalletReward.type == PDRewardTypeSweepstake || selectedWalletReward.type == PDRewardTypeCredit) {
           return;
         }
         
-        walletSelectedIndex = [self.tableView indexPathForSelectedRow];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward"
+                                                     message:@"You are about to Redeem this Reward. Are you sure?"
+                                                    delegate:self
+                                           cancelButtonTitle:@"Cancel"
+                                           otherButtonTitles:@"Redeem", nil];
+        [av setTag:400];
+        [av show];
         
-        if (walletReward.type != PDRewardTypeSweepstake) {
-          PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
-          _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
-          [_loadingView showAnimated:YES];
-          
-          [service redeemReward:walletReward.identifier completion:^(NSError *error){
-            [_loadingView hideAnimated:YES];
-            if (error) {
-              NSLog(@"Something went wrong: %@",error);
-            } else {
-              
-              PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
-              [rvc setReward:walletReward];
-              [self.navigationController pushViewController:rvc animated:YES];
-              [PDWallet remove:walletReward.identifier];
-              selectedWalletReward = nil;
-              walletSelectedIndex = nil;
-              _model.wallet = [PDWallet wallet];
-              [self.tableView reloadData];
-            }
-          }];
-        }
       }
 //      wcell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
 //      [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -439,6 +423,35 @@
   [tableView deselectRowAtIndexPath:indexPath animated:NO];
   //if you are doing any animation you have deselect the row here inside.
   [tableView endUpdates];
+}
+
+- (void) redeemSelectedReward {
+  walletSelectedIndex = [self.tableView indexPathForSelectedRow];
+  if (!selectedWalletReward) {
+    return;
+  }
+  if (selectedWalletReward.type != PDRewardTypeSweepstake) {
+    PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
+    _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
+    [_loadingView showAnimated:YES];
+    
+    [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
+      [_loadingView hideAnimated:YES];
+      if (error) {
+        NSLog(@"Something went wrong: %@",error);
+      } else {
+        
+        PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
+        [rvc setReward:selectedWalletReward];
+        [self.navigationController pushViewController:rvc animated:YES];
+        [PDWallet remove:selectedWalletReward.identifier];
+        selectedWalletReward = nil;
+        walletSelectedIndex = nil;
+        _model.wallet = [PDWallet wallet];
+        [self.tableView reloadData];
+      }
+    }];
+  }
 }
 
 - (void) processClaimForIndexPath:(NSIndexPath*)indexPath {
@@ -511,6 +524,24 @@
 
 - (void) dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (alertView.tag == 400) {
+    switch (buttonIndex) {
+      case 0:
+        NSLog(@"Cancel Redeem");
+        walletSelectedIndex = nil;
+        selectedWalletReward = nil;
+        break;
+      case 1:
+        NSLog(@"Redeem");
+        [self redeemSelectedReward];
+        break;
+      default:
+        break;
+    }
+  }
 }
 
 @end

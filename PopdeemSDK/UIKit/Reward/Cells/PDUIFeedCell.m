@@ -17,8 +17,8 @@
     float cellHeight = 75;
     float indent = 20.0f;
     self.separatorInset = UIEdgeInsetsZero;
-    float logoSize = cellHeight-40;
-    self.profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, 20, logoSize, logoSize)];
+    float logoSize = cellHeight-30;
+    self.profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, 15, logoSize, logoSize)];
     [self.profileImageView setContentMode:UIViewContentModeScaleAspectFill];
     self.profileImageView.layer.cornerRadius = logoSize/2;
     self.profileImageView.clipsToBounds = YES;
@@ -26,14 +26,35 @@
     
     [self.profileImageView setImage:feedItem.profileImage];
     
-    float left = indent+logoSize+10;
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(left, 10, frame.size.width-(left + 20), cellHeight-20)];
-    [self.label setNumberOfLines:2];
-    [self.label setFont:PopdeemFont(@"popdeem.home.tableView.feedcell.font", 16)];
-    [self addSubview:self.label];
-    [self.label setAttributedText:[self stringForItem:feedItem]];
+    float left = indent+logoSize+20;
+//    self.label = [[UILabel alloc] initWithFrame:CGRectMake(left, 10, frame.size.width-(left + 20), cellHeight-20)];
+//    [self.label setNumberOfLines:2];
+//    [self.label setFont:PopdeemFont(@"popdeem.home.tableView.feedcell.font", 16)];
+//    [self addSubview:self.label];
+//    [self.label setAttributedText:[self stringForItem:feedItem]];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, frame.size.width-(left + 20), 20)];
+    [_nameLabel setText:[NSString stringWithFormat:@"%@ %@",feedItem.userFirstName,feedItem.userLastName]];
+    [_nameLabel setFont:PopdeemFont(@"popdeem.home.tableView.feedCell.nameLabel.fontName", 14)];
+    [_captionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.feedCell.nameLabel.fontColor")];
+    [_nameLabel setNumberOfLines:1];
+    [_nameLabel sizeToFit];
+    
+    self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height+5, frame.size.width-(left + 20), 20)];
+    [_captionLabel setText:feedItem.captionString];
+    [_captionLabel setFont:PopdeemFont(@"popdeem.home.tableView.feedCell.captionLabel.fontName", 12)];
+    [_captionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.feedCell.captionLabel.fontColor")];
+    [_captionLabel setNumberOfLines:1];
+    [_captionLabel sizeToFit];
+    
+    float floatingHeight = cellHeight;
+    float joinedHeight = _nameLabel.frame.size.height + 5 + _captionLabel.frame.size.height;
+    float padding = (floatingHeight-joinedHeight)/2;
+    [self.nameLabel setFrame:CGRectMake(left, padding, _nameLabel.frame.size.width, _nameLabel.frame.size.height)];
+    [self.captionLabel setFrame:CGRectMake(left, padding+5+_nameLabel.frame.size.height, _captionLabel.frame.size.width, _captionLabel.frame.size.height)];
+    [self addSubview:_nameLabel];
+    [self addSubview:_captionLabel];
     //Apply Theme
     [self setBackgroundColor:[UIColor clearColor]];
     if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.feedCell.backgroundColor")) {

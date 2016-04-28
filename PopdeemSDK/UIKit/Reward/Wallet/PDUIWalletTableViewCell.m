@@ -63,6 +63,10 @@
       }
     }
     
+    if (reward.type == PDRewardTypeCredit || reward.type == PDRewardTypeSweepstake) {
+      self.userInteractionEnabled = NO;
+    }
+    
     switch (reward.type) {
       case PDRewardTypeSweepstake:
         [self.subtitleLabel setText:translationForKey(@"popdeem.wallet.sweepstake.redeemText", @"You have been entered in this competition.")];

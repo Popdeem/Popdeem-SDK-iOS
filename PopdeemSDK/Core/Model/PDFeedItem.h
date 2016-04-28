@@ -88,6 +88,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, retain, nullable) NSString *descriptionString;
 
+@property (nonatomic, retain, nullable) NSString *captionString;
+
 /**
  * @abstract The initialised action image.
  */

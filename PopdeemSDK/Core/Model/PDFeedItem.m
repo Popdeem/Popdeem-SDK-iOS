@@ -66,6 +66,10 @@
       self.descriptionString = desc ? desc : nil;
     }
     
+    NSString *caption = params[@"caption"];
+    if ([caption isKindOfClass:[NSString class]]) {
+      self.captionString = caption;
+    }
     return self;
   }
   return nil;

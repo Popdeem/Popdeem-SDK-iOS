@@ -27,7 +27,15 @@
           "defaultTextColor" : "#343333",
           "titleTextColor" : "#000000",
           "timeTextColor" : "#000000",
-          "fontName" : "Avenir-Book"
+          "fontName" : "Avenir-Book",
+          "nameLabel" : {
+            "fontName" : "GothamRounded-Bold",
+            "fontColor" : "000000"
+          },
+          "captionLabel" : {
+            "fontName" : "GothamRounded-Book",
+            "fontColor" : "#454545"
+          }
         },
         "walletCell" : {
           "titleTextColor" : "#000000",
