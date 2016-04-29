@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) PDLocationValidator *locationValidator;
 
+@property (nonatomic, strong) PDUIRewardTableViewCell *rewardTableViewCell;
+
 @property (nonatomic, strong) PDUIModalLoadingView *loadingView;
 
 @property (nonatomic, strong) PDUIFriendPickerViewController *friendPicker;
@@ -75,8 +77,6 @@
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
   [_textView setFont:[UIFont systemFontOfSize:14]];
-  [self renderView];
-  [self drawBorders];
 }
 
 - (void) verifyLocation {
@@ -131,8 +131,6 @@
   self.locationVerificationViewHeightConstraint.constant = 0;
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
-  [self renderView];
-  [self drawBorders];
 }
 
 - (void) setupView {
@@ -150,7 +148,18 @@
   */
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+  [self renderView];
+  [self drawBorders];
+}
+
+- (void) viewWillLayoutSubviews {
+}
+
 - (void) viewDidAppear:(BOOL)animated {
+  [_rewardTableViewCell removeFromSuperview];
+  _rewardTableViewCell = [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:_reward];
+  [_rewardInfoView addSubview:_rewardTableViewCell];
   goingToTag = NO;
   UITapGestureRecognizer *hiderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiderTap)];
   [_keyboardHiderView addGestureRecognizer:hiderTap];
@@ -204,7 +213,12 @@
 }
 
 - (void) renderView {
-  [self.rewardInfoView addSubview:[[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:_viewModel.reward]];
+  if (!IS_IPHONE_4_OR_LESS) {
+    _rewardTableViewCell = [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:_viewModel.reward];
+    [self.rewardInfoView addSubview:_rewardTableViewCell];
+  } else {
+    self.rewardInfoViewHeightConstraint = 0;
+  }
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
 
   [_verifyLocationLabel setText:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please come back later, or refresh your location.")];

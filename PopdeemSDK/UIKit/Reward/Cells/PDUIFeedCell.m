@@ -46,7 +46,7 @@
     [_captionLabel setFont:PopdeemFont(@"popdeem.home.tableView.feedCell.captionLabel.fontName", 12)];
     [_captionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.feedCell.captionLabel.fontColor")];
     [_captionLabel setNumberOfLines:1];
-    [_captionLabel sizeToFit];
+//    [_captionLabel sizeToFit];
     
     float floatingHeight = cellHeight;
     float joinedHeight = _nameLabel.frame.size.height + 5 + _captionLabel.frame.size.height;
