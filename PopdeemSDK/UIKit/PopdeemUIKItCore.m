@@ -19,7 +19,7 @@
 
 - (id)init {
   if (self = [super init]) {
-    [PDTheme setupWithFileName:@"default"];
+    [PDTheme setupWithFileName:@"default_theme"];
     self.socialLoginHandler = [PDUISocialLoginHandler new];
     self.rewardHandler = [PDRewardHandler new];
   }

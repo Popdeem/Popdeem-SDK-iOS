@@ -29,21 +29,10 @@
   [PopdeemSDK withAPIKey:@"43507f68-eeab-49e7-abf0-da099b14f17f"];
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
   [PopdeemSDK registerForPushNotificationsApplication:application];
-  [PopdeemSDK setUpThemeFile:@"theme"];
+//  [PopdeemSDK setUpThemeFile:@"theme"];
   [Fabric with:@[[Crashlytics class]]];
   //Test Moments
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
-  
-  for (NSString* family in [UIFont familyNames])
-  {
-    NSLog(@"%@", family);
-    
-    for (NSString* name in [UIFont fontNamesForFamilyName: family])
-    {
-      NSLog(@"  %@", name);
-    }
-  }
-
   
   return YES;
 }

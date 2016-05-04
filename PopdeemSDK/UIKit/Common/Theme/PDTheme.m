@@ -111,7 +111,11 @@ static const NSString *kVariablesKey = @"Variables";
 
     NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:ext];
     if (!filePath) {
-        [NSException raise:@"Theme not found" format:@""];
+			filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"default_theme" ofType:@"json"];
+			if (!filePath) {
+				[NSException raise:@"Error loading theme" format:@""];
+			}
+			NSLog(@"You did not specify a theme file, or it was not found. Using default theme file");
     }
 
     NSData *data = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:&error];
