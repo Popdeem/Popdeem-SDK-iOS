@@ -14,4 +14,4 @@ Any questions can be directed to me at niall@popdeem.com
 Sample projects can be built using this XCode project.
 
 ---
-*Updated by Fastlane on 03/May/2016 at 12:12:03*
+*Updated by Fastlane on 04/May/2016 at 17:21:34*
