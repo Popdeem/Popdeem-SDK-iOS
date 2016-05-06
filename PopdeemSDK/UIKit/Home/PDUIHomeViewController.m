@@ -24,7 +24,6 @@
 #import "PDUIFeedImageViewController.h"
 #import "PDRewardActionAPIService.h"
 #import "PDUIRedeemViewController.h"
-#import "ClaimViewController.h"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -101,7 +100,6 @@
   self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
   
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
-  //[_tableHeaderLabel setFont:PopdeemFont(@"popdeem.nav.fontName", 16.0f)];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   [self.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
   [self.model fetchRewards];
@@ -203,7 +201,7 @@
       return _model.rewards.count > 0 ? _model.rewards.count : 1;
       break;
     case 1:
-      NSLog(@"%i",_model.feed.count);
+      NSLog(@"%lu",(unsigned long)_model.feed.count);
       return _model.feed.count > 0 ? _model.feed.count : 1;
       break;
     case 2:

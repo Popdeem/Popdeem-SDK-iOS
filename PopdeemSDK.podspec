@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "PopdeemSDK"
-  s.version      = "1.0.1"
+  s.version      = "1.0.4"
   s.summary      = "PopdeemSDK is used to interact with the Popdeem API on iOS."
   s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
   s.homepage     = "https://github.com/Popdeem/Popdeem-SDK-iOS.git"
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'Core'
 
   s.subspec 'Core' do |core|
-    core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.h"
+core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
     core.dependency "FBSDKLoginKit"
     core.dependency "FBSDKCoreKit"

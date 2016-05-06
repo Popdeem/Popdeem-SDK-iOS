@@ -1,8 +1,9 @@
 {
   "popdeem" : {
+		
     "home" : {
       "header" : {
-        "backgroundColor" : "#0B1C39",
+        "backgroundColor" : "#40BADA",
         "textColor" : "#FFFFFF",
         "fontName" : "Avenir-Book"
       },
@@ -11,23 +12,24 @@
       },
       "tableView" : {
         "backgroundColor" : "#EBEBF2",
-        "backgroundImageName" : "KURE-bg",
         "seperatorColor" : "#C0C0C0",
         "rewardsCell" : {
+					"backgroundColor" : "#FFFFFF",
           "titleTextColor" : "#000000",
           "titleFontName" : "GothamRounded-Medium",
           "rulesTextColor" : "#A2A2A1",
           "rulesFontName" : "GothamRounded-Book",
-          "infoTextColor" : "#89C22E",
+          "infoTextColor" : "#40BADA",
           "infoFontName" : "GothamRounded-Book",
           "fontName" : "Avenir-Book"
         },
         "feedCell" : {
-          "nameTextColor" : "#0B1C39",
+          "nameTextColor" : "#40BADA",
           "defaultTextColor" : "#343333",
           "titleTextColor" : "#000000",
           "timeTextColor" : "#000000",
           "fontName" : "Avenir-Book",
+					"backgroundColor" : "#FFFFFF",
           "nameLabel" : {
             "fontName" : "GothamRounded-Bold",
             "fontColor" : "000000"
@@ -38,15 +40,16 @@
           }
         },
         "walletCell" : {
+					"backgroundColor" : "#FFFFFF",
           "titleTextColor" : "#000000",
           "defaultTextColor" : "#000000",
           "howToTitleTextColor" : "#000000",
           "howToBodyTextColor" : "#000000",
-          "redeemButtonColor" : "#0B1C39",
+          "redeemButtonColor" : "#40BADA",
           "redeemButtonTextColor" : "#FFFFFF",
           "fontName" : "Avenir-Book",
           "subtitleLabel" : {
-            "fontColor" : "#89C22E",
+            "fontColor" : "#40BADA",
             "fontName" : "GothamRounded-Book"
           }
         }
@@ -62,7 +65,7 @@
         "messageCell" : {
           "backgroundColor" : "#FFFFFF",
           "bodyTextColor" : "#000000",
-          "timeTextColor" : "#A2A2A1",
+          "timeTextColor" : "#40BADA",
           "fontName" : "Avenir-Book"
         }
       }
@@ -75,7 +78,7 @@
       },
       "timer" : {
         "fontName" : "Avenir-Book",
-        "fontColor" : "#0B1C39"
+        "fontColor" : "#40BADA"
       },
       "titleLabel" : {
         "fontName" : "Avenir-Book",
@@ -98,7 +101,7 @@
         "fontName" : "Avenir-Book"
       },
       "imageView" : {
-        "imageName" : "kure-image",
+        "imageName" : "pduikit_default_login",
         "backgroundColor" : "#FFFFFF"
       },
       "tagline" : {
@@ -120,24 +123,11 @@
     },
 
     "segmentedControl" : {
-      "selectedIndicator" : "#0B1C39",
+      "selectedIndicator" : "#40BADA",
       "backgroundColor" : "#FFFFFF",
       "textColor" : "#272626",
       "selectedTextColor" : "#272626",
       "fontName" : "Avenir-Book"
-    },
-    "global" : {
-      "backgroundGradientBaseColor" : "#FFFFFF",
-      "fontName" : "Avenir-Book"
-    },
-    "rewards" : {
-      "cell" : {
-        "titleTextColor" : "#FFFFFF",
-        "subtitleTextColor" : "#EBAA09",
-        "infoTextColor" : "#EBAA09",
-        "backgroundColor" : "#092359",
-        "fontName" : "Avenir-Book"
-      }
     },
     "rewardsHome" : {
       "header" : {
@@ -156,8 +146,8 @@
     "feed" : {
       "cell" : {
         "normalTextColor" : "#FFFFFF",
-        "nameTextColor" : "#EBAA09",
-        "timeTextColor" : "#EBAA09",
+        "nameTextColor" : "#40BADA",
+        "timeTextColor" : "#40BADA",
         "boldTextColor" : "#FFFFFF",
         "actionTextColor" : "#FFFFFF",
         "backgroundColor" : "#092359",

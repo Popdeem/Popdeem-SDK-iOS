@@ -9,15 +9,15 @@
 //  http://opensource.org/licenses/MIT
 //
 
-#import "PDCustomIOS7AlertView.h"
+#import "PDSDKCustomIOS7AlertView.h"
 #import <QuartzCore/QuartzCore.h>
 
-const static CGFloat kPDCustomIOS7AlertViewDefaultButtonHeight       = 50;
-const static CGFloat kPDCustomIOS7AlertViewDefaultButtonSpacerHeight = 1;
-const static CGFloat kPDCustomIOS7AlertViewCornerRadius              = 7;
-const static CGFloat kPDCustomIOS7MotionEffectExtent                 = 10.0;
+const static CGFloat kPDSDKCustomIOS7AlertViewDefaultButtonHeight       = 50;
+const static CGFloat kPDSDKCustomIOS7AlertViewDefaultButtonSpacerHeight = 1;
+const static CGFloat kPDSDKCustomIOS7AlertViewCornerRadius              = 7;
+const static CGFloat kPDSDKCustomIOS7MotionEffectExtent                 = 10.0;
 
-@implementation PDCustomIOS7AlertView
+@implementation PDSDKCustomIOS7AlertView
 
 CGFloat buttonHeight = 0;
 CGFloat buttonSpacerHeight = 0;
@@ -130,7 +130,7 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 // Default button behaviour
-- (void)customIOS7dialogButtonTouchUpInside: (PDCustomIOS7AlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)customIOS7dialogButtonTouchUpInside: (PDSDKCustomIOS7AlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
   NSLog(@"Button Clicked! %d, %d", (int)buttonIndex, (int)[alertView tag]);
   [self close];
@@ -192,7 +192,7 @@ CGFloat buttonSpacerHeight = 0;
                      (id)[[UIColor colorWithRed:218.0/255.0 green:218.0/255.0 blue:218.0/255.0 alpha:1.0f] CGColor],
                      nil];
   
-  CGFloat cornerRadius = kPDCustomIOS7AlertViewCornerRadius;
+  CGFloat cornerRadius = kPDSDKCustomIOS7AlertViewCornerRadius;
   gradient.cornerRadius = cornerRadius;
   [dialogContainer.layer insertSublayer:gradient atIndex:0];
   
@@ -240,7 +240,7 @@ CGFloat buttonSpacerHeight = 0;
     [closeButton setTitleColor:[UIColor colorWithRed:0.0f green:0.5f blue:1.0f alpha:1.0f] forState:UIControlStateNormal];
     [closeButton setTitleColor:[UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:0.5f] forState:UIControlStateHighlighted];
     [closeButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
-    [closeButton.layer setCornerRadius:kPDCustomIOS7AlertViewCornerRadius];
+    [closeButton.layer setCornerRadius:kPDSDKCustomIOS7AlertViewCornerRadius];
     
     [container addSubview:closeButton];
   }
@@ -259,8 +259,8 @@ CGFloat buttonSpacerHeight = 0;
 - (CGSize)countScreenSize
 {
   if (buttonTitles!=NULL && [buttonTitles count] > 0) {
-    buttonHeight       = kPDCustomIOS7AlertViewDefaultButtonHeight;
-    buttonSpacerHeight = kPDCustomIOS7AlertViewDefaultButtonSpacerHeight;
+    buttonHeight       = kPDSDKCustomIOS7AlertViewDefaultButtonHeight;
+    buttonSpacerHeight = kPDSDKCustomIOS7AlertViewDefaultButtonSpacerHeight;
   } else {
     buttonHeight = 0;
     buttonSpacerHeight = 0;
@@ -289,13 +289,13 @@ CGFloat buttonSpacerHeight = 0;
   
   UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x"
                                                                                                   type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-  horizontalEffect.minimumRelativeValue = @(-kPDCustomIOS7MotionEffectExtent);
-  horizontalEffect.maximumRelativeValue = @( kPDCustomIOS7MotionEffectExtent);
+  horizontalEffect.minimumRelativeValue = @(-kPDSDKCustomIOS7MotionEffectExtent);
+  horizontalEffect.maximumRelativeValue = @( kPDSDKCustomIOS7MotionEffectExtent);
   
   UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y"
                                                                                                 type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-  verticalEffect.minimumRelativeValue = @(-kPDCustomIOS7MotionEffectExtent);
-  verticalEffect.maximumRelativeValue = @( kPDCustomIOS7MotionEffectExtent);
+  verticalEffect.minimumRelativeValue = @(-kPDSDKCustomIOS7MotionEffectExtent);
+  verticalEffect.maximumRelativeValue = @( kPDSDKCustomIOS7MotionEffectExtent);
   
   UIMotionEffectGroup *motionEffectGroup = [[UIMotionEffectGroup alloc] init];
   motionEffectGroup.motionEffects = @[horizontalEffect, verticalEffect];

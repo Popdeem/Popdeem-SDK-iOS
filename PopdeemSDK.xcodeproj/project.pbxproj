@@ -79,7 +79,7 @@
 		39ABA6621C4D06ED0057088E /* PDUIHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA6611C4D06ED0057088E /* PDUIHomeViewController.m */; };
 		39ABA6651C4D073D0057088E /* PDUIHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA6641C4D073D0057088E /* PDUIHomeViewModel.m */; };
 		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
-		39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */; };
+		39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
 		39D3F8221CB2BDB900A69575 /* PDUIFriendPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F8211CB2BDB900A69575 /* PDUIFriendPickerViewController.m */; };
 		39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDUIRedeemViewController.m */; };
@@ -204,7 +204,7 @@
 		3921E30B1C71D84B000120D4 /* PDUIFeedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIFeedImageViewController.m; path = Feed/PDUIFeedImageViewController.m; sourceTree = "<group>"; };
 		3921E30E1C71DD68000120D4 /* PDUISingleMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISingleMessageViewController.h; path = MessageCenter/PDUISingleMessageViewController.h; sourceTree = "<group>"; };
 		3921E30F1C71DD68000120D4 /* PDUISingleMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISingleMessageViewController.m; path = MessageCenter/PDUISingleMessageViewController.m; sourceTree = "<group>"; };
-		3921E3101C71DD68000120D4 /* PDSingleMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDSingleMessageViewController.xib; path = MessageCenter/PDSingleMessageViewController.xib; sourceTree = "<group>"; };
+		3921E3101C71DD68000120D4 /* PDUISingleMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUISingleMessageViewController.xib; path = MessageCenter/PDUISingleMessageViewController.xib; sourceTree = "<group>"; };
 		3921E3121C71E1BB000120D4 /* PDUISingleMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISingleMessageViewModel.h; path = MessageCenter/PDUISingleMessageViewModel.h; sourceTree = "<group>"; };
 		3921E3131C71E1BB000120D4 /* PDUISingleMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISingleMessageViewModel.m; path = MessageCenter/PDUISingleMessageViewModel.m; sourceTree = "<group>"; };
 		392423741C230F4E0038D953 /* PDUILazyLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUILazyLoader.h; path = Utilities/PDUILazyLoader.h; sourceTree = "<group>"; };
@@ -326,8 +326,8 @@
 		39BB0DDE1C89DBF5008FCB8C /* pduikit_popdeemArrowB@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pduikit_popdeemArrowB@3x.png"; sourceTree = "<group>"; };
 		39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNotificationHandler.h; sourceTree = "<group>"; };
 		39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNotificationHandler.m; sourceTree = "<group>"; };
-		39BF5AE21C1ED3B0000BF32E /* PDCustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCustomIOS7AlertView.h; sourceTree = "<group>"; };
-		39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCustomIOS7AlertView.m; sourceTree = "<group>"; };
+		39BF5AE21C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSDKCustomIOS7AlertView.h; sourceTree = "<group>"; };
+		39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSDKCustomIOS7AlertView.m; sourceTree = "<group>"; };
 		39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessageAPIService.h; sourceTree = "<group>"; };
 		39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessageAPIService.m; sourceTree = "<group>"; };
 		39D3F8121CADC31400A69575 /* pduikit_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_x.png; path = Resources/pduikit_x.png; sourceTree = "<group>"; };
@@ -603,7 +603,7 @@
 			children = (
 				3921E30E1C71DD68000120D4 /* PDUISingleMessageViewController.h */,
 				3921E30F1C71DD68000120D4 /* PDUISingleMessageViewController.m */,
-				3921E3101C71DD68000120D4 /* PDSingleMessageViewController.xib */,
+				3921E3101C71DD68000120D4 /* PDUISingleMessageViewController.xib */,
 				3921E3121C71E1BB000120D4 /* PDUISingleMessageViewModel.h */,
 				3921E3131C71E1BB000120D4 /* PDUISingleMessageViewModel.m */,
 			);
@@ -1025,8 +1025,8 @@
 				BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */,
 				39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */,
 				39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */,
-				39BF5AE21C1ED3B0000BF32E /* PDCustomIOS7AlertView.h */,
-				39BF5AE31C1ED3B0000BF32E /* PDCustomIOS7AlertView.m */,
+				39BF5AE21C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.h */,
+				39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */,
 				3921E3061C6DEA51000120D4 /* PDLocationValidator.h */,
 				3921E3071C6DEA51000120D4 /* PDLocationValidator.m */,
 				395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */,
@@ -1829,7 +1829,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39BF5AE41C1ED3B0000BF32E /* PDCustomIOS7AlertView.m in Sources */,
+				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
 				39A9898E1C3BE8F2002AF910 /* PDUIRewardHomeTableViewController.m in Sources */,
 				39ABA6581C47A9030057088E /* PDUIWalletCache.m in Sources */,
 				A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */,

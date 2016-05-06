@@ -53,7 +53,7 @@
 
 "popdeem.home.header.titleText" = "Share your Popdeem experience on social networks to earn more rewards.";
 "popdeem.home.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
-
+"popdeem.home.title" = "Rewards";
 "popdeem.message.detail.senderTag" = "Sender:";
 "popdeem.message.detail.dateTag" = "Date:";
 "popdeem.message.detail.titleTag" = "Title:";

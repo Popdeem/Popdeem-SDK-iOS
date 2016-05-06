@@ -11,23 +11,23 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol PDCustomIOS7AlertViewDelegate
+@protocol PDSDKCustomIOS7AlertViewDelegate
 
 - (void) customIOS7dialogButtonTouchUpInside:(id)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
 
-@interface PDCustomIOS7AlertView : UIView<PDCustomIOS7AlertViewDelegate>
+@interface PDSDKCustomIOS7AlertView : UIView<PDSDKCustomIOS7AlertViewDelegate>
 
 @property (nonatomic, retain) UIView *parentView;    // The parent view this 'dialog' is attached to
 @property (nonatomic, retain) UIView *dialogView;    // Dialog's container view
 @property (nonatomic, retain) UIView *containerView; // Container within the dialog (place your ui elements here)
 
-@property (nonatomic, assign) id<PDCustomIOS7AlertViewDelegate> delegate;
+@property (nonatomic, assign) id<PDSDKCustomIOS7AlertViewDelegate> delegate;
 @property (nonatomic, retain) NSArray *buttonTitles;
 @property (nonatomic, assign) BOOL useMotionEffects;
 
-@property (copy) void (^onButtonTouchUpInside)(PDCustomIOS7AlertView *alertView, int buttonIndex) ;
+@property (copy) void (^onButtonTouchUpInside)(PDSDKCustomIOS7AlertView *alertView, int buttonIndex) ;
 
 - (id)init;
 
@@ -40,7 +40,7 @@
 - (void)close;
 
 - (IBAction)customIOS7dialogButtonTouchUpInside:(id)sender;
-- (void)setOnButtonTouchUpInside:(void (^)(PDCustomIOS7AlertView *alertView, int buttonIndex))onButtonTouchUpInside;
+- (void)setOnButtonTouchUpInside:(void (^)(PDSDKCustomIOS7AlertView *alertView, int buttonIndex))onButtonTouchUpInside;
 
 - (void)deviceOrientationDidChange: (NSNotification *)notification;
 - (void)dealloc;

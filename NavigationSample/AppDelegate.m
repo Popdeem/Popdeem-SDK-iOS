@@ -28,7 +28,7 @@
   // UIKIT
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
   [PopdeemSDK registerForPushNotificationsApplication:application];
-  [PopdeemSDK setUpThemeFile:@"theme"];
+//  [PopdeemSDK setUpThemeFile:@"theme"];
   [Fabric with:@[[Crashlytics class]]];
   return YES;
 }

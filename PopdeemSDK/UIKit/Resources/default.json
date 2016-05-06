@@ -1,5 +1,132 @@
 {
-  "popdeem.nav.background" : "#D12139",
-  "popdeem.nav.buttonTextColor" : "#FFFFFF",
-  "popdeem.nav.titleColor" : "#FFFFFF"
+	"popdeem" : {
+		"home" : {
+			"header" : {
+				"backgroundColor" : "#2980b9",
+				"textColor" : "#FFFFFF",
+				"fontName" : "Avenir-Book"
+			},
+			"tableView" : {
+				"backgroundColor" : "#EBEBF2",
+				"seperatorColor" : "#C0C0C0",
+				"rewardsCell" : {
+					"backgroundColor" : "#FFFFFF",
+					"titleTextColor" : "#000000",
+					"rulesTextColor" : "#A2A2A1",
+					"infoTextColor" : "#2980b9",
+					"fontName" : "Avenir-Book"
+				},
+				"feedCell" : {
+					"backgroundColor" : "#FFFFFF",
+					"nameTextColor" : "#2980b9",
+					"defaultTextColor" : "#343333",
+					"titleTextColor" : "#000000",
+					"timeTextColor" : "#000000",
+					"fontName" : "Avenir-Book"
+				},
+				"walletCell" : {
+					"backgroundColor" : "FFFFFF",
+					"titleTextColor" : "#000000",
+					"defaultTextColor" : "#000000",
+					"howToTitleTextColor" : "#000000",
+					"howToBodyTextColor" : "#000000",
+					"redeemButtonColor" : "#2980b9",
+					"redeemButtonTextColor" : "#FFFFFF",
+					"fontName" : "Avenir-Book"
+				}
+			},
+			"inboxButton" : {
+				"tintColor" : "#FFFFFF"
+			}
+		},
+		"messageCenter" : {
+			"tableView" : {
+				"backgroundColor" : "#EBEBF2",
+				"seperatorColor" : "#C0C0C0",
+				"messageCell" : {
+					"backgroundColor" : "#FFFFFF",
+					"bodyTextColor" : "#000000",
+					"timeTextColor" : "#A2A2A1",
+					"fontName" : "Avenir-Book"
+				}
+			}
+		},
+		"redeem" : {
+			"redeemButton" : {
+				"fontName" : "Avenir-Book",
+				"fontColor" : "#FFFFFF",
+				"backgroundColor" : "#2980b9"
+			},
+			"timer" : {
+				"fontName" : "Avenir-Book",
+				"fontColor" : "#2980b9"
+			},
+			"titleLabel" : {
+				"fontName" : "Avenir-Book",
+				"fontColor" : "#000000"
+			},
+			"descriptionLabel" : {
+				"fontName" : "Avenir-Book",
+				"fontColor" : "#000000"
+			}
+		},
+		"login" : {
+			"continueButton" : {
+				"background" : "#3C9915",
+				"textColor" : "#FFFFFF",
+				"fontName" : "Avenir-Book"
+			}
+		},
+		"nav" : {
+			"textColor" : "#FFFFFF",
+			"backgroundColor" : "#2980b9",
+			"buttonTextColor" : "#FFFFFF",
+			"fontName" : "Avenir-Book"
+		},
+		"segmentedControl" : {
+			"selectedIndicator" : "#2980b9",
+			"backgroundColor" : "#FFFFFF",
+			"textColor" : "#272626",
+			"selectedTextColor" : "#272626",
+			"fontName" : "Avenir-Book"
+		},
+		"global" : {
+			"backgroundGradientBaseColor" : "#FFFFFF",
+			"fontName" : "Avenir-Book"
+		},
+		"rewards" : {
+			"cell" : {
+				"titleTextColor" : "#FFFFFF",
+				"subtitleTextColor" : "#EBAA09",
+				"infoTextColor" : "#EBAA09",
+				"backgroundColor" : "#092359",
+				"fontName" : "Avenir-Book"
+			}
+		},
+		"rewardsHome" : {
+			"header" : {
+				"backgroundImageName" : "rewardsHomeHeaderImage",
+				"backgroundColor" : "#092359",
+				"textColor" : "#FFFFFF",
+				"fontName" : "Avenir-Book"
+			},
+			"backgroundImage" : "#C0C0C0",
+			"backgroundColor" : "#092359",
+			"tableView" : {
+				"backgroundColor" : "#092359",
+				"seperatorColor" : "#C0C0C0",
+			}
+		},
+		"feed" : {
+			"cell" : {
+				"normalTextColor" : "#FFFFFF",
+				"nameTextColor" : "#EBAA09",
+				"timeTextColor" : "#EBAA09",
+				"boldTextColor" : "#FFFFFF",
+				"actionTextColor" : "#FFFFFF",
+				"backgroundColor" : "#092359",
+				"fontName" : "Avenir-Book"
+			}
+		}
+	}
 }

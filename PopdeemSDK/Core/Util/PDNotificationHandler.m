@@ -17,7 +17,7 @@
 @property (nonatomic) BOOL shouldGoToDeepLink;
 @property (nonatomic, retain) NSString *deeplink;
 @property (nonatomic, copy) void (^completionBlock)(BOOL);
-@property (nonatomic, strong) PDCustomIOS7AlertView *alertView;
+@property (nonatomic, strong) PDSDKCustomIOS7AlertView *alertView;
 @end
 
 @implementation PDNotificationHandler
@@ -68,7 +68,7 @@
     image = [UIImage imageWithData:imageData];
   }
   
-  _alertView = [[PDCustomIOS7AlertView alloc] init];
+  _alertView = [[PDSDKCustomIOS7AlertView alloc] init];
   
   UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 180)];
   
@@ -121,7 +121,7 @@
   }
 }
 
-- (void) presentUrlAlert:(PDCustomIOS7AlertView*)alertView url:(NSString*)url {
+- (void) presentUrlAlert:(PDSDKCustomIOS7AlertView*)alertView url:(NSString*)url {
   _url = url;
   _shouldGoToUrl = YES;
   _shouldGoToDeepLink = NO;
@@ -131,7 +131,7 @@
   [alertView show];
 }
 
-- (void) presentDeepLinkAlert:(PDCustomIOS7AlertView*)alertView deepLink:(NSString*)deepLink {
+- (void) presentDeepLinkAlert:(PDSDKCustomIOS7AlertView*)alertView deepLink:(NSString*)deepLink {
   _deeplink = deepLink;
   _shouldGoToDeepLink = YES;
   _shouldGoToUrl = NO;
@@ -141,7 +141,7 @@
   [alertView show];
 }
 
-- (void) presentAppAlert:(PDCustomIOS7AlertView*)alertView {
+- (void) presentAppAlert:(PDSDKCustomIOS7AlertView*)alertView {
   _shouldGoToUrl = NO;
   _shouldGoToDeepLink = NO;
   [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"OK", nil]];
