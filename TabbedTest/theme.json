@@ -16,11 +16,11 @@
         "rewardsCell" : {
 					"backgroundColor" : "#FFFFFF",
           "titleTextColor" : "#000000",
-          "titleFontName" : "GothamRounded-Medium",
+          "titleFontName" : "Avenir-Medium",
           "rulesTextColor" : "#A2A2A1",
-          "rulesFontName" : "GothamRounded-Book",
+          "rulesFontName" : "Avenir-Book",
           "infoTextColor" : "#40BADA",
-          "infoFontName" : "GothamRounded-Book",
+          "infoFontName" : "Avenir-Book",
           "fontName" : "Avenir-Book"
         },
         "feedCell" : {
@@ -31,11 +31,11 @@
           "fontName" : "Avenir-Book",
 					"backgroundColor" : "#FFFFFF",
           "nameLabel" : {
-            "fontName" : "GothamRounded-Bold",
+            "fontName" : "Avenir-Bold",
             "fontColor" : "000000"
           },
           "captionLabel" : {
-            "fontName" : "GothamRounded-Book",
+            "fontName" : "Avenir-Book",
             "fontColor" : "#454545"
           }
         },
@@ -50,7 +50,7 @@
           "fontName" : "Avenir-Book",
           "subtitleLabel" : {
             "fontColor" : "#40BADA",
-            "fontName" : "GothamRounded-Book"
+            "fontName" : "Avenir-Book"
           }
         }
       },

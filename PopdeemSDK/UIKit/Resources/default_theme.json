@@ -1,10 +1,14 @@
 {
 	"popdeem" : {
+		
 		"home" : {
 			"header" : {
-				"backgroundColor" : "#2980b9",
+				"backgroundColor" : "#40BADA",
 				"textColor" : "#FFFFFF",
 				"fontName" : "Avenir-Book"
+			},
+			"messagePopup" : {
+				"font" : "Avenir-Book",
 			},
 			"tableView" : {
 				"backgroundColor" : "#EBEBF2",
@@ -12,27 +16,42 @@
 				"rewardsCell" : {
 					"backgroundColor" : "#FFFFFF",
 					"titleTextColor" : "#000000",
+					"titleFontName" : "Avenir-Medium",
 					"rulesTextColor" : "#A2A2A1",
-					"infoTextColor" : "#2980b9",
+					"rulesFontName" : "Avenir-Book",
+					"infoTextColor" : "#40BADA",
+					"infoFontName" : "Avenir-Book",
 					"fontName" : "Avenir-Book"
 				},
 				"feedCell" : {
-					"backgroundColor" : "#FFFFFF",
-					"nameTextColor" : "#2980b9",
+					"nameTextColor" : "#40BADA",
 					"defaultTextColor" : "#343333",
 					"titleTextColor" : "#000000",
 					"timeTextColor" : "#000000",
-					"fontName" : "Avenir-Book"
+					"fontName" : "Avenir-Book",
+					"backgroundColor" : "#FFFFFF",
+					"nameLabel" : {
+						"fontName" : "Avenir-Bold",
+						"fontColor" : "000000"
+					},
+					"captionLabel" : {
+						"fontName" : "Avenir-Book",
+						"fontColor" : "#454545"
+					}
 				},
 				"walletCell" : {
-					"backgroundColor" : "FFFFFF",
+					"backgroundColor" : "#FFFFFF",
 					"titleTextColor" : "#000000",
 					"defaultTextColor" : "#000000",
 					"howToTitleTextColor" : "#000000",
 					"howToBodyTextColor" : "#000000",
-					"redeemButtonColor" : "#2980b9",
+					"redeemButtonColor" : "#40BADA",
 					"redeemButtonTextColor" : "#FFFFFF",
-					"fontName" : "Avenir-Book"
+					"fontName" : "Avenir-Book",
+					"subtitleLabel" : {
+						"fontColor" : "#40BADA",
+						"fontName" : "Avenir-Book"
+					}
 				}
 			},
 			"inboxButton" : {
@@ -46,7 +65,7 @@
 				"messageCell" : {
 					"backgroundColor" : "#FFFFFF",
 					"bodyTextColor" : "#000000",
-					"timeTextColor" : "#A2A2A1",
+					"timeTextColor" : "#40BADA",
 					"fontName" : "Avenir-Book"
 				}
 			}
@@ -55,11 +74,11 @@
 			"redeemButton" : {
 				"fontName" : "Avenir-Book",
 				"fontColor" : "#FFFFFF",
-				"backgroundColor" : "#2980b9"
+				"backgroundColor" : "#0B1C39"
 			},
 			"timer" : {
 				"fontName" : "Avenir-Book",
-				"fontColor" : "#2980b9"
+				"fontColor" : "#40BADA"
 			},
 			"titleLabel" : {
 				"fontName" : "Avenir-Book",
@@ -68,6 +87,11 @@
 			"descriptionLabel" : {
 				"fontName" : "Avenir-Book",
 				"fontColor" : "#000000"
+			},
+			"doneButton" : {
+				"backgroundColor" : "#0B1C39",
+				"fontColor" : "#FFFFFF",
+				"font" : "Avenir-Book"
 			}
 		},
 		"login" : {
@@ -75,33 +99,35 @@
 				"background" : "#3C9915",
 				"textColor" : "#FFFFFF",
 				"fontName" : "Avenir-Book"
+			},
+			"imageView" : {
+				"imageName" : "pduikit_default_login",
+				"backgroundColor" : "#FFFFFF"
+			},
+			"tagline" : {
+				"font" : "Avenir-Medium",
+				"color" : "#000000"
+			},
+			"heading" : {
+				"font" : "Avenir-Heavy",
+				"color" : "#000000"
+			},
+			"body" : {
+				"font" : "Avenir-Book",
+				"color" : "#454444"
+			},
+			"terms" : {
+				"font" : "Avenir-Book",
+				"color" : "#454444"
 			}
 		},
-		"nav" : {
-			"textColor" : "#FFFFFF",
-			"backgroundColor" : "#2980b9",
-			"buttonTextColor" : "#FFFFFF",
-			"fontName" : "Avenir-Book"
-		},
+		
 		"segmentedControl" : {
-			"selectedIndicator" : "#2980b9",
+			"selectedIndicator" : "#40BADA",
 			"backgroundColor" : "#FFFFFF",
 			"textColor" : "#272626",
 			"selectedTextColor" : "#272626",
 			"fontName" : "Avenir-Book"
-		},
-		"global" : {
-			"backgroundGradientBaseColor" : "#FFFFFF",
-			"fontName" : "Avenir-Book"
-		},
-		"rewards" : {
-			"cell" : {
-				"titleTextColor" : "#FFFFFF",
-				"subtitleTextColor" : "#EBAA09",
-				"infoTextColor" : "#EBAA09",
-				"backgroundColor" : "#092359",
-				"fontName" : "Avenir-Book"
-			}
 		},
 		"rewardsHome" : {
 			"header" : {
@@ -120,12 +146,26 @@
 		"feed" : {
 			"cell" : {
 				"normalTextColor" : "#FFFFFF",
-				"nameTextColor" : "#EBAA09",
-				"timeTextColor" : "#EBAA09",
+				"nameTextColor" : "#40BADA",
+				"timeTextColor" : "#40BADA",
 				"boldTextColor" : "#FFFFFF",
 				"actionTextColor" : "#FFFFFF",
 				"backgroundColor" : "#092359",
 				"fontName" : "Avenir-Book"
+			}
+		},
+		"claim" : {
+			"fontName" : "Avenir-Book",
+			"fontColor" : "#000000",
+			"withLabel" : {
+				"highlightedFontColor" : "#0B1C39",
+				"fontColor" : "#C0C0C0",
+				"font" : "Avenir-Book"
+			},
+			"locationVerification" : {
+				"backgroundColor" : "#34495e",
+				"fontColor" : "#000000",
+				"font" : "Avenir-Book"
 			}
 		}
 	}
