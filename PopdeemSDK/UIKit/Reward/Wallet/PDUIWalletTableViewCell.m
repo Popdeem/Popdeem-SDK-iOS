@@ -48,12 +48,14 @@
     [_descriptionLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
     [_descriptionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.walletCell.titleTextColor")];
     [self addSubview:_descriptionLabel];
-    
-    _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, _descriptionLabel.frame.size.height, labelWidth, 40)];
-    _subtitleLabel.numberOfLines = 2;
-    [_subtitleLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.subtitleLabel.fontName", 12)];
-    [_subtitleLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.walletCell.subtitleLabel.fontColor")];
-    [self addSubview:_subtitleLabel];
+		
+		if (reward.type != PDRewardTypeCredit) {
+			_subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, _descriptionLabel.frame.size.height, labelWidth, 40)];
+			_subtitleLabel.numberOfLines = 2;
+			[_subtitleLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.subtitleLabel.fontName", 12)];
+			[_subtitleLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.walletCell.subtitleLabel.fontColor")];
+			[self addSubview:_subtitleLabel];
+		}
     
     if (![reward.rewardDescription isKindOfClass:[NSNull class]]) {
       if (reward.type == PDRewardTypeCredit) {
@@ -82,8 +84,9 @@
     
     [_descriptionLabel sizeToFit];
     [_subtitleLabel sizeToFit];
-    
-    float labelsJoined = _descriptionLabel.frame.size.height + _subtitleLabel.frame.size.height + 5;
+		
+		float buffer = reward.type == PDRewardTypeCredit ? 0 : 5;
+		float labelsJoined = _descriptionLabel.frame.size.height + _subtitleLabel.frame.size.height + buffer;
     float paddingTop = (frame.size.height - labelsJoined)/2;
     [_descriptionLabel setFrame:CGRectMake(_descriptionLabel.frame.origin.x, paddingTop, labelWidth, _descriptionLabel.frame.size.height)];
     [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, paddingTop+_descriptionLabel.frame.size.height+5, labelWidth, _subtitleLabel.frame.size.height)];

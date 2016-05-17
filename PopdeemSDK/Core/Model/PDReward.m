@@ -130,7 +130,7 @@
     }
     
     self.countdownTimerDuration = 300;
-    if ([params[@"countown_timer"] isKindOfClass:[NSString class]]) {
+    if (params[@"countdown_timer"] != nil) {
       self.countdownTimerDuration = [params[@"countdown_timer"] integerValue];
     }
     

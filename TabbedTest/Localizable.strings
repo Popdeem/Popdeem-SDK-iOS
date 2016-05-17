@@ -59,6 +59,12 @@
 
 "popdeem.home.header.titleText" = "Share your Popdeem experience on social networks to earn more rewards.";
 "popdeem.home.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
+"popdeem.home.infoCell.noRewards" = "There are no Rewards available right now. Please check back later.";
+"popdeem.home.infoCell.noWallet" = "There are nothing in your Wallet right now. Please check back later.";
+"popdeem.home.infoCell.noFeed" = "There are nothing in the Feed right now. Please check back later.";
+"popdeem.home.infoCell.loadingRewards" = "Please wait, we are loading your Rewards.";
+"popdeem.home.infoCell.loadingFeed" = "Please wait, we are loading the Feed.";
+"popdeem.home.infoCell.loadingWallet" = "Please wait, we are loading your Wallet.";
 
 "popdeem.message.detail.senderTag" = "Sender:";
 "popdeem.message.detail.dateTag" = "Date:";
@@ -81,6 +87,10 @@
 
 "popdeem.wallet.unlimitedReward.sweepstake.expiryString" = "There is no date set for this draw.";
 
+"popdeem.location.denied.alert.title" = "Location Services Disabled";
+"popdeem.location.denied.alert.body" = "In order to claim this reward, we must verify your location. Please enable locatio services for this app in Settings";
+"popdeem.location.denied.alert.cancelButtonText" = "Not Now";
+"popdeem.location.denied.alert.settingsButtonText" = "Go to Settings";
 
 
 

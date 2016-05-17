@@ -71,6 +71,7 @@ extern NSString *const kEncodeKeyPDBrandLogoUrlString;
 extern NSString *const kEncodeKeyPDRewardTypeString;
 extern NSString *const kEncodeKeyPDTimeAgoString;
 extern NSString *const kEncodeKeyPDUserProfileImage;
+extern NSString *const kEncodeKeyPDCaptionString;
 //
 // End NSCoding Keys
 //

@@ -35,7 +35,7 @@
     if (message.image) {
       [_logoView setImage:message.image];
     } else {
-      [_logoView setImage:[UIImage imageNamed:@"pduikit_starG"]];
+      [_logoView setImage:[UIImage imageNamed:@"pduikit_mailCircle"]];
     }
     [self addSubview:_logoView];
     
@@ -119,9 +119,9 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-  [super setSelected:selected animated:animated];
-  
-  // Configure the view for the selected state
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
 }
 
 @end

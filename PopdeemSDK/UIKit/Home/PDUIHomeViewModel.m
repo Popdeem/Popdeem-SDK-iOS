@@ -194,7 +194,7 @@
     [_tableHeaderLabel setNumberOfLines:3];
     [_tableHeaderLabel setFont:PopdeemFont(@"popdeem.home.header.fontName",16)];
     [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
-    [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
+    [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
     [_tableHeaderLabel sizeToFit];
     [_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];
     [_controller.tableView.tableHeaderView addSubview:_tableHeaderLabel];

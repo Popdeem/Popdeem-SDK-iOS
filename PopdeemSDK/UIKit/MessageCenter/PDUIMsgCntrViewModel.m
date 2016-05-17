@@ -45,14 +45,9 @@
     }
     weakSelf.messages = messages;
     weakSelf.messagesLoading = NO;
-    [PDUILazyLoader loadMessageImagesCompletion:^(BOOL success){
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.controller.tableView reloadData];
-      });
-    }];
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.controller.tableView reloadData];
-    });
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[weakSelf.controller.tableView reloadData];
+		});
   }];
 }
 

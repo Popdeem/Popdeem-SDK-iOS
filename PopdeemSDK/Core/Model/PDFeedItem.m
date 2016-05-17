@@ -99,6 +99,7 @@
   [aCoder encodeObject:self.brandName forKey:kEncodeKeyPDBrandName];
   [aCoder encodeObject:self.imageUrlString forKey:kEncodeKeyPDImageUrlString];
   [aCoder encodeObject:self.actionImage forKey:kEncodeKeyPDActionImage];
+	[aCoder encodeObject:self.captionString forKey:kEncodeKeyPDCaptionString];
   [aCoder encodeObject:self.rewardTypeString forKey:kEncodeKeyPDRewardTypeString];
   [aCoder encodeObject:self.userProfilePicUrlString forKey:kEncodeKeyPDUserProfilePictureString];
   [aCoder encodeObject:self.userFirstName forKey:kEncodeKeyPDUserFirstName];
@@ -125,6 +126,7 @@
     self.timeAgoString = [aDecoder decodeObjectForKey:kEncodeKeyPDTimeAgoString];
     self.descriptionString = [aDecoder decodeObjectForKey:kEncodeKeyPDDescriptionString];
     self.profileImage = [aDecoder decodeObjectForKey:kEncodeKeyPDUserProfileImage];
+		self.captionString = [aDecoder decodeObjectForKey:kEncodeKeyPDCaptionString];
     return self;
   }
   return nil;

@@ -91,15 +91,15 @@
     
     if (_viewController.shouldAskLocation) {
       [self fetchLocationCompletion:^(NSError *error){
-        if (error) {
-          NSLog(@"Something went wrong: %@",error);
-          [[PDSocialMediaManager manager] logoutFacebook];
-          dispatch_async(dispatch_get_main_queue(), ^{
-            [self.loadingView hideAnimated:YES];
-          });
-          return;
-        }
-        
+//        if (error) {
+//          NSLog(@"Something went wrong: %@",error);
+//          [[PDSocialMediaManager manager] logoutFacebook];
+//          dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.loadingView hideAnimated:YES];
+//          });
+//          return;
+//        }
+				
         [self renderSuccess];
       }];
     } else {
@@ -133,7 +133,6 @@
       [[PDGeolocationManager sharedInstance] requestWhenInUseAuthorization];
     }
   } else if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-    //Cannot use the app without location
     [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
     NSLog(@"The user did not allow their location");
     NSError *locationError = [NSError errorWithDomain:@"Popdeem Location Error" code:27000 userInfo:@{@"User did not allow location":NSLocalizedDescriptionKey}];
@@ -172,7 +171,12 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-  
+	if (error.code == kCLErrorDenied) {
+		NSLog(@"User Denied Location");
+		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+		_locationAcquired = YES;
+		self.locationBlock(error);
+	}
   if (_locationAcquired == NO) {
     NSLog(@"Error: %@",error);
     [[PDGeolocationManager sharedInstance] stopUpdatingLocation];

@@ -29,7 +29,7 @@
     if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.rewardsCell.backgroundColor")) {
       [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor")];
     }
-    [infoLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.titleTextColor")];
+    [infoLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.infoCell.titleTextColor")];
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     return self;
   }

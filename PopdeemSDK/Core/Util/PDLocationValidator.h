@@ -11,7 +11,7 @@
 #import "PDReward.h"
 #import "PDLocation.h"
 
-@interface PDLocationValidator : NSObject <CLLocationManagerDelegate>
+@interface PDLocationValidator : NSObject <CLLocationManagerDelegate, UIAlertViewDelegate>
 
 - (void) validateLocationForReward:(PDReward*)reward completion:(void (^)(BOOL valdated, PDLocation *closestLocation))completion;
 

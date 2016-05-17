@@ -44,8 +44,8 @@
 		3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
 		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
+		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
-		398A11DB1C60B748002CB4B6 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11D91C60B748002CB4B6 /* PDUIMessageCell.m */; };
 		398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
@@ -267,11 +267,11 @@
 		396B15661C3BC40600FC774D /* PDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDViewController.m; sourceTree = "<group>"; };
 		396B15681C3BC66900FC774D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		39730B271CE23D9A004B37A1 /* PDUIMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageCell.h; path = MessageCenter/PDUIMessageCell.h; sourceTree = "<group>"; };
+		39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageCell.m; path = MessageCenter/PDUIMessageCell.m; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
 		397E10751C4D253800B924D0 /* PDUIHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIHomeViewController.xib; path = Home/PDUIHomeViewController.xib; sourceTree = "<group>"; };
-		398A11D81C60B748002CB4B6 /* PDUIMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageCell.h; path = MessageCenter/PDUIMessageCell.h; sourceTree = "<group>"; };
-		398A11D91C60B748002CB4B6 /* PDUIMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageCell.m; path = MessageCenter/PDUIMessageCell.m; sourceTree = "<group>"; };
 		398A11DA1C60B748002CB4B6 /* PDUIMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMessageCell.xib; path = MessageCenter/PDUIMessageCell.xib; sourceTree = "<group>"; };
 		398A11DC1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMsgCntrViewModel.h; path = MessageCenter/PDUIMsgCntrViewModel.h; sourceTree = "<group>"; };
 		398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMsgCntrViewModel.m; path = MessageCenter/PDUIMsgCntrViewModel.m; sourceTree = "<group>"; };
@@ -703,9 +703,9 @@
 				398A11DC1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.h */,
 				398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */,
 				3966F6A81C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.xib */,
-				398A11D81C60B748002CB4B6 /* PDUIMessageCell.h */,
-				398A11D91C60B748002CB4B6 /* PDUIMessageCell.m */,
 				398A11DA1C60B748002CB4B6 /* PDUIMessageCell.xib */,
+				39730B271CE23D9A004B37A1 /* PDUIMessageCell.h */,
+				39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */,
 			);
 			name = MessageCenter;
 			sourceTree = "<group>";
@@ -1419,7 +1419,7 @@
 					};
 					39537BC21C639B79001C6796 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = S648X26U8J;
+						DevelopmentTeam = A6BJ87CDY8;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1836,6 +1836,7 @@
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */,
 				39ABA6511C47A1850057088E /* PDUIWalletTableViewCell.m in Sources */,
+				39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */,
 				39A98A651C3E6B9F002AF910 /* PDUICheckinCell.m in Sources */,
 				39A98A661C3E6B9F002AF910 /* PDUIFeedCell.m in Sources */,
 				3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */,
@@ -1843,7 +1844,6 @@
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */,
-				398A11DB1C60B748002CB4B6 /* PDUIMessageCell.m in Sources */,
 				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PDUIPhotoCell.m in Sources */,
 				39D3F8221CB2BDB900A69575 /* PDUIFriendPickerViewController.m in Sources */,
@@ -2048,14 +2048,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = TabbedTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "856a43a1-6d29-4b7e-b1a5-766ca6eca688";
+				PROVISIONING_PROFILE = "00a5b695-d117-428d-af1f-122efef52e7f";
 			};
 			name = Debug;
 		};
@@ -2065,13 +2065,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
 				INFOPLIST_FILE = TabbedTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "856a43a1-6d29-4b7e-b1a5-766ca6eca688";
+				PROVISIONING_PROFILE = "00a5b695-d117-428d-af1f-122efef52e7f";
 			};
 			name = Release;
 		};

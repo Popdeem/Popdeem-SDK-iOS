@@ -28,6 +28,7 @@
   return nil;
 }
 
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self.tableView reloadData];
@@ -48,7 +49,12 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
+	NSLog(@"Memory");
   // Dispose of any resources that can be recreated.
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+	
 }
 
 #pragma mark - Table view data source

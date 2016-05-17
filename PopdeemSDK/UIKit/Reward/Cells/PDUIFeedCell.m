@@ -23,9 +23,13 @@
     self.profileImageView.layer.cornerRadius = logoSize/2;
     self.profileImageView.clipsToBounds = YES;
     [self addSubview:self.profileImageView];
-    
-    [self.profileImageView setImage:feedItem.profileImage];
-    
+		
+		if (feedItem.profileImage) {
+			[self.profileImageView setImage:feedItem.profileImage];
+		}else {
+			[self.profileImageView setImage:[UIImage imageNamed:@"pduikit_default_user"]];
+		}
+		
     float left = indent+logoSize+20;
 //    self.label = [[UILabel alloc] initWithFrame:CGRectMake(left, 10, frame.size.width-(left + 20), cellHeight-20)];
 //    [self.label setNumberOfLines:2];

@@ -47,7 +47,7 @@
   if (_model.image) {
     [self.imageView setImage:_model.image];
   } else {
-    [self.imageView setImage:[UIImage imageNamed:@"pduikit_starG"]];
+    [self.imageView setImage:[UIImage imageNamed:@"pduikit_mail_blue"]];
   }
   [self.senderTagLabel setText:_model.senderTagLabelString];
   [self.senderLabel setText:_model.senderBodyString];

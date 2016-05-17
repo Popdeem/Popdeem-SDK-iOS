@@ -16,6 +16,7 @@
 #import "PDAPIClient.h"
 #import "PDUserAPIService.h"
 #import <CoreLocation/CLGeocoder.h>
+#import "PDUtils.h"
 
 @interface PDLocationValidator()
 
@@ -55,15 +56,45 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-  NSLog(@"Error: %@",error);
+	if (![CLLocationManager locationServicesEnabled] || error.code == kCLErrorDenied) {
+		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+		_locationAcquired = YES;
+		[self redirectToSettings];
+	}
   [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
-  
+  if (error.code == kCLErrorDenied) {
+		NSLog(@"User Denied Location");
+	}
   if (!_locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 30)) {
     [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
   } else {
     _completionBlock(NO, nil);
     return;
   }
+}
+
+- (void) redirectToSettings {
+	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.location.denied.alert.title", @"Location Services Disabled")
+																							 message:translationForKey(@"popdeem.location.denied.alert.body", @"In order to claim this reward, we must verify that you are at this location. Please enable location services in the Settings App")
+																							delegate:self
+																		 cancelButtonTitle:translationForKey(@"popdeem.location.denied.alert.cancelButtonText", @"Not Now")
+																		 otherButtonTitles:translationForKey(@"popdeem.location.denied.alert.settingsButtonText", @"Go to Settings"), nil];
+	av.tag = 1;
+	[av show];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (alertView.tag == 1) {
+		switch (buttonIndex) {
+			case 0:
+    break;
+			case 1:
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+			default:
+    break;
+		}
+	}
+	_completionBlock(NO, nil);
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
@@ -89,10 +120,8 @@
   CLLocationDistance distance = [self distanceToClosestLocation:lat long:longi];
   float checkAccuracy = (accuracy > 750) ? accuracy : 500;
   if (distance < checkAccuracy) {
-    NSLog(@"User is at location: Distance: %f meters",distance);
     _completionBlock(YES, _closestLocation);
   } else {
-    NSLog(@"User is NOT at location: Distance: %f meters",distance);
     _completionBlock(NO, _closestLocation);
   }
   [[PDUser sharedInstance] setLastLocation:PDGeoLocationMake(lat, longi)];

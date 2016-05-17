@@ -171,7 +171,7 @@
     [_tableHeaderLabel setNumberOfLines:3];
     [_tableHeaderLabel setFont:[UIFont systemFontOfSize:16]];
     [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
-    [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on nocial networks to earn more rewards.")];
+    [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
     [self.tableView.tableHeaderView addSubview:_tableHeaderLabel];
   }
 }

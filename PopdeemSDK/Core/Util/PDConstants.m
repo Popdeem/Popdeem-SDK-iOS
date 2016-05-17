@@ -13,7 +13,7 @@
 /*
  API URL Strings
  */
-NSString *const API_URL = @"https://www.popdeem.com";
+NSString *const API_URL = @"https://staging.popdeem.com";
 NSString *const USERS_PATH = @"api/v2/users";
 NSString *const REWARDS_PATH = @"api/v2/rewards";
 NSString *const LOCATIONS_PATH = @"api/v2/locations";
@@ -53,6 +53,7 @@ NSString *const kEncodeKeyPDUserProfilePictureString = @"PDUserProfilePictureStr
 //Feeds Keys
 NSString *const kEncodeKeyPDActionText = @"PDActionText";
 NSString *const kEncodeKeyPDActionImage = @"ActionImage";
+NSString *const kEncodeKeyPDCaptionString = @"CaptionString";
 NSString *const kEncodeKeyPDBrandLogoUrlString = @"PDBrandLogoUrlString";
 NSString *const kEncodeKeyPDRewardTypeString = @"PDRewardTypeString";
 NSString *const kEncodeKeyPDTimeAgoString = @"PDTimeAgoString";

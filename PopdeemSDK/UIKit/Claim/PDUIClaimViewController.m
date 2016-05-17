@@ -100,6 +100,7 @@
       [_locationFailedView setHidden:YES];
       [UIView animateWithDuration:1.0 animations:^{
         self.locationVerificationViewHeightConstraint.constant = 0;
+				[self.locationVerificationView setHidden:YES];
       }];
     } else {
       _viewModel.locationVerified = NO;
@@ -128,7 +129,11 @@
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
   [_textView setFont:[UIFont systemFontOfSize:14]];
-  self.locationVerificationViewHeightConstraint.constant = 0;
+	if ([[PDUser sharedInstance] isTester]) {
+		self.locationVerificationViewHeightConstraint.constant = 0;
+	} else {
+		self.locationVerificationViewHeightConstraint.constant = 50;
+	}
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
 }

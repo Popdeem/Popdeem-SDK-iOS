@@ -347,8 +347,6 @@
       [_tableView setFrame:CGRectMake(_tableView.frame.origin.x, topView.frame.origin.y, _tableView.frame.size.width, self.view.frame.size.height-35)];
     }
   }
-  NSLog(@"Top View Frame Height: %f",topView.frame.size.height);
-  NSLog(@"Table View Frame Origin: %f",_tableView.frame.origin.y);
 }
 
 /*

@@ -52,7 +52,10 @@
             "fontColor" : "#40BADA",
             "fontName" : "Avenir-Book"
           }
-        }
+				},
+				"infoCell" : {
+					"titleTextColor" : "#707070"
+				}
       },
       "inboxButton" : {
         "tintColor" : "#FFFFFF"
@@ -157,6 +160,10 @@
     "claim" : {
       "fontName" : "Avenir-Book",
       "fontColor" : "#000000",
+			"friendsLabel" : {
+				"font" : "Avenir-Book",
+				"fontColor" : "#40BADA"
+			},
       "withLabel" : {
         "highlightedFontColor" : "#0B1C39",
         "fontColor" : "#C0C0C0",
