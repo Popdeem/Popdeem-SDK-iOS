@@ -45,6 +45,8 @@
 
 - (void) logoutFacebook;
 
+- (void) logOut;
+
 - (BOOL) isLoggedIn;
 
 - (BOOL) isLoggedInWithFacebook;

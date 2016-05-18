@@ -42,6 +42,7 @@
 		395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
 		395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
 		3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */; };
+		396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
 		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
 		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
@@ -263,6 +264,8 @@
 		3966F6A61C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMsgCntrTblViewController.h; path = MessageCenter/PDUIMsgCntrTblViewController.h; sourceTree = "<group>"; };
 		3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMsgCntrTblViewController.m; path = MessageCenter/PDUIMsgCntrTblViewController.m; sourceTree = "<group>"; };
 		3966F6A81C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMsgCntrTblViewController.xib; path = MessageCenter/PDUIMsgCntrTblViewController.xib; sourceTree = "<group>"; };
+		396A9A631CEC9CA100C7EBDD /* PDUIMessageLogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageLogoutCell.h; path = MessageCenter/PDUIMessageLogoutCell.h; sourceTree = "<group>"; };
+		396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageLogoutCell.m; path = MessageCenter/PDUIMessageLogoutCell.m; sourceTree = "<group>"; };
 		396B15651C3BC40600FC774D /* PDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDViewController.h; sourceTree = "<group>"; };
 		396B15661C3BC40600FC774D /* PDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDViewController.m; sourceTree = "<group>"; };
 		396B15681C3BC66900FC774D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -706,6 +709,8 @@
 				398A11DA1C60B748002CB4B6 /* PDUIMessageCell.xib */,
 				39730B271CE23D9A004B37A1 /* PDUIMessageCell.h */,
 				39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */,
+				396A9A631CEC9CA100C7EBDD /* PDUIMessageLogoutCell.h */,
+				396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */,
 			);
 			name = MessageCenter;
 			sourceTree = "<group>";
@@ -1862,6 +1867,7 @@
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDUIHomeViewController.m in Sources */,
 				3921E3111C71DD68000120D4 /* PDUISingleMessageViewController.m in Sources */,
+				396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,

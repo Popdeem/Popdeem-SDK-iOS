@@ -34,9 +34,9 @@
   [self fetchWallet];
   
   _controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
-  [_controller.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
-  [_controller.tableView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
-  [_controller.tableView setSeparatorColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
+  [_controller.view setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
+  [_controller.tableView setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
+  [_controller.tableView setSeparatorColor:PopdeemColor(@"popdeem.colors.tableViewSeperatorColor")];
   
 }
 
@@ -131,7 +131,6 @@
       [weakSelf.controller.refreshControl endRefreshing];
       [weakSelf.controller.tableView setUserInteractionEnabled:YES];
     });
-    NSLog(@"%i",weakSelf.feed.count);
     [PDUILazyLoader loadFeedImages];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -148,7 +147,7 @@
   }];
 }
 
-- (void) viewWillLayoutSubviews {
+- (void) setupView {
   if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
     _controller.edgesForExtendedLayout = UIRectEdgeNone;
   }
@@ -166,20 +165,20 @@
     [_controller.segmentedControl addTarget:_controller action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
   [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
-  [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.home.header.backgroundColor")];
+  [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   
   CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
   _controller.inboxButton = [UIButton buttonWithType:UIButtonTypeSystem];
   [_controller.inboxButton setFrame:inboxButtonFrame];
-  _controller.inboxButton.tintColor = PopdeemColor(@"popdeem.home.inboxButton.tintColor");
+  _controller.inboxButton.tintColor = PopdeemColor(@"popdeem.colors.primaryInverseColor");
   [_controller.inboxButton setImage:[UIImage imageNamed:@"pduikit_mail"] forState:UIControlStateNormal];
   [_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
   [_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
   
   if (!_tableHeaderImageView) {
-    if (PopdeemThemeHasValueForKey(@"popdeem.home.header.backgroundImage")) {
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
       _tableHeaderImageView = [[UIImageView alloc] initWithFrame:_controller.tableView.tableHeaderView.frame];
-      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.home.header.backgroundImage")];
+      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.images.homeHeaderImage")];
       [_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
       [_tableHeaderImageView setClipsToBounds:YES];
       UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
@@ -192,8 +191,8 @@
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 50)];
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
     [_tableHeaderLabel setNumberOfLines:3];
-    [_tableHeaderLabel setFont:PopdeemFont(@"popdeem.home.header.fontName",16)];
-    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
+    [_tableHeaderLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont",16)];
+    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
     [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
     [_tableHeaderLabel sizeToFit];
     [_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];
@@ -201,7 +200,7 @@
   }
 }
 
-- (void) claimNoAction:(PDReward*)reward {
+- (void) claimNoAction:(PDReward*)reward closestLocation:(PDLocation*)loc {
   __weak typeof(reward) weakReward = reward;
   __weak typeof(self) weakSelf = self;
   if (_controller.loadingView) {
@@ -214,7 +213,7 @@
   
   [_controller.loadingView showAnimated:YES];
   [[PDAPIClient sharedInstance] claimReward:reward.identifier
-                                   location:nil
+                                   location:loc
                                 withMessage:nil
                               taggedFriends:nil
                                       image:nil
@@ -232,6 +231,7 @@
                                                                                         message:@"You have claimed your reward. It will be displayed in your wallet shortly"
                                                                                        delegate:self.controller
                                                                               cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+																			[success setTag:2];
                                       [success show];
                                     } failure:^(NSError *error) {
                                       NSLog(@"An error occurred when Claiming No Action Reward;");
@@ -243,5 +243,6 @@
                                       [failure show];
                                     }];
 }
+
 
 @end

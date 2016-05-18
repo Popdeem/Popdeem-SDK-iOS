@@ -41,7 +41,6 @@
     }
     if (error) {
       NSLog(@"Error while fetching messages");
-      return;
     }
     weakSelf.messages = messages;
     weakSelf.messagesLoading = NO;

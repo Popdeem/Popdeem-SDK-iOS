@@ -47,6 +47,7 @@ extern NSString *const PDBrandCoverImageDidDownload;
 extern NSString *const PDBrandLogoImageDidDownload;
 extern NSString *const PDRewardCoverImageDidDownload;
 extern NSString *const PDFeedItemImageDidDownload;
+extern NSString *const PDUserDidLogout;
     //
 //End NSNotificationCenter Strings
 //

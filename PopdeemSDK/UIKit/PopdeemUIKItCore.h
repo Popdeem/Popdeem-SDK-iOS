@@ -9,7 +9,7 @@
 
 @interface PopdeemUIKItCore : NSObject
 
-- (void) enableSocialLoginWithNumberOfPrompts:(NSInteger) noOfPrompts;
+- (void) enableSocialLoginWithNumberOfPrompts:(NSNumber*) noOfPrompts;
 
 - (void) presentRewardFlow;
 

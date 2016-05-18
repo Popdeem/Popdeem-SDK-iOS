@@ -8,6 +8,7 @@
 
 #import "PDUISingleMessageViewModel.h"
 #import "PDUtils.h"
+#import "PDTheme.h"
 
 @implementation PDUISingleMessageViewModel
 
@@ -33,7 +34,7 @@
   if (_message.imageUrl) {
 //    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];
   } else {
-    self.image = [UIImage imageNamed:@"pduikit_starG"];
+    self.image = PopdeemImage(@"popdeem.images.defaultItemImage");
   }
   if (!_message.read) {
     _message.markAsRead;

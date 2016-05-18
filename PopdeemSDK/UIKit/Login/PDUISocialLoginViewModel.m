@@ -221,7 +221,7 @@
 
 - (void) setState:(LoginState)state {
   self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
-  self.image = PopdeemImage(@"popdeem.login.imageView.imageName");
+  self.image = PopdeemImage(@"popdeem.images.loginImage");
   self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"NEW: SOCIAL FEATURES.");
   self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Facebook to earn additional Rewards.");
   self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");

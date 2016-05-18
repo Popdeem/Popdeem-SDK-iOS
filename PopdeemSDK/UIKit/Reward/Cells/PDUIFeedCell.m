@@ -33,22 +33,22 @@
     float left = indent+logoSize+20;
 //    self.label = [[UILabel alloc] initWithFrame:CGRectMake(left, 10, frame.size.width-(left + 20), cellHeight-20)];
 //    [self.label setNumberOfLines:2];
-//    [self.label setFont:PopdeemFont(@"popdeem.home.tableView.feedcell.font", 16)];
+//    [self.label setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 16)];
 //    [self addSubview:self.label];
 //    [self.label setAttributedText:[self stringForItem:feedItem]];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, frame.size.width-(left + 20), 20)];
     [_nameLabel setText:[NSString stringWithFormat:@"%@ %@",feedItem.userFirstName,feedItem.userLastName]];
-    [_nameLabel setFont:PopdeemFont(@"popdeem.home.tableView.feedCell.nameLabel.fontName", 14)];
-    [_captionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.feedCell.nameLabel.fontColor")];
+    [_nameLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
+    [_nameLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
     [_nameLabel setNumberOfLines:1];
     [_nameLabel sizeToFit];
     
     self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height+5, frame.size.width-(left + 20), 20)];
     [_captionLabel setText:feedItem.captionString];
-    [_captionLabel setFont:PopdeemFont(@"popdeem.home.tableView.feedCell.captionLabel.fontName", 12)];
-    [_captionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.feedCell.captionLabel.fontColor")];
+    [_captionLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
+    [_captionLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
     [_captionLabel setNumberOfLines:1];
 //    [_captionLabel sizeToFit];
     
@@ -61,8 +61,8 @@
     [self addSubview:_captionLabel];
     //Apply Theme
     [self setBackgroundColor:[UIColor clearColor]];
-    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.feedCell.backgroundColor")) {
-      [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.feedCell.backgroundColor")];
+    if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
+      [self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
     }
     return self;
   }
@@ -73,11 +73,11 @@
   NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
   
   NSAttributedString *nameString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@ ",feedItem.userFirstName,feedItem.userLastName]
-                                                                   attributes:@{ NSForegroundColorAttributeName : PopdeemColor(@"popdeem.home.tableView.feedCell.nameTextColor"), NSFontAttributeName : PopdeemFont(@"popdeem.home.tableView.feedCell.fontName", 14)}];
+                                                                   attributes:@{ NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryAppColor"), NSFontAttributeName : PopdeemFont(@"popdeem.fonts.boldFont", 14)}];
   [string appendAttributedString:nameString];
   
   NSAttributedString *actionString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",feedItem.actionText]
-                                                                     attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.home.tableView.feedCell.fontName", 14), NSForegroundColorAttributeName :PopdeemColor(@"popdeem.home.tableView.feedCell.defaultTextColor")}];
+                                                                     attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14), NSForegroundColorAttributeName :PopdeemColor(@"popdeem.colors.secondaryFontColor")}];
   [string appendAttributedString:actionString];
   
   NSString *rewardDesc = @"";
@@ -88,15 +88,15 @@
     rewardDesc = feedItem.descriptionString;
   }
   NSAttributedString *rewardString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ", rewardDesc]
-                                                                     attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.home.tableView.feedCell.titleTextColor"), NSFontAttributeName : PopdeemFont(@"popdeem.home.tableView.feedCell.fontName", 14)}];
+                                                                     attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor"), NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14)}];
   [string appendAttributedString:rewardString];
   
-  [string appendAttributedString:[[NSAttributedString alloc] initWithString:@"at " attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.home.tableView.feedCell.defaultTextColor"), NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.feedCell.fontName", 14)}]];
+  [string appendAttributedString:[[NSAttributedString alloc] initWithString:@"at " attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor"), NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 14)}]];
   
-  NSAttributedString *locationString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",feedItem.brandName] attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.home.tableView.feedCell.fontName", 14) , NSForegroundColorAttributeName : PopdeemColor(@"popdeem.home.tableView.feedCell.defaultTextColor")}];
+  NSAttributedString *locationString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",feedItem.brandName] attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14) , NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor")}];
   [string appendAttributedString:locationString];
   
-  NSAttributedString *timeString = [[NSAttributedString alloc] initWithString:[self timeStringForItem:feedItem] attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.home.tableView.feedCell.timeTextColor") , NSFontAttributeName : PopdeemFont(@"popdeem.home.tableView.feedCell.fontName", 14)}];
+  NSAttributedString *timeString = [[NSAttributedString alloc] initWithString:[self timeStringForItem:feedItem] attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryAppColor") , NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14)}];
   [string appendAttributedString:timeString];
   return string;
 }

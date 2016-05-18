@@ -43,23 +43,22 @@
   [self.viewModel setViewController:self];
   self.loginButton.readPermissions= @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
   [self.loginButton setDelegate:self.viewModel];
-  self.imageView.backgroundColor = PopdeemColor(@"popdeem.login.imageView.backgroundColor");
   [self renderViewModelState];
   
-  [self.taglineLabel setFont:PopdeemFont(@"popdeem.login.tagline.font", 15)];
-  [self.taglineLabel setTextColor:PopdeemColor(@"popdeem.login.tagline.color")];
+  [self.taglineLabel setFont:PopdeemFont(@"popdeem.fonts.lightFont", 15)];
+  [self.taglineLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
   
-  [self.headingLabel setFont:PopdeemFont(@"popdeem.login.heading.font", 18)];
-  [self.headingLabel setTextColor:PopdeemColor(@"popdeem.login.heading.color")];
+  [self.headingLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 18)];
+  [self.headingLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
   
-  [self.bodylabel setFont:PopdeemFont(@"popdeem.login.body.font", 14)];
-  [self.bodylabel setTextColor:PopdeemColor(@"popdeem.login.body.color")];
+  [self.bodylabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
+  [self.bodylabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
   
-  [self.termsLabel setFont:PopdeemFont(@"popdeem.login.terms.font", 7)];
-  [self.termsLabel setTextColor:PopdeemColor(@"popdeem.login.terms.color")];
+  [self.termsLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 7)];
+  [self.termsLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
   
-  [self.continueButton setBackgroundColor:PopdeemColor(@"popdeem.login.continueButton.background")];
-  [self.continueButton setTitleColor:PopdeemColor(@"popdeem.login.continueButton.textColor") forState:UIControlStateNormal];
+  [self.continueButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+  [self.continueButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryInverseColor") forState:UIControlStateNormal];
   
   self.imageView.clipsToBounds = YES;
 }

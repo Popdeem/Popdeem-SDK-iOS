@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -44,7 +44,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-kG-OCo">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-kG-OCo">
                     <rect key="frame" x="0.0" y="50" width="600" height="550"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                 </view>
@@ -293,10 +293,12 @@
                 <constraint firstItem="URn-F7-REZ" firstAttribute="top" secondItem="6DK-Kf-jDl" secondAttribute="bottom" id="Lc5-gB-asv"/>
                 <constraint firstAttribute="trailing" secondItem="6DK-Kf-jDl" secondAttribute="trailing" id="Nft-uB-fH7"/>
                 <constraint firstAttribute="bottom" secondItem="ftP-Rr-EsR" secondAttribute="bottom" id="OVk-Hf-zB6"/>
+                <constraint firstAttribute="trailing" secondItem="2OT-kG-OCo" secondAttribute="trailing" id="PI8-lA-73g"/>
                 <constraint firstItem="Kh4-I8-2ik" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="QK7-1M-jKZ"/>
                 <constraint firstItem="ftP-Rr-EsR" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="Qeg-3D-ANO"/>
                 <constraint firstItem="axK-DZ-59o" firstAttribute="top" secondItem="QVt-fX-G8J" secondAttribute="bottom" constant="8" id="RHF-2b-xX3"/>
                 <constraint firstItem="URn-F7-REZ" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="SoN-uK-NUR"/>
+                <constraint firstAttribute="bottom" secondItem="2OT-kG-OCo" secondAttribute="bottom" id="TBc-2l-Zy1"/>
                 <constraint firstItem="Kh4-I8-2ik" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="WZi-3Z-eqE"/>
                 <constraint firstItem="ftP-Rr-EsR" firstAttribute="top" secondItem="FtA-wC-9gB" secondAttribute="bottom" id="WfZ-N3-a1H"/>
                 <constraint firstAttribute="trailing" secondItem="Kh4-I8-2ik" secondAttribute="trailing" id="XPu-v0-6KE"/>
@@ -304,6 +306,8 @@
                 <constraint firstItem="53c-Fq-DHN" firstAttribute="width" secondItem="gVH-YW-ic3" secondAttribute="width" id="XXU-zt-KAc"/>
                 <constraint firstItem="FtA-wC-9gB" firstAttribute="top" secondItem="URn-F7-REZ" secondAttribute="bottom" id="YQc-dH-Haa"/>
                 <constraint firstItem="6DK-Kf-jDl" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="b0Z-w5-M3W"/>
+                <constraint firstItem="2OT-kG-OCo" firstAttribute="top" secondItem="6DK-Kf-jDl" secondAttribute="bottom" id="bWX-D4-UbD"/>
+                <constraint firstItem="2OT-kG-OCo" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="bw1-Ch-AZ8"/>
                 <constraint firstAttribute="trailing" secondItem="XxC-57-5PT" secondAttribute="trailing" id="eoA-sQ-4OK"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="gok-GE-FcQ"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="top" secondItem="Kh4-I8-2ik" secondAttribute="bottom" id="kCH-w5-qJt"/>

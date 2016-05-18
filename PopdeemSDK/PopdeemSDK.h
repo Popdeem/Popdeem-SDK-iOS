@@ -81,5 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
           annotation:(id)annotation;
 + (void) logMoment:(NSString*)momentString;
 + (void) setThirdPartyUserToken:(NSString*)userToken;
+
++ (void) logout;
 @end
 NS_ASSUME_NONNULL_END

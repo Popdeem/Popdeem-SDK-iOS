@@ -61,7 +61,7 @@
     } else {
       [_bodyLabel setText:message.body];
     }
-    [_bodyLabel setTextColor:PopdeemColor(@"popdeem.messageCenter.tableView.messageCell.bodyTextColor")];
+    [_bodyLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
     [_bodyLabel setFont:[UIFont systemFontOfSize:14]];
     [_bodyLabel setNumberOfLines:3];
     [self addSubview:_bodyLabel];
@@ -78,7 +78,7 @@
     _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, frame.size.width-20, 20)];
     [_timeLabel setTextAlignment:NSTextAlignmentRight];
     [_timeLabel setText:[self formattedSentTime:message.createdAt]];
-    [_timeLabel setTextColor:PopdeemColor(@"popdeem.messageCenter.tableView.messageCell.timeTextColor")];
+    [_timeLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
     [_timeLabel setFont:[UIFont systemFontOfSize:11]];
     [self addSubview:_timeLabel];
     
@@ -92,7 +92,7 @@
   if (message.image) {
     [_logoView setImage:message.image];
   } else {
-    [_logoView setImage:[UIImage imageNamed:@"pduikit_starG"]];
+		[_logoView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
   }
   [self.bodyLabel setText:message.body];
   [self.timeLabel setText:[self formattedSentTime:message.createdAt]];
@@ -101,9 +101,9 @@
   } else {
     [self.indicatorView setHidden:YES];
   }
-  [self setBackgroundColor:PopdeemColor(@"popdeem.messageCenter.tableView.messageCell.backgroundColor")];
-  [_bodyLabel setTextColor:PopdeemColor(@"popdeem.messageCenter.tableView.messageCell.bodyTextColor")];
-  [_timeLabel setTextColor:PopdeemColor(@"popdeem.messageCenter.tableView.messageCell.timeTextColor")];
+  [self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
+  [_bodyLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+  [_timeLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
 }
 
 - (NSString*) formattedSentTime:(NSInteger)absTime {

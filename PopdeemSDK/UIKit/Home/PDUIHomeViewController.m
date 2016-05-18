@@ -24,6 +24,8 @@
 #import "PDUIFeedImageViewController.h"
 #import "PDRewardActionAPIService.h"
 #import "PDUIRedeemViewController.h"
+#import "PDLocationValidator.h"
+#import "PDConstants.h"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -33,6 +35,7 @@
 }
 @property (nonatomic, strong) PDUIHomeViewModel *model;
 @property (nonatomic) PDUIClaimViewController *claimVC;
+@property (nonatomic, strong) PDLocationValidator *locationValidator;
 @end
 
 @implementation PDUIHomeViewController
@@ -61,11 +64,13 @@
 
 - (void)renderView {
   self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+	[self.model setupView];
 }
 
 - (void)viewDidLoad {
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"PopdeemUserLoggedInNotification" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
   
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
@@ -73,24 +78,24 @@
   
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
     self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
-    [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
-                                                                      NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"),
+                                                                      NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)}];
     
-    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"), NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"), NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)} forState:UIControlStateNormal];
     
-    [[UINavigationBar appearance] setBarTintColor:PopdeemColor(@"popdeem.nav.backgroundColor")];
-    [[UINavigationBar appearance] setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.textColor"),
-                                                           NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)}];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.nav.buttonTextColor"),
-                                                           NSFontAttributeName : PopdeemFont(@"popdeem.nav.fontName", 16.0f)} forState:UIControlStateNormal];
+    [[UINavigationBar appearance] setBarTintColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+    [[UINavigationBar appearance] setTintColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"),
+                                                           NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)}];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"),
+                                                           NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)} forState:UIControlStateNormal];
   }
   
-  if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.backgroundImageName")) {
+  if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
     UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.tableView.frame];
-    [tvbg setImage:PopdeemImage(@"popdeem.home.tableView.backgroundImageName")];
+    [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
     [self.tableView setBackgroundView:tvbg];
   }
   
@@ -100,12 +105,14 @@
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
   self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
   
-//  self.title = translationForKey(@"popdeem.home.title", @"Rewards");
+  self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-  [self.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
-  [self.model fetchRewards];
-  [self.model fetchFeed];
-  [self.model fetchWallet];
+  [self.view setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		[self.model fetchRewards];
+		[self.model fetchFeed];
+		[self.model fetchWallet];
+	});
   [self renderView];
 }
 
@@ -148,7 +155,7 @@
 }
 
 - (void) viewWillLayoutSubviews {
-  [_model viewWillLayoutSubviews];
+//  [_model viewWillLayoutSubviews];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -179,7 +186,7 @@
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
   UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1.0f)];
-  [footerView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
+  [footerView setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewSeperatorColor")];
   return footerView;
 }
 
@@ -202,7 +209,6 @@
       return _model.rewards.count > 0 ? _model.rewards.count : 1;
       break;
     case 1:
-      NSLog(@"%lu",(unsigned long)_model.feed.count);
       return _model.feed.count > 0 ? _model.feed.count : 1;
       break;
     case 2:
@@ -458,7 +464,16 @@
   if (reward.action == PDRewardActionSocialLogin) {
     return;
   } else if (reward.action == PDRewardActionNone) {
-    [self.model claimNoAction:reward];
+		[_loadingView hideAnimated:YES];
+		_locationValidator = [[PDLocationValidator alloc] init];
+		[_locationValidator validateLocationForReward:reward completion:^(BOOL validated, PDLocation *closestLocation){
+			if (validated) {
+				[self.model claimNoAction:reward closestLocation:closestLocation];
+			} else {
+				UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not at Location" message:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please try later.") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+				[av show];
+			}
+		}];
   } else {
       PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
     [claimController setHomeController:self];
@@ -540,17 +555,37 @@
       default:
         break;
     }
-  }
+	} else if (alertView.tag == 2) {
+		[_model fetchWallet];
+		[_segmentedControl setSelectedSegmentIndex:2];
+		_model.rewards = [PDRewardStore allRewards];
+		[self.tableView reloadData];
+		[self.tableView reloadInputViews];
+
+	}
 }
 
 - (void) feedItemDidDownload {
-	[self.tableView reloadData];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.tableView reloadData];
+	});
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	[self.view setNeedsLayout];
 	[self.view setNeedsDisplay];
 	[self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 140)];
+}
+
+- (void) loggedOut {
+	[self.model fetchRewards];
+	[self.model fetchFeed];
+	[self.model fetchWallet];
+	[self.navigationController popViewControllerAnimated:YES];
+	[self.segmentedControl setSelectedSegmentIndex:0];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.tableView reloadData];
+	});
 }
 
 @end

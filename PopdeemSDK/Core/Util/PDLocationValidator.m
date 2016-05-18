@@ -56,6 +56,10 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+	if (_locationAcquired) {
+		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+		return;
+	}
 	if (![CLLocationManager locationServicesEnabled] || error.code == kCLErrorDenied) {
 		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
 		_locationAcquired = YES;

@@ -128,9 +128,9 @@
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
   
-  [self.view setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
-  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.backgroundColor")];
-  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.home.tableView.seperatorColor")];
+  [self.view setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
+  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
+  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.colors.tableViewSeperatorColor")];
   
   [self renderView];
 }
@@ -153,11 +153,11 @@
     [_segmentedControl addTarget:self action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
   [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
-  [self.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.home.header.backgroundColor")];
+  [self.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   if (!_tableHeaderImageView) {
-    if (PopdeemThemeHasValueForKey(@"popdeem.home.header.backgroundImage")) {
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
       _tableHeaderImageView = [[UIImageView alloc] initWithFrame:self.tableView.tableHeaderView.frame];
-      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.home.header.backgroundImage")];
+      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.images.homeHeaderImage")];
       [_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
       UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
       [gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
@@ -170,7 +170,7 @@
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
     [_tableHeaderLabel setNumberOfLines:3];
     [_tableHeaderLabel setFont:[UIFont systemFontOfSize:16]];
-    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.home.header.textColor")];
+    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
     [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
     [self.tableView.tableHeaderView addSubview:_tableHeaderLabel];
   }

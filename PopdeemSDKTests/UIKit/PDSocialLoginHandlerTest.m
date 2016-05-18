@@ -20,7 +20,6 @@
 @interface PDUISocialLoginHandler(TEST)
 @property (nonatomic, strong) PDSocialMediaManager *socialManager;
 @property (nonatomic, assign) NSUInteger maxPrompts;
-@property (nonatomic, assign) NSUInteger usesCount;
 
 - (BOOL)shouldShowPrompt;
 @end

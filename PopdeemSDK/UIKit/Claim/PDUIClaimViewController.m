@@ -42,6 +42,8 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationVerificationViewHeightConstraint;
+
+@property (nonatomic) BOOL keyboardIsUp;
 @end
 
 @implementation PDUIClaimViewController
@@ -76,6 +78,7 @@
   _viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
+	[_textView setScrollEnabled:YES];
   [_textView setFont:[UIFont systemFontOfSize:14]];
 }
 
@@ -192,9 +195,9 @@
     [_withLabel setHidden:YES];
   }
   
-  NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.claim.withLabel.fontColor"),NSFontAttributeName:PopdeemFont(@"popdeem.claim.friendsLabel.font", 10)}];
+  NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.secondaryFontColor"),NSFontAttributeName:PopdeemFont(@"popdeem.fonts.primaryFont", 10)}];
   
-  NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.claim.withLabel.highlightedFontColor"),NSFontAttributeName:PopdeemFont(@"popdeem.claim.friendsLabel.font", 10)}];
+  NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.primaryAppColor"),NSFontAttributeName:PopdeemFont(@"popdeem.fonts.primaryFont", 10)}];
   
   NSMutableAttributedString *whole = [[NSMutableAttributedString alloc] initWithAttributedString:attWith];
   [whole appendAttributedString:attNames];
@@ -227,8 +230,8 @@
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
 
   [_verifyLocationLabel setText:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please come back later, or refresh your location.")];
-  [_verifyLocationLabel setTextColor:PopdeemColor(@"popdeem.claim.locationVerification.fontColor")];
-  [_verifyLocationLabel setFont:PopdeemFont(@"popdeem.claim.locationVerification.font", 10)];
+  [_verifyLocationLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+  [_verifyLocationLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 10)];
   
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
@@ -275,9 +278,9 @@
   _textViewBordersLayer = [CALayer layer];
   _textViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
   _textViewBordersLayer.borderWidth = 0.5;
-  _textViewBordersLayer.frame = CGRectMake(-1, 0, _textView.frame.size.width+2, _textView.frame.size.height+1);
+  _textViewBordersLayer.frame = CGRectMake(-1, 0, _textView.frame.size.width+2, 0.5);
   [_textView.layer addSublayer:_textViewBordersLayer];
-  
+	
   _facebookButtonViewBordersLayer = [CALayer layer];
   _facebookButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
   _facebookButtonViewBordersLayer.borderWidth = 0.5;
@@ -310,6 +313,9 @@
 }
 
 - (void) keyboardUp {
+	if (_keyboardIsUp) {
+		return;
+	}
   UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hiderTap)];
   
   self.navigationItem.rightBarButtonItem = typingDone;
@@ -321,6 +327,7 @@
   self.locationVerificationViewHeightConstraint.constant = 0;
   [self setTitle:translationForKey(@"popdeem.claim.addmessage", @"Add Message")];
   [self.view setNeedsDisplay];
+	_keyboardIsUp = YES;
 }
 
 - (void) hiderTap {
@@ -335,6 +342,7 @@
                      }
                      self.locationVerificationViewHeightConstraint.constant = _viewModel.locationVerified ? 0 : 50;
                      [_textView resignFirstResponder];
+										 _keyboardIsUp = NO;
                      [_rewardInfoView setHidden:NO];
                      self.navigationItem.rightBarButtonItem = nil;
                      self.navigationItem.hidesBackButton = NO;
@@ -343,7 +351,7 @@
 }
 
 - (void) keyboardDown {
-  
+	_keyboardIsUp = NO;
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

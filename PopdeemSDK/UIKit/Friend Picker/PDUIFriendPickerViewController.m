@@ -224,9 +224,7 @@
   if (_selectedFriends.count > 0) {
     namesString = [NSMutableString stringWithString:[namesString substringToIndex:namesString.length-1]];
   }
-  
-  NSLog(@"%@",namesString);
-  
+	
   [selectedFriendsLabel removeFromSuperview];
   [selectedFriendsLabel setText:namesString];
   [selectedFriendsLabel setTextColor:[UIColor whiteColor]];

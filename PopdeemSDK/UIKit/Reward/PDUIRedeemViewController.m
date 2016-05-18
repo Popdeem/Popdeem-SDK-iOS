@@ -43,7 +43,7 @@
   if (_reward.coverImage) {
     [_logoImageView setImage:_reward.coverImage];
   } else {
-    [_logoImageView setImage:[UIImage imageNamed:@"pduikit_starG"]];
+    [_logoImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
   }
   
   _logoImageView.layer.borderWidth = 0;
@@ -59,7 +59,6 @@
                                                        options:0];
   
   NSInteger days = [components day];
-  [_timerLabel setFont:PopdeemFont(@"popdeem.redeem.timer.fontName", 55)];
   switch (_reward.type) {
     case PDRewardTypeSweepstake:
       break;
@@ -73,17 +72,21 @@
       break;
   }
   
-  [self.titleLabel setFont:PopdeemFont(@"popdeem.redeem.titleLabel.fontName", 21)];
-  [self.titleLabel setTextColor:PopdeemColor(@"popdeem.redeem.titleLabel.fontColor")];
+  [self.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 18)];
+  [self.titleLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
   [self.titleLabel setText:_reward.rewardDescription];
-  [self.rulesLabel setFont:PopdeemFont(@"popdeem.redeem.descriptionLabel.fontName", 21)];
-  [self.rulesLabel setTextColor:PopdeemColor(@"popdeem.redeem.descriptionLabel.fontColor")];
+	
+  [self.rulesLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 15)];
+  [self.rulesLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
   [self.rulesLabel setText:_reward.rewardRules];
+	
+	[self.timerLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 55)];
+	[self.timerLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   
-  [self.doneButton setBackgroundColor:PopdeemColor(@"popdeem.redeem.doneButton.backgroundColor")];
+  [self.doneButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   [self.doneButton setTitle:translationForKey(@"popdeem.redeem.doneButton.title", @"Done") forState:UIControlStateNormal];
-  [self.doneButton setTitleColor:PopdeemColor(@"popdeem.redeem.doneButton.fontColor") forState:UIControlStateNormal];
-  [self.doneButton.titleLabel setFont:PopdeemFont(@"popdeem.redeem.doneButton.font", 18.0)];
+  [self.doneButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryAppColor") forState:UIControlStateNormal];
+  [self.doneButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 18.0)];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

@@ -27,8 +27,8 @@
     float imageSize = visibleHeight * 0.60;
     float indent = visibleHeight *0.20;
     [self setBackgroundColor:[UIColor clearColor]];
-    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.walletCell.backgroundColor")) {
-      [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.walletCell.backgroundColor")];
+    if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
+      [self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
     }
     _logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, indent, imageSize, imageSize)];
     [self.logoImageView setClipsToBounds:YES];
@@ -36,7 +36,7 @@
     if (reward.coverImage) {
       [self.logoImageView setImage:reward.coverImage];
     } else {
-      [self.logoImageView setImage:[UIImage imageNamed:@"pduikit_starG"]];
+      [self.logoImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
     }
     [self.logoImageView setContentMode:UIViewContentModeScaleAspectFit];
     float centerY = visibleHeight/2;
@@ -45,15 +45,15 @@
     float labelWidth = viewWidth-indent-indent-imageSize-arrowSize;
     _descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, 0, labelWidth, 40)];
     _descriptionLabel.numberOfLines = 2;
-    [_descriptionLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
-    [_descriptionLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.walletCell.titleTextColor")];
+    [_descriptionLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
+    [_descriptionLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
     [self addSubview:_descriptionLabel];
 		
 		if (reward.type != PDRewardTypeCredit) {
 			_subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, _descriptionLabel.frame.size.height, labelWidth, 40)];
 			_subtitleLabel.numberOfLines = 2;
-			[_subtitleLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.subtitleLabel.fontName", 12)];
-			[_subtitleLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.walletCell.subtitleLabel.fontColor")];
+			[_subtitleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
+			[_subtitleLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
 			[self addSubview:_subtitleLabel];
 		}
     

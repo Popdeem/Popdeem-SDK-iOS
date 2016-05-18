@@ -17,20 +17,19 @@
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, centerY-15, frame.size.width-20, frame.size.height)];
     [infoLabel setNumberOfLines:2];
     [infoLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [infoLabel setTextColor:[UIColor blackColor]];
-    [infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.fontName", 16.0f)];
     [infoLabel setTextAlignment:NSTextAlignmentCenter];
+		[infoLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+		[infoLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 16)];
     [infoLabel setText:text];
     [infoLabel sizeToFit];
     float labelH = infoLabel.frame.size.height;
     float indent = (frame.size.height - labelH)/2;
     [infoLabel setFrame:CGRectMake(10, indent, frame.size.width-20, labelH)];
     [self addSubview:infoLabel];
-    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.rewardsCell.backgroundColor")) {
-      [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor")];
+    if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
+      [self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
     }
-    [infoLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.infoCell.titleTextColor")];
-    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     return self;
   }
   return nil;

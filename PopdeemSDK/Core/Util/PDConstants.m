@@ -35,6 +35,7 @@ NSString *const PDBrandCoverImageDidDownload = @"BrandCoverImageDidDownload";
 NSString *const PDBrandLogoImageDidDownload = @"BrandLogoImageDidDownload";
 NSString *const PDRewardCoverImageDidDownload = @"RewardCoverImageDidDownload";
 NSString *const PDFeedItemImageDidDownload = @"PDFeedItemImageDidDownload";
+NSString *const PDUserDidLogout = @"PDUserDidLogout";
 /*
  End NSNotificationCenter Strings
  */

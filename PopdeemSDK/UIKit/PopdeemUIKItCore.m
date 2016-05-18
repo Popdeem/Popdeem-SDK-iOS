@@ -31,8 +31,8 @@
   [PDTheme setupWithFileName:fileName];
 }
 
-- (void)enableSocialLoginWithNumberOfPrompts:(NSInteger)noOfPrompts {
-  [self.socialLoginHandler showPromptIfNeededWithMaxAllowed:@(noOfPrompts)];
+- (void)enableSocialLoginWithNumberOfPrompts:(NSNumber*)noOfPrompts {
+  [self.socialLoginHandler showPromptIfNeededWithMaxAllowed:noOfPrompts];
 }
 
 - (void)presentRewardFlow {

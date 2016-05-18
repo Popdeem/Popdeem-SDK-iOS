@@ -145,4 +145,6 @@ The users last name
 
 - (NSArray*) socialMediaFriendsOrderedAlpha;
 
++ (void) resetSharedInstance;
+
 @end

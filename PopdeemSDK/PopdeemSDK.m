@@ -70,7 +70,7 @@
   
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-  [uiKitCore performSelector:selector withObject:@(noOfPrompts)];
+  [uiKitCore performSelector:selector withObject:[NSNumber numberWithInt:noOfPrompts]];
 #pragma clang diagnostic pop
 }
 
@@ -278,6 +278,15 @@
       NSLog(@"Error updating User");
     }
   }];
+}
+
++ (void) logout {
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:@"popdeemUser"]) {
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"popdeemUser"];
+	}
+	[PDUser resetSharedInstance];
+	[[PDSocialMediaManager manager] logoutFacebook];
+	[[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogout object:nil];
 }
 
 @end

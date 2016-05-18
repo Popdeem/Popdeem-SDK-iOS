@@ -15,13 +15,21 @@
 
 @implementation PDUser
 
+static PDUser *globalUser = nil;
+
 + (instancetype) sharedInstance {
-  static PDUser *globalUser;
-  static dispatch_once_t sharedToken;
-  dispatch_once(&sharedToken, ^{
-    globalUser = [[PDUser alloc] init];
-  });
+  @synchronized(self) {
+		if (globalUser == nil) {
+			globalUser = [[PDUser alloc] init];
+		}
+	}
   return globalUser;
+}
+
++ (void) resetSharedInstance {
+	@synchronized(self) {
+		globalUser = nil;
+	}
 }
 
 + (PDUser*) initFromAPI:(NSDictionary*)params preferredSocialMediaType:(PDSocialMediaType)preferredSocialMediaType {

@@ -30,7 +30,7 @@
     if (reward.coverImage) {
       [_logoImageView setImage:reward.coverImage];
     } else {
-      [_logoImageView setImage:[UIImage imageNamed:@"pduikit_starG"]];
+      [_logoImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
     }
     [_logoImageView setContentMode:UIViewContentModeScaleAspectFit];
     _logoImageView.backgroundColor = [UIColor clearColor];
@@ -44,7 +44,7 @@
     
     _mainLabel = [[UILabel alloc] init];
     
-    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.titleFontName", 14)}];
+    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.boldFont", 14)}];
     CGRect mainLabelRect = [mainAttributedText boundingRectWithSize:(CGSize){labelWidth, 40}
                                                             options:NSStringDrawingUsesLineFragmentOrigin
                                                             context:nil];
@@ -57,7 +57,7 @@
     
     [_mainLabel setFrame: CGRectMake(labelX, currentY, labelWidth, mainLabelsize.height)];
     [_mainLabel setText:reward.rewardDescription];
-    [_mainLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.titleFontName", 14)];
+    [_mainLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
     [_mainLabel setTextColor:[UIColor blackColor]];
     [_mainLabel setTextAlignment:NSTextAlignmentLeft];
     [_mainLabel setNumberOfLines:0];
@@ -68,7 +68,7 @@
     CGSize rulesLabelsize;
     if (rules) {
       _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, labelWidth, 30)];
-      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.home.tableView.rewardsCell.rulesFontName", 12)}];
+      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 12)}];
       CGRect rulesLabelRect = [rulesAttributedText boundingRectWithSize:(CGSize){labelWidth, 30}
                                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                                                 context:nil];
@@ -78,7 +78,7 @@
       float rulesPadding = 0;
       [_rulesLabel sizeToFit];
       [_rulesLabel setFrame:CGRectMake(labelX, currentY, labelWidth, rulesLabelsize.height)];
-      [_rulesLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.rulesFontName", 12)];
+      [_rulesLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
       [_rulesLabel setTextColor:[UIColor blackColor]];
       [_rulesLabel setText:reward.rewardRules];
       [_rulesLabel setNumberOfLines:0];
@@ -186,20 +186,20 @@
       [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
     }
     
-    [_infoLabel setFont:PopdeemFont(@"popdeem.home.tableView.rewardsCell.infoFontName", 12)];
+    [_infoLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
     [_infoLabel setTextAlignment:NSTextAlignmentLeft];
     [_infoLabel sizeToFit];
     [self addSubview:_infoLabel];
     
     //Apply Theme
     [self setBackgroundColor:[UIColor clearColor]];
-    if (PopdeemThemeHasValueForKey(@"popdeem.home.tableView.rewardsCell.backgroundColor")) {
-      [self setBackgroundColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor")];
-      self.contentView.backgroundColor = PopdeemColor(@"popdeem.home.tableView.rewardsCell.backgroundColor");
+    if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
+      [self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
+      self.contentView.backgroundColor = PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor");
     }
-    [_mainLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.titleTextColor")];
-    [_rulesLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.rulesTextColor")];
-    [_infoLabel setTextColor:PopdeemColor(@"popdeem.home.tableView.rewardsCell.infoTextColor")];
+    [_mainLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+    [_rulesLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+    [_infoLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   
     
     //Layout

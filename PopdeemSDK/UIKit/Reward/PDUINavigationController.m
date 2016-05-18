@@ -26,9 +26,9 @@
   [self defaults];
   
   
-  [[self navigationBar]setBarTintColor:PopdeemColor(@"popdeem.nav.background")];//[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];
-  [[self navigationBar]setTintColor:PopdeemColor(@"popdeem.nav.buttonTextColor")];
-  self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.nav.titleColor")};
+  [[self navigationBar]setBarTintColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];//[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];
+  [[self navigationBar]setTintColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
+  self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.primaryInverseColor")};
 }
 
 

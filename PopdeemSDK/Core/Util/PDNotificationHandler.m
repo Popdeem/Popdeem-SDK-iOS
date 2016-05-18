@@ -61,7 +61,7 @@
   NSString *imageUrl = [userInfo objectForKey:@"image_url"];
   UIImage *image;
   if ([imageUrl isKindOfClass:[NSNull class]]) {
-    image = [UIImage imageNamed:@"pduikit_starG"];
+		image = PopdeemImage(@"popdeem.images.defaultItemImage");
   } else {
     imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"popdeem-dev" withString:@"popdeem"];
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
@@ -74,8 +74,8 @@
   
   UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, contentView.frame.size.width, 25)];
   [header setTextAlignment:NSTextAlignmentCenter];
-  if (PopdeemThemeHasValueForKey(@"popdeem.messagePopup.font")) {
-    [header setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  if (PopdeemThemeHasValueForKey(@"popdeem.fonts.primaryFont")) {
+    [header setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 16)];
   } else {
     [header setFont:[UIFont systemFontOfSize:16]];
   }
@@ -93,8 +93,8 @@
   
   UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, contentView.frame.size.width, 25)];
   [title setTextAlignment:NSTextAlignmentCenter];
-  if (PopdeemThemeHasValueForKey(@"popdeem.messagePopup.font")) {
-    [title setFont:PopdeemFont(@"popdeem.messagePopup.font", 16)];
+  if (PopdeemThemeHasValueForKey(@"popdeem.fonts.primaryFont")) {
+    [title setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 16)];
   } else {
     [title setFont:[UIFont systemFontOfSize:16]];
   }
