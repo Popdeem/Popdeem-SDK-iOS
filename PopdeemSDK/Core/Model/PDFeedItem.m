@@ -79,7 +79,7 @@
   if (self.userProfilePicUrlString) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
       self.profileImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.userProfilePicUrlString]]];
-    });
+		});
   }
 }
 
@@ -87,7 +87,12 @@
   if (self.imageUrlString.length > 0) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
       self.actionImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrlString]]];
-      [[NSNotificationCenter defaultCenter] postNotificationName:PDFeedItemImageDidDownload object:self];
+			if (self.actionImage == nil) {
+				self.actionImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self.imageUrlString stringByReplacingOccurrencesOfString:@"popdeem-staging" withString:@"popdeem"]]]];
+				[[NSNotificationCenter defaultCenter] postNotificationName:PDFeedItemImageDidDownload object:self];
+			} else {
+				[[NSNotificationCenter defaultCenter] postNotificationName:PDFeedItemImageDidDownload object:self];
+			}
     });
   }
 }
