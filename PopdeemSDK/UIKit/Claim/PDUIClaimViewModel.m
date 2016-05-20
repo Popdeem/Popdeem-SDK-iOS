@@ -14,6 +14,7 @@
 #import "PDUIModalLoadingView.h"
 #import "PDAPIClient.h"
 #import "PDUtils.h"
+#import "PDTheme.h"
 
 @interface PDUIClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
@@ -26,6 +27,8 @@
 @property (nonatomic, strong) UIWindow *alertWindow;
 
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic) BOOL hashtagValidated;
+@property (nonatomic) BOOL tvSurpress;
 @property (nonatomic) BOOL didAddPhoto;
 @end
 
@@ -78,8 +81,8 @@
 		_textviewPrepopulatedString = _reward.twitterPrefilledMessage;
 	}
 	if (_reward.twitterForcedTag) {
-		_forcedTagString = _reward.twitterForcedTag;
-		[_viewController.twitterForcedTagLabel setTextColor:[UIColor colorWithRed:0.204 green:0.506 blue:0.996 alpha:1.000]];
+		_forcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
+		[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
 	}
 }
 
@@ -182,6 +185,7 @@
 		_willTweet = YES;
 		UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.message", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
 		[twitterV show];
+		[self validateHashTag];
 		return;
 	}
 	
@@ -190,6 +194,7 @@
 		[_viewController.twitterForcedTagLabel setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		[_viewController.twitterButton setSelected:NO];
+		[self validateHashTag];
 		return;
 	}
 	
@@ -201,6 +206,7 @@
 	}
 	[_viewController.twitterCharacterCountLabel setHidden:NO];
 	[self calculateTwitterCharsLeft];
+	[self validateHashTag];
 }
 
 - (void) addPhotoAction {
@@ -230,7 +236,7 @@
 	if (charsLeft < 1) {
 		[_viewController.twitterCharacterCountLabel setTextColor:[UIColor redColor]];
 	} else {
-		[_viewController.twitterCharacterCountLabel setTextColor:[UIColor colorWithRed:0.204 green:0.506 blue:0.996 alpha:1.000]];
+		[_viewController.twitterCharacterCountLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
 	}
 	
 	[_viewController.twitterCharacterCountLabel setText:[NSString stringWithFormat:@"%d",charsLeft]];
@@ -279,6 +285,11 @@
 	if (_willTweet) {
 		__weak PDUIModalLoadingView *twView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view titleText:translationForKey(@"popdeem.common.wait", @"Please wait") descriptionText:translationForKey(@"popdeem.claim.twitter.check", @"Checking Credentials")];
   [twView showAnimated:YES];
+		if (_forcedTagString && !_hashtagValidated) {
+			UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+			[hashAV show];
+			return;
+		}
 		[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error){
 			[twView hideAnimated:YES];
 			if (!connected) {
@@ -306,8 +317,37 @@
 	[self makeClaim];
 }
 
-- (void)textViewDidChange:(UITextView *)textView {
+- (void) textViewDidChange:(UITextView *)textView {
 	[self calculateTwitterCharsLeft];
+	if (_willTweet && !_tvSurpress) {
+		[self validateHashTag];
+	}
+	_tvSurpress = NO;
+}
+
+- (void) validateHashTag {
+	_hashtagValidated = NO;
+	if (!_forcedTagString) {
+		_hashtagValidated = YES;
+		return;
+	}
+
+	if ([_viewController.textView.text.lowercaseString rangeOfString:_reward.twitterForcedTag.lowercaseString].location != NSNotFound && _willTweet) {
+		_hashtagValidated = YES;
+		_tvSurpress = YES;
+		NSRange hashRange = [_viewController.textView.text.lowercaseString rangeOfString:_reward.twitterForcedTag.lowercaseString];
+		NSMutableAttributedString *mutString = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
+		[mutString addAttribute:NSBackgroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryAppColor") range:hashRange];
+		[mutString addAttribute:NSForegroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryInverseColor") range:hashRange];
+		[mutString addAttribute:NSFontAttributeName value:PopdeemFont(@"popdeem.fonts.primaryFont", 14) range:NSMakeRange(0, mutString.length)];
+		[_viewController.textView setAttributedText:mutString];
+	} else {
+		NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
+		_tvSurpress = YES;
+		[string setAttributes:@{} range:NSMakeRange(0, string.length)];
+		[string addAttribute:NSFontAttributeName value:PopdeemFont(@"popdeem.fonts.primaryFont", 14) range:NSMakeRange(0, string.length)];
+		[_viewController.textView setAttributedText:string];
+	}
 }
 
 - (void) makeClaim {
@@ -335,10 +375,6 @@
 	
 	PDAPIClient *client = [PDAPIClient sharedInstance];
 	NSString *message = [_viewController.textView text];
-	
-	if (_reward.twitterForcedTag) {
-		message = [message stringByAppendingFormat:@" %@",_reward.twitterForcedTag];
-	}
 	
 	NSMutableArray *taggedFriends = [NSMutableArray array];
 	for (PDSocialMediaFriend *f in [PDUser taggableFriends]) {

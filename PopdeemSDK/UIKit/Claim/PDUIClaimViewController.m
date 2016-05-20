@@ -79,7 +79,7 @@
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
 	[_textView setScrollEnabled:YES];
-  [_textView setFont:[UIFont systemFontOfSize:14]];
+  [_textView setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
 }
 
 - (void) verifyLocation {
@@ -132,11 +132,17 @@
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
   [_textView setFont:[UIFont systemFontOfSize:14]];
+	if (_viewModel.textviewPrepopulatedString) {
+		[_textView setText:_viewModel.textviewPrepopulatedString];
+		[_viewModel validateHashTag];
+	}
 	if ([[PDUser sharedInstance] isTester]) {
 		self.locationVerificationViewHeightConstraint.constant = 0;
 	} else {
 		self.locationVerificationViewHeightConstraint.constant = 50;
 	}
+	
+	[self.twitterForcedTagLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
 }
@@ -208,7 +214,7 @@
   if (_viewModel.willTweet) {
     [self.twitterForcedTagLabel setHidden:NO];
     if (_viewModel.reward.twitterForcedTag) {
-      [self.twitterForcedTagLabel setText:_viewModel.reward.twitterForcedTag];
+      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.twitterForcedTag]];
     }
     [self.twitterCharacterCountLabel setHidden:NO];
     [_viewModel calculateTwitterCharsLeft];

@@ -35,7 +35,7 @@
     if (message.image) {
       [_logoView setImage:message.image];
     } else {
-      [_logoView setImage:[UIImage imageNamed:@"pduikit_mailCircle"]];
+      [_logoView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
     }
     [self addSubview:_logoView];
     

@@ -63,7 +63,7 @@ static PDUser *globalUser = nil;
   
   NSDictionary *twitterParams = params[@"twitter"];
   user.twitterParams = [[PDUserTwitterParams alloc] initWithParams:twitterParams];
-  
+	
   NSString *testerStatus = facebookParams[@"tester"];
   if ([testerStatus isEqualToString:@"true"]) {
     user.isTester = YES;

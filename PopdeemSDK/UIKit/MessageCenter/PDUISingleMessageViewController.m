@@ -8,6 +8,7 @@
 
 #import "PDUISingleMessageViewController.h"
 #import "PDUISingleMessageViewModel.h"
+#import "PDTheme.h"
 
 @interface PDUISingleMessageViewController ()
 @property (nonatomic, strong) PDUISingleMessageViewModel *model;
@@ -47,7 +48,7 @@
   if (_model.image) {
     [self.imageView setImage:_model.image];
   } else {
-    [self.imageView setImage:[UIImage imageNamed:@"pduikit_mail_blue"]];
+    [self.imageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
   }
   [self.senderTagLabel setText:_model.senderTagLabelString];
   [self.senderLabel setText:_model.senderBodyString];

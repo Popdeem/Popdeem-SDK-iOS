@@ -85,7 +85,7 @@
   
   [self.doneButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   [self.doneButton setTitle:translationForKey(@"popdeem.redeem.doneButton.title", @"Done") forState:UIControlStateNormal];
-  [self.doneButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryAppColor") forState:UIControlStateNormal];
+  [self.doneButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryInverseColor") forState:UIControlStateNormal];
   [self.doneButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 18.0)];
 }
 

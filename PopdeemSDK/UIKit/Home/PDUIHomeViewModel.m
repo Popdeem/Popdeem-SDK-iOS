@@ -166,7 +166,20 @@
   }
   [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
   [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
-  
+	
+	if (!_tableHeaderImageView) {
+		if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
+			_tableHeaderImageView = [[UIImageView alloc] initWithFrame:_controller.tableView.tableHeaderView.frame];
+			[_tableHeaderImageView setImage:PopdeemImage(@"popdeem.images.homeHeaderImage")];
+			[_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
+			[_tableHeaderImageView setClipsToBounds:YES];
+			UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
+			[gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+			[_controller.tableView.tableHeaderView addSubview:_tableHeaderImageView];
+			[_controller.tableView.tableHeaderView addSubview:gradientView];
+		}
+	}
+	
   CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
   _controller.inboxButton = [UIButton buttonWithType:UIButtonTypeSystem];
   [_controller.inboxButton setFrame:inboxButtonFrame];
@@ -174,19 +187,7 @@
   [_controller.inboxButton setImage:[UIImage imageNamed:@"pduikit_mail"] forState:UIControlStateNormal];
   [_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
   [_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
-  
-  if (!_tableHeaderImageView) {
-    if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
-      _tableHeaderImageView = [[UIImageView alloc] initWithFrame:_controller.tableView.tableHeaderView.frame];
-      [_tableHeaderImageView setImage:PopdeemImage(@"popdeem.images.homeHeaderImage")];
-      [_tableHeaderImageView setContentMode:UIViewContentModeScaleAspectFill];
-      [_tableHeaderImageView setClipsToBounds:YES];
-      UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
-      [gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
-      [_controller.tableView.tableHeaderView addSubview:_tableHeaderImageView];
-      [_controller.tableView.tableHeaderView addSubview:gradientView];
-    }
-  }
+	
   if (!_tableHeaderLabel) {
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 50)];
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];

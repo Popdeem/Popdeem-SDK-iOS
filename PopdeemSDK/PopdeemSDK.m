@@ -33,6 +33,7 @@
 #import "PDReferral.h"
 #import "PDMomentsManager.h"
 #import "PDAPIClient.h"
+#import "PDMessageStore.h"
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
@@ -285,6 +286,7 @@
 		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"popdeemUser"];
 	}
 	[PDUser resetSharedInstance];
+	[[PDMessageStore store] removeAllObjects];
 	[[PDSocialMediaManager manager] logoutFacebook];
 	[[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogout object:nil];
 }

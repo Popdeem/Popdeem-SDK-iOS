@@ -44,4 +44,5 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 - (void) claimAction;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 - (void) calculateTwitterCharsLeft;
+- (void) validateHashTag;
 @end
