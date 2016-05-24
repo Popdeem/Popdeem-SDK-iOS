@@ -35,6 +35,7 @@
 }
 @property (nonatomic, strong) PDUIHomeViewModel *model;
 @property (nonatomic) PDUIClaimViewController *claimVC;
+@property (nonatomic) BOOL *loggingIn;
 @property (nonatomic, strong) PDLocationValidator *locationValidator;
 @end
 
@@ -123,7 +124,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
   [self.view setUserInteractionEnabled:YES];
-  if (_loadingView) {
+  if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
   }
   if (_didClaim) {
@@ -159,7 +160,7 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-  if (_loadingView) {
+  if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
   }
 }
@@ -334,17 +335,21 @@
       if (_model.rewards.count == 0) return;
       if ([_model.rewards objectAtIndex:indexPath.row]) {
         if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+					_loggingIn = YES;
           _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Logging in" descriptionText:@"Please Wait"];
           [_loadingView showAnimated:YES];
           [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"] registerWithPopdeem:YES success:^{
-            [_loadingView hideAnimated:YES];
+						[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
+						}];
             [self.model fetchRewards];
             [self.model fetchWallet];
+						_loggingIn = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
               [self processClaimForIndexPath:indexPath];
             });
           } failure:^(NSError *err) {
             if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
+							_loggingIn = NO;
               av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
                                               message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
                                              delegate:self
@@ -352,8 +357,6 @@
                                     otherButtonTitles: nil];
               [av show];
             }
-            [_loadingView hideAnimated:YES];
-            NSLog(@"Error when logging in");
           }];
           return;
         }
