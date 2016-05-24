@@ -78,7 +78,9 @@
 - (void) proceedWithLoggedInUser {
   self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:_viewController.view];
   [self.loadingView showAnimated:YES];
-  
+	[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
+		NSLog(@"Facebook Friends Updated");
+	}];
   [[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
     if (error) {
       NSLog(@"Something went wrong: %@",error);
@@ -222,7 +224,7 @@
 - (void) setState:(LoginState)state {
   self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
   self.image = PopdeemImage(@"popdeem.images.loginImage");
-  self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"NEW: SOCIAL FEATURES.");
+  self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards.");
   self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Facebook to earn additional Rewards.");
   self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
   self.termsLabelString = translationForKey(@"popdeem.sociallogin.terms", @"By signing in with Facebook you accept the terms of our privacy policy.");
@@ -235,7 +237,7 @@
       break;
     case LoginStateLogin:
     default:
-      self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"NEW: SOCIAL FEATURES.");
+      self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards.");
       self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Facebook to earn additional Rewards.");
       self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
       self.termsLabelString = translationForKey(@"popdeem.sociallogin.terms", @"By signing in with Facebook you accept the terms of our privacy policy.");

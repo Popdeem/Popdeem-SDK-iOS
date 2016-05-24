@@ -290,7 +290,7 @@
 			[hashAV show];
 			return;
 		}
-		[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error){
+		[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
 			[twView hideAnimated:YES];
 			if (!connected) {
 				[self connectTwitter:^(){

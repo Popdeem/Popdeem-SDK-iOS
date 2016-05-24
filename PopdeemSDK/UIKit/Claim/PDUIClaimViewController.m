@@ -139,7 +139,7 @@
 	if ([[PDUser sharedInstance] isTester]) {
 		self.locationVerificationViewHeightConstraint.constant = 0;
 	} else {
-		self.locationVerificationViewHeightConstraint.constant = 50;
+		self.locationVerificationViewHeightConstraint.constant = 0;
 	}
 	
 	[self.twitterForcedTagLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];

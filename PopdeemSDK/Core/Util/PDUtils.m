@@ -106,7 +106,7 @@ NSString *localizedStringForKey(NSString *key, NSString *value, NSBundle *bundle
     // Still not found?
     if ([string isEqualToString:kLocalizedStringNotFound])
     {
-        NSLog(@"No localized string for '%@'", key);
+//        NSLog(@"No localized string for '%@'", key);
         string = value.length > 0 ? value : key;
     }
     

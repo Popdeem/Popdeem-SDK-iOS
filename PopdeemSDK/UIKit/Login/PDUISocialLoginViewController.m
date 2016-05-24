@@ -45,23 +45,25 @@
   [self.loginButton setDelegate:self.viewModel];
   [self renderViewModelState];
   
-  [self.taglineLabel setFont:PopdeemFont(@"popdeem.fonts.lightFont", 15)];
+  [self.taglineLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 20)];
   [self.taglineLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
   
   [self.headingLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 18)];
   [self.headingLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
   
   [self.bodylabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
-  [self.bodylabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+  [self.bodylabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
   
   [self.termsLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 7)];
-  [self.termsLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
-  
+  [self.termsLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+	
+	[self.continueButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 15)];
   [self.continueButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
   [self.continueButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryInverseColor") forState:UIControlStateNormal];
   
   self.imageView.clipsToBounds = YES;
 }
+
 
 - (void) viewDidAppear:(BOOL)animated {
   BOOL isLoggedIn = [[PDSocialMediaManager manager] isLoggedInWithFacebook];
@@ -73,6 +75,10 @@
 - (void) didMoveToParentViewController:(UIViewController *)parent {
   [parent.view addSubview:self.view];
   self.view.frame = parent.view.frame;
+}
+
+- (void) viewWillLayoutSubviews {
+	
 }
 
 -(void)viewWillAppear:(BOOL)animated{

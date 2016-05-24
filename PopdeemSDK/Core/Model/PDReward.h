@@ -86,6 +86,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 
 @property (nonatomic) long createdAt;
 @property (nonatomic) long availableUntil;
+@property (nonatomic) long claimedAt;
 @property (nonatomic) BOOL unlimitedAvailability;
 
 

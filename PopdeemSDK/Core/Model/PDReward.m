@@ -137,7 +137,12 @@
     if ([params[@"credit"] isKindOfClass:[NSString class]]) {
       self.creditString = params[@"credit"];
     }
-    
+		
+		
+		if (params[@"claimed_at"] != nil) {
+			self.claimedAt = [params[@"claimed_at"] intValue];
+		}
+		
     [self calculateDistanceToUser];
     return self;
   }

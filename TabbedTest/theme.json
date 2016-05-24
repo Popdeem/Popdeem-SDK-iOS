@@ -17,7 +17,7 @@
 		},
 		"fonts" : {
 			"primaryFont" : "Avenir-Book",
-			"boldFont" : "Avenir-Medium",
+			"boldFont" : "Avenir-Heavy",
 			"lightFont" : "Avenir-Light"
 		},
 		"nav" : {

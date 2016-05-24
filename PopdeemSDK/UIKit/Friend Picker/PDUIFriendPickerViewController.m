@@ -29,6 +29,7 @@
   IBOutlet UIView *topView;
   __unsafe_unretained IBOutlet UIButton *goButton;
   
+	__unsafe_unretained IBOutlet NSLayoutConstraint *topViewHeightConstraint;
   BOOL keyboardIsUp;
   float keyboardHeight;
 }
@@ -58,8 +59,9 @@
       [_selectedFriends addObject:f];
     }
   }
-  
-  [topView setFrame:CGRectMake(topView.frame.origin.x, topView.frame.origin.y, self.view.frame.size.width, topView.frame.size.height)];
+	
+	topViewHeightConstraint.constant = (_selectedFriends.count > 0) ? 50 : 0;
+//  [topView setFrame:CGRectMake(topView.frame.origin.x, topView.frame.origin.y, self.view.frame.size.width, topView.frame.size.height)];
   [_tableView setFrame:CGRectMake(topView.frame.origin.x, topView.frame.origin.y, self.view.frame.size.width, _tableView.frame.size.height)];
 
   
@@ -90,6 +92,16 @@
   keyboardIsUp = NO;
   [self setupFriendsView];
   
+}
+
+- (void) viewWillLayoutSubviews {
+	topViewHeightConstraint.constant = (_selectedFriends.count > 0) ? 50 : 0;
+	float tabBarHeight = self.tabBarController.tabBar.frame.size.height;
+	if (keyboardIsUp) {
+		[_tableView setFrame:CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y, _tableView.frame.size.width, self.view.frame.size.height-35-keyboardHeight+tabBarHeight)];
+	} else {
+		[_tableView setFrame:CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y, _tableView.frame.size.width, self.view.frame.size.height-35)];
+	}
 }
 
 - (void) keyboardWillShow:(NSNotification*)notification {
@@ -330,6 +342,7 @@
   float tabBarHeight = self.tabBarController.tabBar.frame.size.height;
   
   if (_selectedFriends.count > 0) {
+		topViewHeightConstraint.constant = 50;
     [topView setFrame:CGRectMake(topView.frame.origin.x, 35, topView.frame.size.width, 50)];
     [topView setHidden:NO];
     if (keyboardIsUp) {
@@ -338,6 +351,7 @@
       [_tableView setFrame:CGRectMake(_tableView.frame.origin.x, topView.frame.origin.y+57, _tableView.frame.size.width, self.view.frame.size.height-75)];
     }
   } else {
+		topViewHeightConstraint.constant = 0;
     [topView setFrame:CGRectMake(topView.frame.origin.x, 35, topView.frame.size.width, 0)];
     if (keyboardIsUp) {
       [_tableView setFrame:CGRectMake(_tableView.frame.origin.x, 35, _tableView.frame.size.width, self.view.frame.size.height-35-keyboardHeight+tabBarHeight)];

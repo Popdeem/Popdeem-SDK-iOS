@@ -49,13 +49,13 @@
     [_descriptionLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
     [self addSubview:_descriptionLabel];
 		
-		if (reward.type != PDRewardTypeCredit) {
-			_subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, _descriptionLabel.frame.size.height, labelWidth, 40)];
-			_subtitleLabel.numberOfLines = 2;
-			[_subtitleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
-			[_subtitleLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
-			[self addSubview:_subtitleLabel];
-		}
+		
+		_subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+imageSize+indent, _descriptionLabel.frame.size.height, labelWidth, 40)];
+		_subtitleLabel.numberOfLines = 2;
+		[_subtitleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
+		[_subtitleLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+		[self addSubview:_subtitleLabel];
+		
     
     if (![reward.rewardDescription isKindOfClass:[NSNull class]]) {
       if (reward.type == PDRewardTypeCredit) {
@@ -81,16 +81,7 @@
         [self.subtitleLabel setText:translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.")];
         break;
     }
-    
-    [_descriptionLabel sizeToFit];
-    [_subtitleLabel sizeToFit];
 		
-		float buffer = reward.type == PDRewardTypeCredit ? 0 : 5;
-		float labelsJoined = _descriptionLabel.frame.size.height + _subtitleLabel.frame.size.height + buffer;
-    float paddingTop = (frame.size.height - labelsJoined)/2;
-    [_descriptionLabel setFrame:CGRectMake(_descriptionLabel.frame.origin.x, paddingTop, labelWidth, _descriptionLabel.frame.size.height)];
-    [_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, paddingTop+_descriptionLabel.frame.size.height+5, labelWidth, _subtitleLabel.frame.size.height)];
-    
     NSString *expiresString;
     if (reward.unlimitedAvailability) {
       if (reward.type == PDRewardTypeSweepstake) {
@@ -144,41 +135,22 @@
       }
     }
     
-//    UIView *backingView = [[UIView alloc] initWithFrame:CGRectMake(0, visibleHeight, viewWidth, 190)];
-//    [backingView setBackgroundColor:[UIColor colorWithRed:0.949 green:0.949 blue:0.949 alpha:1.000]];
-//    [self addSubview:backingView];
-//    
-//    UILabel *howToTitle = [[UILabel alloc] initWithFrame:CGRectMake(indent, 5, viewWidth-2*indent, 20)];
-//    [howToTitle setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 14)];
-//    [howToTitle setTextColor:[UIColor blackColor]];
-//    [backingView addSubview:howToTitle];
-//    
-//    UILabel *howToLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent+5, 25, viewWidth-(2*indent)-5, 190-120)];
-//    [howToLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 12)];
-//    [howToLabel setTextColor:[UIColor blackColor]];
-//    [howToLabel setNumberOfLines:6];
-//    howToLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    if (reward.type == PDRewardTypeCoupon || reward.type == PDRewardTypeInstant || reward.type == PDRewardTypeCredit) {
-//      [howToTitle setText:@"How to Redeem"];
-//      [howToLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.wallet.coupon.infoText", @"- Once you're ready to redeem your Reward, tap \"Redeem\".\n- After tapping \"Redeem\" you have 10 minutes to get the Reward.\n- You must show the cashier the following screen within 10 minutes.\n- %@"), expiresString]];
-//    } else {
-//      [howToTitle setText:@"Sweepstake Reward"];
-//      [howToLabel setText:[NSString stringWithFormat:@"You are now in the draw!\nYou will be notified if you are the winner.\n%@.",expiresString]];
-//      
-//    }
-//    [howToLabel sizeToFit];
-//    [backingView addSubview:howToLabel];
-//    
-//    if (reward.type == PDRewardTypeCoupon  || reward.type == PDRewardTypeInstant) {
-//      UIButton *redeemButton = [[UIButton alloc] initWithFrame:CGRectMake(30, backingView.frame.size.height-45, viewWidth-60, 40)];
-//      [redeemButton setBackgroundColor:PopdeemColor(@"popdeem.redeem.redeemButton.backgroundColor")];
-//      [redeemButton setTitleColor:PopdeemColor(@"popdeem.redeem.redeemButton.fontColor") forState:UIControlStateNormal];
-//      [redeemButton.titleLabel setFont:PopdeemFont(@"popdeem.home.tableView.walletCell.fontName", 16)];
-//      [redeemButton setTitle:@"Redeem" forState:UIControlStateNormal];
-//      [redeemButton addTarget:parent action:@selector(redeemButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-//      [backingView addSubview:redeemButton];
-//    }
-    
+		if (reward.type == PDRewardTypeCredit) {
+			NSDate *date = [NSDate dateWithTimeIntervalSince1970:reward.claimedAt];
+			NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+			[formatter setDateFormat:@"d MMM y"];
+			NSString *stringDate = [formatter stringFromDate:date];
+			[_subtitleLabel setText:[NSString stringWithFormat:@"Redeemed: %@",stringDate]];
+		}
+		
+		[_descriptionLabel sizeToFit];
+		[_subtitleLabel sizeToFit];
+		
+		float buffer = 5;
+		float labelsJoined = _descriptionLabel.frame.size.height + _subtitleLabel.frame.size.height + buffer;
+		float paddingTop = (frame.size.height - labelsJoined)/2;
+		[_descriptionLabel setFrame:CGRectMake(_descriptionLabel.frame.origin.x, paddingTop, labelWidth, _descriptionLabel.frame.size.height)];
+		[_subtitleLabel setFrame:CGRectMake(_subtitleLabel.frame.origin.x, paddingTop+_descriptionLabel.frame.size.height+5, labelWidth, _subtitleLabel.frame.size.height)];
     return self;
   }
   return nil;
@@ -220,6 +192,9 @@
   
 }
 
+- (NSString*) dateStringFromTimeStamp:(long)timeStamp {
+	
+}
 
 
 @end

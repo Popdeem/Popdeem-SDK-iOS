@@ -365,7 +365,7 @@
   
   [_twitterAPI postAccessTokenRequestWithPIN:verifier successBlock:^(NSString *oauthToken, NSString *oauthTokenSecret, NSString *userID, NSString *screenName) {
     NSLog(@"-- screenName: %@", screenName);
-    [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:oauthTokenSecret screenName:screenName success:^(void){
+    [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
       //User is connected to Popdeem
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Connected" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
       [alert show];
@@ -407,7 +407,6 @@
                                               consumerSecret:twConsumerSecret
                                                   oauthToken:userTwitterToken
                                             oauthTokenSecret:userTwitterSecret];
-  
   if (!_twitterAPI) {
     completion(NO,nil);
     return;
