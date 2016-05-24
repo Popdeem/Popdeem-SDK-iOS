@@ -260,7 +260,7 @@
 #pragma mark - Claiming -
 
 - (void) claimAction {
-	
+
 	if (!_locationVerified) {
 		
 	}
@@ -273,12 +273,14 @@
 																					otherButtonTitles:nil];
 		[alert setTag:1];
 		[alert show];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
 		return;
 	}
 	
 	if (!_willTweet && !_willFacebook) {
 		UIAlertView *noPost = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.networkerror",  @"No Network Selected, you must select at least one social network in order to complete this action.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
 		[noPost show];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
 		return;
 	}
 	
@@ -288,6 +290,7 @@
 		if (_forcedTagString && !_hashtagValidated) {
 			UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
 			[hashAV show];
+			[_viewController.claimButtonView setUserInteractionEnabled:YES];
 			return;
 		}
 		[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
@@ -295,25 +298,30 @@
 			if (!connected) {
 				[self connectTwitter:^(){
 					[self makeClaim];
+					[_viewController.claimButtonView setUserInteractionEnabled:YES];
 				} failure:^(NSError *error) {
 					UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back") otherButtonTitles: nil];
 					[av show];
 				}];
+				[_viewController.claimButtonView setUserInteractionEnabled:YES];
 				return;
 			}
 			if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
 				UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back") otherButtonTitles: nil];
 				[tooMany setTag:2];
 				[tooMany show];
+				[_viewController.claimButtonView setUserInteractionEnabled:YES];
 				return;
 			}
 			[self makeClaim];
+			[_viewController.claimButtonView setUserInteractionEnabled:YES];
 		}];
 		return;
 	}
 	if ([_viewController.textView isFirstResponder]) {
 		[_viewController.textView resignFirstResponder];
 	}
+	[_viewController.claimButtonView setUserInteractionEnabled:YES];
 	[self makeClaim];
 }
 

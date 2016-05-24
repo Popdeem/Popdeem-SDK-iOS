@@ -315,6 +315,7 @@
 }
 
 - (IBAction)claimButtonTapped:(id)sender {
+	[_claimButtonView setUserInteractionEnabled:NO];
   [_viewModel claimAction];
 }
 
