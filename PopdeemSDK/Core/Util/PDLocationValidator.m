@@ -47,7 +47,11 @@
       _completionBlock(YES, _closestLocation);
       return;
   }
-  
+	#if (TARGET_IPHONE_SIMULATOR)
+		_completionBlock(YES, reward.locations.firstObject);
+		return;
+	#endif
+	
   _locationAcquired = NO;
   
   _timeStart = CFAbsoluteTimeGetCurrent();
@@ -69,7 +73,7 @@
   if (error.code == kCLErrorDenied) {
 		NSLog(@"User Denied Location");
 	}
-  if (!_locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 30)) {
+  if (!_locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 15)) {
     [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
   } else {
     _completionBlock(NO, nil);
