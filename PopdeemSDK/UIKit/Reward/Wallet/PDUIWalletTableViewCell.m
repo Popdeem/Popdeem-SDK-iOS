@@ -68,13 +68,20 @@
     if (reward.type == PDRewardTypeCredit || reward.type == PDRewardTypeSweepstake) {
       self.userInteractionEnabled = NO;
     }
-    
+		NSDate *creditDate;
+		NSDateFormatter *formatter;
+		NSString *stringDate;
+		
     switch (reward.type) {
       case PDRewardTypeSweepstake:
         [self.subtitleLabel setText:translationForKey(@"popdeem.wallet.sweepstake.redeemText", @"You have been entered in this competition.")];
         break;
       case PDRewardTypeCredit:
-        [self.subtitleLabel setText:translationForKey(@"popdeem.wallet.credit.redeemText", @"7/17")];
+				creditDate = [NSDate dateWithTimeIntervalSince1970:reward.claimedAt];
+				formatter = [[NSDateFormatter alloc] init];
+				[formatter setDateFormat:@"d MMM y"];
+				stringDate = [formatter stringFromDate:creditDate];
+				[_subtitleLabel setText:[NSString stringWithFormat:@"Redeemed: %@",stringDate]];
         break;
       case PDRewardTypeCoupon:
       case PDRewardTypeInstant:
@@ -134,15 +141,8 @@
         }
       }
     }
-    
-		if (reward.type == PDRewardTypeCredit) {
-			NSDate *date = [NSDate dateWithTimeIntervalSince1970:reward.claimedAt];
-			NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-			[formatter setDateFormat:@"d MMM y"];
-			NSString *stringDate = [formatter stringFromDate:date];
-			[_subtitleLabel setText:[NSString stringWithFormat:@"Redeemed: %@",stringDate]];
-		}
 		
+
 		[_descriptionLabel sizeToFit];
 		[_subtitleLabel sizeToFit];
 		
