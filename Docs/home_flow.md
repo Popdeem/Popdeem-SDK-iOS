@@ -14,7 +14,7 @@ The most native way to present the Home flow is to push it into your existing na
 	
 #### Tab Bar
 
-If you are setting the Popdeem Rewards Home as a view on your Nav Bar, there is a slightly different method. When you have chosen which Tab Bar Item will be your Popdeem Home, in interface builder, make the root View an instance of `PDHomeViewController`. This will result in your app launching with Popdeem preloaded in your tab bar.
+If you are setting the Popdeem Rewards Home as a view on your Nav Bar, there is a slightly different method. When you have chosen which Tab Bar Item will be your Popdeem Home, in interface builder, make the root View an instance of `PDUIHomeViewController`. This will result in your app launching with Popdeem preloaded in your tab bar.
 
 ---
 
