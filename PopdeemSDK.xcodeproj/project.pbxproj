@@ -53,6 +53,7 @@
 		394BEFE41D1436400045F5F3 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFCC1D1436400045F5F3 /* OAServiceTicket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFE51D1436400045F5F3 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFD01D1436400045F5F3 /* OAToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFE61D1436400045F5F3 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFD21D1436400045F5F3 /* OATokenManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */; };
 		39537BC71C639B79001C6796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC61C639B79001C6796 /* main.m */; };
 		39537BCA1C639B79001C6796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC91C639B79001C6796 /* AppDelegate.m */; };
 		39537BD31C639B79001C6796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD11C639B79001C6796 /* Main.storyboard */; };
@@ -304,6 +305,8 @@
 		394BEFD21D1436400045F5F3 /* OATokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATokenManager.m; sourceTree = "<group>"; };
 		394BEFD31D1436400045F5F3 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
 		394BEFD41D1436400045F5F3 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		394BEFE71D1442340045F5F3 /* InstagramResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramResponseModel.h; path = Instagram/InstagramResponseModel.h; sourceTree = "<group>"; };
+		394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramResponseModel.m; path = Instagram/InstagramResponseModel.m; sourceTree = "<group>"; };
 		395017A81CDA54A600849DF8 /* default_theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default_theme.json; path = Resources/default_theme.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
@@ -847,6 +850,8 @@
 				39450F331D14188900AA4883 /* PDUIInstagramWebViewController.h */,
 				39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */,
 				39450F351D14188900AA4883 /* PDUIInstagramWebViewController.xib */,
+				394BEFE71D1442340045F5F3 /* InstagramResponseModel.h */,
+				394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */,
 			);
 			name = Instagram;
 			sourceTree = "<group>";
@@ -2006,6 +2011,7 @@
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
 				39A9898E1C3BE8F2002AF910 /* PDUIRewardHomeTableViewController.m in Sources */,
 				39ABA6581C47A9030057088E /* PDUIWalletCache.m in Sources */,
+				394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */,
 				394BEFD51D1436400045F5F3 /* NSMutableURLRequest+Parameters.m in Sources */,
 				A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,

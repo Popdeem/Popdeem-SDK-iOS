@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "PopdeemSDK"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "PopdeemSDK is used to interact with the Popdeem API on iOS."
   s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
   s.homepage     = "https://github.com/Popdeem/Popdeem-SDK-iOS.git"
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.frameworks = "CoreLocation", "UIKit"
+  s.frameworks = "CoreLocation", "UIKit", "Security"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -39,13 +39,13 @@ Pod::Spec.new do |s|
   # ――― Specs ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.default_subspecs = 'Core'
 
-	s.subspec 'NoArc' do |noarc|
-		noarc.source_files = "PopdeemSDK/Libraries/OAuthconsumer/*.{m,h}, PopdeemSDK/Libraries/OAuthconsumer/**/*.{m,h}"
-		noarc.public_header_files = "PopdeemSDK/Libraries/OAuthconsumer/*.h, PopdeemSDK/Libraries/OAuthconsumer/**/*.h"
+	s.subspec "NoArc" do |noarc|
+		noarc.source_files = "PopdeemSDK/Libraries/OAuthconsumer/*.{h,m}", "PopdeemSDK/Libraries/OAuthconsumer/**/*.{h,m,c}"
+		noarc.public_header_files = "PopdeemSDK/Libraries/OAuthconsumer/*.h", "PopdeemSDK/Libraries/OAuthconsumer/**/*.h"
 		noarc.requires_arc = false
 	end
 
-  s.subspec 'Core' do |core|
+	s.subspec 'Core' do |core|
 		core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
     core.dependency "FBSDKLoginKit"

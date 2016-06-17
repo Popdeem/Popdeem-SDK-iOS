@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1008</string>
+	<string>1014</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -52,7 +52,7 @@
 	<key>FacebookNamespace</key>
 	<string>popdeemstaging</string>
 	<key>InstagramCallback</key>
-	<string>tabbedTest://instagram</string>
+	<string>tabbedtest://instagram</string>
 	<key>InstagramClientId</key>
 	<string>1b9912d9b75f4f29bb6c60afd63d1b67</string>
 	<key>InstagramClientSecret</key>

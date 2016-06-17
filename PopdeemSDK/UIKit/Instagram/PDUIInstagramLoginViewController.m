@@ -9,6 +9,7 @@
 #import "PDUIInstagramLoginViewController.h"
 #import "PDUtils.h"
 #import "PopdeemSDK.h"
+#import "InstagramResponseModel.h"
 
 @interface PDUIInstagramLoginViewController ()
 
@@ -69,7 +70,7 @@ NSString *callback;
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
 	//    [indicator startAnimating];
-	
+	NSLog(@"%@", [request URL]);
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
 		// Extract oauth_verifier from URL query
 		NSString* verifier = nil;
@@ -125,17 +126,9 @@ NSString *callback;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *response = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+	InstagramResponseModel *instagramModel = [[InstagramResponseModel alloc] initWithJSON:response];
+	
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (NSString *)URLStringWithoutQuery:(NSURL*)url {
 	NSArray *parts = [[url absoluteString] componentsSeparatedByString:@"?"];
