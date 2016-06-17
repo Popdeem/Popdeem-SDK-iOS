@@ -92,7 +92,8 @@
 "popdeem.location.denied.alert.cancelButtonText" = "Not Now";
 "popdeem.location.denied.alert.settingsButtonText" = "Go to Settings";
 
-
-
+"popdeem.instagram.connect.headerText" = "Connect Instagram";
+"popdeem.instagram.connect.bodyText" = "You must connect your Instagram Account to perform this action. Dont worry, we will never post without your explicit permission";
+"popdeem.instagram.connect.actionButtonTitle" = "Connect Instagram Account";
 
 

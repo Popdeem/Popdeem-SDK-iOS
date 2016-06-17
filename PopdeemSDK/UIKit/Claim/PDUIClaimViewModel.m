@@ -15,6 +15,7 @@
 #import "PDAPIClient.h"
 #import "PDUtils.h"
 #import "PDTheme.h"
+#import "PDUIInstagramLoginViewController.h"
 
 @interface PDUIClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
@@ -615,6 +616,16 @@
 }
 
 - (IBAction)taggedFriendsButtonPressed:(id)sender {
+	
+}
+
+#pragma mark - instagram -
+
+- (void) instagramSwitchToggled:(UISwitch*)instagramSwitch {
+	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
+	_viewController.definesPresentationContext = YES;
+	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
 	
 }
 

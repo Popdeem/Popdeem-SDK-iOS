@@ -381,4 +381,8 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (IBAction)instagramSwitchToggled:(id)sender {
+	[_viewModel instagramSwitchToggled:sender];
+}
+
 @end

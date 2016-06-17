@@ -84,5 +84,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) setThirdPartyUserToken:(NSString*)userToken;
 
 + (void) logout;
+
++ (NSString*) instagramClientId;
++ (NSString*) instagramClientSecret;
++ (NSString*) instagramCallback;
 @end
 NS_ASSUME_NONNULL_END

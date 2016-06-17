@@ -430,4 +430,11 @@
 - (void) twitterLoginSuccessfulToken:(NSString *)token oauthVerifier:(NSString *)verifier {
   [self setOAuthToken:token oauthVerifier:verifier];
 }
+
+#pragma mark - Instagram -
+
+- (BOOL) isLoggedInWithInstagram {
+	return NO;
+}
+
 @end

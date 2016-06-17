@@ -291,4 +291,30 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogout object:nil];
 }
 
+#pragma mark - Instagram - 
+
++ (NSString*) instagramClientId {
+	NSString *clientId = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"InstagramClientId"];
+	if (!clientId) {
+		[NSException raise:@"No Instagram Client ID found. Please add your Instagram Client ID in info.plist under the key 'InstagramClientID'" format:@""];
+	}
+	return clientId;
+}
+
++ (NSString*) instagramClientSecret {
+	NSString *clientSecret = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"InstagramClientSecret"];
+	if (!clientSecret) {
+		[NSException raise:@"No Instagram Client Secret found. Please add your Instagram Client ID in info.plist under the key 'InstagramClientSecret'" format:@""];
+	}
+	return clientSecret;
+}
+
++ (NSString*) instagramCallback {
+	NSString *instagramCallback = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"InstagramCallback"];
+	if (!instagramCallback) {
+		[NSException raise:@"No Instagram Callback. Please add your Instagram Client ID in info.plist under the key 'InstagramCallback'" format:@""];
+	}
+	return instagramCallback;
+}
+
 @end

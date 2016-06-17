@@ -34,6 +34,25 @@
 		393D2B851C3AD0D300F1E253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B841C3AD0D300F1E253 /* Assets.xcassets */; };
 		393D2B881C3AD0D300F1E253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B861C3AD0D300F1E253 /* LaunchScreen.storyboard */; };
 		393D2B8E1C3AD1A100F1E253 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B8D1C3AD1A100F1E253 /* theme.json */; };
+		39450F361D14188900AA4883 /* PDUIInstagramWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */; };
+		394BEFD51D1436400045F5F3 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFAD1D1436400045F5F3 /* NSMutableURLRequest+Parameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFD61D1436400045F5F3 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFAF1D1436400045F5F3 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFD71D1436400045F5F3 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFB11D1436400045F5F3 /* NSURL+Base.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFD81D1436400045F5F3 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFB31D1436400045F5F3 /* Base64Transcoder.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFD91D1436400045F5F3 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFB51D1436400045F5F3 /* hmac.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFDA1D1436400045F5F3 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFB71D1436400045F5F3 /* sha1.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFDB1D1436400045F5F3 /* OAAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFBA1D1436400045F5F3 /* OAAttachment.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFDC1D1436400045F5F3 /* OACall.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFBC1D1436400045F5F3 /* OACall.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFDD1D1436400045F5F3 /* OAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFBE1D1436400045F5F3 /* OAConsumer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFDE1D1436400045F5F3 /* OADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC01D1436400045F5F3 /* OADataFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFDF1D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC21D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFE01D1436400045F5F3 /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC41D1436400045F5F3 /* OAMutableURLRequest.m */; };
+		394BEFE11D1436400045F5F3 /* OAPlaintextSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC61D1436400045F5F3 /* OAPlaintextSignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFE21D1436400045F5F3 /* OAProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC81D1436400045F5F3 /* OAProblem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFE31D1436400045F5F3 /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFCA1D1436400045F5F3 /* OARequestParameter.m */; };
+		394BEFE41D1436400045F5F3 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFCC1D1436400045F5F3 /* OAServiceTicket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFE51D1436400045F5F3 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFD01D1436400045F5F3 /* OAToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		394BEFE61D1436400045F5F3 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFD21D1436400045F5F3 /* OATokenManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		39537BC71C639B79001C6796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC61C639B79001C6796 /* main.m */; };
 		39537BCA1C639B79001C6796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC91C639B79001C6796 /* AppDelegate.m */; };
 		39537BD31C639B79001C6796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD11C639B79001C6796 /* Main.storyboard */; };
@@ -41,6 +60,9 @@
 		39537BD81C639B79001C6796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD61C639B79001C6796 /* LaunchScreen.storyboard */; };
 		395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
 		395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
+		396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396443F61D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m */; };
+		396443FB1D13EC5A00BB67F9 /* PDUICardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396443FA1D13EC5A00BB67F9 /* PDUICardViewController.m */; };
+		396443FF1D13F04E00BB67F9 /* PDUICardViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 396443FE1D13F04E00BB67F9 /* PDUICardViewModel.m */; };
 		3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */; };
 		396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
@@ -239,6 +261,49 @@
 		393D2B871C3AD0D300F1E253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		393D2B891C3AD0D300F1E253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393D2B8D1C3AD1A100F1E253 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
+		39450F331D14188900AA4883 /* PDUIInstagramWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramWebViewController.h; path = Instagram/PDUIInstagramWebViewController.h; sourceTree = "<group>"; };
+		39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramWebViewController.m; path = Instagram/PDUIInstagramWebViewController.m; sourceTree = "<group>"; };
+		39450F351D14188900AA4883 /* PDUIInstagramWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIInstagramWebViewController.xib; path = Instagram/PDUIInstagramWebViewController.xib; sourceTree = "<group>"; };
+		394BEFAC1D1436400045F5F3 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
+		394BEFAD1D1436400045F5F3 /* NSMutableURLRequest+Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Parameters.m"; sourceTree = "<group>"; };
+		394BEFAE1D1436400045F5F3 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		394BEFAF1D1436400045F5F3 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		394BEFB01D1436400045F5F3 /* NSURL+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Base.h"; sourceTree = "<group>"; };
+		394BEFB11D1436400045F5F3 /* NSURL+Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Base.m"; sourceTree = "<group>"; };
+		394BEFB31D1436400045F5F3 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		394BEFB41D1436400045F5F3 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		394BEFB51D1436400045F5F3 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		394BEFB61D1436400045F5F3 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		394BEFB71D1436400045F5F3 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		394BEFB81D1436400045F5F3 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		394BEFB91D1436400045F5F3 /* OAAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAttachment.h; sourceTree = "<group>"; };
+		394BEFBA1D1436400045F5F3 /* OAAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAAttachment.m; sourceTree = "<group>"; };
+		394BEFBB1D1436400045F5F3 /* OACall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OACall.h; sourceTree = "<group>"; };
+		394BEFBC1D1436400045F5F3 /* OACall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OACall.m; sourceTree = "<group>"; };
+		394BEFBD1D1436400045F5F3 /* OAConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAConsumer.h; sourceTree = "<group>"; };
+		394BEFBE1D1436400045F5F3 /* OAConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAConsumer.m; sourceTree = "<group>"; };
+		394BEFBF1D1436400045F5F3 /* OADataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OADataFetcher.h; sourceTree = "<group>"; };
+		394BEFC01D1436400045F5F3 /* OADataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OADataFetcher.m; sourceTree = "<group>"; };
+		394BEFC11D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHMAC_SHA1SignatureProvider.h; sourceTree = "<group>"; };
+		394BEFC21D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAHMAC_SHA1SignatureProvider.m; sourceTree = "<group>"; };
+		394BEFC31D1436400045F5F3 /* OAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAMutableURLRequest.h; sourceTree = "<group>"; };
+		394BEFC41D1436400045F5F3 /* OAMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAMutableURLRequest.m; sourceTree = "<group>"; };
+		394BEFC51D1436400045F5F3 /* OAPlaintextSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAPlaintextSignatureProvider.h; sourceTree = "<group>"; };
+		394BEFC61D1436400045F5F3 /* OAPlaintextSignatureProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAPlaintextSignatureProvider.m; sourceTree = "<group>"; };
+		394BEFC71D1436400045F5F3 /* OAProblem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAProblem.h; sourceTree = "<group>"; };
+		394BEFC81D1436400045F5F3 /* OAProblem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAProblem.m; sourceTree = "<group>"; };
+		394BEFC91D1436400045F5F3 /* OARequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OARequestParameter.h; sourceTree = "<group>"; };
+		394BEFCA1D1436400045F5F3 /* OARequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OARequestParameter.m; sourceTree = "<group>"; };
+		394BEFCB1D1436400045F5F3 /* OAServiceTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAServiceTicket.h; sourceTree = "<group>"; };
+		394BEFCC1D1436400045F5F3 /* OAServiceTicket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAServiceTicket.m; sourceTree = "<group>"; };
+		394BEFCD1D1436400045F5F3 /* OASignatureProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OASignatureProviding.h; sourceTree = "<group>"; };
+		394BEFCE1D1436400045F5F3 /* OATestServer.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OATestServer.rb; sourceTree = "<group>"; };
+		394BEFCF1D1436400045F5F3 /* OAToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAToken.h; sourceTree = "<group>"; };
+		394BEFD01D1436400045F5F3 /* OAToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAToken.m; sourceTree = "<group>"; };
+		394BEFD11D1436400045F5F3 /* OATokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OATokenManager.h; sourceTree = "<group>"; };
+		394BEFD21D1436400045F5F3 /* OATokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATokenManager.m; sourceTree = "<group>"; };
+		394BEFD31D1436400045F5F3 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
+		394BEFD41D1436400045F5F3 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		395017A81CDA54A600849DF8 /* default_theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default_theme.json; path = Resources/default_theme.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DC1BDBD27B00A5C6B7 /* libJSONModel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONModel.a; path = "Pods/../build/Debug-iphoneos/libJSONModel.a"; sourceTree = "<group>"; };
@@ -261,6 +326,12 @@
 		395DD7261C9B577C007DAFE2 /* pduikit_tickGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_tickGrey.png; path = Resources/pduikit_tickGrey.png; sourceTree = "<group>"; };
 		395DD7271C9B577C007DAFE2 /* pduikit_tickGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_tickGrey@2x.png"; path = "Resources/pduikit_tickGrey@2x.png"; sourceTree = "<group>"; };
 		395DD7281C9B577C007DAFE2 /* pduikit_tickGrey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_tickGrey@3x.png"; path = "Resources/pduikit_tickGrey@3x.png"; sourceTree = "<group>"; };
+		396443F51D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramLoginViewController.h; path = Instagram/PDUIInstagramLoginViewController.h; sourceTree = "<group>"; };
+		396443F61D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramLoginViewController.m; path = Instagram/PDUIInstagramLoginViewController.m; sourceTree = "<group>"; };
+		396443F91D13EC5A00BB67F9 /* PDUICardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUICardViewController.h; path = CardView/PDUICardViewController.h; sourceTree = "<group>"; };
+		396443FA1D13EC5A00BB67F9 /* PDUICardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUICardViewController.m; path = CardView/PDUICardViewController.m; sourceTree = "<group>"; };
+		396443FD1D13F04E00BB67F9 /* PDUICardViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUICardViewModel.h; path = CardView/PDUICardViewModel.h; sourceTree = "<group>"; };
+		396443FE1D13F04E00BB67F9 /* PDUICardViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUICardViewModel.m; path = CardView/PDUICardViewModel.m; sourceTree = "<group>"; };
 		3966F6A61C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMsgCntrTblViewController.h; path = MessageCenter/PDUIMsgCntrTblViewController.h; sourceTree = "<group>"; };
 		3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMsgCntrTblViewController.m; path = MessageCenter/PDUIMsgCntrTblViewController.m; sourceTree = "<group>"; };
 		3966F6A81C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMsgCntrTblViewController.xib; path = MessageCenter/PDUIMsgCntrTblViewController.xib; sourceTree = "<group>"; };
@@ -670,6 +741,77 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		394BEFA91D1436400045F5F3 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				394BEFAA1D1436400045F5F3 /* OAuthconsumer */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		394BEFAA1D1436400045F5F3 /* OAuthconsumer */ = {
+			isa = PBXGroup;
+			children = (
+				394BEFAB1D1436400045F5F3 /* Categories */,
+				394BEFB21D1436400045F5F3 /* Crypto */,
+				394BEFB91D1436400045F5F3 /* OAAttachment.h */,
+				394BEFBA1D1436400045F5F3 /* OAAttachment.m */,
+				394BEFBB1D1436400045F5F3 /* OACall.h */,
+				394BEFBC1D1436400045F5F3 /* OACall.m */,
+				394BEFBD1D1436400045F5F3 /* OAConsumer.h */,
+				394BEFBE1D1436400045F5F3 /* OAConsumer.m */,
+				394BEFBF1D1436400045F5F3 /* OADataFetcher.h */,
+				394BEFC01D1436400045F5F3 /* OADataFetcher.m */,
+				394BEFC11D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.h */,
+				394BEFC21D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m */,
+				394BEFC31D1436400045F5F3 /* OAMutableURLRequest.h */,
+				394BEFC41D1436400045F5F3 /* OAMutableURLRequest.m */,
+				394BEFC51D1436400045F5F3 /* OAPlaintextSignatureProvider.h */,
+				394BEFC61D1436400045F5F3 /* OAPlaintextSignatureProvider.m */,
+				394BEFC71D1436400045F5F3 /* OAProblem.h */,
+				394BEFC81D1436400045F5F3 /* OAProblem.m */,
+				394BEFC91D1436400045F5F3 /* OARequestParameter.h */,
+				394BEFCA1D1436400045F5F3 /* OARequestParameter.m */,
+				394BEFCB1D1436400045F5F3 /* OAServiceTicket.h */,
+				394BEFCC1D1436400045F5F3 /* OAServiceTicket.m */,
+				394BEFCD1D1436400045F5F3 /* OASignatureProviding.h */,
+				394BEFCE1D1436400045F5F3 /* OATestServer.rb */,
+				394BEFCF1D1436400045F5F3 /* OAToken.h */,
+				394BEFD01D1436400045F5F3 /* OAToken.m */,
+				394BEFD11D1436400045F5F3 /* OATokenManager.h */,
+				394BEFD21D1436400045F5F3 /* OATokenManager.m */,
+				394BEFD31D1436400045F5F3 /* OAuthConsumer.h */,
+				394BEFD41D1436400045F5F3 /* README */,
+			);
+			path = OAuthconsumer;
+			sourceTree = "<group>";
+		};
+		394BEFAB1D1436400045F5F3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				394BEFAC1D1436400045F5F3 /* NSMutableURLRequest+Parameters.h */,
+				394BEFAD1D1436400045F5F3 /* NSMutableURLRequest+Parameters.m */,
+				394BEFAE1D1436400045F5F3 /* NSString+URLEncoding.h */,
+				394BEFAF1D1436400045F5F3 /* NSString+URLEncoding.m */,
+				394BEFB01D1436400045F5F3 /* NSURL+Base.h */,
+				394BEFB11D1436400045F5F3 /* NSURL+Base.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		394BEFB21D1436400045F5F3 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				394BEFB31D1436400045F5F3 /* Base64Transcoder.c */,
+				394BEFB41D1436400045F5F3 /* Base64Transcoder.h */,
+				394BEFB51D1436400045F5F3 /* hmac.c */,
+				394BEFB61D1436400045F5F3 /* hmac.h */,
+				394BEFB71D1436400045F5F3 /* sha1.c */,
+				394BEFB81D1436400045F5F3 /* sha1.h */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
 		39537BC41C639B79001C6796 /* TabbedTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,6 +837,29 @@
 				39537BC61C639B79001C6796 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		396443F41D12B6A600BB67F9 /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				396443F51D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.h */,
+				396443F61D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m */,
+				39450F331D14188900AA4883 /* PDUIInstagramWebViewController.h */,
+				39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */,
+				39450F351D14188900AA4883 /* PDUIInstagramWebViewController.xib */,
+			);
+			name = Instagram;
+			sourceTree = "<group>";
+		};
+		396443FC1D13EC6100BB67F9 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				396443F91D13EC5A00BB67F9 /* PDUICardViewController.h */,
+				396443FA1D13EC5A00BB67F9 /* PDUICardViewController.m */,
+				396443FD1D13F04E00BB67F9 /* PDUICardViewModel.h */,
+				396443FE1D13F04E00BB67F9 /* PDUICardViewModel.m */,
+			);
+			name = CardView;
 			sourceTree = "<group>";
 		};
 		3966F69E1C5B84E500DFFF9B /* MessageCenter */ = {
@@ -828,6 +993,7 @@
 		39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */ = {
 			isa = PBXGroup;
 			children = (
+				394BEFA91D1436400045F5F3 /* Libraries */,
 				397478EF1B8F16530015C661 /* PopdeemSDK.m */,
 				397478F01B8F16530015C661 /* PopdeemSDK.h */,
 				396B2B401BFCC262003D9F25 /* info.plist */,
@@ -1282,6 +1448,8 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				396443FC1D13EC6100BB67F9 /* CardView */,
+				396443F41D12B6A600BB67F9 /* Instagram */,
 				39D3F81F1CB2BDAC00A69575 /* Friend Picker */,
 				3921E3091C71D825000120D4 /* Feed */,
 				3966F69E1C5B84E500DFFF9B /* MessageCenter */,
@@ -1834,42 +2002,64 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				394BEFDA1D1436400045F5F3 /* sha1.c in Sources */,
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
 				39A9898E1C3BE8F2002AF910 /* PDUIRewardHomeTableViewController.m in Sources */,
 				39ABA6581C47A9030057088E /* PDUIWalletCache.m in Sources */,
+				394BEFD51D1436400045F5F3 /* NSMutableURLRequest+Parameters.m in Sources */,
 				A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */,
 				39ABA6511C47A1850057088E /* PDUIWalletTableViewCell.m in Sources */,
 				39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */,
+				39450F361D14188900AA4883 /* PDUIInstagramWebViewController.m in Sources */,
 				39A98A651C3E6B9F002AF910 /* PDUICheckinCell.m in Sources */,
 				39A98A661C3E6B9F002AF910 /* PDUIFeedCell.m in Sources */,
 				3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */,
 				39A989861C3BD857002AF910 /* PDUISegmentedControl.m in Sources */,
+				394BEFD71D1436400045F5F3 /* NSURL+Base.m in Sources */,
+				394BEFE11D1436400045F5F3 /* OAPlaintextSignatureProvider.m in Sources */,
+				394BEFD91D1436400045F5F3 /* hmac.c in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
+				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,
 				A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */,
 				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PDUIPhotoCell.m in Sources */,
+				394BEFE31D1436400045F5F3 /* OARequestParameter.m in Sources */,
 				39D3F8221CB2BDB900A69575 /* PDUIFriendPickerViewController.m in Sources */,
 				39ABA6651C4D073D0057088E /* PDUIHomeViewModel.m in Sources */,
 				3921E3141C71E1BB000120D4 /* PDUISingleMessageViewModel.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDUIModalTransitionHandler.m in Sources */,
+				394BEFDD1D1436400045F5F3 /* OAConsumer.m in Sources */,
+				396443FB1D13EC5A00BB67F9 /* PDUICardViewController.m in Sources */,
 				398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDUIRewardTableViewController.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */,
+				394BEFDF1D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
 				39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
+				394BEFDB1D1436400045F5F3 /* OAAttachment.m in Sources */,
+				394BEFD61D1436400045F5F3 /* NSString+URLEncoding.m in Sources */,
 				393A8C421C591E30001F650C /* PDMessage.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDUIModalLoadingView.m in Sources */,
+				394BEFE01D1436400045F5F3 /* OAMutableURLRequest.m in Sources */,
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDUIHomeViewController.m in Sources */,
+				394BEFDC1D1436400045F5F3 /* OACall.m in Sources */,
+				394BEFE41D1436400045F5F3 /* OAServiceTicket.m in Sources */,
+				394BEFE51D1436400045F5F3 /* OAToken.m in Sources */,
 				3921E3111C71DD68000120D4 /* PDUISingleMessageViewController.m in Sources */,
+				394BEFE21D1436400045F5F3 /* OAProblem.m in Sources */,
+				396443FF1D13F04E00BB67F9 /* PDUICardViewModel.m in Sources */,
+				394BEFDE1D1436400045F5F3 /* OADataFetcher.m in Sources */,
 				396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
+				394BEFE61D1436400045F5F3 /* OATokenManager.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
+				394BEFD81D1436400045F5F3 /* Base64Transcoder.c in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				39A989921C3BED98002AF910 /* PDRewardHomeViewModel.m in Sources */,
 				392423761C230F4E0038D953 /* PDUILazyLoader.m in Sources */,
