@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.frameworks = "CoreLocation", "UIKit", "Security", "Social", "Bolts", "FBSDKCoreKit", "FBSDKShareKit", "FBSDKLoginKit"
+  s.frameworks = "CoreLocation", "UIKit", "Security", "Social", "Bolts", "FBSDKCoreKit", "FBSDKShareKit", "FBSDKLoginKit", "SystemConfiguration"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
