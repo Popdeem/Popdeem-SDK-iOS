@@ -19,6 +19,7 @@
                image:(UIImage*)image
             facebook:(BOOL)facebook
              twitter:(BOOL)twitter
+					 instagram:(BOOL)instagram
           completion:(void (^)(NSError *error))completion;
 
 

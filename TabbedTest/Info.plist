@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1014</string>
+	<string>1068</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -59,6 +59,7 @@
 	<string>12e0e2b5d1194389bc82c3018406c3dc</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>instagram</string>
 		<string>fbapi</string>
 		<string>fbapi20130214</string>
 		<string>fbapi20130410</string>

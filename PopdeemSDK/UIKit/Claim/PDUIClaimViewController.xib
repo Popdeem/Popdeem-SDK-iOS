@@ -209,6 +209,9 @@
                                 </view>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gsd-e5-gdS">
                                     <rect key="frame" x="82" y="5" width="51" height="31"/>
+                                    <connections>
+                                        <action selector="facebookSwitchToggled:" destination="-1" eventType="valueChanged" id="l7h-r2-hbw"/>
+                                    </connections>
                                 </switch>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -245,6 +248,9 @@
                                 </view>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-R3-sJf">
                                     <rect key="frame" x="82" y="4" width="51" height="31"/>
+                                    <connections>
+                                        <action selector="twitterSwitchToggled:" destination="-1" eventType="valueChanged" id="OaD-A8-wjK"/>
+                                    </connections>
                                 </switch>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

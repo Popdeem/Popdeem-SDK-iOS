@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDUIModalLoadingView.h"
 
 @interface PDUIInstagramWebViewController : UIViewController
 @property (unsafe_unretained, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (unsafe_unretained, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, retain, nonatomic) PDUIModalLoadingView *loadingView;
 - (instancetype) initFromNib;
 @end

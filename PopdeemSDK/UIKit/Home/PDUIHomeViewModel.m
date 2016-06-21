@@ -220,6 +220,7 @@
                                       image:nil
                                    facebook:YES
                                     twitter:NO
+																	instagram:NO
                                     success:^(){
                                       NSLog(@"No Action Reward Was CLaimed");
                                       [PDRewardStore deleteReward:weakReward.identifier];

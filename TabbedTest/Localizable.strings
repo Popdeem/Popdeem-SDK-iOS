@@ -95,5 +95,11 @@
 "popdeem.instagram.connect.headerText" = "Connect Instagram";
 "popdeem.instagram.connect.bodyText" = "You must connect your Instagram Account to perform this action. Dont worry, we will never post without your explicit permission";
 "popdeem.instagram.connect.actionButtonTitle" = "Connect Instagram Account";
+"popdeem.instagram.share.textCopied" = "Your text has been copied to the clipboard";
+"popdeem.instagram.share.instructionsLineOne" = "1 - Tap 'Share on Instagram below.";
+"popdeem.instagram.share.instructionsLineTwo" = "2 - Choose 'Copy to Instagram' from the options presented.";
+"popdeem.instagram.share.instructionsLineThree" = "3 - Complete the share action in the Instagram app.";
+"popdeem.instagram.share.instructionsLineFour" = "4 - Come back here to verify the action.";
+
 
 

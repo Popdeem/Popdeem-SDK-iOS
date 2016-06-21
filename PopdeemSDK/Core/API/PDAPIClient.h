@@ -108,6 +108,11 @@ NS_ASSUME_NONNULL_BEGIN
                        success:(void (^)(void))success
                        failure:(void (^)(NSError *error))failure;
 
+- (void) connectInstagramAccount:(NSString*)userId
+										 accessToken:(NSString*)accessToken
+												 success:(void (^)(void))success
+												 failure:(void (^)(NSError *error))failure;
+
 ///---------------------
 /// @name Update User
 ///-----------------------
@@ -233,6 +238,7 @@ NS_ASSUME_NONNULL_BEGIN
                image:(nullable UIImage*)image
             facebook:(BOOL)facebook
              twitter:(BOOL)twitter
+					 instagram:(BOOL)instagram
              success:(void (^)(void))success
              failure:(void (^)(NSError *error))failure;
 

@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.frameworks = "CoreLocation", "UIKit", "Security"
+  s.frameworks = "CoreLocation", "UIKit", "Security", "Social", "Bolts", "FBSDKCoreKit", "FBSDKShareKit", "FBSDKLoginKit"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -46,13 +46,9 @@ Pod::Spec.new do |s|
 	end
 
 	s.subspec 'Core' do |core|
-		core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
-    core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
-    core.dependency "FBSDKLoginKit"
-    core.dependency "FBSDKCoreKit"
-    core.dependency "FBSDKShareKit"
+core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}", "PopdeemSDK/Frameworks/*.framework", "PopdeemSDK/Libraries/JSONModel/*.h", "PopdeemSDK/Libraries/JSONModel/**/*.{h,m}"
+    core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h", "PopdeemSDK/Libraries/JSONModel/*.h", "PopdeemSDK/Libraries/JSONModel/**/*.h"
     core.dependency "STTwitter"
-    core.dependency "JSONModel"
 		core.dependency "PopdeemSDK/NoArc"
   end
 

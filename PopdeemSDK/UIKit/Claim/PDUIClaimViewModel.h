@@ -16,6 +16,7 @@
 typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
     FacebookOnly = 0,
     TwitterOnly,
+		InstagramOnly,
     FacebookAndTwitter
 };
 
@@ -37,7 +38,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 
 @property (nonatomic) SocialMediaTypesAvailable socialMediaTypesAvailable;
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location;
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location controller:(UIViewController*)controller;
 - (void) toggleFacebook;
 - (void) toggleTwitter;
 - (void) addPhotoAction;

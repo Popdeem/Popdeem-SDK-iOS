@@ -36,6 +36,8 @@ NSString *const PDBrandLogoImageDidDownload = @"BrandLogoImageDidDownload";
 NSString *const PDRewardCoverImageDidDownload = @"RewardCoverImageDidDownload";
 NSString *const PDFeedItemImageDidDownload = @"PDFeedItemImageDidDownload";
 NSString *const PDUserDidLogout = @"PDUserDidLogout";
+NSString *const InstagramLoginSuccess = @"InstagramLoginSuccess";
+NSString *const InstagramLoginFailure = @"InstagramLoginFailure";
 /*
  End NSNotificationCenter Strings
  */

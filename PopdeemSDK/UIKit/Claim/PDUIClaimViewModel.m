@@ -16,12 +16,15 @@
 #import "PDUtils.h"
 #import "PDTheme.h"
 #import "PDUIInstagramLoginViewController.h"
+#import "PDUIInstagramShareViewController.h"
 
 @interface PDUIClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
+@property (nonatomic) BOOL mustInstagram;
 
 @property (nonatomic) BOOL mustFacebook;
 @property (nonatomic) BOOL willFacebook;
+@property (nonatomic) BOOL willInstagram;
 
 @property (nonatomic, strong) PDUIModalLoadingView *loadingView;
 @property (nonatomic, strong) UIImage *image;
@@ -42,27 +45,38 @@
 	return nil;
 }
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location {
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location controller:(UIViewController*)controller {
 	self = [self init];
 	if (!self) return nil;
 	_location = location;
-	
+	_viewController = controller;
 	if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(PDSocialMediaTypeFacebook)]) {
 		//Show only facebook button
 		self.socialMediaTypesAvailable = FacebookOnly;
 		_willFacebook = YES;
 		_mustFacebook = YES;
+//		[_viewController.instagramSwitch setEnabled:NO];
+		[_viewController.facebookSwitch setOn:YES animated:YES];
 	} else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
 		//Show only Twitter button
 		self.socialMediaTypesAvailable = TwitterOnly;
 		_mustTweet = YES;
 		_willTweet = YES;
+		[_viewController.twitterSwitch setOn:YES];
+//		[_viewController.instagramSwitch setEnabled:NO];
+	} else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(PDSocialMediaTypeInstagram)]) {
+		self.socialMediaTypesAvailable = InstagramOnly;
+		_mustInstagram = YES;
+		[_viewController.facebookSwitch setEnabled:NO];
+		[_viewController.twitterSwitch setEnabled:NO];
 	} else if (mediaTypes.count == 2) {
 		//Show two buttons
 		self.socialMediaTypesAvailable = FacebookAndTwitter;
 		_willFacebook = YES;
 		_mustTweet = NO;
 		_mustFacebook = NO;
+		[_viewController.facebookSwitch setOn:YES];
+		[_viewController.twitterSwitch setOn:NO];
 	} else {
 		//too many or not enough
 	}
@@ -161,21 +175,21 @@
 
 - (void) toggleFacebook {
 	if (_mustFacebook) {
+		[_viewController.facebookSwitch setOn:YES animated:NO];
 		_willFacebook = YES;
 		UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:@"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish" delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
 		[fbV show];
 		return;
 	}
 	
-	if (_willFacebook) {
-		_willFacebook = NO;
-		[_viewController.facebookButton setSelected:NO];
+	_willFacebook = _viewController.facebookSwitch.isOn;
+	
+	if (!_willFacebook) {
 		return;
 	}
 	
 	if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
 		_willFacebook = YES;
-		[_viewController.facebookButton setSelected:YES];
 	} else {
 		[self loginWithReadAndWritePerms];
 	}
@@ -184,6 +198,7 @@
 - (void) toggleTwitter {
 	if (_mustTweet) {
 		_willTweet = YES;
+		[_viewController.twitterSwitch setOn:YES animated:NO];
 		UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.message", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
 		[twitterV show];
 		[self validateHashTag];
@@ -208,6 +223,14 @@
 	[_viewController.twitterCharacterCountLabel setHidden:NO];
 	[self calculateTwitterCharsLeft];
 	[self validateHashTag];
+}
+
+- (void) instagramSwitchToggled:(UISwitch*)instagramSwitch {
+	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
+	_viewController.definesPresentationContext = YES;
+	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
+	_willInstagram = instagramSwitch.isOn;
 }
 
 - (void) addPhotoAction {
@@ -261,7 +284,13 @@
 #pragma mark - Claiming -
 
 - (void) claimAction {
-
+	if (_willInstagram) {
+		PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController withMessage:_viewController.textView.text image:_image];
+		_viewController.definesPresentationContext = YES;
+		isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+		[_viewController presentViewController:isv animated:YES completion:^(void){}];
+		return;
+	}
 	if (!_locationVerified) {
 		
 	}
@@ -394,7 +423,7 @@
 	
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
-	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet success:^(){
+	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet instagram:_willInstagram success:^(){
 		[self didClaimRewardId:rewardId];
 	} failure:^(NSError *error){
 		[self PDAPIClient:client didFailWithError:error];
@@ -621,12 +650,5 @@
 
 #pragma mark - instagram -
 
-- (void) instagramSwitchToggled:(UISwitch*)instagramSwitch {
-	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
-	_viewController.definesPresentationContext = YES;
-	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
-	
-}
 
 @end

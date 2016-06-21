@@ -17,6 +17,7 @@
 	OAToken *requestToken;
 	OAToken *accessToken;
 	NSMutableData *receivedData;
+	BOOL connected;
 }
 
 @property (nonatomic, retain) PDUIInstagramWebViewController *webViewController;

@@ -1,37 +1,13 @@
 PODS:
-  - Bolts (1.5.0):
-    - Bolts/AppLinks (= 1.5.0)
-    - Bolts/Tasks (= 1.5.0)
-  - Bolts/AppLinks (1.5.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.5.0)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - Expecta (1.0.5)
   - Fabric (1.6.6)
-  - FBSDKCoreKit (4.8.0):
-    - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.8.0)
-    - FBSDKCoreKit/no-arc (= 4.8.0)
-  - FBSDKCoreKit/arc (4.8.0):
-    - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.8.0):
-    - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc
-  - FBSDKLoginKit (4.8.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.8.0):
-    - FBSDKCoreKit
-  - JSONModel (1.1.2)
   - Nocilla (0.10.0)
   - OCMock (3.2)
   - PopdeemSDK (1.0.5):
     - PopdeemSDK/Core (= 1.0.5)
   - PopdeemSDK/Core (1.0.5):
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FBSDKShareKit
-    - JSONModel
     - PopdeemSDK/NoArc
     - STTwitter
   - PopdeemSDK/NoArc (1.0.5)
@@ -43,10 +19,6 @@ DEPENDENCIES:
   - Crashlytics
   - Expecta (~> 1.0.0)
   - Fabric
-  - FBSDKCoreKit
-  - FBSDKLoginKit
-  - FBSDKShareKit
-  - JSONModel
   - Nocilla
   - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
@@ -58,17 +30,12 @@ EXTERNAL SOURCES:
     :path: ../Popdeem-SDK-iOS
 
 SPEC CHECKSUMS:
-  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
-  FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
-  FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
-  FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
-  JSONModel: 216584d0311b053ff714f1d6cb700dbf890847bc
   Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
-  PopdeemSDK: 5a12d0bbb3167ea2d4043940075e5207faa61445
+  PopdeemSDK: 1777a3e62f67e87e942089366580e2052f5e3b9a
   STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
 
 COCOAPODS: 0.39.0

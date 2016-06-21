@@ -48,6 +48,8 @@ extern NSString *const PDBrandLogoImageDidDownload;
 extern NSString *const PDRewardCoverImageDidDownload;
 extern NSString *const PDFeedItemImageDidDownload;
 extern NSString *const PDUserDidLogout;
+extern NSString *const InstagramLoginSuccess;
+extern NSString *const InstagramLoginFailure;
     //
 //End NSNotificationCenter Strings
 //

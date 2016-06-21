@@ -25,12 +25,14 @@
 										completion:(void (^)(int buttonIndex))completion {
 	
 	if (self = [super init]) {
+		self.view = [[UIView alloc] initWithFrame:_parent.view.frame];
 		self.viewModel = [[PDUICardViewModel alloc] initWithController:self headerText:headerText bodyText:bodyText image:image actionButtonTitle:actionButtonTitle otherButtonTitles:otherButtonTitles];
 		self.completion = completion;
 		self.parent = parent;
 		[self setupView];
 		return self;
 	}
+	return nil;
 }
 
 - (void) setupView {
@@ -102,17 +104,16 @@
 	int numberOfButtons = _viewModel.otherButtonTitles.count + 1;
 	CGFloat buttonWidth = cardWidth / numberOfButtons;
 	
-	if (numberOfButtons == 1) {
-		UIButton *actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, cardHeight-headerHeight, cardWidth, headerHeight)];
-		[actionButton setBackgroundColor:_viewModel.actionButtonColor];
-		[actionButton.titleLabel setFont:_viewModel.actionButtonFont];
-		[actionButton setTitle:_viewModel.actionButtonTitle forState:UIControlStateNormal];
-		[actionButton setTag:0];
-		[actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[_cardView addSubview:actionButton];
-	} else {
-		
-	}
+	
+	_actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, cardHeight-headerHeight, cardWidth, headerHeight)];
+	[_actionButton setBackgroundColor:_viewModel.actionButtonColor];
+	[_actionButton.titleLabel setFont:_viewModel.actionButtonFont];
+	[_actionButton setTitle:_viewModel.actionButtonTitle forState:UIControlStateNormal];
+	[_actionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+	[_actionButton setTag:0];
+	[_actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[_cardView addSubview:_actionButton];
+
 }
 
 - (void) buttonPressed:(UIButton*)sender {

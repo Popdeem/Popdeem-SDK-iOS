@@ -54,6 +54,8 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");
     self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
     return self;
   }
   return nil;
@@ -75,7 +77,7 @@
 - (void) setupWithReward:(PDReward*)reward {
   _reward = reward;
   _mediaTypes = reward.socialMediaTypes;
-  _viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+  _viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location controller:self];
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
 	[_textView setScrollEnabled:YES];
@@ -128,7 +130,7 @@
   [super viewDidLoad];
   [_locationFailedView setHidden:YES];
   [self setupView];
-  _viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+	_viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location controller:self];
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
   [_textView setFont:[UIFont systemFontOfSize:14]];
@@ -380,9 +382,28 @@
   }
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+- (IBAction)facebookSwitchToggled:(id)sender {
+	[_viewModel toggleFacebook];
+}
+- (IBAction)twitterSwitchToggled:(id)sender {
+	[_viewModel toggleTwitter];
+}
 
 - (IBAction)instagramSwitchToggled:(id)sender {
 	[_viewModel instagramSwitchToggled:sender];
+}
+
+- (void) instagramLoginSuccess {
+	NSLog(@"Instagram Connected");
+}
+
+- (void) instagramLoginFailure {
+	NSLog(@"Instagram Not Connected");
+	[_instagramSwitch setOn:NO animated:YES];
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

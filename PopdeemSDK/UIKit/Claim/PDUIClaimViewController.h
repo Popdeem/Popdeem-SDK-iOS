@@ -12,6 +12,7 @@
 #import "PDLocation.h"
 #import "PDUIClaimViewModel.h"
 #import "PDUIHomeViewController.h"
+#import "PDUIInstagramLoginViewController.h"
 
 @class PDUIClaimViewModel;
 

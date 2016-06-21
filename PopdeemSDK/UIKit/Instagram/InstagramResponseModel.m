@@ -25,7 +25,7 @@
 																										 @"user.username": @"userName",
 																										 @"user.bio": @"bio",
 																										 @"user.website": @"website",
-																										 @"user.profile_picture": @"profilePictureUrlString".
+																										 @"user.profile_picture": @"profilePictureUrlString",
 																										 @"user.full_name": @"fullName",
 																										 @"user.id": @"identifier"
 																										 }];

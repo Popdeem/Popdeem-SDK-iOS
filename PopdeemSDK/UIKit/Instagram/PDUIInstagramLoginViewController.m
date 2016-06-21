@@ -10,6 +10,8 @@
 #import "PDUtils.h"
 #import "PopdeemSDK.h"
 #import "InstagramResponseModel.h"
+#import "PDConstants.h"
+#import "PDAPIClient.h"
 
 @interface PDUIInstagramLoginViewController ()
 
@@ -25,9 +27,14 @@ NSString *callback;
 	NSString *headerText = translationForKey(@"popdeem.instagram.connect.headerText", @"Connect Instagram");
 	NSString *bodyText = translationForKey(@"popdeem.instagram.connect.bodyText", @"You must connect your Instagram Account to perform this action. Dont worry, we will never post without your explicit permission");
 	NSString *actionButtonTitle = translationForKey(@"popdeem.instagram.connect.actionButtonTitle", @"Connect Instagram Account");
-	
+	connected = NO;
 	if (self = [super initForParent:parent headerText:headerText image:[UIImage imageNamed:@"pduikit_instagram_hires"] bodyText:bodyText actionButtonTitle:actionButtonTitle otherButtonTitles:nil completion:^(int buttonIndex){
-		[self connectInstagram];
+		if (connected) {
+			[self dismissViewControllerAnimated:YES completion:^(void){}];
+			[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+		} else {
+			[self connectInstagram];
+		}
 	}]){
 		return self;
 	}
@@ -44,7 +51,12 @@ NSString *callback;
 }
 
 
-- (void) backingTapped {
+- (void) dismiss {
+	if (connected) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+	} else {
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+	}
 	[self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
@@ -69,10 +81,10 @@ NSString *callback;
 #pragma mark - Web View Delegate -
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
-	//    [indicator startAnimating];
-	NSLog(@"%@", [request URL]);
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
 		// Extract oauth_verifier from URL query
+		_webViewController.loadingView = [[PDUIModalLoadingView alloc] initForView:_webViewController.view titleText:@"Please Wait" descriptionText:@"We are connecting your Instagram Account"];
+		[_webViewController.loadingView showAnimated:YES];
 		NSString* verifier = nil;
 		NSArray* urlParams = [[[request URL] query] componentsSeparatedByString:@"&"];
 		for (NSString* param in urlParams) {
@@ -127,7 +139,25 @@ NSString *callback;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *response = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
 	InstagramResponseModel *instagramModel = [[InstagramResponseModel alloc] initWithJSON:response];
-	
+#pragma TODO Connect Social Account
+	PDAPIClient *client = [PDAPIClient sharedInstance];
+	[client connectInstagramAccount:instagramModel.identifier accessToken:instagramModel.accessToken success:^(void){
+		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
+		[_webViewController.loadingView hideAnimated:YES];
+		connected = YES;
+		[self.headerLabel setText:@"Instagram Connected"];
+		[self.bodyLabel setText:@"Your Instagram account is now connected. You can claim your reward now!"];
+		[self.actionButton setTitle:@"Back to Claim" forState:UIControlStateNormal];
+		[self.view setNeedsDisplay];
+	} failure:^(NSError* error){
+		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
+		[_webViewController.loadingView hideAnimated:YES];
+		connected = YES;
+		[self.headerLabel setText:@"Instagram Not Connected"];
+		[self.bodyLabel setText:@"Your Instagram account is not connected."];
+		[self.actionButton setTitle:@"Back to Claim" forState:UIControlStateNormal];
+		[self.view setNeedsDisplay];
+	}];
 }
 
 - (NSString *)URLStringWithoutQuery:(NSURL*)url {

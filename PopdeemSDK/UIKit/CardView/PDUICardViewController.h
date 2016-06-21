@@ -23,6 +23,7 @@
 @property (nonatomic, retain) UILabel *bodyLabel;
 
 @property (nonatomic, retain) NSArray *actionButtons;
+@property (nonatomic, retain) UIButton *actionButton;
 
 - (instancetype) initForParent:(UIViewController*)parent
 										headerText:(NSString*)headerText
