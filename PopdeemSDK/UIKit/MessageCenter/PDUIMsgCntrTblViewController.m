@@ -100,6 +100,7 @@
 			return [[PDUIMessageLogoutCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
 			break;
   default:
+			return nil;
 			break;
 	}
 }

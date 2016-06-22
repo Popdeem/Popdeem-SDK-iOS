@@ -7,22 +7,37 @@
 		<key>NavigationSample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>2</integer>
+		</dict>
+		<key>Popdeem-SDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
 		</dict>
 		<key>PopdeemSDK.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>PopdeemSample.xcscheme</key>
+		<key>PopdeemSDKCore.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>PopdeemSDKUIKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
+		<key>PopdeemSample.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>TabbedTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>18</integer>
+			<integer>3</integer>
 		</dict>
 		<key>libPopdeemSDK.xcscheme</key>
 		<dict>
@@ -38,6 +53,21 @@
 			<true/>
 		</dict>
 		<key>39537BC21C639B79001C6796</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39788F4F1D1A998500BCE17E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39788FAA1D1A9A7500BCE17E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39788FBC1D1A9A7D00BCE17E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

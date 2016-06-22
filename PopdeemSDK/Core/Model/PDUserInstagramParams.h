@@ -6,7 +6,7 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
-#import <JSONModel/JSONModel.h>
+#import "JSONModel.h"
 
 @interface PDUserInstagramParams : JSONModel
 

@@ -1,11 +1,10 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '7.1'
-
+use_frameworks!
 platform :ios, '8.0'
-link_with 'PopdeemSDK', 'PopdeemSDKTests'
+link_with 'PopdeemSDK', 'PopdeemSDKTests', 'TabbedTest'
 
 target 'PopdeemSDK' do
-    pod 'STTwitter'
 end
 
 target 'PopdeemSample' do

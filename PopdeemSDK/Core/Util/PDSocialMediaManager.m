@@ -12,7 +12,7 @@
 #import "PDUtils.h"
 #import "PDAPIClient.h"
 #import <Accounts/Accounts.h>
-#import <STTwitter/STTwitter.h>
+#import "STTwitter.h"
 
 @interface PDSocialMediaManager() {
   ACAccount *singleAccount;

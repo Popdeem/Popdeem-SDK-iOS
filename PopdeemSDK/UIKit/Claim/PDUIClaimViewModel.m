@@ -6,6 +6,7 @@
 //  Copyright © 2015 Popdeem. All rights reserved.
 //
 
+#import <FBSDKLoginKit/FBSDKLoginManager.h>
 #import "PDUIClaimViewModel.h"
 #import "PDUIClaimViewController.h"
 #import "PDUser.h"

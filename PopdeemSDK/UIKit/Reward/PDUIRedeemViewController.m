@@ -7,7 +7,7 @@
 //
 
 #import "PDUIRedeemViewController.h"
-#import <PopdeemSDK/PDBrandStore.h>
+#import "PDBrandStore.h"
 #import "PDUtils.h"
 #import "PDTheme.h"
 
