@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "PopdeemSDK"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "PopdeemSDK is used to interact with the Popdeem API on iOS."
   s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
   s.homepage     = "https://github.com/Popdeem/Popdeem-SDK-iOS.git"
@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
 	end
 
 	s.subspec 'Core' do |core|
-core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}", "PopdeemSDK/Frameworks/*.framework", "PopdeemSDK/Libraries/JSONModel/*.h", "PopdeemSDK/Libraries/JSONModel/**/*.{h,m}"
+    core.source_files = "PopdeemSDK/PopdeemSDK.m", "PopdeemSDK/PopdeemSDK.h", "PopdeemSDK/Core/*.{h,m}", "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}", "PopdeemSDK/Frameworks/*.framework", "PopdeemSDK/Libraries/JSONModel/**/*.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h", "PopdeemSDK/Libraries/JSONModel/*.h", "PopdeemSDK/Libraries/JSONModel/**/*.h"
     core.dependency "STTwitter"
 		core.dependency "PopdeemSDK/NoArc"

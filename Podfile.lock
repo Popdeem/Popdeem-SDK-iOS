@@ -5,13 +5,13 @@ PODS:
   - Fabric (1.6.6)
   - Nocilla (0.10.0)
   - OCMock (3.2)
-  - PopdeemSDK (1.0.5):
-    - PopdeemSDK/Core (= 1.0.5)
-  - PopdeemSDK/Core (1.0.5):
+  - PopdeemSDK (1.0.6):
+    - PopdeemSDK/Core (= 1.0.6)
+  - PopdeemSDK/Core (1.0.6):
     - PopdeemSDK/NoArc
     - STTwitter
-  - PopdeemSDK/NoArc (1.0.5)
-  - PopdeemSDK/UIKit (1.0.5):
+  - PopdeemSDK/NoArc (1.0.6)
+  - PopdeemSDK/UIKit (1.0.6):
     - PopdeemSDK/Core
   - STTwitter (0.2.2)
 
@@ -35,7 +35,7 @@ SPEC CHECKSUMS:
   Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
   Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
-  PopdeemSDK: 1777a3e62f67e87e942089366580e2052f5e3b9a
+  PopdeemSDK: a964b41535b2c75333eaf2a2bdd1d7be6ba27bed
   STTwitter: eb85d8770ddb0f8989f341cf41ea875e90ac6e7f
 
 COCOAPODS: 0.39.0
