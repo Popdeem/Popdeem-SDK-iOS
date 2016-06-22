@@ -433,8 +433,13 @@
 
 #pragma mark - Instagram -
 
-- (BOOL) isLoggedInWithInstagram {
-	return NO;
+- (void) isLoggedInWithInstagram:(void (^)(BOOL isLoggedIn))completion {
+	PDUser *user = [PDUser sharedInstance];
+	NSString *accessToken = [[user instagramParams] accessToken];
+	if (!accessToken) {
+		completion(NO);
+	}
+	
 }
 
 @end
