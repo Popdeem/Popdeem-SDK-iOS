@@ -13,6 +13,7 @@
 #import "PDAPIClient.h"
 #import <Accounts/Accounts.h>
 #import "STTwitter.h"
+#import "PDInstagramAPIClient.h"
 
 @interface PDSocialMediaManager() {
   ACAccount *singleAccount;
@@ -436,10 +437,16 @@
 - (void) isLoggedInWithInstagram:(void (^)(BOOL isLoggedIn))completion {
 	PDUser *user = [PDUser sharedInstance];
 	NSString *accessToken = [[user instagramParams] accessToken];
-	if (!accessToken) {
+	if (accessToken.length == 0) {
 		completion(NO);
 	}
-	
+	PDInstagramAPIClient *client = [[PDInstagramAPIClient alloc] init];
+	[client checkAccessToken:^(BOOL valid, NSError *error){
+		if (error) {
+			NSLog(@"Error when checking Instagram Token: %@",error);
+		}
+		completion(valid);
+	}];
 }
 
 @end

@@ -9,9 +9,11 @@
 #import "PDUIInstagramShareViewController.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDConstants.h"
+#import "PDUser.h"
 
 @interface PDUIInstagramShareViewController ()
-
+@property (nonatomic) BOOL leavingToInstagram;
 @end
 
 @implementation PDUIInstagramShareViewController
@@ -27,6 +29,12 @@
 }
 
 - (void)viewDidLoad {
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+	
+	_leavingToInstagram = NO;
     [super viewDidLoad];
 	[self.view setBackgroundColor:[UIColor clearColor]];
 	self.effectView = [[UIVisualEffectView alloc] initWithFrame:_parent.view.frame];
@@ -55,7 +63,7 @@
 	[_headerView setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
 	
 	_headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _headerView.frame.size.width, headerHeight)];
-	[_headerLabel setText:@"Share on Instagram"];
+	[_headerLabel setText:@"Claim"];
 	[_headerLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 17)];
 	[_headerLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
 	[_headerLabel setTextAlignment:NSTextAlignmentCenter];
@@ -66,12 +74,12 @@
 	currentY += headerHeight;
 	
 	CGFloat usableHeight = cardHeight - (2 * headerHeight);
-	CGFloat messageHeight = (usableHeight / 2) - 20;
-	
+	CGFloat messageHeight = 60;
+	CGFloat padding = 5;
 	_messageView = [[UIView alloc] initWithFrame:CGRectMake(10, currentY+10, cardWidth-20, messageHeight)];
 	[_messageView.layer setCornerRadius:5];
 	_messageView.layer.borderWidth = 1.0;
-	_messageView.layer.borderColor = [UIColor blackColor].CGColor;
+	_messageView.layer.borderColor = PopdeemColor(@"popdeem.colors.secondaryFontColor").CGColor;
 	[_messageView setClipsToBounds:YES];
 	[_cardView addSubview:_messageView];
 	
@@ -80,22 +88,52 @@
 	[_messageLabel setText:_message];
 	[_messageLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
 	[_messageLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+	[_messageLabel sizeToFit];
+	[_messageView setFrame:CGRectMake(10, currentY+10, _messageView.frame.size.width, _messageLabel.frame.size.height+2*padding)];
 	[_messageView addSubview:_messageLabel];
 	
-	currentY += usableHeight/2;
 	
-	_instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentY+10, cardWidth-20, usableHeight/2)];
-	[_instructionsLabel setTextAlignment:NSTextAlignmentCenter];
-	[_instructionsLabel setText:@"Your message has been copied to the clipboard. Tap 'Share on Instagram' to be taken to the Instagram app, where you will need to paste your message."];
-	[_instructionsLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
-	[_instructionsLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
-	_instructionsLabel.numberOfLines = 4;
+	currentY += 20 + _messageView.frame.size.height;
+	
+	_instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentY+padding, cardWidth-20, usableHeight/2)];
+	[_instructionsLabel setTextAlignment:NSTextAlignmentLeft];
+	
+	NSString *instagramScreenName = [[[PDUser sharedInstance] instagramParams] screenName];
+	if (!instagramScreenName) {
+		instagramScreenName = @"PopdeemTester1";
+	}
+	NSString *user = [NSString stringWithFormat:@"Make sure you are logged in as %@",instagramScreenName];
+	NSString *noBullet = @"Your message has been copied to the clipboard.\n";
+	NSString *bullet1 = @"1. Tap 'Share on Instagram' and choose 'Copy to Instagram' to be taken to the Instagram app.\n";
+	NSString *bullet2 = [NSString stringWithFormat:@"2. Paste your caption when prompted. Make sure your post includes the required hashtag.\n" ];
+	NSString *bullet3 = @"3. Complete your post on the Instagram App.\n";
+	NSString *bullet4 = @"4. Come back here to verify your post.\n";
+	
+	NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+	paragraphStyle.alignment                = NSTextAlignmentCenter;
+	NSMutableAttributedString *notesString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@",user,noBullet] attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 11), NSForegroundColorAttributeName: PopdeemColor(@"popdeem.colors.secondaryFontColor"),NSParagraphStyleAttributeName: paragraphStyle}];
+	
+	NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 12), NSForegroundColorAttributeName: PopdeemColor(@"popdeem.colors.secondaryFontColor")}];
+	
+	[attString appendAttributedString:notesString];
+	
+	NSArray *strings = [NSArray arrayWithObjects:bullet1,bullet2,bullet3,bullet4, nil];
+	for (NSString* s in strings) {
+		NSMutableAttributedString *aString = [[NSMutableAttributedString alloc] initWithString:s];
+		NSParagraphStyle *paragraphStyle = [self createParagraphAttribute];
+		[aString addAttributes:@{NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 13), NSForegroundColorAttributeName: PopdeemColor(@"popdeem.colors.primaryFontColor")} range:NSMakeRange(0, aString.length)];
+		[attString appendAttributedString:aString];
+	}
+	
+	[_instructionsLabel setAttributedText:attString];
+	_instructionsLabel.numberOfLines = 10;
 	[_cardView addSubview:_instructionsLabel];
+	[_instructionsLabel sizeToFit];
 	
-	currentY = cardHeight - headerHeight;
+	currentY += _instructionsLabel.frame.size.height + padding;
 	CGFloat buttonWidth = cardWidth;
 	
-	_actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, cardHeight-headerHeight, cardWidth, headerHeight)];
+	_actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, currentY, cardWidth, headerHeight)];
 	[_actionButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
 	[_actionButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 17)];
 	[_actionButton.titleLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
@@ -104,6 +142,13 @@
 	[_actionButton setTag:0];
 	[_actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[_cardView addSubview:_actionButton];
+	
+	currentY += headerHeight;
+	cardHeight = currentY;
+	CGFloat midY = self.view.frame.size.height / 2;
+	cardY = midY - (cardHeight/2);
+	[_cardView setFrame:CGRectMake(cardX, cardY, cardWidth, cardHeight)];
+	
 }
 
 - (void) buttonPressed:(id)sender {
@@ -140,12 +185,13 @@
 		NSString *caption = _message; //settext as Default Caption
 		self.dic.annotation=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",caption],@"InstagramCaption", nil];
 		[self.dic presentOpenInMenuFromRect:rect inView: self.view animated:YES];
-		
+		_leavingToInstagram = YES;
 	}
 	else
 	{
 		UIAlertView *errMsg = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Instagram Available" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 		[errMsg show];
+		_leavingToInstagram = NO;
 	}
 }
 
@@ -161,6 +207,57 @@
 	[pb setString:message];
 }
 
+- (void) dismiss {
+	[self dismissViewControllerAnimated:YES completion:^(void){}];
+}
+
+- (NSParagraphStyle*) createParagraphAttribute {
+	NSMutableParagraphStyle *paragraphStyle;
+	paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+	[paragraphStyle setTabStops:@[[[NSTextTab alloc] initWithTextAlignment:NSTextAlignmentLeft location:15 options:nil]]];
+	[paragraphStyle setDefaultTabInterval:15];
+	[paragraphStyle setFirstLineHeadIndent:0];
+	[paragraphStyle setHeadIndent:15];
+	
+	return paragraphStyle;
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+	NSLog(@"View did appear");
+	if (_leavingToInstagram) {
+		[self dismiss];
+		[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
+	}
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"View did disappear");
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+	NSLog(@"View will disappear");
+	if (_leavingToInstagram) {
+		[self dismiss];
+		[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
+	}
+}
+
+- (void)appDidBecomeActive:(NSNotification *)notification {
+	NSLog(@"did become active notification");
+}
+
+- (void)appWillEnterForeground:(NSNotification *)notification {
+	NSLog(@"will enter foreground notification");
+}
+
+- (void)appDidEnterBackground:(NSNotification *)notification {
+	NSLog(@"will enter background notification");
+	if (_leavingToInstagram) {
+		[self dismiss];
+		[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
+	}
+}
 /*
 #pragma mark - Navigation
 

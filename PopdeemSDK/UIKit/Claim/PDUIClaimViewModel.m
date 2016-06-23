@@ -227,10 +227,23 @@
 }
 
 - (void) instagramSwitchToggled:(UISwitch*)instagramSwitch {
-	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
-	_viewController.definesPresentationContext = YES;
-	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
+	if (!instagramSwitch.isOn) {
+		_willInstagram = NO;
+		return;
+	}
+	PDSocialMediaManager *manager = [PDSocialMediaManager manager];
+	[manager isLoggedInWithInstagram:^(BOOL isLoggedIn){
+		if (!isLoggedIn) {
+			[instagramSwitch setOn:NO animated:NO];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
+				_viewController.definesPresentationContext = YES;
+				instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+				[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
+			});
+		}
+	}];
+	
 	_willInstagram = instagramSwitch.isOn;
 }
 
@@ -286,7 +299,18 @@
 
 - (void) claimAction {
 	if (_willInstagram) {
-		PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController withMessage:_viewController.textView.text image:_image];
+		if (!_image) {
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
+																											message:@"A photo is required for this action. Please add a photo"
+																										 delegate:self
+																						cancelButtonTitle:@"OK"
+																						otherButtonTitles:nil];
+			[alert setTag:1];
+			[alert show];
+			[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			return;
+		}
+		PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image];
 		_viewController.definesPresentationContext = YES;
 		isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
 		[_viewController presentViewController:isv animated:YES completion:^(void){}];

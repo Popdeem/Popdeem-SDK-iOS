@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSString *baseUrl;
 
-- (void) checkAccessToken:(void (^)(BOOL *valid, NSError *error))completion;
+- (void) checkAccessToken:(void (^)(BOOL valid, NSError *error))completion;
 
 @end

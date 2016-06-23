@@ -11,14 +11,14 @@
 
 @implementation PDInstagramAPIClient
 
-- (void) checkAccessToken:(void (^)(BOOL *valid, NSError *error))completion {
+- (void) checkAccessToken:(void (^)(BOOL valid, NSError *error))completion {
 	PDInstagramAPIService *service = [[PDInstagramAPIService alloc] init];
 	[service checkAccessToken:^(BOOL valid, NSError *error){
 		if (error) {
 			completion(NO, error);
 		}
 		completion(valid, nil);
-	}]
+	}];
 }
 
 @end

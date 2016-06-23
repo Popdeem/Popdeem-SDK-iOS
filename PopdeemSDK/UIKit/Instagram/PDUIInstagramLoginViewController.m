@@ -72,6 +72,17 @@ NSString *callback;
 	self.definesPresentationContext = YES;
 	_webViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	
+	NSHTTPCookie *cookie;
+	NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+	for (cookie in [storage cookies])
+	{
+		NSString* domainName = [cookie domain];
+		NSRange domainRange = [domainName rangeOfString:@"instagram.com"];
+		if(domainRange.length > 0) {
+			[storage deleteCookie:cookie];
+		}
+	}
+	
 	[self presentViewController:_webViewController animated:YES completion:^(void){
 		_webViewController.webView.delegate = self;
 		[_webViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];

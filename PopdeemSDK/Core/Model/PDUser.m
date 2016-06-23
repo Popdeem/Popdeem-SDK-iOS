@@ -65,7 +65,7 @@ static PDUser *globalUser = nil;
   user.twitterParams = [[PDUserTwitterParams alloc] initWithParams:twitterParams];
 	
 	NSDictionary *instagramParams = params[@"instagram"];
-	NSError *err = [[NSError alloc] init];
+	NSError *err = [[NSError alloc] initWithDomain:@"PDUser Error" code:27700 userInfo:nil];
 	if (instagramParams) {
 		user.instagramParams = [[PDUserInstagramParams alloc] initWithDictionary:instagramParams error:&err];
 	}

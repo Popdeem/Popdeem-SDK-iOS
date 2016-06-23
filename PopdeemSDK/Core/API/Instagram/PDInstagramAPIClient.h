@@ -11,6 +11,6 @@
 
 @interface PDInstagramAPIClient : NSObject
 
-- (void) checkAccessToken:(void (^)(BOOL *valid, NSError *error))completion;
+- (void) checkAccessToken:(void (^)(BOOL valid, NSError *error))completion;
 
 @end

@@ -19,6 +19,7 @@
 #import "PDUser+Facebook.h"
 #import "PDSocialMediaFriend.h"
 #import "PDTheme.h"
+#import "PDUIInstagramVerifyViewController.h"
 
 @interface PDUIClaimViewController () {
   NSArray *_mediaTypes;
@@ -56,6 +57,7 @@
     self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
     return self;
   }
   return nil;
@@ -400,6 +402,15 @@
 - (void) instagramLoginFailure {
 	NSLog(@"Instagram Not Connected");
 	[_instagramSwitch setOn:NO animated:YES];
+}
+
+- (void) instagramPostMade {
+	PDUIInstagramVerifyViewController *verifyController = [[PDUIInstagramVerifyViewController alloc] initForParent:self.navigationController forReward:_viewModel.reward];
+	self.definesPresentationContext = YES;
+	verifyController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	[self presentViewController:verifyController animated:YES completion:^(void){
+		[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:PDUserLinkedToInstagram context:nil];
+	}];
 }
 
 - (void) dealloc {

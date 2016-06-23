@@ -11,7 +11,8 @@
 @interface PDUserInstagramParams : JSONModel
 
 @property (nonatomic) NSInteger socialAccountId;
-@property (nonatomic, retain) NSString *instagramId;
+@property (nonatomic, retain) NSString<Optional> *instagramId;
+@property (nonatomic, retain) NSString<Optional> *screenName;
 @property (nonatomic) BOOL isTester;
 @property (nonatomic, retain) NSString *accessToken;
 @property (nonatomic, retain) NSString *accessSecret;
