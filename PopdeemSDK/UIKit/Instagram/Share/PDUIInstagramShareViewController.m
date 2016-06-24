@@ -208,7 +208,9 @@
 }
 
 - (void) dismiss {
-	[self dismissViewControllerAnimated:YES completion:^(void){}];
+	[self dismissViewControllerAnimated:YES completion:^(void){
+		
+	}];
 }
 
 - (NSParagraphStyle*) createParagraphAttribute {
@@ -253,9 +255,10 @@
 - (void)appDidEnterBackground:(NSNotification *)notification {
 	NSLog(@"will enter background notification");
 	if (_leavingToInstagram) {
-		[self dismiss];
-		[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
-		[[NSNotificationCenter defaultCenter] removeObserver:self];
+		[self dismissViewControllerAnimated:YES completion:^(void){
+			[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
+			[[NSNotificationCenter defaultCenter] removeObserver:self];
+		}];
 	}
 }
 /*

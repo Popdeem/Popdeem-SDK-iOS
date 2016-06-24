@@ -58,6 +58,9 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
     return self;
   }
   return nil;
@@ -382,6 +385,7 @@
       }
     }
   }
+	[_textView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (IBAction)facebookSwitchToggled:(id)sender {
@@ -408,12 +412,28 @@
 }
 
 - (void) instagramPostMade {
+	
 	PDUIInstagramVerifyViewController *verifyController = [[PDUIInstagramVerifyViewController alloc] initForParent:self.navigationController forReward:_viewModel.reward];
 	self.definesPresentationContext = YES;
 	verifyController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	[self presentViewController:verifyController animated:YES completion:^(void){
 		
 	}];
+}
+
+- (void) instagramVerifySuccess {
+	self.homeController.didClaim = YES;
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) instagramVerifyFailure {
+	self.homeController.didClaim = NO;
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) instagramVerifyNoAttempt {
+	self.homeController.didClaim = NO;
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) dealloc {

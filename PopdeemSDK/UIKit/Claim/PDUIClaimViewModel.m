@@ -444,6 +444,7 @@
 	//location?
 	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet instagram:_willInstagram success:^(){
 		if (_willInstagram) {
+			[_loadingView hideAnimated:YES];
 			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image];
 			_viewController.definesPresentationContext = YES;
 			isv.modalPresentationStyle = UIModalPresentationOverFullScreen;

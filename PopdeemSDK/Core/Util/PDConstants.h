@@ -52,6 +52,9 @@ extern NSString *const PDUserDidLogout;
 extern NSString *const InstagramLoginSuccess;
 extern NSString *const InstagramLoginFailure;
 extern NSString *const PDUserLinkedToInstagram;
+extern NSString *const InstagramVerifySuccess;
+extern NSString *const InstagramVerifyFailure;
+extern NSString *const InstagramVerifyNoAttempt;
     //
 //End NSNotificationCenter Strings
 //

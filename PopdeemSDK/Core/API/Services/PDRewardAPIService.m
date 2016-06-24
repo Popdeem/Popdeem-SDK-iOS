@@ -165,9 +165,11 @@
 		NSLog(@"%@",jsonObject);
 		if ([jsonObject[@"status"] isEqualToString:@"failed"]) {
 			completion(NO, nil);
+			return;
 		}
 		if ([jsonObject[@"status"] isEqualToString:@"success"]) {
 			completion(YES,nil);
+			return;
 		}
 		completion(NO,nil);
 	}];

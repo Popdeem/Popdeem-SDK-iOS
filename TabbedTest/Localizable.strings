@@ -100,6 +100,16 @@
 "popdeem.instagram.share.instructionsLineTwo" = "2 - Choose 'Copy to Instagram' from the options presented.";
 "popdeem.instagram.share.instructionsLineThree" = "3 - Complete the share action in the Instagram app.";
 "popdeem.instagram.share.instructionsLineFour" = "4 - Come back here to verify the action.";
+"popdeem.instagram.verify.mustVerify.headerText" = "Verify Post";
+"popdeem.instagram.verify.mustVerify.messageText" = "Have you completed your post on Instagram? If yes, tap 'Verify' below, so we can check it out! If not, tap anywhere outside this card, and you will be brought back to the claim screen, where you can make the post again.\n";
+"popdeem.instagram.verify.mustVerify.buttonText" = "Verify Now";
+"popdeem.instagram.verify.verifySuccess.headerText" = "Verify Succeded";
+"popdeem.instagram.verify.verifySuccess.messageText" = "We have found your post! You can go to the Wallet now to see your reward.\n";
+"popdeem.instagram.verify.verifySuccess.buttonText" = "Go";
 
+
+"popdeem.instagram.verify.verifyFailure.headerText" = "Verify Failure";
+"popdeem.instagram.verify.verifyFailure.messageText" = "We could not find your post. Please go to Instagram and ensure that your post includes the hashtag %@ and try verify again. You can also verify this post at a later date in the Wallet.";
+"popdeem.instagram.verify.verifyFailure.buttonText" = "Verify Now";
 
 

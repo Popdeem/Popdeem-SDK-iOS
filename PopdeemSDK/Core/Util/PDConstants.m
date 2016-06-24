@@ -40,6 +40,9 @@ NSString *const PDUserDidLogout = @"PDUserDidLogout";
 NSString *const InstagramLoginSuccess = @"InstagramLoginSuccess";
 NSString *const InstagramLoginFailure = @"InstagramLoginFailure";
 NSString *const PDUserLinkedToInstagram = @"PDUserLinkedToInstagram";
+NSString *const InstagramVerifySuccess = @"InstagramVerifySuccess";
+NSString *const InstagramVerifyFailure = @"InstagramVerifyFailure";
+NSString *const InstagramVerifyNoAttempt = @"InstagramVerifyNoAttempt";
 /*
  End NSNotificationCenter Strings
  */

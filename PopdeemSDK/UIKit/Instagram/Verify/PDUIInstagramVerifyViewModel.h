@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface PDUIInstagramVerifyViewModel : NSObject
+typedef NS_ENUM(NSInteger, PDInstagramVerifyViewState) {
+	PDInstagramVerifyViewStateMustVerify,
+	PDInstagramVerifyViewStateVerifySuccess,
+	PDInstagramVerifyViewStateVerifyFailure
+};
 
-@property (nonatomic, assign) UIViewController *viewController;
+@interface PDUIInstagramVerifyViewModel : NSObject
 
 @property (nonatomic, retain) NSString *headerText;
 @property (nonatomic, retain) NSString *messageText;
@@ -25,7 +29,13 @@
 @property (nonatomic, retain) UIColor *headerFontColor;
 @property (nonatomic, retain) UIColor *messageFontColor;
 @property (nonatomic, retain) UIColor *buttonColor;
-@property (nonatomic, retain) UIColor *buttonFontColor;
+@property (nonatomic, retain) UIColor *buttonFontColorNormal;
+@property (nonatomic, retain) UIColor *buttonFontColorSelected;
 @property (nonatomic, retain) UIColor *buttonBorderColor;
 
+@property (nonatomic) PDInstagramVerifyViewState state;
+
+- (instancetype) initForViewController:(UIViewController*)viewController;
+- (void) setup;
+- (void) setViewModelState:(PDInstagramVerifyViewState)state;
 @end

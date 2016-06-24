@@ -99,6 +99,7 @@
 		3978947C1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */; };
 		3978947F1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */; };
 		397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */; };
+		397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */; };
 		398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
@@ -463,6 +464,8 @@
 		3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramVerifyViewModel.m; path = Instagram/Verify/PDUIInstagramVerifyViewModel.m; sourceTree = "<group>"; };
 		397894821D1D406C00BCE17E /* NSURL+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+OAuthAdditions.h"; path = "Categories/NSURL+OAuthAdditions.h"; sourceTree = "<group>"; };
 		397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+OAuthAdditions.m"; path = "Categories/NSURL+OAuthAdditions.m"; sourceTree = "<group>"; };
+		397894851D1D622D00BCE17E /* UIColor+ColorOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ColorOperations.h"; path = "Categories/UIColor+ColorOperations.h"; sourceTree = "<group>"; };
+		397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ColorOperations.m"; path = "Categories/UIColor+ColorOperations.m"; sourceTree = "<group>"; };
 		397E10751C4D253800B924D0 /* PDUIHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIHomeViewController.xib; path = Home/PDUIHomeViewController.xib; sourceTree = "<group>"; };
 		398A11DA1C60B748002CB4B6 /* PDUIMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMessageCell.xib; path = MessageCenter/PDUIMessageCell.xib; sourceTree = "<group>"; };
 		398A11DC1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMsgCntrViewModel.h; path = MessageCenter/PDUIMsgCntrViewModel.h; sourceTree = "<group>"; };
@@ -1145,6 +1148,8 @@
 			children = (
 				397894821D1D406C00BCE17E /* NSURL+OAuthAdditions.h */,
 				397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */,
+				397894851D1D622D00BCE17E /* UIColor+ColorOperations.h */,
+				397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2305,6 +2310,7 @@
 				397891311D1A9D7F00BCE17E /* JSONSyntaxHighlight.m in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				3978911D1D1A9D7F00BCE17E /* STTwitterHTML.m in Sources */,
+				397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */,
 				3978911A1D1A9D7F00BCE17E /* STTwitterAppOnly.m in Sources */,
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,

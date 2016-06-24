@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
 #import "PDUIModalLoadingView.h"
+#import "PDUIInstagramVerifyViewModel.h"
 
 @interface PDUIInstagramVerifyViewController : UIViewController
 
+@property (nonatomic, retain) PDUIInstagramVerifyViewModel *viewModel;
 @property (nonatomic, assign) UIViewController *parent;
 @property (nonatomic, assign) PDReward *reward;
 @property (nonatomic, retain) UIVisualEffectView *effectView;
@@ -24,5 +26,5 @@
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 
 - (instancetype) initForParent:(UIViewController*)parent forReward:(PDReward*)reward;
-
+- (void) updateForViewModelState;
 @end
