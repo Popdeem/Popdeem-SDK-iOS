@@ -98,6 +98,7 @@
 		397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894771D1AC04400BCE17E /* PDInstagramAPIService.m */; };
 		3978947C1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */; };
 		3978947F1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */; };
+		397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */; };
 		398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
@@ -460,6 +461,8 @@
 		3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramVerifyViewController.m; path = Instagram/Verify/PDUIInstagramVerifyViewController.m; sourceTree = "<group>"; };
 		3978947D1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramVerifyViewModel.h; path = Instagram/Verify/PDUIInstagramVerifyViewModel.h; sourceTree = "<group>"; };
 		3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramVerifyViewModel.m; path = Instagram/Verify/PDUIInstagramVerifyViewModel.m; sourceTree = "<group>"; };
+		397894821D1D406C00BCE17E /* NSURL+OAuthAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+OAuthAdditions.h"; path = "Categories/NSURL+OAuthAdditions.h"; sourceTree = "<group>"; };
+		397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+OAuthAdditions.m"; path = "Categories/NSURL+OAuthAdditions.m"; sourceTree = "<group>"; };
 		397E10751C4D253800B924D0 /* PDUIHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIHomeViewController.xib; path = Home/PDUIHomeViewController.xib; sourceTree = "<group>"; };
 		398A11DA1C60B748002CB4B6 /* PDUIMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMessageCell.xib; path = MessageCenter/PDUIMessageCell.xib; sourceTree = "<group>"; };
 		398A11DC1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMsgCntrViewModel.h; path = MessageCenter/PDUIMsgCntrViewModel.h; sourceTree = "<group>"; };
@@ -1137,6 +1140,15 @@
 			name = Verify;
 			sourceTree = "<group>";
 		};
+		397894811D1D403800BCE17E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				397894821D1D406C00BCE17E /* NSURL+OAuthAdditions.h */,
+				397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		398E4B751C03730100A68529 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1511,6 +1523,7 @@
 		BC67F591CB1E9DF1136B7D20 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				397894811D1D403800BCE17E /* Categories */,
 				BC67FEB8A2F92A9F8B4D84FE /* Store */,
 				BC67F00548709376630E993B /* Util */,
 				BC67FA5FB895CC0BDBDC7C1B /* Model */,
@@ -2325,6 +2338,7 @@
 				397894721D1ABFFE00BCE17E /* PDInstagramAPIClient.m in Sources */,
 				393A8C421C591E30001F650C /* PDMessage.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */,
+				397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDUIModalLoadingView.m in Sources */,
 				394BEFE01D1436400045F5F3 /* OAMutableURLRequest.m in Sources */,
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,

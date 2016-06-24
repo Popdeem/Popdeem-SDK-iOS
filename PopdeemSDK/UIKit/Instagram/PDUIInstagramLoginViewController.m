@@ -152,7 +152,7 @@ NSString *callback;
 	InstagramResponseModel *instagramModel = [[InstagramResponseModel alloc] initWithJSON:response];
 #pragma TODO Connect Social Account
 	PDAPIClient *client = [PDAPIClient sharedInstance];
-	[client connectInstagramAccount:instagramModel.identifier accessToken:instagramModel.accessToken success:^(void){
+	[client connectInstagramAccount:instagramModel.identifier accessToken:instagramModel.accessToken screenName:instagramModel.userName success:^(void){
 		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
 		[_webViewController.loadingView hideAnimated:YES];
 		connected = YES;

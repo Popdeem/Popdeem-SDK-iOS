@@ -81,7 +81,15 @@
   
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   [params setObject:user forKey:@"user"];
-  
+	
+	NSMutableDictionary *newParams = @{@"user": @{
+																				 @"device_id": deviceId,
+																				 @"facebook": @{
+																						 @"id": facebookId,
+																						 @"access_token": facebookAccessToken
+																						 }
+																				 }};
+	
   NSURLSession *session = [NSURLSession createPopdeemSession];
   [session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
     if (error) {
