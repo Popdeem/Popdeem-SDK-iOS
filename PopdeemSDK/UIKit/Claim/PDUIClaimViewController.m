@@ -396,11 +396,14 @@
 }
 
 - (void) instagramLoginSuccess {
+	[_instagramSwitch setOn:YES animated:NO];
+	_viewModel.willInstagram = YES;
 	NSLog(@"Instagram Connected");
 }
 
 - (void) instagramLoginFailure {
 	NSLog(@"Instagram Not Connected");
+	_viewModel.willInstagram = NO;
 	[_instagramSwitch setOn:NO animated:YES];
 }
 
@@ -409,7 +412,7 @@
 	self.definesPresentationContext = YES;
 	verifyController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	[self presentViewController:verifyController animated:YES completion:^(void){
-		[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:PDUserLinkedToInstagram context:nil];
+		
 	}];
 }
 

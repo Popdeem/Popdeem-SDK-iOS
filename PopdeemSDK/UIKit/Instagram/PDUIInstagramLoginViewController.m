@@ -156,6 +156,7 @@ NSString *callback;
 		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
 		[_webViewController.loadingView hideAnimated:YES];
 		connected = YES;
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
 		[self.headerLabel setText:@"Instagram Connected"];
 		[self.bodyLabel setText:@"Your Instagram account is now connected. You can claim your reward now!"];
 		[self.actionButton setTitle:@"Back to Claim" forState:UIControlStateNormal];
@@ -163,7 +164,8 @@ NSString *callback;
 	} failure:^(NSError* error){
 		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
 		[_webViewController.loadingView hideAnimated:YES];
-		connected = YES;
+		connected = NO;
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
 		[self.headerLabel setText:@"Instagram Not Connected"];
 		[self.bodyLabel setText:@"Your Instagram account is not connected."];
 		[self.actionButton setTitle:@"Back to Claim" forState:UIControlStateNormal];
@@ -176,5 +178,8 @@ NSString *callback;
 	return [parts objectAtIndex:0];
 }
 
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

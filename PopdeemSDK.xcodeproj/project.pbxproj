@@ -97,6 +97,7 @@
 		397894721D1ABFFE00BCE17E /* PDInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */; };
 		397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894771D1AC04400BCE17E /* PDInstagramAPIService.m */; };
 		3978947C1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */; };
+		3978947F1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */; };
 		398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
@@ -457,6 +458,8 @@
 		397894771D1AC04400BCE17E /* PDInstagramAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDInstagramAPIService.m; path = Instagram/PDInstagramAPIService.m; sourceTree = "<group>"; };
 		3978947A1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramVerifyViewController.h; path = Instagram/Verify/PDUIInstagramVerifyViewController.h; sourceTree = "<group>"; };
 		3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramVerifyViewController.m; path = Instagram/Verify/PDUIInstagramVerifyViewController.m; sourceTree = "<group>"; };
+		3978947D1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramVerifyViewModel.h; path = Instagram/Verify/PDUIInstagramVerifyViewModel.h; sourceTree = "<group>"; };
+		3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramVerifyViewModel.m; path = Instagram/Verify/PDUIInstagramVerifyViewModel.m; sourceTree = "<group>"; };
 		397E10751C4D253800B924D0 /* PDUIHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIHomeViewController.xib; path = Home/PDUIHomeViewController.xib; sourceTree = "<group>"; };
 		398A11DA1C60B748002CB4B6 /* PDUIMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMessageCell.xib; path = MessageCenter/PDUIMessageCell.xib; sourceTree = "<group>"; };
 		398A11DC1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMsgCntrViewModel.h; path = MessageCenter/PDUIMsgCntrViewModel.h; sourceTree = "<group>"; };
@@ -1128,6 +1131,8 @@
 			children = (
 				3978947A1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.h */,
 				3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */,
+				3978947D1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.h */,
+				3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */,
 			);
 			name = Verify;
 			sourceTree = "<group>";
@@ -2331,6 +2336,7 @@
 				394BEFE51D1436400045F5F3 /* OAToken.m in Sources */,
 				3921E3111C71DD68000120D4 /* PDUISingleMessageViewController.m in Sources */,
 				394BEFE21D1436400045F5F3 /* OAProblem.m in Sources */,
+				3978947F1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m in Sources */,
 				396443FF1D13F04E00BB67F9 /* PDUICardViewModel.m in Sources */,
 				394BEFDE1D1436400045F5F3 /* OADataFetcher.m in Sources */,
 				396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */,

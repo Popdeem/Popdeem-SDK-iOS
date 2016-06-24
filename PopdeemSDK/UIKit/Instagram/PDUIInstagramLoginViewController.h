@@ -10,12 +10,8 @@
 #import "PDUICardViewController.h"
 #import "PDTheme.h"
 #import "PDUIInstagramWebViewController.h"
-#import "OAuthConsumer.h"
 
 @interface PDUIInstagramLoginViewController : PDUICardViewController<UIWebViewDelegate> {
-	OAConsumer *consumer;
-	OAToken *requestToken;
-	OAToken *accessToken;
 	NSMutableData *receivedData;
 	BOOL connected;
 }

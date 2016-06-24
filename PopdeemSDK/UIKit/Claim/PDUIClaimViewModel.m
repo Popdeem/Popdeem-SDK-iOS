@@ -23,10 +23,6 @@
 @property (nonatomic) BOOL mustTweet;
 @property (nonatomic) BOOL mustInstagram;
 
-@property (nonatomic) BOOL mustFacebook;
-@property (nonatomic) BOOL willFacebook;
-@property (nonatomic) BOOL willInstagram;
-
 @property (nonatomic, strong) PDUIModalLoadingView *loadingView;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIWindow *alertWindow;
@@ -310,10 +306,7 @@
 			[_viewController.claimButtonView setUserInteractionEnabled:YES];
 			return;
 		}
-		PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image];
-		_viewController.definesPresentationContext = YES;
-		isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
-		[_viewController presentViewController:isv animated:YES completion:^(void){}];
+		[self makeClaim];
 		return;
 	}
 	if (!_locationVerified) {
@@ -426,14 +419,15 @@
 		return;
 	}
 	
-	if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-		[self loginWithReadAndWritePerms];
-		return;
-	}
-	
-	if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-		[self loginWithWritePerms];
-		return;
+	if (!_willInstagram) {
+		if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+			[self loginWithReadAndWritePerms];
+			return;
+		}
+		if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+			[self loginWithWritePerms];
+			return;
+		}
 	}
 	
 	PDAPIClient *client = [PDAPIClient sharedInstance];
@@ -449,7 +443,14 @@
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
 	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet instagram:_willInstagram success:^(){
-		[self didClaimRewardId:rewardId];
+		if (_willInstagram) {
+			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image];
+			_viewController.definesPresentationContext = YES;
+			isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+			[_viewController presentViewController:isv animated:YES completion:^(void){}];
+		} else {
+			[self didClaimRewardId:rewardId];
+		}
 	} failure:^(NSError *error){
 		[self PDAPIClient:client didFailWithError:error];
 	}];
@@ -508,6 +509,7 @@
 - (void) PDAPIClient:(PDAPIClient *)client didFailWithError:(NSError *)error {
 	NSLog(@"Error: %@",error);
 	[_loadingView hideAnimated:YES];
+	[_viewController.claimButtonView setUserInteractionEnabled:YES];
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.common.something.wrong", @"Something went wrong. Please try again later") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles:nil];
 	[av show];
 }

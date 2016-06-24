@@ -69,7 +69,7 @@
   }
 	if (instagram) {
 		NSMutableDictionary *instagramParams = [NSMutableDictionary dictionary];
-		[instagramParams setObject:user.twitterParams.accessToken forKey:@"access_token"];
+		[instagramParams setObject:user.instagramParams.accessToken forKey:@"access_token"];
 		[params setObject:instagramParams forKey:@"instagram"];
 	}
   //user location

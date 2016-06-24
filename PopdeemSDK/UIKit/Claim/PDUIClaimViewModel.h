@@ -30,6 +30,10 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) NSString *textviewPrepopulatedString;
 @property (nonatomic, strong) NSString *forcedTagString;
 @property (nonatomic, strong) NSString *twitterCharCountString;
+
+@property (nonatomic) BOOL mustFacebook;
+@property (nonatomic) BOOL willFacebook;
+@property (nonatomic) BOOL willInstagram;
 @property (nonatomic) BOOL willTweet;
 
 @property (nonatomic, strong) PDLocation *location;

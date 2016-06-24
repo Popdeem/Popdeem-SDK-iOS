@@ -109,7 +109,7 @@ static const NSString *kVariablesKey = @"Variables";
 + (NSData *)readFileWithName:(NSString *)fileName extension:(NSString *)ext {
     NSError *error = nil;
 
-    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:ext];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:ext];
     if (!filePath) {
 			filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"default_theme" ofType:@"json"];
 			if (!filePath) {
