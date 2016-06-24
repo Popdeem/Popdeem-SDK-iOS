@@ -69,25 +69,13 @@
                                   completion:(void (^)(PDUser *user, NSError *error))completion {
   
   NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
-  
-  NSMutableDictionary *facebook = [NSMutableDictionary dictionary];
-  [facebook setObject:facebookId forKey:@"id"];
-  [facebook setObject:facebookAccessToken forKey:@"access_token"];
-  
-  NSMutableDictionary *user = [NSMutableDictionary dictionary];
-  [user setObject:facebook forKey:@"facebook"];
   NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-  [user setValue:deviceId forKey:@"unique_identifier"];
-  
-  NSMutableDictionary *params = [NSMutableDictionary dictionary];
-  [params setObject:user forKey:@"user"];
-	
-	NSMutableDictionary *newParams = @{@"user": @{
-																				 @"device_id": deviceId,
+	NSMutableDictionary *params = @{@"user": @{
 																				 @"facebook": @{
 																						 @"id": facebookId,
 																						 @"access_token": facebookAccessToken
-																						 }
+																						 },
+																				 @"unique_identifier": deviceId
 																				 }};
 	
   NSURLSession *session = [NSURLSession createPopdeemSession];

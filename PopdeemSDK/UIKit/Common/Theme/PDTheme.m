@@ -42,6 +42,9 @@ static const NSString *kVariablesKey = @"Variables";
     if (value){
         if ([value isKindOfClass:[NSString class]]){
             image = [UIImage imageNamed:value];
+					if (!image) {
+						image = [UIImage imageNamed:value inBundle:[self bundle] compatibleWithTraitCollection:nil];
+					}
         }
     }
     return image;
@@ -207,6 +210,26 @@ UIFont* fontForKey(NSString *key, CGFloat size) {
     NSLog(@"No font defined for key: %@, returning system font",key);
   }
   return [UIFont systemFontOfSize:size];
+}
+
+- (NSBundle*) bundle {
+	return [NSBundle bundleForClass:self.class];
+}
+
+- (NSString*) bundleName {
+	return [[[NSBundle bundleForClass:self.class] bundleURL] lastPathComponent];
+}
+
+- (NSString*) imagePathForValue:(NSString*)value {
+	NSString *imagePath = [[self bundle] pathForResource:value ofType:@"png"];
+	if (imagePath) {
+		return imagePath;
+	}
+	imagePath = [[self bundle] pathForResource:value ofType:@"jpg"];
+	if (imagePath) {
+		return imagePath;
+	}
+	return nil;
 }
 
 //- (UIFont*) fontForKey:(NSString*)key size:(CGFloat)size {

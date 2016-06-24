@@ -10,6 +10,7 @@
 #import "PDUICardViewController.h"
 #import "PDTheme.h"
 #import "PDUIInstagramWebViewController.h"
+#import "NSURL+OAuthAdditions.h"
 
 @interface PDUIInstagramLoginViewController : PDUICardViewController<UIWebViewDelegate> {
 	NSMutableData *receivedData;
