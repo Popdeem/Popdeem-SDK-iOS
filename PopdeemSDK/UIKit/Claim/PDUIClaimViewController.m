@@ -226,6 +226,13 @@
     [self.twitterCharacterCountLabel setHidden:NO];
     [_viewModel calculateTwitterCharsLeft];
   }
+	if (_viewModel.willInstagram) {
+		[self.twitterForcedTagLabel setHidden:NO];
+		if (_viewModel.reward.instagramForcedTag) {
+			[self.twitterForcedTagLabel setTextColor:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
+		}
+		[self.twitterCharacterCountLabel setHidden:YES];
+	}
 }
 
 - (void)didReceiveMemoryWarning {

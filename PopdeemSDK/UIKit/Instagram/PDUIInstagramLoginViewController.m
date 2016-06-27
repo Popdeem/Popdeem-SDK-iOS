@@ -14,7 +14,7 @@
 #import "PDAPIClient.h"
 
 @interface PDUIInstagramLoginViewController ()
-
+@property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @end
 
 NSString *client_id;
@@ -92,7 +92,12 @@ NSString *callback;
 #pragma mark - Web View Delegate -
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+	if ([[[request URL] URLStringWithoutQuery] rangeOfString:@"accounts/login"].location != NSNotFound) {
+		//Show login view
+		[_webViewController.loadingView hideAnimated:YES];
+	}
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
+		[_webViewController.loadingView hideAnimated:YES];
 		// Extract oauth_verifier from URL query
 		_webViewController.loadingView = [[PDUIModalLoadingView alloc] initForView:_webViewController.view titleText:@"Please Wait" descriptionText:@"We are connecting your Instagram Account"];
 		[_webViewController.loadingView showAnimated:YES];

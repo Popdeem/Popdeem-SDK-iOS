@@ -34,6 +34,11 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait..." descriptionText:@"Preparing Instagram Login"];
+	[_loadingView showAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

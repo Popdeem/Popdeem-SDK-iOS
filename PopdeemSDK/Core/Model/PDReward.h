@@ -104,6 +104,8 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, strong, nullable) NSString *downloadLink;
 @property (nonatomic, strong, nullable) NSString *twitterPrefilledMessage;
 @property (nonatomic) NSInteger twitterMediaLength;
+@property (nonatomic, strong, nullable) NSString *instagramForcedTag;
+@property (nonatomic, strong, nullable) NSString *instagramPrefilledMessage;
 @property (nonatomic) BOOL verifyLocation;
 @property (nonatomic) BOOL revoked;
 @property (nonatomic) CGFloat distanceFromUser;

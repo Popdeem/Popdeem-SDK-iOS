@@ -225,6 +225,7 @@
 - (void) instagramSwitchToggled:(UISwitch*)instagramSwitch {
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
+		[_viewController.twitterForcedTagLabel setHidden:YES];
 		return;
 	}
 	PDSocialMediaManager *manager = [PDSocialMediaManager manager];
@@ -239,6 +240,13 @@
 			});
 		}
 	}];
+	
+	[_viewController.twitterForcedTagLabel setHidden:NO];
+	if (_reward.instagramForcedTag) {
+		_forcedTagString = _reward.instagramForcedTag;
+		[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag]];
+		[self validateHashTag];
+	}
 	
 	_willInstagram = instagramSwitch.isOn;
 }
@@ -305,6 +313,12 @@
 			[alert show];
 			[_viewController.claimButtonView setUserInteractionEnabled:YES];
 			return;
+		}
+		if (_reward.instagramForcedTag && !_hashtagValidated) {
+				UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+				[hashAV show];
+				[_viewController.claimButtonView setUserInteractionEnabled:YES];
+				return;
 		}
 		[self makeClaim];
 		return;
@@ -378,6 +392,9 @@
 	if (_willTweet && !_tvSurpress) {
 		[self validateHashTag];
 	}
+	if (_willInstagram && !_tvSurpress) {
+		[self validateHashTag];
+	}
 	_tvSurpress = NO;
 }
 
@@ -387,11 +404,19 @@
 		_hashtagValidated = YES;
 		return;
 	}
+	
+	NSString *searchString = @"";
+	if (_willTweet) {
+		searchString = _reward.twitterForcedTag;
+	}
+	if (_willInstagram) {
+		searchString = _reward.instagramForcedTag;
+	}
 
-	if ([_viewController.textView.text.lowercaseString rangeOfString:_reward.twitterForcedTag.lowercaseString].location != NSNotFound && _willTweet) {
+	if ([_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString].location != NSNotFound && (_willTweet || _willInstagram)) {
 		_hashtagValidated = YES;
 		_tvSurpress = YES;
-		NSRange hashRange = [_viewController.textView.text.lowercaseString rangeOfString:_reward.twitterForcedTag.lowercaseString];
+		NSRange hashRange = [_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString];
 		NSMutableAttributedString *mutString = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
 		[mutString addAttribute:NSBackgroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryAppColor") range:hashRange];
 		[mutString addAttribute:NSForegroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryInverseColor") range:hashRange];
