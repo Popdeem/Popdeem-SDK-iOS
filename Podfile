@@ -39,6 +39,11 @@ target 'TabbedTest' do
 	pod 'Crashlytics'
 end
 
+target 'SwiftSample' do
+	pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
+	pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
+end
+
 target 'PopdeemSDKTests' do
 	pod 'FBSDKLoginKit'
 	pod 'FBSDKCoreKit'
