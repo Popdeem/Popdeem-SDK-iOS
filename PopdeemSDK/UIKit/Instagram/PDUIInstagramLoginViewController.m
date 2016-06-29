@@ -65,7 +65,7 @@ NSString *callback;
 	secret = [PopdeemSDK instagramClientSecret];
 	callback = [PopdeemSDK instagramCallback];
 	
-	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code",client_id,callback];
+	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=public_content+likes+comments+basic",client_id,callback];
 	
 	
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];

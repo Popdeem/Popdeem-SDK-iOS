@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C5505613CE35447692FD50C /* Pods_PopdeemSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 705946F3E0257117FCD260B5 /* Pods_PopdeemSDKTests.framework */; };
+		01CED07D33FE1905BE5FAACA /* Pods_PopdeemSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE056507719D363AC097A84 /* Pods_PopdeemSDKTests.framework */; };
+		02C625C984DC40DE6688B844 /* Pods_PopdeemSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93FF6E8443A8F99D7B5A53E6 /* Pods_PopdeemSample.framework */; };
+		1E92FCF74C66E5105CCB443E /* Pods_PopdeemSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175D4090CE9C05F64497C175 /* Pods_PopdeemSDKCore.framework */; };
+		22C54341A19335FE118156F6 /* Pods_TabbedTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BD2CAE8AF89D9F9A3CEF40 /* Pods_TabbedTest.framework */; };
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
 		3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E3071C6DEA51000120D4 /* PDLocationValidator.m */; };
 		3921E30C1C71D84B000120D4 /* PDUIFeedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E30B1C71D84B000120D4 /* PDUIFeedImageViewController.m */; };
@@ -46,10 +49,10 @@
 		394BEFDD1D1436400045F5F3 /* OAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFBE1D1436400045F5F3 /* OAConsumer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFDE1D1436400045F5F3 /* OADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC01D1436400045F5F3 /* OADataFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFDF1D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC21D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		394BEFE01D1436400045F5F3 /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC41D1436400045F5F3 /* OAMutableURLRequest.m */; };
+		394BEFE01D1436400045F5F3 /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC41D1436400045F5F3 /* OAMutableURLRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFE11D1436400045F5F3 /* OAPlaintextSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC61D1436400045F5F3 /* OAPlaintextSignatureProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFE21D1436400045F5F3 /* OAProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFC81D1436400045F5F3 /* OAProblem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		394BEFE31D1436400045F5F3 /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFCA1D1436400045F5F3 /* OARequestParameter.m */; };
+		394BEFE31D1436400045F5F3 /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFCA1D1436400045F5F3 /* OARequestParameter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFE41D1436400045F5F3 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFCC1D1436400045F5F3 /* OAServiceTicket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFE51D1436400045F5F3 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFD01D1436400045F5F3 /* OAToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		394BEFE61D1436400045F5F3 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFD21D1436400045F5F3 /* OATokenManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -79,26 +82,144 @@
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
 		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
 		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
+		39735ADC1D23C7490008301E /* PopdeemSDKCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 39735ADB1D23C7490008301E /* PopdeemSDKCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735AE21D23C7720008301E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE11D23C7720008301E /* CoreLocation.framework */; };
+		39735AE41D23C7840008301E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE31D23C7840008301E /* Security.framework */; };
+		39735AE61D23C7890008301E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE51D23C7890008301E /* Social.framework */; };
+		39735AE81D23C7950008301E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE71D23C7950008301E /* SystemConfiguration.framework */; };
+		39735AE91D23C8550008301E /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */; };
+		39735AEA1D23C8550008301E /* UIColor+ColorOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */; };
+		39735AEB1D23C8550008301E /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
+		39735AEC1D23C8550008301E /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
+		39735AED1D23C8550008301E /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FF1C036304001DA473 /* PDRewardStore.m */; };
+		39735AEE1D23C8550008301E /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5011C036304001DA473 /* PDWallet.m */; };
+		39735AEF1D23C8550008301E /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
+		39735AF01D23C8550008301E /* PDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0259BE1A6F5B3827F5D /* PDUtils.m */; };
+		39735AF11D23C8550008301E /* PDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDF77E9C2BC42F475282 /* PDConstants.m */; };
+		39735AF21D23C8550008301E /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */; };
+		39735AF31D23C8550008301E /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */; };
+		39735AF41D23C8550008301E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
+		39735AF51D23C8550008301E /* PDSDKCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */; };
+		39735AF61D23C8550008301E /* PDLocationValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E3071C6DEA51000120D4 /* PDLocationValidator.m */; };
+		39735AF71D23C8550008301E /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
+		39735AF81D23C8550008301E /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
+		39735AF91D23C8550008301E /* PDBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F09D8703806E4EB93264 /* PDBrand.m */; };
+		39735AFA1D23C8550008301E /* PDFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FFE3DB5E8203430170C6 /* PDFeeds.m */; };
+		39735AFB1D23C8550008301E /* PDReward.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB3FE741B22C74D4A257 /* PDReward.m */; };
+		39735AFC1D23C8550008301E /* PDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB072FF7574FC00933C0 /* PDScores.m */; };
+		39735AFD1D23C8550008301E /* PDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FE5072EA22D083C45380 /* PDFeedItem.m */; };
+		39735AFE1D23C8550008301E /* PDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F866213BA9B492FB005B /* PDLocation.m */; };
+		39735AFF1D23C8550008301E /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
+		39735B001D23C8550008301E /* PDReferral.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB138AFDB8475775021B /* PDReferral.m */; };
+		39735B011D23C8550008301E /* PDURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDA747BB4787ACBCC9A9 /* PDURLSession.m */; };
+		39735B021D23C8550008301E /* PDUser+Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F89FF91371885F0B43F6 /* PDUser+Facebook.m */; };
+		39735B031D23C8550008301E /* PDOpeningHoursDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F48B372E10AF910E9DF7 /* PDOpeningHoursDay.m */; };
+		39735B041D23C8550008301E /* PDOpeningHoursWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6C0C7E739CB86F6515 /* PDOpeningHoursWeek.m */; };
+		39735B051D23C8550008301E /* PDSocialMediaFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F98E0D4534F9808FA7BD /* PDSocialMediaFriend.m */; };
+		39735B061D23C8550008301E /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6499A11C2A5AB3AC2AE /* PDUserTwitterParams.m */; };
+		39735B071D23C8550008301E /* PDUserInstagramParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFEB1D17E7150045F5F3 /* PDUserInstagramParams.m */; };
+		39735B081D23C8550008301E /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
+		39735B091D23C8550008301E /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */; };
+		39735B0A1D23C8550008301E /* PDInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */; };
+		39735B0B1D23C8550008301E /* PDInstagramAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894771D1AC04400BCE17E /* PDInstagramAPIService.m */; };
+		39735B0C1D23C8550008301E /* PDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */; };
+		39735B0D1D23C8550008301E /* PDFeedAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6E966611691DB623D7 /* PDFeedAPIService.m */; };
+		39735B0E1D23C8550008301E /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */; };
+		39735B0F1D23C8550008301E /* PDBrandApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF0E6854328471162315 /* PDBrandApiService.m */; };
+		39735B101D23C8550008301E /* PDRewardAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F27493A67F748B19C2F6 /* PDRewardAPIService.m */; };
+		39735B111D23C8550008301E /* PDSocialAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */; };
+		39735B121D23C8550008301E /* PDWalletAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEC0CFB9324C3DE2AAA0 /* PDWalletAPIService.m */; };
+		39735B131D23C8550008301E /* PDLocationAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F72645898839719EF769 /* PDLocationAPIService.m */; };
+		39735B141D23C8550008301E /* PDReferralAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */; };
+		39735B151D23C8550008301E /* PDRewardActionAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */; };
+		39735B161D23C8550008301E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
+		39735B171D23C8550008301E /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
+		39735B181D23C8550008301E /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */; };
+		39735B191D23C8550008301E /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FA50A957A3764748EF64 /* PDNetworkError.m */; };
+		39735B1A1D23C8550008301E /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0521517D04945EBCFDE /* NSURLSession+Popdeem.m */; };
+		39735B1B1D23C85E0008301E /* PDNetworkError.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FBFC43B1F1FFB9F13D2A /* PDNetworkError.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B1C1D23C85E0008301E /* NSURLSession+Popdeem.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4BB97818CD3B43E3A12 /* NSURLSession+Popdeem.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B1D1D23C8640008301E /* PDAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FC8425A034478627B82B /* PDAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B1E1D23C8700008301E /* PDAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F7DF66DB5FA8514BC364 /* PDAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B1F1D23C8700008301E /* PDFeedAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4C01336D4CAE7FF60FB /* PDFeedAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B201D23C8700008301E /* PDUserAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4A09A24DC6F9C77D440 /* PDUserAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B211D23C8700008301E /* PDBrandApiService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4AA7FCF897050B6FE6A /* PDBrandApiService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B221D23C8700008301E /* PDRewardAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4CB300FA77B737F385E /* PDRewardAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B231D23C8700008301E /* PDSocialAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FB8A5D1136F33891E72B /* PDSocialAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B241D23C8700008301E /* PDWalletAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FEA2B5B08F1F2099935B /* PDWalletAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B251D23C8700008301E /* PDLocationAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F32C9F68BBD8CAC67A6B /* PDLocationAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B261D23C8700008301E /* PDReferralAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F909A48D90F8B69E19E5 /* PDReferralAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B271D23C8700008301E /* PDRewardActionAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FD35C97C481E7B4E94F1 /* PDRewardActionAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B281D23C8700008301E /* PDMessageAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B291D23C8700008301E /* PDMomentAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B2A1D23C8780008301E /* PDInstagramAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894701D1ABFFE00BCE17E /* PDInstagramAPIClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B2B1D23C8780008301E /* PDInstagramAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894761D1AC04400BCE17E /* PDInstagramAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B2C1D23C8930008301E /* PDUser.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FF81C6E0A9A231CE6FE4 /* PDUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B2D1D23C8930008301E /* PDBrand.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FEC3F75949725292F426 /* PDBrand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B2E1D23C8930008301E /* PDFeeds.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FF59F96E53614CB77B90 /* PDFeeds.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B2F1D23C8930008301E /* PDReward.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F8D82295C72E404956E2 /* PDReward.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B301D23C8930008301E /* PDScores.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F61D2DAFF16950F2F11C /* PDScores.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B311D23C8930008301E /* PDFeedItem.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F52A3CB7FE2B77A0DDCB /* PDFeedItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B321D23C8930008301E /* PDLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F9D6AE1A1E6162AD05A9 /* PDLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B331D23C8930008301E /* PDMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 393A8C401C591E30001F650C /* PDMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B341D23C8930008301E /* PDReferral.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B351D23C8930008301E /* PDURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FD41F4A3215835B48282 /* PDURLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B361D23C8930008301E /* PDUser+Facebook.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FD969767A7C8B857115E /* PDUser+Facebook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B371D23C8930008301E /* PDOpeningHoursDay.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FDD74A2E45FB36948272 /* PDOpeningHoursDay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B381D23C8930008301E /* PDOpeningHoursWeek.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F5A345F527890EBC0236 /* PDOpeningHoursWeek.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B391D23C8930008301E /* PDSocialMediaFriend.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F85574F43691853864E0 /* PDSocialMediaFriend.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B3A1D23C8930008301E /* PDUserTwitterParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F32784B6CE0B0F6826CD /* PDUserTwitterParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B3B1D23C8930008301E /* PDUserInstagramParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BEFEA1D17E7150045F5F3 /* PDUserInstagramParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B3C1D23C8930008301E /* PDUserFacebookParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F782A6DC710569DD5DB0 /* PDUserFacebookParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B3D1D23C8930008301E /* PDRewardCustomAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FCD8902CC5CD75C180E1 /* PDRewardCustomAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B3E1D23C8A90008301E /* PDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FDF824643AEEF7E9F2A1 /* PDUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B3F1D23C8A90008301E /* PDCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F2830CA3AB87C33E47AB /* PDCommon.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B401D23C8A90008301E /* PDConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FE7E0D2E0BA29BB80554 /* PDConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B411D23C8A90008301E /* PDGeolocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FFB094C0C5B47033A565 /* PDGeolocationManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B421D23C8A90008301E /* PDSocialMediaManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F07B38BD59459659DB91 /* PDSocialMediaManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B431D23C8A90008301E /* PDNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B441D23C8A90008301E /* PDSDKCustomIOS7AlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 39BF5AE21C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B451D23C8A90008301E /* PDLocationValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3921E3061C6DEA51000120D4 /* PDLocationValidator.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B461D23C8A90008301E /* PDMomentsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B471D23C8C10008301E /* PDBrandStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA4FA1C036304001DA473 /* PDBrandStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B481D23C8C10008301E /* PDLocationStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA4FC1C036304001DA473 /* PDLocationStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B491D23C8C10008301E /* PDRewardStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA4FE1C036304001DA473 /* PDRewardStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B4A1D23C8C10008301E /* PDWallet.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA5001C036304001DA473 /* PDWallet.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B4B1D23C8C10008301E /* PDMessageStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 393A8C431C5923D0001F650C /* PDMessageStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B4C1D23C8C70008301E /* NSURL+OAuthAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894821D1D406C00BCE17E /* NSURL+OAuthAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B4D1D23C8C70008301E /* UIColor+ColorOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894851D1D622D00BCE17E /* UIColor+ColorOperations.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B4E1D23C9C50008301E /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF05C1D1A8F9C0045F5F3 /* JSONModel.m */; };
+		39735B4F1D23C9C50008301E /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF05E1D1A8F9C0045F5F3 /* JSONModelClassProperty.m */; };
+		39735B501D23C9C50008301E /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF0601D1A8F9C0045F5F3 /* JSONModelError.m */; };
+		39735B511D23C9C50008301E /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF0641D1A8F9C0045F5F3 /* JSONAPI.m */; };
+		39735B521D23C9C50008301E /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF0661D1A8F9C0045F5F3 /* JSONHTTPClient.m */; };
+		39735B531D23C9C50008301E /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF0681D1A8F9C0045F5F3 /* JSONModel+networking.m */; };
+		39735B541D23C9C50008301E /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF06B1D1A8F9C0045F5F3 /* JSONKeyMapper.m */; };
+		39735B551D23C9C50008301E /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BF06D1D1A8F9C0045F5F3 /* JSONValueTransformer.m */; };
+		39735B561D23C9CF0008301E /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF05B1D1A8F9C0045F5F3 /* JSONModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B571D23C9CF0008301E /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF05D1D1A8F9C0045F5F3 /* JSONModelClassProperty.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B581D23C9CF0008301E /* JSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF05F1D1A8F9C0045F5F3 /* JSONModelError.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B591D23C9CF0008301E /* JSONModelLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF0611D1A8F9C0045F5F3 /* JSONModelLib.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B5A1D23C9CF0008301E /* JSONAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF0631D1A8F9C0045F5F3 /* JSONAPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B5B1D23C9CF0008301E /* JSONHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF0651D1A8F9C0045F5F3 /* JSONHTTPClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B5C1D23C9CF0008301E /* JSONModel+networking.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF0671D1A8F9C0045F5F3 /* JSONModel+networking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B5D1D23C9CF0008301E /* JSONKeyMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF06A1D1A8F9C0045F5F3 /* JSONKeyMapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B5E1D23C9CF0008301E /* JSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BF06C1D1A8F9C0045F5F3 /* JSONValueTransformer.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B5F1D23CA000008301E /* PDTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FCF8A7E7E1AF483C9757 /* PDTheme.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		39735B601D23CA040008301E /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
+		39735B611D23CA160008301E /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
+		39735B621D23CA190008301E /* PopdeemSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 397478F01B8F16530015C661 /* PopdeemSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39735B981D23D0E10008301E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B931D23D0E10008301E /* Bolts.framework */; };
+		39735B991D23D0E10008301E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B941D23D0E10008301E /* FBSDKCoreKit.framework */; };
+		39735B9A1D23D0E10008301E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B951D23D0E10008301E /* FBSDKLoginKit.framework */; };
+		39735B9B1D23D0E10008301E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B961D23D0E10008301E /* FBSDKShareKit.framework */; };
+		39735B9C1D23D0E10008301E /* STTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B971D23D0E10008301E /* STTwitter.framework */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
-		3978910A1D1A9D7F00BCE17E /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890EA1D1A9D7F00BCE17E /* NSDateFormatter+STTwitter.m */; };
-		3978910D1D1A9D7F00BCE17E /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890EC1D1A9D7F00BCE17E /* NSError+STTwitter.m */; };
-		397891101D1A9D7F00BCE17E /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890EE1D1A9D7F00BCE17E /* NSString+STTwitter.m */; };
-		397891131D1A9D7F00BCE17E /* STHTTPRequest+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890F01D1A9D7F00BCE17E /* STHTTPRequest+STTwitter.m */; };
-		397891171D1A9D7F00BCE17E /* STTwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890F31D1A9D7F00BCE17E /* STTwitterAPI.m */; };
-		3978911A1D1A9D7F00BCE17E /* STTwitterAppOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890F51D1A9D7F00BCE17E /* STTwitterAppOnly.m */; };
-		3978911D1D1A9D7F00BCE17E /* STTwitterHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890F71D1A9D7F00BCE17E /* STTwitterHTML.m */; };
-		397891201D1A9D7F00BCE17E /* STTwitterOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890F91D1A9D7F00BCE17E /* STTwitterOAuth.m */; };
-		397891231D1A9D7F00BCE17E /* STTwitterOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890FB1D1A9D7F00BCE17E /* STTwitterOS.m */; };
-		397891261D1A9D7F00BCE17E /* STTwitterOSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 397890FD1D1A9D7F00BCE17E /* STTwitterOSRequest.m */; };
-		3978912B1D1A9D7F00BCE17E /* STTwitterStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 397891011D1A9D7F00BCE17E /* STTwitterStreamParser.m */; };
-		3978912E1D1A9D7F00BCE17E /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 397891041D1A9D7F00BCE17E /* BAVPlistNode.m */; };
-		397891311D1A9D7F00BCE17E /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 397891061D1A9D7F00BCE17E /* JSONSyntaxHighlight.m */; };
-		397891341D1A9D7F00BCE17E /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 397891081D1A9D7F00BCE17E /* STHTTPRequest.m */; };
 		397894721D1ABFFE00BCE17E /* PDInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */; };
 		397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894771D1AC04400BCE17E /* PDInstagramAPIService.m */; };
 		3978947C1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */; };
 		3978947F1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */; };
-		397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */; };
+		397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */; };
 		398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
@@ -145,9 +266,7 @@
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
 		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
-		3CCFA5EF78B483301C39EB02 /* Pods_PopdeemSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDE7AAF946F46C8C97AF45E /* Pods_PopdeemSDK.framework */; };
-		7160E82BAEDF2FA965BED543 /* Pods_PopdeemSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0214CF9AEB2C09B4DB415033 /* Pods_PopdeemSample.framework */; };
-		9B790B4E09E76F0C24CF3378 /* Pods_TabbedTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41687B672B9E621018941017 /* Pods_TabbedTest.framework */; };
+		9F1E25F848DA42DA55F5F6CD /* Pods_PopdeemSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29D0AAC7C3807DBDF7FF945 /* Pods_PopdeemSDK.framework */; };
 		A90FA5311C0368A8001DA473 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5301C0368A8001DA473 /* main.m */; };
 		A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5331C0368A8001DA473 /* AppDelegate.m */; };
 		A90FA5371C0368A8001DA473 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5361C0368A8001DA473 /* ViewController.m */; };
@@ -166,7 +285,6 @@
 		A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */; };
 		A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9582FA21C05F1DF00D62456 /* Localizable.strings */; };
 		A9B2AA4B1C0872F500EFDE93 /* custom-theme.json in Resources */ = {isa = PBXBuildFile; fileRef = A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */; };
-		B00AE8CBFE99727A6DC6EAA2 /* Pods_NavigationSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F915AD24E4A1D875623936 /* Pods_NavigationSample.framework */; };
 		BC67F05A5F7252792A093778 /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
 		BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */; };
 		BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F6855AC77922041DBC9B /* Brands.json */; };
@@ -227,6 +345,7 @@
 		BC67FF8D2B030DD6410173B2 /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F7563AA957CD78C051E7 /* UserAPIServiceTests.m */; };
 		BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
 		BC67FFAF6CF0555B014F2D5B /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
+		C3D6592E1112EF603496E764 /* Pods_NavigationSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D15401E6862D2C906A24A06 /* Pods_NavigationSample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,10 +391,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0214CF9AEB2C09B4DB415033 /* Pods_PopdeemSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopdeemSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B85ACC4CF7CB83648353AF0 /* Pods-PopdeemSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.release.xcconfig"; sourceTree = "<group>"; };
-		2EB92A65E978A45D75F8E985 /* Pods-TabbedTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.debug.xcconfig"; sourceTree = "<group>"; };
-		3047B7DB281E8415365F2071 /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		09F62335256B92B3422C57E8 /* Pods-PopdeemSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample.release.xcconfig"; sourceTree = "<group>"; };
+		175D4090CE9C05F64497C175 /* Pods_PopdeemSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopdeemSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D15401E6862D2C906A24A06 /* Pods_NavigationSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NavigationSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EE1C446BA5524080265C331 /* Pods-PopdeemSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		3921E3061C6DEA51000120D4 /* PDLocationValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationValidator.h; sourceTree = "<group>"; };
 		3921E3071C6DEA51000120D4 /* PDLocationValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationValidator.m; sourceTree = "<group>"; };
 		3921E30A1C71D84B000120D4 /* PDUIFeedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIFeedImageViewController.h; path = Feed/PDUIFeedImageViewController.h; sourceTree = "<group>"; };
@@ -421,39 +540,25 @@
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		39730B271CE23D9A004B37A1 /* PDUIMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageCell.h; path = MessageCenter/PDUIMessageCell.h; sourceTree = "<group>"; };
 		39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageCell.m; path = MessageCenter/PDUIMessageCell.m; sourceTree = "<group>"; };
+		39735AD91D23C7490008301E /* PopdeemSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopdeemSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39735ADB1D23C7490008301E /* PopdeemSDKCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopdeemSDKCore.h; sourceTree = "<group>"; };
+		39735ADD1D23C7490008301E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39735AE11D23C7720008301E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		39735AE31D23C7840008301E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		39735AE51D23C7890008301E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		39735AE71D23C7950008301E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		39735B631D23CA960008301E /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphonesimulator/libBolts.a"; sourceTree = "<group>"; };
+		39735B641D23CA960008301E /* libFBSDKCoreKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBSDKCoreKit.a; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphonesimulator/libFBSDKCoreKit.a"; sourceTree = "<group>"; };
+		39735B651D23CA960008301E /* libFBSDKLoginKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBSDKLoginKit.a; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphonesimulator/libFBSDKLoginKit.a"; sourceTree = "<group>"; };
+		39735B661D23CA960008301E /* libFBSDKShareKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBSDKShareKit.a; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphonesimulator/libFBSDKShareKit.a"; sourceTree = "<group>"; };
+		39735B671D23CA960008301E /* libSTTwitter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSTTwitter.a; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphonesimulator/libSTTwitter.a"; sourceTree = "<group>"; };
+		39735B931D23D0E10008301E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/Bolts.framework"; sourceTree = "<group>"; };
+		39735B941D23D0E10008301E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		39735B951D23D0E10008301E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		39735B961D23D0E10008301E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		39735B971D23D0E10008301E /* STTwitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = STTwitter.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/STTwitter.framework"; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
-		397890E91D1A9D7F00BCE17E /* NSDateFormatter+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+STTwitter.h"; sourceTree = "<group>"; };
-		397890EA1D1A9D7F00BCE17E /* NSDateFormatter+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+STTwitter.m"; sourceTree = "<group>"; };
-		397890EB1D1A9D7F00BCE17E /* NSError+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+STTwitter.h"; sourceTree = "<group>"; };
-		397890EC1D1A9D7F00BCE17E /* NSError+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+STTwitter.m"; sourceTree = "<group>"; };
-		397890ED1D1A9D7F00BCE17E /* NSString+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+STTwitter.h"; sourceTree = "<group>"; };
-		397890EE1D1A9D7F00BCE17E /* NSString+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+STTwitter.m"; sourceTree = "<group>"; };
-		397890EF1D1A9D7F00BCE17E /* STHTTPRequest+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STHTTPRequest+STTwitter.h"; sourceTree = "<group>"; };
-		397890F01D1A9D7F00BCE17E /* STHTTPRequest+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STHTTPRequest+STTwitter.m"; sourceTree = "<group>"; };
-		397890F11D1A9D7F00BCE17E /* STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitter.h; sourceTree = "<group>"; };
-		397890F21D1A9D7F00BCE17E /* STTwitterAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAPI.h; sourceTree = "<group>"; };
-		397890F31D1A9D7F00BCE17E /* STTwitterAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAPI.m; sourceTree = "<group>"; };
-		397890F41D1A9D7F00BCE17E /* STTwitterAppOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAppOnly.h; sourceTree = "<group>"; };
-		397890F51D1A9D7F00BCE17E /* STTwitterAppOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAppOnly.m; sourceTree = "<group>"; };
-		397890F61D1A9D7F00BCE17E /* STTwitterHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterHTML.h; sourceTree = "<group>"; };
-		397890F71D1A9D7F00BCE17E /* STTwitterHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterHTML.m; sourceTree = "<group>"; };
-		397890F81D1A9D7F00BCE17E /* STTwitterOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOAuth.h; sourceTree = "<group>"; };
-		397890F91D1A9D7F00BCE17E /* STTwitterOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOAuth.m; sourceTree = "<group>"; };
-		397890FA1D1A9D7F00BCE17E /* STTwitterOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOS.h; sourceTree = "<group>"; };
-		397890FB1D1A9D7F00BCE17E /* STTwitterOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOS.m; sourceTree = "<group>"; };
-		397890FC1D1A9D7F00BCE17E /* STTwitterOSRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOSRequest.h; sourceTree = "<group>"; };
-		397890FD1D1A9D7F00BCE17E /* STTwitterOSRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOSRequest.m; sourceTree = "<group>"; };
-		397890FE1D1A9D7F00BCE17E /* STTwitterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterProtocol.h; sourceTree = "<group>"; };
-		397890FF1D1A9D7F00BCE17E /* STTwitterRequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterRequestProtocol.h; sourceTree = "<group>"; };
-		397891001D1A9D7F00BCE17E /* STTwitterStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterStreamParser.h; sourceTree = "<group>"; };
-		397891011D1A9D7F00BCE17E /* STTwitterStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterStreamParser.m; sourceTree = "<group>"; };
-		397891031D1A9D7F00BCE17E /* BAVPlistNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAVPlistNode.h; sourceTree = "<group>"; };
-		397891041D1A9D7F00BCE17E /* BAVPlistNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAVPlistNode.m; sourceTree = "<group>"; };
-		397891051D1A9D7F00BCE17E /* JSONSyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSyntaxHighlight.h; sourceTree = "<group>"; };
-		397891061D1A9D7F00BCE17E /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
-		397891071D1A9D7F00BCE17E /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
-		397891081D1A9D7F00BCE17E /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
 		397894701D1ABFFE00BCE17E /* PDInstagramAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDInstagramAPIClient.h; path = Instagram/PDInstagramAPIClient.h; sourceTree = "<group>"; };
 		397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDInstagramAPIClient.m; path = Instagram/PDInstagramAPIClient.m; sourceTree = "<group>"; };
 		397894761D1AC04400BCE17E /* PDInstagramAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDInstagramAPIService.h; path = Instagram/PDInstagramAPIService.h; sourceTree = "<group>"; };
@@ -585,13 +690,14 @@
 		39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIconSuccess@2x.png"; path = "Resources/pduikit_rewardsIconSuccess@2x.png"; sourceTree = "<group>"; };
 		39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIKitUtils.h; path = Utilities/PDUIKitUtils.h; sourceTree = "<group>"; };
 		39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIKitUtils.m; path = Utilities/PDUIKitUtils.m; sourceTree = "<group>"; };
-		41687B672B9E621018941017 /* Pods_TabbedTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabbedTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		42273E47D285F665EAC4B61D /* Pods-PopdeemSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample.debug.xcconfig"; sourceTree = "<group>"; };
-		4BDE7AAF946F46C8C97AF45E /* Pods_PopdeemSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopdeemSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		57F915AD24E4A1D875623936 /* Pods_NavigationSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NavigationSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		705946F3E0257117FCD260B5 /* Pods_PopdeemSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopdeemSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		89692A32D8FCF05C65BFCFCB /* Pods-TabbedTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.release.xcconfig"; sourceTree = "<group>"; };
-		954034E58BA390D40FEFAE6A /* Pods-NavigationSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample.release.xcconfig"; sourceTree = "<group>"; };
+		45A5C4FA0583E6046D0F3DDF /* Pods-PopdeemSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample.debug.xcconfig"; sourceTree = "<group>"; };
+		56A2127F7E14E7AAC27B7E0A /* Pods-NavigationSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample.release.xcconfig"; sourceTree = "<group>"; };
+		6FF57E1E46B26F6B12140ADE /* Pods-TabbedTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.release.xcconfig"; sourceTree = "<group>"; };
+		784FC3693F49E9C1C716BB2A /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		7B0925008478AFBBC7FD50B8 /* Pods-NavigationSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample.debug.xcconfig"; sourceTree = "<group>"; };
+		93FF6E8443A8F99D7B5A53E6 /* Pods_PopdeemSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopdeemSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D819C94CA623E292F771BF /* Pods-PopdeemSDKCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.release.xcconfig"; sourceTree = "<group>"; };
+		A6BD2CAE8AF89D9F9A3CEF40 /* Pods_TabbedTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabbedTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = PopdeemSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A90FA4F91C0361F5001DA473 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A90FA4FA1C036304001DA473 /* PDBrandStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDBrandStore.h; path = Core/Store/PDBrandStore.h; sourceTree = "<group>"; };
@@ -629,7 +735,6 @@
 		A9582FA21C05F1DF00D62456 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
 		A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "custom-theme.json"; sourceTree = "<group>"; };
-		AD0490838BD329B75A95DF5D /* Pods-NavigationSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample.debug.xcconfig"; sourceTree = "<group>"; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		BC67F0259BE1A6F5B3827F5D /* PDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUtils.m; sourceTree = "<group>"; };
 		BC67F043EB7A7A6156010094 /* PDUISocialLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialLoginHandler.h; path = Login/PDUISocialLoginHandler.h; sourceTree = "<group>"; };
@@ -729,9 +834,12 @@
 		BC67FF81C6E0A9A231CE6FE4 /* PDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUser.h; sourceTree = "<group>"; };
 		BC67FFB094C0C5B47033A565 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
 		BC67FFE3DB5E8203430170C6 /* PDFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeeds.m; sourceTree = "<group>"; };
-		BCD3BD24340900BD4112A6F8 /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		D1F881D906DE3227EB68076A /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
-		F8E40FEB443718C11F503186 /* Pods-PopdeemSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample.release.xcconfig"; sourceTree = "<group>"; };
+		C7C84849D62D4E41A7D42A1C /* Pods-TabbedTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.debug.xcconfig"; sourceTree = "<group>"; };
+		CFE056507719D363AC097A84 /* Pods_PopdeemSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopdeemSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65F2C35E18D39A7617CA845 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
+		DF54C6FFA1483F1DE949121F /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E2AAB3C609F13B4A56D18EBB /* Pods-PopdeemSDKCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.debug.xcconfig"; sourceTree = "<group>"; };
+		F29D0AAC7C3807DBDF7FF945 /* Pods_PopdeemSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopdeemSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -739,7 +847,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00AE8CBFE99727A6DC6EAA2 /* Pods_NavigationSample.framework in Frameworks */,
+				C3D6592E1112EF603496E764 /* Pods_NavigationSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,7 +855,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B790B4E09E76F0C24CF3378 /* Pods_TabbedTest.framework in Frameworks */,
+				22C54341A19335FE118156F6 /* Pods_TabbedTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39735AD51D23C7490008301E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39735B981D23D0E10008301E /* Bolts.framework in Frameworks */,
+				39735B991D23D0E10008301E /* FBSDKCoreKit.framework in Frameworks */,
+				39735B9A1D23D0E10008301E /* FBSDKLoginKit.framework in Frameworks */,
+				39735B9B1D23D0E10008301E /* FBSDKShareKit.framework in Frameworks */,
+				39735B9C1D23D0E10008301E /* STTwitter.framework in Frameworks */,
+				39735AE81D23C7950008301E /* SystemConfiguration.framework in Frameworks */,
+				39735AE61D23C7890008301E /* Social.framework in Frameworks */,
+				39735AE41D23C7840008301E /* Security.framework in Frameworks */,
+				39735AE21D23C7720008301E /* CoreLocation.framework in Frameworks */,
+				1E92FCF74C66E5105CCB443E /* Pods_PopdeemSDKCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,7 +880,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CCFA5EF78B483301C39EB02 /* Pods_PopdeemSDK.framework in Frameworks */,
+				9F1E25F848DA42DA55F5F6CD /* Pods_PopdeemSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +889,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */,
-				1C5505613CE35447692FD50C /* Pods_PopdeemSDKTests.framework in Frameworks */,
+				01CED07D33FE1905BE5FAACA /* Pods_PopdeemSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,7 +897,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7160E82BAEDF2FA965BED543 /* Pods_PopdeemSample.framework in Frameworks */,
+				02C625C984DC40DE6688B844 /* Pods_PopdeemSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,7 +985,6 @@
 		394BEFA91D1436400045F5F3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				397890E81D1A9D7F00BCE17E /* STTwitter */,
 				394BF0581D1A8F9C0045F5F3 /* JSONModel */,
 				394BEFAA1D1436400045F5F3 /* OAuthconsumer */,
 			);
@@ -951,13 +1075,6 @@
 				394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */,
 			);
 			name = Login;
-			sourceTree = "<group>";
-		};
-		394BEFF51D1996520045F5F3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		394BF0581D1A8F9C0045F5F3 /* JSONModel */ = {
@@ -1075,50 +1192,13 @@
 			name = MessageCenter;
 			sourceTree = "<group>";
 		};
-		397890E81D1A9D7F00BCE17E /* STTwitter */ = {
+		39735ADA1D23C7490008301E /* PopdeemSDKCore */ = {
 			isa = PBXGroup;
 			children = (
-				397890E91D1A9D7F00BCE17E /* NSDateFormatter+STTwitter.h */,
-				397890EA1D1A9D7F00BCE17E /* NSDateFormatter+STTwitter.m */,
-				397890EB1D1A9D7F00BCE17E /* NSError+STTwitter.h */,
-				397890EC1D1A9D7F00BCE17E /* NSError+STTwitter.m */,
-				397890ED1D1A9D7F00BCE17E /* NSString+STTwitter.h */,
-				397890EE1D1A9D7F00BCE17E /* NSString+STTwitter.m */,
-				397890EF1D1A9D7F00BCE17E /* STHTTPRequest+STTwitter.h */,
-				397890F01D1A9D7F00BCE17E /* STHTTPRequest+STTwitter.m */,
-				397890F11D1A9D7F00BCE17E /* STTwitter.h */,
-				397890F21D1A9D7F00BCE17E /* STTwitterAPI.h */,
-				397890F31D1A9D7F00BCE17E /* STTwitterAPI.m */,
-				397890F41D1A9D7F00BCE17E /* STTwitterAppOnly.h */,
-				397890F51D1A9D7F00BCE17E /* STTwitterAppOnly.m */,
-				397890F61D1A9D7F00BCE17E /* STTwitterHTML.h */,
-				397890F71D1A9D7F00BCE17E /* STTwitterHTML.m */,
-				397890F81D1A9D7F00BCE17E /* STTwitterOAuth.h */,
-				397890F91D1A9D7F00BCE17E /* STTwitterOAuth.m */,
-				397890FA1D1A9D7F00BCE17E /* STTwitterOS.h */,
-				397890FB1D1A9D7F00BCE17E /* STTwitterOS.m */,
-				397890FC1D1A9D7F00BCE17E /* STTwitterOSRequest.h */,
-				397890FD1D1A9D7F00BCE17E /* STTwitterOSRequest.m */,
-				397890FE1D1A9D7F00BCE17E /* STTwitterProtocol.h */,
-				397890FF1D1A9D7F00BCE17E /* STTwitterRequestProtocol.h */,
-				397891001D1A9D7F00BCE17E /* STTwitterStreamParser.h */,
-				397891011D1A9D7F00BCE17E /* STTwitterStreamParser.m */,
-				397891021D1A9D7F00BCE17E /* Vendor */,
+				39735ADB1D23C7490008301E /* PopdeemSDKCore.h */,
+				39735ADD1D23C7490008301E /* Info.plist */,
 			);
-			path = STTwitter;
-			sourceTree = "<group>";
-		};
-		397891021D1A9D7F00BCE17E /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				397891031D1A9D7F00BCE17E /* BAVPlistNode.h */,
-				397891041D1A9D7F00BCE17E /* BAVPlistNode.m */,
-				397891051D1A9D7F00BCE17E /* JSONSyntaxHighlight.h */,
-				397891061D1A9D7F00BCE17E /* JSONSyntaxHighlight.m */,
-				397891071D1A9D7F00BCE17E /* STHTTPRequest.h */,
-				397891081D1A9D7F00BCE17E /* STHTTPRequest.m */,
-			);
-			path = Vendor;
+			path = PopdeemSDKCore;
 			sourceTree = "<group>";
 		};
 		3978946F1D1ABFBB00BCE17E /* Instagram */ = {
@@ -1246,9 +1326,10 @@
 				393D2B771C3AD0D300F1E253 /* NavigationSample */,
 				39537BC41C639B79001C6796 /* TabbedTest */,
 				39EB99001C84B75E00BB0DD8 /* libPopdeemSDK */,
+				39735ADA1D23C7490008301E /* PopdeemSDKCore */,
 				39D7D0661B8F0DCF00E45D0B /* Products */,
 				4EF69A0328B0579398DD2DED /* Frameworks */,
-				B036651C8C41975E7D24848E /* Pods */,
+				40010ED067D3CDAFA6EFB7B4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1260,6 +1341,7 @@
 				A90FA52D1C0368A8001DA473 /* PopdeemSample.app */,
 				393D2B761C3AD0D300F1E253 /* NavigationSample.app */,
 				39537BC31C639B79001C6796 /* TabbedTest.app */,
+				39735AD91D23C7490008301E /* PopdeemSDKCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1267,7 +1349,6 @@
 		39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */ = {
 			isa = PBXGroup;
 			children = (
-				394BEFF51D1996520045F5F3 /* Frameworks */,
 				394BEFA91D1436400045F5F3 /* Libraries */,
 				397478EF1B8F16530015C661 /* PopdeemSDK.m */,
 				397478F01B8F16530015C661 /* PopdeemSDK.h */,
@@ -1394,18 +1475,52 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		40010ED067D3CDAFA6EFB7B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B0925008478AFBBC7FD50B8 /* Pods-NavigationSample.debug.xcconfig */,
+				56A2127F7E14E7AAC27B7E0A /* Pods-NavigationSample.release.xcconfig */,
+				784FC3693F49E9C1C716BB2A /* Pods-PopdeemSDK.debug.xcconfig */,
+				D65F2C35E18D39A7617CA845 /* Pods-PopdeemSDK.release.xcconfig */,
+				DF54C6FFA1483F1DE949121F /* Pods-PopdeemSDKTests.debug.xcconfig */,
+				1EE1C446BA5524080265C331 /* Pods-PopdeemSDKTests.release.xcconfig */,
+				45A5C4FA0583E6046D0F3DDF /* Pods-PopdeemSample.debug.xcconfig */,
+				09F62335256B92B3422C57E8 /* Pods-PopdeemSample.release.xcconfig */,
+				C7C84849D62D4E41A7D42A1C /* Pods-TabbedTest.debug.xcconfig */,
+				6FF57E1E46B26F6B12140ADE /* Pods-TabbedTest.release.xcconfig */,
+				E2AAB3C609F13B4A56D18EBB /* Pods-PopdeemSDKCore.debug.xcconfig */,
+				A5D819C94CA623E292F771BF /* Pods-PopdeemSDKCore.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4EF69A0328B0579398DD2DED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39735B931D23D0E10008301E /* Bolts.framework */,
+				39735B941D23D0E10008301E /* FBSDKCoreKit.framework */,
+				39735B951D23D0E10008301E /* FBSDKLoginKit.framework */,
+				39735B961D23D0E10008301E /* FBSDKShareKit.framework */,
+				39735B971D23D0E10008301E /* STTwitter.framework */,
+				39735B631D23CA960008301E /* libBolts.a */,
+				39735B641D23CA960008301E /* libFBSDKCoreKit.a */,
+				39735B651D23CA960008301E /* libFBSDKLoginKit.a */,
+				39735B661D23CA960008301E /* libFBSDKShareKit.a */,
+				39735B671D23CA960008301E /* libSTTwitter.a */,
+				39735AE71D23C7950008301E /* SystemConfiguration.framework */,
+				39735AE51D23C7890008301E /* Social.framework */,
+				39735AE31D23C7840008301E /* Security.framework */,
+				39735AE11D23C7720008301E /* CoreLocation.framework */,
 				39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */,
 				39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */,
 				3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */,
 				3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */,
-				57F915AD24E4A1D875623936 /* Pods_NavigationSample.framework */,
-				4BDE7AAF946F46C8C97AF45E /* Pods_PopdeemSDK.framework */,
-				705946F3E0257117FCD260B5 /* Pods_PopdeemSDKTests.framework */,
-				0214CF9AEB2C09B4DB415033 /* Pods_PopdeemSample.framework */,
-				41687B672B9E621018941017 /* Pods_TabbedTest.framework */,
+				1D15401E6862D2C906A24A06 /* Pods_NavigationSample.framework */,
+				F29D0AAC7C3807DBDF7FF945 /* Pods_PopdeemSDK.framework */,
+				CFE056507719D363AC097A84 /* Pods_PopdeemSDKTests.framework */,
+				93FF6E8443A8F99D7B5A53E6 /* Pods_PopdeemSample.framework */,
+				A6BD2CAE8AF89D9F9A3CEF40 /* Pods_TabbedTest.framework */,
+				175D4090CE9C05F64497C175 /* Pods_PopdeemSDKCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1436,23 +1551,6 @@
 				A90FA5301C0368A8001DA473 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B036651C8C41975E7D24848E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AD0490838BD329B75A95DF5D /* Pods-NavigationSample.debug.xcconfig */,
-				954034E58BA390D40FEFAE6A /* Pods-NavigationSample.release.xcconfig */,
-				BCD3BD24340900BD4112A6F8 /* Pods-PopdeemSDK.debug.xcconfig */,
-				D1F881D906DE3227EB68076A /* Pods-PopdeemSDK.release.xcconfig */,
-				3047B7DB281E8415365F2071 /* Pods-PopdeemSDKTests.debug.xcconfig */,
-				0B85ACC4CF7CB83648353AF0 /* Pods-PopdeemSDKTests.release.xcconfig */,
-				42273E47D285F665EAC4B61D /* Pods-PopdeemSample.debug.xcconfig */,
-				F8E40FEB443718C11F503186 /* Pods-PopdeemSample.release.xcconfig */,
-				2EB92A65E978A45D75F8E985 /* Pods-TabbedTest.debug.xcconfig */,
-				89692A32D8FCF05C65BFCFCB /* Pods-TabbedTest.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC67F00548709376630E993B /* Util */ = {
@@ -1745,18 +1843,91 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		39735AD61D23C7490008301E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39735B471D23C8C10008301E /* PDBrandStore.h in Headers */,
+				39735B261D23C8700008301E /* PDReferralAPIService.h in Headers */,
+				39735B561D23C9CF0008301E /* JSONModel.h in Headers */,
+				39735B281D23C8700008301E /* PDMessageAPIService.h in Headers */,
+				39735B331D23C8930008301E /* PDMessage.h in Headers */,
+				39735B441D23C8A90008301E /* PDSDKCustomIOS7AlertView.h in Headers */,
+				39735B231D23C8700008301E /* PDSocialAPIService.h in Headers */,
+				39735B461D23C8A90008301E /* PDMomentsManager.h in Headers */,
+				39735B201D23C8700008301E /* PDUserAPIService.h in Headers */,
+				39735B5D1D23C9CF0008301E /* JSONKeyMapper.h in Headers */,
+				39735B341D23C8930008301E /* PDReferral.h in Headers */,
+				39735B1D1D23C8640008301E /* PDAPIClient.h in Headers */,
+				39735B4B1D23C8C10008301E /* PDMessageStore.h in Headers */,
+				39735B1C1D23C85E0008301E /* NSURLSession+Popdeem.h in Headers */,
+				39735B491D23C8C10008301E /* PDRewardStore.h in Headers */,
+				39735B591D23C9CF0008301E /* JSONModelLib.h in Headers */,
+				39735B381D23C8930008301E /* PDOpeningHoursWeek.h in Headers */,
+				39735B3D1D23C8930008301E /* PDRewardCustomAvailability.h in Headers */,
+				39735B431D23C8A90008301E /* PDNotificationHandler.h in Headers */,
+				39735B241D23C8700008301E /* PDWalletAPIService.h in Headers */,
+				39735B5C1D23C9CF0008301E /* JSONModel+networking.h in Headers */,
+				39735B481D23C8C10008301E /* PDLocationStore.h in Headers */,
+				39735B271D23C8700008301E /* PDRewardActionAPIService.h in Headers */,
+				39735B1B1D23C85E0008301E /* PDNetworkError.h in Headers */,
+				39735B321D23C8930008301E /* PDLocation.h in Headers */,
+				39735B3E1D23C8A90008301E /* PDUtils.h in Headers */,
+				39735B411D23C8A90008301E /* PDGeolocationManager.h in Headers */,
+				39735B311D23C8930008301E /* PDFeedItem.h in Headers */,
+				39735B2A1D23C8780008301E /* PDInstagramAPIClient.h in Headers */,
+				39735B4A1D23C8C10008301E /* PDWallet.h in Headers */,
+				39735B291D23C8700008301E /* PDMomentAPIService.h in Headers */,
+				39735B421D23C8A90008301E /* PDSocialMediaManager.h in Headers */,
+				39735B361D23C8930008301E /* PDUser+Facebook.h in Headers */,
+				39735B5B1D23C9CF0008301E /* JSONHTTPClient.h in Headers */,
+				39735B3A1D23C8930008301E /* PDUserTwitterParams.h in Headers */,
+				39735B3C1D23C8930008301E /* PDUserFacebookParams.h in Headers */,
+				39735B221D23C8700008301E /* PDRewardAPIService.h in Headers */,
+				39735B451D23C8A90008301E /* PDLocationValidator.h in Headers */,
+				39735B5A1D23C9CF0008301E /* JSONAPI.h in Headers */,
+				39735B391D23C8930008301E /* PDSocialMediaFriend.h in Headers */,
+				39735B3F1D23C8A90008301E /* PDCommon.h in Headers */,
+				39735B2B1D23C8780008301E /* PDInstagramAPIService.h in Headers */,
+				39735B371D23C8930008301E /* PDOpeningHoursDay.h in Headers */,
+				39735B2E1D23C8930008301E /* PDFeeds.h in Headers */,
+				39735B1F1D23C8700008301E /* PDFeedAPIService.h in Headers */,
+				39735B2D1D23C8930008301E /* PDBrand.h in Headers */,
+				39735B4C1D23C8C70008301E /* NSURL+OAuthAdditions.h in Headers */,
+				39735B621D23CA190008301E /* PopdeemSDK.h in Headers */,
+				39735B251D23C8700008301E /* PDLocationAPIService.h in Headers */,
+				39735B581D23C9CF0008301E /* JSONModelError.h in Headers */,
+				39735B4D1D23C8C70008301E /* UIColor+ColorOperations.h in Headers */,
+				39735B301D23C8930008301E /* PDScores.h in Headers */,
+				39735B5E1D23C9CF0008301E /* JSONValueTransformer.h in Headers */,
+				39735ADC1D23C7490008301E /* PopdeemSDKCore.h in Headers */,
+				39735B571D23C9CF0008301E /* JSONModelClassProperty.h in Headers */,
+				39735B3B1D23C8930008301E /* PDUserInstagramParams.h in Headers */,
+				39735B2C1D23C8930008301E /* PDUser.h in Headers */,
+				39735B1E1D23C8700008301E /* PDAPIService.h in Headers */,
+				39735B211D23C8700008301E /* PDBrandApiService.h in Headers */,
+				39735B5F1D23CA000008301E /* PDTheme.h in Headers */,
+				39735B2F1D23C8930008301E /* PDReward.h in Headers */,
+				39735B401D23C8A90008301E /* PDConstants.h in Headers */,
+				39735B351D23C8930008301E /* PDURLSession.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		393D2B751C3AD0D300F1E253 /* NavigationSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 393D2B8C1C3AD0D300F1E253 /* Build configuration list for PBXNativeTarget "NavigationSample" */;
 			buildPhases = (
-				842A7082D19932836038326D /* Check Pods Manifest.lock */,
+				6B48BF2B0FF0407D06F1C062 /* Check Pods Manifest.lock */,
 				393D2B721C3AD0D200F1E253 /* Sources */,
 				393D2B731C3AD0D300F1E253 /* Frameworks */,
 				393D2B741C3AD0D300F1E253 /* Resources */,
 				39ADEC491C772423004C7C6E /* Fabric */,
-				B06C46D28F154E33A161C81E /* Embed Pods Frameworks */,
-				E5172641697E684E9225B7D3 /* Copy Pods Resources */,
+				DF25E00C9DE607E2C0B0149C /* Embed Pods Frameworks */,
+				3E19B182B2D1571F55A7BF51 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1771,15 +1942,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39537BDC1C639B79001C6796 /* Build configuration list for PBXNativeTarget "TabbedTest" */;
 			buildPhases = (
-				21CA5DE30D68C5CD2B5ECA90 /* Check Pods Manifest.lock */,
+				41FE5A374D77FEBB02F77E7D /* Check Pods Manifest.lock */,
 				39537BBF1C639B79001C6796 /* Sources */,
 				39537BC01C639B79001C6796 /* Frameworks */,
 				39537BC11C639B79001C6796 /* Resources */,
 				39EB99121C86FEE900BB0DD8 /* Fabric */,
 				39BB0DE01C89E20B008FCB8C /* Build Bump */,
-				FA450E119DFC359887E46FE6 /* Embed Pods Frameworks */,
-				8BB4C36B7DFCED148105C327 /* Copy Pods Resources */,
 				397892731D1AA89E00BCE17E /* Embed Frameworks */,
+				A269222EF1518EC9C8DA7B56 /* Embed Pods Frameworks */,
+				ED5BD77F8F43BC2E86CD90AB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1790,15 +1961,35 @@
 			productReference = 39537BC31C639B79001C6796 /* TabbedTest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		39735AD81D23C7490008301E /* PopdeemSDKCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39735ADE1D23C7490008301E /* Build configuration list for PBXNativeTarget "PopdeemSDKCore" */;
+			buildPhases = (
+				82ABB4E667EA4E115779610A /* Check Pods Manifest.lock */,
+				39735AD41D23C7490008301E /* Sources */,
+				39735AD51D23C7490008301E /* Frameworks */,
+				39735AD61D23C7490008301E /* Headers */,
+				39735AD71D23C7490008301E /* Resources */,
+				CCCC2BD67AF8ECC372D115C4 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopdeemSDKCore;
+			productName = PopdeemSDKCore;
+			productReference = 39735AD91D23C7490008301E /* PopdeemSDKCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39D7D0791B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDK" */;
 			buildPhases = (
-				9A86D4151074513BD5F79F50 /* Check Pods Manifest.lock */,
+				CCBE71D98B3CBC95A67C052F /* Check Pods Manifest.lock */,
 				39D7D0611B8F0DCF00E45D0B /* Sources */,
 				39D7D0621B8F0DCF00E45D0B /* Frameworks */,
 				39D7D0631B8F0DCF00E45D0B /* CopyFiles */,
-				AB4AF6F60FD71CC21DC9AF14 /* Copy Pods Resources */,
+				15BDFBB51E0FCB23B3EF1F3C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1813,12 +2004,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39D7D07C1B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDKTests" */;
 			buildPhases = (
-				D0555DBBE343B7EE07F52CD8 /* Check Pods Manifest.lock */,
+				CFAC45E5F693DB93E248129C /* Check Pods Manifest.lock */,
 				39D7D06C1B8F0DCF00E45D0B /* Sources */,
 				39D7D06D1B8F0DCF00E45D0B /* Frameworks */,
 				39D7D06E1B8F0DCF00E45D0B /* Resources */,
-				D7A96CCE90B1ACD09B28A07E /* Embed Pods Frameworks */,
-				8C86D2669486FA4AEF020857 /* Copy Pods Resources */,
+				CAB2272AAB9E2457B8E7FEB0 /* Embed Pods Frameworks */,
+				4DEB6BA1BC09174A2AC91835 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1834,13 +2025,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A90FA5411C0368A8001DA473 /* Build configuration list for PBXNativeTarget "PopdeemSample" */;
 			buildPhases = (
-				BEF211714F8BE85BBBDC94CA /* Check Pods Manifest.lock */,
+				BF1C0D3D030EF829273D058A /* Check Pods Manifest.lock */,
 				A90FA5291C0368A8001DA473 /* Sources */,
 				A90FA52A1C0368A8001DA473 /* Frameworks */,
 				A90FA52B1C0368A8001DA473 /* Resources */,
 				39788FB71D1A9A7600BCE17E /* Embed Frameworks */,
-				F62D076D64347E3C06912CCD /* Embed Pods Frameworks */,
-				4A6C053EA85A7E31DF7A2AB6 /* Copy Pods Resources */,
+				7B8D3AA2E11968BB086413FC /* Embed Pods Frameworks */,
+				CF16D3B8C320D6E1942ECABF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1878,6 +2069,10 @@
 							};
 						};
 					};
+					39735AD81D23C7490008301E = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = A6BJ87CDY8;
+					};
 					39D7D0641B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -1913,6 +2108,7 @@
 				A90FA52C1C0368A8001DA473 /* PopdeemSample */,
 				393D2B751C3AD0D300F1E253 /* NavigationSample */,
 				39537BC21C639B79001C6796 /* TabbedTest */,
+				39735AD81D23C7490008301E /* PopdeemSDKCore */,
 			);
 		};
 /* End PBXProject section */
@@ -1947,6 +2143,13 @@
 				39EB990E1C86F78600BB0DD8 /* theme.json in Resources */,
 				39537BD51C639B79001C6796 /* Assets.xcassets in Resources */,
 				39537BD31C639B79001C6796 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39735AD71D23C7490008301E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2001,19 +2204,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21CA5DE30D68C5CD2B5ECA90 /* Check Pods Manifest.lock */ = {
+		15BDFBB51E0FCB23B3EF1F3C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		39ADEC491C772423004C7C6E /* Fabric */ = {
@@ -2058,157 +2261,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
 		};
-		4A6C053EA85A7E31DF7A2AB6 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		842A7082D19932836038326D /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8BB4C36B7DFCED148105C327 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8C86D2669486FA4AEF020857 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A86D4151074513BD5F79F50 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AB4AF6F60FD71CC21DC9AF14 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B06C46D28F154E33A161C81E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BEF211714F8BE85BBBDC94CA /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D0555DBBE343B7EE07F52CD8 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D7A96CCE90B1ACD09B28A07E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5172641697E684E9225B7D3 /* Copy Pods Resources */ = {
+		3E19B182B2D1571F55A7BF51 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2223,7 +2276,52 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F62D076D64347E3C06912CCD /* Embed Pods Frameworks */ = {
+		41FE5A374D77FEBB02F77E7D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4DEB6BA1BC09174A2AC91835 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B48BF2B0FF0407D06F1C062 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7B8D3AA2E11968BB086413FC /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2238,7 +2336,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FA450E119DFC359887E46FE6 /* Embed Pods Frameworks */ = {
+		82ABB4E667EA4E115779610A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A269222EF1518EC9C8DA7B56 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2251,6 +2364,126 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF1C0D3D030EF829273D058A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CAB2272AAB9E2457B8E7FEB0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCBE71D98B3CBC95A67C052F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CCCC2BD67AF8ECC372D115C4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF16D3B8C320D6E1942ECABF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFAC45E5F693DB93E248129C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DF25E00C9DE607E2C0B0149C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED5BD77F8F43BC2E86CD90AB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2277,26 +2510,89 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		39735AD41D23C7490008301E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39735AFE1D23C8550008301E /* PDLocation.m in Sources */,
+				39735B501D23C9C50008301E /* JSONModelError.m in Sources */,
+				39735B0B1D23C8550008301E /* PDInstagramAPIService.m in Sources */,
+				39735B611D23CA160008301E /* PopdeemSDK.m in Sources */,
+				39735AFF1D23C8550008301E /* PDMessage.m in Sources */,
+				39735B171D23C8550008301E /* PDMomentAPIService.m in Sources */,
+				39735B601D23CA040008301E /* PDTheme.m in Sources */,
+				39735B081D23C8550008301E /* PDUserFacebookParams.m in Sources */,
+				39735AFC1D23C8550008301E /* PDScores.m in Sources */,
+				39735AFB1D23C8550008301E /* PDReward.m in Sources */,
+				39735AF71D23C8550008301E /* PDMomentsManager.m in Sources */,
+				39735AFA1D23C8550008301E /* PDFeeds.m in Sources */,
+				39735B011D23C8550008301E /* PDURLSession.m in Sources */,
+				39735B151D23C8550008301E /* PDRewardActionAPIService.m in Sources */,
+				39735B001D23C8550008301E /* PDReferral.m in Sources */,
+				39735B0D1D23C8550008301E /* PDFeedAPIService.m in Sources */,
+				39735B4F1D23C9C50008301E /* JSONModelClassProperty.m in Sources */,
+				39735B551D23C9C50008301E /* JSONValueTransformer.m in Sources */,
+				39735B121D23C8550008301E /* PDWalletAPIService.m in Sources */,
+				39735B061D23C8550008301E /* PDUserTwitterParams.m in Sources */,
+				39735B021D23C8550008301E /* PDUser+Facebook.m in Sources */,
+				39735B0C1D23C8550008301E /* PDAPIService.m in Sources */,
+				39735AF21D23C8550008301E /* PDGeolocationManager.m in Sources */,
+				39735B521D23C9C50008301E /* JSONHTTPClient.m in Sources */,
+				39735B511D23C9C50008301E /* JSONAPI.m in Sources */,
+				39735B051D23C8550008301E /* PDSocialMediaFriend.m in Sources */,
+				39735AE91D23C8550008301E /* NSURL+OAuthAdditions.m in Sources */,
+				39735AF01D23C8550008301E /* PDUtils.m in Sources */,
+				39735B181D23C8550008301E /* PDAPIClient.m in Sources */,
+				39735B141D23C8550008301E /* PDReferralAPIService.m in Sources */,
+				39735B131D23C8550008301E /* PDLocationAPIService.m in Sources */,
+				39735AEF1D23C8550008301E /* PDMessageStore.m in Sources */,
+				39735AEA1D23C8550008301E /* UIColor+ColorOperations.m in Sources */,
+				39735B0F1D23C8550008301E /* PDBrandApiService.m in Sources */,
+				39735AF81D23C8550008301E /* PDUser.m in Sources */,
+				39735B161D23C8550008301E /* PDMessageAPIService.m in Sources */,
+				39735AF11D23C8550008301E /* PDConstants.m in Sources */,
+				39735B071D23C8550008301E /* PDUserInstagramParams.m in Sources */,
+				39735AEC1D23C8550008301E /* PDLocationStore.m in Sources */,
+				39735AF41D23C8550008301E /* PDNotificationHandler.m in Sources */,
+				39735B4E1D23C9C50008301E /* JSONModel.m in Sources */,
+				39735B0E1D23C8550008301E /* PDUserAPIService.m in Sources */,
+				39735B101D23C8550008301E /* PDRewardAPIService.m in Sources */,
+				39735B031D23C8550008301E /* PDOpeningHoursDay.m in Sources */,
+				39735AEB1D23C8550008301E /* PDBrandStore.m in Sources */,
+				39735B041D23C8550008301E /* PDOpeningHoursWeek.m in Sources */,
+				39735B091D23C8550008301E /* PDRewardCustomAvailability.m in Sources */,
+				39735AF91D23C8550008301E /* PDBrand.m in Sources */,
+				39735AEE1D23C8550008301E /* PDWallet.m in Sources */,
+				39735B111D23C8550008301E /* PDSocialAPIService.m in Sources */,
+				39735B531D23C9C50008301E /* JSONModel+networking.m in Sources */,
+				39735B1A1D23C8550008301E /* NSURLSession+Popdeem.m in Sources */,
+				39735B0A1D23C8550008301E /* PDInstagramAPIClient.m in Sources */,
+				39735AF31D23C8550008301E /* PDSocialMediaManager.m in Sources */,
+				39735AF51D23C8550008301E /* PDSDKCustomIOS7AlertView.m in Sources */,
+				39735AED1D23C8550008301E /* PDRewardStore.m in Sources */,
+				39735AFD1D23C8550008301E /* PDFeedItem.m in Sources */,
+				39735B541D23C9C50008301E /* JSONKeyMapper.m in Sources */,
+				39735B191D23C8550008301E /* PDNetworkError.m in Sources */,
+				39735AF61D23C8550008301E /* PDLocationValidator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39D7D0611B8F0DCF00E45D0B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				394BEFDA1D1436400045F5F3 /* sha1.c in Sources */,
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
-				397891261D1A9D7F00BCE17E /* STTwitterOSRequest.m in Sources */,
 				397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */,
 				39A9898E1C3BE8F2002AF910 /* PDUIRewardHomeTableViewController.m in Sources */,
-				3978910D1D1A9D7F00BCE17E /* NSError+STTwitter.m in Sources */,
 				39ABA6581C47A9030057088E /* PDUIWalletCache.m in Sources */,
 				394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */,
-				397891101D1A9D7F00BCE17E /* NSString+STTwitter.m in Sources */,
 				394BEFD51D1436400045F5F3 /* NSMutableURLRequest+Parameters.m in Sources */,
 				A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				394BF0701D1A8F9C0045F5F3 /* JSONModelError.m in Sources */,
 				392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */,
 				39ABA6511C47A1850057088E /* PDUIWalletTableViewCell.m in Sources */,
-				397891171D1A9D7F00BCE17E /* STTwitterAPI.m in Sources */,
 				39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */,
 				39450F361D14188900AA4883 /* PDUIInstagramWebViewController.m in Sources */,
 				39A98A651C3E6B9F002AF910 /* PDUICheckinCell.m in Sources */,
@@ -2304,20 +2600,15 @@
 				3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */,
 				39A989861C3BD857002AF910 /* PDUISegmentedControl.m in Sources */,
 				394BEFD71D1436400045F5F3 /* NSURL+Base.m in Sources */,
-				3978910A1D1A9D7F00BCE17E /* NSDateFormatter+STTwitter.m in Sources */,
 				394BEFE11D1436400045F5F3 /* OAPlaintextSignatureProvider.m in Sources */,
 				394BEFD91D1436400045F5F3 /* hmac.c in Sources */,
-				397891311D1A9D7F00BCE17E /* JSONSyntaxHighlight.m in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
-				3978911D1D1A9D7F00BCE17E /* STTwitterHTML.m in Sources */,
 				397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */,
-				3978911A1D1A9D7F00BCE17E /* STTwitterAppOnly.m in Sources */,
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,
 				A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */,
 				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PDUIPhotoCell.m in Sources */,
-				397891341D1A9D7F00BCE17E /* STHTTPRequest.m in Sources */,
 				394BEFE31D1436400045F5F3 /* OARequestParameter.m in Sources */,
 				39D3F8221CB2BDB900A69575 /* PDUIFriendPickerViewController.m in Sources */,
 				394BF0741D1A8F9C0045F5F3 /* JSONKeyMapper.m in Sources */,
@@ -2327,16 +2618,13 @@
 				A92281F41C074C2D00A43320 /* PDUIModalTransitionHandler.m in Sources */,
 				394BEFDD1D1436400045F5F3 /* OAConsumer.m in Sources */,
 				396443FB1D13EC5A00BB67F9 /* PDUICardViewController.m in Sources */,
-				3978912E1D1A9D7F00BCE17E /* BAVPlistNode.m in Sources */,
 				394BF06E1D1A8F9C0045F5F3 /* JSONModel.m in Sources */,
-				3978912B1D1A9D7F00BCE17E /* STTwitterStreamParser.m in Sources */,
 				398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */,
 				394BF0721D1A8F9C0045F5F3 /* JSONHTTPClient.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDUIRewardTableViewController.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */,
 				394BEFDF1D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
 				39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */,
-				397891231D1A9D7F00BCE17E /* STTwitterOS.m in Sources */,
 				39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */,
 				394BF0711D1A8F9C0045F5F3 /* JSONAPI.m in Sources */,
 				394BEFDB1D1436400045F5F3 /* OAAttachment.m in Sources */,
@@ -2350,7 +2638,6 @@
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDUIHomeViewController.m in Sources */,
-				397891131D1A9D7F00BCE17E /* STHTTPRequest+STTwitter.m in Sources */,
 				394BEFDC1D1436400045F5F3 /* OACall.m in Sources */,
 				394BEFE41D1436400045F5F3 /* OAServiceTicket.m in Sources */,
 				394BEFE51D1436400045F5F3 /* OAToken.m in Sources */,
@@ -2371,7 +2658,6 @@
 				392423761C230F4E0038D953 /* PDUILazyLoader.m in Sources */,
 				3921E30C1C71D84B000120D4 /* PDUIFeedImageViewController.m in Sources */,
 				394BF0731D1A8F9C0045F5F3 /* JSONModel+networking.m in Sources */,
-				397891201D1A9D7F00BCE17E /* STTwitterOAuth.m in Sources */,
 				A92281EC1C07369800A43320 /* PDUIRewardTableViewCell.m in Sources */,
 				394BEFF21D1839C90045F5F3 /* PDUIInstagramShareViewController.m in Sources */,
 				3978947C1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m in Sources */,
@@ -2517,7 +2803,7 @@
 /* Begin XCBuildConfiguration section */
 		393D2B8A1C3AD0D300F1E253 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD0490838BD329B75A95DF5D /* Pods-NavigationSample.debug.xcconfig */;
+			baseConfigurationReference = 7B0925008478AFBBC7FD50B8 /* Pods-NavigationSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2534,7 +2820,7 @@
 		};
 		393D2B8B1C3AD0D300F1E253 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 954034E58BA390D40FEFAE6A /* Pods-NavigationSample.release.xcconfig */;
+			baseConfigurationReference = 56A2127F7E14E7AAC27B7E0A /* Pods-NavigationSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2550,7 +2836,7 @@
 		};
 		39537BDA1C639B79001C6796 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EB92A65E978A45D75F8E985 /* Pods-TabbedTest.debug.xcconfig */;
+			baseConfigurationReference = C7C84849D62D4E41A7D42A1C /* Pods-TabbedTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
@@ -2571,7 +2857,7 @@
 		};
 		39537BDB1C639B79001C6796 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89692A32D8FCF05C65BFCFCB /* Pods-TabbedTest.release.xcconfig */;
+			baseConfigurationReference = 6FF57E1E46B26F6B12140ADE /* Pods-TabbedTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
@@ -2586,6 +2872,73 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "00a5b695-d117-428d-af1f-122efef52e7f";
+			};
+			name = Release;
+		};
+		39735ADF1D23C7490008301E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2AAB3C609F13B4A56D18EBB /* Pods-PopdeemSDKCore.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks/**",
+					"$(SRCROOT)/PopdeemSDK/**",
+				);
+				INFOPLIST_FILE = PopdeemSDKCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Products/**",
+					"$(SRCROOT)/Frameworks/**",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDKCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		39735AE01D23C7490008301E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5D819C94CA623E292F771BF /* Pods-PopdeemSDKCore.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks/**",
+					"$(SRCROOT)/PopdeemSDK/**",
+				);
+				INFOPLIST_FILE = PopdeemSDKCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Products/**",
+					"$(SRCROOT)/Frameworks/**",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDKCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -2673,7 +3026,7 @@
 		};
 		39D7D07A1B8F0DCF00E45D0B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCD3BD24340900BD4112A6F8 /* Pods-PopdeemSDK.debug.xcconfig */;
+			baseConfigurationReference = 784FC3693F49E9C1C716BB2A /* Pods-PopdeemSDK.debug.xcconfig */;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2690,7 +3043,7 @@
 		};
 		39D7D07B1B8F0DCF00E45D0B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1F881D906DE3227EB68076A /* Pods-PopdeemSDK.release.xcconfig */;
+			baseConfigurationReference = D65F2C35E18D39A7617CA845 /* Pods-PopdeemSDK.release.xcconfig */;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2707,23 +3060,17 @@
 		};
 		39D7D07D1B8F0DCF00E45D0B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3047B7DB281E8415365F2071 /* Pods-PopdeemSDKTests.debug.xcconfig */;
+			baseConfigurationReference = DF54C6FFA1483F1DE949121F /* Pods-PopdeemSDKTests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = PopdeemSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2731,7 +3078,6 @@
 					"-l\"FBSDKCoreKit\"",
 					"-l\"FBSDKLoginKit\"",
 					"-l\"FBSDKShareKit\"",
-					"-l\"JSONModel\"",
 					"-l\"STTwitter\"",
 					"-framework",
 					"\"Accounts\"",
@@ -2776,19 +3122,13 @@
 		};
 		39D7D07E1B8F0DCF00E45D0B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B85ACC4CF7CB83648353AF0 /* Pods-PopdeemSDKTests.release.xcconfig */;
+			baseConfigurationReference = 1EE1C446BA5524080265C331 /* Pods-PopdeemSDKTests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PopdeemSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2796,7 +3136,6 @@
 					"-l\"FBSDKCoreKit\"",
 					"-l\"FBSDKLoginKit\"",
 					"-l\"FBSDKShareKit\"",
-					"-l\"JSONModel\"",
 					"-l\"STTwitter\"",
 					"-framework",
 					"\"Accounts\"",
@@ -2837,7 +3176,7 @@
 		};
 		A90FA5421C0368A8001DA473 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42273E47D285F665EAC4B61D /* Pods-PopdeemSample.debug.xcconfig */;
+			baseConfigurationReference = 45A5C4FA0583E6046D0F3DDF /* Pods-PopdeemSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2854,7 +3193,7 @@
 		};
 		A90FA5431C0368A8001DA473 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8E40FEB443718C11F503186 /* Pods-PopdeemSample.release.xcconfig */;
+			baseConfigurationReference = 09F62335256B92B3422C57E8 /* Pods-PopdeemSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2885,6 +3224,15 @@
 			buildConfigurations = (
 				39537BDA1C639B79001C6796 /* Debug */,
 				39537BDB1C639B79001C6796 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39735ADE1D23C7490008301E /* Build configuration list for PBXNativeTarget "PopdeemSDKCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39735ADF1D23C7490008301E /* Debug */,
+				39735AE01D23C7490008301E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

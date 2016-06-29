@@ -32,13 +32,18 @@ PODS:
   - STTwitter (0.2.4)
 
 DEPENDENCIES:
+  - Bolts
   - Crashlytics
   - Expecta (~> 1.0.0)
   - Fabric
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Nocilla
   - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
   - PopdeemSDK/UIKit (from `../Popdeem-SDK-iOS`)
+  - STTwitter
 
 EXTERNAL SOURCES:
   PopdeemSDK:
