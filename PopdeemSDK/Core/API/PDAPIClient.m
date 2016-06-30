@@ -99,6 +99,22 @@
     }];
 }
 
+#pragma mark - Connect Instagram Account -
+- (void) connectInstagramAccount:(NSString*)userId
+										 accessToken:(NSString*)accessToken
+											screenName:(NSString*)screenName
+												 success:(void (^)(void))success
+												 failure:(void (^)(NSError *error))failure {
+	PDSocialAPIService *service = [[PDSocialAPIService alloc] init];
+	[service connectInstagramAccount:userId accessToken:accessToken screenName:screenName completion:^(NSError *error){
+		if (error) {
+			failure(error);
+		} else {
+			success();
+		}
+	}];
+}
+
 #pragma mark - Get All Locations -
 
 - (void) getAllLocationsSuccess:(void (^)(void))success
@@ -253,11 +269,12 @@
                image:(UIImage*)image
             facebook:(BOOL)facebook
              twitter:(BOOL)twitter
+					 instagram:(BOOL)instagram
              success:(void (^)(void))success
              failure:(void (^)(NSError *error))failure {
     
     PDRewardActionAPIService *apiService = [[PDRewardActionAPIService alloc] init];
-    [apiService claimReward:rewardId location:location withMessage:message taggedFriends:taggedFriends image:image facebook:facebook twitter:twitter completion:^(NSError *error){
+	[apiService claimReward:rewardId location:location withMessage:message taggedFriends:taggedFriends image:image facebook:facebook twitter:twitter instagram:instagram completion:^(NSError *error){
         if (error) {
             failure(error);
             return ;

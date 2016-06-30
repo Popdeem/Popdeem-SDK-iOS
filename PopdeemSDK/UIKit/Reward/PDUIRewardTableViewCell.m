@@ -139,8 +139,12 @@
             action = @"No Action Required";
             break;
         }
-      }
-    } else if (types.count == 0) {
+			} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+				//Twitter Only
+				action = @"Instagram Photo Required";
+				
+			}
+		} else if (types.count == 0) {
       switch (reward.action) {
         case PDRewardActionCheckin:
           action = @"Check-in Required";

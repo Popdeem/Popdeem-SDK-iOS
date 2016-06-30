@@ -16,6 +16,7 @@
 typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
     FacebookOnly = 0,
     TwitterOnly,
+		InstagramOnly,
     FacebookAndTwitter
 };
 
@@ -29,6 +30,10 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) NSString *textviewPrepopulatedString;
 @property (nonatomic, strong) NSString *forcedTagString;
 @property (nonatomic, strong) NSString *twitterCharCountString;
+
+@property (nonatomic) BOOL mustFacebook;
+@property (nonatomic) BOOL willFacebook;
+@property (nonatomic) BOOL willInstagram;
 @property (nonatomic) BOOL willTweet;
 
 @property (nonatomic, strong) PDLocation *location;
@@ -37,7 +42,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 
 @property (nonatomic) SocialMediaTypesAvailable socialMediaTypesAvailable;
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location;
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location controller:(UIViewController*)controller;
 - (void) toggleFacebook;
 - (void) toggleTwitter;
 - (void) addPhotoAction;
@@ -45,4 +50,5 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 - (void) calculateTwitterCharsLeft;
 - (void) validateHashTag;
+- (void) instagramSwitchToggled:(UISwitch*)instagramSwitch;
 @end

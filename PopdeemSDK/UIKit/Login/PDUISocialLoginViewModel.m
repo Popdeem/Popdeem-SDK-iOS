@@ -24,10 +24,7 @@
 
 @end
 @interface PDUISocialLoginViewModel() {
-  PDUIModalLoadingView *loadingView;
-  
-  void (^locationBlock)(NSError *error);
-  BOOL locationAcquired;
+
   
   CLLocationManager *manager;
 }
@@ -61,7 +58,7 @@
     return;
   }
   
-  NSDictionary *dict = [NSUserDefaults standardUserDefaults];
+  NSUserDefaults *dict = [NSUserDefaults standardUserDefaults];
   [self proceedWithLoggedInUser];
 }
 

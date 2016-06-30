@@ -42,6 +42,9 @@ static const NSString *kVariablesKey = @"Variables";
     if (value){
         if ([value isKindOfClass:[NSString class]]){
             image = [UIImage imageNamed:value];
+					if (!image) {
+						image = [UIImage imageNamed:value inBundle:[self bundle] compatibleWithTraitCollection:nil];
+					}
         }
     }
     return image;
@@ -109,13 +112,16 @@ static const NSString *kVariablesKey = @"Variables";
 + (NSData *)readFileWithName:(NSString *)fileName extension:(NSString *)ext {
     NSError *error = nil;
 
-    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:ext];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:ext];
     if (!filePath) {
-			filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"default_theme" ofType:@"json"];
+			filePath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:ext];
 			if (!filePath) {
-				[NSException raise:@"Error loading theme" format:@""];
+				filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"default_theme" ofType:@"json"];
+				if (!filePath) {
+					[NSException raise:@"Error loading theme" format:@""];
+				}
+				NSLog(@"You did not specify a theme file, or it was not found. Using default theme file");
 			}
-			NSLog(@"You did not specify a theme file, or it was not found. Using default theme file");
     }
 
     NSData *data = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:&error];
@@ -207,6 +213,26 @@ UIFont* fontForKey(NSString *key, CGFloat size) {
     NSLog(@"No font defined for key: %@, returning system font",key);
   }
   return [UIFont systemFontOfSize:size];
+}
+
+- (NSBundle*) bundle {
+	return [NSBundle bundleForClass:self.class];
+}
+
+- (NSString*) bundleName {
+	return [[[NSBundle bundleForClass:self.class] bundleURL] lastPathComponent];
+}
+
+- (NSString*) imagePathForValue:(NSString*)value {
+	NSString *imagePath = [[self bundle] pathForResource:value ofType:@"png"];
+	if (imagePath) {
+		return imagePath;
+	}
+	imagePath = [[self bundle] pathForResource:value ofType:@"jpg"];
+	if (imagePath) {
+		return imagePath;
+	}
+	return nil;
 }
 
 //- (UIFont*) fontForKey:(NSString*)key size:(CGFloat)size {

@@ -22,6 +22,7 @@
                image:(UIImage*)image
             facebook:(BOOL)facebook
              twitter:(BOOL)twitter
+					 instagram:(BOOL)instagram
           completion:(void (^)(NSError *error))completion {
   
   NSURLSession *session = [NSURLSession createPopdeemSession];
@@ -66,7 +67,11 @@
     [twitterParams setObject:user.twitterParams.accessSecret forKey:@"access_secret"];
     [params setObject:twitterParams forKey:@"twitter"];
   }
-  
+	if (instagram) {
+		NSMutableDictionary *instagramParams = [NSMutableDictionary dictionary];
+		[instagramParams setObject:user.instagramParams.accessToken forKey:@"access_token"];
+		[params setObject:instagramParams forKey:@"instagram"];
+	}
   //user location
   NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",location.geoLocation.latitude],@"latitude",
                                   [NSString stringWithFormat:@"%.4f",location.geoLocation.longitude], @"longitude",

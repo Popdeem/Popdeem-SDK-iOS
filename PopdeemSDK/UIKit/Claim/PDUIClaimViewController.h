@@ -12,6 +12,7 @@
 #import "PDLocation.h"
 #import "PDUIClaimViewModel.h"
 #import "PDUIHomeViewController.h"
+#import "PDUIInstagramLoginViewController.h"
 
 @class PDUIClaimViewModel;
 
@@ -44,6 +45,13 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *keyboardHiderView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *locationFailedView;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UISwitch *facebookSwitch;
+@property (unsafe_unretained, nonatomic) IBOutlet UISwitch *twitterSwitch;
+@property (unsafe_unretained, nonatomic) IBOutlet UISwitch *instagramSwitch;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *instagramIconView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *twitterIconView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *facebookIconView;
 
 @property (nonatomic, assign) PDUIHomeViewController *homeController;
 

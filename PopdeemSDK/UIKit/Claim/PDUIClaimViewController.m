@@ -19,6 +19,7 @@
 #import "PDUser+Facebook.h"
 #import "PDSocialMediaFriend.h"
 #import "PDTheme.h"
+#import "PDUIInstagramVerifyViewController.h"
 
 @interface PDUIClaimViewController () {
   NSArray *_mediaTypes;
@@ -54,6 +55,12 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");
     self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
     return self;
   }
   return nil;
@@ -75,7 +82,7 @@
 - (void) setupWithReward:(PDReward*)reward {
   _reward = reward;
   _mediaTypes = reward.socialMediaTypes;
-  _viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+  _viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location controller:self];
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
 	[_textView setScrollEnabled:YES];
@@ -128,7 +135,7 @@
   [super viewDidLoad];
   [_locationFailedView setHidden:YES];
   [self setupView];
-  _viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location];
+	_viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location controller:self];
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
   [_textView setFont:[UIFont systemFontOfSize:14]];
@@ -219,6 +226,13 @@
     [self.twitterCharacterCountLabel setHidden:NO];
     [_viewModel calculateTwitterCharsLeft];
   }
+	if (_viewModel.willInstagram) {
+		[self.twitterForcedTagLabel setHidden:NO];
+		if (_viewModel.reward.instagramForcedTag) {
+			[self.twitterForcedTagLabel setTextColor:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
+		}
+		[self.twitterCharacterCountLabel setHidden:YES];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -378,7 +392,59 @@
       }
     }
   }
+	[_textView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (IBAction)facebookSwitchToggled:(id)sender {
+	[_viewModel toggleFacebook];
+}
+- (IBAction)twitterSwitchToggled:(id)sender {
+	[_viewModel toggleTwitter];
+}
+
+- (IBAction)instagramSwitchToggled:(id)sender {
+	[_viewModel instagramSwitchToggled:sender];
+}
+
+- (void) instagramLoginSuccess {
+	[_instagramSwitch setOn:YES animated:NO];
+	_viewModel.willInstagram = YES;
+	NSLog(@"Instagram Connected");
+}
+
+- (void) instagramLoginFailure {
+	NSLog(@"Instagram Not Connected");
+	_viewModel.willInstagram = NO;
+	[_instagramSwitch setOn:NO animated:YES];
+}
+
+- (void) instagramPostMade {
+	
+	PDUIInstagramVerifyViewController *verifyController = [[PDUIInstagramVerifyViewController alloc] initForParent:self.navigationController forReward:_viewModel.reward];
+	self.definesPresentationContext = YES;
+	verifyController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	[self presentViewController:verifyController animated:YES completion:^(void){
+		
+	}];
+}
+
+- (void) instagramVerifySuccess {
+	self.homeController.didClaim = YES;
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) instagramVerifyFailure {
+	self.homeController.didClaim = NO;
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) instagramVerifyNoAttempt {
+	self.homeController.didClaim = NO;
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

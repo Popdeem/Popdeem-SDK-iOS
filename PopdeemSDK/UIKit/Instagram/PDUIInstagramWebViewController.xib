@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUIInstagramWebViewController">
+            <connections>
+                <outlet property="navigationBar" destination="lhS-qC-cZv" id="hht-Yv-hUu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="q9k-sL-fqc" id="Lz9-G2-VgG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9k-sL-fqc">
+                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                </webView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhS-qC-cZv">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <color key="backgroundColor" red="0.17254901959999999" green="0.26274509800000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.17254901959999999" green="0.26274509800000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <items>
+                        <navigationItem title="Connect Instagram" prompt="" id="6Cg-b8-9gs">
+                            <barButtonItem key="leftBarButtonItem" title="Close" id="E1y-zP-ZFp">
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="-1" id="mmF-m6-ln4"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lhS-qC-cZv" secondAttribute="trailing" id="9xU-JH-1oI"/>
+                <constraint firstItem="lhS-qC-cZv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aNu-Hk-YOZ"/>
+                <constraint firstItem="q9k-sL-fqc" firstAttribute="top" secondItem="lhS-qC-cZv" secondAttribute="bottom" id="aeq-oS-2vl"/>
+                <constraint firstAttribute="bottom" secondItem="q9k-sL-fqc" secondAttribute="bottom" id="jFj-1f-7Pb"/>
+                <constraint firstAttribute="trailing" secondItem="q9k-sL-fqc" secondAttribute="trailing" id="jSg-A9-cl1"/>
+                <constraint firstItem="lhS-qC-cZv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jzY-BX-GYR"/>
+                <constraint firstItem="q9k-sL-fqc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mIK-n0-pBV"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -64,6 +64,13 @@ static PDUser *globalUser = nil;
   NSDictionary *twitterParams = params[@"twitter"];
   user.twitterParams = [[PDUserTwitterParams alloc] initWithParams:twitterParams];
 	
+	NSDictionary *instagramParams = params[@"instagram"];
+	NSError *err = [[NSError alloc] initWithDomain:@"PDUser Error" code:27700 userInfo:nil];
+	if (instagramParams) {
+		user.instagramParams = [[PDUserInstagramParams alloc] initWithDictionary:instagramParams error:&err];
+	}
+	
+	
   NSString *testerStatus = facebookParams[@"tester"];
   if ([testerStatus isEqualToString:@"true"]) {
     user.isTester = YES;

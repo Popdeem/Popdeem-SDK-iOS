@@ -7,11 +7,11 @@
 //
 
 #import "PDUILazyLoader.h"
-#import <PopdeemSDK/PDBrand.h>
-#import <PopdeemSDK/PDBrandStore.h>
-#import <PopdeemSDK/PDReward.h>
-#import <PopdeemSDK/PDWallet.h>
-#import <PopdeemSDK/PDRewardStore.h>
+#import "PDBrand.h"
+#import "PDBrandStore.h"
+#import "PDReward.h"
+#import "PDWallet.h"
+#import "PDRewardStore.h"
 #import "PDFeeds.h"
 #import "PDMessageStore.h"
 

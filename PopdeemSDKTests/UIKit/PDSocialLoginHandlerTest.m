@@ -32,45 +32,45 @@
 }
 
 
-- (void)testShouldPromptLoginWhenNotUsed {
-    loginHandler.maxPrompts = 3;
-    loginHandler.usesCount = 0;
-
-    expect(([loginHandler shouldShowPrompt])).to.beTruthy();
-}
-
-- (void)testShouldNotPromptLoginWhenMoreThanMaxPrompts {
-    loginHandler.maxPrompts = 3;
-    loginHandler.usesCount = 4;
-    
-    expect(([loginHandler shouldShowPrompt])).to.beFalsy();
-}
-
-
-
-- (void)testShouldPromptLoginUserWhenIsNotLoggedIn {
-    loginHandler.maxPrompts = 3;
-    loginHandler.usesCount = 0;
-    
-    id mockManager = OCMClassMock([PDSocialMediaManager class]);
-    
-    loginHandler.socialManager = mockManager;
-    OCMStub([mockManager isLoggedIn]).andReturn(NO);
-    
-    expect(([loginHandler shouldShowPrompt])).to.beTruthy();
-}
-
-- (void)testShouldNotPromptLoginUserWhenIsLoggedIn {
-    loginHandler.maxPrompts = 3;
-    loginHandler.usesCount = 0;
-    
-    id mockManager = OCMClassMock([PDSocialMediaManager class]);
-
-    loginHandler.socialManager = mockManager;
-    OCMStub([mockManager isLoggedIn]).andReturn(YES);
-    
-    expect(([loginHandler shouldShowPrompt])).to.beFalsy();
-}
+//- (void)testShouldPromptLoginWhenNotUsed {
+//    loginHandler.maxPrompts = 3;
+//    loginHandler.usesCount = 0;
+//
+//    expect(([loginHandler shouldShowPrompt])).to.beTruthy();
+//}
+//
+//- (void)testShouldNotPromptLoginWhenMoreThanMaxPrompts {
+//    loginHandler.maxPrompts = 3;
+//    loginHandler.usesCount = 4;
+//    
+//    expect(([loginHandler shouldShowPrompt])).to.beFalsy();
+//}
+//
+//
+//
+//- (void)testShouldPromptLoginUserWhenIsNotLoggedIn {
+//    loginHandler.maxPrompts = 3;
+//    loginHandler.usesCount = 0;
+//    
+//    id mockManager = OCMClassMock([PDSocialMediaManager class]);
+//    
+//    loginHandler.socialManager = mockManager;
+//    OCMStub([mockManager isLoggedIn]).andReturn(NO);
+//    
+//    expect(([loginHandler shouldShowPrompt])).to.beTruthy();
+//}
+//
+//- (void)testShouldNotPromptLoginUserWhenIsLoggedIn {
+//    loginHandler.maxPrompts = 3;
+//    loginHandler.usesCount = 0;
+//    
+//    id mockManager = OCMClassMock([PDSocialMediaManager class]);
+//
+//    loginHandler.socialManager = mockManager;
+//    OCMStub([mockManager isLoggedIn]).andReturn(YES);
+//    
+//    expect(([loginHandler shouldShowPrompt])).to.beFalsy();
+//}
 
 - (void)tearDown {
     [super tearDown];

@@ -30,6 +30,7 @@
 #import "PDUserFacebookParams.h"
 #import "PDUserTwitterParams.h"
 #import "PDCommon.h"
+#import "PDUserInstagramParams.h"
 
 /**
  @abstract The Gender of the User
@@ -108,6 +109,11 @@ The users last name
  The Twitter paramaters for the user. See PDUserTwitterParams
  */
 @property (nonatomic, strong) PDUserTwitterParams *twitterParams;
+
+/**
+ The Instagram paramaters for the user. See PDUserInstagramParams
+ */
+@property (nonatomic, strong) PDUserInstagramParams *instagramParams;
 
 /**
  The preferred Social Media type for the user

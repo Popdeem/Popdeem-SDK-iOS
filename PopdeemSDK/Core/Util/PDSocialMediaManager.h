@@ -68,5 +68,6 @@
 - (void) userCancelledTwitterLogin;
 - (void) twitterLoginSuccessfulToken:(NSString *)token oauthVerifier:(NSString *)verifier;
 
+- (void) isLoggedInWithInstagram:(void (^)(BOOL isLoggedIn))completion;
 
 @end

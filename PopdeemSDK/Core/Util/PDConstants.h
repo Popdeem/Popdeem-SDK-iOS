@@ -37,6 +37,7 @@ extern NSString *const MESSAGES_PATH;
 extern NSString *const FEEDS_PATH;
 extern NSString *const BRANDS_PATH;
 extern NSString *const MOMENTS_PATH;
+extern NSString *const INSTAGRAM_URL;
 
 //
 //NSNotificationCenter Strings
@@ -48,6 +49,12 @@ extern NSString *const PDBrandLogoImageDidDownload;
 extern NSString *const PDRewardCoverImageDidDownload;
 extern NSString *const PDFeedItemImageDidDownload;
 extern NSString *const PDUserDidLogout;
+extern NSString *const InstagramLoginSuccess;
+extern NSString *const InstagramLoginFailure;
+extern NSString *const PDUserLinkedToInstagram;
+extern NSString *const InstagramVerifySuccess;
+extern NSString *const InstagramVerifyFailure;
+extern NSString *const InstagramVerifyNoAttempt;
     //
 //End NSNotificationCenter Strings
 //

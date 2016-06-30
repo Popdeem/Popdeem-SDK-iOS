@@ -100,6 +100,15 @@
       NSString *forcedTag = tweet_options[@"forced_tag"];
       self.twitterForcedTag = (forcedTag.length > 0) ? forcedTag : nil;
     }
+		
+		id instagram_options = params[@"instagram_option"];
+		if ([instagram_options isKindOfClass:[NSDictionary class]]) {
+			NSString *instaForcedTag = instagram_options[@"forced_tag"];
+			NSString *instaPrefilledMessage = instagram_options[@"prefilled_message"];
+			self.instagramForcedTag = instaForcedTag;
+			self.instagramPrefilledMessage = instaPrefilledMessage;
+		}
+		
     NSString *mediaLength = params[@"twitter_media_characters"];
     if ([mediaLength isKindOfClass:[NSString class]]) {
       self.twitterMediaLength = mediaLength.length > 0 ? mediaLength.integerValue : 25;
