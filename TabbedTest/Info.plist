@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1299</string>
+	<string>1300</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -77,7 +77,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;We use your location to deliver local rewards&quot;</string>
+	<string>"We use your location to deliver local rewards"</string>
 	<key>TwitterAppConsumerKey</key>
 	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
 	<key>TwitterAppConsumerSecret</key>
