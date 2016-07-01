@@ -10,6 +10,7 @@ target 'PopdeemSDK' do
 	pod 'FBSDKShareKit'
 	pod 'STTwitter'
 	pod 'Bolts'
+	pod 'Realm'
 end
 
 target 'PopdeemSDKCore' do
@@ -53,6 +54,7 @@ target 'PopdeemSDKTests' do
 	pod 'Expecta', '~> 1.0.0'
 	pod 'Nocilla'
 	pod 'OCMock'
+	pod 'Realm/Headers'
 end
 
 

@@ -57,6 +57,7 @@ Pod::Spec.new do |s|
 		core.dependency "FBSDKShareKit"
 		core.dependency "Bolts"
 		core.dependency "PopdeemSDK/NoArc"
+		core.dependency "Realm"
   end
 
   s.subspec 'UIKit' do |uikit|
