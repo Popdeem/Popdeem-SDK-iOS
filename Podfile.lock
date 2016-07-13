@@ -29,21 +29,16 @@ PODS:
   - PopdeemSDK/NoArc (1.0.7)
   - PopdeemSDK/UIKit (1.0.7):
     - PopdeemSDK/Core
-  - STTwitter (0.2.4)
+  - STTwitter (0.2.5)
 
 DEPENDENCIES:
-  - Bolts
   - Crashlytics
   - Expecta (~> 1.0.0)
   - Fabric
-  - FBSDKCoreKit
-  - FBSDKLoginKit
-  - FBSDKShareKit
   - Nocilla
   - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
   - PopdeemSDK/UIKit (from `../Popdeem-SDK-iOS`)
-  - STTwitter
 
 EXTERNAL SOURCES:
   PopdeemSDK:
@@ -60,6 +55,6 @@ SPEC CHECKSUMS:
   Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
   PopdeemSDK: addfda0c0ae4941e05d84e1409dfc5f338686eb1
-  STTwitter: a82de278afbd4191d0a07f4f3ffd8f1fb8404da0
+  STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
 
 COCOAPODS: 0.39.0

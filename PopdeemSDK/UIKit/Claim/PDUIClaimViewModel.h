@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) PDUIClaimViewController *viewController;
 @property (nonatomic, strong) PDReward *reward;
 @property (nonatomic, strong) UIImage *rewardImage;
+@property (nonatomic, strong) NSString *imageURLString;
 @property (nonatomic, strong) NSString *rewardTitleString;
 @property (nonatomic, strong) NSString *rewardRulesString;
 @property (nonatomic, strong) NSString *rewardActionsString;

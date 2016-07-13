@@ -9,6 +9,7 @@
 import UIKit
 import PopdeemSDK
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
+		FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 		PopdeemSDK.withAPIKey("26eb2fcb-06e5-4976-bff4-88c30cc58f58")
 		PopdeemSDK.enableSocialLoginWithNumberOfPrompts(3)
 		PopdeemSDK.registerForPushNotificationsApplication(application)

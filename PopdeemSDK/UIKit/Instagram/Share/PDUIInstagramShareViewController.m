@@ -12,17 +12,45 @@
 #import "PDConstants.h"
 #import "PDUser.h"
 
+CGFloat _cardWidth;
+
+@implementation NSString (NSString_Extended)
+
+- (NSString *)urlencode {
+	NSMutableString *output = [NSMutableString string];
+	const unsigned char *source = (const unsigned char *)[self UTF8String];
+	int sourceLen = strlen((const char *)source);
+	for (int i = 0; i < sourceLen; ++i) {
+		const unsigned char thisChar = source[i];
+		if (thisChar == ' '){
+			[output appendString:@"+"];
+		} else if (thisChar == '.' || thisChar == '-' || thisChar == '_' || thisChar == '~' ||
+							 (thisChar >= 'a' && thisChar <= 'z') ||
+							 (thisChar >= 'A' && thisChar <= 'Z') ||
+							 (thisChar >= '0' && thisChar <= '9')) {
+			[output appendFormat:@"%c", thisChar];
+		} else {
+			[output appendFormat:@"%%%02X", thisChar];
+		}
+	}
+	return output;
+}
+@end
+
 @interface PDUIInstagramShareViewController ()
 @property (nonatomic) BOOL leavingToInstagram;
 @end
 
 @implementation PDUIInstagramShareViewController
 
-- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image {
+- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString *)urlString{
 	if (self = [super init]) {
 		_parent = parent;
 		_message = message;
-	 _image = image;
+		_image = image;
+		_imageURLString = urlString;
+		_viewModel = [[PDUIInstagramShareViewModel alloc] init];
+		[_viewModel setup];
 		return self;
 	}
 	return nil;
@@ -35,19 +63,18 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 	
 	_leavingToInstagram = NO;
-    [super viewDidLoad];
+	[super viewDidLoad];
 	[self.view setBackgroundColor:[UIColor clearColor]];
-	self.effectView = [[UIVisualEffectView alloc] initWithFrame:_parent.view.frame];
-	UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-	[self.effectView setEffect:blurEffect];
+	self.backingView = [[UIView alloc] initWithFrame:_parent.view.frame];
+	[self.view addSubview:_backingView];
+	[self.backingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
 	UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
-	[_effectView addGestureRecognizer:backingTap];
-	[self.view addSubview:_effectView];
+	[self.view addGestureRecognizer:backingTap];
 	
 	CGFloat currentY = 0;
 	
 	CGFloat cardWidth = _parent.view.frame.size.width * 0.8;
-	CGFloat cardHeight = _parent.view.frame.size.height * 0.5;
+	CGFloat cardHeight = _parent.view.frame.size.height * 0.8;
 	CGFloat cardX = _parent.view.frame.size.width * 0.1;
 	CGFloat cardY = _parent.view.frame.size.height * 0.25;
 	CGRect cardRect = CGRectMake(cardX, cardY, cardWidth, cardHeight);
@@ -58,134 +85,133 @@
 	_cardView.layer.masksToBounds = YES;
 	[self.view addSubview:_cardView];
 	
-	CGFloat headerHeight = cardHeight * 0.15;
-	_headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, headerHeight)];
-	[_headerView setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
+	[_scrollView setContentSize:CGSizeMake(2*cardWidth, cardHeight)];
+	[_scrollView setBounces:NO];
+	[_scrollView setDelegate:self];
+	[_scrollView setShowsVerticalScrollIndicator:NO];
+	[_scrollView setShowsHorizontalScrollIndicator:NO];
+	[_scrollView setPagingEnabled:YES];
+	[_scrollView setScrollEnabled:NO];
+	[_scrollView setUserInteractionEnabled:YES];
+	[_cardView addSubview:_scrollView];
 	
-	_headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _headerView.frame.size.width, headerHeight)];
-	[_headerLabel setText:@"Claim"];
-	[_headerLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 17)];
-	[_headerLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
-	[_headerLabel setTextAlignment:NSTextAlignmentCenter];
-	[_headerLabel setNumberOfLines:2];
+	_secondView = [[UIView alloc] initWithFrame:CGRectMake(cardWidth, 0, cardWidth, cardHeight)];
+	[_scrollView addSubview:_secondView];
 	
-	[_headerView addSubview:_headerLabel];
-	[_cardView addSubview:_headerView];
-	currentY += headerHeight;
+	_viewTwoLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
+	[_viewTwoLabelOne setText:_viewModel.viewTwoLabelOneText];
+	[_viewTwoLabelOne setFont:_viewModel.viewTwoLabelOneFont];
+	[_viewTwoLabelOne setTextColor:_viewModel.viewTwoLabelOneColor];
+	[_viewTwoLabelOne setNumberOfLines:4];
+	[_viewTwoLabelOne setTextAlignment:NSTextAlignmentCenter];
+	CGSize labelSize = [_viewTwoLabelOne sizeThatFits:_viewTwoLabelOne.bounds.size];
+	[_viewTwoLabelOne setFrame:CGRectMake(_viewTwoLabelOne.frame.origin.x, 40 , _viewTwoLabelOne.frame.size.width, labelSize.height)];
+	[_secondView addSubview:_viewTwoLabelOne];
+	currentY = 30 + labelSize.height;
 	
-	CGFloat usableHeight = cardHeight - (2 * headerHeight);
-	CGFloat messageHeight = 60;
-	CGFloat padding = 5;
-	_messageView = [[UIView alloc] initWithFrame:CGRectMake(10, currentY+10, cardWidth-20, messageHeight)];
-	[_messageView.layer setCornerRadius:5];
-	_messageView.layer.borderWidth = 1.0;
-	_messageView.layer.borderColor = PopdeemColor(@"popdeem.colors.secondaryFontColor").CGColor;
-	[_messageView setClipsToBounds:YES];
-	[_cardView addSubview:_messageView];
+	_viewTwoLabelTwo = [[UILabel alloc] initWithFrame:CGRectMake(20, currentY+30, _viewTwoLabelOne.frame.size.width, 70)];
+	[_viewTwoLabelTwo setText:_viewModel.viewTwoLabelTwoText];
+	[_viewTwoLabelTwo setFont:_viewModel.viewTwoLabelTwoFont];
+	[_viewTwoLabelTwo setTextColor:_viewModel.viewTwoLabelTwoColor];
+	[_viewTwoLabelTwo setNumberOfLines:4];
+	[_viewTwoLabelTwo setTextAlignment:NSTextAlignmentCenter];
+	labelSize = [_viewTwoLabelTwo sizeThatFits:_viewTwoLabelTwo.bounds.size];
+	[_viewTwoLabelTwo setFrame:CGRectMake(_viewTwoLabelTwo.frame.origin.x, currentY+30 , _viewTwoLabelTwo.frame.size.width, labelSize.height)];
+	[_secondView addSubview:_viewTwoLabelTwo];
 	
-	_messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, _messageView.frame.size.width-10, _messageView.frame.size.height-10)];
-	[_instructionsLabel setTextAlignment:NSTextAlignmentLeft];
-	[_messageLabel setText:_message];
-	[_messageLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
-	[_messageLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
-	[_messageLabel sizeToFit];
-	[_messageView setFrame:CGRectMake(10, currentY+10, _messageView.frame.size.width, _messageLabel.frame.size.height+2*padding)];
-	[_messageView addSubview:_messageLabel];
+	currentY += 30 + labelSize.height + 30;
+	
+	_viewTwoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, currentY, cardWidth-30, cardHeight*0.25)];
+	[_viewTwoImageView setImage:_viewModel.viewTwoImage];
+	[_viewTwoImageView setContentMode:UIViewContentModeScaleAspectFit];
+	_viewTwoImageView.backgroundColor = [UIColor clearColor];
+	_viewTwoImageView.clipsToBounds = YES;
+	[_secondView addSubview:_viewTwoImageView];
+	
+	currentY += _viewTwoImageView.frame.size.height;
+	
+	_viewTwoActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
+	[_viewTwoActionButton setBackgroundColor:_viewModel.viewTwoActionButtonColor];
+	[_viewTwoActionButton.titleLabel setFont:_viewModel.viewTwoActionButtonFont];
+	[_viewTwoActionButton setTitle:_viewModel.viewTwoActionButtonText forState:UIControlStateNormal];
+	[_viewTwoActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+	[_viewTwoActionButton setTag:1];
+	[_viewTwoActionButton addTarget:self action:@selector(shareOnInstagram) forControlEvents:UIControlEventTouchUpInside];
+	[_secondView addSubview:_viewTwoActionButton];
+	
+	cardHeight = currentY + 30 + 40 + 20;
+	[_secondView setFrame:CGRectMake(cardWidth, 0, cardWidth, cardHeight)];
+	
+	CGFloat midY = cardHeight/2;
+	_firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
+	[_scrollView addSubview:_firstView];
+	
+	_viewOneLabelOne = [[UILabel alloc] initWithFrame:_viewTwoLabelOne.frame];
+	[_viewOneLabelOne setText:_viewModel.viewOneLabelOneText];
+	[_viewOneLabelOne setFont:_viewModel.viewOneLabelOneFont];
+	[_viewOneLabelOne setTextColor:_viewModel.viewOneLabelOneColor];
+	[_viewOneLabelOne setNumberOfLines:4];
+	[_viewOneLabelOne setTextAlignment:NSTextAlignmentCenter];
+	[_firstView addSubview:_viewOneLabelOne];
+	
+	_viewOneLabelTwo = [[UILabel alloc] initWithFrame:_viewTwoLabelTwo.frame];
+	[_viewOneLabelTwo setText:_viewModel.viewOneLabelTwoText];
+	[_viewOneLabelTwo setFont:_viewModel.viewOneLabelTwoFont];
+	[_viewOneLabelTwo setTextColor:_viewModel.viewOneLabelTwoColor];
+	[_viewOneLabelTwo setNumberOfLines:4];
+	[_viewOneLabelTwo setTextAlignment:NSTextAlignmentCenter];
+	[_firstView addSubview:_viewOneLabelTwo];
+	
+	_viewOneImageView = [[UIImageView alloc] initWithFrame:_viewTwoImageView.frame];
+	[_viewOneImageView setImage:_viewModel.viewOneImage];
+	[_viewOneImageView setContentMode:UIViewContentModeScaleAspectFit];
+	_viewOneImageView.backgroundColor = [UIColor clearColor];
+	_viewOneImageView.clipsToBounds = YES;
+	[_firstView addSubview:_viewOneImageView];
+	
+	_viewOneActionButton = [[UIButton alloc] initWithFrame:_viewTwoActionButton.frame];
+	[_viewOneActionButton setBackgroundColor:_viewModel.viewOneActionButtonColor];
+	[_viewOneActionButton.titleLabel setFont:_viewModel.viewOneActionButtonFont];
+	[_viewOneActionButton setTitleColor:_viewModel.viewOneActionButtonTextColor forState:UIControlStateNormal];
+	[_viewOneActionButton setTitleColor:_viewModel.viewOneActionButtonTextColor forState:UIControlStateSelected];
+	[_viewOneActionButton setTitle:_viewModel.viewOneActionButtonText forState:UIControlStateNormal];
+	[_viewOneActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+	_viewOneActionButton.layer.borderColor = _viewModel.viewOneActionButtonBorderColor.CGColor;
+	_viewOneActionButton.layer.borderWidth = 1.0;
+	[_viewOneActionButton setTag:1];
+	[_viewOneActionButton addTarget:self action:@selector(scroll) forControlEvents:UIControlEventTouchUpInside];
+	[_firstView addSubview:_viewOneActionButton];
 	
 	
-	currentY += 20 + _messageView.frame.size.height;
-	
-	_instructionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, currentY+padding, cardWidth-20, usableHeight/2)];
-	[_instructionsLabel setTextAlignment:NSTextAlignmentLeft];
-	
-	NSString *instagramScreenName = [[[PDUser sharedInstance] instagramParams] screenName];
-	if (!instagramScreenName) {
-		instagramScreenName = @"PopdeemTester1";
-	}
-	NSString *user = [NSString stringWithFormat:@"Make sure you are logged in as %@",instagramScreenName];
-	NSString *noBullet = @"Your message has been copied to the clipboard.\n";
-	NSString *bullet1 = @"1. Tap 'Share on Instagram' and choose 'Copy to Instagram' to be taken to the Instagram app.\n";
-	NSString *bullet2 = [NSString stringWithFormat:@"2. Paste your caption when prompted. Make sure your post includes the required hashtag.\n" ];
-	NSString *bullet3 = @"3. Complete your post on the Instagram App.\n";
-	NSString *bullet4 = @"4. Come back here to verify your post.\n";
-	
-	NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
-	paragraphStyle.alignment                = NSTextAlignmentCenter;
-	NSMutableAttributedString *notesString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@",user,noBullet] attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 11), NSForegroundColorAttributeName: PopdeemColor(@"popdeem.colors.secondaryFontColor"),NSParagraphStyleAttributeName: paragraphStyle}];
-	
-	NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 12), NSForegroundColorAttributeName: PopdeemColor(@"popdeem.colors.secondaryFontColor")}];
-	
-	[attString appendAttributedString:notesString];
-	
-	NSArray *strings = [NSArray arrayWithObjects:bullet1,bullet2,bullet3,bullet4, nil];
-	for (NSString* s in strings) {
-		NSMutableAttributedString *aString = [[NSMutableAttributedString alloc] initWithString:s];
-		NSParagraphStyle *paragraphStyle = [self createParagraphAttribute];
-		[aString addAttributes:@{NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 13), NSForegroundColorAttributeName: PopdeemColor(@"popdeem.colors.primaryFontColor")} range:NSMakeRange(0, aString.length)];
-		[attString appendAttributedString:aString];
-	}
-	
-	[_instructionsLabel setAttributedText:attString];
-	_instructionsLabel.numberOfLines = 10;
-	[_cardView addSubview:_instructionsLabel];
-	[_instructionsLabel sizeToFit];
-	
-	currentY += _instructionsLabel.frame.size.height + padding;
-	CGFloat buttonWidth = cardWidth;
-	
-	_actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, currentY, cardWidth, headerHeight)];
-	[_actionButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
-	[_actionButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 17)];
-	[_actionButton.titleLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
-	[_actionButton setTitle:@"Share on Instagram" forState:UIControlStateNormal];
-	[_actionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-	[_actionButton setTag:0];
-	[_actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-	[_cardView addSubview:_actionButton];
-	
-	currentY += headerHeight;
-	cardHeight = currentY;
-	CGFloat midY = self.view.frame.size.height / 2;
+	_cardWidth = cardWidth;
+	midY = self.view.frame.size.height/2;
 	cardY = midY - (cardHeight/2);
 	[_cardView setFrame:CGRectMake(cardX, cardY, cardWidth, cardHeight)];
 	
 }
 
-- (void) buttonPressed:(id)sender {
+- (void) scroll {
+	[_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
+}
+
+- (void) shareOnInstagram {
+	
 	NSURL *instagramURL = [NSURL URLWithString:@"instagram://app"];
-	if([[UIApplication sharedApplication] canOpenURL:instagramURL]) //check for App is install or not
+	
+	if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
 	{
-		NSData *imageData = UIImagePNGRepresentation(_image); //convert image into .png format.
-		NSFileManager *fileManager = [NSFileManager defaultManager];//create instance of NSFileManager
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //create an array and store result of our search for the documents directory in it
-		NSString *documentsDirectory = [paths objectAtIndex:0]; //create NSString object, that holds our exact path to the documents directory
-		NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"insta.igo"]]; //add our image to the path
-		[fileManager createFileAtPath:fullPath contents:imageData attributes:nil]; //finally save the path (image)
-		NSLog(@"image saved");
-		
-		CGRect rect = CGRectMake(0 ,0 , 0, 0);
-		UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
-		[self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-		UIGraphicsEndImageContext();
-		NSString *fileNameToSave = [NSString stringWithFormat:@"Documents/insta.igo"];
-		NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:fileNameToSave];
-		NSLog(@"jpg path %@",jpgPath);
-		NSString *newJpgPath = [NSString stringWithFormat:@"file://%@",jpgPath];
-		NSLog(@"with File path %@",newJpgPath);
-		NSURL *igImageHookFile = [NSURL URLWithString:newJpgPath];
-		NSLog(@"url Path %@",igImageHookFile);
-		
-		self.dic.UTI = @"com.instagram.exclusivegram";
-		// self.documentController = [self setupControllerWithURL:igImageHookFile usingDelegate:self];
-		
+		NSString *escapedString   = [_imageURLString urlencode];
+		NSString *escapedCaption  = [@"test" urlencode];
+		NSURL *instagramURL       = [NSURL URLWithString:[NSString stringWithFormat:@"instagram://Library?AssetPath=%@&InstagramCaption=%@", escapedString, escapedCaption]];
 		UIPasteboard *pb = [UIPasteboard generalPasteboard];
 		[pb setString:_message];
-		
-		self.dic=[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
-		NSString *caption = _message; //settext as Default Caption
-		self.dic.annotation=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",caption],@"InstagramCaption", nil];
-		[self.dic presentOpenInMenuFromRect:rect inView: self.view animated:YES];
-		_leavingToInstagram = YES;
+		if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+			_leavingToInstagram = YES;
+			[[UIApplication sharedApplication] openURL:instagramURL];
+		} else {
+			[self openInDocumentController];
+		}
 	}
 	else
 	{
@@ -195,6 +221,40 @@
 	}
 }
 
+- (void) openInDocumentController {
+	NSData *imageData = UIImagePNGRepresentation(_image); //convert image into .png format.
+	NSFileManager *fileManager = [NSFileManager defaultManager];//create instance of NSFileManager
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //create an array and store result of our search for the documents directory in it
+	NSString *documentsDirectory = [paths objectAtIndex:0]; //create NSString object, that holds our exact path to the documents directory
+	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"insta.igo"]]; //add our image to the path
+	[fileManager createFileAtPath:fullPath contents:imageData attributes:nil]; //finally save the path (image)
+	NSLog(@"image saved");
+	
+	CGRect rect = CGRectMake(0 ,0 , 0, 0);
+	UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
+	[self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+	UIGraphicsEndImageContext();
+	NSString *fileNameToSave = [NSString stringWithFormat:@"Documents/insta.igo"];
+	NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:fileNameToSave];
+	NSLog(@"jpg path %@",jpgPath);
+	NSString *newJpgPath = [NSString stringWithFormat:@"file://%@",jpgPath];
+	NSLog(@"with File path %@",newJpgPath);
+	NSURL *igImageHookFile = [NSURL URLWithString:newJpgPath];
+	NSLog(@"url Path %@",igImageHookFile);
+	
+	self.dic.UTI = @"com.instagram.exclusivegram";
+	// self.documentController = [self setupControllerWithURL:igImageHookFile usingDelegate:self];
+	
+	UIPasteboard *pb = [UIPasteboard generalPasteboard];
+	[pb setString:_message];
+	
+	self.dic=[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
+	NSString *caption = _message; //settext as Default Caption
+	self.dic.annotation=[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",caption],@"InstagramCaption", nil];
+	[self.dic presentOpenInMenuFromRect:rect inView: self.view animated:YES];
+	_leavingToInstagram = YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -202,7 +262,7 @@
 
 - (void) setMessage:(NSString *)message {
 	self.message = message;
-	[self.messageLabel setText:message];
+	
 	UIPasteboard *pb = [UIPasteboard generalPasteboard];
 	[pb setString:message];
 }
@@ -260,6 +320,10 @@
 			[[NSNotificationCenter defaultCenter] removeObserver:self];
 		}];
 	}
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView{
+
 }
 /*
 #pragma mark - Navigation

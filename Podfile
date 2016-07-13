@@ -5,19 +5,11 @@ platform :ios, '8.0'
 link_with 'PopdeemSDK', 'PopdeemSDKTests', 'TabbedTest'
 
 target 'PopdeemSDK' do
-	pod 'FBSDKLoginKit'
-	pod 'FBSDKCoreKit'
-	pod 'FBSDKShareKit'
-	pod 'STTwitter'
-	pod 'Bolts'
+
 end
 
 target 'PopdeemSDKCore' do
-	pod 'FBSDKLoginKit'
-	pod 'FBSDKCoreKit'
-	pod 'FBSDKShareKit'
-	pod 'STTwitter'
-	pod 'Bolts'
+
 end
 
 target 'PopdeemSample' do
@@ -45,11 +37,6 @@ target 'SwiftSample' do
 end
 
 target 'PopdeemSDKTests' do
-	pod 'FBSDKLoginKit'
-	pod 'FBSDKCoreKit'
-	pod 'FBSDKShareKit'
-	pod 'STTwitter'
-	pod 'Bolts'
 	pod 'Expecta', '~> 1.0.0'
 	pod 'Nocilla'
 	pod 'OCMock'

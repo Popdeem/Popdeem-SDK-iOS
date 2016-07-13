@@ -66,6 +66,17 @@
 		_mustInstagram = YES;
 		[_viewController.facebookSwitch setEnabled:NO];
 		[_viewController.twitterSwitch setEnabled:NO];
+		PDSocialMediaManager *man = [[PDSocialMediaManager alloc] init];
+		[man isLoggedInWithInstagram:^(BOOL isLoggedIn){
+			[_viewController.instagramSwitch setOn:isLoggedIn animated:YES];
+			[_viewController.twitterForcedTagLabel setHidden:!isLoggedIn];
+			if (_reward.instagramForcedTag) {
+				_forcedTagString = _reward.instagramForcedTag;
+				[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag]];
+				[self validateHashTag];
+			}
+			_willInstagram = isLoggedIn;
+		}];
 	} else if (mediaTypes.count == 2) {
 		//Show two buttons
 		self.socialMediaTypesAvailable = FacebookAndTwitter;
@@ -234,8 +245,12 @@
 			[instagramSwitch setOn:NO animated:NO];
 			dispatch_async(dispatch_get_main_queue(), ^{
 				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
+				if (!instaVC) {
+					return;
+				}
 				_viewController.definesPresentationContext = YES;
 				instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+				instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 				[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
 			});
 		}
@@ -314,13 +329,21 @@
 			[_viewController.claimButtonView setUserInteractionEnabled:YES];
 			return;
 		}
+		[_loadingView hideAnimated:YES];
+		PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
+		_viewController.definesPresentationContext = YES;
+		isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+		isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
+		[_viewController presentViewController:isv animated:YES completion:^(void){}];
+		return;
 		if (_reward.instagramForcedTag && !_hashtagValidated) {
 				UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
 				[hashAV show];
 				[_viewController.claimButtonView setUserInteractionEnabled:YES];
 				return;
 		}
-		[self makeClaim];
+//		[self makeClaim];
 		return;
 	}
 	if (!_locationVerified) {
@@ -470,7 +493,7 @@
 	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet instagram:_willInstagram success:^(){
 		if (_willInstagram) {
 			[_loadingView hideAnimated:YES];
-			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image];
+			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
 			_viewController.definesPresentationContext = YES;
 			isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
 			[_viewController presentViewController:isv animated:YES completion:^(void){}];
@@ -628,10 +651,7 @@
 	
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-	if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
-		
-	}
-	
+	_imageURLString = [info[@"UIImagePickerControllerReferenceURL"] absoluteString];
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
 		[_viewController.textView addSubview:_imageView];
@@ -700,6 +720,7 @@
 - (IBAction)taggedFriendsButtonPressed:(id)sender {
 	
 }
+
 
 #pragma mark - instagram -
 

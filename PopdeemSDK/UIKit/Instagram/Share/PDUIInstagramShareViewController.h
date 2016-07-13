@@ -7,24 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDUIInstagramShareViewModel.h"
 
-@interface PDUIInstagramShareViewController : UIViewController
+@interface PDUIInstagramShareViewController : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic,retain) UIView *backingView;
+@property (nonatomic, retain) UIScrollView *scrollView;
+@property (nonatomic, retain) PDUIInstagramShareViewModel *viewModel;
 @property (nonatomic, assign) UIViewController *parent;
-@property (nonatomic, retain) UIVisualEffectView *effectView;
 @property (nonatomic, retain) UIView *cardView;
-@property (nonatomic, retain) UIView *headerView;
-@property (nonatomic, retain) UIView *messageView;
-@property (nonatomic, retain) UILabel *messageLabel;
-@property (nonatomic, retain) UILabel *instructionsLabel;
-@property (nonatomic, retain) UILabel *headerLabel;
-@property (nonatomic, retain) UIButton *actionButton;
+@property (nonatomic, retain) UIPageViewController *pageViewController;
+@property (nonatomic,retain) UIView *firstView;
+@property (nonatomic,retain) UIView *secondView;
+
+@property (nonatomic, retain) UILabel *viewOneLabelOne;
+@property (nonatomic, retain) UILabel *viewOneLabelTwo;
+@property (nonatomic, retain) UIImageView *viewOneImageView;
+@property (nonatomic, retain) UIButton *viewOneActionButton;
+
+@property (nonatomic, retain) UILabel *viewTwoLabelOne;
+@property (nonatomic, retain) UILabel *viewTwoLabelTwo;
+@property (nonatomic, retain) UIImageView *viewTwoImageView;
+@property (nonatomic, retain) UIButton *viewTwoActionButton;
 
 @property (nonatomic, retain) UIDocumentInteractionController *dic;
 @property (nonatomic, retain) NSString *message;
 @property (nonatomic,retain) UIImage *image;
+@property (nonatomic, retain) NSString *imageURLString;
 
 - (instancetype) initFromNib;
-- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image;
+- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;
 
 @end

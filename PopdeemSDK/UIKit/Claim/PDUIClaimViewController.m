@@ -394,7 +394,10 @@
   }
 	[_textView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:_viewModel];
 }
+
+
 - (IBAction)facebookSwitchToggled:(id)sender {
 	[_viewModel toggleFacebook];
 }
@@ -407,12 +410,18 @@
 }
 
 - (void) instagramLoginSuccess {
+	[[NSNotificationCenter defaultCenter] addObserver:_viewModel
+																					 selector:@selector(keyboardWillShow:)
+																							 name:UIKeyboardWillShowNotification object:nil];
 	[_instagramSwitch setOn:YES animated:NO];
 	_viewModel.willInstagram = YES;
 	NSLog(@"Instagram Connected");
 }
 
 - (void) instagramLoginFailure {
+	[[NSNotificationCenter defaultCenter] addObserver:_viewModel
+																					 selector:@selector(keyboardWillShow:)
+																							 name:UIKeyboardWillShowNotification object:nil];
 	NSLog(@"Instagram Not Connected");
 	_viewModel.willInstagram = NO;
 	[_instagramSwitch setOn:NO animated:YES];
@@ -446,5 +455,7 @@
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
 
 @end

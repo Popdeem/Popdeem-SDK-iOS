@@ -46,7 +46,12 @@ static const NSString *kVariablesKey = @"Variables";
 						image = [UIImage imageNamed:value inBundle:[self bundle] compatibleWithTraitCollection:nil];
 					}
         }
-    }
+		} else {
+			image = [UIImage imageNamed:key inBundle:[self bundle] compatibleWithTraitCollection:nil];
+		}
+	if (!image) {
+		NSLog(@"Image for key: %@ not found in theme or bundle resources",key);
+	}
     return image;
 }
 
@@ -59,7 +64,7 @@ static const NSString *kVariablesKey = @"Variables";
     id value = [self.theme valueForKeyPath:key];
 
     if (value == nil) {
-        [NSException raise:@"Value is not defined!" format:key];
+			return nil;
     }
 
     return [self resolveVariable:value];
