@@ -1,10 +1,10 @@
 PODS:
-  - Bolts (1.7.0):
-    - Bolts/AppLinks (= 1.7.0)
-    - Bolts/Tasks (= 1.7.0)
-  - Bolts/AppLinks (1.7.0):
+  - Bolts (1.8.3):
+    - Bolts/AppLinks (= 1.8.3)
+    - Bolts/Tasks (= 1.8.3)
+  - Bolts/AppLinks (1.8.3):
     - Bolts/Tasks
-  - Bolts/Tasks (1.7.0)
+  - Bolts/Tasks (1.8.3)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - Expecta (1.0.5)
@@ -25,10 +25,12 @@ PODS:
     - FBSDKLoginKit
     - FBSDKShareKit
     - PopdeemSDK/NoArc
+    - Shimmer
     - STTwitter
   - PopdeemSDK/NoArc (1.0.7)
   - PopdeemSDK/UIKit (1.0.7):
     - PopdeemSDK/Core
+  - Shimmer (1.0.2)
   - STTwitter (0.2.5)
 
 DEPENDENCIES:
@@ -45,7 +47,7 @@ EXTERNAL SOURCES:
     :path: ../Popdeem-SDK-iOS
 
 SPEC CHECKSUMS:
-  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  Bolts: 52551f96df2f8aac6b4414347f3f8353a39f1966
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
@@ -54,7 +56,8 @@ SPEC CHECKSUMS:
   FBSDKShareKit: c9438df7573b33780ac8c3451201c5ebb260ffca
   Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
-  PopdeemSDK: addfda0c0ae4941e05d84e1409dfc5f338686eb1
+  PopdeemSDK: afb7fc6c2fd9ba396d0b252582186a243d03575e
+  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
 
 COCOAPODS: 0.39.0

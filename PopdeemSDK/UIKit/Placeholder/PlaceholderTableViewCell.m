@@ -13,6 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+	FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.contentView.bounds];
+	[self.contentView addSubview:shimmeringView];
+	shimmeringView.shimmering = YES;
+	shimmeringView.contentView = self.placeholderImageView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

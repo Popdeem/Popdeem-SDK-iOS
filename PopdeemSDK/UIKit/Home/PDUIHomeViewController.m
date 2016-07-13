@@ -72,7 +72,11 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"PopdeemUserLoggedInNotification" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
-  
+	
+	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+	UINib *nib = [UINib nibWithNibName:@"PlaceholderTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:nib forCellReuseIdentifier:@"PlaceholderCell"];
+	
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
@@ -230,7 +234,8 @@
         if (!_model.rewardsLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.noRewards", @"There are no Rewards available right now. Please check back later.")];
         } else {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.loadingRewards", @"Please wait, we are loading your rewards")];
+//          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.loadingRewards", @"Please wait, we are loading your rewards")];
+					return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
         }
       } else {
         reward = [_model.rewards objectAtIndex:indexPath.row];
@@ -243,14 +248,14 @@
         if (!_model.feedLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.noFeed", @"There is nothing in the Feed right now. Please check back later.")];
         } else {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.loadingFeed", @"Please wait, we are loading the Feed.")];
+          return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
         }
       } else {
         if (feedLoading) {
           return nil;
         }
         if (indexPath.row >= _model.feed.count) {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.loadingFeed", @"Please wait, we are loading the Feed.")];
+          return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
         }
         feedItem = [_model.feed objectAtIndex:indexPath.row];
         if (feedItem.actionImage) {
@@ -265,7 +270,7 @@
         if (!_model.walletLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.noWallet", @"There is nothing in your Wallet right now. Please check back later.")];
         } else {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.loadingWallet", @"Please wait. We are loading your Wallet.")];
+          return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
         }
       } else {
         return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
