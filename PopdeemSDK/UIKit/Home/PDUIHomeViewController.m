@@ -26,6 +26,10 @@
 #import "PDUIRedeemViewController.h"
 #import "PDLocationValidator.h"
 #import "PDConstants.h"
+#import "PDUIRewardWithRulesTableViewCell.h"
+
+#define kPlaceholderCell @"PlaceholderCell"
+#define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -74,8 +78,11 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
 	
 	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
-	UINib *nib = [UINib nibWithNibName:@"PlaceholderTableViewCell" bundle:podBundle];
-	[[self tableView] registerNib:nib forCellReuseIdentifier:@"PlaceholderCell"];
+	UINib *pcnib = [UINib nibWithNibName:@"PlaceholderTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:pcnib forCellReuseIdentifier:@"PlaceholderCell"];
+	
+	UINib *rwrcnib = [UINib nibWithNibName:@"PDUIRewardWithRulesTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:rwrcnib forCellReuseIdentifier:@"RewardWithRulesCell"];
 	
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
@@ -235,11 +242,24 @@
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.noRewards", @"There are no Rewards available right now. Please check back later.")];
         } else {
 //          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.loadingRewards", @"Please wait, we are loading your rewards")];
-					return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
+					return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
         reward = [_model.rewards objectAtIndex:indexPath.row];
-        return [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:reward];
+				if (reward.rewardRules != nil) {
+					PDUIRewardWithRulesTableViewCell *rwrcell = [self.tableView dequeueReusableCellWithIdentifier:kRewardWithRulesTableViewCell];
+					if (reward.coverImage) {
+						[rwrcell.rewardImageView setImage:reward.coverImage];
+					} else {
+						[rwrcell.rewardImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
+					}
+					[rwrcell.descriptionLabel setText:reward.rewardDescription];
+					[rwrcell.rulesLabel setText:reward.rewardRules];
+					[rwrcell.infoLabel setText:[rwrcell infoStringForReward:reward]];
+					return rwrcell;
+				} else {
+					return [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:reward];
+				}
       }
       break;
     case 1:
@@ -248,14 +268,14 @@
         if (!_model.feedLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.noFeed", @"There is nothing in the Feed right now. Please check back later.")];
         } else {
-          return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
         if (feedLoading) {
           return nil;
         }
         if (indexPath.row >= _model.feed.count) {
-          return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
         feedItem = [_model.feed objectAtIndex:indexPath.row];
         if (feedItem.actionImage) {

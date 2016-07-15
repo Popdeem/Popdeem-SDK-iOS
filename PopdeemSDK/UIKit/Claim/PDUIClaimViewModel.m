@@ -66,17 +66,6 @@
 		_mustInstagram = YES;
 		[_viewController.facebookSwitch setEnabled:NO];
 		[_viewController.twitterSwitch setEnabled:NO];
-		PDSocialMediaManager *man = [[PDSocialMediaManager alloc] init];
-		[man isLoggedInWithInstagram:^(BOOL isLoggedIn){
-			[_viewController.instagramSwitch setOn:isLoggedIn animated:YES];
-			[_viewController.twitterForcedTagLabel setHidden:!isLoggedIn];
-			if (_reward.instagramForcedTag) {
-				_forcedTagString = _reward.instagramForcedTag;
-				[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag]];
-				[self validateHashTag];
-			}
-			_willInstagram = isLoggedIn;
-		}];
 	} else if (mediaTypes.count == 2) {
 		//Show two buttons
 		self.socialMediaTypesAvailable = FacebookAndTwitter;

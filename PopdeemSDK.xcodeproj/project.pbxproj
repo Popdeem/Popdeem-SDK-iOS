@@ -78,6 +78,8 @@
 		396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
 		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
+		3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */; };
+		3971422E1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3971422C1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.m */; };
 		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
 		39735ADC1D23C7490008301E /* PopdeemSDKCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 39735ADB1D23C7490008301E /* PopdeemSDKCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39735AE21D23C7720008301E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE11D23C7720008301E /* CoreLocation.framework */; };
@@ -550,6 +552,12 @@
 		396B15661C3BC40600FC774D /* PDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDViewController.m; sourceTree = "<group>"; };
 		396B15681C3BC66900FC774D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		397142271D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIRewardWithRulesTableViewCell.h; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.h; sourceTree = "<group>"; };
+		397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIRewardWithRulesTableViewCell.m; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.m; sourceTree = "<group>"; };
+		397142291D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIRewardWithRulesTableViewCell.xib; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib; sourceTree = "<group>"; };
+		3971422B1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIRewardWithoutRulesTableViewCell.h; path = Home/Cells/Rewards/PDUIRewardWithoutRulesTableViewCell.h; sourceTree = "<group>"; };
+		3971422C1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIRewardWithoutRulesTableViewCell.m; path = Home/Cells/Rewards/PDUIRewardWithoutRulesTableViewCell.m; sourceTree = "<group>"; };
+		3971422D1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIRewardWithoutRulesTableViewCell.xib; path = Home/Cells/Rewards/PDUIRewardWithoutRulesTableViewCell.xib; sourceTree = "<group>"; };
 		39730B271CE23D9A004B37A1 /* PDUIMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageCell.h; path = MessageCenter/PDUIMessageCell.h; sourceTree = "<group>"; };
 		39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageCell.m; path = MessageCenter/PDUIMessageCell.m; sourceTree = "<group>"; };
 		39735AD91D23C7490008301E /* PopdeemSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopdeemSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1228,6 +1236,27 @@
 			name = MessageCenter;
 			sourceTree = "<group>";
 		};
+		397142211D38E0C10047F0E0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				397142261D38E3270047F0E0 /* Rewards */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		397142261D38E3270047F0E0 /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				397142271D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.h */,
+				397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */,
+				397142291D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.xib */,
+				3971422B1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.h */,
+				3971422C1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.m */,
+				3971422D1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.xib */,
+			);
+			name = Rewards;
+			sourceTree = "<group>";
+		};
 		39735ADA1D23C7490008301E /* PopdeemSDKCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1364,6 +1393,7 @@
 		39ABA65F1C4D06A80057088E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				397142211D38E0C10047F0E0 /* Cells */,
 				39ABA6601C4D06ED0057088E /* PDUIHomeViewController.h */,
 				39ABA6611C4D06ED0057088E /* PDUIHomeViewController.m */,
 				397E10751C4D253800B924D0 /* PDUIHomeViewController.xib */,
@@ -2723,6 +2753,7 @@
 				398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */,
 				394BF0721D1A8F9C0045F5F3 /* JSONHTTPClient.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDUIRewardTableViewController.m in Sources */,
+				3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */,
 				394BEFDF1D1436400045F5F3 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
 				39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */,
@@ -2749,6 +2780,7 @@
 				396443FF1D13F04E00BB67F9 /* PDUICardViewModel.m in Sources */,
 				394BEFDE1D1436400045F5F3 /* OADataFetcher.m in Sources */,
 				396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */,
+				3971422E1D38E3650047F0E0 /* PDUIRewardWithoutRulesTableViewCell.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				394BEFE61D1436400045F5F3 /* OATokenManager.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,

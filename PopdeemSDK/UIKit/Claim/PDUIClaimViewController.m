@@ -91,6 +91,13 @@
 
 - (void) verifyLocation {
   _locationValidator = [[PDLocationValidator alloc] init];
+	_viewModel.locationVerified = YES;
+	[_locationFailedView setHidden:YES];
+	[UIView animateWithDuration:1.0 animations:^{
+		self.locationVerificationViewHeightConstraint.constant = 0;
+		[self.locationVerificationView setHidden:YES];
+	}];
+	return;
   if (_reward.verifyLocation == NO) {
     _viewModel.locationVerified = YES;
     [_locationFailedView setHidden:YES];
@@ -229,7 +236,7 @@
 	if (_viewModel.willInstagram) {
 		[self.twitterForcedTagLabel setHidden:NO];
 		if (_viewModel.reward.instagramForcedTag) {
-			[self.twitterForcedTagLabel setTextColor:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
+			[self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
 		}
 		[self.twitterCharacterCountLabel setHidden:YES];
 	}

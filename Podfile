@@ -29,11 +29,13 @@ target 'TabbedTest' do
 	pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
 	pod 'Fabric'
 	pod 'Crashlytics'
+	pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 end
 
 target 'SwiftSample' do
 	pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
 	pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
+	pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 end
 
 target 'PopdeemSDKTests' do
