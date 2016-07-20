@@ -9,7 +9,7 @@
 #import "PDUIRewardWithRulesTableViewCell.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
-#import "PDReward.h"
+#import "PDUser.h"
 
 @implementation PDUIRewardWithRulesTableViewCell
 
@@ -19,20 +19,44 @@
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	[_rewardImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
 	
-	[_descriptionLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
-	[_descriptionLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+	[_label setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
+	[_label setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
 	
-	[_rulesLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
-	[_rulesLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
-	
-	[_infoLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
-	[_infoLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
 	
 	[self setBackgroundColor:[UIColor clearColor]];
 	if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
 		[self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
 		self.contentView.backgroundColor = PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor");
 	}
+}
+
+- (void) setupForReward:(PDReward*)reward {
+	
+	if (reward.coverImage) {
+		[self.rewardImageView setImage:reward.coverImage];
+	} else {
+		[self.rewardImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
+	}
+	
+	NSString *description = reward.rewardDescription;
+	NSString *rules = reward.rewardRules;
+	NSString *info = [self infoStringForReward:reward];
+	
+	NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
+	
+	NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ \n",description] attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.boldFont", 14), NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor")}];
+	
+	[labelAttString appendAttributedString:descriptionString];
+	
+	if (rules.length > 0) {
+		NSMutableAttributedString *rulesString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ \n",rules] attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 12), NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.secondaryFontColor")}];
+		[labelAttString appendAttributedString:rulesString];
+	}
+	
+	NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc] initWithString:info attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 12), NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryAppColor")}];
+	
+	[labelAttString appendAttributedString:infoString];
+	[_label setAttributedText:labelAttString];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,7 +72,7 @@
 - (NSString*) infoStringForReward:(PDReward*)reward {
 	NSString *action;
 	
-	NSArray *types = _reward.socialMediaTypes;
+	NSArray *types = reward.socialMediaTypes;
 	if (types.count > 0) {
 		if (types.count > 1) {
 			//Both Networks
@@ -120,14 +144,14 @@
 		NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 		NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
 																												fromDate:[NSDate date]
-																													toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
+																													toDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]
 																												 options:0];
 		
-		NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]];
+		NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]];
 		
 		NSInteger days = [components day];
 		
-		NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
+		NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
 		int intervalHours = interval/60/60;
 		int intervalDays = interval/60/60/24;
 		

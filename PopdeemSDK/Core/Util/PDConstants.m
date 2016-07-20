@@ -48,6 +48,25 @@ NSString *const InstagramVerifyNoAttempt = @"InstagramVerifyNoAttempt";
  */
 
 /*
+ * PDTheme Keys
+ */
+NSString *const PDThemeColorPrimaryApp = @"popdeem.colors.primaryAppColor";
+NSString *const PDThemeColorPrimaryInverse = @"popdeem.colors.primaryInverseColor";
+NSString *const PDThemeColorViewBackground = @"popdeem.colors.viewBackgroundColor";
+NSString *const PDThemeColorPrimaryFont = @"popdeem.colors.primaryFontColor";
+NSString *const PDThemeColorSecondaryFont = @"popdeem.colors.secondaryFontColor";
+NSString *const PDThemeColorTableViewCellBackground = @"popdeem.colors.tableViewCellBackgroundColor";
+NSString *const PDThemeColorTableViewSeperator = @"popdeem.colors.tableViewSeperatorColor";
+NSString *const PDThemeColorNavBarTint = @"popdeem.colors.navBarTintColor";
+NSString *const PDThemeColorSegmentedControlBackground = @"popdeem.colors.segmentedControlBackgroundColor";
+NSString *const PDThemeImageLogin = @"popdeem.images.loginImage";
+NSString *const PDThemeImageDefaultItem = @"popdeem.images.defaultItemImage";
+NSString *const PDThemeFontPrimary = @"popdeem.fonts.primaryFont";
+NSString *const PDThemeFontBold = @"popdeem.fonts.boldFont";
+NSString *const PDThemeFontLight = @"popdeem.fonts.lightFont";
+NSString *const PDThemeNavUseTheme = @"popdeem.nav.useTheme";
+
+/*
  NSCoding Keys
  */
 //Universal Keys

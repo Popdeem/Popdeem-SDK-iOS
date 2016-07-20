@@ -60,6 +60,25 @@ extern NSString *const InstagramVerifyNoAttempt;
 //
 
 //
+//Theme File Keys
+//
+extern NSString *const PDThemeColorPrimaryApp;
+extern NSString *const PDThemeColorPrimaryInverse;
+extern NSString *const PDThemeColorViewBackground;
+extern NSString *const PDThemeColorPrimaryFont;
+extern NSString *const PDThemeColorSecondaryFont;
+extern NSString *const PDThemeColorTableViewCellBackground;
+extern NSString *const PDThemeColorTableViewSeperator;
+extern NSString *const PDThemeColorNavBarTint;
+extern NSString *const PDThemeColorSegmentedControlBackground;
+extern NSString *const PDThemeImageLogin;
+extern NSString *const PDThemeImageDefaultItem;
+extern NSString *const PDThemeFontPrimary;
+extern NSString *const PDThemeFontBold;
+extern NSString *const PDThemeFontLight;
+extern NSString *const PDThemeNavUseTheme;
+
+//
 //NSCoding Keys
 //
 

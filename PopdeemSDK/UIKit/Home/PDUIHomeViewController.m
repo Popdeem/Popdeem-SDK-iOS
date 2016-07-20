@@ -27,9 +27,11 @@
 #import "PDLocationValidator.h"
 #import "PDConstants.h"
 #import "PDUIRewardWithRulesTableViewCell.h"
+#import "PDUIWalletRewardTableViewCell.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
+#define kWalletTableViewCell @"WalletCell"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -79,10 +81,13 @@
 	
 	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
 	UINib *pcnib = [UINib nibWithNibName:@"PlaceholderTableViewCell" bundle:podBundle];
-	[[self tableView] registerNib:pcnib forCellReuseIdentifier:@"PlaceholderCell"];
+	[[self tableView] registerNib:pcnib forCellReuseIdentifier:kPlaceholderCell];
 	
 	UINib *rwrcnib = [UINib nibWithNibName:@"PDUIRewardWithRulesTableViewCell" bundle:podBundle];
-	[[self tableView] registerNib:rwrcnib forCellReuseIdentifier:@"RewardWithRulesCell"];
+	[[self tableView] registerNib:rwrcnib forCellReuseIdentifier:kRewardWithRulesTableViewCell];
+	
+	UINib *walletnib = [UINib nibWithNibName:@"PDUIWalletRewardTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:walletnib forCellReuseIdentifier:kWalletTableViewCell];
 	
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
@@ -246,20 +251,11 @@
         }
       } else {
         reward = [_model.rewards objectAtIndex:indexPath.row];
-				if (reward.rewardRules != nil) {
-					PDUIRewardWithRulesTableViewCell *rwrcell = [self.tableView dequeueReusableCellWithIdentifier:kRewardWithRulesTableViewCell];
-					if (reward.coverImage) {
-						[rwrcell.rewardImageView setImage:reward.coverImage];
-					} else {
-						[rwrcell.rewardImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
-					}
-					[rwrcell.descriptionLabel setText:reward.rewardDescription];
-					[rwrcell.rulesLabel setText:reward.rewardRules];
-					[rwrcell.infoLabel setText:[rwrcell infoStringForReward:reward]];
-					return rwrcell;
-				} else {
-					return [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:reward];
-				}
+				
+				PDUIRewardWithRulesTableViewCell *rwrcell = [self.tableView dequeueReusableCellWithIdentifier:kRewardWithRulesTableViewCell];
+				[rwrcell setupForReward:reward];
+				return rwrcell;
+				
       }
       break;
     case 1:
@@ -290,10 +286,14 @@
         if (!_model.walletLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.noWallet", @"There is nothing in your Wallet right now. Please check back later.")];
         } else {
-          return [self.tableView dequeueReusableCellWithIdentifier:@"PlaceholderCell"];
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
-        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
+//        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
+				PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
+				reward = [_model.wallet objectAtIndex:indexPath.row];
+				[walletCell setupForReward:reward];
+				return walletCell;
       }
     default:
       break;

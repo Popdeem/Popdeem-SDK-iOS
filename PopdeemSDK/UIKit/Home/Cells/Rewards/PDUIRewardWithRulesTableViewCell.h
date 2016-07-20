@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDReward.h"
 
 @interface PDUIRewardWithRulesTableViewCell : UITableViewCell
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *rulesLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *infoLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *label;
 
 - (NSString*) infoStringForReward:(PDReward*)reward;
+- (void) setupForReward:(PDReward*)reward;
 
 @end
