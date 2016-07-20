@@ -94,7 +94,7 @@
 	}
 	if (_reward.twitterForcedTag) {
 		_forcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
-		[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+		[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	}
 }
 
@@ -282,7 +282,7 @@
 	if (charsLeft < 1) {
 		[_viewController.twitterCharacterCountLabel setTextColor:[UIColor redColor]];
 	} else {
-		[_viewController.twitterCharacterCountLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+		[_viewController.twitterCharacterCountLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	}
 	
 	[_viewController.twitterCharacterCountLabel setText:[NSString stringWithFormat:@"%d",charsLeft]];
@@ -430,15 +430,15 @@
 		_tvSurpress = YES;
 		NSRange hashRange = [_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString];
 		NSMutableAttributedString *mutString = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
-		[mutString addAttribute:NSBackgroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryAppColor") range:hashRange];
-		[mutString addAttribute:NSForegroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryInverseColor") range:hashRange];
-		[mutString addAttribute:NSFontAttributeName value:PopdeemFont(@"popdeem.fonts.primaryFont", 14) range:NSMakeRange(0, mutString.length)];
+		[mutString addAttribute:NSBackgroundColorAttributeName value:PopdeemColor(PDThemeColorPrimaryApp) range:hashRange];
+		[mutString addAttribute:NSForegroundColorAttributeName value:PopdeemColor(PDThemeColorPrimaryInverse) range:hashRange];
+		[mutString addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, mutString.length)];
 		[_viewController.textView setAttributedText:mutString];
 	} else {
 		NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
 		_tvSurpress = YES;
 		[string setAttributes:@{} range:NSMakeRange(0, string.length)];
-		[string addAttribute:NSFontAttributeName value:PopdeemFont(@"popdeem.fonts.primaryFont", 14) range:NSMakeRange(0, string.length)];
+		[string addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, string.length)];
 		[_viewController.textView setAttributedText:string];
 	}
 }

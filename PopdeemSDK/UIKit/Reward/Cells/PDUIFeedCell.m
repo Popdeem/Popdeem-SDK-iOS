@@ -10,6 +10,7 @@
 #import "PDFeedItem.h"
 #import "PDTheme.h"
 #import "PDUIKitUtils.h"
+#import "PDConstants.h"
 @implementation PDUIFeedCell
 
 - (id) initWithFrame:(CGRect)frame forFeedItem:(PDFeedItem*)feedItem {
@@ -33,22 +34,22 @@
     float left = indent+logoSize+20;
 //    self.label = [[UILabel alloc] initWithFrame:CGRectMake(left, 10, frame.size.width-(left + 20), cellHeight-20)];
 //    [self.label setNumberOfLines:2];
-//    [self.label setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 16)];
+//    [self.label setFont:PopdeemFont(PDThemeFontPrimary, 16)];
 //    [self addSubview:self.label];
 //    [self.label setAttributedText:[self stringForItem:feedItem]];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, frame.size.width-(left + 20), 20)];
     [_nameLabel setText:[NSString stringWithFormat:@"%@ %@",feedItem.userFirstName,feedItem.userLastName]];
-    [_nameLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
-    [_nameLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+    [_nameLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
+    [_nameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
     [_nameLabel setNumberOfLines:1];
     [_nameLabel sizeToFit];
     
     self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height+5, frame.size.width-(left + 20), 20)];
     [_captionLabel setText:feedItem.captionString];
-    [_captionLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
-    [_captionLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+    [_captionLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
+    [_captionLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
     [_captionLabel setNumberOfLines:1];
 //    [_captionLabel sizeToFit];
     
@@ -61,8 +62,8 @@
     [self addSubview:_captionLabel];
     //Apply Theme
     [self setBackgroundColor:[UIColor clearColor]];
-    if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
-      [self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
+    if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
+      [self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
     }
     return self;
   }
@@ -73,11 +74,17 @@
   NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
   
   NSAttributedString *nameString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@ ",feedItem.userFirstName,feedItem.userLastName]
-                                                                   attributes:@{ NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryAppColor"), NSFontAttributeName : PopdeemFont(@"popdeem.fonts.boldFont", 14)}];
+                                                                   attributes:@{
+                                                                           NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp),
+                                                                           NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14)
+                                                                   }];
   [string appendAttributedString:nameString];
   
   NSAttributedString *actionString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",feedItem.actionText]
-                                                                     attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14), NSForegroundColorAttributeName :PopdeemColor(@"popdeem.colors.secondaryFontColor")}];
+                                                                     attributes:@{
+                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14),
+                                                                             NSForegroundColorAttributeName :PopdeemColor(PDThemeColorSecondaryFont)
+                                                                     }];
   [string appendAttributedString:actionString];
   
   NSString *rewardDesc = @"";
@@ -88,15 +95,31 @@
     rewardDesc = feedItem.descriptionString;
   }
   NSAttributedString *rewardString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ", rewardDesc]
-                                                                     attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor"), NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14)}];
+                                                                     attributes:@{
+                                                                             NSForegroundColorAttributeName :
+                                                                             PopdeemColor(PDThemeColorPrimaryFont),
+                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14)
+                                                                     }];
   [string appendAttributedString:rewardString];
   
-  [string appendAttributedString:[[NSAttributedString alloc] initWithString:@"at " attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor"), NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 14)}]];
+  [string appendAttributedString:[[NSAttributedString alloc] initWithString:@"at "
+                                                                 attributes:@{
+                                                                         NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont),
+                                                                         NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 14)
+                                                                 }]];
   
-  NSAttributedString *locationString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",feedItem.brandName] attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14) , NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor")}];
+  NSAttributedString *locationString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",feedItem.brandName]
+                                                                       attributes:@{
+                                                                               NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14) ,
+                                                                               NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                                       }];
   [string appendAttributedString:locationString];
   
-  NSAttributedString *timeString = [[NSAttributedString alloc] initWithString:[self timeStringForItem:feedItem] attributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryAppColor") , NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 14)}];
+  NSAttributedString *timeString = [[NSAttributedString alloc] initWithString:[self timeStringForItem:feedItem]
+                                                                   attributes:@{
+                                                                           NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp) ,
+                                                                           NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14)
+                                                                   }];
   [string appendAttributedString:timeString];
   return string;
 }

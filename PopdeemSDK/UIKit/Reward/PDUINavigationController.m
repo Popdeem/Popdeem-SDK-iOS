@@ -9,6 +9,7 @@
 #import "PDUINavigationController.h"
 #import "PDUIModalTransitionHandler.h"
 #import "PDTheme.h"
+#import "PDConstants.h"
 
 @interface PDUINavigationController()<UIViewControllerTransitioningDelegate>
 @end
@@ -26,9 +27,9 @@
   [self defaults];
   
   
-  [[self navigationBar]setBarTintColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];//[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];
-  [[self navigationBar]setTintColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
-  self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.primaryInverseColor")};
+  [[self navigationBar]setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];//[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];
+  [[self navigationBar]setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+  self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(PDThemeColorPrimaryInverse)};
 }
 
 

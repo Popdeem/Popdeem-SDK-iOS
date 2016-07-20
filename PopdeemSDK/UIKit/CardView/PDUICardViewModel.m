@@ -8,6 +8,7 @@
 
 #import "PDUICardViewModel.h"
 #import "PDTheme.h"
+#import "PDConstants.h"
 
 @implementation PDUICardViewModel
 
@@ -25,18 +26,18 @@
 		_actionButtonTitle = actionButtonTitle;
 		_otherButtonTitles = otherButtonTitles;
 		
-		_headerColor = PopdeemColor(@"popdeem.colors.primaryAppColor");
-		_headerLabelColor = PopdeemColor(@"popdeem.colors.primaryInverseColor");
-		_bodyLabelColor = PopdeemColor(@"popdeem.colors.primaryFontColor");
-		_actionButtonColor = PopdeemColor(@"popdeem.colors.primaryAppColor");
-		_actionButtonLabelColor = PopdeemColor(@"popdeem.colors.primaryInverseColor");
+		_headerColor = PopdeemColor(PDThemeColorPrimaryApp);
+		_headerLabelColor = PopdeemColor(PDThemeColorPrimaryInverse);
+		_bodyLabelColor = PopdeemColor(PDThemeColorPrimaryFont);
+		_actionButtonColor = PopdeemColor(PDThemeColorPrimaryApp);
+		_actionButtonLabelColor = PopdeemColor(PDThemeColorPrimaryInverse);
 		_otherButtonsColor = [UIColor whiteColor];
-		_otherButtonsLabelColor = PopdeemColor(@"popdeem.colors.primaryFontColor");
+		_otherButtonsLabelColor = PopdeemColor(PDThemeColorPrimaryFont);
 		
-		_headerFont = PopdeemFont(@"popdeem.fonts.boldFont", 17);
-		_bodyFont = PopdeemFont(@"popdeem.fonts.primaryFont", 14);
-		_actionButtonFont = PopdeemFont(@"popdeem.fonts.primaryFont", 14);
-		_otherButtonsFont = PopdeemFont(@"popdeem.fonts.primaryFont", 14);
+		_headerFont = PopdeemFont(PDThemeFontBold, 17);
+		_bodyFont = PopdeemFont(PDThemeFontPrimary, 14);
+		_actionButtonFont = PopdeemFont(PDThemeFontPrimary, 14);
+		_otherButtonsFont = PopdeemFont(PDThemeFontPrimary, 14);
 		return self;
 	}
 	return nil;

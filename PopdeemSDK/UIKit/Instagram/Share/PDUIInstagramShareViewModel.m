@@ -29,26 +29,25 @@
 	self.viewTwoLabelTwoText = translationForKey(@"popdeem.instagram.share.stepTwo.label2", @"Your post will publish to whichever account you are currently logged into on the Instagram app.");
 	self.viewTwoActionButtonText = translationForKey(@"popdeem.instagram.share.stepTwo.buttonText", @"Okay, Gotcha");
 	
-	self.viewOneLabelOneFont = PopdeemFont(@"popdeem.fonts.boldFont", 14);
-	self.viewOneLabelTwoFont = PopdeemFont(@"popdeem.fonts.primaryFont", 14);
-	self.viewTwoLabelOneFont = PopdeemFont(@"popdeem.fonts.boldFont", 14);
-	self.viewTwoLabelTwoFont = PopdeemFont(@"popdeem.fonts.primaryFont", 14);
-	self.viewOneActionButtonFont = PopdeemFont(@"popdeem.fonts.boldFont", 14);
-	self.viewTwoActionButtonFont = PopdeemFont(@"popdeem.fonts.boldFont", 14);
+	self.viewOneLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
+	self.viewOneLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);
+	self.viewTwoLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
+	self.viewTwoLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);
+	self.viewOneActionButtonFont = PopdeemFont(PDThemeFontBold, 14);
+	self.viewTwoActionButtonFont = PopdeemFont(PDThemeFontBold, 14);
 	
-	self.viewOneLabelOneColor = PopdeemColor(@"popdeem.colors.primaryFontColor");
-	self.viewOneLabelTwoColor = PopdeemColor(@"popdeem.colors.primaryFontColor");
-	self.viewTwoLabelOneColor = PopdeemColor(@"popdeem.colors.primaryFontColor");
-	self.viewTwoLabelTwoColor = PopdeemColor(@"popdeem.colors.primaryFontColor");
+	self.viewOneLabelOneColor = PopdeemColor(PDThemeColorPrimaryFont);
+	self.viewOneLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
+	self.viewTwoLabelOneColor = PopdeemColor(PDThemeColorPrimaryFont);
+	self.viewTwoLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
 
 	self.viewOneActionButtonColor = [UIColor whiteColor];
-	self.viewOneActionButtonBorderColor = PopdeemColor(@"popdeem.colors.primaryAppColor");
-	self.viewTwoActionButtonColor = PopdeemColor(@"popdeem.colors.primaryAppColor");
-	self.viewOneActionButtonTextColor= PopdeemColor(@"popdeem.colors.primaryAppColor");
-	self.viewTwoActionButtonTextColor= PopdeemColor(@"popdeem.colors.primaryInverseColor");
+	self.viewOneActionButtonBorderColor = PopdeemColor(PDThemeColorPrimaryApp);
+	self.viewTwoActionButtonColor = PopdeemColor(PDThemeColorPrimaryApp);
+	self.viewOneActionButtonTextColor= PopdeemColor(PDThemeColorPrimaryApp);
+	self.viewTwoActionButtonTextColor= PopdeemColor(PDThemeColorPrimaryApp);
 	
 	self.viewOneImage = PopdeemImage(@"pduikit_instagramstep1");
 	self.viewTwoImage = PopdeemImage(@"pduikit_instagramstep2");
 }
-
 @end

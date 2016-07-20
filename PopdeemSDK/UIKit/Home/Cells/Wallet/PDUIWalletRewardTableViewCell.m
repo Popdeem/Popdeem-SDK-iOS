@@ -16,13 +16,13 @@
 	[super awakeFromNib];
 	self.separatorInset = UIEdgeInsetsZero;
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
-	[_rewardImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
-	[_mainLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
-	[_mainLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+	[_rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
+	[_mainLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
+	[_mainLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
 	[self setBackgroundColor:[UIColor clearColor]];
-	if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
-		[self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
-		self.contentView.backgroundColor = PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor");
+	if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
+		[self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
+		self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
 	}
 }
 
@@ -37,7 +37,7 @@
 	if (reward.coverImage) {
 		[self.rewardImageView setImage:reward.coverImage];
 	} else {
-		[self.rewardImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
+		[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
 	}
 	
 	NSMutableString *labelLineTwo;
@@ -63,11 +63,21 @@
 	
 	NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
 	
-	NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ \n",reward.rewardDescription] attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.boldFont", 14), NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryFontColor")}];
+	NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc]
+			initWithString:[NSString stringWithFormat:@"%@ \n",reward.rewardDescription]
+				attributes:@{
+						NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
+						NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+				}];
 	
 	[labelAttString appendAttributedString:descriptionString];
 
-	NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc] initWithString:labelLineTwo attributes:@{NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 12), NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryAppColor")}];
+	NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
+			initWithString:labelLineTwo
+				attributes:@{
+						NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+						NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp)
+				}];
 	
 	[labelAttString appendAttributedString:infoString];
 	NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];

@@ -14,6 +14,7 @@
 #import "PDUIMessageLogoutCell.h"
 #import "PDTheme.h"
 #import "PDSocialMediaManager.h"
+#import "PDConstants.h"
 
 @interface PDUIMsgCntrTblViewController ()
 @property (nonatomic, strong) PDUIMsgCntrViewModel *model;
@@ -111,7 +112,7 @@
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
-	[footerView setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewSeperatorColor")];
+	[footerView setBackgroundColor:PopdeemColor(PDThemeColorTableViewSeperator)];
 	return footerView;
 }
 

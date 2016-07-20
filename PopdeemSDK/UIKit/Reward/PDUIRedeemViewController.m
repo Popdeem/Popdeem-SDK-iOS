@@ -72,21 +72,21 @@
       break;
   }
   
-  [self.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 18)];
-  [self.titleLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+  [self.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 18)];
+  [self.titleLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   [self.titleLabel setText:_reward.rewardDescription];
 	
-  [self.rulesLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 15)];
-  [self.rulesLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+  [self.rulesLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  [self.rulesLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.rulesLabel setText:_reward.rewardRules];
 	
-	[self.timerLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 55)];
-	[self.timerLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+	[self.timerLabel setFont:PopdeemFont(PDThemeFontBold, 55)];
+	[self.timerLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
   
-  [self.doneButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+  [self.doneButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
   [self.doneButton setTitle:translationForKey(@"popdeem.redeem.doneButton.title", @"Done") forState:UIControlStateNormal];
-  [self.doneButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryInverseColor") forState:UIControlStateNormal];
-  [self.doneButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 18.0)];
+  [self.doneButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+  [self.doneButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 18.0)];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

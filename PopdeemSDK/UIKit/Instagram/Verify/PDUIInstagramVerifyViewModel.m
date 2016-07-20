@@ -27,18 +27,18 @@
 }
 
 - (void) setup {
-	_headerColor = PopdeemColor(@"popdeem.colors.primaryAppColor");
-	_headerFontColor = PopdeemColor(@"popdeem.colors.primaryInverseColor");
-	_headerFont = PopdeemFont(@"popdeem.fonts.primaryFont", 17);
+	_headerColor = PopdeemColor(PDThemeColorPrimaryApp);
+	_headerFontColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	_headerFont = PopdeemFont(PDThemeFontPrimary, 17);
 	
-	_messageFontColor = PopdeemColor(@"popdeem.colors.primaryFontColor");
-	_messageFont = PopdeemFont(@"popdeem.fonts.primaryFont", 14);
+	_messageFontColor = PopdeemColor(PDThemeColorPrimaryFont);
+	_messageFont = PopdeemFont(PDThemeFontPrimary, 14);
 	
-	_buttonColor = [PopdeemColor(@"popdeem.colors.primaryAppColor") lighterColor];
-	_buttonFontColorNormal = PopdeemColor(@"popdeem.colors.primaryInverseColor");
-	_buttonFontColorSelected = PopdeemColor(@"popdeem.colors.secondaryFontColor");
-	_buttonFont = PopdeemFont(@"popdeem.fonts.boldFont", 17);
-	_buttonBorderColor = PopdeemColor(@"popdeem.colors.primaryAppColor");
+	_buttonColor = [PopdeemColor(PDThemeColorPrimaryApp) lighterColor];
+	_buttonFontColorNormal = PopdeemColor(PDThemeColorPrimaryInverse);
+	_buttonFontColorSelected = PopdeemColor(PDThemeColorSecondaryFont);
+	_buttonFont = PopdeemFont(PDThemeFontBold, 17);
+	_buttonBorderColor = PopdeemColor(PDThemeColorPrimaryApp);
 	
 	_headerText = translationForKey(@"popdeem.instagram.verify.headerText",@"Verify");
 	[self setupForMustVerify];

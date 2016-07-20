@@ -44,7 +44,10 @@
     
     _mainLabel = [[UILabel alloc] init];
     
-    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.boldFont", 14)}];
+    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription
+                                                                             attributes:@{
+                                                                                     NSFontAttributeName: PopdeemFont(PDThemeFontBold, 14)
+                                                                             }];
     CGRect mainLabelRect = [mainAttributedText boundingRectWithSize:(CGSize){labelWidth, 40}
                                                             options:NSStringDrawingUsesLineFragmentOrigin
                                                             context:nil];
@@ -57,7 +60,7 @@
     
     [_mainLabel setFrame: CGRectMake(labelX, currentY, labelWidth, mainLabelsize.height)];
     [_mainLabel setText:reward.rewardDescription];
-    [_mainLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 14)];
+    [_mainLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
     [_mainLabel setTextColor:[UIColor blackColor]];
     [_mainLabel setTextAlignment:NSTextAlignmentLeft];
     [_mainLabel setNumberOfLines:0];
@@ -68,7 +71,10 @@
     CGSize rulesLabelsize;
     if (rules) {
       _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, labelWidth, 30)];
-      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules attributes:@{NSFontAttributeName: PopdeemFont(@"popdeem.fonts.primaryFont", 12)}];
+      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules
+                                                                                attributes:@{
+                                                                                        NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12)
+                                                                                }];
       CGRect rulesLabelRect = [rulesAttributedText boundingRectWithSize:(CGSize){labelWidth, 30}
                                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                                                 context:nil];
@@ -78,7 +84,7 @@
       float rulesPadding = 0;
       [_rulesLabel sizeToFit];
       [_rulesLabel setFrame:CGRectMake(labelX, currentY, labelWidth, rulesLabelsize.height)];
-      [_rulesLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
+      [_rulesLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
       [_rulesLabel setTextColor:[UIColor blackColor]];
       [_rulesLabel setText:reward.rewardRules];
       [_rulesLabel setNumberOfLines:0];
@@ -167,7 +173,8 @@
                                                             toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
                                                            options:0];
       
-      NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]];
+      NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
+                                                               fromDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]];
       
       NSInteger days = [components day];
       
@@ -190,20 +197,20 @@
       [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
     }
     
-    [_infoLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 12)];
+    [_infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
     [_infoLabel setTextAlignment:NSTextAlignmentLeft];
     [_infoLabel sizeToFit];
     [self addSubview:_infoLabel];
     
     //Apply Theme
     [self setBackgroundColor:[UIColor clearColor]];
-    if (PopdeemThemeHasValueForKey(@"popdeem.colors.tableViewCellBackgroundColor")) {
-      [self setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor")];
-      self.contentView.backgroundColor = PopdeemColor(@"popdeem.colors.tableViewCellBackgroundColor");
+    if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
+      [self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
+      self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
     }
-    [_mainLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
-    [_rulesLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
-    [_infoLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+    [_mainLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+    [_rulesLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
+    [_infoLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
   
     
     //Layout

@@ -86,7 +86,7 @@
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
 	[_textView setScrollEnabled:YES];
-  [_textView setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
+  [_textView setFont:PopdeemFont(PDThemeFontPrimary, 14)];
 }
 
 - (void) verifyLocation {
@@ -156,7 +156,7 @@
 		self.locationVerificationViewHeightConstraint.constant = 0;
 	}
 	
-	[self.twitterForcedTagLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+	[self.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
 }
@@ -215,9 +215,9 @@
     [_withLabel setHidden:YES];
   }
   
-  NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.secondaryFontColor"),NSFontAttributeName:PopdeemFont(@"popdeem.fonts.primaryFont", 10)}];
+  NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:PopdeemColor(PDThemeColorSecondaryFont),NSFontAttributeName:PopdeemFont(PDThemeFontPrimary, 10)}];
   
-  NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.primaryAppColor"),NSFontAttributeName:PopdeemFont(@"popdeem.fonts.primaryFont", 10)}];
+  NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:PopdeemColor(PDThemeColorPrimaryApp),NSFontAttributeName:PopdeemFont(PDThemeFontPrimary, 10)}];
   
   NSMutableAttributedString *whole = [[NSMutableAttributedString alloc] initWithAttributedString:attWith];
   [whole appendAttributedString:attNames];
@@ -257,8 +257,8 @@
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
 
   [_verifyLocationLabel setText:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please come back later, or refresh your location.")];
-  [_verifyLocationLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
-  [_verifyLocationLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 10)];
+  [_verifyLocationLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+  [_verifyLocationLabel setFont:PopdeemFont(PDThemeFontPrimary, 10)];
   
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
