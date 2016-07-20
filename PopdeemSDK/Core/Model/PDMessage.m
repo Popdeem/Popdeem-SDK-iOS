@@ -54,7 +54,7 @@
   PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
   [service markMessageAsRead:self.identifier completion:^(NSError *error){
     if (error) {
-      NSLog(@"Error while marking message %@ as read",self.identifier);
+      NSLog(@"Error while marking message %ld as read",(long)self.identifier);
     } else {
       self.read = YES;
     }

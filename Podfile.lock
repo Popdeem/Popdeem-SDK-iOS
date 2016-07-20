@@ -1,19 +1,19 @@
 PODS:
-  - Bolts (1.7.0):
-    - Bolts/AppLinks (= 1.7.0)
-    - Bolts/Tasks (= 1.7.0)
-  - Bolts/AppLinks (1.7.0):
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
-  - Bolts/Tasks (1.7.0)
+  - Bolts/Tasks (1.8.4)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - Expecta (1.0.5)
   - Fabric (1.6.6)
-  - FBSDKCoreKit (4.13.1):
+  - FBSDKCoreKit (4.14.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.13.1):
+  - FBSDKLoginKit (4.14.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.13.1):
+  - FBSDKShareKit (4.14.0):
     - FBSDKCoreKit
   - Nocilla (0.10.0)
   - OCMock (3.2)
@@ -25,41 +25,42 @@ PODS:
     - FBSDKLoginKit
     - FBSDKShareKit
     - PopdeemSDK/NoArc
+    - Shimmer
     - STTwitter
   - PopdeemSDK/NoArc (1.0.7)
   - PopdeemSDK/UIKit (1.0.7):
     - PopdeemSDK/Core
-  - STTwitter (0.2.4)
+  - Reveal-iOS-SDK (1.6.2)
+  - Shimmer (1.0.2)
+  - STTwitter (0.2.5)
 
 DEPENDENCIES:
-  - Bolts
   - Crashlytics
   - Expecta (~> 1.0.0)
   - Fabric
-  - FBSDKCoreKit
-  - FBSDKLoginKit
-  - FBSDKShareKit
   - Nocilla
   - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
   - PopdeemSDK/UIKit (from `../Popdeem-SDK-iOS`)
-  - STTwitter
+  - Reveal-iOS-SDK
 
 EXTERNAL SOURCES:
   PopdeemSDK:
     :path: ../Popdeem-SDK-iOS
 
 SPEC CHECKSUMS:
-  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
-  FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
-  FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
-  FBSDKShareKit: c9438df7573b33780ac8c3451201c5ebb260ffca
+  FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
+  FBSDKLoginKit: da563567a108050ef83739c8c8c001ee9e25fa13
+  FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
   Nocilla: ae0a2b05f3087b473624ac2b25903695df51246a
   OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
-  PopdeemSDK: addfda0c0ae4941e05d84e1409dfc5f338686eb1
-  STTwitter: a82de278afbd4191d0a07f4f3ffd8f1fb8404da0
+  PopdeemSDK: afb7fc6c2fd9ba396d0b252582186a243d03575e
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
+  STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
 
 COCOAPODS: 0.39.0

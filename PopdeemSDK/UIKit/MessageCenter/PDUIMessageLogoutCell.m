@@ -9,8 +9,9 @@
 #import "PDUIMessageLogoutCell.h"
 #import "PDTheme.h"
 #import "PopdeemSDK.h"
+#import "PDConstants.h"
 
-@implementation PDUIMessageLogoutCell
+	@implementation PDUIMessageLogoutCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -34,9 +35,9 @@
 		float buttonY = 10;
 		
 		_logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, buttonWidth, buttonheight)];
-		[_logoutButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
-		[_logoutButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryInverseColor") forState:UIControlStateNormal];
-		[_logoutButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
+		[_logoutButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+		[_logoutButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+		[_logoutButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
 		[_logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
 		[_logoutButton addTarget:self action:@selector(logoutButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:_logoutButton];

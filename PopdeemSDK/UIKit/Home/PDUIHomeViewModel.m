@@ -34,9 +34,9 @@
   [self fetchWallet];
   
   _controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
-  [_controller.view setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
-  [_controller.tableView setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
-  [_controller.tableView setSeparatorColor:PopdeemColor(@"popdeem.colors.tableViewSeperatorColor")];
+  [_controller.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
+  [_controller.tableView setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
+  [_controller.tableView setSeparatorColor:PopdeemColor(PDThemeColorTableViewSeperator)];
   
 }
 
@@ -165,7 +165,7 @@
     [_controller.segmentedControl addTarget:_controller action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
   [_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
-  [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+  [_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	
 	if (!_tableHeaderImageView) {
 		if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
@@ -183,7 +183,7 @@
   CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
   _controller.inboxButton = [UIButton buttonWithType:UIButtonTypeSystem];
   [_controller.inboxButton setFrame:inboxButtonFrame];
-  _controller.inboxButton.tintColor = PopdeemColor(@"popdeem.colors.primaryInverseColor");
+  _controller.inboxButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
   [_controller.inboxButton setImage:[UIImage imageNamed:@"pduikit_mail"] forState:UIControlStateNormal];
   [_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
   [_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
@@ -192,8 +192,8 @@
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 50)];
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
     [_tableHeaderLabel setNumberOfLines:3];
-    [_tableHeaderLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont",16)];
-    [_tableHeaderLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
+    [_tableHeaderLabel setFont:PopdeemFont(PDThemeFontPrimary,16)];
+    [_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorPrimaryInverse)];
     [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
     [_tableHeaderLabel sizeToFit];
     [_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];

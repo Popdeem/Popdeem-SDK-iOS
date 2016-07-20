@@ -1,0 +1,125 @@
+/*
+ Localizable.strings
+ PopdeemSDK
+ 
+ Created by Niall Quinn on 02/03/2016.
+ Copyright © 2016 Popdeem. All rights reserved.
+ */
+
+"popdeem.sociallogin.title" = "App Update";
+
+"popdeem.common.loading" = "Loading";
+"popdeem.common.wait" = "Please Wait";
+"popdeem.common.sorry" = "Sorry";
+"popdeem.common.back" = "Back";
+"popdeem.common.ok" = "OK";
+"popdeem.common.something.wrong" = "Something went wrong. Please try again later";
+"popdeem.common.facebookLoginCancelledTitle" = "Login Cancelled";
+"popdeem.common.facebookLoginCancelledBody" = "You may browse the app before connecting your Facebook, but you must log in with Facebook to avail of social rewards.";
+"popdeem.common.suspended" = "You have been suspended. Your account will become active on %@ at %@";
+
+"popdeem.sociallogin.success" = "Connected!";
+"popdeem.sociallogin.success.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";
+"popdeem.sociallogin.heading" = "Connect your Facebook to earn additional Rewards.";
+"popdeem.sociallogin.body" = "Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.";
+"popdeem.sociallogin.continue" = "Continue to App";
+"popdeem.sociallogin.tagline" = "New: Social Rewards.";
+"popdeem.sociallogin.terms" = "By signing in with Facebook you accept the terms of our privacy policy.";
+
+
+"popdeem.rewards.title" = "Rewards";
+"popdeem.rewards.notavailable" = "There are no rewards available right now. Please check back later.";
+
+"popdeem.claims.title" = "Claim";
+"popdeem.claim.addmessage" = "Add Message";
+"popdeem.claim.getreward" = "Claim Reward";
+"popdeem.claim.verifyLocationFailed" = "You must be at this location to claim this reward. Please come back later, or refresh your location.";
+
+"popdeem.claim.text.placeholder" = "What are you up to?";
+"popdeem.claim.action.tweet.checkin" = "Check-in or Tweet Required";
+"popdeem.claim.action.photo" = "Photo required";
+"popdeem.claim.action.none" = "No action required";
+"popdeem.claim.action.checkin" = "Check-In required";
+"popdeem.claim.action.tweet" = "Tweet Required";
+"popdeem.claim.action.tweet.photo" = "Tweet with Photo required";
+
+"popdeem.claim.twitter.connect" = "Connecting Twitter";
+"popdeem.claim.facebook.connect" = "We couldnt connect you to Facebook";
+"popdeem.claim.connect.message" = "This reward must be claimed with a tweet. You can also post to Facebook if you wish";
+
+"popdeem.claim.reward.claimed" = "Reward Claimed!";
+"popdeem.claim.reward.cant.deselect" = "Cannot Deselect";
+"popdeem.claim.reward.success" = "You can view your reward in your wallet";
+"popdeem.claim.reward.claiming" = "Claiming Reward";
+"popdeem.claim.reward.claiming.message" = "This could take up to 30 seconds";
+"popdeem.claim.tweet.toolong" = "Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.";
+"popdeem.claim.twitter.notconnected" = "Twitter not connected, you must connect your twitter account in order to post to Twitter";
+"popdeem.claim.networkerror" = "No Network Selected, you must select at least one social network in order to complete this action.";
+
+"popdeem.home.title" = "Social Rewards";
+"popdeem.home.header.titleText" = "Share your Popdeem experience on social networks to earn more rewards.";
+"popdeem.home.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
+"popdeem.home.infoCell.noRewards" = "There are no Rewards available right now. Please check back later.";
+"popdeem.home.infoCell.noWallet" = "There is nothing in your Wallet right now. Please check back later.";
+"popdeem.home.infoCell.noFeed" = "There are nothing in the Feed right now. Please check back later.";
+"popdeem.home.infoCell.loadingRewards" = "Please wait, we are loading your Rewards.";
+"popdeem.home.infoCell.loadingFeed" = "Please wait, we are loading the Feed.";
+"popdeem.home.infoCell.loadingWallet" = "Please wait, we are loading your Wallet.";
+
+"popdeem.message.detail.senderTag" = "Sender:";
+"popdeem.message.detail.dateTag" = "Date:";
+"popdeem.message.detail.titleTag" = "Title:";
+"popdeem.message.detail.bodyTag" = "Body:";
+
+"popdeem.redeem.doneAlert.title" = "Have you redeemed your reward?";
+"popdeem.redeem.doneAlert.body" = "You will not be able to redeem your reward after leaving this screen";
+"popdeem.redeem.doneAlert.okButtonText" = "Yes, go!";
+"popdeem.redeem.doneAlert.cancelButtonText" = "Cancel";
+"popdeem.redeem.timer.doneText" = "Timer Done";
+"popdeem.redeem.title" = "Redeem";
+
+"popdeem.wallet.sweepstake.redeemText" = "You will be notified if you are the winner.";
+"popdeem.wallet.coupon.redeemText" = "Redeem at the point of sale.";
+"popdeem.wallet.credit.redeemText" = "mm/dd";
+"popdeem.wallet.coupon.infoText" = "Once you're ready to redeem your Reward, tap \"Redeem\".\nAfter tapping \"Redeem\" you have 10 minutes to get the Reward.\nYou must show the cashier the following screen within 10 minutes.\n%@";
+"popdeem.wallet.creditRewardText" = "%@ was added to your balance.";
+"popdeem.wallet.unlimitedReward.coupon.expiryString" = "This reward has no expiry date.";
+
+"popdeem.wallet.unlimitedReward.sweepstake.expiryString" = "There is no date set for this draw.";
+
+"popdeem.location.denied.alert.title" = "Location Services Disabled";
+"popdeem.location.denied.alert.body" = "In order to claim this reward, we must verify your location. Please enable locatio services for this app in Settings";
+"popdeem.location.denied.alert.cancelButtonText" = "Not Now";
+"popdeem.location.denied.alert.settingsButtonText" = "Go to Settings";
+
+"popdeem.instagram.connect.headerText" = "Connect Instagram";
+"popdeem.instagram.connect.labelText" = "You must connect your Instagram Account to claim this reward.";
+"popdeem.instagram.connect.actionButtonTitle" = "Continue";
+
+"popdeem.instagram.share.stepOne.label1" = "Your message has been copied to the clipboard.";
+"popdeem.instagram.share.stepOne.label2" = "You will now be directed to Instagram where you can paste the message. Tap and hold to paste your message.";
+"popdeem.instagram.share.stepOne.buttonText" = "Next";
+
+"popdeem.instagram.share.stepTwo.label1" = "Make sure you are logged into the correct account on Instagram.";
+"popdeem.instagram.share.stepTwo.label2" = "Your post will publish to whichever account you are currently logged into on the Instagram app.";
+"popdeem.instagram.share.stepTwo.buttonText" = "Okay, Gotcha";
+
+"popdeem.instagram.share.textCopied" = "Your text has been copied to the clipboard";
+"popdeem.instagram.share.instructionsLineOne" = "1 - Tap 'Share on Instagram below.";
+"popdeem.instagram.share.instructionsLineTwo" = "2 - Choose 'Copy to Instagram' from the options presented.";
+"popdeem.instagram.share.instructionsLineThree" = "3 - Complete the share action in the Instagram app.";
+"popdeem.instagram.share.instructionsLineFour" = "4 - Come back here to verify the action.";
+
+"popdeem.instagram.verify.mustVerify.headerText" = "Verify Post";
+"popdeem.instagram.verify.mustVerify.messageText" = "Have you completed your post on Instagram? If yes, tap 'Verify' below, so we can check it out! If not, tap anywhere outside this card, and you will be brought back to the claim screen, where you can make the post again.\n";
+"popdeem.instagram.verify.mustVerify.buttonText" = "Verify Now";
+"popdeem.instagram.verify.verifySuccess.headerText" = "Verify Succeded";
+"popdeem.instagram.verify.verifySuccess.messageText" = "We have found your post! You can go to the Wallet now to see your reward.\n";
+"popdeem.instagram.verify.verifySuccess.buttonText" = "Go";
+
+
+"popdeem.instagram.verify.verifyFailure.headerText" = "Verify Failure";
+"popdeem.instagram.verify.verifyFailure.messageText" = "We could not find your post. Please go to Instagram and ensure that your post includes the hashtag %@ and try verify again. You can also verify this post at a later date in the Wallet.";
+"popdeem.instagram.verify.verifyFailure.buttonText" = "Verify Now";
+
+

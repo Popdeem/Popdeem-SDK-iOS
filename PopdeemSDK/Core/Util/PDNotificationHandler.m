@@ -74,8 +74,8 @@
   
   UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, contentView.frame.size.width, 25)];
   [header setTextAlignment:NSTextAlignmentCenter];
-  if (PopdeemThemeHasValueForKey(@"popdeem.fonts.primaryFont")) {
-    [header setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 16)];
+  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
+    [header setFont:PopdeemFont(PDThemeFontPrimary, 16)];
   } else {
     [header setFont:[UIFont systemFontOfSize:16]];
   }
@@ -93,8 +93,8 @@
   
   UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, contentView.frame.size.width, 25)];
   [title setTextAlignment:NSTextAlignmentCenter];
-  if (PopdeemThemeHasValueForKey(@"popdeem.fonts.primaryFont")) {
-    [title setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 16)];
+  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
+    [title setFont:PopdeemFont(PDThemeFontPrimary, 16)];
   } else {
     [title setFont:[UIFont systemFontOfSize:16]];
   }

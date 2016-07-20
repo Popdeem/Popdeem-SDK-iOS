@@ -9,6 +9,8 @@
 #import "PDUIInstagramWebViewController.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDConstants.h"
+
 @interface PDUIInstagramWebViewController ()
 
 @end
@@ -19,10 +21,12 @@
 	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
 	if (self = [self initWithNibName:@"PDUIInstagramWebViewController" bundle:podBundle]) {
 		self.edgesForExtendedLayout = UIRectEdgeNone;
-		[self.navigationBar setBarTintColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
-		[self.navigationBar setTintColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
-		[self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"),
-																								NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)}];
+		[self.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+		[self.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+		[self.navigationBar setTitleTextAttributes:@{
+				NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+				NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+		}];
 		self.title = translationForKey(@"popdeem.instagram.webview.title",@"Connect Instagram Account");
 		return self;
 	}

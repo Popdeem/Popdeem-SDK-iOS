@@ -26,6 +26,12 @@
 #import "PDUIRedeemViewController.h"
 #import "PDLocationValidator.h"
 #import "PDConstants.h"
+#import "PDUIRewardWithRulesTableViewCell.h"
+#import "PDUIWalletRewardTableViewCell.h"
+
+#define kPlaceholderCell @"PlaceholderCell"
+#define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
+#define kWalletTableViewCell @"WalletCell"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -72,26 +78,45 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"PopdeemUserLoggedInNotification" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
-  
+	
+	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+	UINib *pcnib = [UINib nibWithNibName:@"PlaceholderTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:pcnib forCellReuseIdentifier:kPlaceholderCell];
+	
+	UINib *rwrcnib = [UINib nibWithNibName:@"PDUIRewardWithRulesTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:rwrcnib forCellReuseIdentifier:kRewardWithRulesTableViewCell];
+	
+	UINib *walletnib = [UINib nibWithNibName:@"PDUIWalletRewardTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:walletnib forCellReuseIdentifier:kWalletTableViewCell];
+	
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
   self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
   
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
     self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
-    [self.navigationController.navigationBar setTintColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"),
-                                                                      NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)}];
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+    }];
     
-    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"), NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)} forState:UIControlStateNormal];
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+                                                                               forState:UIControlStateNormal];
     
-    [[UINavigationBar appearance] setBarTintColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
-    [[UINavigationBar appearance] setTintColor:PopdeemColor(@"popdeem.colors.primaryInverseColor")];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"),
-                                                           NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)}];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : PopdeemColor(@"popdeem.colors.primaryInverseColor"),
-                                                           NSFontAttributeName : PopdeemFont(@"popdeem.fonts.primaryFont", 16.0f)} forState:UIControlStateNormal];
+    [[UINavigationBar appearance] setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [[UINavigationBar appearance] setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+    }];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+                                                forState:UIControlStateNormal];
   }
   
   if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
@@ -108,7 +133,7 @@
   
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-  [self.view setBackgroundColor:PopdeemColor(@"popdeem.colors.viewBackgroundColor")];
+  [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		[self.model fetchRewards];
 		[self.model fetchFeed];
@@ -187,7 +212,7 @@
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
   UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1.0f)];
-  [footerView setBackgroundColor:PopdeemColor(@"popdeem.colors.tableViewSeperatorColor")];
+  [footerView setBackgroundColor:PopdeemColor(PDThemeColorTableViewSeperator)];
   return footerView;
 }
 
@@ -230,11 +255,16 @@
         if (!_model.rewardsLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.noRewards", @"There are no Rewards available right now. Please check back later.")];
         } else {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.loadingRewards", @"Please wait, we are loading your rewards")];
+//          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.loadingRewards", @"Please wait, we are loading your rewards")];
+					return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
         reward = [_model.rewards objectAtIndex:indexPath.row];
-        return [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:reward];
+				
+				PDUIRewardWithRulesTableViewCell *rwrcell = [self.tableView dequeueReusableCellWithIdentifier:kRewardWithRulesTableViewCell];
+				[rwrcell setupForReward:reward];
+				return rwrcell;
+				
       }
       break;
     case 1:
@@ -243,14 +273,14 @@
         if (!_model.feedLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.noFeed", @"There is nothing in the Feed right now. Please check back later.")];
         } else {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.loadingFeed", @"Please wait, we are loading the Feed.")];
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
         if (feedLoading) {
           return nil;
         }
         if (indexPath.row >= _model.feed.count) {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.loadingFeed", @"Please wait, we are loading the Feed.")];
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
         feedItem = [_model.feed objectAtIndex:indexPath.row];
         if (feedItem.actionImage) {
@@ -265,10 +295,14 @@
         if (!_model.walletLoading) {
           return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.noWallet", @"There is nothing in your Wallet right now. Please check back later.")];
         } else {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.loadingWallet", @"Please wait. We are loading your Wallet.")];
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
-        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
+//        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
+				PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
+				reward = [_model.wallet objectAtIndex:indexPath.row];
+				[walletCell setupForReward:reward];
+				return walletCell;
       }
     default:
       break;

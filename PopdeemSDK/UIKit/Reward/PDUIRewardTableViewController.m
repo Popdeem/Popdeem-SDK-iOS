@@ -49,9 +49,9 @@
       [weakSelf.tableView reloadData];      
     });
   }];
-  [self.view setBackgroundColor:PopdeemColor(@"popdeem.home.viewBackgroundColor")];
-  [self.tableView setBackgroundColor:PopdeemColor(@"popdeem.home.viewBackgroundColor")];
-  [self.tableView setSeparatorColor:PopdeemColor(@"popdeem.home.tableViewSeperatorColor")];
+  [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
+  [self.tableView setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
+  [self.tableView setSeparatorColor:PopdeemColor(PDThemeColorTableViewSeperator)];
 }
 
 

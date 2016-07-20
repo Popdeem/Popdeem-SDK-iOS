@@ -13,6 +13,7 @@
 #import "PDConstants.h"
 #import "PDAPIClient.h"
 
+
 @interface PDUIInstagramLoginViewController ()
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @end
@@ -20,29 +21,114 @@
 NSString *client_id;
 NSString *secret;
 NSString *callback;
+CGFloat _cardX,_cardY;
 
 @implementation PDUIInstagramLoginViewController
 
 - (instancetype) initForParent:(UIViewController*)parent {
-	NSString *headerText = translationForKey(@"popdeem.instagram.connect.headerText", @"Connect Instagram");
-	NSString *bodyText = translationForKey(@"popdeem.instagram.connect.bodyText", @"You must connect your Instagram Account to perform this action. Dont worry, we will never post without your explicit permission");
-	NSString *actionButtonTitle = translationForKey(@"popdeem.instagram.connect.actionButtonTitle", @"Connect Instagram Account");
 	connected = NO;
-	if (self = [super initForParent:parent headerText:headerText image:[UIImage imageNamed:@"pduikit_instagram_hires"] bodyText:bodyText actionButtonTitle:actionButtonTitle otherButtonTitles:nil completion:^(int buttonIndex){
-		if (connected) {
-			[self dismissViewControllerAnimated:YES completion:^(void){}];
-			[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
-		} else {
-			[self connectInstagram];
-		}
-	}]){
+	UIImage *logoImage = PopdeemImage(@"pduikit_instagram_hires");
+	if (self = [super init]) {
+		_parent = parent;
+		self.viewModel = [[PDUIInstagramLoginViewModel alloc] initForParent:self];
 		return self;
 	}
 	return nil;
 }
 
+- (void) renderView {
+	
+	CGFloat currentY = 0;
+	
+	CGFloat cardWidth = _parent.view.frame.size.width * 0.8;
+	CGFloat cardHeight = _parent.view.frame.size.height * 0.5;
+	CGFloat cardX = _parent.view.frame.size.width * 0.1;
+	CGFloat cardY = _parent.view.frame.size.height * 0.25;
+	CGRect cardRect = CGRectMake(cardX, _parent.view.frame.size.height, cardWidth, cardHeight);
+	
+	_cardView.frame = cardRect;
+	[_cardView setBackgroundColor:[UIColor whiteColor]];
+	_cardView.layer.cornerRadius = 5.0;
+	_cardView.layer.masksToBounds = YES;
+	
+	
+	CGFloat cardCenterX = cardWidth/2;
+	CGFloat cardCenterY = cardHeight/2;
+	CGFloat imageWidth = cardWidth * 0.40;
+	
+	self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cardCenterX-(imageWidth/2), cardCenterY-(imageWidth/2), imageWidth, imageWidth)];
+	[self.imageView setImage:_viewModel.logoImage];
+	_imageView.layer.cornerRadius = 2.0;
+	_imageView.layer.masksToBounds = YES;
+	[_cardView addSubview:_imageView];
+	
+	
+	CGFloat labelPadding = cardWidth*0.10;
+	
+	self.label = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, 40, cardWidth-(2*labelPadding), 50)];
+	[self.label setNumberOfLines:3];
+	[self.label setFont:_viewModel.labelFont];
+	[self.label setTextColor:_viewModel.labelColor];
+	[self.label setText:_viewModel.labelText];
+	[self.label setTextAlignment:NSTextAlignmentCenter];
+	CGSize labelSize = [_label sizeThatFits:_label.bounds.size];
+	[self.label setFrame:CGRectMake(_label.frame.origin.x, cardCenterY-45-labelSize.height-(imageWidth/2) , _label.frame.size.width, labelSize.height)];
+	[_cardView addSubview:_label];
+	
+	CGRect buttonFrame = CGRectMake(10, cardCenterY+(imageWidth/2)+50, cardWidth-20, 40);
+	
+	self.actionButton = [[UIButton alloc] initWithFrame:buttonFrame];
+	[_actionButton setBackgroundColor:_viewModel.buttonColor];
+	[_actionButton.titleLabel setFont:_viewModel.buttonLabelFont];
+	[_actionButton setTitle:_viewModel.buttonText forState:UIControlStateNormal];
+	[_actionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+	[_actionButton setTag:0];
+	[_actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[_cardView addSubview:_actionButton];
+	
+	_cardX = cardX;
+	_cardY = cardY;
+	CGFloat totalCardHeight = imageWidth + 40 + 40 + labelSize.height + 40 + 65;
+//	[_cardView setFrame:CGRectMake(cardX, _parent.view.frame.size.height, cardWidth, totalCardHeight)];
+	[_cardView setFrame:CGRectMake(_cardX, _cardY, _cardView.frame.size.width, _cardView.frame.size.height)];
+	[self.view setNeedsDisplay];
+}
+
+- (void) buttonPressed:(UIButton*)sender {
+	if (connected) {
+		[self dismissViewControllerAnimated:YES completion:^(void){}];
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+	} else {
+		[self connectInstagram];
+	}
+}
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
+	[_viewModel setup];
+	[self.view setBackgroundColor:[UIColor clearColor]];
+	self.backingView = [[UIView alloc] initWithFrame:_parent.view.frame];
+	[self.backingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+	[self.view addSubview:_backingView];
+	UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+	[_backingView addGestureRecognizer:backingTap];
+	
+	_cardView = [[UIView alloc] initWithFrame:CGRectZero];
+	[self.view addSubview:_cardView];
+	_label = [[UILabel alloc] initWithFrame:CGRectZero];
+	[_cardView addSubview:_label];
+	_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+	[_cardView addSubview:_imageView];
+	_actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[_cardView addSubview:_actionButton];
+	[self renderView];
+
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+//	[UIView animateWithDuration:0.5 animations:^{
+//		[_cardView setFrame:CGRectMake(_cardX, _cardY, _cardView.frame.size.width, _cardView.frame.size.height)];
+//	}];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -162,19 +248,13 @@ NSString *callback;
 		[_webViewController.loadingView hideAnimated:YES];
 		connected = YES;
 		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
-		[self.headerLabel setText:@"Instagram Connected"];
-		[self.bodyLabel setText:@"Your Instagram account is now connected. You can claim your reward now!"];
-		[self.actionButton setTitle:@"Back to Claim" forState:UIControlStateNormal];
-		[self.view setNeedsDisplay];
+		[self dismiss];
 	} failure:^(NSError* error){
 		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
 		[_webViewController.loadingView hideAnimated:YES];
 		connected = NO;
 		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
-		[self.headerLabel setText:@"Instagram Not Connected"];
-		[self.bodyLabel setText:@"Your Instagram account is not connected."];
-		[self.actionButton setTitle:@"Back to Claim" forState:UIControlStateNormal];
-		[self.view setNeedsDisplay];
+		[self dismiss];
 	}];
 }
 

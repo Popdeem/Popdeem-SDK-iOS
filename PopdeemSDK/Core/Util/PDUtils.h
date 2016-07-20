@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PDConstants.h"
 /*!
  *@abstract PDUtilities provides various helper methods
  */

@@ -86,11 +86,18 @@
   [_viewModel setViewController:self];
   [_textView setDelegate:_viewModel];
 	[_textView setScrollEnabled:YES];
-  [_textView setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
+  [_textView setFont:PopdeemFont(PDThemeFontPrimary, 14)];
 }
 
 - (void) verifyLocation {
   _locationValidator = [[PDLocationValidator alloc] init];
+	_viewModel.locationVerified = YES;
+	[_locationFailedView setHidden:YES];
+	[UIView animateWithDuration:1.0 animations:^{
+		self.locationVerificationViewHeightConstraint.constant = 0;
+		[self.locationVerificationView setHidden:YES];
+	}];
+	return;
   if (_reward.verifyLocation == NO) {
     _viewModel.locationVerified = YES;
     [_locationFailedView setHidden:YES];
@@ -149,7 +156,7 @@
 		self.locationVerificationViewHeightConstraint.constant = 0;
 	}
 	
-	[self.twitterForcedTagLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+	[self.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
 }
@@ -208,9 +215,9 @@
     [_withLabel setHidden:YES];
   }
   
-  NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.secondaryFontColor"),NSFontAttributeName:PopdeemFont(@"popdeem.fonts.primaryFont", 10)}];
+  NSMutableAttributedString *attWith = [[NSMutableAttributedString alloc] initWithString:@"With " attributes:@{NSForegroundColorAttributeName:PopdeemColor(PDThemeColorSecondaryFont),NSFontAttributeName:PopdeemFont(PDThemeFontPrimary, 10)}];
   
-  NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:PopdeemColor(@"popdeem.colors.primaryAppColor"),NSFontAttributeName:PopdeemFont(@"popdeem.fonts.primaryFont", 10)}];
+  NSMutableAttributedString *attNames = [[NSMutableAttributedString alloc] initWithString:withString attributes:@{NSForegroundColorAttributeName:PopdeemColor(PDThemeColorPrimaryApp),NSFontAttributeName:PopdeemFont(PDThemeFontPrimary, 10)}];
   
   NSMutableAttributedString *whole = [[NSMutableAttributedString alloc] initWithAttributedString:attWith];
   [whole appendAttributedString:attNames];
@@ -229,7 +236,7 @@
 	if (_viewModel.willInstagram) {
 		[self.twitterForcedTagLabel setHidden:NO];
 		if (_viewModel.reward.instagramForcedTag) {
-			[self.twitterForcedTagLabel setTextColor:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
+			[self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
 		}
 		[self.twitterCharacterCountLabel setHidden:YES];
 	}
@@ -250,8 +257,8 @@
   [self.textView setPlaceholder:_viewModel.textviewPlaceholder];
 
   [_verifyLocationLabel setText:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please come back later, or refresh your location.")];
-  [_verifyLocationLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
-  [_verifyLocationLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 10)];
+  [_verifyLocationLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+  [_verifyLocationLabel setFont:PopdeemFont(PDThemeFontPrimary, 10)];
   
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
@@ -394,7 +401,10 @@
   }
 	[_textView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:_viewModel];
 }
+
+
 - (IBAction)facebookSwitchToggled:(id)sender {
 	[_viewModel toggleFacebook];
 }
@@ -407,12 +417,18 @@
 }
 
 - (void) instagramLoginSuccess {
+	[[NSNotificationCenter defaultCenter] addObserver:_viewModel
+																					 selector:@selector(keyboardWillShow:)
+																							 name:UIKeyboardWillShowNotification object:nil];
 	[_instagramSwitch setOn:YES animated:NO];
 	_viewModel.willInstagram = YES;
 	NSLog(@"Instagram Connected");
 }
 
 - (void) instagramLoginFailure {
+	[[NSNotificationCenter defaultCenter] addObserver:_viewModel
+																					 selector:@selector(keyboardWillShow:)
+																							 name:UIKeyboardWillShowNotification object:nil];
 	NSLog(@"Instagram Not Connected");
 	_viewModel.willInstagram = NO;
 	[_instagramSwitch setOn:NO animated:YES];
@@ -446,5 +462,7 @@
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
 
 @end

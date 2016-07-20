@@ -45,21 +45,21 @@
   [self.loginButton setDelegate:self.viewModel];
   [self renderViewModelState];
   
-  [self.taglineLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 20)];
-  [self.taglineLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+  [self.taglineLabel setFont:PopdeemFont(PDThemeFontBold, 20)];
+  [self.taglineLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   
-  [self.headingLabel setFont:PopdeemFont(@"popdeem.fonts.boldFont", 18)];
-  [self.headingLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryFontColor")];
+  [self.headingLabel setFont:PopdeemFont(PDThemeFontBold, 18)];
+  [self.headingLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   
-  [self.bodylabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];
-  [self.bodylabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+  [self.bodylabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+  [self.bodylabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   
-  [self.termsLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 7)];
-  [self.termsLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
+  [self.termsLabel setFont:PopdeemFont(PDThemeFontPrimary, 7)];
+  [self.termsLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
 	
-	[self.continueButton.titleLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 15)];
-  [self.continueButton setBackgroundColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
-  [self.continueButton setTitleColor:PopdeemColor(@"popdeem.colors.primaryInverseColor") forState:UIControlStateNormal];
+	[self.continueButton.titleLabel setFont:PopdeemFont(PDThemeColorPrimaryFont, 15)];
+  [self.continueButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [self.continueButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
   
   self.imageView.clipsToBounds = YES;
 }

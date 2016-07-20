@@ -439,6 +439,7 @@
 	NSString *accessToken = [[user instagramParams] accessToken];
 	if (accessToken.length == 0) {
 		completion(NO);
+		return;
 	}
 	PDInstagramAPIClient *client = [[PDInstagramAPIClient alloc] init];
 	[client checkAccessToken:^(BOOL valid, NSError *error){

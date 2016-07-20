@@ -94,7 +94,7 @@
 	}
 	if (_reward.twitterForcedTag) {
 		_forcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
-		[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+		[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	}
 }
 
@@ -234,8 +234,12 @@
 			[instagramSwitch setOn:NO animated:NO];
 			dispatch_async(dispatch_get_main_queue(), ^{
 				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
+				if (!instaVC) {
+					return;
+				}
 				_viewController.definesPresentationContext = YES;
 				instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+				instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 				[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
 			});
 		}
@@ -278,7 +282,7 @@
 	if (charsLeft < 1) {
 		[_viewController.twitterCharacterCountLabel setTextColor:[UIColor redColor]];
 	} else {
-		[_viewController.twitterCharacterCountLabel setTextColor:PopdeemColor(@"popdeem.colors.primaryAppColor")];
+		[_viewController.twitterCharacterCountLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	}
 	
 	[_viewController.twitterCharacterCountLabel setText:[NSString stringWithFormat:@"%d",charsLeft]];
@@ -314,13 +318,21 @@
 			[_viewController.claimButtonView setUserInteractionEnabled:YES];
 			return;
 		}
+		[_loadingView hideAnimated:YES];
+		PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
+		_viewController.definesPresentationContext = YES;
+		isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+		isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
+		[_viewController presentViewController:isv animated:YES completion:^(void){}];
+		return;
 		if (_reward.instagramForcedTag && !_hashtagValidated) {
 				UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
 				[hashAV show];
 				[_viewController.claimButtonView setUserInteractionEnabled:YES];
 				return;
 		}
-		[self makeClaim];
+//		[self makeClaim];
 		return;
 	}
 	if (!_locationVerified) {
@@ -418,15 +430,15 @@
 		_tvSurpress = YES;
 		NSRange hashRange = [_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString];
 		NSMutableAttributedString *mutString = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
-		[mutString addAttribute:NSBackgroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryAppColor") range:hashRange];
-		[mutString addAttribute:NSForegroundColorAttributeName value:PopdeemColor(@"popdeem.colors.primaryInverseColor") range:hashRange];
-		[mutString addAttribute:NSFontAttributeName value:PopdeemFont(@"popdeem.fonts.primaryFont", 14) range:NSMakeRange(0, mutString.length)];
+		[mutString addAttribute:NSBackgroundColorAttributeName value:PopdeemColor(PDThemeColorPrimaryApp) range:hashRange];
+		[mutString addAttribute:NSForegroundColorAttributeName value:PopdeemColor(PDThemeColorPrimaryInverse) range:hashRange];
+		[mutString addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, mutString.length)];
 		[_viewController.textView setAttributedText:mutString];
 	} else {
 		NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
 		_tvSurpress = YES;
 		[string setAttributes:@{} range:NSMakeRange(0, string.length)];
-		[string addAttribute:NSFontAttributeName value:PopdeemFont(@"popdeem.fonts.primaryFont", 14) range:NSMakeRange(0, string.length)];
+		[string addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, string.length)];
 		[_viewController.textView setAttributedText:string];
 	}
 }
@@ -470,7 +482,7 @@
 	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet instagram:_willInstagram success:^(){
 		if (_willInstagram) {
 			[_loadingView hideAnimated:YES];
-			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image];
+			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
 			_viewController.definesPresentationContext = YES;
 			isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
 			[_viewController presentViewController:isv animated:YES completion:^(void){}];
@@ -628,10 +640,7 @@
 	
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-	if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
-		
-	}
-	
+	_imageURLString = [info[@"UIImagePickerControllerReferenceURL"] absoluteString];
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
 		[_viewController.textView addSubview:_imageView];
@@ -700,6 +709,7 @@
 - (IBAction)taggedFriendsButtonPressed:(id)sender {
 	
 }
+
 
 #pragma mark - instagram -
 
