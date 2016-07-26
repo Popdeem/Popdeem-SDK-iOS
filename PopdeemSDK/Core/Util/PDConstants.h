@@ -54,7 +54,11 @@ extern NSString *const InstagramLoginFailure;
 extern NSString *const PDUserLinkedToInstagram;
 extern NSString *const InstagramVerifySuccess;
 extern NSString *const InstagramVerifyFailure;
+extern NSString *const InstagramVerifySuccessFromWallet;
+extern NSString *const InstagramVerifyFailureFromWallet;
 extern NSString *const InstagramVerifyNoAttempt;
+extern NSString *const FacebookPublishSuccess;
+extern NSString *const FacebookPublishFailure;
     //
 //End NSNotificationCenter Strings
 //

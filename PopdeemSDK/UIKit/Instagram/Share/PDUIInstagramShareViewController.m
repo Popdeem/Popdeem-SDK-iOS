@@ -286,10 +286,6 @@ CGFloat _cardWidth;
 
 - (void) viewDidAppear:(BOOL)animated {
 	NSLog(@"View did appear");
-	if (_leavingToInstagram) {
-		[self dismiss];
-		[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
-	}
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -298,10 +294,6 @@ CGFloat _cardWidth;
 
 - (void) viewWillDisappear:(BOOL)animated {
 	NSLog(@"View will disappear");
-	if (_leavingToInstagram) {
-		[self dismiss];
-		[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
-	}
 }
 
 - (void)appDidBecomeActive:(NSNotification *)notification {

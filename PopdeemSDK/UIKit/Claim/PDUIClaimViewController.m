@@ -61,6 +61,8 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermSuccess) name:FacebookPublishSuccess object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermFailure) name:FacebookPublishFailure object:nil];
     return self;
   }
   return nil;
@@ -435,13 +437,7 @@
 }
 
 - (void) instagramPostMade {
-	
-	PDUIInstagramVerifyViewController *verifyController = [[PDUIInstagramVerifyViewController alloc] initForParent:self.navigationController forReward:_viewModel.reward];
-	self.definesPresentationContext = YES;
-	verifyController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	[self presentViewController:verifyController animated:YES completion:^(void){
-		
-	}];
+	[self.viewModel makeClaim];
 }
 
 - (void) instagramVerifySuccess {
@@ -457,6 +453,13 @@
 - (void) instagramVerifyNoAttempt {
 	self.homeController.didClaim = NO;
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) facebookWritePermSuccess {
+	[self.viewModel makeClaim];
+}
+
+-(void) facebookWritePermFailure {
 }
 
 - (void) dealloc {

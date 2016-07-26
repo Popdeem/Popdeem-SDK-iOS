@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Shimmer/FBShimmeringView.h>
 
 @interface PDUIBrandPlaceHolderTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 
 @end

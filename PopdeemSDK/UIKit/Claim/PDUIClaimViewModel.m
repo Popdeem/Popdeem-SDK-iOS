@@ -18,6 +18,7 @@
 #import "PDTheme.h"
 #import "PDUIInstagramLoginViewController.h"
 #import "PDUIInstagramShareViewController.h"
+#import "PDUIFBLoginWithWritePermsViewController.h"
 
 @interface PDUIClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
@@ -47,42 +48,48 @@
 	if (!self) return nil;
 	_location = location;
 	_viewController = controller;
-	if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(PDSocialMediaTypeFacebook)]) {
-		//Show only facebook button
-		self.socialMediaTypesAvailable = FacebookOnly;
-		_willFacebook = YES;
-		_mustFacebook = YES;
-//		[_viewController.instagramSwitch setEnabled:NO];
-		[_viewController.facebookSwitch setOn:YES animated:YES];
-	} else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
-		//Show only Twitter button
-		self.socialMediaTypesAvailable = TwitterOnly;
-		_mustTweet = YES;
-		_willTweet = YES;
-		[_viewController.twitterSwitch setOn:YES];
-//		[_viewController.instagramSwitch setEnabled:NO];
-	} else if (mediaTypes.count == 1 && [[mediaTypes objectAtIndex:0]  isEqualToNumber: @(PDSocialMediaTypeInstagram)]) {
-		self.socialMediaTypesAvailable = InstagramOnly;
-		_mustInstagram = YES;
-		[_viewController.facebookSwitch setEnabled:NO];
-		[_viewController.twitterSwitch setEnabled:NO];
-	} else if (mediaTypes.count == 2) {
-		//Show two buttons
-		self.socialMediaTypesAvailable = FacebookAndTwitter;
-		_willFacebook = YES;
-		_mustTweet = NO;
-		_mustFacebook = NO;
-		[_viewController.facebookSwitch setOn:YES];
-		[_viewController.twitterSwitch setOn:NO];
-	} else {
-		//too many or not enough
+	if (mediaTypes.count == 1) {
+		if ([mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
+			self.socialMediaTypesAvailable = FacebookOnly;
+		}
+		if ([mediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
+			self.socialMediaTypesAvailable = TwitterOnly;
+		}
+		if ([mediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
+			self.socialMediaTypesAvailable = InstagramOnly;
+		}
+	}
+	if (mediaTypes.count == 2) {
+		if ([mediaTypes containsObject:@(PDSocialMediaTypeFacebook)] && [mediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
+			self.socialMediaTypesAvailable = FacebookAndTwitter;
+		}
+		if ([mediaTypes containsObject:@(PDSocialMediaTypeTwitter)] && [mediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
+			self.socialMediaTypesAvailable = TwitterAndInstagram;
+		}
+		if ([mediaTypes containsObject:@(PDSocialMediaTypeFacebook)] && [mediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
+			self.socialMediaTypesAvailable = FacebookAndInstagram;
+		}
+	}
+	if (mediaTypes.count == 3) {
+		self.socialMediaTypesAvailable = Any;
 	}
 	
 	[self setupForReward:reward];
+	[self enableSwitches];
 	[[NSNotificationCenter defaultCenter] addObserver:self
 																					 selector:@selector(keyboardWillShow:)
 																							 name:UIKeyboardWillShowNotification object:nil];
 	return self;
+}
+
+- (void) socialMediaTypesSetup {
+	
+}
+
+- (void) enableSwitches {
+	[_viewController.facebookSwitch setEnabled:[_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeFacebook)]];
+	[_viewController.twitterSwitch setEnabled:[_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeTwitter)]];
+	[_viewController.instagramSwitch setEnabled:[_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeInstagram)]];
 }
 
 - (void) setupForReward:(PDReward*)reward {
@@ -93,9 +100,12 @@
 		_textviewPrepopulatedString = _reward.twitterPrefilledMessage;
 	}
 	if (_reward.twitterForcedTag) {
-		_forcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
-		[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
+		_twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
 	}
+	if (_reward.instagramForcedTag) {
+		_instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag];
+	}
+	[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 }
 
 - (NSString*) actionText {
@@ -180,7 +190,14 @@
 	}
 	
 	_willFacebook = _viewController.facebookSwitch.isOn;
-	
+	if ([_viewController.facebookSwitch isOn]) {
+		[_viewController.twitterSwitch setOn:NO animated:YES];
+		_willTweet = NO;
+		[_viewController.instagramSwitch setOn:NO animated:YES];
+		_willInstagram = NO;
+		[_viewController.twitterForcedTagLabel setHidden:YES];
+		[_viewController.twitterCharacterCountLabel setHidden:YES];
+	}
 	if (!_willFacebook) {
 		return;
 	}
@@ -202,6 +219,13 @@
 		return;
 	}
 	
+	if ([_viewController.twitterSwitch isOn]) {
+		[_viewController.facebookSwitch setOn:NO animated:YES];
+		_willFacebook = NO;
+		[_viewController.instagramSwitch setOn:NO animated:YES];
+		_willInstagram = NO;
+	}
+	
 	if (_willTweet) {
 		_willTweet = NO;
 		[_viewController.twitterForcedTagLabel setHidden:YES];
@@ -214,8 +238,8 @@
 	_willTweet = YES;
 	[_viewController.twitterButton setSelected:YES];
 	[_viewController.twitterForcedTagLabel setHidden:NO];
-	if (_forcedTagString) {
-		[_viewController.twitterForcedTagLabel setText:_forcedTagString];
+	if (_twitterForcedTagString) {
+		[_viewController.twitterForcedTagLabel setText:_twitterForcedTagString];
 	}
 	[_viewController.twitterCharacterCountLabel setHidden:NO];
 	[self calculateTwitterCharsLeft];
@@ -223,6 +247,11 @@
 }
 
 - (void) instagramSwitchToggled:(UISwitch*)instagramSwitch {
+	if (self.socialMediaTypesAvailable == FacebookOnly || self.socialMediaTypesAvailable == FacebookAndTwitter || self.socialMediaTypesAvailable == TwitterOnly) {
+		UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.instagram.unavailable.title", @"Instagram Unavailable") message:translationForKey(@"popdeem.claim.reward.instagram.unavailable.message", @"Instagram is not an available option to claim this reward.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
+		[twitterV show];
+		return;
+	}
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
 		[_viewController.twitterForcedTagLabel setHidden:YES];
@@ -244,15 +273,20 @@
 			});
 		}
 	}];
-	
+	_willInstagram = instagramSwitch.isOn;
 	[_viewController.twitterForcedTagLabel setHidden:NO];
+	if ([instagramSwitch isOn]) {
+		[_viewController.facebookSwitch setOn:NO animated:YES];
+		_willFacebook = NO;
+		[_viewController.twitterSwitch setOn:NO animated:YES];
+		_willTweet = NO;
+		[_viewController.twitterCharacterCountLabel setHidden:YES];
+	}
 	if (_reward.instagramForcedTag) {
-		_forcedTagString = _reward.instagramForcedTag;
+		_instagramForcedTagString = _reward.instagramForcedTag;
 		[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag]];
 		[self validateHashTag];
 	}
-	
-	_willInstagram = instagramSwitch.isOn;
 }
 
 - (void) addPhotoAction {
@@ -306,35 +340,6 @@
 #pragma mark - Claiming -
 
 - (void) claimAction {
-	if (_willInstagram) {
-		if (!_image) {
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
-																											message:@"A photo is required for this action. Please add a photo"
-																										 delegate:self
-																						cancelButtonTitle:@"OK"
-																						otherButtonTitles:nil];
-			[alert setTag:1];
-			[alert show];
-			[_viewController.claimButtonView setUserInteractionEnabled:YES];
-			return;
-		}
-		[_loadingView hideAnimated:YES];
-		PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
-		_viewController.definesPresentationContext = YES;
-		isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
-		isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-		[[NSNotificationCenter defaultCenter] removeObserver:self];
-		[_viewController presentViewController:isv animated:YES completion:^(void){}];
-		return;
-		if (_reward.instagramForcedTag && !_hashtagValidated) {
-				UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-				[hashAV show];
-				[_viewController.claimButtonView setUserInteractionEnabled:YES];
-				return;
-		}
-//		[self makeClaim];
-		return;
-	}
 	if (!_locationVerified) {
 		
 	}
@@ -351,52 +356,117 @@
 		return;
 	}
 	
-	if (!_willTweet && !_willFacebook) {
+	if (!_willTweet && !_willFacebook && !_willInstagram) {
 		UIAlertView *noPost = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.networkerror",  @"No Network Selected, you must select at least one social network in order to complete this action.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
 		[noPost show];
 		[_viewController.claimButtonView setUserInteractionEnabled:YES];
 		return;
 	}
 	
-	if (_willTweet) {
-		__weak PDUIModalLoadingView *twView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view titleText:translationForKey(@"popdeem.common.wait", @"Please wait") descriptionText:translationForKey(@"popdeem.claim.twitter.check", @"Checking Credentials")];
-  [twView showAnimated:YES];
-		if (_forcedTagString && !_hashtagValidated) {
-			UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-			[hashAV show];
-			[_viewController.claimButtonView setUserInteractionEnabled:YES];
-			return;
-		}
-		[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
-			[twView hideAnimated:YES];
-			if (!connected) {
-				[self connectTwitter:^(){
-					[self makeClaim];
-					[_viewController.claimButtonView setUserInteractionEnabled:YES];
-				} failure:^(NSError *error) {
-					UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back") otherButtonTitles: nil];
-					[av show];
-				}];
-				[_viewController.claimButtonView setUserInteractionEnabled:YES];
-				return;
-			}
-			if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
-				UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error") message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back") otherButtonTitles: nil];
-				[tooMany setTag:2];
-				[tooMany show];
-				[_viewController.claimButtonView setUserInteractionEnabled:YES];
-				return;
-			}
-			[self makeClaim];
-			[_viewController.claimButtonView setUserInteractionEnabled:YES];
-		}];
-		return;
+	if (_willInstagram) {
+		[self validateInstagramOptionsAndClaim];
 	}
+	if (_willTweet) {
+		[self validateTwitterOptionsAndClaim];
+	}
+	if (_willFacebook) {
+		[self validateFacebookOptionsAndClaim];
+	}
+	
 	if ([_viewController.textView isFirstResponder]) {
 		[_viewController.textView resignFirstResponder];
 	}
 	[_viewController.claimButtonView setUserInteractionEnabled:YES];
+}
+
+- (void) validateFacebookOptionsAndClaim {
+	if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+		[self loginWithReadAndWritePerms];
+		return;
+	}
+	if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+		[self loginWithWritePerms];
+		return;
+	}
 	[self makeClaim];
+}
+
+- (void) validateTwitterOptionsAndClaim {
+	__weak PDUIModalLoadingView *twView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+																																				titleText:translationForKey(@"popdeem.common.wait", @"Please wait")
+																																	descriptionText:translationForKey(@"popdeem.claim.twitter.check", @"Checking Credentials")];
+	[twView showAnimated:YES];
+	if (_twitterForcedTagString && !_hashtagValidated) {
+		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!"
+																										 message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag]
+																										delegate:self
+																					 cancelButtonTitle:@"OK"
+																					 otherButtonTitles: nil];
+		[hashAV show];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		return;
+	}
+	[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
+		[twView hideAnimated:YES];
+		if (!connected) {
+			[self connectTwitter:^(){
+				[self makeClaim];
+				[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			} failure:^(NSError *error) {
+				UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
+																										 message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter")
+																										delegate:self
+																					 cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
+																					 otherButtonTitles: nil];
+				[av show];
+			}];
+			[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			return;
+		}
+		if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
+			UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
+																												message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.")
+																											 delegate:self
+																							cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
+																							otherButtonTitles: nil];
+			[tooMany setTag:2];
+			[tooMany show];
+			[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			return;
+		}
+		[self makeClaim];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+	}];
+	return;
+}
+
+- (void) validateInstagramOptionsAndClaim {
+	if (!_image) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
+																										message:@"A photo is required for this action. Please add a photo"
+																									 delegate:self
+																					cancelButtonTitle:@"OK"
+																					otherButtonTitles:nil];
+		[alert setTag:1];
+		[alert show];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		return;
+	}
+	[_loadingView hideAnimated:YES];
+	PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
+	_viewController.definesPresentationContext = YES;
+	isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[_viewController presentViewController:isv animated:YES completion:^(void){}];
+	return;
+	if (_instagramForcedTagString && !_hashtagValidated) {
+		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		[hashAV show];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		return;
+	}
+	return;
 }
 
 - (void) textViewDidChange:(UITextView *)textView {
@@ -412,7 +482,7 @@
 
 - (void) validateHashTag {
 	_hashtagValidated = NO;
-	if (!_forcedTagString) {
+	if (!_instagramForcedTagString && !_twitterForcedTagString) {
 		_hashtagValidated = YES;
 		return;
 	}
@@ -424,7 +494,7 @@
 	if (_willInstagram) {
 		searchString = _reward.instagramForcedTag;
 	}
-
+	
 	if ([_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString].location != NSNotFound && (_willTweet || _willInstagram)) {
 		_hashtagValidated = YES;
 		_tvSurpress = YES;
@@ -445,28 +515,6 @@
 
 - (void) makeClaim {
 	
-	if (_reward.action == PDRewardActionPhoto && _image == nil) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
-																										message:@"A photo is required for this action. Please add a photo"
-																									 delegate:self
-																					cancelButtonTitle:@"OK"
-																					otherButtonTitles:nil];
-		[alert setTag:1];
-		[alert show];
-		return;
-	}
-	
-	if (!_willInstagram) {
-		if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-			[self loginWithReadAndWritePerms];
-			return;
-		}
-		if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			[self loginWithWritePerms];
-			return;
-		}
-	}
-	
 	PDAPIClient *client = [PDAPIClient sharedInstance];
 	NSString *message = [_viewController.textView text];
 	
@@ -480,15 +528,16 @@
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
 	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet instagram:_willInstagram success:^(){
-		if (_willInstagram) {
-			[_loadingView hideAnimated:YES];
-			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
-			_viewController.definesPresentationContext = YES;
-			isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
-			[_viewController presentViewController:isv animated:YES completion:^(void){}];
-		} else {
-			[self didClaimRewardId:rewardId];
-		}
+		[self didClaimRewardId:rewardId];
+		//		if (_willInstagram) {
+		//			[_loadingView hideAnimated:YES];
+		//			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
+		//			_viewController.definesPresentationContext = YES;
+		//			isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+		//			[_viewController presentViewController:isv animated:YES completion:^(void){}];
+		//		} else {
+		//			[self didClaimRewardId:rewardId];
+		//		}
 	} failure:^(NSError *error){
 		[self PDAPIClient:client didFailWithError:error];
 	}];
@@ -512,16 +561,16 @@
 }
 
 - (void) loginWithWritePerms {
-	FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-	[loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self.viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-		if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			[[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-			[self makeClaim];
-		} else {
-			UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions" message:@"You must grant publish permissions in order to make this action" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-			[noperm show];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:_viewController.navigationController];
+		if (!fbVC) {
+			return;
 		}
-	}];
+		_viewController.definesPresentationContext = YES;
+		fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+		fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		[_viewController presentViewController:fbVC animated:YES completion:^(void){}];
+	});
 }
 
 - (void) didClaimRewardId:(NSInteger)rewardId {

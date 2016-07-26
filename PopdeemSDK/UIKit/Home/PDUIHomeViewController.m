@@ -28,10 +28,13 @@
 #import "PDConstants.h"
 #import "PDUIRewardWithRulesTableViewCell.h"
 #import "PDUIWalletRewardTableViewCell.h"
+#import "PDUIInstagramUnverifiedWalletTableViewCell.h"
+#import "PDUser.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
 #define kWalletTableViewCell @"WalletCell"
+#define kInstaUnverifiedTableViewCell @"kInstaUnverifiedTableViewCell"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -74,11 +77,7 @@
 	[self.model setupView];
 }
 
-- (void)viewDidLoad {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"PopdeemUserLoggedInNotification" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
-	
+- (void) registerNibs {
 	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
 	UINib *pcnib = [UINib nibWithNibName:@"PlaceholderTableViewCell" bundle:podBundle];
 	[[self tableView] registerNib:pcnib forCellReuseIdentifier:kPlaceholderCell];
@@ -88,6 +87,19 @@
 	
 	UINib *walletnib = [UINib nibWithNibName:@"PDUIWalletRewardTableViewCell" bundle:podBundle];
 	[[self tableView] registerNib:walletnib forCellReuseIdentifier:kWalletTableViewCell];
+
+	UINib *instaUnverified = [UINib nibWithNibName:@"PDUIInstagramUnverifiedWalletTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:instaUnverified forCellReuseIdentifier:kInstaUnverifiedTableViewCell];
+	
+}
+
+- (void)viewDidLoad {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:@"PopdeemUserLoggedInNotification" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postVerified) name:InstagramVerifySuccessFromWallet object:nil];
+	
+	[self registerNibs];
 	
   [super viewDidLoad];
   [self.tableView setUserInteractionEnabled:YES];
@@ -298,16 +310,65 @@
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
-//        return [[PDUIWalletTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) reward:[_model.wallet objectAtIndex:indexPath.row] parent:self];
-				PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
 				reward = [_model.wallet objectAtIndex:indexPath.row];
-				[walletCell setupForReward:reward];
-				return walletCell;
+				if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram && reward.instagramVerified == NO) {
+					PDUIInstagramUnverifiedWalletTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kInstaUnverifiedTableViewCell];
+					[walletCell setupForReward:reward];
+					return walletCell;
+				} else {
+					PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
+					[walletCell setupForReward:reward];
+					return walletCell;
+				}
       }
     default:
       break;
   }
   return nil;
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ([cell isKindOfClass:[PDUIInstagramUnverifiedWalletTableViewCell class]]) {
+		[(PDUIInstagramUnverifiedWalletTableViewCell*)cell wake];
+	}
+}
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+	switch (_segmentedControl.selectedSegmentIndex) {
+  case 0:
+			return NO;
+			break;
+		case 1:
+			return NO;
+			break;
+		case 2:
+			return NO;
+			break;
+  default:
+			return NO;
+			break;
+	}
+	return NO;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+	PDReward *r;
+	r = [_model.wallet objectAtIndex:indexPath.row];
+	
+	if (r.instagramVerified == NO) {
+		UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal
+																																			title:translationForKey(@"popdeem.instagram.wallet.verifyButtonTitle", @"Verify")
+																																		handler:^(UITableViewRowAction *rowAction, NSIndexPath *indexPath){
+																																			
+																																		}];
+		action.backgroundColor = PopdeemColor(PDThemeColorPrimaryApp);
+		return @[action];
+	}
+	return @[];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -623,6 +684,10 @@
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self.tableView reloadData];
 	});
+}
+
+- (void) postVerified {
+	[self.model fetchWallet];
 }
 
 @end

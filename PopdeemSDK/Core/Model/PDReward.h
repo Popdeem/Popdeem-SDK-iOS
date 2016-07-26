@@ -28,6 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "PDRewardCustomAvailability.h"
 #import "PDConstants.h"
+#import "PDUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /**
@@ -106,6 +107,8 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) NSInteger twitterMediaLength;
 @property (nonatomic, strong, nullable) NSString *instagramForcedTag;
 @property (nonatomic, strong, nullable) NSString *instagramPrefilledMessage;
+@property (nonatomic) PDSocialMediaType claimedSocialNetwork;
+@property (nonatomic) BOOL instagramVerified;
 @property (nonatomic) BOOL verifyLocation;
 @property (nonatomic) BOOL revoked;
 @property (nonatomic) CGFloat distanceFromUser;

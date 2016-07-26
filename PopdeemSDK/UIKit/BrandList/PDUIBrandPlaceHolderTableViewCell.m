@@ -11,14 +11,17 @@
 @implementation PDUIBrandPlaceHolderTableViewCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+	[super awakeFromNib];
+	FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.contentView.bounds];
+	[self.contentView addSubview:shimmeringView];
+	shimmeringView.shimmering = YES;
+	shimmeringView.contentView = self.placeholderImageView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+	[super setSelected:selected animated:animated];
+	
+	// Configure the view for the selected state
 }
 
 @end

@@ -106,6 +106,16 @@
 #pragma clang diagnostic pop
 }
 
++ (void) presentBrandFlowInNavigationController:(UINavigationController*)navController {
+	id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+	SEL selector = NSSelectorFromString(@"presentBrandFlowInNavigationController:");
+	
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+	[uiKitCore performSelector:selector withObject:navController];
+#pragma clang diagnostic pop
+}
+
 + (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated {
   id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
   SEL selector = NSSelectorFromString(@"pushRewardsToNavigationController:animated");

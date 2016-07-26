@@ -9,7 +9,7 @@
 #import "PDRewardHandler.h"
 #import "PDUIRewardTableViewController.h"
 #import "PDUIHomeViewController.h"
-
+#import "PDUIBrandsListTableViewController.h"
 @interface PopdeemUIKItCore ()
 @property(nonatomic, strong) PDUISocialLoginHandler *socialLoginHandler;
 @property(nonatomic, strong) PDRewardHandler *rewardHandler;
@@ -45,6 +45,10 @@
 
 - (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated {
   [navController pushViewController:[[PDUIRewardTableViewController alloc] init] animated:animated];
+}
+
+- (void) presentBrandFlowInNavigationController:(UINavigationController*)navController {
+	[navController pushViewController:[[PDUIBrandsListTableViewController alloc] init] animated:YES];
 }
 
 

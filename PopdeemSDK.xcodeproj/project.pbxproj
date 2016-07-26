@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */; };
+		391FAE7A1D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 391FAE781D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m */; };
+		391FAE7D1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 391FAE7C1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m */; };
 		3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E3071C6DEA51000120D4 /* PDLocationValidator.m */; };
 		3921E30C1C71D84B000120D4 /* PDUIFeedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E30B1C71D84B000120D4 /* PDUIFeedImageViewController.m */; };
 		3921E3111C71DD68000120D4 /* PDUISingleMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E30F1C71DD68000120D4 /* PDUISingleMessageViewController.m */; };
@@ -79,6 +81,7 @@
 		3965AF471D4110560000EB16 /* PDUIBrandSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965AF451D4110560000EB16 /* PDUIBrandSearchTableViewCell.m */; };
 		3965AF4A1D4116760000EB16 /* PDBrandListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965AF491D4116760000EB16 /* PDBrandListViewModel.m */; };
 		3965AF4E1D411AC00000EB16 /* PDUIBrandPlaceHolderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965AF4C1D411AC00000EB16 /* PDUIBrandPlaceHolderTableViewCell.m */; };
+		3965AF6E1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965AF6C1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m */; };
 		3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */; };
 		396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */; };
 		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
@@ -408,6 +411,15 @@
 
 /* Begin PBXFileReference section */
 		2B86C0A2E81AE5F93AC24B86 /* Pods_TabbedTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabbedTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		391FAE771D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIFBLoginWithWritePermsViewController.h; path = Facebook/Login/PDUIFBLoginWithWritePermsViewController.h; sourceTree = "<group>"; };
+		391FAE781D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIFBLoginWithWritePermsViewController.m; path = Facebook/Login/PDUIFBLoginWithWritePermsViewController.m; sourceTree = "<group>"; };
+		391FAE791D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIFBLoginWithWritePermsViewController.xib; path = Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib; sourceTree = "<group>"; };
+		391FAE7B1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIFBLoginWithWritePermsViewModel.h; path = Facebook/Login/PDUIFBLoginWithWritePermsViewModel.h; sourceTree = "<group>"; };
+		391FAE7C1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIFBLoginWithWritePermsViewModel.m; path = Facebook/Login/PDUIFBLoginWithWritePermsViewModel.m; sourceTree = "<group>"; };
+		391FAE7E1D47672A005AFF72 /* pduikit_facebook_hires.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_facebook_hires.png; path = Resources/pduikit_facebook_hires.png; sourceTree = "<group>"; };
+		391FAE7F1D47672A005AFF72 /* pduikit_facebook_hires@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_facebook_hires@2x.png"; path = "Resources/pduikit_facebook_hires@2x.png"; sourceTree = "<group>"; };
+		391FAE801D47672A005AFF72 /* pduikit_facebook_hires@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_facebook_hires@3x.png"; path = "Resources/pduikit_facebook_hires@3x.png"; sourceTree = "<group>"; };
+		391FAE811D47672A005AFF72 /* pduikit_instagram_hires.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_instagram_hires.png; path = Resources/pduikit_instagram_hires.png; sourceTree = "<group>"; };
 		3921E3061C6DEA51000120D4 /* PDLocationValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationValidator.h; sourceTree = "<group>"; };
 		3921E3071C6DEA51000120D4 /* PDLocationValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLocationValidator.m; sourceTree = "<group>"; };
 		3921E30A1C71D84B000120D4 /* PDUIFeedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIFeedImageViewController.h; path = Feed/PDUIFeedImageViewController.h; sourceTree = "<group>"; };
@@ -563,6 +575,9 @@
 		3965AF4C1D411AC00000EB16 /* PDUIBrandPlaceHolderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIBrandPlaceHolderTableViewCell.m; path = BrandList/PDUIBrandPlaceHolderTableViewCell.m; sourceTree = "<group>"; };
 		3965AF4D1D411AC00000EB16 /* PDUIBrandPlaceHolderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIBrandPlaceHolderTableViewCell.xib; path = BrandList/PDUIBrandPlaceHolderTableViewCell.xib; sourceTree = "<group>"; };
 		3965AF4F1D411BFA0000EB16 /* pduikit_brand_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pduikit_brand_placeholder.png; sourceTree = "<group>"; };
+		3965AF6B1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramUnverifiedWalletTableViewCell.h; path = Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.h; sourceTree = "<group>"; };
+		3965AF6C1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramUnverifiedWalletTableViewCell.m; path = Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.m; sourceTree = "<group>"; };
+		3965AF6D1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIInstagramUnverifiedWalletTableViewCell.xib; path = Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib; sourceTree = "<group>"; };
 		3966F6A61C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMsgCntrTblViewController.h; path = MessageCenter/PDUIMsgCntrTblViewController.h; sourceTree = "<group>"; };
 		3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMsgCntrTblViewController.m; path = MessageCenter/PDUIMsgCntrTblViewController.m; sourceTree = "<group>"; };
 		3966F6A81C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMsgCntrTblViewController.xib; path = MessageCenter/PDUIMsgCntrTblViewController.xib; sourceTree = "<group>"; };
@@ -964,6 +979,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		391FAE741D476124005AFF72 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				391FAE761D47613A005AFF72 /* Login */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		391FAE761D47613A005AFF72 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				391FAE771D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.h */,
+				391FAE781D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m */,
+				391FAE7B1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.h */,
+				391FAE7C1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m */,
+				391FAE791D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		3921E3091C71D825000120D4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1302,6 +1337,9 @@
 				397142301D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.h */,
 				397142311D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m */,
 				397142321D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.xib */,
+				3965AF6B1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.h */,
+				3965AF6C1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m */,
+				3965AF6D1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.xib */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -1539,6 +1577,10 @@
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				391FAE7E1D47672A005AFF72 /* pduikit_facebook_hires.png */,
+				391FAE7F1D47672A005AFF72 /* pduikit_facebook_hires@2x.png */,
+				391FAE801D47672A005AFF72 /* pduikit_facebook_hires@3x.png */,
+				391FAE811D47672A005AFF72 /* pduikit_instagram_hires.png */,
 				3965AF4F1D411BFA0000EB16 /* pduikit_brand_placeholder.png */,
 				392A9D131D36527900F11FDF /* pduikit_placeholder.png */,
 				39602FBC1D2AA54E00AFAF29 /* pduikit_instagramstep2.png */,
@@ -1961,6 +2003,7 @@
 				3965AF381D410EE60000EB16 /* BrandList */,
 				3980A7061D36465800D5F179 /* Placeholder */,
 				396443FC1D13EC6100BB67F9 /* CardView */,
+				391FAE741D476124005AFF72 /* Facebook */,
 				396443F41D12B6A600BB67F9 /* Instagram */,
 				39D3F81F1CB2BDAC00A69575 /* Friend Picker */,
 				3921E3091C71D825000120D4 /* Feed */,
@@ -2786,6 +2829,7 @@
 				394BEFE11D1436400045F5F3 /* OAPlaintextSignatureProvider.m in Sources */,
 				394BEFD91D1436400045F5F3 /* hmac.c in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
+				3965AF6E1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m in Sources */,
 				397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */,
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,
@@ -2803,6 +2847,7 @@
 				394BEFDD1D1436400045F5F3 /* OAConsumer.m in Sources */,
 				396443FB1D13EC5A00BB67F9 /* PDUICardViewController.m in Sources */,
 				394BF06E1D1A8F9C0045F5F3 /* JSONModel.m in Sources */,
+				391FAE7A1D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m in Sources */,
 				398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */,
 				394BF0721D1A8F9C0045F5F3 /* JSONHTTPClient.m in Sources */,
 				39EDADCA1C07333F001102B3 /* PDUIRewardTableViewController.m in Sources */,
@@ -2822,6 +2867,7 @@
 				397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDUIModalLoadingView.m in Sources */,
 				394BEFE01D1436400045F5F3 /* OAMutableURLRequest.m in Sources */,
+				391FAE7D1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m in Sources */,
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDUIHomeViewController.m in Sources */,

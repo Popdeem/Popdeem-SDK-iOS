@@ -14,10 +14,13 @@
 @interface PDUIClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate>
 
 typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
-    FacebookOnly = 0,
-    TwitterOnly,
-		InstagramOnly,
-    FacebookAndTwitter
+	FacebookOnly = 0,
+	TwitterOnly,
+	InstagramOnly,
+	FacebookAndTwitter,
+	FacebookAndInstagram,
+	TwitterAndInstagram,
+	Any	
 };
 
 @property (nonatomic, strong) PDUIClaimViewController *viewController;
@@ -29,7 +32,8 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) NSString *rewardActionsString;
 @property (nonatomic, strong) NSString *textviewPlaceholder;
 @property (nonatomic, strong) NSString *textviewPrepopulatedString;
-@property (nonatomic, strong) NSString *forcedTagString;
+@property (nonatomic, strong) NSString *twitterForcedTagString;
+@property (nonatomic, strong) NSString *instagramForcedTagString;
 @property (nonatomic, strong) NSString *twitterCharCountString;
 
 @property (nonatomic) BOOL mustFacebook;
@@ -52,4 +56,6 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 - (void) calculateTwitterCharsLeft;
 - (void) validateHashTag;
 - (void) instagramSwitchToggled:(UISwitch*)instagramSwitch;
+- (void) didClaimRewardId:(NSInteger)rewardId;
+- (void) makeClaim;
 @end

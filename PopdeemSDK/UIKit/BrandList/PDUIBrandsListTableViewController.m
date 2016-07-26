@@ -10,10 +10,12 @@
 
 #define kBrandCell @"BrandCell"
 #define kSearchCell @"SearchCell"
+#define kPlaceHolderCell @"PlaceholderCell"
 
 @interface PDUIBrandsListTableViewController () {
 	BOOL searchMode;
 	BOOL searchEnabled;
+	BOOL isLoading;
 }
 
 @property (nonatomic, retain) NSMutableArray *tableData;
@@ -28,6 +30,7 @@
 	[super viewDidLoad];
 	searchEnabled = NO;
 	searchMode = NO;
+	isLoading = YES;
 	// Uncomment the following line to preserve selection between presentations.
 	// self.clearsSelectionOnViewWillAppear = NO;
 	
@@ -41,6 +44,11 @@
 	
 	UINib *searchNib = [UINib nibWithNibName:@"PDUISearchTableViewCell" bundle:podBundle];
 	[[self tableView] registerNib:searchNib forCellReuseIdentifier:kSearchCell];
+	
+	UINib *placeholderNib = [UINib nibWithNibName:@"PDUIBrandPlaceHolderTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:placeholderNib forCellReuseIdentifier:kPlaceHolderCell];
+	
+	[self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,20 +56,28 @@
 	// Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table view data
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return [self cellHeight];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 0;
+	return _tableData.count > 0 ? _tableData.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (_tableData.count == 0) {
-		
+		if (isLoading) {
+			return [self.tableView dequeueReusableCellWithIdentifier:kPlaceHolderCell];
+		} else {
+			
+		}
 	}
 	if (searchMode) {
 		
@@ -172,7 +188,7 @@
 }
 
 - (float) cellHeight {
-	float cellHeight = self.view.frame.size.height*0.40;
+	float cellHeight = self.view.frame.size.height*0.30;
 	return cellHeight;
 }
 

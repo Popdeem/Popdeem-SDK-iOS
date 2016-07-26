@@ -42,7 +42,15 @@
 	NSString *rules = reward.rewardRules;
 	NSString *info = [self infoStringForReward:reward];
 	
-	NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
+	NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
+	ps.paragraphSpacing = 2.0;
+	ps.lineSpacing = 0;
+	NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@""
+																																										 attributes:@{}];
+	
+	NSMutableParagraphStyle *innerParagraphStyle = [[NSMutableParagraphStyle alloc] init];
+	innerParagraphStyle.lineSpacing = 0;
+	
 	
 	NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc]
 			initWithString:[NSString stringWithFormat:@"%@ \n",description]
@@ -70,6 +78,7 @@
 			}];
 	
 	[labelAttString appendAttributedString:infoString];
+	[labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
 	[_label setAttributedText:labelAttString];
 }
 

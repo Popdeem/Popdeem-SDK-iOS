@@ -90,9 +90,10 @@
     } else {
       self.unlimitedAvailability = NO;
     }
-    
+		self.claimedSocialNetwork = PDSocialMediaTypeFacebook;
     id tweet_options = params[@"tweet_options"];
     if ([tweet_options isKindOfClass:[NSDictionary class]]) {
+			self.claimedSocialNetwork = PDSocialMediaTypeTwitter;
       NSString *downloadLink = tweet_options[@"download_link"];
       self.downloadLink = (downloadLink.length > 0) ? downloadLink : nil;
       NSString *prefilledMessage = tweet_options[@"prefilled_message"];
@@ -103,10 +104,13 @@
 		
 		id instagram_options = params[@"instagram_option"];
 		if ([instagram_options isKindOfClass:[NSDictionary class]]) {
+			self.claimedSocialNetwork = PDSocialMediaTypeInstagram;
 			NSString *instaForcedTag = instagram_options[@"forced_tag"];
 			NSString *instaPrefilledMessage = instagram_options[@"prefilled_message"];
 			self.instagramForcedTag = instaForcedTag;
 			self.instagramPrefilledMessage = instaPrefilledMessage;
+			NSNumber *instaVerified = params[@"instagram_verified"];
+			self.instagramVerified = [instaVerified boolValue];
 		}
 		
     NSString *mediaLength = params[@"twitter_media_characters"];

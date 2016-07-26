@@ -26,7 +26,8 @@
 }
 
 - (IBAction)testTrigger:(id)sender {
-  [PopdeemSDK logMoment:@"post_payment"];
+//  [PopdeemSDK logMoment:@"post_payment"];
+	[PopdeemSDK presentBrandFlowInNavigationController:self.navigationController];
 }
 
 /*
