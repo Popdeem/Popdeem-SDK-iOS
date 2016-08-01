@@ -236,12 +236,8 @@ CGFloat _cardWidth;
 	UIGraphicsEndImageContext();
 	NSString *fileNameToSave = [NSString stringWithFormat:@"Documents/insta.igo"];
 	NSString  *jpgPath = [NSHomeDirectory() stringByAppendingPathComponent:fileNameToSave];
-	NSLog(@"jpg path %@",jpgPath);
 	NSString *newJpgPath = [NSString stringWithFormat:@"file://%@",jpgPath];
-	NSLog(@"with File path %@",newJpgPath);
-	NSURL *igImageHookFile = [NSURL URLWithString:newJpgPath];
-	NSLog(@"url Path %@",igImageHookFile);
-	
+	NSURL *igImageHookFile = [NSURL URLWithString:newJpgPath];	
 	self.dic.UTI = @"com.instagram.exclusivegram";
 	// self.documentController = [self setupControllerWithURL:igImageHookFile usingDelegate:self];
 	

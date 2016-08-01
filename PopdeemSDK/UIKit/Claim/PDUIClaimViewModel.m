@@ -97,14 +97,21 @@
 	_textviewPlaceholder = translationForKey(@"popdeem.claim.text.placeholder", @"What are you up to?");
 	
 	if (_reward.twitterPrefilledMessage) {
-		_textviewPrepopulatedString = _reward.twitterPrefilledMessage;
+		_twitterPrefilledTextString = _reward.twitterPrefilledMessage;
 	}
+	
 	if (_reward.twitterForcedTag) {
 		_twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
 	}
+	
+	if (_reward.instagramPrefilledMessage) {
+		_instagramPrefilledTextString = _reward.instagramPrefilledMessage;
+	}
+	
 	if (_reward.instagramForcedTag) {
 		_instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag];
 	}
+	
 	[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 }
 
@@ -231,6 +238,14 @@
 		[_viewController.twitterForcedTagLabel setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		[_viewController.twitterButton setSelected:NO];
+//		if ([_viewController.textView.text rangeOfString:_twitterPrefilledTextString].location != NSNotFound) {
+//			NSMutableAttributedString *mstr = [_viewController.textView.attributedText mutableCopy];
+//			[mstr replaceCharactersInRange:[_viewController.textView.text rangeOfString:_twitterPrefilledTextString] withString:@""];
+//			if ([mstr.string rangeOfString:_twitterForcedTagString].location != NSNotFound) {
+//				[mstr replaceCharactersInRange:[mstr.string rangeOfString:_twitterForcedTagString] withString:@""];
+//			}
+//			[_viewController.textView setAttributedText:mstr];
+//		}
 		[self validateHashTag];
 		return;
 	}
@@ -238,8 +253,14 @@
 	_willTweet = YES;
 	[_viewController.twitterButton setSelected:YES];
 	[_viewController.twitterForcedTagLabel setHidden:NO];
+	
 	if (_twitterForcedTagString) {
 		[_viewController.twitterForcedTagLabel setText:_twitterForcedTagString];
+	}
+	if (_twitterPrefilledTextString) {
+		if (_viewController.textView.text.length == 0) {
+			[_viewController.textView setText:_twitterPrefilledTextString];
+		}
 	}
 	[_viewController.twitterCharacterCountLabel setHidden:NO];
 	[self calculateTwitterCharsLeft];
@@ -255,20 +276,29 @@
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
 		[_viewController.twitterForcedTagLabel setHidden:YES];
+//		if ([_viewController.textView.text rangeOfString:_instagramPrefilledTextString].location != NSNotFound) {
+//			NSMutableAttributedString *mstr = [_viewController.textView.attributedText mutableCopy];
+//			[mstr replaceCharactersInRange:[_viewController.textView.text rangeOfString:_instagramPrefilledTextString] withString:@""];
+//			if ([mstr.string rangeOfString:_instagramForcedTagString].location != NSNotFound) {
+//				[mstr replaceCharactersInRange:[mstr.string rangeOfString:_instagramForcedTagString] withString:@""];
+//			}
+//			[_viewController.textView setAttributedText:mstr];
+//		}
+		[self validateHashTag];
 		return;
 	}
 	PDSocialMediaManager *manager = [PDSocialMediaManager manager];
 	[manager isLoggedInWithInstagram:^(BOOL isLoggedIn){
 		if (!isLoggedIn) {
-			[instagramSwitch setOn:NO animated:NO];
 			dispatch_async(dispatch_get_main_queue(), ^{
-				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController];
+				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController delegate:self];
 				if (!instaVC) {
 					return;
 				}
 				_viewController.definesPresentationContext = YES;
 				instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
 				instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+				[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 				[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
 			});
 		}
@@ -281,6 +311,11 @@
 		[_viewController.twitterSwitch setOn:NO animated:YES];
 		_willTweet = NO;
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
+	}
+	if (_instagramPrefilledTextString) {
+		if (_viewController.textView.text.length == 0) {
+			[_viewController.textView setText:_instagramPrefilledTextString];
+		}
 	}
 	if (_reward.instagramForcedTag) {
 		_instagramForcedTagString = _reward.instagramForcedTag;
@@ -571,6 +606,15 @@
 		fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 		[_viewController presentViewController:fbVC animated:YES completion:^(void){}];
 	});
+}
+
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+	PDAPIClient *client = [PDAPIClient sharedInstance];
+	[client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+	} failure:^(NSError* error){
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+	}];
 }
 
 - (void) didClaimRewardId:(NSInteger)rewardId {

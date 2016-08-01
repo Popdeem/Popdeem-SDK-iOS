@@ -283,7 +283,7 @@
       //Feeds
       if (_model.feed.count == 0) {
         if (!_model.feedLoading) {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) text:translationForKey(@"popdeem.home.infoCell.noFeed", @"There is nothing in the Feed right now. Please check back later.")];
+          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.noFeed", @"There is nothing in the Feed right now. Please check back later.")];
         } else {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
@@ -384,7 +384,7 @@
     case 1:
       //Feed
       if (_model.feed.count == 0) {
-        return 75;
+        return 85;
       }
       if ([(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
         return 175;
@@ -455,8 +455,6 @@
           }];
           return;
         }
-        _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Loading" descriptionText:@"We are preparing your reward"];
-        [_loadingView showAnimated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
           [self processClaimForIndexPath:indexPath];
         });
@@ -562,7 +560,6 @@
   if (reward.action == PDRewardActionSocialLogin) {
     return;
   } else if (reward.action == PDRewardActionNone) {
-		[_loadingView hideAnimated:YES];
 		_locationValidator = [[PDLocationValidator alloc] init];
 		[_locationValidator validateLocationForReward:reward completion:^(BOOL validated, PDLocation *closestLocation){
 			if (validated) {

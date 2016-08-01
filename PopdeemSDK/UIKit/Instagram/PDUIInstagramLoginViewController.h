@@ -13,12 +13,15 @@
 #import "NSURL+OAuthAdditions.h"
 #import "PDUIInstagramLoginViewModel.h"
 
+@class PDUIClaimViewModel;
+
 @interface PDUIInstagramLoginViewController : UIViewController<UIWebViewDelegate> {
 	NSMutableData *receivedData;
 	BOOL connected;
 }
 @property (nonatomic, retain) PDUIInstagramLoginViewModel *viewModel;
 @property (nonatomic, assign) UIViewController *parent;
+@property (nonatomic, assign) PDUIClaimViewModel *delegate;
 @property (nonatomic, retain) UIView *backingView;
 @property (nonatomic, retain) UIView *cardView;
 @property (nonatomic, retain) UILabel *label;
@@ -28,6 +31,7 @@
 @property (nonatomic, retain) PDUIInstagramWebViewController *webViewController;
 @property (nonatomic, retain) IBOutlet UIWebView *webview;;
 
+- (instancetype) initForParent:(UIViewController*)parent delegate:(PDUIClaimViewModel*)delegate;
 - (instancetype) initForParent:(UIViewController*)parent;
 - (instancetype) initFromNib;
 

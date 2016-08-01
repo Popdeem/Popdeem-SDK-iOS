@@ -21,6 +21,7 @@
 
 - (id) initFromApi:(NSDictionary*)params {
   if (self = [super init]) {
+		
     self.identifier = [params[@"id"] integerValue];
     
     NSString *rewardType = params[@"reward_type"];

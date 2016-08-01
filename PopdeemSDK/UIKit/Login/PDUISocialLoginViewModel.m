@@ -87,23 +87,23 @@
       });
       return;
     }
-    
-    if (_viewController.shouldAskLocation) {
-      [self fetchLocationCompletion:^(NSError *error){
-//        if (error) {
-//          NSLog(@"Something went wrong: %@",error);
-//          [[PDSocialMediaManager manager] logoutFacebook];
-//          dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.loadingView hideAnimated:YES];
-//          });
-//          return;
-//        }
-				
-        [self renderSuccess];
-      }];
-    } else {
-      [self renderSuccess];
-    }
+		[self.viewController dismissViewControllerAnimated:YES completion:^{}];
+//    if (_viewController.shouldAskLocation) {
+//      [self fetchLocationCompletion:^(NSError *error){
+////        if (error) {
+////          NSLog(@"Something went wrong: %@",error);
+////          [[PDSocialMediaManager manager] logoutFacebook];
+////          dispatch_async(dispatch_get_main_queue(), ^{
+////            [self.loadingView hideAnimated:YES];
+////          });
+////          return;
+////        }
+//				
+//        [self renderSuccess];
+//      }];
+//    } else {
+//      [self renderSuccess];
+//    }
   }];
 }
 

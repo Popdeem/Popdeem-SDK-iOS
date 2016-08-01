@@ -99,7 +99,7 @@
 		self.locationVerificationViewHeightConstraint.constant = 0;
 		[self.locationVerificationView setHidden:YES];
 	}];
-	return;
+//	
   if (_reward.verifyLocation == NO) {
     _viewModel.locationVerified = YES;
     [_locationFailedView setHidden:YES];
@@ -310,19 +310,19 @@
   _textViewBordersLayer.frame = CGRectMake(-1, 0, _textView.frame.size.width+2, 0.5);
   [_textView.layer addSublayer:_textViewBordersLayer];
 	
-  _facebookButtonViewBordersLayer = [CALayer layer];
-  _facebookButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
-  _facebookButtonViewBordersLayer.borderWidth = 0.5;
-  _facebookButtonViewBordersLayer.frame = CGRectMake(-1, 0, _facebookButton.frame.size.width+1, _facebookButton.frame.size.height);
-  [_facebookButton.layer addSublayer:_facebookButtonViewBordersLayer];
-  _facebookButton.clipsToBounds = YES;
-  
-  _twitterButtonViewBordersLayer = [CALayer layer];
-  _twitterButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
-  _twitterButtonViewBordersLayer.borderWidth = 0.5;
-  _twitterButtonViewBordersLayer.frame = CGRectMake(0, 0, _twitterButton.frame.size.width+1, _twitterButton.frame.size.height);
-  [_twitterButton.layer addSublayer:_twitterButtonViewBordersLayer];
-  _twitterButton.clipsToBounds = YES;
+//  _facebookButtonViewBordersLayer = [CALayer layer];
+//  _facebookButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
+//  _facebookButtonViewBordersLayer.borderWidth = 0.5;
+//  _facebookButtonViewBordersLayer.frame = CGRectMake(-1, 0, _facebookButton.frame.size.width+1, _facebookButton.frame.size.height);
+//  [_facebookButton.layer addSublayer:_facebookButtonViewBordersLayer];
+//  _facebookButton.clipsToBounds = YES;
+//  
+//  _twitterButtonViewBordersLayer = [CALayer layer];
+//  _twitterButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
+//  _twitterButtonViewBordersLayer.borderWidth = 0.5;
+//  _twitterButtonViewBordersLayer.frame = CGRectMake(0, 0, _twitterButton.frame.size.width+1, _twitterButton.frame.size.height);
+//  [_twitterButton.layer addSublayer:_twitterButtonViewBordersLayer];
+//  _twitterButton.clipsToBounds = YES;
 }
 
 - (IBAction)cameraButtonTapped:(id)sender {
@@ -434,6 +434,12 @@
 	NSLog(@"Instagram Not Connected");
 	_viewModel.willInstagram = NO;
 	[_instagramSwitch setOn:NO animated:YES];
+	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+																							 message:@"There was a problem connecting your Instagram Account. Please try again later."
+																							delegate:self
+																		 cancelButtonTitle:@"OK"
+																		 otherButtonTitles:nil];
+	[av show];
 }
 
 - (void) instagramPostMade {

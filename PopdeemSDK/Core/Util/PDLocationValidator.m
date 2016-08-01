@@ -55,7 +55,20 @@
   _locationAcquired = NO;
   
   _timeStart = CFAbsoluteTimeGetCurrent();
-  
+	
+	if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+		if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+			[[PDGeolocationManager sharedInstance] requestWhenInUseAuthorization];
+		}
+	} else if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
+		[self redirectToSettings];
+		return;
+		dispatch_async(dispatch_get_main_queue(), ^{
+//			[self checkLocation];
+		});
+	}
+	
   [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
 }
 

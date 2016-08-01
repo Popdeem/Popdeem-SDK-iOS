@@ -12,6 +12,7 @@
 #import "InstagramResponseModel.h"
 #import "PDConstants.h"
 #import "PDAPIClient.h"
+#import "PDUIClaimViewModel.h"
 
 
 @interface PDUIInstagramLoginViewController ()
@@ -25,11 +26,12 @@ CGFloat _cardX,_cardY;
 
 @implementation PDUIInstagramLoginViewController
 
-- (instancetype) initForParent:(UIViewController*)parent {
+- (instancetype) initForParent:(UIViewController*)parent delegate:(PDUIClaimViewModel*)delegate {
 	connected = NO;
 	UIImage *logoImage = PopdeemImage(@"pduikit_instagram_hires");
 	if (self = [super init]) {
 		_parent = parent;
+		_delegate = delegate;
 		self.viewModel = [[PDUIInstagramLoginViewModel alloc] initForParent:self];
 		return self;
 	}
@@ -56,12 +58,6 @@ CGFloat _cardX,_cardY;
 	CGFloat cardCenterY = cardHeight/2;
 	CGFloat imageWidth = cardWidth * 0.40;
 	
-	self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cardCenterX-(imageWidth/2), cardCenterY-(imageWidth/2), imageWidth, imageWidth)];
-	[self.imageView setImage:_viewModel.logoImage];
-	_imageView.layer.cornerRadius = 2.0;
-	_imageView.layer.masksToBounds = YES;
-	[_cardView addSubview:_imageView];
-	
 	
 	CGFloat labelPadding = cardWidth*0.10;
 	
@@ -72,10 +68,20 @@ CGFloat _cardX,_cardY;
 	[self.label setText:_viewModel.labelText];
 	[self.label setTextAlignment:NSTextAlignmentCenter];
 	CGSize labelSize = [_label sizeThatFits:_label.bounds.size];
-	[self.label setFrame:CGRectMake(_label.frame.origin.x, cardCenterY-45-labelSize.height-(imageWidth/2) , _label.frame.size.width, labelSize.height)];
+	[self.label setFrame:CGRectMake(_label.frame.origin.x, labelPadding , _label.frame.size.width, labelSize.height)];
 	[_cardView addSubview:_label];
 	
-	CGRect buttonFrame = CGRectMake(10, cardCenterY+(imageWidth/2)+50, cardWidth-20, 40);
+	currentY += labelPadding + labelSize.height + 40;
+	
+	self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cardCenterX-(imageWidth/2), currentY, imageWidth, imageWidth)];
+	[self.imageView setImage:_viewModel.logoImage];
+	_imageView.layer.cornerRadius = 2.0;
+	_imageView.layer.masksToBounds = YES;
+	[_cardView addSubview:_imageView];
+	
+	currentY += imageWidth + 40;
+	
+	CGRect buttonFrame = CGRectMake(10, currentY, cardWidth-20, 40);
 	
 	self.actionButton = [[UIButton alloc] initWithFrame:buttonFrame];
 	[_actionButton setBackgroundColor:_viewModel.buttonColor];
@@ -86,11 +92,13 @@ CGFloat _cardX,_cardY;
 	[_actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[_cardView addSubview:_actionButton];
 	
+	currentY += buttonFrame.size.height + labelPadding;
+	
 	_cardX = cardX;
 	_cardY = cardY;
 	CGFloat totalCardHeight = imageWidth + 40 + 40 + labelSize.height + 40 + 65;
-//	[_cardView setFrame:CGRectMake(cardX, _parent.view.frame.size.height, cardWidth, totalCardHeight)];
-	[_cardView setFrame:CGRectMake(_cardX, _cardY, _cardView.frame.size.width, _cardView.frame.size.height)];
+	CGFloat viewCenterY = self.view.frame.size.height/2;
+	[_cardView setFrame:CGRectMake(_cardX, viewCenterY-(currentY/2), _cardView.frame.size.width, currentY)];
 	[self.view setNeedsDisplay];
 }
 
@@ -185,8 +193,8 @@ CGFloat _cardX,_cardY;
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
 		[_webViewController.loadingView hideAnimated:YES];
 		// Extract oauth_verifier from URL query
-		_webViewController.loadingView = [[PDUIModalLoadingView alloc] initForView:_webViewController.view titleText:@"Please Wait" descriptionText:@"We are connecting your Instagram Account"];
-		[_webViewController.loadingView showAnimated:YES];
+//		_webViewController.loadingView = [[PDUIModalLoadingView alloc] initForView:_webViewController.view titleText:@"Please Wait" descriptionText:@"We are connecting your Instagram Account"];
+//		[_webViewController.loadingView showAnimated:YES];
 		NSString* verifier = nil;
 		NSArray* urlParams = [[[request URL] query] componentsSeparatedByString:@"&"];
 		for (NSString* param in urlParams) {
@@ -241,21 +249,14 @@ CGFloat _cardX,_cardY;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *response = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
 	InstagramResponseModel *instagramModel = [[InstagramResponseModel alloc] initWithJSON:response];
-#pragma TODO Connect Social Account
-	PDAPIClient *client = [PDAPIClient sharedInstance];
-	[client connectInstagramAccount:instagramModel.identifier accessToken:instagramModel.accessToken screenName:instagramModel.userName success:^(void){
-		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
-		[_webViewController.loadingView hideAnimated:YES];
-		connected = YES;
-		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
-		[self dismiss];
-	} failure:^(NSError* error){
-		[_webViewController dismissViewControllerAnimated:NO completion:^(void){}];
-		[_webViewController.loadingView hideAnimated:YES];
-		connected = NO;
-		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
-		[self dismiss];
-	}];
+	[self connectWithModel:instagramModel];
+	[self.cardView setHidden:YES];
+	[_webViewController dismissViewControllerAnimated:NO completion:nil];
+	[self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void) connectWithModel:(InstagramResponseModel*)instagramModel {
+	[_delegate connectInstagramAccount:instagramModel.identifier accessToken:instagramModel.accessToken userName:instagramModel.userName];
 }
 
 - (NSString *)URLStringWithoutQuery:(NSURL*)url {

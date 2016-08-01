@@ -11,7 +11,7 @@
 #import "PDUser.h"
 #import "PDUser+Facebook.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
+#import "PDTheme.h"
 @interface PDUIFriendPickerViewController () {
   
   BOOL searchMode;
@@ -301,9 +301,9 @@
   
   UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 20, 20)];
   if (friend.selected) {
-    [imageView setImage:[UIImage imageNamed:@"pduikit_selectedCheck"]];
+    [imageView setImage:PopdeemImage(@"pduikit_selectedCheck")];
   } else {
-    [imageView setImage:[UIImage imageNamed:@"pduikit_deselectedCheck"]];
+    [imageView setImage:PopdeemImage(@"pduikit_deselectedCheck")];
   }
   
   UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.view.frame.size.width-55, 50)];

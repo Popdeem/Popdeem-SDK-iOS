@@ -35,6 +35,8 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic, strong) NSString *twitterForcedTagString;
 @property (nonatomic, strong) NSString *instagramForcedTagString;
 @property (nonatomic, strong) NSString *twitterCharCountString;
+@property (nonatomic, strong) NSString *twitterPrefilledTextString;
+@property (nonatomic, strong) NSString *instagramPrefilledTextString;
 
 @property (nonatomic) BOOL mustFacebook;
 @property (nonatomic) BOOL willFacebook;
@@ -58,4 +60,5 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 - (void) instagramSwitchToggled:(UISwitch*)instagramSwitch;
 - (void) didClaimRewardId:(NSInteger)rewardId;
 - (void) makeClaim;
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName;
 @end
