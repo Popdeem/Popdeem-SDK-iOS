@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "PDUser.h"
 #import "PDAPIService.h"
-#import "OAuthConsumer.h"
 
 @interface PDUserAPIService : PDAPIService
 

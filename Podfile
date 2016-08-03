@@ -5,7 +5,14 @@ platform :ios, '8.0'
 link_with 'PopdeemSDK', 'PopdeemSDKTests', 'TabbedTest'
 
 target 'PopdeemSDK' do
-
+	pod 'STTwitter'
+	pod 'FBSDKLoginKit'
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKShareKit'
+	pod 'Bolts'
+	pod 'Shimmer'
+	pod 'Bolts'
+	pod 'JSONModel'
 end
 
 target 'PopdeemSDKCore' do
@@ -42,6 +49,7 @@ target 'PopdeemSDKTests' do
 	pod 'Expecta', '~> 1.0.0'
 	pod 'Nocilla'
 	pod 'OCMock'
+	pod 'Shimmer'
 end
 
 
