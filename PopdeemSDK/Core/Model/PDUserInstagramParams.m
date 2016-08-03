@@ -20,10 +20,9 @@
 }
 
 - (id) initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err {
-	if ([super initWithDictionary:dict error:&err]) {
+	if ([super initWithDictionary:dict error:err]) {
 		return self;
 	}
-	NSLog(@"JSONModel Error on Instagram Params: %@",err);
 	return nil;
 }
 

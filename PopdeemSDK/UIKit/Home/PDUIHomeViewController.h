@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PDUISegmentedControl.h"
-#import "PDRewardHomeViewModel.h"
 #import "PDUIRewardTableViewController.h"
 #import "PDUIMsgCntrTblViewController.h"
 #import "PDLocation.h"

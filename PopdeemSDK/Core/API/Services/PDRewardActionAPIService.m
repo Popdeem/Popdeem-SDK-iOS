@@ -89,8 +89,6 @@
     }
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     NSInteger responseStatusCode = [httpResponse statusCode];
-    NSError *jsonError;
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
     
     if (responseStatusCode < 400) {
       [PDRewardStore deleteReward:rewardId];
@@ -133,8 +131,7 @@
     }
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     NSInteger responseStatusCode = [httpResponse statusCode];
-    NSError *jsonError;
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+		
     if (responseStatusCode < 400) {
       [PDWallet remove:rewardId];
       [session invalidateAndCancel];

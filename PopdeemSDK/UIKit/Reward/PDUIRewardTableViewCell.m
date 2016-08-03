@@ -37,7 +37,7 @@
     _logoImageView.clipsToBounds = YES;
     [self addSubview:_logoImageView];
     
-    float centerLineY = frame.size.height/2;
+//    float centerLineY = frame.size.height/2;
     float labelX = imageSize + 2*leftIndent;
     float labelWidth = frame.size.width - labelX - indent;
     
@@ -81,7 +81,7 @@
       
       rulesLabelsize = rulesLabelRect.size;
       padding = 0;
-      float rulesPadding = 0;
+//      float rulesPadding = 0;
       [_rulesLabel sizeToFit];
       [_rulesLabel setFrame:CGRectMake(labelX, currentY, labelWidth, rulesLabelsize.height)];
       [_rulesLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];

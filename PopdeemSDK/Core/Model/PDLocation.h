@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PDCommon.h"
-#import "JSONModel.h"
+#import <JSONModel/JSONModel.h>
 NS_ASSUME_NONNULL_BEGIN
 /**
  * @abstract A Location is used to represent a physical location in which a reward can be claimed. You should use this information to both display where the reward will be available, and to validate that the user is at the correct location for claiming.

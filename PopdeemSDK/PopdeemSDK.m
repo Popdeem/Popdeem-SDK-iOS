@@ -71,7 +71,7 @@
   
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-  [uiKitCore performSelector:selector withObject:[NSNumber numberWithInt:noOfPrompts]];
+  [uiKitCore performSelector:selector withObject:[NSNumber numberWithInteger:noOfPrompts]];
 #pragma clang diagnostic pop
 }
 
@@ -237,7 +237,7 @@
                      url:(NSURL *)url
        sourceApplication:(NSString *)sourceApplication
               annotation:(id)annotation {
-  PDReferral *r = [[PDReferral alloc] initWithUrl:url appRef:application];
+  PDReferral *r = [[PDReferral alloc] initWithUrl:url appRef:sourceApplication];
   [PDReferral logReferral:r];
   return YES;
 }

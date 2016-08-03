@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1645</string>
+	<string>1648</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -78,6 +78,8 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>"We use your location to deliver local rewards"</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>"We must access your photos"</string>
 	<key>TwitterAppConsumerKey</key>
 	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
 	<key>TwitterAppConsumerSecret</key>

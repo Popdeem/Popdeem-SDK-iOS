@@ -60,7 +60,6 @@
 - (void) renderView;
 - (void) keyboardUp;
 - (void) keyboardDown;
-- (void) setUpWithMediaTypes:(NSArray*)mediaTypes reward:(PDReward*)reward;
 - (void) setupWithReward:(PDReward*)reward;
 
 @end

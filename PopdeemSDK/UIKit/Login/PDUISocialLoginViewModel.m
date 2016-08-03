@@ -57,8 +57,7 @@
     [av show];
     return;
   }
-  
-  NSUserDefaults *dict = [NSUserDefaults standardUserDefaults];
+
   [self proceedWithLoggedInUser];
 }
 
@@ -138,9 +137,9 @@
     NSError *locationError = [NSError errorWithDomain:@"Popdeem Location Error" code:27000 userInfo:@{@"User did not allow location":NSLocalizedDescriptionKey}];
     self.locationBlock(locationError);
     return;
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [self checkLocation];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//      [self checkLocation];
+//    });
   }
   dispatch_async(dispatch_get_main_queue(), ^{
     [self checkLocation];

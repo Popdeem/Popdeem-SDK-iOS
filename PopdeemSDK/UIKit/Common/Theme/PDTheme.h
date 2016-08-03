@@ -31,7 +31,6 @@ fontForKey(key,size)
 - (UIImage*)imageForKey:(NSString*)key;
 - (UIColor*)colorForKey:(NSString*)key;
 - (NSString*)fontNameForKey:(NSString*)key;
-- (UIFont*) fontForKey:(NSString*)key size:(CGFloat)size;
 - (BOOL) hasValueForKey:(NSString*)key;
 
 extern UIFont *fontForKey(NSString *key, CGFloat size);

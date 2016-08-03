@@ -152,7 +152,7 @@
   
   NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
   [gregorian setTimeZone:[NSTimeZone localTimeZone]];
-  NSDateComponents *nowComps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+  NSDateComponents *nowComps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
   int weekday = (int)[nowComps weekday];
   
   switch (weekday) {

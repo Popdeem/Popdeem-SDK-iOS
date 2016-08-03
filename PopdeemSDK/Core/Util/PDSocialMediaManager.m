@@ -248,7 +248,7 @@
   
   [_twitterAPI postReverseOAuthTokenRequest:^(NSString *authenticationHeader) {
     
-    STTwitterAPI *twitterAPIOS = [STTwitterAPI twitterAPIOSWithAccount:account];
+    STTwitterAPI *twitterAPIOS = [STTwitterAPI twitterAPIOSWithAccount:account delegate:nil];
     
     [twitterAPIOS verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID){
       [twitterAPIOS postReverseAuthAccessTokenWithAuthenticationHeader:authenticationHeader

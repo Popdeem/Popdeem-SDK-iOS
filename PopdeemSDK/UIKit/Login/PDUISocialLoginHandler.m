@@ -65,7 +65,7 @@ static NSString *const PDUseCountKey = @"PDUseCount";
   PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
   [topController presentViewController:vc animated:YES completion:^{}];
   [self setUsesCount:self.usesCount+1];
-  NSLog(@"Login Count: %i",self.usesCount);
+  NSLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
 }
 
 - (NSUInteger)usesCount {

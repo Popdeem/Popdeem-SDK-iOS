@@ -12,7 +12,7 @@
 #import "PDTheme.h"
 
 @interface PDUIRedeemViewController () {
-  int secondsLeft;
+  NSUInteger secondsLeft;
   NSTimer *timer;
   
   UIAlertView *startAlertView;
@@ -52,13 +52,13 @@
   
   [_brandLabel setText:@""];
   
-  NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-  NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                      fromDate:[NSDate date]
-                                                        toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
-                                                       options:0];
-  
-  NSInteger days = [components day];
+//  NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+////  NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+//                                                      fromDate:[NSDate date]
+//                                                        toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
+//                                                       options:0];
+	
+//  NSInteger days = [components day];
   switch (_reward.type) {
     case PDRewardTypeSweepstake:
       break;

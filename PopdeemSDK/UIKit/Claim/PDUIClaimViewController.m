@@ -69,7 +69,6 @@
 }
 
 - (id) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location {
-  CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
   if (self = [self initFromNib]) {
     _location = location;
     _mediaTypes = mediaTypes;
@@ -419,20 +418,13 @@
 }
 
 - (void) instagramLoginSuccess {
-	[[NSNotificationCenter defaultCenter] addObserver:_viewModel
-																					 selector:@selector(keyboardWillShow:)
-																							 name:UIKeyboardWillShowNotification object:nil];
+	[_viewModel instagramLoginSuccess];
 	[_instagramSwitch setOn:YES animated:NO];
-	_viewModel.willInstagram = YES;
 	NSLog(@"Instagram Connected");
 }
 
 - (void) instagramLoginFailure {
-	[[NSNotificationCenter defaultCenter] addObserver:_viewModel
-																					 selector:@selector(keyboardWillShow:)
-																							 name:UIKeyboardWillShowNotification object:nil];
-	NSLog(@"Instagram Not Connected");
-	_viewModel.willInstagram = NO;
+	[_viewModel instagramLoginFailure];
 	[_instagramSwitch setOn:NO animated:YES];
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
 																							 message:@"There was a problem connecting your Instagram Account. Please try again later."

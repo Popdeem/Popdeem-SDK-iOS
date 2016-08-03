@@ -23,7 +23,6 @@
 
 - (instancetype) initForParent:(UIViewController*)parent loginType:(PDFacebookLoginType)loginType {
 	connected = NO;
-	UIImage *logoImage = PopdeemImage(@"pduikit_facebook_hires");
 	if (self = [super init]) {
 		_parent = parent;
 		self.viewModel = [[PDUIFBLoginWithWritePermsViewModel alloc] initForParent:self loginType:loginType];
@@ -66,7 +65,6 @@
 	CGFloat cardWidth = _parent.view.frame.size.width * 0.8;
 	CGFloat cardHeight = _parent.view.frame.size.height * 0.80;
 	CGFloat cardX = _parent.view.frame.size.width * 0.1;
-	CGFloat cardY = _parent.view.frame.size.height * 0.25;
 	CGRect cardRect = CGRectMake(cardX, _parent.view.frame.size.height, cardWidth, cardHeight);
 	
 	_cardView.frame = cardRect;
@@ -75,7 +73,6 @@
 	_cardView.layer.masksToBounds = YES;
 	
 	CGFloat cardCenterX = cardWidth/2;
-	CGFloat cardCenterY = cardHeight/2;
 	CGFloat imageWidth = cardWidth * 0.35;
 	
 	CGFloat labelPadding = cardWidth*0.10;

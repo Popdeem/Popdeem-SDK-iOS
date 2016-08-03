@@ -26,7 +26,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JSONModel.h"
+#import <JSONModel/JSONModel.h>
 
 @interface PDScores : JSONModel
 

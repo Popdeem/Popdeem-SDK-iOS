@@ -34,8 +34,6 @@
 		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
 		NSInteger responseStatusCode = [httpResponse statusCode];
 		BOOL ok = (responseStatusCode == 200);
-		NSError *jsonError;
-		NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
 		completion(ok, error);
 	}];
 }

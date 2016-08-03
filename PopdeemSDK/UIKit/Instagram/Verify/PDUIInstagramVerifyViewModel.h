@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class PDUIInstagramVerifyViewController;
+
 typedef NS_ENUM(NSInteger, PDInstagramVerifyViewState) {
 	PDInstagramVerifyViewStateMustVerify,
 	PDInstagramVerifyViewStateVerifySuccess,
@@ -35,7 +37,7 @@ typedef NS_ENUM(NSInteger, PDInstagramVerifyViewState) {
 
 @property (nonatomic) PDInstagramVerifyViewState state;
 
-- (instancetype) initForViewController:(UIViewController*)viewController;
+- (instancetype) initForViewController:(PDUIInstagramVerifyViewController*)viewController;
 - (void) setup;
 - (void) setViewModelState:(PDInstagramVerifyViewState)state;
 @end

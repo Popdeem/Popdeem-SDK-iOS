@@ -69,7 +69,7 @@
 	
 	CGFloat headerHeight = cardHeight * 0.15;
 	CGFloat usableHeight = cardHeight - (2 * headerHeight);
-	CGFloat messageHeight = 60;
+//	CGFloat messageHeight = 60;
 	CGFloat padding = 5;
 	_headerView.frame = CGRectMake(0, 0, cardWidth, headerHeight);
 	[_headerView setBackgroundColor:_viewModel.headerColor];
@@ -92,7 +92,7 @@
 	[_instructionsLabel sizeToFit];
 	
 	currentY += _instructionsLabel.frame.size.height + padding;
-	CGFloat buttonWidth = cardWidth;
+//	CGFloat buttonWidth = cardWidth;
 	
 	_actionButton.frame = CGRectMake(0, currentY, cardWidth, headerHeight);
 	[_actionButton setBackgroundColor:_viewModel.buttonColor];

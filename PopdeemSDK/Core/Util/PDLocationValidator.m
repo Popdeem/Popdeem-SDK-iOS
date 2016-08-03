@@ -64,9 +64,9 @@
 		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
 		[self redirectToSettings];
 		return;
-		dispatch_async(dispatch_get_main_queue(), ^{
-//			[self checkLocation];
-		});
+//		dispatch_async(dispatch_get_main_queue(), ^{
+////			[self checkLocation];
+//		});
 	}
 	
   [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];

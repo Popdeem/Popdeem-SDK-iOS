@@ -178,11 +178,11 @@
       }
       if (jsonObject[@"user"]) {
         PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
-      }
-      [session invalidateAndCancel];
-      dispatch_async(dispatch_get_main_queue(), ^{
-        completion(user, nil);
-      });
+				[session invalidateAndCancel];
+				dispatch_async(dispatch_get_main_queue(), ^{
+					completion(user, nil);
+				});
+			}
     } else {
       dispatch_async(dispatch_get_main_queue(), ^{
         completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);

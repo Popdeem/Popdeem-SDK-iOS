@@ -272,7 +272,7 @@ CGFloat _cardWidth;
 - (NSParagraphStyle*) createParagraphAttribute {
 	NSMutableParagraphStyle *paragraphStyle;
 	paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-	[paragraphStyle setTabStops:@[[[NSTextTab alloc] initWithTextAlignment:NSTextAlignmentLeft location:15 options:nil]]];
+	[paragraphStyle setTabStops:@[[[NSTextTab alloc] initWithTextAlignment:NSTextAlignmentLeft location:15 options:@{}]]];
 	[paragraphStyle setDefaultTabInterval:15];
 	[paragraphStyle setFirstLineHeadIndent:0];
 	[paragraphStyle setHeadIndent:15];

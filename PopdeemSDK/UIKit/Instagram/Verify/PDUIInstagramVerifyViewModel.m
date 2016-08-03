@@ -18,7 +18,7 @@
 
 @implementation PDUIInstagramVerifyViewModel
 
-- (instancetype) initForViewController:(UIViewController*)viewController {
+- (instancetype) initForViewController:(PDUIInstagramVerifyViewController*)viewController {
 	if (self = [super init]){
 		_viewController = viewController;
 		return self;

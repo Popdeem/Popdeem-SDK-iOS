@@ -43,7 +43,6 @@
 - (void) fetchRewards;
 - (void) fetchWallet;
 - (void) fetchFeed;
-- (void) viewWillLayoutSubviews;
 - (void) setupView;
 - (void) claimNoAction:(PDReward*)reward closestLocation:(PDLocation*)loc;
 

@@ -28,7 +28,7 @@
 	
 	if (self = [super initWithFrame:frame]) {
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
-		float centerline = frame.size.height/2;
+//		float centerline = frame.size.height/2;
 		float buttonheight = frame.size.height-20;
 		float buttonWidth = frame.size.width/3;
 		float buttonX = (frame.size.width/2) - (buttonWidth/2);

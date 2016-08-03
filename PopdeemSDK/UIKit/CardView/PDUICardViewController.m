@@ -99,11 +99,7 @@
 	CGFloat realLabelHeight = _bodyLabel.frame.size.height;
 	CGFloat labelDelta = labelHeight-realLabelHeight;
 	[_bodyLabel setFrame:CGRectMake(10, currentY+(labelDelta/2), _bodyLabel.frame.size.width, _bodyLabel.frame.size.height)];
-	currentY = cardHeight - headerHeight;
-	
-	int numberOfButtons = _viewModel.otherButtonTitles.count + 1;
-	CGFloat buttonWidth = cardWidth / numberOfButtons;
-	
+	currentY = cardHeight - headerHeight;	
 	
 	_actionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, cardHeight-headerHeight, cardWidth, headerHeight)];
 	[_actionButton setBackgroundColor:_viewModel.actionButtonColor];

@@ -34,7 +34,7 @@
     BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:application];
     if (parsedUrl.appLinkData) {
         // This is AppLink traffic
-        NSURL *applinkTargetUrl = parsedUrl.targetURL;
+//        NSURL *applinkTargetUrl = parsedUrl.targetURL;
         NSDictionary *alData = parsedUrl.appLinkData;
         NSString *targetUrl = alData[@"target_url"];
         if ([self getRequestIdFromURL:targetUrl] > 0) {

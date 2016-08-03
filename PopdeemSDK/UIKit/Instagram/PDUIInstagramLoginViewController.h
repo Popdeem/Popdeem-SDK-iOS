@@ -32,7 +32,5 @@
 @property (nonatomic, retain) IBOutlet UIWebView *webview;;
 
 - (instancetype) initForParent:(UIViewController*)parent delegate:(PDUIClaimViewModel*)delegate;
-- (instancetype) initForParent:(UIViewController*)parent;
-- (instancetype) initFromNib;
 
 @end

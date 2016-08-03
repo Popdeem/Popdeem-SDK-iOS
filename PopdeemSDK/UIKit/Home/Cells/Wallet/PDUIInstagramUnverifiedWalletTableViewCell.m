@@ -58,7 +58,7 @@
 }
 
 - (void) beginVerifying {
-	CGPoint startingPoint = self.verifyButton.center;
+//	CGPoint startingPoint = self.verifyButton.center;
 	
 	self.activityIndicator.alpha = 0;
 	[self.activityIndicator startAnimating];
@@ -107,7 +107,7 @@
 }
 
 - (void) alertNotVerified {
-	NSMutableString *message = [NSString stringWithFormat:@"Please ensure your Instagram post includes the required hashtag '%@'. You may edit the post and come back here to verify. Unverified rewards expire in 24 hours.",_reward.instagramForcedTag];
+	NSString *message = [NSString stringWithFormat:@"Please ensure your Instagram post includes the required hashtag '%@'. You may edit the post and come back here to verify. Unverified rewards expire in 24 hours.",_reward.instagramForcedTag];
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Instagram Post Not Verified"
 																							 message:message
 																							delegate:nil
@@ -125,7 +125,7 @@
 		[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
 	}
 	
-	NSMutableString *labelLineTwo = translationForKey(@"popdeem.instagram.wallet.unverified", @"This reward must be verified.");
+	NSString *labelLineTwo = translationForKey(@"popdeem.instagram.wallet.unverified", @"This reward must be verified.");
 	NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
 	NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
 	ps.paragraphSpacing = 2.0;

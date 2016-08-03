@@ -37,7 +37,7 @@
     self.image = PopdeemImage(@"popdeem.images.defaultItemImage");
   }
   if (!_message.read) {
-    _message.markAsRead;
+    [_message markAsRead];
   }
 }
 

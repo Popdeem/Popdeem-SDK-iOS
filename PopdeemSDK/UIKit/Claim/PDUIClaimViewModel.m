@@ -43,7 +43,7 @@
 	return nil;
 }
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location controller:(UIViewController*)controller {
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location controller:(PDUIClaimViewController*)controller {
 	self = [self init];
 	if (!self) return nil;
 	_location = location;
@@ -820,6 +820,18 @@
 
 
 #pragma mark - instagram -
+- (void) instagramLoginSuccess {
+	[[NSNotificationCenter defaultCenter] addObserver:self
+																					 selector:@selector(keyboardWillShow:)
+																							 name:UIKeyboardWillShowNotification object:nil];
+	self.willInstagram = YES;
+}
 
+- (void) instagramLoginFailure {
+	[[NSNotificationCenter defaultCenter] addObserver:self
+																					 selector:@selector(keyboardWillShow:)
+																							 name:UIKeyboardWillShowNotification object:nil];
+	self.willInstagram = NO;
+}
 
 @end

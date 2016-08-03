@@ -126,7 +126,7 @@ The users last name
 @property (nonatomic) BOOL isTester;
 + (instancetype) sharedInstance;
 
-@property (nonatomic) BOOL *suspended;
+@property (nonatomic) BOOL suspended;
 @property (nonatomic, strong) NSDate *suspendedUntil;
 
 /**

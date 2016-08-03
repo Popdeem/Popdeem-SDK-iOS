@@ -35,7 +35,6 @@
 @property (nonatomic,retain) UIImage *image;
 @property (nonatomic, retain) NSString *imageURLString;
 
-- (instancetype) initFromNib;
 - (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;
 
 @end

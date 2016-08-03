@@ -427,10 +427,10 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  PDUIWalletTableViewCell *wcell;
-  PDUIWalletTableViewCell *lastCell;
-  PDReward *walletReward;
-  __block UIAlertView *av;
+//  PDUIWalletTableViewCell *wcell;
+//  PDUIWalletTableViewCell *lastCell;
+//  PDReward *walletReward;
+//  __block UIAlertView *av;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards

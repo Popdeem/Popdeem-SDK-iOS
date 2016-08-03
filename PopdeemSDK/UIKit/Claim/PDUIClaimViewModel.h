@@ -49,7 +49,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 
 @property (nonatomic) SocialMediaTypesAvailable socialMediaTypesAvailable;
 
-- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location controller:(UIViewController*)controller;
+- (instancetype) initWithMediaTypes:(NSArray*)mediaTypes andReward:(PDReward*)reward location:(PDLocation*)location controller:(PDUIClaimViewController*)controller;
 - (void) toggleFacebook;
 - (void) toggleTwitter;
 - (void) addPhotoAction;
@@ -60,5 +60,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 - (void) instagramSwitchToggled:(UISwitch*)instagramSwitch;
 - (void) didClaimRewardId:(NSInteger)rewardId;
 - (void) makeClaim;
+- (void) instagramLoginSuccess;
+- (void) instagramLoginFailure;
 - (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName;
 @end

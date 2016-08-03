@@ -105,7 +105,7 @@
 				}
 			}
 		} else {
-			self.claimedSocialNetwork = nil;
+//			self.claimedSocialNetwork = nil;
 		}
 		self.claimingSocialNetworks = [NSArray arrayWithArray:claimingNets];
     id tweet_options = params[@"tweet_options"];

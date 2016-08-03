@@ -40,8 +40,8 @@
 		[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
 	}
 	
-	NSMutableString *labelLineTwo;
-	NSString *creditDate;
+	NSString *labelLineTwo;
+	NSDate *creditDate;
 	NSDateFormatter *formatter;
 	NSString *stringDate;
 	switch (reward.type) {

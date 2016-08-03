@@ -28,7 +28,6 @@ CGFloat _cardX,_cardY;
 
 - (instancetype) initForParent:(UIViewController*)parent delegate:(PDUIClaimViewModel*)delegate {
 	connected = NO;
-	UIImage *logoImage = PopdeemImage(@"pduikit_instagram_hires");
 	if (self = [super init]) {
 		_parent = parent;
 		_delegate = delegate;
@@ -55,7 +54,6 @@ CGFloat _cardX,_cardY;
 	
 	
 	CGFloat cardCenterX = cardWidth/2;
-	CGFloat cardCenterY = cardHeight/2;
 	CGFloat imageWidth = cardWidth * 0.40;
 	
 	
@@ -96,7 +94,6 @@ CGFloat _cardX,_cardY;
 	
 	_cardX = cardX;
 	_cardY = cardY;
-	CGFloat totalCardHeight = imageWidth + 40 + 40 + labelSize.height + 40 + 65;
 	CGFloat viewCenterY = self.view.frame.size.height/2;
 	[_cardView setFrame:CGRectMake(_cardX, viewCenterY-(currentY/2), _cardView.frame.size.width, currentY)];
 	[self.view setNeedsDisplay];
@@ -215,7 +212,7 @@ CGFloat _cardX,_cardY;
 			NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
 			[request setHTTPMethod:@"POST"];
 			[request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
-			NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+			
 			receivedData = [[NSMutableData alloc] init];
 		} else {
 			// ERROR!
