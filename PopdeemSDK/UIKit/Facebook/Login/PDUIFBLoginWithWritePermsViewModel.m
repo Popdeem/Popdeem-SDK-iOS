@@ -12,15 +12,30 @@
 
 @implementation PDUIFBLoginWithWritePermsViewModel
 
-- (instancetype) initForParent:(UIViewController*)parent {
+- (instancetype) initForParent:(UIViewController*)parent loginType:(PDFacebookLoginType)loginType {
 	if (self = [super init]) {
+		self.loginType = loginType;
 		return self;
 	}
 	return nil;
 }
 
 - (void) setup {
-	self.labelText = translationForKey(@"popdeem.facebook.connect.labelText",@"You must grant Publish Permissions to claim this reward. We will never post to Facebook without your explicit permission.");
+	switch (_loginType) {
+  case PDFacebookLoginTypeRead:
+			[self setupForReadLogin];
+			break;
+		case PDFacebookLoginTypePublish:
+			[self setupForPublishLogin];
+			break;
+  default:
+			[self setupForReadLogin];
+			break;
+	}
+}
+
+- (void) setupForReadLogin {
+	self.labelText = translationForKey(@"popdeem.facebook.connect.read.labelText",@"You must log in using Facebook to claim this reward. We will never post to Facebook without your explicit permission.");
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
 	self.labelFont = PopdeemFont(PDThemeFontPrimary, 14);
 	
@@ -29,8 +44,20 @@
 	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
 	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);
 	self.buttonLabelFont = PopdeemFont(PDThemeFontBold, 16);
-	self.buttonText = translationForKey(@"popdeem.facebook.connect.actionButtonTitle", @"Continue");
+	self.buttonText = translationForKey(@"popdeem.facebook.connect.read.actionButtonTitle", @"Continue");
 }
 
+- (void) setupForPublishLogin {
+	self.labelText = translationForKey(@"popdeem.facebook.connect.publish.labelText",@"You must grant Publish Permissions to claim this reward. We will never post to Facebook without your explicit permission.");
+	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
+	self.labelFont = PopdeemFont(PDThemeFontPrimary, 14);
+	
+	self.logoImage = PopdeemImage(@"pduikit_facebook_hires");
+	
+	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
+	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	self.buttonLabelFont = PopdeemFont(PDThemeFontBold, 16);
+	self.buttonText = translationForKey(@"popdeem.facebook.connect.publish.actionButtonTitle", @"Continue");
+}
 
 @end

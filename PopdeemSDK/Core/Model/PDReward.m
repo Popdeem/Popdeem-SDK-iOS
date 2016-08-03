@@ -91,10 +91,25 @@
     } else {
       self.unlimitedAvailability = NO;
     }
-		self.claimedSocialNetwork = PDSocialMediaTypeFacebook;
+		
+		NSMutableArray *claimingNets = [NSMutableArray arrayWithCapacity:3];
+		NSArray *claimed_social_networks = params[@"claiming_social_networks"];
+		if (claimed_social_networks != nil) {
+			for (id item in claimed_social_networks) {
+				if ([item isKindOfClass:[NSDictionary class]]) {
+					NSString *saName = item[@"name"];
+					if (saName != nil) {
+						[claimingNets addObject:@([self socialMediaTypeForString:saName])];
+						self.claimedSocialNetwork = [self socialMediaTypeForString:saName];
+					}
+				}
+			}
+		} else {
+			self.claimedSocialNetwork = nil;
+		}
+		self.claimingSocialNetworks = [NSArray arrayWithArray:claimingNets];
     id tweet_options = params[@"tweet_options"];
     if ([tweet_options isKindOfClass:[NSDictionary class]]) {
-			self.claimedSocialNetwork = PDSocialMediaTypeTwitter;
       NSString *downloadLink = tweet_options[@"download_link"];
       self.downloadLink = (downloadLink.length > 0) ? downloadLink : nil;
       NSString *prefilledMessage = tweet_options[@"prefilled_message"];
@@ -105,7 +120,6 @@
 		
 		id instagram_options = params[@"instagram_option"];
 		if ([instagram_options isKindOfClass:[NSDictionary class]]) {
-			self.claimedSocialNetwork = PDSocialMediaTypeInstagram;
 			NSString *instaForcedTag = instagram_options[@"forced_tag"];
 			NSString *instaPrefilledMessage = instagram_options[@"prefilled_message"];
 			self.instagramForcedTag = instaForcedTag;
@@ -228,6 +242,18 @@
   } else {
     return [NSString stringWithFormat:@"%.2fmiles",self.distanceFromUser/1609.344];
   }
+}
+
+- (PDSocialMediaType) socialMediaTypeForString:(NSString*)smType {
+	if ([smType isEqualToString:@"Facebook"]) {
+		return PDSocialMediaTypeFacebook;
+	} else if ([smType isEqualToString:@"Twitter"]) {
+		return PDSocialMediaTypeTwitter;
+	} else if ([smType isEqualToString:@"Instagram"]) {
+		return PDSocialMediaTypeInstagram;
+	} else {
+		return PDSocialMediaTypeFacebook;
+	}
 }
 
 @end

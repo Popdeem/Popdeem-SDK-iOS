@@ -562,33 +562,48 @@
 	
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
-	[client claimReward:_reward.identifier location:_location withMessage:message taggedFriends:taggedFriends image:_image facebook:_willFacebook twitter:_willTweet instagram:_willInstagram success:^(){
+	[client claimReward:_reward.identifier
+						 location:_location withMessage:message
+				taggedFriends:taggedFriends
+								image:_image facebook:_willFacebook
+							twitter:_willTweet
+						instagram:_willInstagram
+							success:^(){
+								
+								if (_willInstagram) {
+									[[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
+								}
 		[self didClaimRewardId:rewardId];
-		//		if (_willInstagram) {
-		//			[_loadingView hideAnimated:YES];
-		//			PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
-		//			_viewController.definesPresentationContext = YES;
-		//			isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
-		//			[_viewController presentViewController:isv animated:YES completion:^(void){}];
-		//		} else {
-		//			[self didClaimRewardId:rewardId];
-		//		}
 	} failure:^(NSError *error){
 		[self PDAPIClient:client didFailWithError:error];
 	}];
 	
-	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward") descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
+	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+																								 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
+																					 descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
 	[_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
 	[_loadingView showAnimated:YES];
 }
 
 - (void) loginWithReadAndWritePerms {
-	[[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"] registerWithPopdeem:YES success:^(void) {
+	[[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
+																																		 @"public_profile",
+																																		 @"email",
+																																		 @"user_birthday",
+																																		 @"user_posts",
+																																		 @"user_friends",
+																																		 @"user_education_history"]
+																							 registerWithPopdeem:YES
+																													 success:^(void) {
 		_willFacebook = YES;
 		[_viewController.facebookButton setSelected:YES];
 		[self loginWithWritePerms];
 	} failure:^(NSError *error) {
-		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook") delegate:nil cancelButtonTitle:nil otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
+		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
+																								 message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook")
+																								delegate:nil
+																			 cancelButtonTitle:nil
+																			 otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
 		[av show];
 		_willFacebook = NO;
 		[_viewController.facebookButton setSelected:NO];
@@ -597,7 +612,7 @@
 
 - (void) loginWithWritePerms {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:_viewController.navigationController];
+		PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:_viewController.navigationController loginType:PDFacebookLoginTypePublish];
 		if (!fbVC) {
 			return;
 		}

@@ -30,6 +30,7 @@
 #import "PDUIWalletRewardTableViewCell.h"
 #import "PDUIInstagramUnverifiedWalletTableViewCell.h"
 #import "PDUser.h"
+#import "PDUIFBLoginWithWritePermsViewController.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -41,6 +42,8 @@
   NSIndexPath *walletSelectedIndex;
   PDReward *selectedWalletReward;
   BOOL claimAction;
+	BOOL autoVerify;
+	NSInteger verifyRewardId;
 }
 @property (nonatomic, strong) PDUIHomeViewModel *model;
 @property (nonatomic) PDUIClaimViewController *claimVC;
@@ -98,7 +101,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postVerified) name:InstagramVerifySuccessFromWallet object:nil];
-	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade:) name:InstagramPostMade object:nil];
 	[self registerNibs];
 	
   [super viewDidLoad];
@@ -314,6 +317,10 @@
 				if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram && reward.instagramVerified == NO) {
 					PDUIInstagramUnverifiedWalletTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kInstaUnverifiedTableViewCell];
 					[walletCell setupForReward:reward];
+					if (autoVerify && verifyRewardId == reward.identifier) {
+						[walletCell beginVerifying];
+						autoVerify = NO;
+					}
 					return walletCell;
 				} else {
 					PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
@@ -430,29 +437,16 @@
       if (_model.rewards.count == 0) return;
       if ([_model.rewards objectAtIndex:indexPath.row]) {
         if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-					_loggingIn = YES;
-          _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Logging in" descriptionText:@"Please Wait"];
-          [_loadingView showAnimated:YES];
-          [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"] registerWithPopdeem:YES success:^{
-						[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
-						}];
-            [self.model fetchRewards];
-            [self.model fetchWallet];
-						_loggingIn = NO;
-            dispatch_async(dispatch_get_main_queue(), ^{
-              [self processClaimForIndexPath:indexPath];
-            });
-          } failure:^(NSError *err) {
-            if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
-							_loggingIn = NO;
-              av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
-                                              message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
-                                             delegate:self
-                                    cancelButtonTitle:@"OK"
-                                    otherButtonTitles: nil];
-              [av show];
-            }
-          }];
+					dispatch_async(dispatch_get_main_queue(), ^{
+						PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController loginType:PDFacebookLoginTypeRead];
+						if (!fbVC) {
+							return;
+						}
+						self.definesPresentationContext = YES;
+						fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+						fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+						[self presentViewController:fbVC animated:YES completion:^(void){}];
+					});
           return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -583,7 +577,11 @@
 - (void) redeemButtonPressed {
   selectedWalletReward = [_model.wallet objectAtIndex:walletSelectedIndex.row];
   if (selectedWalletReward.revoked) {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked" message:@"This reward has been revoked" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked"
+																								 message:@"This reward has been revoked"
+																								delegate:self
+																			 cancelButtonTitle:@"OK"
+																			 otherButtonTitles: nil];
     [av show];
     return;
   }
@@ -596,7 +594,9 @@
   
   if (selectedWalletReward.type != PDRewardTypeSweepstake) {
     PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
-    _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
+    _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view
+																									 titleText:@"Please Wait"
+																						 descriptionText:@"Redeeming your Reward"];
     [_loadingView showAnimated:YES];
     
     [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
@@ -604,7 +604,6 @@
       if (error) {
         NSLog(@"Something went wrong: %@",error);
       } else {
-        
         PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
         [rvc setReward:selectedWalletReward];
         [self.navigationController pushViewController:rvc animated:YES];
@@ -686,5 +685,15 @@
 - (void) postVerified {
 	[self.model fetchWallet];
 }
+
+- (void) instagramPostMade:(NSNotification*)notification {
+	autoVerify = YES;
+	NSNumber *ident = [[notification userInfo] objectForKey:@"rewardId"];
+	if (ident) {
+		verifyRewardId = [ident integerValue];
+	}
+}
+
+
 
 @end

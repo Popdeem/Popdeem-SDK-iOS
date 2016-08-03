@@ -44,7 +44,9 @@
 }
 
 - (void) wake {
-	[self.activityIndicator startAnimating];
+	if (verifying) {
+		[self.activityIndicator startAnimating];
+	}
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -52,8 +54,12 @@
 }
 
 - (void) verifyTapped:(UIButton*)sender {
-	CGPoint startingPoint = self.verifyButton.center;
+	[self beginVerifying];
+}
 
+- (void) beginVerifying {
+	CGPoint startingPoint = self.verifyButton.center;
+	
 	self.activityIndicator.alpha = 0;
 	[self.activityIndicator startAnimating];
 	self.activityIndicator.hidden = NO;
@@ -67,9 +73,12 @@
 }
 
 - (void) verifyReward {
+	verifying = YES;
 	PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
 	[service verifyInstagramPostForReward:_reward completion:^(BOOL verified, NSError *error){
+		verifying = NO;
 		if (error) {
+			[_activityIndicator stopAnimating];
 			NSLog(@"Something went wrong");
 		}
 		if (verified) {
@@ -84,6 +93,7 @@
 				[_activityIndicator stopAnimating];
 				[_activityIndicator setHidden:YES];
 				self.verifyButton.titleLabel.hidden = NO;
+				[self alertNotVerified];
 				[UIView animateWithDuration:0.5 animations:^{
 					self.verifyButton.titleLabel.alpha = 1.0;
 					self.activityIndicator.alpha = 0;
@@ -94,6 +104,16 @@
 			});
 		}
 	}];
+}
+
+- (void) alertNotVerified {
+	NSMutableString *message = [NSString stringWithFormat:@"Please ensure your Instagram post includes the required hashtag '%@'. You may edit the post and come back here to verify. Unverified rewards expire in 24 hours.",_reward.instagramForcedTag];
+	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Instagram Post Not Verified"
+																							 message:message
+																							delegate:nil
+																		 cancelButtonTitle:@"OK"
+																		 otherButtonTitles: nil];
+	[av show];
 }
 
 - (void) setupForReward:(PDReward*)reward {

@@ -40,6 +40,9 @@
 	
 	NSString *description = reward.rewardDescription;
 	NSString *rules = reward.rewardRules;
+	if (rules.length > 70) {
+		rules = [NSString stringWithFormat:@"%@...",[rules substringWithRange:NSMakeRange(0, 70)]];
+	}
 	NSString *info = [self infoStringForReward:reward];
 	
 	NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];

@@ -34,7 +34,10 @@ static PDUser *globalUser = nil;
 
 + (PDUser*) initFromAPI:(NSDictionary*)params preferredSocialMediaType:(PDSocialMediaType)preferredSocialMediaType {
   PDUser *user = [PDUser sharedInstance];
-  
+	
+	if (params == nil) {
+		return nil;
+	}
   user.preferredSocialMediaType = preferredSocialMediaType;
   NSString *firstName = params[@"first_name"];
   user.firstName = [firstName isKindOfClass:[NSString class]] ? firstName : nil;

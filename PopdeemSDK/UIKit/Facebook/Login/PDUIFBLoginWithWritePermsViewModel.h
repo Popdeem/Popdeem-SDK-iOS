@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, PDFacebookLoginType) {
+	PDFacebookLoginTypeRead,
+	PDFacebookLoginTypePublish
+};
+
 @interface PDUIFBLoginWithWritePermsViewModel : NSObject
 
 @property (nonatomic, retain) NSString *labelText;
@@ -19,7 +24,8 @@
 @property (nonatomic, retain) UIColor *buttonColor;
 @property (nonatomic, retain) UIColor *buttonTextColor;
 @property (nonatomic, retain) UIFont *buttonLabelFont;
+@property (nonatomic) PDFacebookLoginType loginType;
 
-- (instancetype) initForParent:(UIViewController*)parent;
+- (instancetype) initForParent:(UIViewController*)parent loginType:(PDFacebookLoginType)loginType;
 - (void) setup;
 @end

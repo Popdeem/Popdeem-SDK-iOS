@@ -21,9 +21,9 @@
 "popdeem.sociallogin.success" = "Connected!";
 "popdeem.sociallogin.success.description" = "Rewards are now unlocked. You will be notified when new rewards are available!";
 "popdeem.sociallogin.heading" = "Connect your Facebook to earn additional Rewards.";
-"popdeem.sociallogin.body" = "Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.";
+"popdeem.sociallogin.body" = "Connect your Facebook account to turn social features on. This will give you access to exclusive content and social rewards.";
 "popdeem.sociallogin.continue" = "Continue to App";
-"popdeem.sociallogin.tagline" = "New: Social Rewards.";
+"popdeem.sociallogin.tagline" = "New: Social Rewards";
 "popdeem.sociallogin.terms" = "By signing in with Facebook you accept the terms of our privacy policy.";
 
 
@@ -94,10 +94,6 @@
 "popdeem.location.denied.alert.cancelButtonText" = "Not Now";
 "popdeem.location.denied.alert.settingsButtonText" = "Go to Settings";
 
-"popdeem.facebook.connect.headerText" = "Connect Facebook";
-"popdeem.facebook.connect.bodyText" = "You must grant Publish Permissions to claim this reward. We will never post to Facebook without your explicit permission.";
-"popdeem.facebook.connect.actionButtonTitle" = "Grant Permission";
-
 "popdeem.instagram.connect.headerText" = "Connect Instagram";
 "popdeem.instagram.connect.bodyText" = "You must connect your Instagram Account to perform this action. Dont worry, we will never post without your explicit permission";
 "popdeem.instagram.connect.actionButtonTitle" = "Connect Instagram Account";
@@ -120,4 +116,8 @@
 "popdeem.instagram.verify.verifyFailure.messageText" = "We could not find your post. Please go to Instagram and ensure that your post includes the hashtag %@ and try verify again. You can also verify this post at a later date in the Wallet.";
 "popdeem.instagram.verify.verifyFailure.buttonText" = "Verify Now";
 
+"popdeem.facebook.connect.read.labelText" = "You must log in using Facebook to claim this reward. We will never post to Facebook without your explicit permission.";
+"popdeem.facebook.connect.publish.labelText" = "You must grant Publish Permissions to claim this reward. We will never post to Facebook without your explicit permission.";
+"popdeem.facebook.connect.publish.actionButtonTitle" = "Grant Permission";
+"popdeem.facebook.connect.read.actionButtonTitle" = "Log In";
 

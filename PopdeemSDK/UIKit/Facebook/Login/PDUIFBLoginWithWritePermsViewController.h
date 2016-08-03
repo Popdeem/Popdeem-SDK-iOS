@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDUIFBLoginWithWritePermsViewModel.h"
 
+
 @interface PDUIFBLoginWithWritePermsViewController : UIViewController <UIAlertViewDelegate> {
 	CGFloat _cardX,_cardY;
 	BOOL connected;
@@ -22,6 +23,6 @@
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UIButton *actionButton;
 
-- (instancetype) initForParent:(UIViewController*)parent;
+- (instancetype) initForParent:(UIViewController*)parent loginType:(PDFacebookLoginType)loginType;
 
 @end

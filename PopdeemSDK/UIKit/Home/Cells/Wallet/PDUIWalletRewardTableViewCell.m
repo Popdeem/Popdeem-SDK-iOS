@@ -81,7 +81,7 @@
 	
 	[labelAttString appendAttributedString:infoString];
 	NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
-	ps.lineSpacing = 5.5;
+	ps.lineSpacing = 2.0;
 	[labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
 	[_mainLabel setAttributedText:labelAttString];
 }

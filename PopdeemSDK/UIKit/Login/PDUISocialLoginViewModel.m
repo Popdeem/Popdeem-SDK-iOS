@@ -87,6 +87,7 @@
       });
       return;
     }
+		[self addUserToUserDefaults:[PDUser sharedInstance]];
 		[self.viewController dismissViewControllerAnimated:YES completion:^{}];
 //    if (_viewController.shouldAskLocation) {
 //      [self fetchLocationCompletion:^(NSError *error){
@@ -234,9 +235,8 @@
       break;
     case LoginStateLogin:
     default:
-      self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards.");
-      self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Facebook to earn additional Rewards.");
-      self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
+      self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards");
+      self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and social rewards.");
       self.termsLabelString = translationForKey(@"popdeem.sociallogin.terms", @"By signing in with Facebook you accept the terms of our privacy policy.");
       self.loginState = LoginStateLogin;
       break;

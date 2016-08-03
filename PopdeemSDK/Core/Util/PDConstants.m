@@ -47,6 +47,7 @@ NSString *const PDUserLinkedToInstagram = @"PDUserLinkedToInstagram";
 NSString *const InstagramVerifySuccess = @"InstagramVerifySuccess";
 NSString *const InstagramVerifyFailure = @"InstagramVerifyFailure";
 NSString *const InstagramVerifyNoAttempt = @"InstagramVerifyNoAttempt";
+NSString *const InstagramPostMade = @"InstagramPostMade";
 /*
  End NSNotificationCenter Strings
  */

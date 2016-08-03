@@ -12,7 +12,9 @@
 - (void) wake;
 @end
 
-@interface PDUIInstagramUnverifiedWalletTableViewCell : UITableViewCell <WakeableCell>
+@interface PDUIInstagramUnverifiedWalletTableViewCell : UITableViewCell <WakeableCell> {
+	BOOL verifying;
+}
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *mainLabel;
@@ -24,5 +26,6 @@
 
 - (void) setupForReward:(PDReward*)reward;
 - (void) wake;
+- (void) beginVerifying;
 @end
 
