@@ -6,36 +6,32 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "PDUIHomeViewController.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
-#import "PDUIModalLoadingView.h"
 #import "PDAPIClient.h"
-#import "PDUILazyLoader.h"
-#import "PDUIRewardTableViewCell.h"
 #import "PDUINoRewardsTableViewCell.h"
 #import "PDUIPhotoCell.h"
 #import "PDUICheckinCell.h"
 #import "PDUIClaimViewController.h"
-#import "PDUIWalletTableViewCell.h"
 #import "PDUIHomeViewModel.h"
 #import "PDSocialMediaManager.h"
-#import "PDUISocialLoginViewController.h"
 #import "PDUIFeedImageViewController.h"
 #import "PDRewardActionAPIService.h"
 #import "PDUIRedeemViewController.h"
 #import "PDLocationValidator.h"
-#import "PDConstants.h"
 #import "PDUIRewardWithRulesTableViewCell.h"
 #import "PDUIWalletRewardTableViewCell.h"
 #import "PDUIInstagramUnverifiedWalletTableViewCell.h"
-#import "PDUser.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
+#import "PDUINoRewardTableViewCell.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
 #define kWalletTableViewCell @"WalletCell"
 #define kInstaUnverifiedTableViewCell @"kInstaUnverifiedTableViewCell"
+#define kNoRewardsCell @"NoRewardsCell"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -54,7 +50,7 @@
 @implementation PDUIHomeViewController
 
 - (instancetype) initFromNib {
-  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUIHomeViewController" bundle:podBundle]) {
     self.model = [[PDUIHomeViewModel alloc] initWithController:self];
     self.claimVC = [[PDUIClaimViewController alloc] initFromNib];
@@ -81,7 +77,7 @@
 }
 
 - (void) registerNibs {
-	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	UINib *pcnib = [UINib nibWithNibName:@"PlaceholderTableViewCell" bundle:podBundle];
 	[[self tableView] registerNib:pcnib forCellReuseIdentifier:kPlaceholderCell];
 	
@@ -93,6 +89,9 @@
 
 	UINib *instaUnverified = [UINib nibWithNibName:@"PDUIInstagramUnverifiedWalletTableViewCell" bundle:podBundle];
 	[[self tableView] registerNib:instaUnverified forCellReuseIdentifier:kInstaUnverifiedTableViewCell];
+	
+	UINib *noRewards = [UINib nibWithNibName:@"PDUINoRewardTableViewCell" bundle:podBundle];
+	[[self tableView] registerNib:noRewards forCellReuseIdentifier:kNoRewardsCell];
 	
 }
 
@@ -265,12 +264,12 @@
   PDFeedItem *feedItem;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
-      //Rewards
       if (_model.rewards.count == 0) {
         if (!_model.rewardsLoading) {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.noRewards", @"There are no Rewards available right now. Please check back later.")];
+					PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
+					[norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noRewards",@"There are no Rewards available right now. Please check back later.")];
+					return norw;
         } else {
-//          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) text:translationForKey(@"popdeem.home.infoCell.loadingRewards", @"Please wait, we are loading your rewards")];
 					return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
       } else {
@@ -286,7 +285,9 @@
       //Feeds
       if (_model.feed.count == 0) {
         if (!_model.feedLoading) {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.noFeed", @"There is nothing in the Feed right now. Please check back later.")];
+					PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
+					[norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noFeed",@"There is nothing in the Feed right now. Please check back later.")];
+					return norw;
         } else {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
@@ -308,7 +309,9 @@
     case 2:
       if (_model.wallet.count == 0) {
         if (!_model.walletLoading) {
-          return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.home.infoCell.noWallet", @"There is nothing in your Wallet right now. Please check back later.")];
+					PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
+					[norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noWallet",@"There is nothing in your Wallet right now. Please check back later.")];
+					return norw;
         } else {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
@@ -391,7 +394,7 @@
     case 1:
       //Feed
       if (_model.feed.count == 0) {
-        return 85;
+        return 100;
       }
       if ([(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
         return 175;
@@ -401,24 +404,7 @@
       break;
     case 2:
       //Wallet
-      if (walletSelectedIndex && index == walletSelectedIndex.row) {
-        if (index < _model.wallet.count) {
-          PDReward *r = _model.wallet[index];
-          switch (r.type) {
-            case PDRewardTypeInstant:
-            case PDRewardTypeCoupon:
-              return 255;
-              break;
-            case PDRewardTypeSweepstake:
-              return 185;
-              break;
-            default:
-              break;
-          }
-        }
-        return 255;
-      }
-      return 85;
+      return 100;
       break;
     default:
       break;
@@ -438,7 +424,8 @@
       if ([_model.rewards objectAtIndex:indexPath.row]) {
         if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
 					dispatch_async(dispatch_get_main_queue(), ^{
-						PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController loginType:PDFacebookLoginTypeRead];
+						PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController
+																																																								 loginType:PDFacebookLoginTypeRead];
 						if (!fbVC) {
 							return;
 						}
@@ -469,7 +456,11 @@
       selectedWalletReward = [_model.wallet objectAtIndex:indexPath.row];
       if (selectedWalletReward) {
         if (selectedWalletReward.revoked) {
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked" message:@"This reward has been revoked" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked"
+																											 message:@"This reward has been revoked"
+																											delegate:self
+																						 cancelButtonTitle:@"OK"
+																						 otherButtonTitles: nil];
           [av show];
           return;
         }
@@ -477,7 +468,10 @@
         if (selectedWalletReward.type == PDRewardTypeSweepstake || selectedWalletReward.type == PDRewardTypeCredit) {
           return;
         }
-        
+				if (selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && selectedWalletReward.instagramVerified == NO) {
+					return;
+				}
+				
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward"
                                                      message:@"You are about to Redeem this Reward. Are you sure?"
                                                     delegate:self
@@ -559,7 +553,13 @@
 			if (validated) {
 				[self.model claimNoAction:reward closestLocation:closestLocation];
 			} else {
-				UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not at Location" message:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please try later.") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+				UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not at Location"
+																										 message:translationForKey(
+																																							 @"popdeem.claim.verifyLocationFailed",
+																																							 @"You must be at this location to claim this reward. Please try later.")
+																										delegate:self
+																					 cancelButtonTitle:@"OK"
+																					 otherButtonTitles:nil];
 				[av show];
 			}
 		}];

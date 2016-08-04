@@ -6,6 +6,7 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "PDUISingleMessageViewController.h"
 #import "PDUISingleMessageViewModel.h"
 #import "PDTheme.h"
@@ -17,7 +18,7 @@
 @implementation PDUISingleMessageViewController
 
 - (instancetype) initFromNib {
-  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUISingleMessageViewController" bundle:podBundle]) {
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;

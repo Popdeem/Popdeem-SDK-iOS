@@ -5,21 +5,15 @@
 //  Created by Niall Quinn on 26/11/2015.
 //  Copyright © 2015 Popdeem. All rights reserved.
 //
-
+#import "PopdeemSDK.h"
 #import "PDUIClaimViewController.h"
-#import "PDUIClaimViewModel.h"
-#import "PDUser.h"
 #import "PDUIKitUtils.h"
 #import "PDUtils.h"
 #import "PDUIRewardTableViewCell.h"
 #import "PDLocationValidator.h"
-#import "PDTheme.h"
-#import "PDUIModalLoadingView.h"
 #import "PDUIFriendPickerViewController.h"
 #import "PDUser+Facebook.h"
 #import "PDSocialMediaFriend.h"
-#import "PDTheme.h"
-#import "PDUIInstagramVerifyViewController.h"
 
 @interface PDUIClaimViewController () {
   NSArray *_mediaTypes;
@@ -50,7 +44,7 @@
 @implementation PDUIClaimViewController
 
 - (instancetype) initFromNib {
-  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUIClaimViewController" bundle:podBundle]) {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");

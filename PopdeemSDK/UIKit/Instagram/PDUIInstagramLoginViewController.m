@@ -212,7 +212,7 @@ CGFloat _cardX,_cardY;
 			NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
 			[request setHTTPMethod:@"POST"];
 			[request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
-			
+			NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
 			receivedData = [[NSMutableData alloc] init];
 		} else {
 			// ERROR!
@@ -240,7 +240,6 @@ CGFloat _cardX,_cardY;
 																				cancelButtonTitle:@"OK"
 																				otherButtonTitles:nil];
 	[alert show];
-	
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

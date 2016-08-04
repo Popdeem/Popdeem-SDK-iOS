@@ -254,6 +254,7 @@
 		39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
 		39D3F8221CB2BDB900A69575 /* PDUIFriendPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F8211CB2BDB900A69575 /* PDUIFriendPickerViewController.m */; };
+		39DACEE41D5347E700DBA1FC /* PDUINoRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DACEE21D5347E700DBA1FC /* PDUINoRewardTableViewCell.m */; };
 		39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDUIRedeemViewController.m */; };
 		39EB990E1C86F78600BB0DD8 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990D1C86F78600BB0DD8 /* theme.json */; };
 		39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990F1C86F7F000BB0DD8 /* Localizable.strings */; };
@@ -662,6 +663,9 @@
 		39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPopdeemSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopdeemSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D7D0761B8F0DCF00E45D0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39DACEE11D5347E700DBA1FC /* PDUINoRewardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUINoRewardTableViewCell.h; path = "Home/Cells/No Rewards/PDUINoRewardTableViewCell.h"; sourceTree = "<group>"; };
+		39DACEE21D5347E700DBA1FC /* PDUINoRewardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUINoRewardTableViewCell.m; path = "Home/Cells/No Rewards/PDUINoRewardTableViewCell.m"; sourceTree = "<group>"; };
+		39DACEE31D5347E700DBA1FC /* PDUINoRewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUINoRewardTableViewCell.xib; path = "Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib"; sourceTree = "<group>"; };
 		39DD9EBA1C7DD36500A67ED2 /* pduikit_popdeemHeaderLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_popdeemHeaderLight.png; path = Resources/pduikit_popdeemHeaderLight.png; sourceTree = "<group>"; };
 		39DD9EBB1C7DD36500A67ED2 /* pduikit_popdeemHeaderLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_popdeemHeaderLight@2x.png"; path = "Resources/pduikit_popdeemHeaderLight@2x.png"; sourceTree = "<group>"; };
 		39DD9EBC1C7DD36500A67ED2 /* pduikit_popdeemHeaderLight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_popdeemHeaderLight@3x.png"; path = "Resources/pduikit_popdeemHeaderLight@3x.png"; sourceTree = "<group>"; };
@@ -1191,6 +1195,7 @@
 		397142211D38E0C10047F0E0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				39DACEE01D5347BE00DBA1FC /* No Rewards */,
 				3971422F1D3D0A2F0047F0E0 /* Wallet */,
 				397142261D38E3270047F0E0 /* Rewards */,
 			);
@@ -1425,6 +1430,16 @@
 				39D7D0761B8F0DCF00E45D0B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39DACEE01D5347BE00DBA1FC /* No Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				39DACEE11D5347E700DBA1FC /* PDUINoRewardTableViewCell.h */,
+				39DACEE21D5347E700DBA1FC /* PDUINoRewardTableViewCell.m */,
+				39DACEE31D5347E700DBA1FC /* PDUINoRewardTableViewCell.xib */,
+			);
+			name = "No Rewards";
 			sourceTree = "<group>";
 		};
 		39EB99001C84B75E00BB0DD8 /* libPopdeemSDK */ = {
@@ -2719,6 +2734,7 @@
 				39A98A651C3E6B9F002AF910 /* PDUICheckinCell.m in Sources */,
 				39A98A661C3E6B9F002AF910 /* PDUIFeedCell.m in Sources */,
 				3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */,
+				39DACEE41D5347E700DBA1FC /* PDUINoRewardTableViewCell.m in Sources */,
 				39A989861C3BD857002AF910 /* PDUISegmentedControl.m in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				3965AF6E1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m in Sources */,
@@ -3195,6 +3211,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 			};
@@ -3210,6 +3227,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 			};

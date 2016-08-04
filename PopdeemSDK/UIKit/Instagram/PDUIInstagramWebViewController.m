@@ -6,6 +6,7 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "PDUIInstagramWebViewController.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
@@ -18,7 +19,7 @@
 @implementation PDUIInstagramWebViewController
 
 - (instancetype) initFromNib {
-	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	if (self = [self initWithNibName:@"PDUIInstagramWebViewController" bundle:podBundle]) {
 		self.edgesForExtendedLayout = UIRectEdgeNone;
 		[self.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];

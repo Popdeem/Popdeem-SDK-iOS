@@ -6,6 +6,7 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "PDUIMsgCntrTblViewController.h"
 #import "PDUIMessageCell.h"
 #import "PDUINoRewardsTableViewCell.h"
@@ -23,7 +24,7 @@
 @implementation PDUIMsgCntrTblViewController
 
 - (instancetype) initFromNib {
-  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUIMsgCntrTblViewController" bundle:podBundle]) {
     self.model = [[PDUIMsgCntrViewModel alloc] initWithController:self];
     [self.model fetchMessages];

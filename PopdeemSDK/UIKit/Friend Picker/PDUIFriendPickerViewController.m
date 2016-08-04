@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Niall Quinn. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "PDUIFriendPickerViewController.h"
 #import "PDSocialMediaFriend.h"
 #import "PDUser.h"
@@ -39,7 +40,7 @@
 @implementation PDUIFriendPickerViewController
 
 - (instancetype) initFromNib {
-  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUIFriendPickerViewController" bundle:podBundle]) {
     return self;
   }

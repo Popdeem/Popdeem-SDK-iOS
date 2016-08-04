@@ -63,7 +63,7 @@
 "popdeem.home.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
 "popdeem.home.infoCell.noRewards" = "There are no Rewards available right now. Please check back later.";
 "popdeem.home.infoCell.noWallet" = "There is nothing in your Wallet right now. Please check back later.";
-"popdeem.home.infoCell.noFeed" = "There are nothing in the Feed right now. Please check back later.";
+"popdeem.home.infoCell.noFeed" = "There is nothing in the Feed right now. Please check back later.";
 "popdeem.home.infoCell.loadingRewards" = "Please wait, we are loading your Rewards.";
 "popdeem.home.infoCell.loadingFeed" = "Please wait, we are loading the Feed.";
 "popdeem.home.infoCell.loadingWallet" = "Please wait, we are loading your Wallet.";

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "PDUIRedeemViewController.h"
 #import "PDBrandStore.h"
 #import "PDUtils.h"
@@ -23,7 +24,7 @@
 @implementation PDUIRedeemViewController
 
 - (instancetype) initFromNib {
-  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUIRedeemViewController" bundle:podBundle]) {
     return self;
   }

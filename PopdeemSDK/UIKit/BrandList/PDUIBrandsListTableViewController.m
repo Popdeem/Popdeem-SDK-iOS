@@ -7,6 +7,7 @@
 //
 
 #import "PDUIBrandsListTableViewController.h"
+#import "PopdeemSDK.h"
 
 #define kBrandCell @"BrandCell"
 #define kSearchCell @"SearchCell"
@@ -38,7 +39,7 @@
 	UIBarButtonItem *searchbb = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemSearch) target:self action:@selector(searchTapped)];
 	self.navigationItem.rightBarButtonItem = searchbb;
 	
-	NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	UINib *brandNib = [UINib nibWithNibName:@"PDUIBrandTableViewCell" bundle:podBundle];
 	[[self tableView] registerNib:brandNib forCellReuseIdentifier:kBrandCell];
 	

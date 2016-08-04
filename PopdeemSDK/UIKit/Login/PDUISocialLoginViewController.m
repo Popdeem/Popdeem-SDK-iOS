@@ -6,6 +6,7 @@
 //  Copyright © 2015 Popdeem. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "PDUISocialLoginViewController.h"
 #import "PDUISocialLoginViewModel.h"
 #import "PDSocialMediaManager.h"
@@ -23,7 +24,7 @@
 @implementation PDUISocialLoginViewController
 
 - (instancetype) initFromNib {
-  NSBundle *podBundle = [NSBundle bundleForClass:[self classForCoder]];
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUISocialLoginViewController" bundle:podBundle]) {
     self.view.backgroundColor = [UIColor clearColor];
     return self;

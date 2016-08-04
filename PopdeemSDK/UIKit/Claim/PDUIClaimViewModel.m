@@ -9,14 +9,9 @@
 #import <FBSDKLoginKit/FBSDKLoginManager.h>
 #import "PDUIClaimViewModel.h"
 #import "PDUIClaimViewController.h"
-#import "PDUser.h"
 #import "PDSocialMediaFriend.h"
 #import "PDSocialMediaManager.h"
-#import "PDUIModalLoadingView.h"
 #import "PDAPIClient.h"
-#import "PDUtils.h"
-#import "PDTheme.h"
-#import "PDUIInstagramLoginViewController.h"
 #import "PDUIInstagramShareViewController.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
 
@@ -487,6 +482,16 @@
 		[_viewController.claimButtonView setUserInteractionEnabled:YES];
 		return;
 	}
+	if (_instagramForcedTagString && !_hashtagValidated) {
+		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!"
+																										 message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Instagram",_reward.instagramForcedTag]
+																										delegate:self
+																					 cancelButtonTitle:@"OK"
+																					 otherButtonTitles: nil];
+		[hashAV show];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		return;
+	}
 	[_loadingView hideAnimated:YES];
 	PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:_viewController.navigationController withMessage:_viewController.textView.text image:_image imageUrlString:_imageURLString];
 	_viewController.definesPresentationContext = YES;
@@ -494,13 +499,6 @@
 	isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_viewController presentViewController:isv animated:YES completion:^(void){}];
-	return;
-	if (_instagramForcedTagString && !_hashtagValidated) {
-		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!" message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-		[hashAV show];
-		[_viewController.claimButtonView setUserInteractionEnabled:YES];
-		return;
-	}
 	return;
 }
 
@@ -528,6 +526,11 @@
 	}
 	if (_willInstagram) {
 		searchString = _reward.instagramForcedTag;
+	}
+	
+	if (!searchString) {
+		_hashtagValidated = YES;
+		return;
 	}
 	
 	if ([_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString].location != NSNotFound && (_willTweet || _willInstagram)) {
