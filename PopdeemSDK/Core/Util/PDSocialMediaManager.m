@@ -136,6 +136,14 @@
   return [FBSDKAccessToken currentAccessToken] != nil;
 }
 
+- (BOOL) isLoggedInWithTwitter {
+	PDUser *user = [PDUser sharedInstance];
+	if (user.twitterParams.accessToken != nil && user.twitterParams.accessSecret != nil) {
+		return YES;
+	}
+	return NO;
+}
+
 - (void) refreshFacebookAccessToken:(void (^)(NSString *token, NSError *err))completion {
   [FBSDKAccessToken refreshCurrentAccessToken:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
     if (error) {
@@ -367,9 +375,6 @@
   [_twitterAPI postAccessTokenRequestWithPIN:verifier successBlock:^(NSString *oauthToken, NSString *oauthTokenSecret, NSString *userID, NSString *screenName) {
     NSLog(@"-- screenName: %@", screenName);
     [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
-      //User is connected to Popdeem
-      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Connected" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-      [alert show];
       self.endSuccess();
     } failure:^(NSError *error){
       //Something went wrong

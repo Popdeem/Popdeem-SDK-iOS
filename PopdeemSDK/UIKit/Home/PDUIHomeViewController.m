@@ -26,6 +26,7 @@
 #import "PDUIInstagramUnverifiedWalletTableViewCell.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
 #import "PDUINoRewardTableViewCell.h"
+#import "PDUISettingsViewController.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -159,6 +160,10 @@
 - (void) inboxAction {
   PDUIMsgCntrTblViewController *mvc = [[PDUIMsgCntrTblViewController alloc] initFromNib];
   [self.navigationController pushViewController:mvc animated:YES];
+}
+- (void) settingsAction {
+	PDUISettingsViewController *mvc = [[PDUISettingsViewController alloc] initFromNib];
+	[self.navigationController pushViewController:mvc animated:YES];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

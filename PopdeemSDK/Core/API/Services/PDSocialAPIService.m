@@ -116,16 +116,22 @@
 }
 
 - (void) disconnectTwitterAccountWithCompletion:(void (^)(NSError *error))completion {
-  NSMutableDictionary *params = [NSMutableDictionary dictionary];
-  NSMutableDictionary *user = [NSMutableDictionary dictionary];
-  NSMutableDictionary *twitter = [NSMutableDictionary dictionary];
   NSString *twitterAccessToken = [[[PDUser sharedInstance] twitterParams] accessToken];
   NSString *twitterAccessSecret = [[[PDUser sharedInstance] twitterParams] accessSecret];
-  [twitter setObject:twitterAccessToken forKey:@"access_token"];
-  [twitter setObject:twitterAccessSecret forKey:@"access_secret"];
-  [user setObject:twitter forKey:@"user"];
-  [params setObject:user forKey:@"user"];
-  
+	NSString *twitterId = [[[PDUser sharedInstance] twitterParams] identifier];
+	if (!twitterAccessToken || !twitterAccessSecret || !twitterId) {
+		return;
+	}
+	NSDictionary *params = @{
+													 @"user" : @{
+															 @"twitter" : @{
+																	 @"access_token" : twitterAccessToken,
+																	 @"access_secret" : twitterAccessSecret,
+																	 @"id" : twitterId
+																	 },
+															 },
+													 };
+	
   NSURLSession *session = [NSURLSession createPopdeemSession];
   NSString *path = [NSString stringWithFormat:@"%@/%@/disconnect_social_account",self.baseUrl,USERS_PATH];
   [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
@@ -139,7 +145,14 @@
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     NSInteger responseStatusCode = [httpResponse statusCode];
     if (responseStatusCode < 500) {
-      [session invalidateAndCancel];
+			NSError *jsonError;
+			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonObject == nil) {
+				completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+				return;
+			};
+			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+			[session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
         completion(nil);
       });
@@ -150,6 +163,52 @@
       });
     }
   }];
+}
+
+- (void) disconnectInstagramAccountWithCompletion:(void (^)(NSError *error))completion {
+	NSString *instagramAccessToken = [[[PDUser sharedInstance] instagramParams] accessToken];
+	NSString *instagramId = [NSString stringWithFormat:@"%li,",[[[PDUser sharedInstance] instagramParams] socialAccountId]];
+	
+	NSDictionary *params = @{
+													 @"user" : @{
+															 @"instagram" : @{
+																	 @"access_token" : instagramAccessToken,
+																	 @"id" : instagramId
+																	 },
+															 },
+													 };
+	
+	NSURLSession *session = [NSURLSession createPopdeemSession];
+	NSString *path = [NSString stringWithFormat:@"%@/%@/disconnect_social_account",self.baseUrl,USERS_PATH];
+	[session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+		if (error) {
+			[session invalidateAndCancel];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				completion(error);
+			});
+			return;
+		}
+		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+		NSInteger responseStatusCode = [httpResponse statusCode];
+		if (responseStatusCode < 500) {
+			NSError *jsonError;
+			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonObject == nil) {
+				completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+				return;
+			};
+			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+			[session invalidateAndCancel];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				completion(nil);
+			});
+		} else {
+			[session invalidateAndCancel];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+			});
+		}
+	}];
 }
 
 @end

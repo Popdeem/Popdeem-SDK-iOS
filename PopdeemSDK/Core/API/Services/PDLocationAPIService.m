@@ -22,7 +22,10 @@
 - (void) getAllLocationsWithCompletion:(void (^)(NSError *error))completion {
   NSURLSession *session = [NSURLSession createPopdeemSession];
   NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl, LOCATIONS_PATH];
+	CFAbsoluteTime time_start = CFAbsoluteTimeGetCurrent();
   [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+		CFAbsoluteTime time_end = CFAbsoluteTimeGetCurrent() - time_start;
+		NSLog(@"%.4f",time_end);
     if (error) {
       dispatch_async(dispatch_get_main_queue(), ^{
         completion(error);

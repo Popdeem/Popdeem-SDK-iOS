@@ -21,7 +21,7 @@
 }
 
 - (void) setup {
-	self.labelText = translationForKey(@"popdeem.instagram.connect.labelText",@"You must connect your Instagram account to claim this reward.");
+	self.labelText = translationForKey(@"popdeem.instagram.connect.labelText",@"Connect your Instagram account to claim Instagram rewards.");
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
 	self.labelFont = PopdeemFont(PDThemeFontBold, 14);
 	

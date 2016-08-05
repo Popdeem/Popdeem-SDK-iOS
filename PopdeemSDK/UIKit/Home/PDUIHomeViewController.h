@@ -24,6 +24,7 @@
 @property (nonatomic) PDLocation *closestLocation;
 @property (nonatomic) PDUIModalLoadingView *loadingView;
 @property (nonatomic, strong) UIButton *inboxButton;
+@property (nonatomic, strong) UIButton *settingsButton;
 
 - (instancetype) initFromNib;
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender;

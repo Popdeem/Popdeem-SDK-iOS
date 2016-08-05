@@ -188,6 +188,14 @@
   [_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
   [_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
 	
+	CGRect settingsButtonFrame = CGRectMake(5, 5, 20, 20);
+	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];
+	[_controller.settingsButton setFrame:settingsButtonFrame];
+	_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	[_controller.settingsButton setImage:PopdeemImage(@"pduikit_settings") forState:UIControlStateNormal];
+	[_controller.settingsButton addTarget:_controller action:@selector(settingsAction) forControlEvents:UIControlEventTouchUpInside];
+	[_controller.tableView.tableHeaderView addSubview:_controller.settingsButton];
+	
   if (!_tableHeaderLabel) {
     _tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 50)];
     [_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];

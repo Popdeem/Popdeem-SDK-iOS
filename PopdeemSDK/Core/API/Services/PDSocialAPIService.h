@@ -20,4 +20,7 @@
 										 accessToken:(NSString*)accessToken
 											screenName:(NSString*)screenName
 											completion:(void (^)(NSError *error))completion;
+
+- (void) disconnectTwitterAccountWithCompletion:(void (^)(NSError *error))completion;
+- (void) disconnectInstagramAccountWithCompletion:(void (^)(NSError *error))completion;
 @end
