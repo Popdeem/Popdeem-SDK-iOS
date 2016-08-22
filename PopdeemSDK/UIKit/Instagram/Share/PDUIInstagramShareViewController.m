@@ -203,7 +203,7 @@ CGFloat _cardWidth;
 	{
 		NSString *escapedString   = [_imageURLString urlencode];
 		NSString *escapedCaption  = [@"test" urlencode];
-		NSURL *instagramURL       = [NSURL URLWithString:[NSString stringWithFormat:@"instagram://Library?AssetPath=%@&InstagramCaption=%@", escapedString, escapedCaption]];
+		NSURL *instagramURL       = [NSURL URLWithString:[NSString stringWithFormat:@"instagram://Library?AssetPath=%@", escapedString]];
 		UIPasteboard *pb = [UIPasteboard generalPasteboard];
 		[pb setString:_message];
 		if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {

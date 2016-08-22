@@ -46,18 +46,18 @@
     [_nameLabel setNumberOfLines:1];
     [_nameLabel sizeToFit];
     
-    self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height+5, frame.size.width-(left + 20), 20)];
+    self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height, frame.size.width-(left + 20), 20)];
     [_captionLabel setText:feedItem.captionString];
     [_captionLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
     [_captionLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
     [_captionLabel setNumberOfLines:1];
-//    [_captionLabel sizeToFit];
-    
+    [_captionLabel sizeToFit];
+		
     float floatingHeight = cellHeight;
     float joinedHeight = _nameLabel.frame.size.height + 5 + _captionLabel.frame.size.height;
     float padding = (floatingHeight-joinedHeight)/2;
     [self.nameLabel setFrame:CGRectMake(left, padding, _nameLabel.frame.size.width, _nameLabel.frame.size.height)];
-    [self.captionLabel setFrame:CGRectMake(left, padding+5+_nameLabel.frame.size.height, _captionLabel.frame.size.width, _captionLabel.frame.size.height)];
+    [self.captionLabel setFrame:CGRectMake(left, padding+_nameLabel.frame.size.height, _captionLabel.frame.size.width, _captionLabel.frame.size.height)];
     [self addSubview:_nameLabel];
     [self addSubview:_captionLabel];
     //Apply Theme

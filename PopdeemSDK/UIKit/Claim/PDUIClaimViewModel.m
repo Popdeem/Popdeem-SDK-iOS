@@ -14,6 +14,7 @@
 #import "PDAPIClient.h"
 #import "PDUIInstagramShareViewController.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
+@import Photos;
 
 @interface PDUIClaimViewModel()
 @property (nonatomic) BOOL mustTweet;
@@ -43,6 +44,8 @@
 	if (!self) return nil;
 	_location = location;
 	_viewController = controller;
+	[self.viewController.instagramSwitch setHidden:YES];
+	[self.viewController.instagramIconView setHidden:YES];
 	if (mediaTypes.count == 1) {
 		if ([mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
 			self.socialMediaTypesAvailable = FacebookOnly;
@@ -85,6 +88,15 @@
 	[_viewController.facebookSwitch setEnabled:[_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeFacebook)]];
 	[_viewController.twitterSwitch setEnabled:[_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeTwitter)]];
 	[_viewController.instagramSwitch setEnabled:[_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeInstagram)]];
+	
+	NSString *facebookImage = ([_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) ? @"pduikit_fbbutton_selected.png" : @"pduikit_fbbutton_deselected.png";
+	NSString *twitterImage = ([_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) ? @"pduikit_twitterbutton_selected.png" : @"pduikit_twitterbutton_deselected.png";
+	NSString *instagramImage = ([_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) ? @"pduikit_instagrambutton_selected.png" : @"pduikit_instagrambutton_deselected.png";
+	
+	[_viewController.facebookIconView setImage:PopdeemImage(facebookImage)];
+	[_viewController.twitterIconView setImage:PopdeemImage(twitterImage)];
+	[_viewController.instagramIconView setImage:PopdeemImage(instagramImage)];
+	
 }
 
 - (void) setupForReward:(PDReward*)reward {
@@ -731,7 +743,7 @@
 	
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	picker.delegate = _viewController;
-	picker.allowsEditing = NO;
+	picker.allowsEditing = YES;
 	picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -751,7 +763,28 @@
 	
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-	_imageURLString = [info[@"UIImagePickerControllerReferenceURL"] absoluteString];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+																					 selector:@selector(keyboardWillShow:)
+																							 name:UIKeyboardWillShowNotification object:nil];
+
+	__block PHObjectPlaceholder *placeholder;
+	if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+		if (_willInstagram) {
+			[[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+				PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
+				placeholder = request.placeholderForCreatedAsset;
+				_imageURLString = [NSString stringWithFormat:@"assets-library://asset/asset.JPG?id=%@&ext=JPG",placeholder.localIdentifier];
+			} completionHandler:^(BOOL success, NSError *error){
+				if (success) {
+					NSLog(@"Saved Image");
+				}
+			}];
+		}
+	} else { // This is an image that taken before
+		// Get the name of the image
+		_imageURLString = [info[@"UIImagePickerControllerReferenceURL"] absoluteString];
+	}
+	
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
 		[_viewController.textView addSubview:_imageView];
@@ -764,6 +797,15 @@
 	}
 	
 	UIImage *img = info[UIImagePickerControllerOriginalImage];
+	
+	
+	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
+	
+	if (!CGRectEqualToRect(CGRectMake(0, 0, img.size.width, img.size.height), cropRect)) {
+		CGImageRef imageRef = CGImageCreateWithImageInRect([img CGImage], cropRect);
+		img = [UIImage imageWithCGImage:imageRef];
+		CGImageRelease(imageRef);
+	}
 	
 	_image = [self resizeImage:img withMinDimension:480];
 	_imageView.image = img;
@@ -793,6 +835,12 @@
 	[_viewController.textView becomeFirstResponder];
 	
 	[self calculateTwitterCharsLeft];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
+	_image = [self resizeImage:image withMinDimension:480];
+	_imageView.image = _image;
+	
 }
 
 - (UIImage *)resizeImage:(UIImage *)inImage

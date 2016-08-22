@@ -26,10 +26,12 @@
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];
   [application setStatusBarStyle:UIStatusBarStyleLightContent];
-  [PopdeemSDK withAPIKey:@"26eb2fcb-06e5-4976-bff4-88c30cc58f58 "];
+  [PopdeemSDK withAPIKey:@"26eb2fcb-06e5-4976-bff4-88c30cc58f58"];
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
+	[PopdeemSDK setDebug:YES];
+	PDLog(@"Testing");
   [Fabric with:@[[Crashlytics class]]];
   //Test Moments
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
@@ -50,6 +52,23 @@
     [PopdeemSDK handleRemoteNotification:userInfo];
     return;
   }
+}
+
+- (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+	
+	BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:app
+																																	 openURL:url
+																												 sourceApplication:options[@"UIApplicationOpenURLOptionsSourceApplicationKey"]
+																																annotation:nil];
+	
+	if (wasHandled) return wasHandled;
+	
+	if ([PopdeemSDK canOpenUrl:url sourceApplication:options[@"UIApplicationOpenURLOptionsSourceApplicationKey"] annotation:nil]) {
+		return [PopdeemSDK application:app openURL:url sourceApplication:options[@"UIApplicationOpenURLOptionsSourceApplicationKey"] annotation:nil];
+	}
+	
+	return NO;
+	
 }
 
 - (BOOL) application:(UIApplication *)application

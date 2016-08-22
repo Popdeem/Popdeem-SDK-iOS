@@ -34,6 +34,11 @@
     }
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     NSInteger responseStatusCode = [httpResponse statusCode];
+		if (response == nil) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+			});
+		}
     if (responseStatusCode < 500) {
       NSError *jsonError;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];

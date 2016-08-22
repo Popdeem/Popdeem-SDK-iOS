@@ -140,11 +140,11 @@
 	NSURLSession *session = [NSURLSession createPopdeemSession];
 	NSString *path = [NSString stringWithFormat:@"%@/%@/verify",self.baseUrl,REWARDS_PATH];
 	
-	NSDictionary *instagram = @{
-																		 @"access_token": [[[PDUser sharedInstance] instagramParams] accessToken],
-																		 @"reward_id": [NSString stringWithFormat:@"%li", reward.identifier]
-																		 };
-	NSDictionary *params = @{@"instagram": instagram};
+	NSDictionary *params = @{@"instagram": @{
+															 @"access_token": [[[PDUser sharedInstance] instagramParams] accessToken],
+															 @"reward_id": [NSString stringWithFormat:@"%li", reward.identifier]
+															 }};
+	
 	[session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -153,7 +153,8 @@
 			return;
 		}
 
-		
+		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+		NSInteger responseStatusCode = [httpResponse statusCode];
 		NSError *jsonError;
 		NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
 		if (!jsonObject) {

@@ -23,7 +23,9 @@
   
   NSURLSession *session = [NSURLSession createPopdeemSession];
   NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,WALLET_PATH];
+	CFAbsoluteTime time_start = CFAbsoluteTimeGetCurrent();
   [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
+		
     if (error) {
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
@@ -55,6 +57,8 @@
         completion(nil);
       });
     } else {
+			NSError *jsonError;
+			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
         completion([PDNetworkError errorForStatusCode:responseStatusCode]);

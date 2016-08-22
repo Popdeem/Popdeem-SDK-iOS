@@ -47,6 +47,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UIKit/UIKit.h"
+#import "PDLogger.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -54,8 +55,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PopdeemSDK : NSObject
 
 @property (nonatomic, strong) NSString *apiKey;
+@property (nonatomic) BOOL *debug;
 
 + (id) sharedInstance;
+
++ (void) setDebug:(BOOL)debug;
++ (BOOL) debugMode;
+
 + (void) withAPIKey:(NSString*)apiKey;
 + (void) testingWithAPIKey:(NSString*)apiKey;
 
@@ -73,15 +79,20 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) registerForPushNotificationsApplication:(UIApplication *)application;
 + (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 + (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+
 + (void) handleRemoteNotification:(NSDictionary*)userInfo;
+
 + (BOOL) canOpenUrl:(NSURL*)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation;
+
 + (BOOL) application:(UIApplication *)application
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
-          annotation:(id)annotation;
+          annotation:(nullable id)annotation;
+
 + (void) logMoment:(NSString*)momentString;
+
 + (void) setThirdPartyUserToken:(NSString*)userToken;
 
 + (void) logout;

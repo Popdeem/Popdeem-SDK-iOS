@@ -50,6 +50,15 @@
   return SDK;
 }
 
++ (void) setDebug:(BOOL)debug {
+	PopdeemSDK *sdk = [PopdeemSDK sharedInstance];
+	sdk.debug = debug;
+}
+
++ (BOOL) debugMode {
+	return [[PopdeemSDK sharedInstance] debug];
+}
+
 + (void) withAPIKey:(NSString*)apiKey {
   PopdeemSDK *SDK = [[self class] sharedInstance];
   [SDK setApiKey:apiKey];

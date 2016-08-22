@@ -172,6 +172,7 @@ CGFloat buttonSpacerHeight = 0;
 {
   if (containerView == NULL) {
     containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 150)];
+		[containerView setBackgroundColor:[UIColor whiteColor]];
   }
   
   CGSize screenSize = [self countScreenSize];
@@ -187,15 +188,14 @@ CGFloat buttonSpacerHeight = 0;
   CAGradientLayer *gradient = [CAGradientLayer layer];
   gradient.frame = dialogContainer.bounds;
   gradient.colors = [NSArray arrayWithObjects:
-                     (id)[[UIColor colorWithRed:218.0/255.0 green:218.0/255.0 blue:218.0/255.0 alpha:1.0f] CGColor],
-                     (id)[[UIColor colorWithRed:233.0/255.0 green:233.0/255.0 blue:233.0/255.0 alpha:1.0f] CGColor],
-                     (id)[[UIColor colorWithRed:218.0/255.0 green:218.0/255.0 blue:218.0/255.0 alpha:1.0f] CGColor],
+                     (id)[[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0f] CGColor],
+                     (id)[[UIColor colorWithRed:1 green:1 blue:1 alpha:1.0f] CGColor],
                      nil];
-  
+	
   CGFloat cornerRadius = kPDSDKCustomIOS7AlertViewCornerRadius;
   gradient.cornerRadius = cornerRadius;
   [dialogContainer.layer insertSublayer:gradient atIndex:0];
-  
+	
   dialogContainer.layer.cornerRadius = cornerRadius;
   dialogContainer.layer.borderColor = [[UIColor colorWithRed:198.0/255.0 green:198.0/255.0 blue:198.0/255.0 alpha:1.0f] CGColor];
   dialogContainer.layer.borderWidth = 1;
@@ -215,8 +215,9 @@ CGFloat buttonSpacerHeight = 0;
   [dialogContainer addSubview:containerView];
   
   // Add the buttons too
-  [self addButtonsToView:dialogContainer];
-  
+	[self addButtonsToView:dialogContainer];
+	
+		
   return dialogContainer;
 }
 

@@ -36,6 +36,7 @@
 		393D2B851C3AD0D300F1E253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B841C3AD0D300F1E253 /* Assets.xcassets */; };
 		393D2B881C3AD0D300F1E253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B861C3AD0D300F1E253 /* LaunchScreen.storyboard */; };
 		393D2B8E1C3AD1A100F1E253 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B8D1C3AD1A100F1E253 /* theme.json */; };
+		394021951D6B0FE400752C8A /* PDLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 394021941D6B0FE400752C8A /* PDLogger.m */; };
 		39450F361D14188900AA4883 /* PDUIInstagramWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */; };
 		394863CC1D54CE190000ABDE /* PDUITwitterLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394863CA1D54CE190000ABDE /* PDUITwitterLoginViewController.m */; };
 		394863CF1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394863CE1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m */; };
@@ -448,6 +449,8 @@
 		393D2B871C3AD0D300F1E253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		393D2B891C3AD0D300F1E253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393D2B8D1C3AD1A100F1E253 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
+		394021931D6B0FE400752C8A /* PDLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLogger.h; sourceTree = "<group>"; };
+		394021941D6B0FE400752C8A /* PDLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLogger.m; sourceTree = "<group>"; };
 		39450F331D14188900AA4883 /* PDUIInstagramWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramWebViewController.h; path = Instagram/PDUIInstagramWebViewController.h; sourceTree = "<group>"; };
 		39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramWebViewController.m; path = Instagram/PDUIInstagramWebViewController.m; sourceTree = "<group>"; };
 		39450F351D14188900AA4883 /* PDUIInstagramWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIInstagramWebViewController.xib; path = Instagram/PDUIInstagramWebViewController.xib; sourceTree = "<group>"; };
@@ -1681,6 +1684,8 @@
 				3921E3071C6DEA51000120D4 /* PDLocationValidator.m */,
 				395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */,
 				395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */,
+				394021931D6B0FE400752C8A /* PDLogger.h */,
+				394021941D6B0FE400752C8A /* PDLogger.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -2799,6 +2804,7 @@
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,
 				A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */,
+				394021951D6B0FE400752C8A /* PDLogger.m in Sources */,
 				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
 				39AF13FA1D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m in Sources */,
 				39A98A671C3E6B9F002AF910 /* PDUIPhotoCell.m in Sources */,
