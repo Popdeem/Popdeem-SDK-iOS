@@ -55,6 +55,8 @@
 
 - (void) nextStepForFacebookLoggedInUser:(void (^)(NSError *error))completion;
 
+- (void) checkFacebookTokenIsValid:(void (^)(BOOL valid))completion;
+
 - (void) facebookRequestPublishPermissions:(void (^)(void))success
                                    failure:(void (^)(NSError *err))failure;
 

@@ -11,6 +11,7 @@
 #import "PDUtils.h"
 #import "PDConstants.h"
 #import "PDUser.h"
+#import "PopdeemSDK.h"
 
 CGFloat _cardWidth;
 
@@ -228,7 +229,7 @@ CGFloat _cardWidth;
 	NSString *documentsDirectory = [paths objectAtIndex:0]; //create NSString object, that holds our exact path to the documents directory
 	NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"insta.igo"]]; //add our image to the path
 	[fileManager createFileAtPath:fullPath contents:imageData attributes:nil]; //finally save the path (image)
-	NSLog(@"image saved");
+	PDLog(@"image saved");
 	
 	CGRect rect = CGRectMake(0 ,0 , 0, 0);
 	UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
@@ -281,27 +282,24 @@ CGFloat _cardWidth;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	NSLog(@"View did appear");
+	[super viewDidAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-	NSLog(@"View did disappear");
+	[super viewDidDisappear:animated];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-	NSLog(@"View will disappear");
+	[super viewWillDisappear:animated];
 }
 
 - (void)appDidBecomeActive:(NSNotification *)notification {
-	NSLog(@"did become active notification");
 }
 
 - (void)appWillEnterForeground:(NSNotification *)notification {
-	NSLog(@"will enter foreground notification");
 }
 
 - (void)appDidEnterBackground:(NSNotification *)notification {
-	NSLog(@"will enter background notification");
 	if (_leavingToInstagram) {
 		[self dismissViewControllerAnimated:YES completion:^(void){
 			[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];

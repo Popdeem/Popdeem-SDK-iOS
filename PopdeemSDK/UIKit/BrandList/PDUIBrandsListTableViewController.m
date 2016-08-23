@@ -172,7 +172,7 @@
 }
 
 - (void) searchTapped {
-	NSLog(@"SearchTapped");
+	PDLog(@"SearchTapped");
 	searchEnabled = !searchEnabled;
 	
 	if (!searchEnabled) {

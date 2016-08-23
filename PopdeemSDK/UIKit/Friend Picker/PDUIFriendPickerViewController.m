@@ -319,9 +319,9 @@
 - (IBAction)refreshAction:(id)sender {
   [[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
     if (response == NO) {
-      NSLog(@"Something went wrong");
+      PDLogError(@"Something went wrong");
     }else {
-      NSLog(@"All good here");
+      PDLog(@"All good here");
     }
     [spinner stopAnimating];
     _tableData = [NSMutableArray arrayWithArray:[[PDUser sharedInstance] socialMediaFriendsOrderedAlpha]];

@@ -4,6 +4,7 @@
 //
 
 #import "PDTheme.h"
+#import "PopdeemSDK.h"
 
 @interface PDTheme ()
 @property(nonatomic, copy) NSDictionary *theme;
@@ -50,7 +51,7 @@ static const NSString *kVariablesKey = @"Variables";
 			image = [UIImage imageNamed:key inBundle:[self bundle] compatibleWithTraitCollection:nil];
 		}
 	if (!image) {
-		NSLog(@"Image for key: %@ not found in theme or bundle resources",key);
+		PDLogError(@"Image for key: %@ not found in theme or bundle resources",key);
 	}
     return image;
 }
@@ -72,7 +73,7 @@ static const NSString *kVariablesKey = @"Variables";
 
 - (BOOL) hasValueForKey:(NSString *)key {
   if (self.theme == nil) {
-    NSLog(@"Theme not setup");
+    PDLogError(@"Theme not setup");
     return NO;
   }
   id value = [self.theme valueForKeyPath:key];
@@ -125,7 +126,7 @@ static const NSString *kVariablesKey = @"Variables";
 				if (!filePath) {
 					[NSException raise:@"Error loading theme" format:@""];
 				}
-				NSLog(@"You did not specify a theme file, or it was not found. Using default theme file");
+				PDLogError(@"You did not specify a theme file, or it was not found. Using default theme file");
 			}
     }
 
@@ -194,7 +195,7 @@ static const NSString *kVariablesKey = @"Variables";
   } else {
     NSString *globalFont = [self objectForKey:@"popdeem.global.fontName"];
     if ([globalFont isKindOfClass:[NSString class]]) {
-      NSLog(@"PDTheme: No font specified for path: %@, returning global font",key);
+      PDLog(@"PDTheme: No font specified for path: %@, returning global font",key);
       return globalFont;
     } else {
       [NSException raise:@"Font name not found and no global font name defined" format:@""];
@@ -211,11 +212,11 @@ UIFont* fontForKey(NSString *key, CGFloat size) {
       if (font) {
         return font;
       } else {
-        NSLog(@"Font with name: %@ does not exist. Returning system font",value);
+        PDLog(@"Font with name: %@ does not exist. Returning system font",value);
       }
     }
   } else {
-    NSLog(@"No font defined for key: %@, returning system font",key);
+    PDLog(@"No font defined for key: %@, returning system font",key);
   }
   return [UIFont systemFontOfSize:size];
 }
@@ -239,22 +240,5 @@ UIFont* fontForKey(NSString *key, CGFloat size) {
 	}
 	return nil;
 }
-
-//- (UIFont*) fontForKey:(NSString*)key size:(CGFloat)size {
-//  if ([self hasValueForKey:key]) {
-//    id value = [self objectForKey:key];
-//    if ([value isKindOfClass:[NSString class]]){
-//      UIFont *font = [UIFont fontWithName:value size:size];
-//      if (font) {
-//        return font;
-//      } else {
-//        NSLog(@"Font with name: %@ does not exist. Returning system font",value);
-//      }
-//    }
-//  } else {
-//    NSLog(@"No font defined for key: %@, returning system font",key);
-//  }
-//  return [UIFont systemFontOfSize:size];
-//}
 
 @end

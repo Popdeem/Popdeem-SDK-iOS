@@ -78,7 +78,7 @@
       [weakSelf.controller.tableView reloadData];
     });
   } failure:^(NSError *error){
-    NSLog(@"Locations Fail: %@",error);
+    PDLogError(@"Locations Fail: %@",error);
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.controller.tableView reloadData];
     });
@@ -230,7 +230,7 @@
                                     twitter:NO
 																	instagram:NO
                                     success:^(){
-                                      NSLog(@"No Action Reward Was CLaimed");
+                                      PDLog(@"No Action Reward Was CLaimed");
                                       [PDRewardStore deleteReward:weakReward.identifier];
                                       weakSelf.rewards = [PDRewardStore allRewards];
                                       [weakSelf.controller.tableView reloadData];
@@ -244,7 +244,7 @@
 																			[success setTag:2];
                                       [success show];
                                     } failure:^(NSError *error) {
-                                      NSLog(@"An error occurred when Claiming No Action Reward;");
+                                      PDLog(@"An error occurred when Claiming No Action Reward;");
                                       [weakSelf.controller.loadingView hideAnimated:YES];
                                       UIAlertView *failure = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                                                         message:@"Something went wrong when claiming your reward. Please try again later."

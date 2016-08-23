@@ -414,7 +414,7 @@
 - (void) instagramLoginSuccess {
 	[_viewModel instagramLoginSuccess];
 	[_instagramSwitch setOn:YES animated:NO];
-	NSLog(@"Instagram Connected");
+	PDLog(@"Instagram Connected");
 }
 
 - (void) instagramLoginFailure {

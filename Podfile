@@ -2,6 +2,7 @@
 # platform :ios, '7.1'
 use_frameworks!
 platform :ios, '8.0'
+
 link_with 'PopdeemSDK', 'PopdeemSDKTests', 'TabbedTest'
 
 target 'PopdeemSDK' do
@@ -43,5 +44,4 @@ target 'PopdeemSDKTests' do
 	pod 'OCMock'
 	pod 'Shimmer'
 end
-
 

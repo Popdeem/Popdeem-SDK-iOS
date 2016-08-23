@@ -9,6 +9,7 @@
 #import "PDUITwitterLoginViewController.h"
 #import "PDSocialMediaManager.h"
 #import "PDConstants.h"
+#import "PopdeemSDK.h"
 
 @interface PDUITwitterLoginViewController ()
 
@@ -130,11 +131,11 @@
 	[self.view setUserInteractionEnabled:NO];
 	[manager loginWithTwitter:^(void){
 		//Twitter Connected Successfully
-		NSLog(@"Twitter Logged in");
+		PDLog(@"Twitter Logged in");
 		connected = YES;
 		[self dismiss];
 	} failure:^(NSError *error) {
-		NSLog(@"Twitter Not Logged in: %@",error.localizedDescription);
+		PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
 		connected = NO;
 		[self dismiss];
 		

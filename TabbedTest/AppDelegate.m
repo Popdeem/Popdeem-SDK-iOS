@@ -13,7 +13,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Bolts/Bolts.h>
-
+#import "PDUserAPIService.h"
 
 @interface AppDelegate ()
 
@@ -31,7 +31,9 @@
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
 	[PopdeemSDK setDebug:YES];
+	PDLog(@"%@",[[[PDUserAPIService alloc] init] baseUrl]);
 	PDLog(@"Testing");
+	PDLogError(@"ERROR");
   [Fabric with:@[[Crashlytics class]]];
   //Test Moments
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];

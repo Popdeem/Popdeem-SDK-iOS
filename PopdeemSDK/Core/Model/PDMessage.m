@@ -9,6 +9,7 @@
 #import "PDMessage.h"
 #import <UIKit/UIKit.h>
 #import "PDMessageAPIService.h"
+#import "PopdeemSDK.h"
 
 @interface PDMessage()
 @end
@@ -22,7 +23,7 @@
     self.image = nil;
     return  self;
   }
-  NSLog(@"JSONModel Error on Score: %@",err);
+  PDLogError(@"JSONModel Error on Score: %@",err);
   return  nil;
 }
 
@@ -54,7 +55,7 @@
   PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
   [service markMessageAsRead:self.identifier completion:^(NSError *error){
     if (error) {
-      NSLog(@"Error while marking message %ld as read",(long)self.identifier);
+      PDLogError(@"Error while marking message %ld as read",(long)self.identifier);
     } else {
       self.read = YES;
     }

@@ -7,6 +7,7 @@
 //
 
 #import "PDScores.h"
+#import "PopdeemSDK.h"
 
 @implementation PDScores
 
@@ -27,7 +28,7 @@
     if (self = [super initWithString:json error:&err]) {
         return  self;
     }
-    NSLog(@"JSONModel Error on Score: %@",err);
+    PDLogError(@"JSONModel Error on Score: %@",err);
     return  nil;
 }
 

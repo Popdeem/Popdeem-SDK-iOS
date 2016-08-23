@@ -12,6 +12,7 @@
 #import "PDRewardStore.h"
 #import "PDUser+Facebook.h"
 #import "PDWallet.h"
+#import "PopdeemSDK.h"
 
 @implementation PDRewardActionAPIService
 
@@ -41,7 +42,7 @@
     [params setObject:imageString forKey:@"file"];
   } else if (r.action == PDRewardActionPhoto) {
     //There must be a photo on this action
-    NSLog(@"The reward action specifies PDRewardActionPhoto, but there is no image attached. Cannot claim this reward...Aborting");
+    PDLog(@"The reward action specifies PDRewardActionPhoto, but there is no image attached. Cannot claim this reward...Aborting");
     NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     @"The reward action specifies PDRewardActionPhoto, but there is no image attached. Cannot claim this reward...", NSLocalizedDescriptionKey,
                                     nil];

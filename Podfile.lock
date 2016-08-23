@@ -15,7 +15,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.14.0):
     - FBSDKCoreKit
-  - JSONModel (1.3.0)
+  - JSONModel (1.4.0)
   - Nocilla (0.11.0)
   - OCMock (3.3.1)
   - PopdeemSDK (1.0.5):
@@ -57,7 +57,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
   FBSDKLoginKit: da563567a108050ef83739c8c8c001ee9e25fa13
   FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
-  JSONModel: 81c06ecf99190a25fa6aafceea5faffa7880868a
+  JSONModel: 58fe3f8c29ff95ed94e7ee7dde87e807f5da5371
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   PopdeemSDK: f4f6ee7257eb87c66f88fff06d840236bfa2184c

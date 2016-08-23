@@ -6,6 +6,7 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
+#import "PopdeemSDK.h"
 #import "InstagramResponseModel.h"
 
 @implementation InstagramResponseModel
@@ -15,7 +16,7 @@
 	if (self = [super initWithString:json error:&err]) {
 		return  self;
 	}
-	NSLog(@"JSONModel Error on Instagram Model: %@",err);
+	PDLogError(@"JSONModel Error on Instagram Model: %@",err);
 	return  nil;
 }
 

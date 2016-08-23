@@ -7,6 +7,7 @@
 //
 
 #import "PDUserInstagramParams.h"
+#import "PopdeemSDK.h"
 
 @implementation PDUserInstagramParams
 
@@ -15,7 +16,7 @@
 	if (self = [super initWithString:json error:&err]) {
 		return  self;
 	}
-	NSLog(@"JSONModel Error on Instagram Params: %@",err);
+	PDLogError(@"JSONModel Error on Instagram Params: %@",err);
 	return  nil;
 }
 

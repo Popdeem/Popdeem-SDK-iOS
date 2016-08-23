@@ -10,6 +10,7 @@
 #import "PDAPIClient.h"
 #import "PDReferral.h"
 #import "PDNetworkError.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @implementation PDUserAPIService
 
@@ -25,7 +26,9 @@
                   completion:(void (^)(PDUser *user, NSError *error))completion {
   
   NSString *apiString = [NSString stringWithFormat:@"%@/%@/%@",self.baseUrl,USERS_PATH,userId];
-  
+	
+	
+	
   NSURLSession *session = [NSURLSession createPopdeemSession];
   [session GET:apiString
         params:nil

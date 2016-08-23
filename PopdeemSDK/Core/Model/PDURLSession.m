@@ -9,10 +9,9 @@
 #import "PDURLSession.h"
 #import "PDUtils.h"
 #import "PDUser.h"
+#import "PopdeemSDK.h"
 
 @implementation PDURLSession
-
-
 
 + (id) create {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -38,7 +37,7 @@
         NSError *jsonError;
         NSData *JSONData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&jsonError];
         if (jsonError) {
-            NSLog(@"Error creating JSON");
+            PDLogError(@"Error creating JSON: %@",jsonError.localizedDescription);
         }
         [mutableRequest setValue:[NSString stringWithFormat:@"%ld", [JSONData length]] forHTTPHeaderField:@"Content-Length"];
         [mutableRequest setHTTPBody:JSONData];

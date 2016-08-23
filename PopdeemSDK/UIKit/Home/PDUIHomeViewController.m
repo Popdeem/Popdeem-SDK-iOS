@@ -532,7 +532,7 @@
     [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
       [_loadingView hideAnimated:YES];
       if (error) {
-        NSLog(@"Something went wrong: %@",error);
+        PDLogError(@"Something went wrong: %@",error);
       } else {
         
         PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
@@ -607,7 +607,7 @@
     [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
       [_loadingView hideAnimated:YES];
       if (error) {
-        NSLog(@"Something went wrong: %@",error);
+        PDLogError(@"Something went wrong: %@",error);
       } else {
         PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
         [rvc setReward:selectedWalletReward];
@@ -643,12 +643,12 @@
   if (alertView.tag == 400) {
     switch (buttonIndex) {
       case 0:
-        NSLog(@"Cancel Redeem");
+        PDLog(@"Cancel Redeem");
         walletSelectedIndex = nil;
         selectedWalletReward = nil;
         break;
       case 1:
-        NSLog(@"Redeem");
+        PDLog(@"Redeem");
         [self redeemSelectedReward];
         break;
       default:

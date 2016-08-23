@@ -45,7 +45,7 @@
   static dispatch_once_t sharedToken;
   dispatch_once(&sharedToken, ^{
     SDK = [[PopdeemSDK alloc] init];
-    
+		SDK.debug = NO;
   });
   return SDK;
 }
@@ -232,7 +232,7 @@
   PDSocialMediaManager *man = [PDSocialMediaManager manager];
   if (d[@"denied"]) {
     //User denied
-    NSLog(@"User cancelled");
+    PDLog(@"User cancelled");
     [man userCancelledTwitterLogin];
   } else {
     NSString *token = d[@"oauth_token"];
@@ -277,7 +277,7 @@
       if (!error) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"PopdeemNonSocialRegistered"];
       } else {
-        NSLog(@"Error registering non-social user: %@",error.localizedDescription);
+        PDLogError(@"Error registering non-social user: %@",error.localizedDescription);
       }
     }];
   }
@@ -289,13 +289,13 @@
 
 + (void) setThirdPartyUserToken:(NSString*)userToken {
   [[PDAPIClient sharedInstance] setThirdPartyToken:userToken];
-  if ([PDUser sharedInstance] == nil) {
+  if ([[PDUser sharedInstance] identifier] == nil) {
     return;
   }
   PDUserAPIService *service = [[PDUserAPIService alloc] init];
   [service updateUserWithCompletion:^(PDUser *user, NSError *error){
     if (error) {
-      NSLog(@"Error updating User");
+      PDLogError(@"Error updating User: %@", error.localizedDescription);
     }
   }];
 }

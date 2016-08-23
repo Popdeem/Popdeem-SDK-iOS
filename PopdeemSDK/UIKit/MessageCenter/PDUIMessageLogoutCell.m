@@ -47,7 +47,7 @@
 }
 
 - (void) logoutButtonPressed:(id)sender {
-	NSLog(@"Logging out");
+	PDLog(@"Logging out");
 	[PopdeemSDK logout];
 }
 

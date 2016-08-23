@@ -84,7 +84,7 @@
 	}
   [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
   if (error.code == kCLErrorDenied) {
-		NSLog(@"User Denied Location");
+		PDLog(@"User Denied Location");
 	}
   if (!_locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 15)) {
     [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];

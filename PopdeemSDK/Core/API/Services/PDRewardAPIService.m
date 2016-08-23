@@ -9,6 +9,7 @@
 #import "PDRewardAPIService.h"
 #import "PDRewardStore.h"
 #import "PDUser.h"
+#import "PopdeemSDK.h"
 
 @implementation PDRewardAPIService
 
@@ -163,7 +164,7 @@
 			});
 			return;
 		}
-		NSLog(@"%@",jsonObject);
+		PDLog(@"%@",jsonObject);
 		if ([jsonObject[@"data"][@"status"] isEqualToString:@"failed"]) {
 			completion(NO, nil);
 			return;

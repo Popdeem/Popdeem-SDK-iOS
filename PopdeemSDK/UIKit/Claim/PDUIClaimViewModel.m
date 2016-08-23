@@ -44,8 +44,6 @@
 	if (!self) return nil;
 	_location = location;
 	_viewController = controller;
-	[self.viewController.instagramSwitch setHidden:YES];
-	[self.viewController.instagramIconView setHidden:YES];
 	if (mediaTypes.count == 1) {
 		if ([mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
 			self.socialMediaTypesAvailable = FacebookOnly;
@@ -668,7 +666,7 @@
 
 
 - (void) PDAPIClient:(PDAPIClient *)client didFailWithError:(NSError *)error {
-	NSLog(@"Error: %@",error);
+	PDLogError(@"Error: %@",error);
 	[_loadingView hideAnimated:YES];
 	[_viewController.claimButtonView setUserInteractionEnabled:YES];
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.common.something.wrong", @"Something went wrong. Please try again later") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles:nil];
@@ -694,7 +692,7 @@
 		success();
 	} failure:^(NSError *error) {
 		//Some error
-		NSLog(@"Twitter didnt log in: %@",error);
+		PDLogError(@"Twitter didnt log in: %@",error);
 		if (!_mustTweet) {
 			_willTweet = NO;
 			[_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
@@ -776,7 +774,7 @@
 				_imageURLString = [NSString stringWithFormat:@"assets-library://asset/asset.JPG?id=%@&ext=JPG",placeholder.localIdentifier];
 			} completionHandler:^(BOOL success, NSError *error){
 				if (success) {
-					NSLog(@"Saved Image");
+					PDLog(@"Saved Image");
 				}
 			}];
 		}

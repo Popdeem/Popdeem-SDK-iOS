@@ -25,6 +25,7 @@
 //
 
 #import "PDSocialMediaFriend.h"
+#import "PopdeemSDK.h"
 
 @interface PDSocialMediaFriend () {
 
@@ -77,7 +78,7 @@
 
 - (void) setSelected:(BOOL)selected {
     _selected = selected;
-    NSLog(@"Friend: %@, Selected: %@",self.name,self.selected ? @"YES" : @"NO");
+    PDLog(@"Friend: %@, Selected: %@",self.name,self.selected ? @"YES" : @"NO");
 }
 
 @end

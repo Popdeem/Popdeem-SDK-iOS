@@ -78,7 +78,7 @@
         NSError *jsonError;
         NSData *JSONData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&jsonError];
         if (jsonError) {
-            NSLog(@"Error creating JSON");
+            PDLogError(@"Error creating JSON");
         }
         [mutableRequest setValue:[NSString stringWithFormat:@"%ld", [JSONData length]] forHTTPHeaderField:@"Content-Length"];
         [mutableRequest setHTTPBody:JSONData];

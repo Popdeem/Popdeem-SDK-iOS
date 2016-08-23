@@ -12,6 +12,7 @@
 #import "PDUtils.h"
 #import "PDMessageStore.h"
 #import "PDUILazyLoader.h"
+#import "PopdeemSDK.h"
 
 @implementation PDUIMsgCntrViewModel
 
@@ -40,7 +41,7 @@
       [weakSelf.controller.refreshControl endRefreshing];
     }
     if (error) {
-      NSLog(@"Error while fetching messages");
+      PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
     }
     weakSelf.messages = messages;
     weakSelf.messagesLoading = NO;

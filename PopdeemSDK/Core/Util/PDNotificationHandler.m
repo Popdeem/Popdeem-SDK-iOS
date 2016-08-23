@@ -168,7 +168,7 @@
         _completionBlock(NO);
       }
     } else {
-      NSLog(@"Could not open attachment");
+      PDLog(@"Could not open attachment");
       [alertView removeFromSuperview];
       _completionBlock(NO);
     }

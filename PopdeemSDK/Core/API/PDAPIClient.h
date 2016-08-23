@@ -24,6 +24,7 @@
 // THE SOFTWARE.
 //
 
+#import "PopdeemSDK.h"
 #import <Foundation/Foundation.h>
 #import "PDConstants.h"
 #import "PDLocation.h"

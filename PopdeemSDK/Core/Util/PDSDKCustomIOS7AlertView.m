@@ -11,6 +11,7 @@
 
 #import "PDSDKCustomIOS7AlertView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PopdeemSDK.h"
 
 const static CGFloat kPDSDKCustomIOS7AlertViewDefaultButtonHeight       = 50;
 const static CGFloat kPDSDKCustomIOS7AlertViewDefaultButtonSpacerHeight = 1;
@@ -132,7 +133,7 @@ CGFloat buttonSpacerHeight = 0;
 // Default button behaviour
 - (void)customIOS7dialogButtonTouchUpInside: (PDSDKCustomIOS7AlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-  NSLog(@"Button Clicked! %d, %d", (int)buttonIndex, (int)[alertView tag]);
+  PDLog(@"Button Clicked! %d, %d", (int)buttonIndex, (int)[alertView tag]);
   [self close];
 }
 

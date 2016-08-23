@@ -75,11 +75,11 @@
   self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:_viewController.view];
   [self.loadingView showAnimated:YES];
 	[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
-		NSLog(@"Facebook Friends Updated");
+		PDLog(@"Facebook Friends Updated");
 	}];
   [[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
     if (error) {
-      NSLog(@"Something went wrong: %@",error);
+      PDLogError(@"Something went wrong: %@",error);
       [[PDSocialMediaManager manager] logoutFacebook];
       dispatch_async(dispatch_get_main_queue(), ^{
         [_loadingView hideAnimated:YES];
@@ -133,13 +133,10 @@
     }
   } else if ([PDGeolocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
     [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
-    NSLog(@"The user did not allow their location");
+    PDLog(@"The user did not allow their location");
     NSError *locationError = [NSError errorWithDomain:@"Popdeem Location Error" code:27000 userInfo:@{@"User did not allow location":NSLocalizedDescriptionKey}];
     self.locationBlock(locationError);
     return;
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//      [self checkLocation];
-//    });
   }
   dispatch_async(dispatch_get_main_queue(), ^{
     [self checkLocation];
@@ -171,20 +168,20 @@
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	if (error.code == kCLErrorDenied) {
-		NSLog(@"User Denied Location");
+		PDLog(@"User Denied Location");
 		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
 		_locationAcquired = YES;
 		self.locationBlock(error);
 	}
   if (_locationAcquired == NO) {
-    NSLog(@"Error: %@",error);
+    PDLog(@"Error: %@",error);
     [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
     [self performSelector:@selector(checkLocation) withObject:nil afterDelay:0.1];
   }
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-  NSLog(@"did update location");
+  PDLog(@"did update location");
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -211,7 +208,7 @@
 
 - (void) updateUserLocationCompletion:(void (^)(NSError *error))completion {
   [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user) {
-    NSLog(@"User Updated OK");
+    PDLog(@"User Updated OK");
     self.locationBlock(nil);
   }failure:^(NSError *error) {
     self.locationBlock(error);

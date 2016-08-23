@@ -11,6 +11,7 @@
 #import "PDUtils.h"
 #import "PDRewardAPIService.h"
 #import "PDConstants.h"
+#import "PopdeemSDK.h"
 
 @implementation PDUIInstagramUnverifiedWalletTableViewCell
 
@@ -79,16 +80,16 @@
 		verifying = NO;
 		if (error) {
 			[_activityIndicator stopAnimating];
-			NSLog(@"Something went wrong");
+			PDLogError(@"Something went wrong while verifying Reward, Error: %@",error.localizedDescription);
 		}
 		if (verified) {
-			NSLog(@"Post Found");
+			PDLog(@"Verifying Reward: Post Found");
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[_activityIndicator stopAnimating];
 				[[NSNotificationCenter defaultCenter] postNotificationName:InstagramVerifySuccessFromWallet object:nil];
 			});
 		} else {
-			NSLog(@"Post not found");
+			PDLog(@"Verifying Reward: Post Found");
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[_activityIndicator stopAnimating];
 				[_activityIndicator setHidden:YES];

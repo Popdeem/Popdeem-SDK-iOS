@@ -6,24 +6,17 @@
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "PopdeemSDK.h"
+#import <string.h>
 
-#define PDLog(fmt) \
-[[PDLogger sharedInstance] log:fmt]
+#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
-#define PDLogError(fmt) \
-[[PDLogger sharedInstance] logError:fmt]
-
-#ifdef DEBUG
-#   define PDLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#if DEBUG
+# define PDLog(fmt, ...) \
+#	NSLog((@"Popdeem Debug Log:\n\tLocation: %s, Line %d\n\tMessage: " fmt), __FILENAME__, __LINE__, ##__VA_ARGS__)
 #else
-#   define DLog(...)
+# define PDLog(...)
 #endif
 
-@interface PDLogger : NSObject
-
-+ (instancetype) sharedInstance;
-- (void) log:(NSString*)fmt;
-- (void) logError:(NSString*)fmt;
-
-@end
+#define PDLogError(fmt, ...) \
+#NSLog((@"❗️Popdeem Error:\n\tLocation: %s, Line %d\n\tMessage: " fmt), __FILENAME__, __LINE__, ##__VA_ARGS__)

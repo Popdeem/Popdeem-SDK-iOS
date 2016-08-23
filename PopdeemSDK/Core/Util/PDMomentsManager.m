@@ -8,6 +8,7 @@
 
 #import "PDMomentsManager.h"
 #import "PDMomentAPIService.h"
+#import "PopdeemSDK.h"
 
 @implementation PDMomentsManager
 
@@ -15,7 +16,7 @@
   PDMomentAPIService *service = [[PDMomentAPIService alloc] init];
   [service logMoment:momentString completion:^(NSError* error){
     if (error) {
-      NSLog(@"Error logging moment");
+      PDLogError(@"Error logging moment");
     }
   }];
 }

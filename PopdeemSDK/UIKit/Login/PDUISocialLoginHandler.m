@@ -1,4 +1,4 @@
-//
+;//
 //  PDSocialLoginHandler.m
 //  PopdeemSDK
 //
@@ -13,6 +13,7 @@
 #import "PDUser.h"
 #import "PDUserAPIService.h"
 #import "PDUser+Facebook.h"
+#import "PopdeemSDK.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
@@ -40,11 +41,33 @@ static NSString *const PDUseCountKey = @"PDUseCount";
     PDUser *user = [PDUser sharedInstance];
     [apiService getUserDetailsForId:[NSString stringWithFormat:@"%ld",(long)user.identifier] authenticationToken:user.userToken completion:^(PDUser *user, NSError *error){
       if (error) {
-        NSLog(@"Something went wrong");
+        PDLogError(@"Something went wrong, Error: %@",error.localizedDescription);
       }
-      [[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
-        NSLog(@"Facebook Friends Updated");
-      }];
+			[[PDSocialMediaManager manager] checkFacebookTokenIsValid:^(BOOL valid){
+				if (valid) {
+					[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
+						PDLog(@"Facebook Friends Updated");
+					}];
+				} else {
+					[[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile",
+																																						 @"email",
+																																						 @"user_birthday",
+																																						 @"user_posts",
+																																						 @"user_friends",
+																																						 @"user_education_history"]
+																											 registerWithPopdeem:YES
+																																	 success:^{
+																																		 [[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
+																																		 }];
+																																	 } failure:^(NSError *err) {
+																																		 if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
+																																			 PDLog(@"User Cancelled Login");
+																																		 } else {
+																																			 PDLogError(@"Error: %@",err.localizedDescription);
+																																		 }
+																																	 }];
+				}
+			}];
     }];
     return;
   }
@@ -65,7 +88,7 @@ static NSString *const PDUseCountKey = @"PDUseCount";
   PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
   [topController presentViewController:vc animated:YES completion:^{}];
   [self setUsesCount:self.usesCount+1];
-  NSLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+  PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
 }
 
 - (NSUInteger)usesCount {

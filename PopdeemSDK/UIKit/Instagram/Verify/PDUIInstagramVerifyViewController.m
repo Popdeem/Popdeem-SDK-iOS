@@ -11,6 +11,7 @@
 #import "PDTheme.h"
 #import "PDUIModalLoadingView.h"
 #import "PDRewardAPIService.h"
+#import "PopdeemSDK.h"
 
 @interface PDUIInstagramVerifyViewController ()
 
@@ -139,16 +140,16 @@
 	PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
 	[service verifyInstagramPostForReward:_reward completion:^(BOOL verified, NSError *error){
 		if (error) {
-			NSLog(@"Something went wrong");
+			PDLogError(@"Something went wrong while verifying reward. Error: %@",error.localizedDescription);
 		}
 		if (verified) {
-			NSLog(@"Post Found");
+			PDLog(@"Post found for reward");
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[_viewModel setViewModelState:PDInstagramVerifyViewStateVerifySuccess];
 				[_loadingView hideAnimated:YES];
 			});
 		} else {
-			NSLog(@"Post not found");
+			PDLog(@"Post not found");
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[_viewModel setViewModelState:PDInstagramVerifyViewStateVerifyFailure];
 				[_loadingView hideAnimated:YES];

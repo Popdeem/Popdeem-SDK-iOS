@@ -9,6 +9,7 @@
 #import "PDLocation.h"
 #import "PDUser.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PopdeemSDK.h"
 
 @implementation PDLocation
 
@@ -45,7 +46,7 @@
     if (self = [super initWithString:json error:&err]) {
         return  self;
     }
-    NSLog(@"JSONModel Error on Score: %@",err);
+    PDLogError(@"JSONModel Error on Score: %@",err);
     return  nil;
 }
 

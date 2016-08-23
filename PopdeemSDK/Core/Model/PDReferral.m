@@ -69,7 +69,7 @@
     [[[PDAPIClient sharedInstance] referral] setReferralType:PDReferralTypeReopen];
     [[PDAPIClient sharedInstance] updateUserLocationAndDeviceTokenSuccess:^(PDUser *user){
     } failure:^(NSError *error){
-      NSLog(@"Something went wrong while updating the user");
+      PDLogError(@"Something went wrong while updating the user");
     }];
   }
 }

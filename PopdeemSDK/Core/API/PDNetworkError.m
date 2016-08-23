@@ -30,6 +30,10 @@
             break;
         case 429:
             errorDescription = @"Too Many Requests";
+						break;
+				case 401:
+						errorDescription = @"Unauthorized";
+						break;
         default:
             errorDescription = @"Something Went Wrong";
             break;

@@ -69,7 +69,7 @@
     if (error) {
       failure(error);
     } else if (result.isCancelled) {
-      NSLog(@"Cancelled");
+      PDLog(@"Facebook Login Was Cancelled");
       NSError *cancelled = [NSError errorWithDomain:@"Popdeem.Facebook.Cancelled" code:27500 userInfo:nil];
       failure(cancelled);
     } else {
@@ -93,7 +93,7 @@
        NSString *facebookAccessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
        NSString *facebookID = [result objectForKey:@"id"];
        [[[PDUser sharedInstance] facebookParams] setIdentifier:facebookID];
-       NSLog(@"facebook ID: %@",facebookID);
+       PDLog(@"facebook ID: %@",facebookID);
        
        [[PDAPIClient sharedInstance] registerUserwithFacebookAccesstoken:facebookAccessToken facebookId:facebookID success:^(PDUser *user) {
          success();
@@ -134,6 +134,13 @@
 
 - (BOOL) isLoggedInWithFacebook {
   return [FBSDKAccessToken currentAccessToken] != nil;
+}
+
+- (BOOL) facebookTokenIsValid {
+	if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"email"]){
+		return YES;
+	}
+	return NO;
 }
 
 - (BOOL) isLoggedInWithTwitter {
@@ -184,6 +191,24 @@
   } failure:^(NSError *error){
     completion(error);
   }];
+}
+
+- (void) checkFacebookTokenIsValid:(void (^)(BOOL valid))completion {
+	
+	NSString *access_token = [[[PDUser sharedInstance] facebookParams] accessToken];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+																																	 parameters:@{@"fields": @"id"}
+																																	 HTTPMethod:@"GET"];
+		[request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+			if (error) {
+				PDLogError(@"Error checking Token: %@",error.localizedDescription);
+				completion(NO);
+				return;
+			}
+			completion(YES);
+		}];
+	});
 }
 
 #pragma mark - Twitter -
@@ -335,7 +360,7 @@
 }
 
 - (void) selectedIOSTwitterAccount:(ACAccount*)account success:(void (^)(void))success failure:(void (^)(NSError *error))failure {
-  NSLog(@"Chose Twitter Account: %@",account.username);
+  PDLog(@"Chose Twitter Account: %@",account.username);
   [self twitterLoginWithAccount:account success:^(void){
     success();
   } failure:^(NSError *error) {
@@ -355,25 +380,19 @@
   NSString *callback = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterCallbackScheme"];
   NSString *fullCallback = [NSString stringWithFormat:@"%@://twitter_access_tokens/",callback];
   [_twitterAPI postTokenRequest:^(NSURL *url, NSString *oauthToken) {
-    NSLog(@"-- url: %@", url);
-    NSLog(@"-- oauthToken: %@", oauthToken);
-    
-    
     [[UIApplication sharedApplication] openURL:url];
-    
   } authenticateInsteadOfAuthorize:NO
                      forceLogin:@(YES)
                      screenName:nil
                   oauthCallback:fullCallback
                      errorBlock:^(NSError *error) {
-                       NSLog(@"-- error: %@", error);
+                       PDLogError(@"-- error: %@", error);
                      }];
 }
 
 - (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier {
   
   [_twitterAPI postAccessTokenRequestWithPIN:verifier successBlock:^(NSString *oauthToken, NSString *oauthTokenSecret, NSString *userID, NSString *screenName) {
-    NSLog(@"-- screenName: %@", screenName);
     [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
       self.endSuccess();
     } failure:^(NSError *error){
@@ -382,7 +401,7 @@
     }];
     //Now connect social account
   } errorBlock:^(NSError *error) {
-    NSLog(@"-- %@", [error localizedDescription]);
+    PDLogError(@"Twitter Error: %@", [error localizedDescription]);
   }];
 }
 
@@ -449,7 +468,7 @@
 	PDInstagramAPIClient *client = [[PDInstagramAPIClient alloc] init];
 	[client checkAccessToken:^(BOOL valid, NSError *error){
 		if (error) {
-			NSLog(@"Error when checking Instagram Token: %@",error);
+			PDLogError(@"Error when checking Instagram Token: %@",error);
 		}
 		completion(valid);
 	}];

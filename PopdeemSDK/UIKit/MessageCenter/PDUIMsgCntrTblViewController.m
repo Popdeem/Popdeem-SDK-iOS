@@ -54,8 +54,7 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
-	NSLog(@"Memory");
-  // Dispose of any resources that can be recreated.
+	PDLog(@"Memory Warning Recieved");
 }
 
 - (void) viewWillDisappear:(BOOL)animated {

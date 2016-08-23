@@ -28,6 +28,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PDUser.h"
 #import "PDSocialMediaFriend.h"
+#import "PopdeemSDK.h"
 
 @implementation PDUser (Facebook)
 
@@ -69,10 +70,10 @@
            [[PDUser taggableFriends] removeAllObjects];
            [[PDUser taggableFriends] addObjectsFromArray:sortedArray];
            
-             NSLog(@"Got Friends, there are %ld",[[PDUser taggableFriends] count]);
+             PDLog(@"Got Friends, there are %ld",[[PDUser taggableFriends] count]);
              callback(YES);
          } else {
-             NSLog(@"%@",error);
+             PDLogError(@"Error fetching facebook friends %@",error.localizedDescription);
              callback(NO);
          }
          
@@ -96,7 +97,7 @@
                 self._callback(YES);
             }
         } else {
-            NSLog(@"error");
+            PDLogError(@"User Likes Error: %@",error.localizedDescription);
         }
 
     }];
