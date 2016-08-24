@@ -34,6 +34,9 @@
 	PDLog(@"%@",[[[PDUserAPIService alloc] init] baseUrl]);
 	PDLog(@"Testing");
 	PDLogError(@"ERROR");
+	
+	Log(@"Test Log");
+	
   [Fabric with:@[[Crashlytics class]]];
   //Test Moments
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
