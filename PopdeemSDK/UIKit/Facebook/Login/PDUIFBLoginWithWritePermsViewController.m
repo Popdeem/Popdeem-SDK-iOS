@@ -151,7 +151,7 @@
 		}];
 																														 [loadingView hideAnimated:YES];
 																														 [self dismissViewControllerAnimated:YES completion:^{
-																															 [[NSNotificationCenter defaultCenter] postNotificationName:@"PopdeemUserLoggedInNotification" object:nil];
+																															 [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];
 																														 }];
 	} failure:^(NSError *err) {
 		if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {

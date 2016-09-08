@@ -24,7 +24,7 @@
 - (void) checkAccessToken:(void (^)(BOOL valid, NSError *error))completion {
 	NSURLSession *session = [NSURLSession createPopdeemSession];
 	PDUser *user = [PDUser sharedInstance];
-	NSString *path = [NSString stringWithFormat:@"%@/users/self/?access_token=%@", self.baseUrl, user.instagramParams.accessToken];
+	NSString *path = [NSString stringWithFormat:@"%@/users/self?access_token=%@", self.baseUrl, user.instagramParams.accessToken];
 	[session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{

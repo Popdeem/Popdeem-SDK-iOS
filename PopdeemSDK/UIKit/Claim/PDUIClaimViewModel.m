@@ -44,6 +44,8 @@
 	if (!self) return nil;
 	_location = location;
 	_viewController = controller;
+//	[self.viewController.instagramSwitch setHidden:YES];
+//	[self.viewController.instagramIconView setHidden:YES];
 	if (mediaTypes.count == 1) {
 		if ([mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
 			self.socialMediaTypesAvailable = FacebookOnly;
@@ -509,6 +511,8 @@
 	isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_viewController presentViewController:isv animated:YES completion:^(void){}];
+//TODO: get rid of this
+	[self makeClaim];
 	return;
 }
 

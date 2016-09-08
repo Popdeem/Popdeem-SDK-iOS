@@ -5,22 +5,22 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - Crashlytics (3.7.2):
+  - Crashlytics (3.8.0):
     - Fabric (~> 1.6.3)
   - Expecta (1.0.5)
-  - Fabric (1.6.7)
-  - FBSDKCoreKit (4.14.0):
+  - Fabric (1.6.8)
+  - FBSDKCoreKit (4.15.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.14.0):
+  - FBSDKLoginKit (4.15.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.14.0):
+  - FBSDKShareKit (4.15.0):
     - FBSDKCoreKit
   - JSONModel (1.4.0)
   - Nocilla (0.11.0)
   - OCMock (3.3.1)
-  - PopdeemSDK (1.0.5):
-    - PopdeemSDK/Core (= 1.0.5)
-  - PopdeemSDK/Core (1.0.5):
+  - PopdeemSDK (1.0.6):
+    - PopdeemSDK/Core (= 1.0.6)
+  - PopdeemSDK/Core (1.0.6):
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -28,16 +28,18 @@ PODS:
     - JSONModel
     - Shimmer
     - STTwitter
-  - PopdeemSDK/UIKit (1.0.5):
+  - PopdeemSDK/UIKit (1.0.6):
     - PopdeemSDK/Core
   - Reveal-iOS-SDK (1.6.2)
   - Shimmer (1.0.2)
   - STTwitter (0.2.5)
 
 DEPENDENCIES:
+  - Bolts
   - Crashlytics
   - Expecta (~> 1.0.0)
   - Fabric
+  - JSONModel
   - Nocilla
   - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
@@ -51,16 +53,16 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
+  Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
-  FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
-  FBSDKLoginKit: da563567a108050ef83739c8c8c001ee9e25fa13
-  FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
+  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
+  FBSDKCoreKit: 6680cbd33a4243d80700f182d0af36b3fa7f3118
+  FBSDKLoginKit: 96d9b70b5784490f02ab86119e542a1f182017a8
+  FBSDKShareKit: 06ef20cb2f16828ca4b20055333313dd445de362
   JSONModel: 58fe3f8c29ff95ed94e7ee7dde87e807f5da5371
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  PopdeemSDK: f4f6ee7257eb87c66f88fff06d840236bfa2184c
+  PopdeemSDK: 3e12e9acb7eb3ec7601685c8967314bd308cd290
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497

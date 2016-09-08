@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (BOOL) canOpenUrl:(NSURL*)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation;
+         annotation:(nullable id)annotation;
 
 + (BOOL) application:(UIApplication *)application
              openURL:(NSURL *)url

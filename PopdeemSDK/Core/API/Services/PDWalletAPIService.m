@@ -9,6 +9,7 @@
 #import "PDWalletAPIService.h"
 #import "PDWallet.h"
 #import "PDNetworkError.h"
+#import "PDLogger.h"
 
 @implementation PDWalletAPIService
 
@@ -48,6 +49,7 @@
       [PDWallet removeAllRewards];
       for (NSDictionary *attributes in jsonObject[@"rewards"]) {
         PDReward *reward = [[PDReward alloc] initFromApi:attributes];
+				PDLog(@"Reward ID:%li\n Request ID: %@\n Claimed Network: %@",reward.identifier, attributes[@"request_id"], attributes[@"claiming_social_networks"]);
         if (reward.status == PDRewardStatusLive) {
           [PDWallet add:reward];
         }

@@ -14,6 +14,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <Bolts/Bolts.h>
 #import "PDUserAPIService.h"
+#import "PDConstants.h"
 
 @interface AppDelegate ()
 
@@ -30,14 +31,12 @@
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
-	[PopdeemSDK setDebug:YES];
-	PDLog(@"%@",[[[PDUserAPIService alloc] init] baseUrl]);
-	PDLog(@"Testing");
-	PDLogError(@"ERROR");
-	
-	Log(@"Test Log");
-	
+	[PopdeemSDK setDebug:YES];	
   [Fabric with:@[[Crashlytics class]]];
+	
+	
+	PDLog(@"API_URL: %@", API_URL);
+	
   //Test Moments
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
   
@@ -69,7 +68,10 @@
 	if (wasHandled) return wasHandled;
 	
 	if ([PopdeemSDK canOpenUrl:url sourceApplication:options[@"UIApplicationOpenURLOptionsSourceApplicationKey"] annotation:nil]) {
-		return [PopdeemSDK application:app openURL:url sourceApplication:options[@"UIApplicationOpenURLOptionsSourceApplicationKey"] annotation:nil];
+		return [PopdeemSDK application:app
+													 openURL:url
+								 sourceApplication:options[@"UIApplicationOpenURLOptionsSourceApplicationKey"]
+												annotation:nil];
 	}
 	
 	return NO;

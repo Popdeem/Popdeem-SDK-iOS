@@ -174,9 +174,9 @@
   }];
 }
 
-+ (BOOL) canOpenUrl:(NSURL*)url
++ (BOOL) canOpenUrl:(NSURL*)url	
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+         annotation:(nullable id)annotation {
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
     return YES;
   }
@@ -201,7 +201,7 @@
 + (BOOL) application:(UIApplication *)application
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
-          annotation:(id)annotation {
+          annotation:(nullable id)annotation {
   //Twitter Login Callback
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
     return [PopdeemSDK handleTwitterCallback:url sourceApplication:sourceApplication annotation:annotation];

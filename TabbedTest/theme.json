@@ -19,9 +19,6 @@
 			"primaryFont" : "Avenir-Book",
 			"boldFont" : "Avenir-Heavy",
 			"lightFont" : "Avenir-Light"
-		},
-		"nav" : {
-			"useTheme" : "true"
 		}
 	}
 }

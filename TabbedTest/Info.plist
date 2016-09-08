@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1935</string>
+	<string>1993</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -76,10 +76,12 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera when you decide to share a photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>"We use your location to deliver local rewards"</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>"We must access your photos"</string>
+	<string>We access your photo gallery when you decide to share a photo.</string>
 	<key>TwitterAppConsumerKey</key>
 	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
 	<key>TwitterAppConsumerSecret</key>

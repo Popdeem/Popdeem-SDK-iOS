@@ -119,7 +119,7 @@
   [self addUserToUserDefaults:[PDUser sharedInstance]];
   [self setState:LoginStateContinue];
   [self.viewController renderViewModelState];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"PopdeemUserLoggedInNotification" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];
 }
 
 #pragma mark - Fetch Location -

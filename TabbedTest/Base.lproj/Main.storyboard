@@ -31,12 +31,12 @@
             <objects>
                 <tableViewController id="rvJ-68-IYn" customClass="PDUIHomeViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WK2-Wo-4d7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="EPc-TW-Gf0">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EPc-TW-Gf0" id="eJ8-NE-n3R">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -61,7 +61,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xhT-Em-YLt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="first" id="ME9-Gg-cen"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z02-6m-0MY">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Z02-6m-0MY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -86,7 +87,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-dB-bTl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-dB-bTl">
                                 <rect key="frame" x="262" y="253" width="77" height="30"/>
                                 <state key="normal" title="test trigger"/>
                             </button>
@@ -105,6 +106,7 @@
                         <constraints>
                             <constraint firstItem="MH5-lM-dLb" firstAttribute="centerY" secondItem="Bhp-Gs-8er" secondAttribute="centerY" id="9WK-u3-NHW"/>
                             <constraint firstItem="MH5-lM-dLb" firstAttribute="centerX" secondItem="Bhp-Gs-8er" secondAttribute="centerX" id="DJP-9E-g2O"/>
+                            <constraint firstItem="gdm-dB-bTl" firstAttribute="baseline" secondItem="MH5-lM-dLb" secondAttribute="baseline" id="H4a-9M-Mfy"/>
                             <constraint firstItem="gdm-dB-bTl" firstAttribute="leading" secondItem="Bhp-Gs-8er" secondAttribute="leadingMargin" constant="242" id="LmW-Jy-u7V"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gdm-dB-bTl" secondAttribute="trailing" constant="241" id="okc-bb-0WP"/>
                         </constraints>

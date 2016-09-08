@@ -232,11 +232,10 @@
 }
 
 - (void) twitterLoginSuccess {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+	__block PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[cell.socialSwitch setOn:YES animated:YES];
-		[_tableView setNeedsDisplay];
-		[self.view setNeedsDisplay];
+		[_tableView reloadInputViews];
 	});
 }
 
@@ -244,8 +243,7 @@
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[cell.socialSwitch setOn:NO animated:YES];
-		[_tableView setNeedsDisplay];
-		[self.view setNeedsDisplay];
+		[_tableView reloadInputViews];
 	});
 }
 
