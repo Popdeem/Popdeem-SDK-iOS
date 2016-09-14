@@ -46,11 +46,11 @@
     [_nameLabel setNumberOfLines:1];
     [_nameLabel sizeToFit];
     
-    self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height, frame.size.width-(left + 20), 20)];
+    self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height, frame.size.width-(left + 20), 30)];
     [_captionLabel setText:feedItem.captionString];
     [_captionLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
     [_captionLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
-    [_captionLabel setNumberOfLines:1];
+    [_captionLabel setNumberOfLines:2];
     [_captionLabel sizeToFit];
 		
     float floatingHeight = cellHeight;

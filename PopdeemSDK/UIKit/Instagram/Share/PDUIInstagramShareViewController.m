@@ -207,12 +207,13 @@ CGFloat _cardWidth;
 		NSURL *instagramURL       = [NSURL URLWithString:[NSString stringWithFormat:@"instagram://Library?AssetPath=%@", escapedString]];
 		UIPasteboard *pb = [UIPasteboard generalPasteboard];
 		[pb setString:_message];
-		if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-			_leavingToInstagram = YES;
-			[[UIApplication sharedApplication] openURL:instagramURL];
-		} else {
-			[self openInDocumentController];
-		}
+		[self openInDocumentController];
+//		if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+//			_leavingToInstagram = YES;
+//			[[UIApplication sharedApplication] openURL:instagramURL];
+//		} else {
+//			[self openInDocumentController];
+//		}
 	}
 	else
 	{

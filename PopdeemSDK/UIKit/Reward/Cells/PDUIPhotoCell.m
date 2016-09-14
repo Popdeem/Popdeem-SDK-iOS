@@ -15,7 +15,7 @@
         
         float indent = 20 + self.profileImageView.frame.size.width + 20;
         float imageSize = 100;
-        self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, 60, imageSize, imageSize)];
+        self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, 65, imageSize, imageSize)];
         self.actionImageView.clipsToBounds = YES;
         [self.actionImageView setContentMode:UIViewContentModeScaleAspectFill];
         [self.actionImageView setImage:feedItem.actionImage];
