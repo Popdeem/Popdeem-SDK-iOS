@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-NSString *const ABRA_URL = @"http://insights.popdeem.com";
-NSString *const ABRA_EVENT_PATH = @"log_event";
+NSString *const ABRA_URL = @"http://insights.popdeem.com/v1";
+NSString *const ABRA_EVENT_PATH = @"event";
 NSString *const ABRA_TOKEN_PATH = @"fetch_token";
+
+NSString *const ABRA_KEY_USER_ID = @"user_id";
+NSString *const ABRA_KEY_EVENT = @"event";
+NSString *const ABRA_KEY_TRAITS = @"traits";
+NSString *const ABRA_KEY_PROJECT_TOKEN = @"project_token";
+NSString *const ABRA_KEY_TAG = @"tag";
+NSString *const ABRA_KEY_PROPERTIES = @"properties";
 
 NSString *const ABRA_EVENT_VIEWED_LOGIN_TAKEOVER = @"Login Takeover Viewed";
 NSString *const ABRA_EVENT_VIEWED_REWARDS_HOME = @"Rewards Home Viewed";
@@ -48,7 +55,6 @@ NSString *const ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK = @"Facebook";
 NSString *const ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER = @"Twitter";
 NSString *const ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM = @"Instagram";
 NSString *const ABRA_PROPERTYNAME_PHOTO_ATTACHED = @"Photo"; // Boolean Values
-NSString *const ABRA_PROPERTYNAME_REWARD_TYPE = @"Social Networks"; //ABRA_PROPERTYVALUE_REWARD_TYPE_COUPON etc
 
 NSString *const ABRA_EVENT_CONNECTED_ACCOUNT = @"Connected Social Account";
 NSString *const ABRA_PROPERTYNAME_SOCIAL_NETWORK = @"Social Network";
@@ -88,12 +94,36 @@ NSString *const ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_OFF = @"Off";
 
 NSString *const ABRA_EVENT_REDEEMED_REWARD = @"Redeemed Reward";
 NSString *const ABRA_PROPERTYNAME_REWARD_NAME = @"Reward Name";
+NSString *const ABRA_PROPERTYNAME_REWARD_ID = @"Reward ID";
 
 NSString *const ABRA_EVENT_LOGIN = @"Login";
 NSString *const ABRA_EVENT_LOGOUT = @"Logout";
 NSString *const ABRA_EVENT_SIGNUP = @"Sign Up";
 
 NSString *const ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT = @"Disconnect Social Account";
+
+NSString *const ABRA_USER_TRAITS_ID = @"id";
+NSString *const ABRA_EVENT_ONBOARD = @"onboard";
+NSString *const ABRA_USER_TRAITS_FIRST_NAME = @"first_name";
+NSString *const ABRA_USER_TRAITS_LAST_NAME = @"last_name";
+NSString *const ABRA_USER_TRAITS_EMAIL = @"email";
+NSString *const ABRA_USER_TRAITS_DOB = @"dob";
+NSString *const ABRA_USER_TRAITS_GENDER = @"gender";
+NSString *const ABRA_USER_TRAITS_CITY = @"city";
+NSString *const ABRA_USER_TRAITS_COUNTRY_CODE = @"country_code";
+NSString *const ABRA_USER_TRAITS_REGION = @"region";
+NSString *const ABRA_USER_TRAITS_TIME_ZONE = @"time_zone";
+NSString *const ABRA_USER_TRAITS_PUSH_NOTIFICATIONS_ENABLED = @"push_notifications_enabled";
+
+NSString *const ABRA_PROPERTYNAME_ERROR = @"Error";
+NSString *const ABRA_PROPERTYVALUE_ERROR_HASHTAG = @"Hashtag failed validation";
+NSString *const ABRA_PROPERTYVALUE_ERROR_TOOMANYCHARS = @"Too many caharacters for Twitter";
+NSString *const ABRA_PROPERTYVALUE_ERROR_NOPHOTO = @"No photo was added";
+
+NSString *const ABRA_EVENT_DENIED_LOCATION = @"User denied location access";
+NSString *const ABRA_EVENT_DENIED_PUSH_NOTIFICATIONS = @"User denied push notifications";
+
+NSString *const ABRA_EVENT_CANCELLED_FACEBOOK_LOGIN = @"User cancelled facebook login";
 //Use Social Networks above
 
 

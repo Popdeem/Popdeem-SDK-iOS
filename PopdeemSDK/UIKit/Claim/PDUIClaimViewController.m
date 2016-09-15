@@ -51,6 +51,7 @@
     self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismissed) name:InstagramLoginuserDismissed object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
@@ -235,6 +236,13 @@
 		}
 		[self.twitterCharacterCountLabel setHidden:YES];
 	}
+	
+	AbraLogEvent(ABRA_EVENT_VIEWED_CLAIM, (@{
+																					 ABRA_PROPERTYNAME_REWARD_TYPE : AbraKeyForRewardType(_reward.type),
+																					 ABRA_PROPERTYNAME_REWARD_ACTION : AbraKeyForRewardAction(_reward.action),
+																					 ABRA_PROPERTYNAME_NETWORKS_AVAILABLE : [self readableMediaTypesAvailable],
+																					 ABRA_PROPERTYNAME_REWARD_NAME : _reward.rewardDescription
+																					 }));
 }
 
 - (void)didReceiveMemoryWarning {
@@ -371,6 +379,8 @@
                      self.navigationItem.hidesBackButton = NO;
                      [self setTitle:translationForKey(@"popdeem.claim.getreward", @"Claim Reward")];
                    } completion:^(BOOL finished){}];
+	
+	AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, @{ABRA_PROPERTYNAME_TEXT : _textView.text});
 }
 
 - (void) keyboardDown {
@@ -401,13 +411,25 @@
 
 
 - (IBAction)facebookSwitchToggled:(id)sender {
+	AbraLogEvent(ABRA_EVENT_TOGGLED_SOCIAL_BUTTON, (@{
+																									 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
+																									 ABRA_PROPERTYNAME_SOCIAL_BUTTON_STATE : ([(UISwitch*)sender isOn]) ? ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_ON: ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_OFF
+																									 }));
 	[_viewModel toggleFacebook];
 }
 - (IBAction)twitterSwitchToggled:(id)sender {
+	AbraLogEvent(ABRA_EVENT_TOGGLED_SOCIAL_BUTTON, (@{
+																									 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+																									 ABRA_PROPERTYNAME_SOCIAL_BUTTON_STATE : ([(UISwitch*)sender isOn]) ? ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_ON: ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_OFF
+																									 }));
 	[_viewModel toggleTwitter];
 }
 
 - (IBAction)instagramSwitchToggled:(id)sender {
+	AbraLogEvent(ABRA_EVENT_TOGGLED_SOCIAL_BUTTON, (@{
+																									 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
+																									 ABRA_PROPERTYNAME_SOCIAL_BUTTON_STATE : ([(UISwitch*)sender isOn]) ? ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_ON: ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_OFF
+																									 }));
 	[_viewModel instagramSwitchToggled:sender];
 }
 
@@ -415,6 +437,15 @@
 	[_viewModel instagramLoginSuccess];
 	[_instagramSwitch setOn:YES animated:NO];
 	PDLog(@"Instagram Connected");
+	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
+																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+																								}));
+}
+
+- (void) instagramLoginUserDismissed {
+	[_viewModel instagramLoginFailure];
+	[_instagramSwitch setOn:NO animated:YES];
 }
 
 - (void) instagramLoginFailure {
@@ -458,6 +489,31 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (NSString*) readableMediaTypesAvailable {
+	switch ([self.viewModel socialMediaTypesAvailable]) {
+		case FacebookOnly:
+			return @"Facebook";
+			break;
+		case TwitterOnly:
+			return @"Twitter";
+			break;
+		case InstagramOnly:
+			return @"Instagram";
+			break;
+		case FacebookAndTwitter:
+			return @"Facebook & Twitter";
+			break;
+		case FacebookAndInstagram:
+			return @"Facebook & Instagram";
+			break;
+		case TwitterAndInstagram:
+			return @"Twitter & Instagram";
+			break;
+		case Any:
+			return @"Facebook, Twitter & Intagram";
+			break;
+	}
+}
 
 
 @end

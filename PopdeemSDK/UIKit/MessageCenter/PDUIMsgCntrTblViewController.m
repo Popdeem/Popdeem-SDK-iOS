@@ -46,6 +46,7 @@
 - (void) viewDidAppear:(BOOL)animated {
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
+	AbraLogEvent(ABRA_EVENT_VIEWED_INBOX, nil);
 }
 
 - (void) reloadAction {

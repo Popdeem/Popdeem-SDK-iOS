@@ -17,6 +17,7 @@
 
 @interface PDUIInstagramLoginViewController ()
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
+@property (nonatomic) BOOL tappedClosed;
 @end
 
 NSString *client_id;
@@ -115,7 +116,7 @@ CGFloat _cardX,_cardY;
 	self.backingView = [[UIView alloc] initWithFrame:_parent.view.frame];
 	[self.backingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
 	[self.view addSubview:_backingView];
-	UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+	UITapGestureRecognizer *backingTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissWithTap)];
 	[_backingView addGestureRecognizer:backingTap];
 	
 	_cardView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -141,10 +142,17 @@ CGFloat _cardX,_cardY;
     // Dispose of any resources that can be recreated.
 }
 
+- (void) dismissWithTap {
+	AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_INSTAGRAM_CONNECT, nil);
+	_tappedClosed = YES;
+	[self dismiss];
+}
 
 - (void) dismiss {
 	if (connected) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+	} else if (_tappedClosed) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginuserDismissed object:nil];
 	} else {
 		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
 	}
@@ -178,6 +186,7 @@ CGFloat _cardX,_cardY;
 		_webViewController.webView.delegate = self;
 		[_webViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 	}];
+	AbraLogEvent(ABRA_EVENT_CLICKED_SIGN_IN_INSTAGRAM, nil);
 }
 
 #pragma mark - Web View Delegate -

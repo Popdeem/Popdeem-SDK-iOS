@@ -53,6 +53,7 @@ extern NSString *const PDFeedItemImageDidDownload;
 extern NSString *const PDUserDidLogout;
 extern NSString *const InstagramLoginSuccess;
 extern NSString *const InstagramLoginFailure;
+extern NSString *const InstagramLoginuserDismissed;
 extern NSString *const TwitterLoginSuccess;
 extern NSString *const TwitterLoginFailure;
 extern NSString *const PDUserLinkedToInstagram;

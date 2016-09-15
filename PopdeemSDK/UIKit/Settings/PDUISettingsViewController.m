@@ -48,6 +48,10 @@
 	// Do any additional setup after loading the view from its nib.
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+	AbraLogEvent(ABRA_EVENT_VIEWED_SETTINGS, nil);
+}
+
 - (void) registerNibs {
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	UINib *socialNib = [UINib nibWithNibName:@"PDUISocialSettingsTableViewCell" bundle:podBundle];
@@ -144,6 +148,10 @@
 	[man logoutFacebook];
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 	[cell.socialSwitch setOn:NO animated:NO];
+	AbraLogEvent(ABRA_EVENT_LOGOUT, (@{
+																	ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
+																	ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																	}));
 }
 
 - (void) connectTwitterAccount {
@@ -167,6 +175,10 @@
 	[socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
 		
 	}];
+	AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
+																												ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+																												ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																												}));
 }
 
 - (void) connectInstagramAccount {
@@ -205,6 +217,10 @@
 		[cell.socialSwitch setOn:YES animated:YES];
 		[_tableView reloadInputViews];
 	});
+	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
+																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																								}));
 }
 
 - (void) facebookLoginFailure {
@@ -221,6 +237,10 @@
 		[cell.socialSwitch setOn:YES animated:YES];
 		[_tableView reloadInputViews];
 	});
+	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
+																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																								}));
 }
 
 - (void) instagramLoginFailure {
@@ -237,6 +257,10 @@
 		[cell.socialSwitch setOn:YES animated:YES];
 		[_tableView reloadInputViews];
 	});
+	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																								}));
 }
 
 - (void) twitterLoginFailure {
@@ -252,6 +276,10 @@
 	[socialService disconnectInstagramAccountWithCompletion:^(NSError *err){
 		
 	}];
+	AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
+																												ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
+																												ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																												}));
 }
 
 - (void) dealloc {

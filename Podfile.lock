@@ -9,11 +9,11 @@ PODS:
     - Fabric (~> 1.6.3)
   - Expecta (1.0.5)
   - Fabric (1.6.8)
-  - FBSDKCoreKit (4.15.0):
+  - FBSDKCoreKit (4.15.1):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.15.0):
+  - FBSDKLoginKit (4.15.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.15.0):
+  - FBSDKShareKit (4.15.1):
     - FBSDKCoreKit
   - JSONModel (1.4.0)
   - Nocilla (0.11.0)
@@ -56,9 +56,9 @@ SPEC CHECKSUMS:
   Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  FBSDKCoreKit: 6680cbd33a4243d80700f182d0af36b3fa7f3118
-  FBSDKLoginKit: 96d9b70b5784490f02ab86119e542a1f182017a8
-  FBSDKShareKit: 06ef20cb2f16828ca4b20055333313dd445de362
+  FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
+  FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
+  FBSDKShareKit: 11cbb5a4d7b5fda8143cc95b76188147e6725736
   JSONModel: 58fe3f8c29ff95ed94e7ee7dde87e807f5da5371
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22

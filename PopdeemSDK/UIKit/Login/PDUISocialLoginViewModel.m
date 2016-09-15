@@ -88,6 +88,7 @@
     }
 		[self addUserToUserDefaults:[PDUser sharedInstance]];
 		[self.viewController dismissViewControllerAnimated:YES completion:^{}];
+		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
 //    if (_viewController.shouldAskLocation) {
 //      [self fetchLocationCompletion:^(NSError *error){
 ////        if (error) {

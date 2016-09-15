@@ -81,11 +81,10 @@
 		[[PDGeolocationManager sharedInstance] stopUpdatingLocation];
 		_locationAcquired = YES;
 		[self redirectToSettings];
+		AbraLogEvent(ABRA_EVENT_DENIED_LOCATION, nil);
 	}
   [[PDGeolocationManager sharedInstance] stopUpdatingLocation];
-  if (error.code == kCLErrorDenied) {
-		PDLog(@"User Denied Location");
-	}
+
   if (!_locationAcquired && (CFAbsoluteTimeGetCurrent()-_timeStart < 15)) {
     [[PDGeolocationManager sharedInstance] updateLocationWithDelegate:self distanceFilter:kCLDistanceFilterNone accuracy:kCLLocationAccuracyNearestTenMeters];
   } else {

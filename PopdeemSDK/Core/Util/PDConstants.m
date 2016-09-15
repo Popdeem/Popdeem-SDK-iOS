@@ -11,7 +11,7 @@
 #import "PDUtils.h"
 
 
-//#define POPDEEM_ENV_STAGING
+#define POPDEEM_ENV_STAGING
 
 /*
  API URL Strings
@@ -46,6 +46,7 @@ NSString *const PDFeedItemImageDidDownload = @"PDFeedItemImageDidDownload";
 NSString *const PDUserDidLogout = @"PDUserDidLogout";
 NSString *const InstagramLoginSuccess = @"InstagramLoginSuccess";
 NSString *const InstagramLoginFailure = @"InstagramLoginFailure";
+NSString *const InstagramLoginuserDismissed = @"InstagramLoginuserDismissed";
 NSString *const TwitterLoginSuccess = @"TwitterLoginSuccess";
 NSString *const TwitterLoginFailure = @"TwitterLoginFailure";
 NSString *const InstagramVerifySuccessFromWallet = @"InstagramVerifySuccessFromWallet";

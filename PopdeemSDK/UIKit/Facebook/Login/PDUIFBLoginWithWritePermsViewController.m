@@ -161,6 +161,7 @@
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];
 			[av show];
+			AbraLogEvent(ABRA_EVENT_CANCELLED_FACEBOOK_LOGIN, nil);
 		}
 	}];
 }
@@ -181,6 +182,7 @@
 																						 cancelButtonTitle:@"OK"
 																						 otherButtonTitles:nil];
 			[noperm show];
+			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
 		}
 	}];
 }
@@ -201,6 +203,7 @@
 																						 cancelButtonTitle:@"OK"
 																						 otherButtonTitles:nil];
 			[noperm show];
+			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
 		}
 	}];
 }

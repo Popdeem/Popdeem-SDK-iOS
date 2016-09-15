@@ -45,6 +45,7 @@
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   [[PDAPIClient sharedInstance] setDeviceToken:deviceToken.description];
+	AbraOnboardUser();
 }
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

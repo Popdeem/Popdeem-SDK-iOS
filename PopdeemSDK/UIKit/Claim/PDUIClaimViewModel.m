@@ -446,6 +446,9 @@
 																					 otherButtonTitles: nil];
 		[hashAV show];
 		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
+																											 @"Error" : @"Hashtag Validation Failed"
+																											 });
 		return;
 	}
 	[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
@@ -474,6 +477,9 @@
 			[tooMany setTag:2];
 			[tooMany show];
 			[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
+																												 ABRA_PROPERTYNAME_ERROR : ABRA_PROPERTYVALUE_ERROR_TOOMANYCHARS
+																												 });
 			return;
 		}
 		[self makeClaim];
@@ -492,6 +498,9 @@
 		[alert setTag:1];
 		[alert show];
 		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
+																											 ABRA_PROPERTYNAME_ERROR : ABRA_PROPERTYVALUE_ERROR_NOPHOTO
+																											 });
 		return;
 	}
 	if (_instagramForcedTagString && !_hashtagValidated) {
@@ -512,7 +521,7 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_viewController presentViewController:isv animated:YES completion:^(void){}];
 //TODO: get rid of this
-	[self makeClaim];
+//	[self makeClaim];
 	return;
 }
 
@@ -575,6 +584,9 @@
 		if (f.selected) {
 			[taggedFriends addObject:f.tagIdentifier];
 		}
+	}
+	if (taggedFriends.count > 0) {
+		AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_TAGGED_FRIENDS : @"Yes", @"Friends Count" : [NSString stringWithFormat:@"%li",taggedFriends.count]}));
 	}
 	
 	__block NSInteger rewardId = _reward.identifier;
@@ -660,6 +672,13 @@
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[av setTag:9];
 	[av show];
+	
+	AbraLogEvent(ABRA_EVENT_CLAIMED, (@{
+																			ABRA_PROPERTYNAME_SOCIAL_NETWORKS : [self readableNetworksChosen],
+																			ABRA_PROPERTYNAME_PHOTO : (_image != nil) ? @"YES" : @"NO",
+																			ABRA_PROPERTYNAME_REWARD_TYPE : AbraKeyForRewardType(_reward.type)
+																			}));
+	
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -693,6 +712,10 @@
 		[self calculateTwitterCharsLeft];
 		[_viewController.facebookButton setEnabled:NO];
 		[_viewController.withLabel setHidden:YES];
+		AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+																									ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+																									ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+																									}));
 		success();
 	} failure:^(NSError *error) {
 		//Some error
@@ -837,6 +860,8 @@
 	[_viewController.textView becomeFirstResponder];
 	
 	[self calculateTwitterCharsLeft];
+	NSString *source = (picker.sourceType == UIImagePickerControllerSourceTypeCamera) ? @"Camera" : @"Photo Library";
+	AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_PHOTO : @"Yes", @"Source" : source}));
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
@@ -880,6 +905,7 @@
 	self.willInstagram = YES;
 }
 
+
 - (void) instagramLoginFailure {
 	[[NSNotificationCenter defaultCenter] addObserver:self
 																					 selector:@selector(keyboardWillShow:)
@@ -887,4 +913,17 @@
 	self.willInstagram = NO;
 }
 
+- (NSString *) readableNetworksChosen {
+	NSMutableString *chosen = [NSMutableString string];
+	if (_willFacebook) {
+		[chosen appendString:@" Facebook "];
+	}
+	if (_willTweet) {
+		[chosen appendString:@" Twitter "];
+	}
+	if (_willInstagram) {
+		[chosen appendString:@" Instagram "];
+	}
+	return chosen;
+}
 @end

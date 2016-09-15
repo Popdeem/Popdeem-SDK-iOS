@@ -13,10 +13,17 @@ extern NSString *const ABRA_URL;
 extern NSString *const ABRA_EVENT_PATH;
 extern NSString *const ABRA_TOKEN_PATH;
 
+extern NSString *const ABRA_KEY_USER_ID;
+extern NSString *const ABRA_KEY_EVENT;
+extern NSString *const ABRA_KEY_TRAITS;
+extern NSString *const ABRA_KEY_PROJECT_TOKEN;
+extern NSString *const ABRA_KEY_TAG;
+extern NSString *const ABRA_KEY_PROPERTIES;
+
 extern NSString *const ABRA_EVENT_VIEWED_LOGIN_TAKEOVER;
 extern NSString *const ABRA_EVENT_VIEWED_REWARDS_HOME;
 extern NSString *const ABRA_EVENT_VIEWED_ACTIVITY_FEED;
-extern NSString *const ABRA_EVENT_VIEWED_WALLET
+extern NSString *const ABRA_EVENT_VIEWED_WALLET;
 extern NSString *const ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_ONE;
 extern NSString *const ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_TWO;
 extern NSString *const ABRA_EVENT_VIEWED_CONNECT_INSTAGRAM;
@@ -86,6 +93,7 @@ extern NSString *const ABRA_PROPERTYVALUE_SOCIAL_BUTTON_STATE_OFF;
 
 extern NSString *const ABRA_EVENT_REDEEMED_REWARD;
 extern NSString *const ABRA_PROPERTYNAME_REWARD_NAME;
+extern NSString *const ABRA_PROPERTYNAME_REWARD_ID;
 
 extern NSString *const ABRA_EVENT_LOGIN;
 extern NSString *const ABRA_EVENT_LOGOUT;
@@ -93,4 +101,26 @@ extern NSString *const ABRA_EVENT_SIGNUP;
 
 extern NSString *const ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT;
 
+extern NSString *const ABRA_USER_TRAITS_ID;
+extern NSString *const ABRA_EVENT_ONBOARD;
+extern NSString *const ABRA_USER_TRAITS_FIRST_NAME;
+extern NSString *const ABRA_USER_TRAITS_LAST_NAME;
+extern NSString *const ABRA_USER_TRAITS_EMAIL;
+extern NSString *const ABRA_USER_TRAITS_DOB;
+extern NSString *const ABRA_USER_TRAITS_GENDER;
+extern NSString *const ABRA_USER_TRAITS_CITY;
+extern NSString *const ABRA_USER_TRAITS_COUNTRY_CODE;
+extern NSString *const ABRA_USER_TRAITS_REGION;
+extern NSString *const ABRA_USER_TRAITS_TIME_ZONE;
+extern NSString *const ABRA_USER_TRAITS_PUSH_NOTIFICATIONS_ENABLED;
+
+extern NSString *const ABRA_PROPERTYNAME_ERROR;
+extern NSString *const ABRA_PROPERTYVALUE_ERROR_HASHTAG;
+extern NSString *const ABRA_PROPERTYVALUE_ERROR_TOOMANYCHARS;
+extern NSString *const ABRA_PROPERTYVALUE_ERROR_NOPHOTO;
+
+extern NSString *const ABRA_EVENT_DENIED_LOCATION;
+extern NSString *const ABRA_EVENT_DENIED_PUSH_NOTIFICATIONS;
+
+extern NSString *const ABRA_EVENT_CANCELLED_FACEBOOK_LOGIN;
 #endif /* PDAbraConstants_h */

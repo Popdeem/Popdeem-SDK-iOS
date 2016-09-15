@@ -71,6 +71,7 @@
   if (isLoggedIn && !_facebookLoginOccurring) {
     [_viewModel proceedWithLoggedInUser];
   }
+	AbraLogEvent(ABRA_EVENT_VIEWED_LOGIN_TAKEOVER, nil);
 }
 
 - (void) didMoveToParentViewController:(UIViewController *)parent {
@@ -90,12 +91,14 @@
   [self dismissViewControllerAnimated:YES completion:^{
     //Any cleanup to do?
   }];
+	AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Dismiss Button"});
 }
 
 - (void) backingViewTapped {
   [self dismissViewControllerAnimated:YES completion:^{
     //Any cleanup to do?
   }];
+	AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Tapped Backing View"});
 }
 
 - (IBAction) continueAction:(id)sender {

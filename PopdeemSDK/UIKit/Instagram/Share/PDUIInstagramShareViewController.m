@@ -194,6 +194,7 @@ CGFloat _cardWidth;
 
 - (void) scroll {
 	[_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
+	AbraLogEvent(ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_TWO, nil);
 }
 
 - (void) shareOnInstagram {
@@ -207,13 +208,13 @@ CGFloat _cardWidth;
 		NSURL *instagramURL       = [NSURL URLWithString:[NSString stringWithFormat:@"instagram://Library?AssetPath=%@", escapedString]];
 		UIPasteboard *pb = [UIPasteboard generalPasteboard];
 		[pb setString:_message];
-		[self openInDocumentController];
-//		if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-//			_leavingToInstagram = YES;
-//			[[UIApplication sharedApplication] openURL:instagramURL];
-//		} else {
-//			[self openInDocumentController];
-//		}
+//		[self openInDocumentController];
+		if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+			_leavingToInstagram = YES;
+			[[UIApplication sharedApplication] openURL:instagramURL];
+		} else {
+			[self openInDocumentController];
+		}
 	}
 	else
 	{
@@ -284,6 +285,7 @@ CGFloat _cardWidth;
 
 - (void) viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	AbraLogEvent(ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_ONE, nil);
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -306,6 +308,7 @@ CGFloat _cardWidth;
 			[[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
 			[[NSNotificationCenter defaultCenter] removeObserver:self];
 		}];
+		AbraLogEvent(ABRA_EVENT_CLICKED_NEXT_INSTAGRAM_TUTORIAL, nil);
 	}
 }
 

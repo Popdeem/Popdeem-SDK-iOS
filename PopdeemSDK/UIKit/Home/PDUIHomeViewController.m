@@ -28,6 +28,7 @@
 #import "PDUINoRewardTableViewCell.h"
 #import "PDUISettingsViewController.h"
 
+
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
 #define kWalletTableViewCell @"WalletCell"
@@ -180,6 +181,7 @@
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
   }
+	AbraLogEvent(ABRA_EVENT_VIEWED_REWARDS_HOME, @{});
 }
 
 - (void) reloadAction {
@@ -216,6 +218,19 @@
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
   [self.tableView reloadSectionIndexTitles];
+	switch(sender.selectedSegmentIndex) {
+			case 0:
+			AbraLogEvent(ABRA_EVENT_VIEWED_REWARDS_HOME, @{});
+			break;
+		case 1:
+			AbraLogEvent(ABRA_EVENT_VIEWED_ACTIVITY_FEED, @{});
+			break;
+		case 2:
+			AbraLogEvent(ABRA_EVENT_VIEWED_WALLET, @{});
+			break;
+			default:
+			break;
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -543,6 +558,11 @@
         walletSelectedIndex = nil;
         _model.wallet = [PDWallet wallet];
         [self.tableView reloadData];
+				AbraLogEvent(ABRA_EVENT_REDEEMED_REWARD, (@{
+																										ABRA_PROPERTYNAME_REWARD_NAME : selectedWalletReward.rewardDescription,
+																										ABRA_PROPERTYNAME_REWARD_ID : [NSString stringWithFormat:@
+																																									 "%li",selectedWalletReward.identifier]
+																										}));
       }
     }];
   }
@@ -633,6 +653,10 @@
   [self.model fetchRewards];
   [self.model fetchFeed];
   [self.model fetchWallet];
+	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
+																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"
+																								}));
 }
 
 - (void) dealloc {

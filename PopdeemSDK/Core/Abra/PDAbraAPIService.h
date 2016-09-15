@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSURLSession+Abra.h"
 
 @interface PDAbraAPIService : NSObject
+
+- (void) onboardUser;
+- (void) logEvent:(NSString*)eventName properties:(NSDictionary*)properties;
 
 @end

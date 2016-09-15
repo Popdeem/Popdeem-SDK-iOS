@@ -8,6 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+#define AbraLogEvent(name, properties) \
+logEvent((name),(properties))
+
+#define AbraOnboardUser() \
+[[PDAbraClient sharedInstance] onboardUser]
+
+#define AbraKeyForRewardType(rewardType) \
+keyForRewardType((rewardType))
+
+#define AbraKeyForRewardAction(rewardAction) \
+keyForRewardAction((rewardAction))
+
 @interface PDAbraClient : NSObject
 
++ (instancetype) sharedInstance;
+@property (nonatomic, strong) NSString *projectToken;
+
+- (void) logEvent:(NSString*)eventName properties:(NSDictionary*)properties;
+- (void) onboardUser;
+extern void logEvent(NSString *eventName, NSDictionary *properties);
+extern NSString* keyForRewardType(NSInteger rewardType);
+extern NSString* keyForRewardAction(NSInteger rewardAction);
 @end

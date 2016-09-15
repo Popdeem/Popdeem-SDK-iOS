@@ -663,6 +663,7 @@
 		39EB990C1C85E46D00BB0DD8 /* PDUIRedeemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDUIRedeemViewController.xib; sourceTree = "<group>"; };
 		39EB990D1C86F78600BB0DD8 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
 		39EB990F1C86F7F000BB0DD8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		39ED88EA1D8AF552002305AA /* TabbedTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TabbedTest.entitlements; sourceTree = "<group>"; };
 		39EDADBD1C072851001102B3 /* PDUIClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIClaimViewModel.h; path = Claim/PDUIClaimViewModel.h; sourceTree = "<group>"; };
 		39EDADBE1C072851001102B3 /* PDUIClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimViewModel.m; path = Claim/PDUIClaimViewModel.m; sourceTree = "<group>"; };
 		39EDADC01C07333F001102B3 /* PDUINoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUINoRewardsTableViewCell.h; sourceTree = "<group>"; };
@@ -1068,6 +1069,7 @@
 		39537BC41C639B79001C6796 /* TabbedTest */ = {
 			isa = PBXGroup;
 			children = (
+				39ED88EA1D8AF552002305AA /* TabbedTest.entitlements */,
 				3931C4481CCE68A6005F5044 /* Fonts */,
 				39537BC81C639B79001C6796 /* AppDelegate.h */,
 				39537BC91C639B79001C6796 /* AppDelegate.m */,
@@ -2146,7 +2148,8 @@
 					};
 					39537BC21C639B79001C6796 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = A6BJ87CDY8;
+						DevelopmentTeam = S648X26U8J;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2966,9 +2969,11 @@
 			baseConfigurationReference = 5853B5800B49DD40D0C617E3 /* Pods-TabbedTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TabbedTest/TabbedTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = S648X26U8J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PopdeemSDK/Frameworks",
@@ -2978,7 +2983,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "00a5b695-d117-428d-af1f-122efef52e7f";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2987,8 +2992,10 @@
 			baseConfigurationReference = B31D60348E9601566067061E /* Pods-TabbedTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TabbedTest/TabbedTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S648X26U8J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PopdeemSDK/Frameworks",
@@ -2998,7 +3005,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "00a5b695-d117-428d-af1f-122efef52e7f";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

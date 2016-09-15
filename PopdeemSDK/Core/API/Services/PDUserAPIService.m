@@ -11,6 +11,7 @@
 #import "PDReferral.h"
 #import "PDNetworkError.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "PDAbraClient.h"
 
 @implementation PDUserAPIService
 
@@ -104,6 +105,7 @@
       }
       PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
       [session invalidateAndCancel];
+			AbraOnboardUser();
       dispatch_async(dispatch_get_main_queue(), ^{
         completion(user, nil);
       });
