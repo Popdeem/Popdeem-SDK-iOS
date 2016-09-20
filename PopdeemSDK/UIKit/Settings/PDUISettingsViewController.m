@@ -49,7 +49,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	AbraLogEvent(ABRA_EVENT_VIEWED_SETTINGS, nil);
+	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_SETTINGS});
 }
 
 - (void) registerNibs {

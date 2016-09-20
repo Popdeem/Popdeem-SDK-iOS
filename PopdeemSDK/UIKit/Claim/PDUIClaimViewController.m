@@ -237,12 +237,13 @@
 		[self.twitterCharacterCountLabel setHidden:YES];
 	}
 	
-	AbraLogEvent(ABRA_EVENT_VIEWED_CLAIM, (@{
-																					 ABRA_PROPERTYNAME_REWARD_TYPE : AbraKeyForRewardType(_reward.type),
-																					 ABRA_PROPERTYNAME_REWARD_ACTION : AbraKeyForRewardAction(_reward.action),
-																					 ABRA_PROPERTYNAME_NETWORKS_AVAILABLE : [self readableMediaTypesAvailable],
-																					 ABRA_PROPERTYNAME_REWARD_NAME : _reward.rewardDescription
-																					 }));
+	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, (@{
+																					ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_CLAIM,
+																					ABRA_PROPERTYNAME_REWARD_TYPE : AbraKeyForRewardType(_reward.type),
+																					ABRA_PROPERTYNAME_REWARD_ACTION : AbraKeyForRewardAction(_reward.action),
+																					ABRA_PROPERTYNAME_NETWORKS_AVAILABLE : [self readableMediaTypesAvailable],
+																					ABRA_PROPERTYNAME_REWARD_NAME : _reward.rewardDescription
+																				}));
 }
 
 - (void)didReceiveMemoryWarning {

@@ -181,7 +181,7 @@
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
   }
-	AbraLogEvent(ABRA_EVENT_VIEWED_REWARDS_HOME, @{});
+	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME});
 }
 
 - (void) reloadAction {
@@ -220,13 +220,13 @@
   [self.tableView reloadSectionIndexTitles];
 	switch(sender.selectedSegmentIndex) {
 			case 0:
-			AbraLogEvent(ABRA_EVENT_VIEWED_REWARDS_HOME, @{});
+			AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME});
 			break;
 		case 1:
-			AbraLogEvent(ABRA_EVENT_VIEWED_ACTIVITY_FEED, @{});
+			AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_ACTIVITY_FEED});
 			break;
 		case 2:
-			AbraLogEvent(ABRA_EVENT_VIEWED_WALLET, @{});
+			AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_WALLET});
 			break;
 			default:
 			break;

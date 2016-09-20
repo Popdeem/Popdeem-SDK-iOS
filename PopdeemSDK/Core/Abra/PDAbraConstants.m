@@ -19,16 +19,18 @@ NSString *const ABRA_KEY_PROJECT_TOKEN = @"project_token";
 NSString *const ABRA_KEY_TAG = @"tag";
 NSString *const ABRA_KEY_PROPERTIES = @"properties";
 
-NSString *const ABRA_EVENT_VIEWED_LOGIN_TAKEOVER = @"Login Takeover Viewed";
-NSString *const ABRA_EVENT_VIEWED_REWARDS_HOME = @"Rewards Home Viewed";
-NSString *const ABRA_EVENT_VIEWED_ACTIVITY_FEED = @"Activity Feed Viewed";
-NSString *const ABRA_EVENT_VIEWED_WALLET = @"Wallet Viewed";
-NSString *const ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_ONE = @"Instagram Tutorial Module One Viewed";
-NSString *const ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_TWO = @"Instagram Tutorial Module Two Viewed";
-NSString *const ABRA_EVENT_VIEWED_CONNECT_INSTAGRAM = @"Connect Instagram Module Viewed";
-NSString *const ABRA_EVENT_VIEWED_SETTINGS = @"Settings Viewed";
-NSString *const ABRA_EVENT_VIEWED_INBOX = @"Settings Viewed";
-NSString *const ABRA_EVENT_VIEWED_CLAIM = @"Claim Screen Viewed";
+NSString *const ABRA_EVENT_PAGE_VIEWED = @"Viewed";
+NSString *const ABRA_PROPERTYNAME_PAGE = @"Page";
+NSString *const ABRA_PROPERTYVALUE_PAGE_LOGINTAKEOVER = @"Login Takeover";
+NSString *const ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME = @"Rewards Home";
+NSString *const ABRA_PROPERTYVALUE_PAGE_ACTIVITY_FEED = @"Activity Feed";
+NSString *const ABRA_PROPERTYVALUE_PAGE_WALLET = @"Wallet";
+NSString *const ABRA_PROPERTYVALUE_PAGE_TUTORIAL_MODULE_ONE = @"Instagram Tutorial Module One";
+NSString *const ABRA_PROPERTYVALUE_PAGE_TUTORIAL_MODULE_TWO = @"Instagram Tutorial Module Two";
+NSString *const ABRA_PROPERTYVALUE_PAGE_CONNECT_INSTAGRAM = @"Connect Instagram Module";
+NSString *const ABRA_PROPERTYVALUE_PAGE_VIEWED_SETTINGS = @"Settings";
+NSString *const ABRA_PROPERTYVALUE_PAGE_VIEWED_INBOX = @"Settings";
+NSString *const ABRA_PROPERTYVALUE_PAGE_VIEWED_CLAIM = @"Claim Screen";
 
 NSString *const ABRA_PROPERTYNAME_REWARD_TYPE = @"Reward Type";
 NSString *const ABRA_PROPERTYVALUE_REWARD_TYPE_COUPON = @"Coupon";
@@ -104,7 +106,6 @@ NSString *const ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT = @"Disconnect Social Accou
 
 NSString *const ABRA_USER_TRAITS_ID = @"id";
 NSString *const ABRA_EVENT_ONBOARD = @"onboard";
-NSString *const ABRA_USER_TRAITS_FIRST_NAME = @"first_name";
 NSString *const ABRA_USER_TRAITS_LAST_NAME = @"last_name";
 NSString *const ABRA_USER_TRAITS_EMAIL = @"email";
 NSString *const ABRA_USER_TRAITS_DOB = @"dob";

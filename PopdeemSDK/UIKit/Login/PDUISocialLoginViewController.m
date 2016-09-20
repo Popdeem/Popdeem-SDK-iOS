@@ -71,7 +71,7 @@
   if (isLoggedIn && !_facebookLoginOccurring) {
     [_viewModel proceedWithLoggedInUser];
   }
-	AbraLogEvent(ABRA_EVENT_VIEWED_LOGIN_TAKEOVER, nil);
+	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_LOGIN_TAKEOVER});
 }
 
 - (void) didMoveToParentViewController:(UIViewController *)parent {

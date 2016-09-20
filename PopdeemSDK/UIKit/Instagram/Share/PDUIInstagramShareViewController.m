@@ -194,7 +194,7 @@ CGFloat _cardWidth;
 
 - (void) scroll {
 	[_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
-	AbraLogEvent(ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_TWO, nil);
+	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INSTA_TUTORIAL_MODULE_TWO});
 }
 
 - (void) shareOnInstagram {
@@ -285,7 +285,7 @@ CGFloat _cardWidth;
 
 - (void) viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	AbraLogEvent(ABRA_EVENT_VIEWED_INSTA_TUTORIAL_MODULE_ONE, nil);
+	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INSTA_TUTORIAL_MODULE_ONE});
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

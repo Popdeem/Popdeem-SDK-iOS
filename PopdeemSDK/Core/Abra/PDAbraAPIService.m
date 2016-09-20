@@ -17,6 +17,13 @@
 
 - (void) onboardUser {
 	PDUser *user = [PDUser sharedInstance];
+	NSString *identifier = @"";
+	if ([PDUser sharedInstance]) {
+		identifier = [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]];
+	}
+	if (identifier.length < 2) {
+		return;
+	}
 	NSDictionary *params = @{
 													 ABRA_KEY_PROJECT_TOKEN : [[PDAbraClient sharedInstance] projectToken],
 													 ABRA_KEY_USER_ID : [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]],
