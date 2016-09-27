@@ -56,6 +56,7 @@
   if (self = [self initWithNibName:@"PDUIHomeViewController" bundle:podBundle]) {
     self.model = [[PDUIHomeViewModel alloc] initWithController:self];
     self.claimVC = [[PDUIClaimViewController alloc] initFromNib];
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     return self;
   }
   return nil;
@@ -122,17 +123,9 @@
             NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
             NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
                                                                                forState:UIControlStateNormal];
-    
-    [[UINavigationBar appearance] setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
-    [[UINavigationBar appearance] setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
-            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-    }];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-                                                forState:UIControlStateNormal];
+		if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+			[self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+		}
   }
   
   if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
@@ -558,11 +551,13 @@
         walletSelectedIndex = nil;
         _model.wallet = [PDWallet wallet];
         [self.tableView reloadData];
-				AbraLogEvent(ABRA_EVENT_REDEEMED_REWARD, (@{
-																										ABRA_PROPERTYNAME_REWARD_NAME : selectedWalletReward.rewardDescription,
-																										ABRA_PROPERTYNAME_REWARD_ID : [NSString stringWithFormat:@
-																																									 "%li",selectedWalletReward.identifier]
-																										}));
+				if (selectedWalletReward) {
+					AbraLogEvent(ABRA_EVENT_REDEEMED_REWARD, (@{
+																											ABRA_PROPERTYNAME_REWARD_NAME : selectedWalletReward.rewardDescription,
+																											ABRA_PROPERTYNAME_REWARD_ID : [NSString stringWithFormat:@
+																																										 "%li",selectedWalletReward.identifier]
+																											}));
+				}
       }
     }];
   }
@@ -713,6 +708,12 @@
 
 - (void) postVerified {
 	[self.model fetchWallet];
+	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.instagram.postVerified.title", @"Congratulations")
+																							 message:translationForKey(@"popdeem.instagram.postVerified.body", @"Your post has been successfully verified.")
+																							delegate:self
+																		 cancelButtonTitle:@"OK"
+																		 otherButtonTitles:nil];
+	[av show];
 }
 
 - (void) instagramPostMade:(NSNotification*)notification {

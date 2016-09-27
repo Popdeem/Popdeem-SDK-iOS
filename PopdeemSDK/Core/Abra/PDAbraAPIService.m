@@ -25,8 +25,6 @@
 		return;
 	}
 	NSDictionary *params = @{
-													 ABRA_KEY_PROJECT_TOKEN : [[PDAbraClient sharedInstance] projectToken],
-													 ABRA_KEY_USER_ID : [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]],
 													 ABRA_KEY_TRAITS : @{
 															 ABRA_USER_TRAITS_ID : [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]],
 															 ABRA_USER_TRAITS_FIRST_NAME : user.firstName,
@@ -37,13 +35,14 @@
 															 ABRA_USER_TRAITS_PUSH_NOTIFICATIONS_ENABLED : ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) ? @"Yes" : @"No"
 															 },
 													 ABRA_KEY_EVENT : @{
-															 ABRA_KEY_TAG : ABRA_EVENT_ONBOARD
+															 ABRA_KEY_TAG : ABRA_EVENT_ONBOARD,
+															 ABRA_KEY_PROPERTIES : @{}
 															 }
 													 };
 	
 	NSString *apiUrl = [NSString stringWithFormat:@"%@/%@",ABRA_URL, ABRA_EVENT_PATH];
 	NSURLSession *session = [NSURLSession createAbraSession];
-	[session POST:apiUrl params:params completion:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
+	[session ABRA_POST:apiUrl params:params completion:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				PDLogError(@"Abra Error onboarding user");
@@ -61,8 +60,6 @@
 - (void) logEvent:(NSString*)eventName properties:(NSDictionary*)properties {
 	PDUser *user = [PDUser sharedInstance];
 	NSDictionary *params = @{
-													 ABRA_KEY_PROJECT_TOKEN : [[PDAbraClient sharedInstance] projectToken],
-													 ABRA_KEY_USER_ID : [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]],
 													 ABRA_KEY_EVENT : @{
 															 ABRA_KEY_TAG : eventName,
 															 ABRA_KEY_PROPERTIES : properties
@@ -71,7 +68,7 @@
 	
 	NSString *apiUrl = [NSString stringWithFormat:@"%@/%@",ABRA_URL, ABRA_EVENT_PATH];
 	NSURLSession *session = [NSURLSession createAbraSession];
-	[session POST:apiUrl params:params completion:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
+	[session ABRA_POST:apiUrl params:params completion:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				PDLogError(@"Abra Error onboarding user");

@@ -110,6 +110,8 @@
 "popdeem.instagram.verify.verifySuccess.buttonText" = "Go";
 "popdeem.instagram.wallet.unverified" = "This reward must be verified.";
 "popdeem.instagram.wallet.verifyButtonTitle" = "Verify";
+"popdeem.instagram.postVerified.title" = "Congratulations";
+"popdeem.instagram.postVerified.body" = "Your post has been successfully verified.";
 
 
 "popdeem.instagram.verify.verifyFailure.headerText" = "Verify Failure";

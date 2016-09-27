@@ -50,6 +50,7 @@
 	[[self tableView] registerNib:placeholderNib forCellReuseIdentifier:kPlaceHolderCell];
 	
 	[self.tableView reloadData];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void)didReceiveMemoryWarning {

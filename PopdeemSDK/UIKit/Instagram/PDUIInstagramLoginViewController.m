@@ -128,7 +128,7 @@ CGFloat _cardX,_cardY;
 	_actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[_cardView addSubview:_actionButton];
 	[self renderView];
-
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -164,7 +164,7 @@ CGFloat _cardX,_cardY;
 	secret = [PopdeemSDK instagramClientSecret];
 	callback = [PopdeemSDK instagramCallback];
 	
-	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=public_content+basic",client_id,callback];
+	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
 	
 	
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];

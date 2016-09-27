@@ -60,17 +60,18 @@
 
 - (void) beginVerifying {
 //	CGPoint startingPoint = self.verifyButton.center;
-	
-	self.activityIndicator.alpha = 0;
-	[self.activityIndicator startAnimating];
-	self.activityIndicator.hidden = NO;
-	[UIView animateWithDuration:0.5 animations:^{
-		self.verifyButton.titleLabel.alpha = 0;
-		self.activityIndicator.alpha = 1.0;
-	} completion:^(BOOL finished){
-		self.verifyButton.titleLabel.hidden = YES;
-	}];
-	[self verifyReward];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.activityIndicator.alpha = 0;
+		[self.activityIndicator startAnimating];
+		self.activityIndicator.hidden = NO;
+		[UIView animateWithDuration:0.5 animations:^{
+			self.verifyButton.titleLabel.alpha = 0;
+			self.activityIndicator.alpha = 1.0;
+		} completion:^(BOOL finished){
+			self.verifyButton.titleLabel.hidden = YES;
+		}];
+		[self verifyReward];
+	});
 }
 
 - (void) verifyReward {

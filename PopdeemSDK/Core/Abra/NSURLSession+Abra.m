@@ -9,6 +9,7 @@
 #import "NSURLSession+Abra.h"
 #import "PopdeemSDK.h"
 #import "PDUtils.h"
+#import "PDUser.h"
 
 @implementation NSURLSession (Abra)
 
@@ -21,11 +22,11 @@
 	return [[self class] sessionWithConfiguration:configuration];
 }
 
-- (void) GET:(NSString*)apiString
+- (void) ABRA_GET:(NSString*)apiString
 			params:(NSDictionary*)params
 	completion:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion {
 	
-	NSMutableURLRequest *mutableRequest = [self buildMutableRequestWithApiString:apiString params:params];
+	NSMutableURLRequest *mutableRequest = [self abra_buildMutableRequestWithApiString:apiString params:params];
 	[mutableRequest setHTTPMethod:@"GET"];
 	
 	NSURLSessionDataTask *getDataTask = [self dataTaskWithRequest:mutableRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -34,11 +35,11 @@
 	[getDataTask resume];
 }
 
-- (void) POST:(NSString*)apiString
+- (void) ABRA_POST:(NSString*)apiString
 			 params:(NSDictionary*)params
 	 completion:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion {
 	
-	NSMutableURLRequest *mutableRequest = [self buildMutableRequestWithApiString:apiString params:params];
+	NSMutableURLRequest *mutableRequest = [self abra_buildMutableRequestWithApiString:apiString params:params];
 	[mutableRequest setHTTPMethod:@"POST"];
 	
 	NSURLSessionDataTask *postDataTask = [self dataTaskWithRequest:mutableRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -47,11 +48,11 @@
 	[postDataTask resume];
 }
 
-- (void) PUT:(NSString*)apiString
+- (void) ABRA_PUT:(NSString*)apiString
 			params:(NSDictionary*)params
 	completion:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion {
 	
-	NSMutableURLRequest *mutableRequest = [self buildMutableRequestWithApiString:apiString params:params];
+	NSMutableURLRequest *mutableRequest = [self abra_buildMutableRequestWithApiString:apiString params:params];
 	[mutableRequest setHTTPMethod:@"PUT"];
 	
 	NSURLSessionDataTask *putDataTask = [self dataTaskWithRequest:mutableRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -60,7 +61,7 @@
 	[putDataTask resume];
 }
 
-- (NSMutableURLRequest*) buildMutableRequestWithApiString:(NSString*)apiString params:(NSDictionary*)params {
+- (NSMutableURLRequest*) abra_buildMutableRequestWithApiString:(NSString*)apiString params:(NSDictionary*)params {
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:apiString]
 																					 cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -69,6 +70,12 @@
 	[mutableRequest addValue:[self apiKey] forHTTPHeaderField:@"Api-Key"];
 	[mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	[mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+	NSString *userID = [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]];
+	if (userID.length > 1) {
+		[mutableRequest addValue:userID forHTTPHeaderField:@"User-Id"];
+	}
+	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+	[mutableRequest addValue:deviceId forHTTPHeaderField:@"Device-Id"];
 	
 	if (params) {
 		NSError *jsonError;

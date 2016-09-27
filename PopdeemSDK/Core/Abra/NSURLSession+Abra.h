@@ -13,15 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSURLSession*) createAbraSession;
 + (NSURLSession*) createWithConfiguration:(NSURLSessionConfiguration*)configuration;
 
-- (void) GET:(NSString*)apiString
+- (void) ABRA_GET:(NSString*)apiString
 			params:( NSDictionary* _Nullable )params
 	completion:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
 
-- (void) POST:(NSString*)apiString
+- (void) ABRA_POST:(NSString*)apiString
 			 params:( NSDictionary* _Nullable )params
 	 completion:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
 
-- (void) PUT:(NSString*)apiString
+- (void) ABRA_PUT:(NSString*)apiString
 			params:(NSDictionary* _Nullable)params
 	completion:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
 NS_ASSUME_NONNULL_END

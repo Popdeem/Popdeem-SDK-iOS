@@ -145,7 +145,7 @@
 
 - (BOOL) isLoggedInWithTwitter {
 	PDUser *user = [PDUser sharedInstance];
-	if (user.twitterParams.accessToken != nil && user.twitterParams.accessSecret != nil) {
+	if (user.twitterParams.accessToken.length > 1 && user.twitterParams.accessSecret.length > 1) {
 		return YES;
 	}
 	return NO;

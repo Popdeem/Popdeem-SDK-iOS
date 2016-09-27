@@ -45,6 +45,7 @@
 	[self.tableHeaderImageView setClipsToBounds:YES];
 	[self setupHeaderView];
 	[self.tableView reloadData];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	// Do any additional setup after loading the view from its nib.
 }
 
@@ -247,15 +248,15 @@
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[cell.socialSwitch setOn:NO animated:YES];
-		[_tableView reloadInputViews];
+		[_tableView reloadData];
 	});
 }
 
 - (void) twitterLoginSuccess {
-	__block PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[cell.socialSwitch setOn:YES animated:YES];
-		[_tableView reloadInputViews];
+		[_tableView reloadData];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
@@ -267,7 +268,7 @@
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[cell.socialSwitch setOn:NO animated:YES];
-		[_tableView reloadInputViews];
+		[_tableView reloadData];
 	});
 }
 

@@ -21,13 +21,22 @@
 - (instancetype) initFromNib {
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	if (self = [self initWithNibName:@"PDUIInstagramWebViewController" bundle:podBundle]) {
-		self.edgesForExtendedLayout = UIRectEdgeNone;
-		[self.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
-		[self.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
-		[self.navigationBar setTitleTextAttributes:@{
-				NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-				NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-		}];
+		self.navigationController.navigationBar.translucent = NO;
+		[self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+		[self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+		[self.navigationController.navigationBar setTitleTextAttributes:@{
+																																			NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+																																			}];
+		
+		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+																																													NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+																																							 forState:UIControlStateNormal];
+		if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+			[self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+		}
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 		self.title = translationForKey(@"popdeem.instagram.webview.title",@"Connect Instagram Account");
 		return self;
 	}
@@ -52,6 +61,10 @@
 	[self dismissViewControllerAnimated:YES completion:^(void){
 		[_webView stopLoading];
 	}];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 /*
