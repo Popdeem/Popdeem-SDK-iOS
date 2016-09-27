@@ -479,6 +479,7 @@
         }
         //For sweepstakes we dont show the alert
         if (selectedWalletReward.type == PDRewardTypeSweepstake || selectedWalletReward.type == PDRewardTypeCredit) {
+					[self sweepstakeAlert];
           return;
         }
 				if (selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && selectedWalletReward.instagramVerified == NO) {
@@ -724,6 +725,11 @@
 	}
 }
 
+- (void) sweepstakeAlert {
+	if (!selectedWalletReward) return;
+	
+	
+}
 
 
 @end

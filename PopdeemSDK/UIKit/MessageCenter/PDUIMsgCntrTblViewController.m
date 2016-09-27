@@ -65,7 +65,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 2;
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -135,6 +135,9 @@
 
  // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (_model.messages == nil || _model.messages.count == 0) {
+		return;
+	}
   if ([_model.messages objectAtIndex:indexPath.row]) {
     PDUISingleMessageViewController *svc = [[PDUISingleMessageViewController alloc] initFromNib];
     [svc setMessage:_model.messages[indexPath.row]];

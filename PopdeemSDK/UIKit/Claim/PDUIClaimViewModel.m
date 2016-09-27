@@ -14,6 +14,7 @@
 #import "PDAPIClient.h"
 #import "PDUIInstagramShareViewController.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
+#import "UIImage+Resize.h"
 @import Photos;
 
 @interface PDUIClaimViewModel()
@@ -794,7 +795,7 @@
 
 	__block PHObjectPlaceholder *placeholder;
 	if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-		if (_willInstagram) {
+//		if (_willInstagram) {
 			[[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
 				PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
 				placeholder = request.placeholderForCreatedAsset;
@@ -805,10 +806,10 @@
 				}
 			}];
 		}
-	} else { // This is an image that taken before
-		// Get the name of the image
-		_imageURLString = [info[@"UIImagePickerControllerReferenceURL"] absoluteString];
-	}
+//	} else { // This is an image that taken before
+//		// Get the name of the image
+//		_imageURLString = [info[@"UIImagePickerControllerReferenceURL"] absoluteString];
+//	}
 	
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
@@ -821,8 +822,9 @@
 		[_imageView setUserInteractionEnabled:YES];
 	}
 	
-	UIImage *img = info[UIImagePickerControllerOriginalImage];
 	
+	UIImage *img = info[UIImagePickerControllerOriginalImage];
+	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:img.size interpolationQuality:kCGInterpolationHigh];
 	
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	

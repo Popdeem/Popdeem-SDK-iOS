@@ -30,7 +30,7 @@
     if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
       [self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
     }
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
     return self;
   }
   return nil;
