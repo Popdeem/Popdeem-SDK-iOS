@@ -15,7 +15,7 @@
 @interface PDUIRedeemViewController () {
   NSUInteger secondsLeft;
   NSTimer *timer;
-  
+	CFAbsoluteTime stopTime;
   UIAlertView *startAlertView;
   UIAlertView *doneAlertView;
 }
@@ -32,6 +32,10 @@
 }
 
 - (void)viewDidLoad {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationDidBecomeActiveNotification object:nil];
+	
   [super viewDidLoad];
   [self setNeedsStatusBarAppearanceUpdate];
   [self.navigationItem setHidesBackButton:YES];
@@ -95,8 +99,9 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-  
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   
@@ -162,5 +167,21 @@
   [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
   return UIStatusBarStyleLightContent;
 }
+
+- (void) appWillResignActive:(id)sender {
+	stopTime = CFAbsoluteTimeGetCurrent();
+}
+
+- (void) appWillTerminate:(id)sender {
+	NSLog(@"terminate");
+	[timer invalidate];
+}
+
+- (void) applicationWillEnterForeground:(id)sender {
+	CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+	double delta = startTime - stopTime;
+	secondsLeft -= delta;
+}
+
 
 @end
