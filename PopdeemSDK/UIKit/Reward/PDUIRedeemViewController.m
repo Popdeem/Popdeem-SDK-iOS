@@ -40,7 +40,7 @@
   
   //Time left in seconds
   secondsLeft = _reward.countdownTimerDuration;
-  
+	
   if (_reward.coverImage) {
     [_logoImageView setImage:_reward.coverImage];
   } else {
@@ -134,7 +134,8 @@
   } else {
     [_timerLabel setText:translationForKey(@"popdeem.redeem.timer.doneText", @"Timer Done")];
     [_timerLabel setFont:PopdeemFont(@"popdeem.redeem.timer.fontName", 14)];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{}];
+		[timer invalidate];
+    [self.navigationController popViewControllerAnimated:YES];
   }
 }
 
