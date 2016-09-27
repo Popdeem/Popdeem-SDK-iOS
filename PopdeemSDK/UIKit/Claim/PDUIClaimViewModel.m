@@ -15,6 +15,7 @@
 #import "PDUIInstagramShareViewController.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
 #import "UIImage+Resize.h"
+
 @import Photos;
 
 @interface PDUIClaimViewModel()
@@ -806,10 +807,6 @@
 				}
 			}];
 		}
-//	} else { // This is an image that taken before
-//		// Get the name of the image
-//		_imageURLString = [info[@"UIImagePickerControllerReferenceURL"] absoluteString];
-//	}
 	
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
@@ -824,7 +821,7 @@
 	
 	
 	UIImage *img = info[UIImagePickerControllerOriginalImage];
-	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:img.size interpolationQuality:kCGInterpolationHigh];
+	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
 	
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	
@@ -834,8 +831,8 @@
 		CGImageRelease(imageRef);
 	}
 	
-	_image = [self resizeImage:img withMinDimension:480];
-	_imageView.image = img;
+	_image = resized;
+	_imageView.image = resized;
 	_imageView.contentMode = UIViewContentModeScaleAspectFit;
 	_imageView.backgroundColor = [UIColor blackColor];
 	_imageView.layer.masksToBounds = YES;
