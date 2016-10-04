@@ -41,6 +41,9 @@
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
 		394495E31D9A807F003BA702 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DF1D9A807F003BA702 /* UIImage+Resize.m */; };
 		394495E41D9A807F003BA702 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495E11D9A807F003BA702 /* UIImage+RoundedCorner.m */; };
+		394495E81D9A8413003BA702 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 394495E51D9A8413003BA702 /* Quicksand-Bold.otf */; };
+		394495E91D9A8413003BA702 /* Quicksand-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 394495E61D9A8413003BA702 /* Quicksand-Light.otf */; };
+		394495EA1D9A8413003BA702 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 394495E71D9A8413003BA702 /* Quicksand-Regular.otf */; };
 		39450F361D14188900AA4883 /* PDUIInstagramWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */; };
 		394863CC1D54CE190000ABDE /* PDUITwitterLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394863CA1D54CE190000ABDE /* PDUITwitterLoginViewController.m */; };
 		394863CF1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394863CE1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m */; };
@@ -438,6 +441,9 @@
 		394495DF1D9A807F003BA702 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		394495E01D9A807F003BA702 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		394495E11D9A807F003BA702 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		394495E51D9A8413003BA702 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
+		394495E61D9A8413003BA702 /* Quicksand-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.otf"; sourceTree = "<group>"; };
+		394495E71D9A8413003BA702 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		39450F331D14188900AA4883 /* PDUIInstagramWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramWebViewController.h; path = Instagram/PDUIInstagramWebViewController.h; sourceTree = "<group>"; };
 		39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramWebViewController.m; path = Instagram/PDUIInstagramWebViewController.m; sourceTree = "<group>"; };
 		39450F351D14188900AA4883 /* PDUIInstagramWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIInstagramWebViewController.xib; path = Instagram/PDUIInstagramWebViewController.xib; sourceTree = "<group>"; };
@@ -981,6 +987,9 @@
 		3931C4481CCE68A6005F5044 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				394495E51D9A8413003BA702 /* Quicksand-Bold.otf */,
+				394495E61D9A8413003BA702 /* Quicksand-Light.otf */,
+				394495E71D9A8413003BA702 /* Quicksand-Regular.otf */,
 				3931C4591CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf */,
 				3931C45A1CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf */,
 				3931C45B1CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf */,
@@ -2238,16 +2247,19 @@
 			files = (
 				3931C4621CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf in Resources */,
 				3931C4681CCE6BA7005F5044 /* Gotham-Rounded-Medium.ttf in Resources */,
+				394495E81D9A8413003BA702 /* Quicksand-Bold.otf in Resources */,
 				3931C4651CCE6BA7005F5044 /* Gotham-Rounded-Light-Italic.ttf in Resources */,
 				3931C4671CCE6BA7005F5044 /* Gotham-Rounded-Medium-Italic.ttf in Resources */,
 				3931C4631CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf in Resources */,
 				39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */,
 				3931C4611CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf in Resources */,
 				3931C4661CCE6BA7005F5044 /* Gotham-Rounded-Light.ttf in Resources */,
+				394495E91D9A8413003BA702 /* Quicksand-Light.otf in Resources */,
 				39537BD81C639B79001C6796 /* LaunchScreen.storyboard in Resources */,
 				3931C4641CCE6BA7005F5044 /* Gotham-Rounded-Book-Italic.ttf in Resources */,
 				39EB990E1C86F78600BB0DD8 /* theme.json in Resources */,
 				39537BD51C639B79001C6796 /* Assets.xcassets in Resources */,
+				394495EA1D9A8413003BA702 /* Quicksand-Regular.otf in Resources */,
 				39537BD31C639B79001C6796 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

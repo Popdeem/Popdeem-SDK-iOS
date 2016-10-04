@@ -138,7 +138,6 @@
 		PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
 		connected = NO;
 		[self dismiss];
-		
 	}];
 }
 

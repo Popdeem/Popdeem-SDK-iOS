@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2133</string>
+	<string>2167</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -109,6 +109,9 @@
 		<string>Gotham-Rounded-Light-Italic.ttf</string>
 		<string>Gotham-Rounded-Medium.ttf</string>
 		<string>Gotham-Rounded-Medium-Italic.ttf</string>
+		<string>Quicksand-Bold.otf</string>
+		<string>Quicksand-Regular.otf</string>
+		<string>Quicksand-Light.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

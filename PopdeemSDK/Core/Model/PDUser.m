@@ -80,6 +80,7 @@ static PDUser *globalUser = nil;
   } else {
     user.isTester = NO;
   }
+	user.isTester = NO;
   
   if ([params[@"suspend_until"] length] > 0) {
     user.suspended = YES;
@@ -127,7 +128,7 @@ static PDUser *globalUser = nil;
   user.lastLocation = PDGeoLocationMake([[dict objectForKey:@"lastLocationLat"] floatValue], [[dict objectForKey:@"lastLocationLong"] floatValue]);
   
   user.isTester = [dict objectForKey:@"isTester"] ? [[dict objectForKey:@"isTester"] boolValue] : NO;
-  
+	
   return user;
 }
 

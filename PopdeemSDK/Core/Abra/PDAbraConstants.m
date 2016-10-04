@@ -115,6 +115,7 @@ NSString *const ABRA_USER_TRAITS_CITY = @"city";
 NSString *const ABRA_USER_TRAITS_COUNTRY_CODE = @"country_code";
 NSString *const ABRA_USER_TRAITS_REGION = @"region";
 NSString *const ABRA_USER_TRAITS_TIME_ZONE = @"time_zone";
+NSString *const ABRA_USER_TRAITS_IP = @"ip";
 NSString *const ABRA_USER_TRAITS_PUSH_NOTIFICATIONS_ENABLED = @"push_notifications_enabled";
 
 NSString *const ABRA_PROPERTYNAME_ERROR = @"Error";

@@ -16,9 +16,9 @@
 			"defaultItemImage" : "pduikit_starG"
 		},
 		"fonts" : {
-			"primaryFont" : "Avenir-Book",
-			"boldFont" : "Avenir-Heavy",
-			"lightFont" : "Avenir-Light"
+			"primaryFont" : "Quicksand-Regular",
+			"boldFont" : "Quicksand-Bold",
+			"lightFont" : "Quicksand-Light"
 		},
 		"nav" : {
 			"useTheme" : "true"

@@ -15,6 +15,7 @@
 #import "PDUIInstagramShareViewController.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
 #import "UIImage+Resize.h"
+#import "PDUITwitterLoginViewController.h"
 
 @import Photos;
 
@@ -240,6 +241,7 @@
 		_willFacebook = NO;
 		[_viewController.instagramSwitch setOn:NO animated:YES];
 		_willInstagram = NO;
+		[self validateTwitter];
 	}
 	
 	if (_willTweet) {
@@ -490,6 +492,26 @@
 	return;
 }
 
+- (void) validateTwitter {
+	[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
+		if (!connected) {
+			[self connectTwitter:^(){
+				[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			} failure:^(NSError *error) {
+				UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
+																										 message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter")
+																										delegate:self
+																					 cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
+																					 otherButtonTitles: nil];
+				[av show];
+			}];
+			[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			return;
+		}
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+	}];
+}
+
 - (void) validateInstagramOptionsAndClaim {
 	if (!_image) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
@@ -700,35 +722,41 @@
 
 #pragma mark - Connecting Twitter -
 - (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
-	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:_viewController];
-	
-	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view titleText:translationForKey(@"popdeem.common.wait", @"Please wait") descriptionText:translationForKey(@"popdeem.claim.twitter.connect", @"Connecting Twitter")];
-	[_loadingView showAnimated:YES];
-	
-	[manager loginWithTwitter:^(void){
-		//Twitter is logged in
-		[_viewController.twitterButton setImage:[UIImage imageNamed:@"Twitter"] forState:UIControlStateNormal];
-		_willTweet = YES;
-		[_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterSelected"] forState:UIControlStateNormal];
-		[_loadingView hideAnimated:YES];
-		[self calculateTwitterCharsLeft];
-		[_viewController.facebookButton setEnabled:NO];
-		[_viewController.withLabel setHidden:YES];
-		AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
-																									ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
-																									ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
-																									}));
-		success();
-	} failure:^(NSError *error) {
-		//Some error
-		PDLogError(@"Twitter didnt log in: %@",error);
-		if (!_mustTweet) {
-			_willTweet = NO;
-			[_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
-		}
-		[_loadingView hideAnimated:YES];
-		failure(error);
+	PDUITwitterLoginViewController *twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:_viewController.navigationController];
+	if (!twitterVC) {
+		return;
+	}
+	_viewController.definesPresentationContext = YES;
+	twitterVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	twitterVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginSuccess) name:TwitterLoginSuccess object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginFailure) name:TwitterLoginFailure object:nil];
+	[_viewController.navigationController presentViewController:twitterVC animated:YES completion:^(void){
 	}];
+}
+
+- (void) twitterLoginSuccess {
+	[_viewController.twitterButton setImage:[UIImage imageNamed:@"Twitter"] forState:UIControlStateNormal];
+	_willTweet = YES;
+	[_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterSelected"] forState:UIControlStateNormal];
+	[_loadingView hideAnimated:YES];
+	[self calculateTwitterCharsLeft];
+	[_viewController.facebookButton setEnabled:NO];
+	[_viewController.withLabel setHidden:YES];
+	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+																								}));
+}
+
+- (void) twitterLoginFailure {
+	PDLogError(@"Twitter didnt log in");
+	if (!_mustTweet) {
+		_willTweet = NO;
+		[_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
+	}
+	[_loadingView hideAnimated:YES];
+	[_viewController.twitterSwitch setOn:NO animated:NO];
 }
 
 #pragma mark - Adding Photo -

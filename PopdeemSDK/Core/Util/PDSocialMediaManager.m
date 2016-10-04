@@ -339,7 +339,7 @@
       //            } else {
       UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Select an account:" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
       [ac addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        //Handle Cancel
+        failure(nil);
       }]];
       ac.view.tintColor = [UIColor blueColor];
       for (ACAccount *account in _iOSAccounts) {

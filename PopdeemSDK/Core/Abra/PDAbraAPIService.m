@@ -12,6 +12,8 @@
 #import "PDAbraClient.h"
 #import "PDLogger.h"
 #import <UIKit/UIKit.h>
+#include <ifaddrs.h>
+#include <arpa/inet.h>
 
 @implementation PDAbraAPIService
 
@@ -30,8 +32,7 @@
 															 ABRA_USER_TRAITS_FIRST_NAME : user.firstName,
 															 ABRA_USER_TRAITS_LAST_NAME : user.lastName,
 															 ABRA_USER_TRAITS_GENDER : (user.gender == PDGenderMale) ? @"Male" : @"Female",
-															 ABRA_USER_TRAITS_TIME_ZONE : [[NSTimeZone localTimeZone] name],
-															 ABRA_USER_TRAITS_COUNTRY_CODE : [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode],
+															 ABRA_USER_TRAITS_IP : [self getIPAddress],
 															 ABRA_USER_TRAITS_PUSH_NOTIFICATIONS_ENABLED : ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) ? @"Yes" : @"No"
 															 },
 													 ABRA_KEY_EVENT : @{
@@ -91,5 +92,35 @@
 	
 }
 
+- (NSString *)getIPAddress {
+	
+	NSString *address = @"error";
+	struct ifaddrs *interfaces = NULL;
+	struct ifaddrs *temp_addr = NULL;
+	int success = 0;
+	// retrieve the current interfaces - returns 0 on success
+	success = getifaddrs(&interfaces);
+	if (success == 0) {
+		// Loop through linked list of interfaces
+		temp_addr = interfaces;
+		while(temp_addr != NULL) {
+			if(temp_addr->ifa_addr->sa_family == AF_INET) {
+				// Check if interface is en0 which is the wifi connection on the iPhone
+				if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+					// Get NSString from C String
+					address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+					
+				}
+				
+			}
+			
+			temp_addr = temp_addr->ifa_next;
+		}
+	}
+	// Free memory
+	freeifaddrs(interfaces);
+	return address;
+	
+}
 
 @end
