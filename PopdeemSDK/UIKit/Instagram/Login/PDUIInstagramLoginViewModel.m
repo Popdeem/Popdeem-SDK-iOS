@@ -25,7 +25,7 @@
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
 	self.labelFont = PopdeemFont(PDThemeFontBold, 14);
 	
-	self.logoImage = PopdeemImage(@"pduikit_instagram_hires");
+	self.logoImage = PopdeemImage(@"pduikit_instagram_hi");
 	
 	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
 	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);

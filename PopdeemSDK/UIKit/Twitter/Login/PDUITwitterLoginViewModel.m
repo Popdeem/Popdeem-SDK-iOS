@@ -31,9 +31,9 @@
 - (void) setup {
 	self.labelText = translationForKey(@"popdeem.twitter.connect.read.labelText",@"Connect your Twitter account to claim Twitter Rewards.");
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
-	self.labelFont = PopdeemFont(PDThemeFontPrimary, 14);
+	self.labelFont = PopdeemFont(PDThemeFontBold, 14);
 	
-	self.logoImage = PopdeemImage(@"pduikit_twitterbutton_selected");
+	self.logoImage = PopdeemImage(@"Twitter_Logo_Blue");
 	
 	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
 	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);
@@ -44,9 +44,9 @@
 - (void) setupLoading {
 	self.labelText = translationForKey(@"popdeem.twitter.loading.labelText",@"Connecting Twitter Account.");
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
-	self.labelFont = PopdeemFont(PDThemeFontPrimary, 14);
+	self.labelFont = PopdeemFont(PDThemeFontBold, 14);
 	
-	self.logoImage = PopdeemImage(@"pduikit_twitterbutton_selected");
+	self.logoImage = PopdeemImage(@"Twitter_Logo_Blue");
 	
 	self.buttonColor = PopdeemColor(PDThemeColorPrimaryInverse);
 	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryApp);

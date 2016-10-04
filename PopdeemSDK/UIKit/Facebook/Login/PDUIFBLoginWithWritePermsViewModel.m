@@ -39,7 +39,7 @@
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
 	self.labelFont = PopdeemFont(PDThemeFontPrimary, 14);
 	
-	self.logoImage = PopdeemImage(@"pduikit_facebook_hires");
+	self.logoImage = PopdeemImage(@"pduikit_fb_hi");
 	
 	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
 	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);
@@ -52,7 +52,7 @@
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
 	self.labelFont = PopdeemFont(PDThemeFontPrimary, 14);
 	
-	self.logoImage = PopdeemImage(@"pduikit_facebook_hires");
+	self.logoImage = PopdeemImage(@"pduikit_fb_hi");
 	
 	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
 	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);

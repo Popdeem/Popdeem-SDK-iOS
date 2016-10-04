@@ -214,6 +214,10 @@
 		_willInstagram = NO;
 		[_viewController.twitterForcedTagLabel setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
+		if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+			[self loginWithReadAndWritePerms];
+			return;
+		}
 	}
 	if (!_willFacebook) {
 		return;
@@ -426,10 +430,6 @@
 }
 
 - (void) validateFacebookOptionsAndClaim {
-	if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-		[self loginWithReadAndWritePerms];
-		return;
-	}
 	if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
 		[self loginWithWritePerms];
 		return;
@@ -455,40 +455,21 @@
 																											 });
 		return;
 	}
-	[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
-		[twView hideAnimated:YES];
-		if (!connected) {
-			[self connectTwitter:^(){
-				[self makeClaim];
-				[_viewController.claimButtonView setUserInteractionEnabled:YES];
-			} failure:^(NSError *error) {
-				UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
-																										 message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter")
-																										delegate:self
-																					 cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
-																					 otherButtonTitles: nil];
-				[av show];
-			}];
-			[_viewController.claimButtonView setUserInteractionEnabled:YES];
-			return;
-		}
-		if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
-			UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
-																												message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.")
-																											 delegate:self
-																							cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
-																							otherButtonTitles: nil];
-			[tooMany setTag:2];
-			[tooMany show];
-			[_viewController.claimButtonView setUserInteractionEnabled:YES];
-			AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
-																												 ABRA_PROPERTYNAME_ERROR : ABRA_PROPERTYVALUE_ERROR_TOOMANYCHARS
-																												 });
-			return;
-		}
-		[self makeClaim];
+	if (_viewController.twitterCharacterCountLabel.text.integerValue < 0) {
+		UIAlertView *tooMany = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
+																											message:translationForKey(@"popdeem.claim.tweet.toolong", @"Tweet too long, you have written a post longer than the allowed 140 characters. Please shorten your post.")
+																										 delegate:self
+																						cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
+																						otherButtonTitles: nil];
+		[tooMany setTag:2];
+		[tooMany show];
 		[_viewController.claimButtonView setUserInteractionEnabled:YES];
-	}];
+		AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
+																											 ABRA_PROPERTYNAME_ERROR : ABRA_PROPERTYVALUE_ERROR_TOOMANYCHARS
+																											 });
+		return;
+	}
+	[self makeClaim];
 	return;
 }
 

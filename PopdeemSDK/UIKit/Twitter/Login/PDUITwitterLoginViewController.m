@@ -86,6 +86,7 @@
 	_imageView.layer.cornerRadius = 2.0;
 	_imageView.layer.masksToBounds = YES;
 	[_cardView addSubview:_imageView];
+	self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 	currentY += imageWidth + 40;
 	
 	CGRect buttonFrame = CGRectMake(10, currentY, cardWidth-20, 40);
