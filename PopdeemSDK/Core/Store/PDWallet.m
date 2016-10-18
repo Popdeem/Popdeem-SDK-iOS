@@ -55,4 +55,8 @@
     }
 }
 
++ (NSArray*) orderedByDate {
+	return [[PDWallet wallet] sortedArrayUsingSelector:@selector(compareDate:)];
+}
+
 @end

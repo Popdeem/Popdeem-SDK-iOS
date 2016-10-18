@@ -44,7 +44,7 @@
   __weak typeof(self) weakSelf = self;
   _rewardsLoading = YES;
   [[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
-    weakSelf.rewards =  [PDRewardStore orderedByDistanceFromUser];
+    weakSelf.rewards =  [PDRewardStore orderedByDate];
     [PDUILazyLoader loadAllRewardCoverImagesCompletion:^(BOOL success){
       [weakSelf brandImageDidDownload];
     }];
@@ -88,7 +88,7 @@
 - (void) fetchWallet {
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
-    weakSelf.wallet = [[PDWallet wallet] copy];
+		weakSelf.wallet = [PDWallet orderedByDate];
     [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [weakSelf.controller.refreshControl endRefreshing];
     [weakSelf.controller.tableView setUserInteractionEnabled:YES];

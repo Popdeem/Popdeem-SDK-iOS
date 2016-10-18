@@ -13,7 +13,8 @@
 		},
 		"images" : {
 			"loginImage" : "pduikit_default_login",
-			"defaultItemImage" : "pduikit_starG"
+			"defaultItemImage" : "pduikit_starG",
+			"homeHeaderImage" : "kure-header"
 		},
 		"fonts" : {
 			"primaryFont" : "Quicksand-Regular",

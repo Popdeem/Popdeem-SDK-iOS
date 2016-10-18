@@ -234,6 +234,16 @@
   return NSOrderedAscending;
 }
 
+- (NSComparisonResult)compareDate:(PDReward *)otherObject {
+	if (otherObject.createdAt == self.createdAt) {
+		return NSOrderedSame;
+	}
+	if (otherObject.createdAt > self.createdAt) {
+		return NSOrderedDescending;
+	}
+	return NSOrderedAscending;
+}
+
 - (NSString*) localizedDistanceToUserString {
   NSLocale *locale = [NSLocale currentLocale];
   BOOL isMetric = [[locale objectForKey:NSLocaleUsesMetricSystem] boolValue];

@@ -152,7 +152,9 @@
 		self.locationVerificationViewHeightConstraint.constant = 0;
 	}
 	
-	[self.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
+	[self.twitterForcedTagLabel setTextColor:[UIColor lightGrayColor]];
+	[self.addHashtagButton setHidden:YES];
+	[self.addHashtagButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
 }
@@ -223,6 +225,9 @@
   
   if (_viewModel.willTweet) {
     [self.twitterForcedTagLabel setHidden:NO];
+		if (_reward.twitterForcedTag.length > 0) {
+			[self.addHashtagButton setHidden:NO];
+		}
     if (_viewModel.reward.twitterForcedTag) {
       [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.twitterForcedTag]];
     }
@@ -231,6 +236,10 @@
   }
 	if (_viewModel.willInstagram) {
 		[self.twitterForcedTagLabel setHidden:NO];
+		if (_reward.instagramForcedTag.length > 0) {
+			[self.addHashtagButton setHidden:NO];
+		}
+		[self.addHashtagButton setHidden:NO];
 		if (_viewModel.reward.instagramForcedTag) {
 			[self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
 		}
@@ -447,6 +456,8 @@
 - (void) instagramLoginUserDismissed {
 	[_viewModel instagramLoginFailure];
 	[_instagramSwitch setOn:NO animated:YES];
+	[self.twitterForcedTagLabel setHidden:YES];
+	[self.addHashtagButton setHidden:YES];
 }
 
 - (void) instagramLoginFailure {
@@ -457,6 +468,8 @@
 																							delegate:self
 																		 cancelButtonTitle:@"OK"
 																		 otherButtonTitles:nil];
+	[self.twitterForcedTagLabel setHidden:YES];
+	[self.addHashtagButton setHidden:YES];
 	[av show];
 }
 
@@ -472,11 +485,15 @@
 - (void) instagramVerifyFailure {
 	self.homeController.didClaim = NO;
 	[self.navigationController popViewControllerAnimated:YES];
+	[self.twitterForcedTagLabel setHidden:YES];
+	[self.addHashtagButton setHidden:YES];
 }
 
 - (void) instagramVerifyNoAttempt {
 	self.homeController.didClaim = NO;
 	[self.navigationController popViewControllerAnimated:YES];
+	[self.twitterForcedTagLabel setHidden:YES];
+	[self.addHashtagButton setHidden:YES];
 }
 
 - (void) facebookWritePermSuccess {
@@ -516,5 +533,23 @@
 	}
 }
 
+- (IBAction)addHashtagButtonPressed:(id)sender {
+	NSString *hashtagString;
+	if (_viewModel.willTweet) {
+		hashtagString = _reward.twitterForcedTag;
+	} else if (_viewModel.willInstagram) {
+		hashtagString = _reward.instagramForcedTag;
+	} else {
+		return;
+	}
+	
+	if (_textView.text.length > 0) {
+		hashtagString = [@" " stringByAppendingString:hashtagString];
+	}
+	
+	NSString *newText = [self.textView.text stringByAppendingString:hashtagString];
+	[self.textView setText:newText];
+	[_viewModel validateHashTag];
+}
 
 @end

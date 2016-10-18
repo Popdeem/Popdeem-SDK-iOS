@@ -126,5 +126,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 
 - (NSString*) localizedDistanceToUserString;
 
+- (NSComparisonResult)compareDate:(PDReward *)otherObject;
+
 @end
 NS_ASSUME_NONNULL_END

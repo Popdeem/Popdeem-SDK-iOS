@@ -1,59 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUISettingsViewController">
             <connections>
-                <outlet property="tableHeaderImageView" destination="bKe-Id-dUj" id="Xvo-ho-uCh"/>
-                <outlet property="tableHeaderNameLabel" destination="Njl-5a-vrj" id="UoC-zZ-vL6"/>
-                <outlet property="tableHeaderView" destination="b5S-U2-STs" id="goH-Jm-tpc"/>
                 <outlet property="tableView" destination="Ol4-aw-Mn9" id="iju-nT-9qZ"/>
                 <outlet property="view" destination="nb2-eB-ht6" id="7xC-Vb-tY0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="b5S-U2-STs">
-            <rect key="frame" x="0.0" y="0.0" width="614" height="140"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_default_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="bKe-Id-dUj">
-                    <rect key="frame" x="267" y="8" width="80" height="80"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="LqR-GF-Y46"/>
-                        <constraint firstAttribute="height" constant="80" id="pQ0-LR-24v"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njl-5a-vrj">
-                    <rect key="frame" x="8" y="101" width="598" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="26" id="Jel-eV-zU6"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
-            <color key="backgroundColor" red="0.21796177459999999" green="0.68955105839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstItem="Njl-5a-vrj" firstAttribute="top" secondItem="bKe-Id-dUj" secondAttribute="bottom" constant="13" id="ed7-J5-TdD"/>
-                <constraint firstItem="Njl-5a-vrj" firstAttribute="leading" secondItem="b5S-U2-STs" secondAttribute="leading" constant="8" id="oaT-2v-SnH"/>
-                <constraint firstAttribute="trailing" secondItem="Njl-5a-vrj" secondAttribute="trailing" constant="8" id="pLh-1m-pjc"/>
-                <constraint firstItem="bKe-Id-dUj" firstAttribute="centerX" secondItem="b5S-U2-STs" secondAttribute="centerX" id="x3w-OE-Wtz"/>
-                <constraint firstItem="bKe-Id-dUj" firstAttribute="top" secondItem="b5S-U2-STs" secondAttribute="top" constant="8" id="xyG-q6-hPz"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1205" y="158"/>
-        </view>
         <view contentMode="scaleToFill" id="nb2-eB-ht6">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ol4-aw-Mn9">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="separatorInset" minX="46" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="QgM-2E-CBD"/>
@@ -61,7 +26,7 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Ol4-aw-Mn9" firstAttribute="top" secondItem="nb2-eB-ht6" secondAttribute="top" id="2Ex-sf-zaq"/>
                 <constraint firstItem="Ol4-aw-Mn9" firstAttribute="leading" secondItem="nb2-eB-ht6" secondAttribute="leading" id="HF8-jb-Yoo"/>
@@ -71,7 +36,4 @@
             <point key="canvasLocation" x="499" y="188"/>
         </view>
     </objects>
-    <resources>
-        <image name="pduikit_default_user.png" width="180" height="180"/>
-    </resources>
 </document>

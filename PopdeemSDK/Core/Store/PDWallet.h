@@ -16,5 +16,6 @@
 + (void) add:(PDReward*)reward;
 + (void) remove:(NSInteger)rewardId;
 + (void) removeAllRewards;
++ (NSArray*) orderedByDate;
 
 @end

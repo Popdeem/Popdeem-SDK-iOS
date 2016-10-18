@@ -83,4 +83,8 @@
   return [[[PDRewardStore store] allValues] sortedArrayUsingSelector:@selector(compareDistance:)];
 }
 
++ (NSArray *) orderedByDate {
+	return [[[PDRewardStore store] allValues] sortedArrayUsingSelector:@selector(compareDate:)];
+}
+
 @end

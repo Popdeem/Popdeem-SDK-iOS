@@ -23,5 +23,5 @@
 - (void) connectInstagramAccount;
 - (void) disconnectInstagramAccount;
 - (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName;
-
+- (void) logoutUser;
 @end

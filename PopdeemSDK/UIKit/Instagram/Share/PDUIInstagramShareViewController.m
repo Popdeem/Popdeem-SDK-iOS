@@ -217,7 +217,12 @@ CGFloat _cardWidth;
 	}
 	else
 	{
-		UIAlertView *errMsg = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"No Instagram Available" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *errMsg = [[UIAlertView alloc] initWithTitle:@"Instagram Required"
+																										 message:@"It appears that you do not have Instagram installed. You will now be directed to the App Store to download the Instagram App."
+																										delegate:self
+																					 cancelButtonTitle:@"Ok"
+																					 otherButtonTitles:nil];
+		[errMsg setTag:2];
 		[errMsg show];
 		_leavingToInstagram = NO;
 	}
@@ -313,6 +318,13 @@ CGFloat _cardWidth;
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
 
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (alertView.tag == 2) {
+		NSString *simple = @"itms-apps://itunes.apple.com/app/id389801252";
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:simple]];
+	}
 }
 /*
 #pragma mark - Navigation

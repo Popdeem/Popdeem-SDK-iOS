@@ -18,10 +18,14 @@
 #import "PDUITwitterLoginViewController.h"
 #import "PDUIFBLoginWithWritePermsViewController.h"
 #import "PDSocialMediaManager.h"
+#import "PDUIModalLoadingView.h"
+#import "PDUILogoutTableViewCell.h"
+
 #define kSocialNib @"SocialNib"
+#define kLogoutNib @"LogoutNib"
 
 @interface PDUISettingsViewController ()
-
+@property (nonatomic, retain) UIImageView *profileImageView;
 @end
 
 @implementation PDUISettingsViewController
@@ -38,15 +42,17 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self registerNibs];
-	self.tableView.tableHeaderView = _tableHeaderView;
 	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 	[self.tableHeaderNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
 	[self.tableHeaderImageView.layer setCornerRadius:self.tableHeaderImageView.frame.size.width/2];
 	[self.tableHeaderImageView setClipsToBounds:YES];
-	[self setupHeaderView];
 	[self.tableView reloadData];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	// Do any additional setup after loading the view from its nib.
+}
+
+- (void) viewDidLayoutSubviews {
+	[self setupHeaderView];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -56,20 +62,62 @@
 - (void) registerNibs {
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	UINib *socialNib = [UINib nibWithNibName:@"PDUISocialSettingsTableViewCell" bundle:podBundle];
+	UINib *logoutNib = [UINib nibWithNibName:@"PDUILogoutTableViewCell" bundle:podBundle];
 	[self.tableView registerNib:socialNib forCellReuseIdentifier:kSocialNib];
+	[self.tableView registerNib:logoutNib forCellReuseIdentifier:kLogoutNib];
 }
 
 - (void) setupHeaderView {
-	NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
-	NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:pictureUrl]];
-	UIImage *profileImage = [UIImage imageWithData:imageData];
-	if (profileImage != nil) {
-		[self.tableHeaderImageView setImage:profileImage];
+	self.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
+	self.tableView.tableHeaderView = self.tableHeaderView;
+	
+	if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
+		UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:self.tableHeaderView.frame];
+		[bgImageView setHidden:NO];
+		[bgImageView setImage:PopdeemImage(@"popdeem.images.homeHeaderImage")];
+		[bgImageView setContentMode:UIViewContentModeScaleAspectFill];
+		[bgImageView setClipsToBounds:YES];
+		UIView *gradientView = [[UIView alloc] initWithFrame:bgImageView.frame];
+		[gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
+		[self.tableHeaderView addSubview:bgImageView];
+		[bgImageView addSubview:gradientView];
 	}
+	
+	NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
+	NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		if (data) {
+			UIImage *image = [UIImage imageWithData:data];
+			if (image) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					UIImage *profileImage = [UIImage imageWithData:data];
+					[_profileImageView setImage:profileImage];
+					[_profileImageView setHidden:NO];
+					[self.view setNeedsDisplay];
+				});
+			}
+		}
+	}];
+	[task resume];
+	float centerx = self.view.frame.size.width/2;
+	
+	_profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(centerx-40, 20, 80, 80)];
+	[_profileImageView setContentMode:UIViewContentModeScaleAspectFill];
+	_profileImageView.layer.cornerRadius = 40;
+	_profileImageView.layer.masksToBounds = YES;
+	[self.tableHeaderView addSubview:_profileImageView];
+	[_profileImageView setHidden:YES];
+
+
 	NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
-	[self.tableHeaderNameLabel setText:userName];
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
+	[nameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
+	[nameLabel setTextColor:[UIColor whiteColor]];
+	[nameLabel setText:userName];
+	[nameLabel setTextAlignment:NSTextAlignmentCenter];
+	[self.tableHeaderView addSubview:nameLabel];
 	[self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	[self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,7 +131,9 @@
   case 0:
 			return 3;
 			break;
-			
+	case 1:
+			return 1;
+			break;
   default:
 			return 0;
 			break;
@@ -92,13 +142,16 @@
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return 2;
 }
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
   case 0:
 			return @"Social Networks";
+			break;
+	case 1:
+			return @"";
 			break;
   default:
 			return @"Error";
@@ -112,22 +165,40 @@
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kSocialNib];
-	switch (indexPath.row) {
-  case 0:
-			[cell setSocialNetwork:PDSocialMediaTypeFacebook];
+	PDUISocialSettingsTableViewCell *socialCell;
+	PDUILogoutTableViewCell *logoutCell;
+	switch (indexPath.section) {
+		case 0:
+			socialCell = [self.tableView dequeueReusableCellWithIdentifier:kSocialNib];
+			switch (indexPath.row) {
+				case 0:
+					[socialCell setSocialNetwork:PDSocialMediaTypeFacebook];
+					break;
+				case 1:
+					[socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
+					break;
+				case 2:
+					[socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
+					break;
+				default:
+					break;
+			}
+			[socialCell setParent:self];
+			return socialCell;
 			break;
 		case 1:
-			[cell setSocialNetwork:PDSocialMediaTypeTwitter];
-			break;
-		case 2:
-			[cell setSocialNetwork:PDSocialMediaTypeInstagram];
-			break;
-  default:
+			logoutCell = [self.tableView dequeueReusableCellWithIdentifier:kLogoutNib];
+			[logoutCell setParent:self];
+			PDSocialMediaManager *man = [PDSocialMediaManager manager];
+//			if ([man isLoggedInWithFacebook]) {
+//				[logoutCell.logoutButton setTitle:@"Log Out" forState:UIControlStateNormal];
+//			} else {
+//				[logoutCell.logoutButton setTitle:@"Log In" forState:UIControlStateNormal];
+//			}
+			return logoutCell;
 			break;
 	}
-	[cell setParent:self];
-	return cell;
+	return nil;
 }
 
 - (void) connectFacebookAccount {
@@ -157,7 +228,6 @@
 
 - (void) connectTwitterAccount {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-	[cell.socialSwitch setOn:NO animated:NO];
 	PDUITwitterLoginViewController *twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:self.navigationController];
 	if (!twitterVC) {
 		return;
@@ -172,19 +242,33 @@
 }
 
 - (void) disconnectTwitterAccount {
-	PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
-	[socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
-		
+
+	UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
+		[socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
+			
+		}];
+		AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
+																													ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+																													ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																													}));
 	}];
-	AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
-																												ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
-																												ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-																												}));
+	UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[cell.socialSwitch setOn:NO];
+			[_tableView reloadData];
+		});
+	}];
+	UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Disconnect Twitter Account" message:@"This action will disconnect your Twitter account. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
+	[ac addAction:ok];
+	[ac addAction:cancel];
+	[self presentViewController:ac animated:YES completion:^{
+	}];
 }
 
 - (void) connectInstagramAccount {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-	[cell.socialSwitch setOn:NO animated:NO];
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self.navigationController delegate:self];
@@ -196,6 +280,7 @@
 		instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismissed) name:InstagramLoginuserDismissed object:nil];
 		[self.navigationController presentViewController:instaVC animated:YES completion:^(void){
 		}];
 	});
@@ -215,7 +300,6 @@
 - (void) facebookLoginSuccess {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[cell.socialSwitch setOn:YES animated:YES];
 		[_tableView reloadInputViews];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
@@ -227,7 +311,7 @@
 - (void) facebookLoginFailure {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[cell.socialSwitch setOn:NO animated:YES];
+		[cell.socialSwitch setOn:NO];
 		[_tableView reloadInputViews];
 	});
 }
@@ -235,7 +319,6 @@
 - (void) instagramLoginSuccess {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[cell.socialSwitch setOn:YES animated:YES];
 		[_tableView reloadInputViews];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
@@ -247,7 +330,15 @@
 - (void) instagramLoginFailure {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[cell.socialSwitch setOn:NO animated:YES];
+		[cell.socialSwitch setOn:NO];
+		[_tableView reloadData];
+	});
+}
+
+- (void) instagramLoginUserDismissed {
+	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[cell.socialSwitch setOn:NO];
 		[_tableView reloadData];
 	});
 }
@@ -255,7 +346,6 @@
 - (void) twitterLoginSuccess {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[cell.socialSwitch setOn:YES animated:YES];
 		[_tableView reloadData];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
@@ -267,24 +357,69 @@
 - (void) twitterLoginFailure {
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[cell.socialSwitch setOn:NO animated:YES];
+		[cell.socialSwitch setOn:NO];
 		[_tableView reloadData];
 	});
 }
 
 - (void) disconnectInstagramAccount {
-	PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
-	[socialService disconnectInstagramAccountWithCompletion:^(NSError *err){
-		
+	UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
+		[socialService disconnectInstagramAccountWithCompletion:^(NSError *err){
+			
+		}];
+		AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
+																													ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
+																													ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+																													}));
 	}];
-	AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
-																												ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
-																												ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-																												}));
+	UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[cell.socialSwitch setOn:NO];
+			[_tableView reloadData];
+		});
+	}];
+	UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Disconnect Instagram Account" message:@"This action will disconnect your Instagram account. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
+	[ac addAction:ok];
+	[ac addAction:cancel];
+	[self presentViewController:ac animated:YES completion:^{
+	}];
 }
 
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) logoutUser {
+	UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
+		[socialService disconnectInstagramAccountWithCompletion:^(NSError *err){
+			PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[cell.socialSwitch setOn:NO];
+				[_tableView reloadData];
+			});
+		}];
+		[socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
+			PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[cell.socialSwitch setOn:NO];
+				[_tableView reloadData];
+			});
+		}];
+		PDSocialMediaManager *man = [PDSocialMediaManager manager];
+		[man logoutFacebook];
+		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+		[cell.socialSwitch setOn:NO animated:NO];
+	}];
+	UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+	}];
+	UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Log out of app" message:@"This action will log you out and disconnect all connected social accounts. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
+	[ac addAction:ok];
+	[ac addAction:cancel];
+	[self presentViewController:ac animated:YES completion:^{
+	}];
 }
 /*
  #pragma mark - Navigation

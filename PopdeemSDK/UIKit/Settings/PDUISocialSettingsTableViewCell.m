@@ -13,7 +13,7 @@
 
 @interface PDUISocialSettingsTableViewCell()
 @property (nonatomic) PDSocialMediaType socialMediaType;
-
+@property (nonatomic) BOOL working;
 @end
 @implementation PDUISocialSettingsTableViewCell
 

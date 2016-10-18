@@ -168,7 +168,7 @@
 - (void) disconnectInstagramAccountWithCompletion:(void (^)(NSError *error))completion {
 	NSString *instagramAccessToken = [[[PDUser sharedInstance] instagramParams] accessToken];
 	NSString *instagramId = [NSString stringWithFormat:@"%li,",[[[PDUser sharedInstance] instagramParams] socialAccountId]];
-	
+	if (instagramId == nil || instagramAccessToken == nil) return;
 	NSDictionary *params = @{
 													 @"user" : @{
 															 @"instagram" : @{

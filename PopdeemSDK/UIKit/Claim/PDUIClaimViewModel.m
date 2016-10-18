@@ -213,6 +213,7 @@
 		[_viewController.instagramSwitch setOn:NO animated:YES];
 		_willInstagram = NO;
 		[_viewController.twitterForcedTagLabel setHidden:YES];
+		[_viewController.addHashtagButton setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
 			[self loginWithReadAndWritePerms];
@@ -251,6 +252,7 @@
 	if (_willTweet) {
 		_willTweet = NO;
 		[_viewController.twitterForcedTagLabel setHidden:YES];
+		[_viewController.addHashtagButton setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		[_viewController.twitterButton setSelected:NO];
 //		if ([_viewController.textView.text rangeOfString:_twitterPrefilledTextString].location != NSNotFound) {
@@ -268,6 +270,9 @@
 	_willTweet = YES;
 	[_viewController.twitterButton setSelected:YES];
 	[_viewController.twitterForcedTagLabel setHidden:NO];
+	if (_reward.twitterForcedTag.length > 0) {
+		[_viewController.addHashtagButton setHidden:NO];
+	}
 	
 	if (_twitterForcedTagString) {
 		[_viewController.twitterForcedTagLabel setText:_twitterForcedTagString];
@@ -291,6 +296,7 @@
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
 		[_viewController.twitterForcedTagLabel setHidden:YES];
+		[_viewController.addHashtagButton setHidden:YES];
 //		if ([_viewController.textView.text rangeOfString:_instagramPrefilledTextString].location != NSNotFound) {
 //			NSMutableAttributedString *mstr = [_viewController.textView.attributedText mutableCopy];
 //			[mstr replaceCharactersInRange:[_viewController.textView.text rangeOfString:_instagramPrefilledTextString] withString:@""];
@@ -320,6 +326,9 @@
 	}];
 	_willInstagram = instagramSwitch.isOn;
 	[_viewController.twitterForcedTagLabel setHidden:NO];
+	if (_reward.instagramForcedTag.length > 0) {
+		[_viewController.addHashtagButton setHidden:NO];
+	}
 	if ([instagramSwitch isOn]) {
 		[_viewController.facebookSwitch setOn:NO animated:YES];
 		_willFacebook = NO;
@@ -545,6 +554,8 @@
 	_hashtagValidated = NO;
 	if (!_instagramForcedTagString && !_twitterForcedTagString) {
 		_hashtagValidated = YES;
+		[_viewController.addHashtagButton setHidden:YES];
+		[_viewController.twitterForcedTagLabel setHidden:YES];
 		return;
 	}
 	
@@ -558,6 +569,8 @@
 	
 	if (!searchString) {
 		_hashtagValidated = YES;
+		[_viewController.addHashtagButton setHidden:YES];
+		[_viewController.twitterForcedTagLabel setHidden:YES];
 		return;
 	}
 	
@@ -570,12 +583,18 @@
 		[mutString addAttribute:NSForegroundColorAttributeName value:PopdeemColor(PDThemeColorPrimaryInverse) range:hashRange];
 		[mutString addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, mutString.length)];
 		[_viewController.textView setAttributedText:mutString];
+		[_viewController.addHashtagButton setHidden:YES];
+		[_viewController.twitterForcedTagLabel setHidden:YES];
 	} else {
 		NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_viewController.textView.text];
 		_tvSurpress = YES;
 		[string setAttributes:@{} range:NSMakeRange(0, string.length)];
 		[string addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, string.length)];
 		[_viewController.textView setAttributedText:string];
+		if (_willTweet || _willInstagram) {
+			[_viewController.addHashtagButton setHidden:NO];
+			[_viewController.twitterForcedTagLabel setHidden:NO];
+		}
 	}
 }
 
@@ -738,6 +757,9 @@
 	}
 	[_loadingView hideAnimated:YES];
 	[_viewController.twitterSwitch setOn:NO animated:NO];
+	[_viewController.twitterForcedTagLabel setHidden:YES];
+	[_viewController.twitterCharacterCountLabel setHidden:YES];
+	[_viewController.addHashtagButton setHidden:YES];
 }
 
 #pragma mark - Adding Photo -
@@ -815,7 +837,10 @@
 					PDLog(@"Saved Image");
 				}
 			}];
-		}
+	} else {
+		NSURL *imageURL = info[@"UIImagePickerControllerReferenceURL"];
+		_imageURLString = [imageURL absoluteString];
+	}
 	
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];

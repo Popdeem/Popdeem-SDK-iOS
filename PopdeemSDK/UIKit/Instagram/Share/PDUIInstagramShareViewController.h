@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDUIInstagramShareViewModel.h"
 
-@interface PDUIInstagramShareViewController : UIViewController <UIScrollViewDelegate>
+@interface PDUIInstagramShareViewController : UIViewController <UIScrollViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic,retain) UIView *backingView;
 @property (nonatomic, retain) UIScrollView *scrollView;

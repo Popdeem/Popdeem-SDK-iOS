@@ -21,6 +21,7 @@
 		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
 		392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDUIClaimViewController.m */; };
 		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
+		392B559D1DAF9D130012350A /* PDUILogoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */; };
 		3931C4611CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C4591CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf */; };
 		3931C4621CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45A1CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf */; };
 		3931C4631CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45B1CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf */; };
@@ -412,6 +413,9 @@
 		392787171C071BFA00F8DCD9 /* PD_SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PD_SZTextView.m; path = Claim/PD_SZTextView.m; sourceTree = "<group>"; };
 		392A9D131D36527900F11FDF /* pduikit_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_placeholder.png; path = Resources/pduikit_placeholder.png; sourceTree = "<group>"; };
 		392A9D141D36892700F11FDF /* Harcourt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Harcourt.gpx; sourceTree = "<group>"; };
+		392B559A1DAF9D130012350A /* PDUILogoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUILogoutTableViewCell.h; path = Settings/PDUILogoutTableViewCell.h; sourceTree = "<group>"; };
+		392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUILogoutTableViewCell.m; path = Settings/PDUILogoutTableViewCell.m; sourceTree = "<group>"; };
+		392B559C1DAF9D130012350A /* PDUILogoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUILogoutTableViewCell.xib; path = Settings/PDUILogoutTableViewCell.xib; sourceTree = "<group>"; };
 		3931C4591CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Bold-Italic.ttf"; path = "Fonts/Gotham-Rounded-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		3931C45A1CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Bold.ttf"; path = "Fonts/Gotham-Rounded-Bold.ttf"; sourceTree = "<group>"; };
 		3931C45B1CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Book_.ttf"; path = "Fonts/Gotham-Rounded-Book_.ttf"; sourceTree = "<group>"; };
@@ -1346,6 +1350,9 @@
 				39AF13F71D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.h */,
 				39AF13F81D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m */,
 				39AF13F91D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.xib */,
+				392B559A1DAF9D130012350A /* PDUILogoutTableViewCell.h */,
+				392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */,
+				392B559C1DAF9D130012350A /* PDUILogoutTableViewCell.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2730,6 +2737,7 @@
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
 				397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */,
 				39ABA6581C47A9030057088E /* PDUIWalletCache.m in Sources */,
+				392B559D1DAF9D130012350A /* PDUILogoutTableViewCell.m in Sources */,
 				3965AF471D4110560000EB16 /* PDUIBrandSearchTableViewCell.m in Sources */,
 				394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */,
 				39602FBF1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m in Sources */,

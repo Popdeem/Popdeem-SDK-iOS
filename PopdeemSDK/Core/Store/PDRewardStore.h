@@ -66,5 +66,6 @@
 + (void) removeAllRewards;
 
 + (NSArray *) orderedByDistanceFromUser;
++ (NSArray *) orderedByDate;
 
 @end
