@@ -10,6 +10,7 @@
 #import "PDConstants.h"
 #import "PDMessage.h"
 #import "PDMessageStore.h"
+#import "PDLogger.h"
 
 @implementation PDMessageAPIService
 
@@ -17,6 +18,11 @@
   NSURLSession *session = [NSURLSession createPopdeemSession];
   NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,MESSAGES_PATH];
   [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
+		if (error) {
+			PDLogError(@"Error: ", error.localizedDescription);
+			completion(nil, error);
+			return;
+		}
     NSError *jsonError;
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
     if (!jsonObject) {
