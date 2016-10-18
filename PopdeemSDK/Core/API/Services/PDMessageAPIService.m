@@ -49,6 +49,11 @@
   NSURLSession *session = [NSURLSession createPopdeemSession];
   NSString *path = [NSString stringWithFormat:@"%@/%@/%ld/mark_as_read",self.baseUrl,MESSAGES_PATH,(long)messageId];
   [session PUT:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
+		if (error) {
+			PDLogError(@"Error: ", error.localizedDescription);
+			completion(error);
+			return;
+		}
     NSError *jsonError;
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
     if (!jsonObject) {
