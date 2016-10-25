@@ -98,6 +98,7 @@ CGFloat _cardX,_cardY;
 	CGFloat viewCenterY = self.view.frame.size.height/2;
 	[_cardView setFrame:CGRectMake(_cardX, viewCenterY-(currentY/2), _cardView.frame.size.width, currentY)];
 	[self.view setNeedsDisplay];
+
 }
 
 - (void) buttonPressed:(UIButton*)sender {
@@ -129,6 +130,7 @@ CGFloat _cardX,_cardY;
 	[_cardView addSubview:_actionButton];
 	[self renderView];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+	
 }
 
 - (void) viewDidAppear:(BOOL)animated {

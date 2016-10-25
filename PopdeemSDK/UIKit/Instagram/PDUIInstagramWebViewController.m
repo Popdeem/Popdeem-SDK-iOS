@@ -21,7 +21,7 @@
 - (instancetype) initFromNib {
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	if (self = [self initWithNibName:@"PDUIInstagramWebViewController" bundle:podBundle]) {
-		self.navigationController.navigationBar.translucent = NO;
+		self.navigationController.navigationBar.translucent = YES;
 		[self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
 		[self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
 		[self.navigationController.navigationBar setTitleTextAttributes:@{
@@ -34,7 +34,7 @@
 																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
 																																							 forState:UIControlStateNormal];
 		if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
-			[self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+			[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 		}
 		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 		self.title = translationForKey(@"popdeem.instagram.webview.title",@"Connect Instagram Account");

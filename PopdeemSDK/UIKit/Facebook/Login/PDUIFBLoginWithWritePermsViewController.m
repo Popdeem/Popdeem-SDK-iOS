@@ -162,6 +162,14 @@
 														otherButtonTitles: nil];
 			[av show];
 			AbraLogEvent(ABRA_EVENT_CANCELLED_FACEBOOK_LOGIN, nil);
+		} else {
+			av = [[UIAlertView alloc] initWithTitle:@"Something went wrong"
+																			message:@"Please try again later"
+																		 delegate:self
+														cancelButtonTitle:@"OK"
+														otherButtonTitles: nil];
+			[av show];
+			PDLogError(@"Error: %@", err.localizedDescription);
 		}
 	}];
 }
