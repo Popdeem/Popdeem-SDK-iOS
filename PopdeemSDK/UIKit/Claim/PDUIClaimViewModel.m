@@ -865,8 +865,8 @@
 		CGImageRelease(imageRef);
 	}
 	
-	_image = resized;
-	_imageView.image = resized;
+	_image = [self resizeImage:img withMinDimension:480];
+	_imageView.image = _image;
 	_imageView.contentMode = UIViewContentModeScaleAspectFit;
 	_imageView.backgroundColor = [UIColor blackColor];
 	_imageView.layer.masksToBounds = YES;

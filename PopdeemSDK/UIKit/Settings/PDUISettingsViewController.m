@@ -190,11 +190,12 @@
 			logoutCell = [self.tableView dequeueReusableCellWithIdentifier:kLogoutNib];
 			[logoutCell setParent:self];
 			PDSocialMediaManager *man = [PDSocialMediaManager manager];
-//			if ([man isLoggedInWithFacebook]) {
-//				[logoutCell.logoutButton setTitle:@"Log Out" forState:UIControlStateNormal];
-//			} else {
-//				[logoutCell.logoutButton setTitle:@"Log In" forState:UIControlStateNormal];
-//			}
+			if ([man isLoggedInWithFacebook]) {
+				[logoutCell.logoutButton setHidden:NO];
+				[logoutCell.logoutButton setTitle:@"Log Out" forState:UIControlStateNormal];
+			} else {
+				[logoutCell.logoutButton setHidden:YES];
+			}
 			return logoutCell;
 			break;
 	}
