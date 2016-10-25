@@ -460,7 +460,7 @@
 			if (_model.feed.count == 0) {
 				return 100;
 			}
-			if ([(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
+			if (_model.feed.count > index && [(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
 				return 175;
 			} else {
 				return 75;
