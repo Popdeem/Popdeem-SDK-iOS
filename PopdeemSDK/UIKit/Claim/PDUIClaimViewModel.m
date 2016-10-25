@@ -889,9 +889,7 @@
 									 }
 									 completion:^(BOOL finished){
 									 }];
-	
-	[_viewController.textView becomeFirstResponder];
-	
+		
 	[self calculateTwitterCharsLeft];
 	NSString *source = (picker.sourceType == UIImagePickerControllerSourceTypeCamera) ? @"Camera" : @"Photo Library";
 	AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_PHOTO : @"Yes", @"Source" : source}));
