@@ -45,9 +45,6 @@
   _rewardsLoading = YES;
   [[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
     weakSelf.rewards =  [PDRewardStore orderedByDate];
-    [PDUILazyLoader loadAllRewardCoverImagesCompletion:^(BOOL success){
-      [weakSelf brandImageDidDownload];
-    }];
     _rewardsLoading = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.controller.tableView reloadData];
@@ -92,14 +89,6 @@
     [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     [weakSelf.controller.refreshControl endRefreshing];
     [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-    if ([[PDWallet wallet] count] > 0) {
-      [PDUILazyLoader loadWalletRewardCoverImagesCompletion:^(BOOL success) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-          [weakSelf.controller.tableView reloadData];
-          [weakSelf.controller.refreshControl endRefreshing];
-        });
-      }];
-    }
   } failure:^(NSError *error) {
     //TODO: Handle Error
     dispatch_async(dispatch_get_main_queue(), ^{

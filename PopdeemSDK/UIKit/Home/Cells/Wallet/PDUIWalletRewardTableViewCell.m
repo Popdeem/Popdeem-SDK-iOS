@@ -34,8 +34,14 @@
 
 - (void) setupForReward:(PDReward*)reward {
 	self.clipsToBounds = YES;
-	if (reward.coverImage) {
-		[self.rewardImageView setImage:reward.coverImage];
+	if (reward.coverImageUrl) {
+		if ([reward.coverImageUrl rangeOfString:@"reward_default"].location != NSNotFound) {
+			[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
+		} else if (reward.coverImage) {
+			[self.rewardImageView setImage:reward.coverImage];
+		} else {
+			[self.rewardImageView setImage:nil];
+		}
 	} else {
 		[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
 	}

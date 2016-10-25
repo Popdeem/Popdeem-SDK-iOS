@@ -17,7 +17,6 @@
 	[super awakeFromNib];
 	self.separatorInset = UIEdgeInsetsZero;
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
-	[_rewardImageView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
 	
 	[_label setFont:PopdeemFont(PDThemeFontPrimary, 14)];
 	[_label setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
@@ -32,8 +31,14 @@
 
 - (void) setupForReward:(PDReward*)reward {
 	
-	if (reward.coverImage) {
-		[self.rewardImageView setImage:reward.coverImage];
+	if (reward.coverImageUrl) {
+		if ([reward.coverImageUrl rangeOfString:@"reward_default"].location != NSNotFound) {
+			[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
+		} else if (reward.coverImage) {
+				[self.rewardImageView setImage:reward.coverImage];
+		} else {
+			[self.rewardImageView setImage:nil];
+		}
 	} else {
 		[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
 	}
