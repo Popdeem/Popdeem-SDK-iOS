@@ -122,6 +122,7 @@ NSString *const ABRA_PROPERTYNAME_ERROR = @"Error";
 NSString *const ABRA_PROPERTYVALUE_ERROR_HASHTAG = @"Hashtag failed validation";
 NSString *const ABRA_PROPERTYVALUE_ERROR_TOOMANYCHARS = @"Too many caharacters for Twitter";
 NSString *const ABRA_PROPERTYVALUE_ERROR_NOPHOTO = @"No photo was added";
+NSString *const ABRA_PROPERTYVALUE_ERROR_NOCONTENT = @"No text content";
 
 NSString *const ABRA_EVENT_DENIED_LOCATION = @"User denied location access";
 NSString *const ABRA_EVENT_DENIED_PUSH_NOTIFICATIONS = @"User denied push notifications";

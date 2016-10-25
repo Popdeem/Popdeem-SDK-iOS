@@ -478,6 +478,20 @@
 																											 });
 		return;
 	}
+	if ([_viewController.textView.text length] < 1) {
+		UIAlertView *noContent = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
+																											message:translationForKey(@"popdeem.claim.tweet.emptyText", @"You must enter text for your tweet.")
+																										 delegate:self
+																						cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
+																						otherButtonTitles: nil];
+		[noContent setTag:2];
+		[noContent show];
+		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
+																											 ABRA_PROPERTYNAME_ERROR : ABRA_PROPERTYVALUE_ERROR_NOCONTENT
+																											 });
+		return;
+	}
 	[self makeClaim];
 	return;
 }
