@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDBrandListViewModel.h"
 
 @interface PDUIBrandsListTableViewController : UITableViewController <UISearchBarDelegate>
+
+@property (nonatomic, retain) PDBrandListViewModel *viewModel;
 
 @end

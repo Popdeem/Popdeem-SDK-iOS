@@ -170,7 +170,7 @@
 		_didClaim = NO;
 		[_model fetchWallet];
 		[_segmentedControl setSelectedSegmentIndex:2];
-		_model.rewards = [PDRewardStore allRewards];
+		_model.rewards = [PDRewardStore orderedByDate];
 		[self.tableView reloadData];
 		[self.tableView reloadInputViews];
 	}
@@ -728,7 +728,7 @@
 	} else if (alertView.tag == 2) {
 		[_model fetchWallet];
 		[_segmentedControl setSelectedSegmentIndex:2];
-		_model.rewards = [PDRewardStore allRewards];
+		_model.rewards = [PDRewardStore orderedByDate];
 		[self.tableView reloadData];
 		[self.tableView reloadInputViews];
 		

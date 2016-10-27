@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class PDUIBrandsListTableViewController;
 @interface PDBrandListViewModel : NSObject
+
+@property (nonatomic, assign) PDUIBrandsListTableViewController *viewController;
+@property (nonatomic, retain) NSMutableArray *tableData;
+@property (nonatomic, retain) NSMutableArray *searchData;
+
+- (void) fetchBrands;
 
 @end

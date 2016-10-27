@@ -51,6 +51,10 @@
 	
 	[self.tableView reloadData];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+	
+	_viewModel = [[PDBrandListViewModel alloc] init];
+	_viewModel.viewController = self;
+	[_viewModel fetchBrands];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return _tableData.count > 0 ? _tableData.count : 1;
+	return _tableData.count > 0 ? _tableData.count : 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

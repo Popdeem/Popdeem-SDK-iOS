@@ -7,7 +7,33 @@
 //
 
 #import "PDBrandListViewModel.h"
+#import "PDAPIClient.h"
+#import "PDUIBrandsListTableViewController.h"
 
 @implementation PDBrandListViewModel
+
+- (instancetype) init {
+	if (self = [super init]) {
+		return self;
+	}
+	return nil;
+}
+
+- (void) fetchBrands {
+	[[PDAPIClient sharedInstance] getBrandsSuccess:^(){
+		[self getBrandsSuccess];
+	} failure:^(NSError *error){
+		[self getBrandsFailure:error];
+	}];
+}
+
+- (void) getBrandsSuccess {
+	PDLog(@"Fetch Brands Success");
+	_tableData = [PDBrandStore orderedByDistanceFromUser];
+}
+
+- (void) getBrandsFailure:(NSError*)error {
+	PDLogError(@"Failure to get Brands: %@", error.localizedDescription);
+}
 
 @end

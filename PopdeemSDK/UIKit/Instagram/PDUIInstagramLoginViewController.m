@@ -198,6 +198,7 @@ CGFloat _cardX,_cardY;
 		//Show login view
 		[_webViewController.loadingView hideAnimated:YES];
 	}
+	NSLog(@"URL: %@", [[request URL] URLStringWithoutQuery]);
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
 		[_webViewController.loadingView hideAnimated:YES];
 		// Extract oauth_verifier from URL query
@@ -235,6 +236,7 @@ CGFloat _cardX,_cardY;
 	}
 	return YES;
 }
+
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
 	// [indicator stopAnimating];
