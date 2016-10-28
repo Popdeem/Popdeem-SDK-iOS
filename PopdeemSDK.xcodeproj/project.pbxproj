@@ -260,6 +260,14 @@
 		39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E11D89532A008DE497 /* PDAbraClient.m */; };
 		39F5F6E91D89536C008DE497 /* PDAbraAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */; };
 		39F5F6EB1D895387008DE497 /* PDAbraConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6EA1D895387008DE497 /* PDAbraConstants.m */; };
+		39F6A2B61DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2AE1DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf */; };
+		39F6A2B71DC359F200F64C19 /* Gotham-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2AF1DC359F200F64C19 /* Gotham-Rounded-Bold.ttf */; };
+		39F6A2B81DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B01DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf */; };
+		39F6A2B91DC359F200F64C19 /* Gotham-Rounded-Book_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B11DC359F200F64C19 /* Gotham-Rounded-Book_.ttf */; };
+		39F6A2BA1DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B21DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf */; };
+		39F6A2BB1DC359F200F64C19 /* Gotham-Rounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */; };
+		39F6A2BC1DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */; };
+		39F6A2BD1DC359F200F64C19 /* Gotham-Rounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */; };
 		39FA7B661D6DAF2E00031D5B /* PDLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FA7B651D6DAF2E00031D5B /* PDLogger.m */; };
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
@@ -719,6 +727,14 @@
 		39F5F6E71D89536C008DE497 /* PDAbraAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDAbraAPIService.h; path = Abra/PDAbraAPIService.h; sourceTree = "<group>"; };
 		39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDAbraAPIService.m; path = Abra/PDAbraAPIService.m; sourceTree = "<group>"; };
 		39F5F6EA1D895387008DE497 /* PDAbraConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDAbraConstants.m; path = Abra/PDAbraConstants.m; sourceTree = "<group>"; };
+		39F6A2AE1DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		39F6A2AF1DC359F200F64C19 /* Gotham-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Bold.ttf"; sourceTree = "<group>"; };
+		39F6A2B01DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Book-Italic.ttf"; sourceTree = "<group>"; };
+		39F6A2B11DC359F200F64C19 /* Gotham-Rounded-Book_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Book_.ttf"; sourceTree = "<group>"; };
+		39F6A2B21DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Light-Italic.ttf"; sourceTree = "<group>"; };
+		39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Light.ttf"; sourceTree = "<group>"; };
+		39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Medium-Italic.ttf"; sourceTree = "<group>"; };
+		39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Medium.ttf"; sourceTree = "<group>"; };
 		39FA7B641D6DAF2E00031D5B /* PDLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLogger.h; sourceTree = "<group>"; };
 		39FA7B651D6DAF2E00031D5B /* PDLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLogger.m; sourceTree = "<group>"; };
 		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
@@ -1008,6 +1024,7 @@
 		3922FAA31DC0BDA100501E1D /* BrandsSample */ = {
 			isa = PBXGroup;
 			children = (
+				39F6A2AD1DC359F200F64C19 /* Fonts */,
 				3922FAA71DC0BDA100501E1D /* AppDelegate.h */,
 				3922FAA81DC0BDA100501E1D /* AppDelegate.m */,
 				3922FAAA1DC0BDA100501E1D /* ViewController.h */,
@@ -1523,6 +1540,21 @@
 				39F5F6EA1D895387008DE497 /* PDAbraConstants.m */,
 			);
 			name = Abra;
+			sourceTree = "<group>";
+		};
+		39F6A2AD1DC359F200F64C19 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				39F6A2AE1DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf */,
+				39F6A2AF1DC359F200F64C19 /* Gotham-Rounded-Bold.ttf */,
+				39F6A2B01DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf */,
+				39F6A2B11DC359F200F64C19 /* Gotham-Rounded-Book_.ttf */,
+				39F6A2B21DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf */,
+				39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */,
+				39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */,
+				39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
@@ -2329,9 +2361,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F6A2BD1DC359F200F64C19 /* Gotham-Rounded-Medium.ttf in Resources */,
 				3922FAB41DC0BDA100501E1D /* LaunchScreen.storyboard in Resources */,
+				39F6A2BA1DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf in Resources */,
+				39F6A2BC1DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf in Resources */,
+				39F6A2B61DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf in Resources */,
+				39F6A2BB1DC359F200F64C19 /* Gotham-Rounded-Light.ttf in Resources */,
 				3922FAB11DC0BDA100501E1D /* Assets.xcassets in Resources */,
 				3922FAAF1DC0BDA100501E1D /* Main.storyboard in Resources */,
+				39F6A2B91DC359F200F64C19 /* Gotham-Rounded-Book_.ttf in Resources */,
+				39F6A2B71DC359F200F64C19 /* Gotham-Rounded-Bold.ttf in Resources */,
+				39F6A2B81DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

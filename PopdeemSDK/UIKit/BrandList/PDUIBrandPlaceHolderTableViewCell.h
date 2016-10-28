@@ -10,6 +10,6 @@
 #import <Shimmer/FBShimmeringView.h>
 
 @interface PDUIBrandPlaceHolderTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
-
+@property (nonatomic, retain) UIImageView *placeholderImageView;
+- (void) setup;
 @end

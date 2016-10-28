@@ -30,10 +30,16 @@
 - (void) getBrandsSuccess {
 	PDLog(@"Fetch Brands Success");
 	_tableData = [PDBrandStore orderedByDistanceFromUser];
+	if ([_viewController.refreshControl isRefreshing]) {
+		[_viewController.refreshControl endRefreshing];
+	}
 }
 
 - (void) getBrandsFailure:(NSError*)error {
 	PDLogError(@"Failure to get Brands: %@", error.localizedDescription);
+	if ([_viewController.refreshControl isRefreshing]) {
+		[_viewController.refreshControl endRefreshing];
+	}
 }
 
 @end

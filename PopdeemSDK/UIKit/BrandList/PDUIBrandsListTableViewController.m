@@ -8,6 +8,7 @@
 
 #import "PDUIBrandsListTableViewController.h"
 #import "PopdeemSDK.h"
+#import "PDUIBrandPlaceHolderTableViewCell.h"
 
 #define kBrandCell @"BrandCell"
 #define kSearchCell @"SearchCell"
@@ -22,6 +23,8 @@
 @property (nonatomic, retain) NSMutableArray *tableData;
 @property (nonatomic, retain) NSMutableArray *searchData;
 @property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 
@@ -31,7 +34,7 @@
 	[super viewDidLoad];
 	searchEnabled = NO;
 	searchMode = NO;
-	isLoading = YES;
+	isLoading = NO;
 	// Uncomment the following line to preserve selection between presentations.
 	// self.clearsSelectionOnViewWillAppear = NO;
 	
@@ -55,6 +58,12 @@
 	_viewModel = [[PDBrandListViewModel alloc] init];
 	_viewModel.viewController = self;
 	[_viewModel fetchBrands];
+	
+	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+	
+	self.refreshControl = [[UIRefreshControl alloc] init];
+	[self.tableView addSubview:self.refreshControl];
+	[self.refreshControl addTarget:self action:@selector(reloadBrands) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,16 +82,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return _tableData.count > 0 ? _tableData.count : 3;
+	if (_tableData.count == 0) {
+		if (isLoading) {
+			return 2;
+		} else {
+			return 1;
+		}
+	}
+	return _tableData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (_tableData.count == 0) {
 		if (isLoading) {
-			return [self.tableView dequeueReusableCellWithIdentifier:kPlaceHolderCell];
+			PDUIBrandPlaceHolderTableViewCell *cell = [[PDUIBrandPlaceHolderTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [self cellHeight])];
+			[cell setup];
+			return cell;
 		} else {
-			
+			UITableViewCell *noBrands = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+			[noBrands.textLabel setText:@"No Brands available. Pull down to refresh."];
+			return noBrands;
 		}
 	}
 	if (searchMode) {
@@ -194,8 +214,17 @@
 }
 
 - (float) cellHeight {
-	float cellHeight = self.view.frame.size.height*0.30;
-	return cellHeight;
+	if (_tableData.count > 0) {
+		return 250;
+	} else if (isLoading) {
+		return 250;
+	} else {
+		return 100;
+	}
+}
+
+- (void) reloadBrands {
+	[_viewModel fetchBrands];
 }
 
 @end
