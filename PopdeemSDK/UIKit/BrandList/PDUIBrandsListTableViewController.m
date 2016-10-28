@@ -9,6 +9,10 @@
 #import "PDUIBrandsListTableViewController.h"
 #import "PopdeemSDK.h"
 #import "PDUIBrandPlaceHolderTableViewCell.h"
+#import "PDUIBrandTableViewCell.h"
+#import "PDTheme.h"
+#import "PDBrand.h"
+#import "PDUIHomeViewController.h"
 
 #define kBrandCell @"BrandCell"
 #define kSearchCell @"SearchCell"
@@ -17,13 +21,13 @@
 @interface PDUIBrandsListTableViewController () {
 	BOOL searchMode;
 	BOOL searchEnabled;
-	BOOL isLoading;
+	CGRect keyboardRect;
+	BOOL firstLoad;
 }
 
-@property (nonatomic, retain) NSMutableArray *tableData;
 @property (nonatomic, retain) NSMutableArray *searchData;
 @property (nonatomic, retain) UISearchBar *searchBar;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
+//@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -34,7 +38,8 @@
 	[super viewDidLoad];
 	searchEnabled = NO;
 	searchMode = NO;
-	isLoading = NO;
+	_isLoading = YES;
+	firstLoad = YES;
 	// Uncomment the following line to preserve selection between presentations.
 	// self.clearsSelectionOnViewWillAppear = NO;
 	
@@ -43,6 +48,7 @@
 	self.navigationItem.rightBarButtonItem = searchbb;
 	
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
+	
 	UINib *brandNib = [UINib nibWithNibName:@"PDUIBrandTableViewCell" bundle:podBundle];
 	[[self tableView] registerNib:brandNib forCellReuseIdentifier:kBrandCell];
 	
@@ -64,6 +70,26 @@
 	self.refreshControl = [[UIRefreshControl alloc] init];
 	[self.tableView addSubview:self.refreshControl];
 	[self.refreshControl addTarget:self action:@selector(reloadBrands) forControlEvents:UIControlEventValueChanged];
+	
+	if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+		self.navigationController.navigationBar.translucent = NO;
+		[self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+		[self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+		[self.navigationController.navigationBar setTitleTextAttributes:@{
+																																			NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+																																			}];
+		
+		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+																																													NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+																																							 forState:UIControlStateNormal];
+		if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+			[self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+		}
+		
+		[self setTitle:@"Brands"];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,21 +107,30 @@
 	return [self cellHeight];
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if (section == 0) {
+		if (searchEnabled) {
+			return 45;
+		}
+	}
+	return 0;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (_tableData.count == 0) {
-		if (isLoading) {
+	if (_viewModel.tableData.count == 0) {
+		if (_isLoading) {
 			return 2;
 		} else {
 			return 1;
 		}
 	}
-	return _tableData.count;
+	return _viewModel.tableData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	if (_tableData.count == 0) {
-		if (isLoading) {
+	if (_viewModel.tableData.count == 0) {
+		if (_isLoading) {
 			PDUIBrandPlaceHolderTableViewCell *cell = [[PDUIBrandPlaceHolderTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [self cellHeight])];
 			[cell setup];
 			return cell;
@@ -108,7 +143,11 @@
 	if (searchMode) {
 		
 	} else {
-		
+		PDUIBrandTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kBrandCell];
+		PDBrand *b = [_viewModel.tableData objectAtIndex:indexPath.row];
+		cell.brand = b;
+		[cell setupForBrand:b];
+		return cell;
 	}
 	
 	return nil;
@@ -148,21 +187,15 @@
  }
  */
 
-/*
+
  #pragma mark - Table view delegate
  
- // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- // Navigation logic may go here, for example:
- // Create the next view controller.
- <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	PDUIHomeViewController *homeVC = [[PDUIHomeViewController alloc] init];
+ [self.navigationController pushViewController:homeVC animated:YES];
+}
  
- // Pass the selected object to the new view controller.
- 
- // Push the view controller.
- [self.navigationController pushViewController:detailViewController animated:YES];
- }
- */
 
 /*
  #pragma mark - Navigation
@@ -214,9 +247,9 @@
 }
 
 - (float) cellHeight {
-	if (_tableData.count > 0) {
+	if (_viewModel.tableData.count > 0) {
 		return 250;
-	} else if (isLoading) {
+	} else if (_isLoading) {
 		return 250;
 	} else {
 		return 100;
@@ -227,4 +260,9 @@
 	[_viewModel fetchBrands];
 }
 
+- (void)keyboardWillChange:(NSNotification *)notification {
+	keyboardRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	keyboardRect = [self.view convertRect:keyboardRect fromView:nil]; //this is it!
+	NSLog(@"%.2f",keyboardRect.size.height);
+}
 @end

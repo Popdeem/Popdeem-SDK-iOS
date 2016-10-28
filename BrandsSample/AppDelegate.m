@@ -29,13 +29,9 @@
 	[PopdeemSDK withAPIKey:@"26eb2fcb-06e5-4976-bff4-88c30cc58f58"];
 	[PopdeemSDK enableSocialLoginWithNumberOfPrompts:INT_MAX];
 	[PopdeemSDK registerForPushNotificationsApplication:application];
-	[PopdeemSDK setUpThemeFile:@"theme"];
+	[PopdeemSDK setUpThemeFile:@"Theme"];
 	[PopdeemSDK setDebug:YES];
 	[Fabric with:@[[Crashlytics class]]];
-	
-	
-	//Test Moments
-	[PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
 	
 	NSArray *fontFamilies = [UIFont familyNames];
 	
@@ -45,7 +41,6 @@
 		NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
 		NSLog (@"%@: %@", fontFamily, fontNames);
 	}
-	
 	return YES;
 }
 

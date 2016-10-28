@@ -76,6 +76,9 @@
 
 - (void)renderView {
 	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+}
+
+- (void) viewDidLayoutSubviews {
 	[self.model setupView];
 }
 

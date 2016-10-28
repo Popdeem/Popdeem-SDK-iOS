@@ -1,0 +1,29 @@
+{
+	"popdeem" : {
+		"colors" : {
+			"primaryAppColor" : "#DE4E5B",
+			"primaryInverseColor" : "#FFFFFF",
+			"viewBackgroundColor" : "#EBEBF2",
+			"primaryFontColor" : "#000000",
+			"secondaryFontColor" : "#424242",
+			"tableViewCellBackgroundColor" : "#FFFFFF",
+			"tableViewSeperatorColor" : "#C0C0C0",
+			"navBarTintColor" : "#FFFFFF",
+			"segmentedControlBackgroundColor" : "#FFFFFF"
+		},
+		"images" : {
+			"loginImage" : "pduikit_default_login",
+			"defaultItemImage" : "pduikit_starG",
+			"defaultBrandImage" : "popdeemCover",
+			"homeHeaderImage" : "popdeemlady"
+		},
+		"fonts" : {
+			"primaryFont" : "Avenir-Book",
+			"boldFont" : "Avenir-Medium",
+			"lightFont" : "Avenir-Light"
+		},
+		"nav" : {
+			"useTheme" : "true"
+		}
+	}
+}

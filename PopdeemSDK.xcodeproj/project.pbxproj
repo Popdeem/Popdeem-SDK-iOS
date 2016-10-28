@@ -268,6 +268,9 @@
 		39F6A2BB1DC359F200F64C19 /* Gotham-Rounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */; };
 		39F6A2BC1DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */; };
 		39F6A2BD1DC359F200F64C19 /* Gotham-Rounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */; };
+		39F6A2BF1DC35A9C00F64C19 /* Theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2BE1DC35A9C00F64C19 /* Theme.json */; };
+		39F6A2C21DC3701900F64C19 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2C01DC3701900F64C19 /* Quicksand-Bold.otf */; };
+		39F6A2C31DC3701900F64C19 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2C11DC3701900F64C19 /* Quicksand-Regular.otf */; };
 		39FA7B661D6DAF2E00031D5B /* PDLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FA7B651D6DAF2E00031D5B /* PDLogger.m */; };
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
@@ -735,6 +738,9 @@
 		39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Light.ttf"; sourceTree = "<group>"; };
 		39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Medium-Italic.ttf"; sourceTree = "<group>"; };
 		39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Medium.ttf"; sourceTree = "<group>"; };
+		39F6A2BE1DC35A9C00F64C19 /* Theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Theme.json; sourceTree = "<group>"; };
+		39F6A2C01DC3701900F64C19 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
+		39F6A2C11DC3701900F64C19 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		39FA7B641D6DAF2E00031D5B /* PDLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLogger.h; sourceTree = "<group>"; };
 		39FA7B651D6DAF2E00031D5B /* PDLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLogger.m; sourceTree = "<group>"; };
 		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
@@ -1027,6 +1033,7 @@
 				39F6A2AD1DC359F200F64C19 /* Fonts */,
 				3922FAA71DC0BDA100501E1D /* AppDelegate.h */,
 				3922FAA81DC0BDA100501E1D /* AppDelegate.m */,
+				39F6A2BE1DC35A9C00F64C19 /* Theme.json */,
 				3922FAAA1DC0BDA100501E1D /* ViewController.h */,
 				3922FAAB1DC0BDA100501E1D /* ViewController.m */,
 				3922FAAD1DC0BDA100501E1D /* Main.storyboard */,
@@ -1545,6 +1552,8 @@
 		39F6A2AD1DC359F200F64C19 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				39F6A2C01DC3701900F64C19 /* Quicksand-Bold.otf */,
+				39F6A2C11DC3701900F64C19 /* Quicksand-Regular.otf */,
 				39F6A2AE1DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf */,
 				39F6A2AF1DC359F200F64C19 /* Gotham-Rounded-Bold.ttf */,
 				39F6A2B01DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf */,
@@ -2365,11 +2374,14 @@
 				3922FAB41DC0BDA100501E1D /* LaunchScreen.storyboard in Resources */,
 				39F6A2BA1DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf in Resources */,
 				39F6A2BC1DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf in Resources */,
+				39F6A2C31DC3701900F64C19 /* Quicksand-Regular.otf in Resources */,
 				39F6A2B61DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf in Resources */,
 				39F6A2BB1DC359F200F64C19 /* Gotham-Rounded-Light.ttf in Resources */,
 				3922FAB11DC0BDA100501E1D /* Assets.xcassets in Resources */,
 				3922FAAF1DC0BDA100501E1D /* Main.storyboard in Resources */,
 				39F6A2B91DC359F200F64C19 /* Gotham-Rounded-Book_.ttf in Resources */,
+				39F6A2C21DC3701900F64C19 /* Quicksand-Bold.otf in Resources */,
+				39F6A2BF1DC35A9C00F64C19 /* Theme.json in Resources */,
 				39F6A2B71DC359F200F64C19 /* Gotham-Rounded-Bold.ttf in Resources */,
 				39F6A2B81DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf in Resources */,
 			);

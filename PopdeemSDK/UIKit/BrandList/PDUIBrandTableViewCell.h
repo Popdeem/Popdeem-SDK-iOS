@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDBrand.h"
 
 @interface PDUIBrandTableViewCell : UITableViewCell
 
@@ -14,5 +15,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *messageLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *disclosureIndicator;
+@property (nonatomic, assign) PDBrand *brand;
+
+- (void) setupForBrand:(PDBrand*)b;
 
 @end
