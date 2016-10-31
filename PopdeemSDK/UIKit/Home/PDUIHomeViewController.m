@@ -64,22 +64,32 @@
 
 - (instancetype) init {
 	if (self = [self initFromNib]) {
+		_brand = nil;
 		return self;
 	}
 	return nil;
 }
 
+- (instancetype) initWithBrand:(PDBrand*)b {
+	if (self = [self initFromNib]) {
+		_brand = b;
+		_model.brand = b;
+		return self;
+	}
+	return nil;
+}
 - (void) awakeFromNib {
 	self.model = [[PDUIHomeViewModel alloc] initWithController:self];
-	//  self.claimVC = [[PDClaimViewController alloc] initFromNib];
 }
 
 - (void)renderView {
 	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+	[self.model setupView];
 }
 
 - (void) viewDidLayoutSubviews {
-	[self.model setupView];
+	[self.model updateSubViews];
+	[self.view setNeedsDisplay];
 }
 
 - (void) registerNibs {
@@ -111,7 +121,11 @@
 	
 	[super viewDidLoad];
 	[self.tableView setUserInteractionEnabled:YES];
-	self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
+	if (_brand) {
+		self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 190)];
+	} else {
+		self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
+	}
 	
 	if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
 		self.navigationController.navigationBar.translucent = NO;
@@ -151,6 +165,20 @@
 		[self.model fetchFeed];
 		[self.model fetchWallet];
 	});
+	
+	if (!_segmentedControl) {
+		_segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"Wallet"]];
+		_segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
+		_segmentedControl.clipsToBounds = YES;
+		
+		CALayer *topBottomBorders = [CALayer layer];
+		topBottomBorders.borderColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1.0].CGColor;
+		topBottomBorders.borderWidth = 0.5;
+		topBottomBorders.frame = CGRectMake(-1, 0, _segmentedControl.frame.size.width+2, _segmentedControl.frame.size.height);
+		[_segmentedControl.layer addSublayer:topBottomBorders];
+		[_segmentedControl addTarget:self action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
+	}
+	
 	[self renderView];
 }
 
@@ -334,6 +362,21 @@
 				if (feedItem.actionImage) {
 					return [[PDUIPhotoCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 165) forFeedItem:feedItem];
 				} else {
+					if (feedItem.imageUrlString) {
+						NSURL *url = [NSURL URLWithString:feedItem.imageUrlString];
+						NSURLSessionTask *imageTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+							if (data) {
+								UIImage *image = [UIImage imageWithData:data];
+								if (image) {
+									feedItem.actionImage = image;
+									dispatch_async(dispatch_get_main_queue(), ^{
+										[self.tableView reloadData];
+									});
+								}
+							}
+						}];
+						[imageTask resume];
+					}
 					return [[PDUICheckinCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) forFeedItem:feedItem];
 				}
 			}
@@ -747,7 +790,11 @@
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	[self.view setNeedsLayout];
 	[self.view setNeedsDisplay];
-	[self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 140)];
+	if (_brand) {
+		[self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 190)];
+	} else {
+		[self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 140)];
+	}
 }
 
 - (void) loggedOut {

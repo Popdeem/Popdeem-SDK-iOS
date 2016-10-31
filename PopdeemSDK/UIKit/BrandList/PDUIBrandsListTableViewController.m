@@ -13,6 +13,7 @@
 #import "PDTheme.h"
 #import "PDBrand.h"
 #import "PDUIHomeViewController.h"
+#import "PDUIBrandSearchTableViewCell.h"
 
 #define kBrandCell @"BrandCell"
 #define kSearchCell @"SearchCell"
@@ -44,6 +45,11 @@
 	// self.clearsSelectionOnViewWillAppear = NO;
 	
 	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mapBrandTapped:) name:@"mapViewTappedBrand" object:nil];
+	
 	UIBarButtonItem *searchbb = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemSearch) target:self action:@selector(searchTapped)];
 	self.navigationItem.rightBarButtonItem = searchbb;
 	
@@ -104,6 +110,9 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (searchMode) {
+		return 65;
+	}
 	return [self cellHeight];
 }
 
@@ -124,7 +133,8 @@
 			return 1;
 		}
 	}
-	return _viewModel.tableData.count;
+	return (searchMode) ? _searchData.count : _viewModel.tableData.count;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,7 +151,8 @@
 		}
 	}
 	if (searchMode) {
-		
+		PDBrand *b = [_searchData objectAtIndex:indexPath.row];
+		return [[PDUIBrandSearchTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 65) brand:b];
 	} else {
 		PDUIBrandTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kBrandCell];
 		PDBrand *b = [_viewModel.tableData objectAtIndex:indexPath.row];
@@ -188,14 +199,23 @@
  */
 
 
- #pragma mark - Table view delegate
- 
+#pragma mark - Table view delegate
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	PDUIHomeViewController *homeVC = [[PDUIHomeViewController alloc] init];
- [self.navigationController pushViewController:homeVC animated:YES];
+	PDBrand *b;
+	if (searchMode) {
+		b = [_searchData objectAtIndex:indexPath.row];
+	} else {
+		b = [_viewModel.tableData objectAtIndex:indexPath.row];
+	}
+	if (!b) {
+		return;
+	}
+	PDUIHomeViewController *homeVC = [[PDUIHomeViewController alloc] initWithBrand:b];
+	[self.navigationController pushViewController:homeVC animated:YES];
 }
- 
+
 
 /*
  #pragma mark - Navigation
@@ -247,7 +267,9 @@
 }
 
 - (float) cellHeight {
-	if (_viewModel.tableData.count > 0) {
+	if (searchMode) {
+		return 100;
+	} else if (_viewModel.tableData.count > 0) {
 		return 250;
 	} else if (_isLoading) {
 		return 250;
@@ -265,4 +287,52 @@
 	keyboardRect = [self.view convertRect:keyboardRect fromView:nil]; //this is it!
 	NSLog(@"%.2f",keyboardRect.size.height);
 }
+
+- (void) updateViewForKeyboard {
+	
+	float usableHeight = self.view.frame.size.height-keyboardRect.size.height;
+	
+	NSLog(@"%.2f",usableHeight);
+	float newTVH = usableHeight;
+	
+	[UIView animateWithDuration:0.5
+												delay:0.0
+											options: UIViewAnimationOptionCurveEaseInOut
+									 animations:^{
+										 [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.view.frame.size.width, newTVH)];
+									 }
+									 completion:^(BOOL finished){
+										 NSLog(@"Done!");
+									 }];
+	
+}
+
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+	if (searchText.length == 0) {
+		searchMode = NO;
+		[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+		[_searchBar resignFirstResponder];
+		return;
+	}
+	
+	searchMode = YES;
+	_searchData = [NSMutableArray array];
+	for (PDBrand *b in _viewModel.tableData) {
+		if ([b.name.lowercaseString rangeOfString:searchText.lowercaseString].location != NSNotFound) {
+			[_searchData addObject:b];
+		}
+	}
+	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+	[searchBar becomeFirstResponder];
+}
+
+- (void) keyboardWillShow {
+	
+}
+
+- (void) keyboardWillHide {
+	
+}
+
+
 @end
