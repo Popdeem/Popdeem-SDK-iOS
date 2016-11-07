@@ -27,6 +27,7 @@
 	[session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@", [error localizedDescription]);
 				completion(error);
 			});
 			return;
@@ -38,6 +39,11 @@
 			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
 			if (!jsonObject) {
 				dispatch_async(dispatch_get_main_queue(), ^{
+					if (jsonError) {
+						PDLogAlert(@"%@", [jsonError localizedDescription]);
+						completion(jsonError);
+						return ;
+					}
 					completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
 				});
 				return;
@@ -54,6 +60,7 @@
 		} else {
 			[session invalidateAndCancel];
 			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"Status Code: %li", responseStatusCode);
 				completion([PDNetworkError errorForStatusCode:responseStatusCode]);
 			});
 		}
@@ -66,6 +73,7 @@
 	[session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@", [error localizedDescription]);
 				completion(error);
 			});
 			return;
@@ -75,6 +83,11 @@
 		if (responseStatusCode < 500) {
 			NSError *jsonError;
 			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonError) {
+				PDLogAlert(@"%@", [jsonError localizedDescription]);
+				completion(jsonError);
+				return ;
+			}
 			for (id attributes in jsonObject[@"rewards"]) {
 				PDReward *reward = [[PDReward alloc] initFromApi:attributes];
 				[PDRewardStore add:reward];
@@ -86,6 +99,7 @@
 		} else {
 			[session invalidateAndCancel];
 			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"Status Code: %li", responseStatusCode);
 				completion([PDNetworkError errorForStatusCode:responseStatusCode]);
 			});
 		}
@@ -99,6 +113,7 @@
 	[session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@", [error localizedDescription]);
 				completion(error);
 			});
 			return;
@@ -108,6 +123,11 @@
 		if (responseStatusCode < 500) {
 			NSError *jsonError;
 			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonError) {
+				PDLogAlert(@"%@", [jsonError localizedDescription]);
+				completion(jsonError);
+				return ;
+			}
 			for (NSDictionary *attributes in jsonObject[@"rewards"]) {
 				PDReward *reward = [[PDReward alloc] initFromApi:attributes];
 				reward.brandId = brandid;
@@ -121,7 +141,9 @@
 		} else {
 			[session invalidateAndCancel];
 			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"Status Code: %li", responseStatusCode);
 				completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+				
 			});
 		}
 	}];
@@ -149,6 +171,7 @@
 	[session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@",error.localizedDescription);
 				completion(NO, error);
 			});
 			return;
@@ -158,6 +181,11 @@
 		NSInteger responseStatusCode = [httpResponse statusCode];
 		NSError *jsonError;
 		NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+		if (jsonError) {
+			PDLogAlert(@"%@", [jsonError localizedDescription]);
+			completion(NO, jsonError);
+			return ;
+		}
 		if (!jsonObject) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(NO, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);

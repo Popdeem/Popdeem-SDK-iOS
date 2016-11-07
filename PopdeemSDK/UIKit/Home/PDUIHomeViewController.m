@@ -331,6 +331,7 @@
 									PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
 									if (updateCell) {
 										updateCell.rewardImageView.image = image;
+										reward.coverImage = image;
 									}
 								});
 							}

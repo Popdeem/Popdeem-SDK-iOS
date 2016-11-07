@@ -9,6 +9,7 @@
 #import "PDBrandApiService.h"
 #import "PDBrand.h"
 #import "PDBrandStore.h"
+#import "PDLogger.h"
 
 @implementation PDBrandApiService
 
@@ -26,6 +27,7 @@
   [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
     if (error) {
       dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@",error.localizedDescription);
         completion(error);
       });
     }
@@ -34,6 +36,11 @@
     if (responseStatusCode < 500) {
       NSError *jsonError;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonError) {
+				PDLogAlert(@"%@", [jsonError localizedDescription]);
+				completion(jsonError);
+				return ;
+			}
       if (!jsonObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
           completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
@@ -54,6 +61,7 @@
       });
     } else {
       dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"Response Code: %li",responseStatusCode);
         completion([PDNetworkError errorForStatusCode:responseStatusCode]);
       });
     }
