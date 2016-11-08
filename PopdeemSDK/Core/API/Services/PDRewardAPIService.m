@@ -27,7 +27,7 @@
 	[session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
 		if (error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				PDLogAlert(@"%@", [error localizedDescription]);
+				PDLogAlert(@"%@",error.localizedDescription);
 				completion(error);
 			});
 			return;
