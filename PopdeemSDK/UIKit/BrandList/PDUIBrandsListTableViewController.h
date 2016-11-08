@@ -12,6 +12,7 @@
 @interface PDUIBrandsListTableViewController : UITableViewController <UISearchBarDelegate>
 
 @property (nonatomic, retain) PDBrandListViewModel *viewModel;
+@property (nonatomic) BOOL isLoading;
 
 
 @end

@@ -85,6 +85,7 @@ extern NSString *const PDThemeColorNavBarTint;
 extern NSString *const PDThemeColorSegmentedControlBackground;
 extern NSString *const PDThemeImageLogin;
 extern NSString *const PDThemeImageDefaultItem;
+extern NSString *const PDThemeImageDefaultBrand;
 extern NSString *const PDThemeFontPrimary;
 extern NSString *const PDThemeFontBold;
 extern NSString *const PDThemeFontLight;

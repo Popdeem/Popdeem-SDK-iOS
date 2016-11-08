@@ -78,6 +78,7 @@ NSString *const PDThemeColorNavBarTint = @"popdeem.colors.navBarTintColor";
 NSString *const PDThemeColorSegmentedControlBackground = @"popdeem.colors.segmentedControlBackgroundColor";
 NSString *const PDThemeImageLogin = @"popdeem.images.loginImage";
 NSString *const PDThemeImageDefaultItem = @"popdeem.images.defaultItemImage";
+NSString *const PDThemeImageDefaultBrand = @"popdeem.images.defaultBrandImage";
 NSString *const PDThemeFontPrimary = @"popdeem.fonts.primaryFont";
 NSString *const PDThemeFontBold = @"popdeem.fonts.boldFont";
 NSString *const PDThemeFontLight = @"popdeem.fonts.lightFont";

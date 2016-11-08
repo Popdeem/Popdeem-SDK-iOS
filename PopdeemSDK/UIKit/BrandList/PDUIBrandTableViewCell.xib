@@ -13,34 +13,38 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PDUIBrandTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="250" id="KGk-i7-Jjw" customClass="PDUIBrandTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Po-QW-dpY" customClass="FBShimmeringView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vww-mX-zqT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eL6-uZ-ukv">
-                        <rect key="frame" x="8" y="118" width="52" height="52"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="52" id="fmv-Ar-inL"/>
-                            <constraint firstAttribute="width" constant="52" id="lof-4O-4Yy"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iay-Wf-6GR">
-                        <rect key="frame" x="68" y="143" width="214" height="49"/>
+                        <rect key="frame" x="68" y="192.5" width="214" height="49"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_popdeemArrowB.png" translatesAutoresizingMaskIntoConstraints="NO" id="h73-mB-0mf">
-                        <rect key="frame" x="290" y="155" width="22" height="23"/>
+                        <rect key="frame" x="290" y="205" width="22" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="1rc-Mr-KPP"/>
                             <constraint firstAttribute="height" constant="22.5" id="gRY-c4-JVY"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eL6-uZ-ukv">
+                        <rect key="frame" x="8" y="168" width="52" height="52"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="52" id="fmv-Ar-inL"/>
+                            <constraint firstAttribute="width" constant="52" id="lof-4O-4Yy"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -49,15 +53,19 @@
                     <constraint firstItem="iay-Wf-6GR" firstAttribute="leading" secondItem="eL6-uZ-ukv" secondAttribute="trailing" constant="8" id="4pE-RK-E0V"/>
                     <constraint firstItem="vww-mX-zqT" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.75" id="5Iv-2c-dBL"/>
                     <constraint firstItem="iay-Wf-6GR" firstAttribute="top" secondItem="vww-mX-zqT" secondAttribute="bottom" constant="8" id="8QV-5g-OOq"/>
+                    <constraint firstItem="0Po-QW-dpY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IDs-YT-Bgn"/>
                     <constraint firstAttribute="trailing" secondItem="vww-mX-zqT" secondAttribute="trailing" id="Jmp-vT-8XY"/>
                     <constraint firstItem="vww-mX-zqT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Tex-3I-YkH"/>
                     <constraint firstAttribute="leadingMargin" secondItem="eL6-uZ-ukv" secondAttribute="leading" id="Toh-2D-LcH"/>
                     <constraint firstAttribute="bottomMargin" secondItem="iay-Wf-6GR" secondAttribute="bottom" id="U9L-nU-lxD"/>
                     <constraint firstItem="h73-mB-0mf" firstAttribute="top" secondItem="vww-mX-zqT" secondAttribute="bottom" constant="20.5" id="UEf-Oo-oJT"/>
                     <constraint firstAttribute="bottom" secondItem="vww-mX-zqT" secondAttribute="bottom" constant="65" id="ZhE-oL-I2w"/>
+                    <constraint firstAttribute="trailing" secondItem="0Po-QW-dpY" secondAttribute="trailing" id="Zvd-DQ-V4Y"/>
                     <constraint firstAttribute="trailingMargin" secondItem="h73-mB-0mf" secondAttribute="trailing" id="bmX-g3-rhP"/>
+                    <constraint firstItem="0Po-QW-dpY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hXK-o0-Qlt"/>
                     <constraint firstAttribute="bottom" secondItem="eL6-uZ-ukv" secondAttribute="bottom" constant="30" id="iMw-cE-MeY"/>
                     <constraint firstItem="vww-mX-zqT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uBx-VV-6hL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="0Po-QW-dpY" secondAttribute="bottom" constant="56" id="yOz-r6-SQm"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -70,8 +78,9 @@
                 <outlet property="headerImageView" destination="vww-mX-zqT" id="9AL-PT-Gq7"/>
                 <outlet property="logoImageView" destination="eL6-uZ-ukv" id="gYS-yT-aEZ"/>
                 <outlet property="messageLabel" destination="iay-Wf-6GR" id="yQp-MR-Gub"/>
+                <outlet property="shimmeringView" destination="0Po-QW-dpY" id="fGE-NR-rnV"/>
             </connections>
-            <point key="canvasLocation" x="179" y="347"/>
+            <point key="canvasLocation" x="179" y="372"/>
         </tableViewCell>
     </objects>
     <resources>

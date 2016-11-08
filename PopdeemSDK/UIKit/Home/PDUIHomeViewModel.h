@@ -14,14 +14,18 @@
 
 @interface PDUIHomeViewModel : NSObject
 
+@property (nonatomic, assign) PDBrand *brand;
 @property (nonatomic, assign) PDUIHomeViewController *controller;
 @property (nonatomic) PDLocation *closestLocation;
 
 @property (nonatomic) NSString *headerTitleString;
 @property (nonatomic) NSString *headerImageName;
 @property (nonatomic) UIView *tableHeaderView;
+@property (nonatomic) UIView *brandView;
+@property (nonatomic) UILabel *brandNameLabel;
 @property (nonatomic) UILabel *tableHeaderLabel;
 @property (nonatomic) UIImageView *tableHeaderImageView;
+@property (nonatomic) UIImageView *logoImageView;
 
 //Colors
 @property (nonatomic) UIColor *navColor;
@@ -45,5 +49,6 @@
 - (void) fetchFeed;
 - (void) setupView;
 - (void) claimNoAction:(PDReward*)reward closestLocation:(PDLocation*)loc;
+- (void) updateSubViews;
 
 @end

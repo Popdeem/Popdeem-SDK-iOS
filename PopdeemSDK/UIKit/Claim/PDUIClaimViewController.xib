@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,18 +41,22 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="0it-oE-mA7">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2OT-kG-OCo">
+                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftP-Rr-EsR">
+                    <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6DK-Kf-jDl">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You must be at this location to claim this reward. Please come back later, or refresh your location." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rq-0F-nkv">
+                            <rect key="frame" x="45" y="8" width="278" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="Xl0-Ss-MrH"/>
                             </constraints>
@@ -58,6 +65,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0z-jL-L75">
+                            <rect key="frame" x="342" y="12" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="FQT-eT-rSO"/>
                                 <constraint firstAttribute="height" constant="25" id="kF5-TZ-Zf6"/>
@@ -76,19 +84,24 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="URn-F7-REZ">
+                    <rect key="frame" x="0.0" y="50" width="375" height="100"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="3CR-s1-1i5"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="550" id="Egq-SQ-vj4"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kh4-I8-2ik">
+                    <rect key="frame" x="0.0" y="250" width="375" height="21"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPt-KQ-xFh">
+                            <rect key="frame" x="8" y="0.0" width="306" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-Jj-ibT">
+                            <rect key="frame" x="325" y="1" width="42" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="Jx0-Ds-vcZ"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="Pc6-P9-SyT"/>
@@ -116,8 +129,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVt-fX-G8J">
+                    <rect key="frame" x="0.0" y="271" width="375" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rur-5r-Gdk">
+                            <rect key="frame" x="5" y="0.0" width="50" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Iea-GJ-tJZ"/>
                                 <constraint firstAttribute="height" constant="40" id="hrA-wl-JIG"/>
@@ -132,6 +147,7 @@
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-35-sSP">
+                            <rect key="frame" x="124" y="10.5" width="205" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="t4b-jU-q6P"/>
                             </constraints>
@@ -140,6 +156,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uox-N7-Qef">
+                            <rect key="frame" x="63" y="0.0" width="50" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Agm-6m-kRC"/>
                                 <constraint firstAttribute="width" constant="50" id="B7E-8N-fZa"/>
@@ -156,6 +173,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gr-Ua-pQx">
+                            <rect key="frame" x="337" y="7.5" width="30" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="O47-8A-LmZ"/>
                                 <constraint firstAttribute="height" constant="25" id="lSw-Sz-gp6"/>
@@ -183,12 +201,16 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcx-cq-ec7" userLabel="SocialSwitchesView">
+                    <rect key="frame" x="0.0" y="319" width="375" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBK-8P-H8x" userLabel="FBView">
+                            <rect key="frame" x="0.0" y="0.0" width="124" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qba-Oj-Okk" userLabel="FBImageContainer">
+                                    <rect key="frame" x="0.0" y="0.0" width="49.5" height="40"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_fbbutton_selected.png" translatesAutoresizingMaskIntoConstraints="NO" id="mqk-Vz-Woi">
+                                            <rect key="frame" x="18.5" y="6" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="Bk1-cd-Xvv"/>
                                                 <constraint firstAttribute="height" constant="28" id="MnA-Jp-ahn"/>
@@ -202,6 +224,7 @@
                                     </constraints>
                                 </view>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gsd-e5-gdS">
+                                    <rect key="frame" x="52.5" y="4.5" width="51" height="31"/>
                                     <connections>
                                         <action selector="facebookSwitchToggled:" destination="-1" eventType="valueChanged" id="l7h-r2-hbw"/>
                                     </connections>
@@ -218,10 +241,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSX-j8-fpc" userLabel="TwitterView">
+                            <rect key="frame" x="124" y="0.0" width="123.5" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hv-U0-UOU" userLabel="TWImageContainer">
+                                    <rect key="frame" x="0.0" y="0.0" width="49.5" height="40"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_twitterbutton_selected.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Qm-ih-v1A">
+                                            <rect key="frame" x="18.5" y="6" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="eXa-4n-FmB"/>
                                                 <constraint firstAttribute="width" constant="28" id="mrP-aL-Rm8"/>
@@ -237,6 +263,7 @@
                                     </constraints>
                                 </view>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-R3-sJf">
+                                    <rect key="frame" x="52.5" y="4.5" width="51" height="31"/>
                                     <connections>
                                         <action selector="twitterSwitchToggled:" destination="-1" eventType="valueChanged" id="OaD-A8-wjK"/>
                                     </connections>
@@ -253,10 +280,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzr-fd-6ya" userLabel="InstagramView">
+                            <rect key="frame" x="251.5" y="0.0" width="123.5" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7T5-q8-LmH">
+                                    <rect key="frame" x="0.5" y="0.0" width="49.5" height="40"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_instagrambutton_selected.png" translatesAutoresizingMaskIntoConstraints="NO" id="JcC-Ns-xrS">
+                                            <rect key="frame" x="19" y="6" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="DPy-Cv-UVg"/>
                                                 <constraint firstAttribute="height" constant="28" id="Sx4-os-Uh9"/>
@@ -270,6 +300,7 @@
                                     </constraints>
                                 </view>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MgY-2h-PRJ">
+                                    <rect key="frame" x="53" y="4.5" width="51" height="31"/>
                                     <connections>
                                         <action selector="instagramSwitchToggled:" destination="-1" eventType="valueChanged" id="wAF-yT-drC"/>
                                     </connections>
@@ -310,14 +341,17 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtA-wC-9gB" customClass="PD_SZTextView">
+                    <rect key="frame" x="0.0" y="150" width="375" height="100"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="3QT-qG-pF7"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XxC-57-5PT">
+                    <rect key="frame" x="0.0" y="359" width="375" height="65"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MT4-ac-r3V">
+                            <rect key="frame" x="8" y="8" width="359" height="49"/>
                             <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="49" id="Dib-XD-2pZ"/>
@@ -389,9 +423,9 @@
     <resources>
         <image name="pduikit_addFriend.png" width="20" height="20"/>
         <image name="pduikit_camera.png" width="20" height="20"/>
-        <image name="pduikit_fbbutton_selected.png" width="26" height="26"/>
-        <image name="pduikit_instagrambutton_selected.png" width="26" height="26"/>
+        <image name="pduikit_fbbutton_selected.png" width="20" height="20"/>
+        <image name="pduikit_instagrambutton_selected.png" width="19" height="19"/>
         <image name="pduikit_refresh.png" width="50" height="50"/>
-        <image name="pduikit_twitterbutton_selected.png" width="26" height="26"/>
+        <image name="pduikit_twitterbutton_selected.png" width="20" height="20"/>
     </resources>
 </document>

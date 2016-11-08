@@ -160,6 +160,9 @@
 }
 
 - (void) setupView {
+	if (_homeController) {
+			self.view.frame = _homeController.view.frame;
+	}
 //  [self.view setBackgroundColor:[UIColor colorWithRed:239/255 green:239/255 blue:244/255 alpha:1.0]];
   /*
   float currentY = 0;

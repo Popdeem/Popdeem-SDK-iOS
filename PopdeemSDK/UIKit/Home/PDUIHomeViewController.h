@@ -12,9 +12,11 @@
 #import "PDUIMsgCntrTblViewController.h"
 #import "PDLocation.h"
 #import "PDUIModalLoadingView.h"
+#import "PDBrand.h"
 
 @interface PDUIHomeViewController : UITableViewController <UIAlertViewDelegate>
 
+@property (nonatomic, assign) PDBrand *brand;
 @property (nonatomic, retain) PDUISegmentedControl *segmentedControl;
 @property (nonatomic, strong) PDUIRewardTableViewController *rewardTableViewController;
 @property (nonatomic, strong) UITableViewCell *rewardsCell;
@@ -27,6 +29,7 @@
 @property (nonatomic, strong) UIButton *settingsButton;
 
 - (instancetype) initFromNib;
+- (instancetype) initWithBrand:(PDBrand*)b;
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender;
 - (void) redeemButtonPressed;
 

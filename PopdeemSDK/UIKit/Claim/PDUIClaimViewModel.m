@@ -730,6 +730,7 @@
 	PDLogError(@"Error: %@",error);
 	[_loadingView hideAnimated:YES];
 	[_viewController.claimButtonView setUserInteractionEnabled:YES];
+	
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry") message:translationForKey(@"popdeem.common.something.wrong", @"Something went wrong. Please try again later") delegate:self cancelButtonTitle:translationForKey(@"common.back", @"Back") otherButtonTitles:nil];
 	[av show];
 }

@@ -38,6 +38,7 @@
         //Handle Error
         [session invalidateAndCancel];
         dispatch_async(dispatch_get_main_queue(), ^{
+					PDLogAlert(@"%@", [error localizedDescription]);
           completion(nil, error);
         });
         return;
@@ -48,6 +49,11 @@
         //Deal with response
         NSError *jsonError;
         NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+				if (jsonError) {
+					PDLogAlert(@"%@", [jsonError localizedDescription]);
+					completion(nil, jsonError);
+					return ;
+				}
         if (!jsonObject) {
           dispatch_async(dispatch_get_main_queue(), ^{
             completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
@@ -87,6 +93,7 @@
     if (error) {
       //Handle Error
       dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@", [error localizedDescription]);
         completion(nil, error);
       });
       return;
@@ -97,6 +104,11 @@
       //Deal with response
       NSError *jsonError;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonError) {
+				PDLogAlert(@"%@", [jsonError localizedDescription]);
+				completion(nil, jsonError);
+				return ;
+			}
       if (!jsonObject[@"user"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
           completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
@@ -137,7 +149,8 @@
   
   NSString *putPath = [NSString stringWithFormat:@"%@/%@/%ld",self.baseUrl,USERS_PATH,(long)_user.identifier];
   NSURLSession *session = [NSURLSession createPopdeemSession];
-  
+  [params setObject:user forKey:@"user"];
+	
   if ([[PDAPIClient sharedInstance] referral] != nil) {
     PDReferral *r = [[PDAPIClient sharedInstance] referral];
     NSMutableDictionary *referDict = [NSMutableDictionary dictionary];
@@ -145,20 +158,19 @@
     if (r.typeString) [referDict setObject:[r typeString] forKey:@"type"];
     if (r.senderAppName) [referDict setObject:[r senderAppName] forKey:@"referrer_app_name"];
     if (r.requestId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",(long)[r requestId]] forKey:@"request_id"];
-    [params setValue:referDict forKey:@"referral"];
+    [user setValue:referDict forKey:@"referral"];
     [[PDAPIClient sharedInstance] setReferral:nil];
   }
   
   if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
-    [params setObject:[[PDAPIClient sharedInstance] thirdPartyToken] forKey:@"third_party_user_token"];
+    [user setObject:[[PDAPIClient sharedInstance] thirdPartyToken] forKey:@"third_party_user_token"];
   }
-  
-  [params setObject:user forKey:@"user"];
-		
+	
   [session PUT:putPath params:params completion:^(NSData *data, NSURLResponse *response, NSError *error) {
     if (error) {
       //Handle Error
       dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@", [error localizedDescription]);
         completion(nil, error);
       });
       return;
@@ -169,6 +181,11 @@
       //Deal with response
       NSError *jsonError;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonError) {
+				PDLogAlert(@"%@", [jsonError localizedDescription]);
+				completion(nil, jsonError);
+				return ;
+			}
       if (!jsonObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
           completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
@@ -210,6 +227,7 @@
     if (error) {
       //Handle Error
       dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@", [error localizedDescription]);
         completion(error);
       });
       return;
@@ -219,6 +237,11 @@
     if (responseStatusCode < 400) {
       NSError *jsonError;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonError) {
+				PDLogAlert(@"%@", [jsonError localizedDescription]);
+				completion(jsonError);
+				return ;
+			}
       if (!jsonObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
           completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);

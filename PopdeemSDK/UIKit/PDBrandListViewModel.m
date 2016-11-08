@@ -29,7 +29,18 @@
 
 - (void) getBrandsSuccess {
 	PDLog(@"Fetch Brands Success");
-	_tableData = [PDBrandStore orderedByDistanceFromUser];
+	if (_viewController.isLoading) {
+		_viewController.isLoading = NO;
+	}
+	_tableData = [[PDBrandStore orderedByDistanceFromUser] mutableCopy];
+	for (int i = 0 ; i < _tableData.count ; i++) {
+		PDBrand *b = _tableData[i];
+		if (b.numberOfRewardsAvailable == 0) {
+			[_tableData removeObjectAtIndex:i];
+			i--;
+		}
+	}
+	[_viewController.tableView reloadData];
 	if ([_viewController.refreshControl isRefreshing]) {
 		[_viewController.refreshControl endRefreshing];
 	}
@@ -40,6 +51,10 @@
 	if ([_viewController.refreshControl isRefreshing]) {
 		[_viewController.refreshControl endRefreshing];
 	}
+	if (_viewController.isLoading) {
+		_viewController.isLoading = NO;
+	}
+	[_viewController.tableView reloadData];
 }
 
 @end
