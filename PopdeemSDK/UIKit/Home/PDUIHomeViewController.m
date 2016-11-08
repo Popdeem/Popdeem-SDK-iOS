@@ -524,9 +524,9 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//  PDUIWalletTableViewCell *wcell;
-	//  PDUIWalletTableViewCell *lastCell;
-	//  PDReward *walletReward;
+	  PDUIWalletRewardTableViewCell *wcell;
+	  PDUIWalletRewardTableViewCell *lastCell;
+	  PDReward *walletReward;
 	//  __block UIAlertView *av;
 	switch (_segmentedControl.selectedSegmentIndex) {
 		case 0:
@@ -577,7 +577,30 @@
 				}
 				//For sweepstakes we dont show the alert
 				if (selectedWalletReward.type == PDRewardTypeSweepstake || selectedWalletReward.type == PDRewardTypeCredit) {
-					[self sweepstakeAlert];
+					wcell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+					[wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
+					if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
+						lastCell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+						[lastCell rotateArrowRight];
+						walletSelectedIndex = nil;
+						[wcell rotateArrowRight];
+					} else {
+						if (walletSelectedIndex) {
+							//Rotate the previous cell back to right
+							PDUIWalletRewardTableViewCell *lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+							[lastCell rotateArrowRight];
+						}
+						if (walletReward.type == PDRewardTypeCredit) {
+							walletSelectedIndex = nil;
+						} else {
+							walletSelectedIndex = indexPath;
+							[wcell rotateArrowDown];
+						}
+					}
+					[self.tableView beginUpdates];
+					[self.tableView endUpdates];
+					[self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
+
 					return;
 				}
 				if (selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && selectedWalletReward.instagramVerified == NO) {
@@ -593,29 +616,6 @@
 				[av show];
 				
 			}
-			//      wcell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-			//      [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
-			//      if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
-			//        lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
-			//        [lastCell rotateArrowRight];
-			//        walletSelectedIndex = nil;
-			//        [wcell rotateArrowRight];
-			//      } else {
-			//        if (walletSelectedIndex) {
-			//          //Rotate the previous cell back to right
-			//          PDUIWalletTableViewCell *lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
-			//          [lastCell rotateArrowRight];
-			//        }
-			//        if (walletReward.type == PDRewardTypeCredit) {
-			//          walletSelectedIndex = nil;
-			//        } else {
-			//          walletSelectedIndex = indexPath;
-			//          [wcell rotateArrowDown];
-			//        }
-			//      }
-			//      [self.tableView beginUpdates];
-			//      [self.tableView endUpdates];
-			//      [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
 			break;
 		default:
 			break;
@@ -831,6 +831,23 @@
 	if (!selectedWalletReward) return;
 	
 	
+}
+
+- (void) sweepstakeDropdown {
+	if (selectedIndex && [selectedIndex isEqual:indexPath]) {
+		WalletTableViewCell *lastCell = (WalletTableViewCell*)[_tableView cellForRowAtIndexPath:selectedIndex];
+		[lastCell rotateArrowRight];
+		selectedIndex = nil;
+		[cell rotateArrowRight];
+	} else {
+		if (selectedIndex) {
+			//Rotate the previous cell back to right
+			WalletTableViewCell *lastCell = (WalletTableViewCell*)[_tableView cellForRowAtIndexPath:selectedIndex];
+			[lastCell rotateArrowRight];
+		}
+		selectedIndex = indexPath;
+		[cell rotateArrowDown];
+	}
 }
 
 
