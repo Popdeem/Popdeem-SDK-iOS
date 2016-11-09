@@ -481,7 +481,22 @@
 }
 
 - (void) instagramPostMade {
+	[self beginBackgroundUpdateTask];
 	[self.viewModel makeClaim];
+	PDLog(@"Background Task Started");
+	
+}
+
+- (void) beginBackgroundUpdateTask {
+	self.claimTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+		PDLog(@"Background Task Expired");
+	}];
+}
+
+- (void) endBackgroundUpdateTask {
+	[[UIApplication sharedApplication] endBackgroundTask: self.claimTask];
+	self.claimTask = UIBackgroundTaskInvalid;
+	PDLog(@"Background Task Ended");
 }
 
 - (void) instagramVerifySuccess {

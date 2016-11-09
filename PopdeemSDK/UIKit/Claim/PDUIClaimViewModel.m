@@ -548,7 +548,6 @@
 	isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_viewController presentViewController:isv animated:YES completion:^(void){}];
-//TODO: get rid of this
 //	[self makeClaim];
 	return;
 }
@@ -641,6 +640,7 @@
 									[[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
 								}
 		[self didClaimRewardId:rewardId];
+								
 	} failure:^(NSError *error){
 		[self PDAPIClient:client didFailWithError:error];
 	}];
@@ -701,6 +701,10 @@
 
 - (void) didClaimRewardId:(NSInteger)rewardId {
 	
+	if (_viewController.claimTask != UIBackgroundTaskInvalid) {
+		[_viewController endBackgroundUpdateTask];
+	}
+	
 	[_loadingView hideAnimated:YES];
 	
 	[PDRewardStore deleteReward:_reward.identifier];
@@ -728,6 +732,9 @@
 
 - (void) PDAPIClient:(PDAPIClient *)client didFailWithError:(NSError *)error {
 	PDLogError(@"Error: %@",error);
+	if (_viewController.claimTask != UIBackgroundTaskInvalid) {
+		[_viewController endBackgroundUpdateTask];
+	}
 	[_loadingView hideAnimated:YES];
 	[_viewController.claimButtonView setUserInteractionEnabled:YES];
 	

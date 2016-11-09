@@ -54,6 +54,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *twitterIconView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *facebookIconView;
 
+@property (nonatomic) UIBackgroundTaskIdentifier claimTask;
+
 @property (nonatomic, assign) PDUIHomeViewController *homeController;
 
 - (instancetype) initFromNib;
@@ -62,5 +64,6 @@
 - (void) keyboardUp;
 - (void) keyboardDown;
 - (void) setupWithReward:(PDReward*)reward;
+- (void) endBackgroundUpdateTask;
 
 @end
