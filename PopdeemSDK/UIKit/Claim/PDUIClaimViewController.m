@@ -175,6 +175,10 @@
   currentY += 130;
   _withLabelView = [[UIView alloc] initWithFrame:CGRectMake(0, currentY, viewWidth, 21)];
   */
+	[_addPhotoButton setBackgroundColor:[UIColor clearColor]];
+	[_addFriendsButton setBackgroundColor:[UIColor clearColor]];
+	[_addHashtagButton setBackgroundColor:[UIColor clearColor]];
+	
 }
 
 - (void) viewWillAppear:(BOOL)animated {

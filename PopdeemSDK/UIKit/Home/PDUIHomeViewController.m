@@ -493,10 +493,11 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [self cellHeightForIndex:indexPath.row];
+	return [self cellHeightForIndex:indexPath];
 }
 
-- (float) cellHeightForIndex:(NSInteger)index {
+- (float) cellHeightForIndex:(NSIndexPath*)indexPath {
+	NSInteger index = indexPath.row;
 	switch (_segmentedControl.selectedSegmentIndex) {
 		case 0:
 			//Rewards
@@ -515,6 +516,23 @@
 			break;
 		case 2:
 			//Wallet
+			if (walletSelectedIndex && [indexPath isEqual:walletSelectedIndex]) {
+				if (indexPath.row < _model.wallet.count) {
+					PDReward *r = _model.wallet[indexPath.row];
+					switch (r.type) {
+							case PDRewardTypeInstant:
+							case PDRewardTypeCoupon:
+							return 285;
+							break;
+							case PDRewardTypeSweepstake:
+							return 205;
+							break;
+						default:
+							break;
+					}
+				}
+				return 255;
+			}
 			return 100;
 			break;
 		default:
@@ -576,7 +594,7 @@
 					return;
 				}
 				//For sweepstakes we dont show the alert
-				if (selectedWalletReward.type == PDRewardTypeSweepstake || selectedWalletReward.type == PDRewardTypeCredit) {
+				if (selectedWalletReward.type == PDRewardTypeSweepstake) {
 					wcell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
 					[wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
 					if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
@@ -587,15 +605,11 @@
 					} else {
 						if (walletSelectedIndex) {
 							//Rotate the previous cell back to right
-							PDUIWalletRewardTableViewCell *lastCell = (PDUIWalletTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
+							PDUIWalletRewardTableViewCell *lastCell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:walletSelectedIndex];
 							[lastCell rotateArrowRight];
 						}
-						if (walletReward.type == PDRewardTypeCredit) {
-							walletSelectedIndex = nil;
-						} else {
-							walletSelectedIndex = indexPath;
-							[wcell rotateArrowDown];
-						}
+						walletSelectedIndex = indexPath;
+						[wcell rotateArrowDown];
 					}
 					[self.tableView beginUpdates];
 					[self.tableView endUpdates];
@@ -833,22 +847,6 @@
 	
 }
 
-- (void) sweepstakeDropdown {
-	if (selectedIndex && [selectedIndex isEqual:indexPath]) {
-		WalletTableViewCell *lastCell = (WalletTableViewCell*)[_tableView cellForRowAtIndexPath:selectedIndex];
-		[lastCell rotateArrowRight];
-		selectedIndex = nil;
-		[cell rotateArrowRight];
-	} else {
-		if (selectedIndex) {
-			//Rotate the previous cell back to right
-			WalletTableViewCell *lastCell = (WalletTableViewCell*)[_tableView cellForRowAtIndexPath:selectedIndex];
-			[lastCell rotateArrowRight];
-		}
-		selectedIndex = indexPath;
-		[cell rotateArrowDown];
-	}
-}
 
 
 

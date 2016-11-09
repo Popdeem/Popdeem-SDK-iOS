@@ -243,7 +243,7 @@ CGFloat buttonSpacerHeight = 0;
     [closeButton setTitleColor:[UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:0.5f] forState:UIControlStateHighlighted];
     [closeButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
     [closeButton.layer setCornerRadius:kPDSDKCustomIOS7AlertViewCornerRadius];
-    
+		[closeButton setBackgroundColor:[UIColor clearColor]];
     [container addSubview:closeButton];
   }
 }

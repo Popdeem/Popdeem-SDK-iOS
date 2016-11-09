@@ -221,6 +221,7 @@
 	
 	CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
 	_controller.inboxButton = [UIButton buttonWithType:UIButtonTypeSystem];
+	[_controller.inboxButton setBackgroundColor:[UIColor clearColor]];
 	[_controller.inboxButton setFrame:inboxButtonFrame];
 	_controller.inboxButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
 	[_controller.inboxButton setImage:PopdeemImage(@"pduikit_mail") forState:UIControlStateNormal];
@@ -229,6 +230,7 @@
 	
 	CGRect settingsButtonFrame = CGRectMake(5, 5, 20, 20);
 	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];
+	[_controller.settingsButton setBackgroundColor:[UIColor clearColor]];
 	[_controller.settingsButton setFrame:settingsButtonFrame];
 	_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
 	[_controller.settingsButton setImage:PopdeemImage(@"pduikit_settings") forState:UIControlStateNormal];

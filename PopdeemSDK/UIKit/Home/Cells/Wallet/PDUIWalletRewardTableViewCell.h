@@ -12,7 +12,8 @@
 @interface PDUIWalletRewardTableViewCell : UITableViewCell
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *mainLabel;
-@property (nonatomic, retain) UIImageView *arrowImageView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *arrowImageView;
+@property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;
 
 - (void) setupForReward:(PDReward*)reward;
 - (void) rotateArrowDown;

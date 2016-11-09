@@ -127,6 +127,7 @@ CGFloat _cardX,_cardY;
 	_imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 	[_cardView addSubview:_imageView];
 	_actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[_actionButton setBackgroundColor:[UIColor clearColor]];
 	[_cardView addSubview:_actionButton];
 	[self renderView];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];

@@ -93,9 +93,76 @@
 	
 	float centerY = self.frame.size.height/2;
 	
-	_arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-25, centerY-10, 20, 20)];
-	[_arrowImageView setImage:[UIImage imageNamed:@"arrowB"]];
-	[self addSubview:_arrowImageView];
+	if (reward.type == PDRewardTypeCoupon) {
+		[_instructionsLabel setHidden:YES];
+		return;
+	}
+	
+	
+	NSMutableAttributedString *instructionsAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
+	NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc]
+																									initWithString:@"Sweepstake Entry\n\n"
+																									attributes:@{
+																															 NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
+																															 NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+																															 }];
+	[instructionsAttString appendAttributedString:titleString];
+	
+	NSString *instStr;
+	if ([[self drawString:reward] length] > 1) {
+			instStr = [NSString stringWithFormat:@"- You are now in the draw.\n- You will be notified if you are the winner.\n- %@",[self drawString:reward]];
+	} else {
+		instStr = @"- You are now in the draw.\n- You will be notified if you are the winner.";
+	}
+	
+	NSMutableAttributedString *instructionsInfoString = [[NSMutableAttributedString alloc]
+																					 initWithString:instStr
+																					 attributes:@{
+																												NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+																												NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+																												}];
+	[instructionsAttString appendAttributedString:instructionsInfoString];
+	
+	[self.instructionsLabel setNumberOfLines:0];
+	[self.instructionsLabel setAttributedText:instructionsAttString];
+	[self.instructionsLabel setHidden:NO];
+	
+}
+
+- (NSString*) drawString:(PDReward*)reward {
+	NSString *expiresString;
+	if (reward.availableUntil) {
+		NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+		NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+																												fromDate:[NSDate date]
+																													toDate:[NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil]
+																												 options:0];
+		
+		NSInteger days = [components day];
+		
+		NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
+		int intervalHours = interval/60/60;
+		int intervalDays = interval/60/60/24;
+		
+		
+		
+		if (intervalDays > 1) {
+			expiresString = [NSString stringWithFormat:@"Draw takes place in %ld days.",(long)intervalDays];
+		}
+		if (intervalDays == 1) {
+			expiresString = @"Draw takes place in 1 day.";
+		}
+		if (intervalDays == 0) {
+			
+			if (intervalHours == 0) {
+				expiresString = @"Draw has happened. You will be notified if you are the winner.";
+			} else {
+				expiresString = [NSString stringWithFormat:@"Draw takes place in %ld hours",(long)intervalHours];
+			}
+		}
+		return expiresString;
+	}
+	return @"";
 }
 
 - (void) rotateArrowDown {

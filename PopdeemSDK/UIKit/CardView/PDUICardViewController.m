@@ -108,6 +108,7 @@
 	[_actionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
 	[_actionButton setTag:0];
 	[_actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[_actionButton setBackgroundColor:[UIColor clearColor]];
 	[_cardView addSubview:_actionButton];
 
 }

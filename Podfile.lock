@@ -9,11 +9,11 @@ PODS:
     - Fabric (~> 1.6.3)
   - Expecta (1.0.5)
   - Fabric (1.6.8)
-  - FBSDKCoreKit (4.16.1):
+  - FBSDKCoreKit (4.17.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.16.1):
+  - FBSDKLoginKit (4.17.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.16.1):
+  - FBSDKShareKit (4.17.0):
     - FBSDKCoreKit
   - JSONModel (1.4.0)
   - Nocilla (0.11.0)
@@ -56,13 +56,13 @@ SPEC CHECKSUMS:
   Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  FBSDKCoreKit: 6feac4e8921ccd7afa83fb1df6291dc6eec42c7c
-  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
-  FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
+  FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
+  FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
+  FBSDKShareKit: 9b573d03fbee36cbaf42d5bb1f2bc019e0d72347
   JSONModel: 58fe3f8c29ff95ed94e7ee7dde87e807f5da5371
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  PopdeemSDK: 3e12e9acb7eb3ec7601685c8967314bd308cd290
+  PopdeemSDK: 5e64df23433be4fe64a54f388e780a7e4935ab40
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
