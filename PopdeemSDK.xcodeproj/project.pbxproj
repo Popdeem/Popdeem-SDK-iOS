@@ -278,13 +278,6 @@
 		6A1E6ABB62B83615BDD65E3F /* libPods-BrandsSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B56D093282E3509095E4C2B /* libPods-BrandsSample.a */; };
 		6B8ECF0E43861ABE6203D45B /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B76E6117047CF03DCB47097D /* libPods-PopdeemSDKTests.a */; };
 		883ED45236BD05217EDEDBCE /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7146321A782AC8216A2D1C4E /* libPods-PopdeemSDK.a */; };
-		A90FA5311C0368A8001DA473 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5301C0368A8001DA473 /* main.m */; };
-		A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5331C0368A8001DA473 /* AppDelegate.m */; };
-		A90FA5371C0368A8001DA473 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5361C0368A8001DA473 /* ViewController.m */; };
-		A90FA53A1C0368A8001DA473 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90FA5381C0368A8001DA473 /* Main.storyboard */; };
-		A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53B1C0368A8001DA473 /* Assets.xcassets */; };
-		A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */; };
-		A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */; };
 		A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E61C07369800A43320 /* PDUIRewardTableViewController.m */; };
 		A92281EC1C07369800A43320 /* PDUIRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E81C07369800A43320 /* PDUIRewardTableViewCell.m */; };
 		A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281F01C07465700A43320 /* PDUINavigationController.m */; };
@@ -294,8 +287,6 @@
 		A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
 		A9582F9D1C05D15800D62456 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
 		A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */; };
-		A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9582FA21C05F1DF00D62456 /* Localizable.strings */; };
-		A9B2AA4B1C0872F500EFDE93 /* custom-theme.json in Resources */ = {isa = PBXBuildFile; fileRef = A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */; };
 		BC67F05A5F7252792A093778 /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
 		BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */; };
 		BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F6855AC77922041DBC9B /* Brands.json */; };
@@ -356,7 +347,6 @@
 		BC67FF8D2B030DD6410173B2 /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F7563AA957CD78C051E7 /* UserAPIServiceTests.m */; };
 		BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
 		BC67FFAF6CF0555B014F2D5B /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
-		FA6958D5EA08DB5B83638FF7 /* libPods-PopdeemSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD7B31208211F16369C900A /* libPods-PopdeemSample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -370,16 +360,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		39788FB71D1A9A7600BCE17E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		397892731D1AA89E00BCE17E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -769,18 +749,6 @@
 		A90FA4FF1C036304001DA473 /* PDRewardStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDRewardStore.m; path = Core/Store/PDRewardStore.m; sourceTree = "<group>"; };
 		A90FA5001C036304001DA473 /* PDWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDWallet.h; path = Core/Store/PDWallet.h; sourceTree = "<group>"; };
 		A90FA5011C036304001DA473 /* PDWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDWallet.m; path = Core/Store/PDWallet.m; sourceTree = "<group>"; };
-		A90FA52D1C0368A8001DA473 /* PopdeemSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopdeemSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A90FA5301C0368A8001DA473 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A90FA5321C0368A8001DA473 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A90FA5331C0368A8001DA473 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A90FA5351C0368A8001DA473 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A90FA5361C0368A8001DA473 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A90FA5391C0368A8001DA473 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A90FA53B1C0368A8001DA473 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A90FA53E1C0368A8001DA473 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A90FA5401C0368A8001DA473 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDConfirmationViewController.h; sourceTree = "<group>"; };
-		A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDConfirmationViewController.m; sourceTree = "<group>"; };
 		A92281DE1C07359E00A43320 /* pduikit_starG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_starG.png; path = Resources/pduikit_starG.png; sourceTree = "<group>"; };
 		A92281DF1C07359E00A43320 /* pduikit_starG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_starG@2x.png"; path = "Resources/pduikit_starG@2x.png"; sourceTree = "<group>"; };
 		A92281E01C07359E00A43320 /* pduikit_starG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_starG@3x.png"; path = "Resources/pduikit_starG@3x.png"; sourceTree = "<group>"; };
@@ -793,9 +761,7 @@
 		A92281F21C074C2D00A43320 /* PDUIModalTransitionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIModalTransitionHandler.h; sourceTree = "<group>"; };
 		A92281F31C074C2D00A43320 /* PDUIModalTransitionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIModalTransitionHandler.m; sourceTree = "<group>"; };
 		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
-		A9582FA21C05F1DF00D62456 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
-		A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "custom-theme.json"; sourceTree = "<group>"; };
 		B31D60348E9601566067061E /* Pods-TabbedTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.release.xcconfig"; sourceTree = "<group>"; };
 		B76E6117047CF03DCB47097D /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
@@ -972,14 +938,6 @@
 			files = (
 				391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */,
 				6B8ECF0E43861ABE6203D45B /* libPods-PopdeemSDKTests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A90FA52A1C0368A8001DA473 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA6958D5EA08DB5B83638FF7 /* libPods-PopdeemSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1456,7 +1414,6 @@
 				A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */,
 				39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */,
 				39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */,
-				A90FA52E1C0368A8001DA473 /* PopdeemSample */,
 				393D2B771C3AD0D300F1E253 /* NavigationSample */,
 				3922FAA31DC0BDA100501E1D /* BrandsSample */,
 				39537BC41C639B79001C6796 /* TabbedTest */,
@@ -1474,7 +1431,6 @@
 			children = (
 				39D7D0651B8F0DCF00E45D0B /* libPopdeemSDK.a */,
 				39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */,
-				A90FA52D1C0368A8001DA473 /* PopdeemSample.app */,
 				393D2B761C3AD0D300F1E253 /* NavigationSample.app */,
 				39537BC31C639B79001C6796 /* TabbedTest.app */,
 				39735AD91D23C7490008301E /* PopdeemSDKCore.framework */,
@@ -1702,34 +1658,6 @@
 				9B56D093282E3509095E4C2B /* libPods-BrandsSample.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A90FA52E1C0368A8001DA473 /* PopdeemSample */ = {
-			isa = PBXGroup;
-			children = (
-				A90FA5321C0368A8001DA473 /* AppDelegate.h */,
-				A90FA5331C0368A8001DA473 /* AppDelegate.m */,
-				A90FA5351C0368A8001DA473 /* ViewController.h */,
-				A90FA5361C0368A8001DA473 /* ViewController.m */,
-				A90FA5381C0368A8001DA473 /* Main.storyboard */,
-				A90FA53B1C0368A8001DA473 /* Assets.xcassets */,
-				A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */,
-				A90FA5401C0368A8001DA473 /* Info.plist */,
-				A90FA52F1C0368A8001DA473 /* Supporting Files */,
-				A9582FA21C05F1DF00D62456 /* Localizable.strings */,
-				A92281CB1C0717F400A43320 /* PDConfirmationViewController.h */,
-				A92281CC1C0717F400A43320 /* PDConfirmationViewController.m */,
-				A9B2AA4A1C0872F500EFDE93 /* custom-theme.json */,
-			);
-			path = PopdeemSample;
-			sourceTree = "<group>";
-		};
-		A90FA52F1C0368A8001DA473 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A90FA5301C0368A8001DA473 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		B0E528AB367B0BA326683B81 /* Pods */ = {
@@ -2128,7 +2056,6 @@
 				3922FAA01DC0BDA100501E1D /* Resources */,
 				ECC78B0D9D8A4E9B06C6B819 /* Embed Pods Frameworks */,
 				649FD515F668A98B1D92B6BD /* Copy Pods Resources */,
-				3922FABC1DC0FFE000501E1D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2147,7 +2074,6 @@
 				393D2B721C3AD0D200F1E253 /* Sources */,
 				393D2B731C3AD0D300F1E253 /* Frameworks */,
 				393D2B741C3AD0D300F1E253 /* Resources */,
-				39ADEC491C772423004C7C6E /* Fabric */,
 				2EB30DB65E4065276D2D2997 /* Embed Pods Frameworks */,
 				6FE2C68A76E2E41FC4BFD00E /* Copy Pods Resources */,
 			);
@@ -2168,7 +2094,6 @@
 				39537BBF1C639B79001C6796 /* Sources */,
 				39537BC01C639B79001C6796 /* Frameworks */,
 				39537BC11C639B79001C6796 /* Resources */,
-				39EB99121C86FEE900BB0DD8 /* Fabric */,
 				39BB0DE01C89E20B008FCB8C /* Build Bump */,
 				397892731D1AA89E00BCE17E /* Embed Frameworks */,
 				CA5666BEE0C751403E85263C /* Embed Pods Frameworks */,
@@ -2261,27 +2186,6 @@
 			productReference = 39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A90FA52C1C0368A8001DA473 /* PopdeemSample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A90FA5411C0368A8001DA473 /* Build configuration list for PBXNativeTarget "PopdeemSample" */;
-			buildPhases = (
-				D9D4744AF80502294BABB0BC /* Check Pods Manifest.lock */,
-				A90FA5291C0368A8001DA473 /* Sources */,
-				A90FA52A1C0368A8001DA473 /* Frameworks */,
-				A90FA52B1C0368A8001DA473 /* Resources */,
-				39788FB71D1A9A7600BCE17E /* Embed Frameworks */,
-				774BF917327CD3D583871815 /* Embed Pods Frameworks */,
-				BF27A0423D77128486F7979F /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PopdeemSample;
-			productName = PopdeemSample;
-			productReference = A90FA52D1C0368A8001DA473 /* PopdeemSample.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2329,15 +2233,6 @@
 					39D7D06F1B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
 					};
-					A90FA52C1C0368A8001DA473 = {
-						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = S648X26U8J;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-						};
-					};
 				};
 			};
 			buildConfigurationList = 39D7D0601B8F0DCF00E45D0B /* Build configuration list for PBXProject "PopdeemSDK" */;
@@ -2355,7 +2250,6 @@
 			targets = (
 				39D7D0641B8F0DCF00E45D0B /* PopdeemSDK */,
 				39D7D06F1B8F0DCF00E45D0B /* PopdeemSDKTests */,
-				A90FA52C1C0368A8001DA473 /* PopdeemSample */,
 				393D2B751C3AD0D300F1E253 /* NavigationSample */,
 				39537BC21C639B79001C6796 /* TabbedTest */,
 				39735AD81D23C7490008301E /* PopdeemSDKCore */,
@@ -2476,18 +2370,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A90FA52B1C0368A8001DA473 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A9B2AA4B1C0872F500EFDE93 /* custom-theme.json in Resources */,
-				A90FA53F1C0368A8001DA473 /* LaunchScreen.storyboard in Resources */,
-				A9582FA31C05F1DF00D62456 /* Localizable.strings in Resources */,
-				A90FA53C1C0368A8001DA473 /* Assets.xcassets in Resources */,
-				A90FA53A1C0368A8001DA473 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2566,33 +2448,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3922FABC1DC0FFE000501E1D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
-		};
-		39ADEC491C772423004C7C6E /* Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Fabric;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
-		};
 		39BB0DE01C89E20B008FCB8C /* Build Bump */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2606,20 +2461,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
-		};
-		39EB99121C86FEE900BB0DD8 /* Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Fabric;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
 		};
 		44FB4AC1E5F37386A692F398 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2696,21 +2537,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		774BF917327CD3D583871815 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		925DFEAB2C067DF84637A687 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2726,21 +2552,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BF27A0423D77128486F7979F /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSample/Pods-PopdeemSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CA5666BEE0C751403E85263C /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2754,21 +2565,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D9D4744AF80502294BABB0BC /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DD91A78696BA50841E5FA2ED /* Check Pods Manifest.lock */ = {
@@ -3100,17 +2896,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A90FA5291C0368A8001DA473 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A90FA5371C0368A8001DA473 /* ViewController.m in Sources */,
-				A92281CD1C0717F400A43320 /* PDConfirmationViewController.m in Sources */,
-				A90FA5341C0368A8001DA473 /* AppDelegate.m in Sources */,
-				A90FA5311C0368A8001DA473 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -3182,22 +2967,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				39735BD71D23E60E0008301E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		A90FA5381C0368A8001DA473 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A90FA5391C0368A8001DA473 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A90FA53D1C0368A8001DA473 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A90FA53E1C0368A8001DA473 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -3651,39 +3420,6 @@
 			};
 			name = Release;
 		};
-		A90FA5421C0368A8001DA473 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D64E0D6D66356D6EEDF64C11 /* Pods-PopdeemSample.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = PopdeemSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.popdeem.PopdeemSample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		A90FA5431C0368A8001DA473 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5384BF61293BE4895211DC6 /* Pods-PopdeemSample.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = PopdeemSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.popdeem.PopdeemSample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3755,15 +3491,6 @@
 			buildConfigurations = (
 				39D7D07D1B8F0DCF00E45D0B /* Debug */,
 				39D7D07E1B8F0DCF00E45D0B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A90FA5411C0368A8001DA473 /* Build configuration list for PBXNativeTarget "PopdeemSample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A90FA5421C0368A8001DA473 /* Debug */,
-				A90FA5431C0368A8001DA473 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

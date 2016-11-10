@@ -59,7 +59,7 @@
 "popdeem.claim.reward.instagram.unavailable.message" = "Instagram is not an available option to claim this reward.";
 
 "popdeem.home.title" = "Social Rewards";
-"popdeem.home.header.titleText" = "Share your KURE experience on social networks to earn more rewards.";
+"popdeem.home.header.titleText" = "Share your experience on social networks to earn more rewards.";
 "popdeem.home.headerText" = "Share your Popdeem experience on social networks to earn more rewards.";
 "popdeem.home.infoCell.noRewards" = "There are no Rewards available right now. Pull down to refresh.";
 "popdeem.home.infoCell.noWallet" = "There is nothing in your Wallet right now. Pull down to refresh.";

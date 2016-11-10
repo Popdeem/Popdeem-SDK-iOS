@@ -31,16 +31,15 @@
 	[PopdeemSDK registerForPushNotificationsApplication:application];
 	[PopdeemSDK setUpThemeFile:@"Theme"];
 	[PopdeemSDK setDebug:YES];
-	[Fabric with:@[[Crashlytics class]]];
 	
-	NSArray *fontFamilies = [UIFont familyNames];
-	
-	for (int i = 0; i < [fontFamilies count]; i++)
-	{
-		NSString *fontFamily = [fontFamilies objectAtIndex:i];
-		NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
-		NSLog (@"%@: %@", fontFamily, fontNames);
-	}
+//	NSArray *fontFamilies = [UIFont familyNames];
+//	
+//	for (int i = 0; i < [fontFamilies count]; i++)
+//	{
+//		NSString *fontFamily = [fontFamilies objectAtIndex:i];
+//		NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
+//		NSLog (@"%@: %@", fontFamily, fontNames);
+//	}
 	return YES;
 }
 

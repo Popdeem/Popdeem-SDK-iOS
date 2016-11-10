@@ -33,12 +33,11 @@
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
 	[PopdeemSDK setDebug:YES];	
-  [Fabric with:@[[Crashlytics class]]];
 	
 	
 	PDLog(@"API_URL: %@", API_URL);
 	
-  //Test Moments
+
   [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
 	
 	NSArray *fontFamilies = [UIFont familyNames];

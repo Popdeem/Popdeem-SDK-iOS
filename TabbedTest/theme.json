@@ -14,7 +14,7 @@
 		"images" : {
 			"loginImage" : "pduikit_default_login",
 			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "kure-header"
+			"homeHeaderImage" : "sdkTestCover"
 		},
 		"fonts" : {
 			"primaryFont" : "Quicksand-Regular",

@@ -29,7 +29,6 @@
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
   [PopdeemSDK registerForPushNotificationsApplication:application];
 //  [PopdeemSDK setUpThemeFile:@"theme"];
-  [Fabric with:@[[Crashlytics class]]];
   return YES;
 }
 

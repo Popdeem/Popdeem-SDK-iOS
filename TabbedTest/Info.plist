@@ -30,21 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2350</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>f3e1331a9e08ff100bf63475f5ac2f67675253d6</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
+	<string>2364</string>
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>
@@ -80,6 +66,11 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>api.popdeem.com</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>api.staging.popdeem.com</key>
 			<dict>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
@@ -95,7 +86,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera when you decide to share a photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We use your location to deliver local rewards"</string>
+	<string>&quot;We use your location to deliver local rewards&quot;</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We access your photo gallery when you decide to share a photo.</string>
 	<key>TwitterAppConsumerKey</key>
