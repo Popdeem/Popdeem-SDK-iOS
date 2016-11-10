@@ -1,0 +1,28 @@
+{
+	"popdeem" : {
+		"colors" : {
+			"primaryAppColor" : "#40BADA",
+			"primaryInverseColor" : "#FFFFFF",
+			"viewBackgroundColor" : "#EBEBF2",
+			"primaryFontColor" : "#000000",
+			"secondaryFontColor" : "#424242",
+			"tableViewCellBackgroundColor" : "#FFFFFF",
+			"tableViewSeperatorColor" : "#C0C0C0",
+			"navBarTintColor" : "#FFFFFF",
+			"segmentedControlBackgroundColor" : "#FFFFFF"
+		},
+		"images" : {
+			"loginImage" : "pduikit_default_login",
+			"defaultItemImage" : "pduikit_starG",
+			"homeHeaderImage" : "sdkTestCover"
+		},
+		"fonts" : {
+			"primaryFont" : "Quicksand-Regular",
+			"boldFont" : "Quicksand-Bold",
+			"lightFont" : "Quicksand-Light"
+		},
+		"nav" : {
+			"useTheme" : "true"
+		}
+	}
+}

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopdeemSDK
 
 
 @UIApplicationMain
@@ -16,58 +15,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	
 	
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 		PopdeemSDK.withAPIKey("26eb2fcb-06e5-4976-bff4-88c30cc58f58")
-		PopdeemSDK.enableSocialLoginWithNumberOfPrompts(3)
-		PopdeemSDK.registerForPushNotificationsApplication(application)
+		PopdeemSDK.enableSocialLogin(withNumberOfPrompts: 3)
+		PopdeemSDK.register(forPushNotificationsApplication: application)
 		PopdeemSDK.setUpThemeFile("theme")
 		return true
 	}
 	
-	func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
 		PopdeemSDK.handleRemoteNotification(userInfo)
 	}
 	
-	func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 		PopdeemSDK.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
 	}
 	
-	func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
 		PopdeemSDK.application(application, didFailToRegisterForRemoteNotificationsWithError: error)
 	}
 	
-	func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-		let wasHandled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication:sourceApplication, annotation: annotation);
+	func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+		let wasHandled: Bool = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication:sourceApplication, annotation: annotation);
 		
 		if wasHandled {
 			return true
 		}
 		
-		if (PopdeemSDK.canOpenUrl(url, sourceApplication: sourceApplication!, annotation: annotation)) {
-			return PopdeemSDK.application(application, openURL: url, sourceApplication:sourceApplication!, annotation: annotation)
+		if (PopdeemSDK.canOpen(url, sourceApplication: sourceApplication!, annotation: annotation)) {
+			return PopdeemSDK.application(application, open: url, sourceApplication:sourceApplication!, annotation: annotation)
 		}
 		
 		return false
 	}
 	
-	func applicationWillResignActive(application: UIApplication) {
+	func applicationWillResignActive(_ application: UIApplication) {
 	}
 	
-	func applicationDidEnterBackground(application: UIApplication) {
+	func applicationDidEnterBackground(_ application: UIApplication) {
 	}
 	
-	func applicationWillEnterForeground(application: UIApplication) {
+	func applicationWillEnterForeground(_ application: UIApplication) {
 		
 	}
 	
-	func applicationDidBecomeActive(application: UIApplication) {
+	func applicationDidBecomeActive(_ application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 		FBSDKAppEvents.activateApp()
 	}
 	
-	func applicationWillTerminate(application: UIApplication) {
+	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
 	
