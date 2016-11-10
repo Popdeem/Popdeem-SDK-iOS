@@ -12,11 +12,6 @@ end
 target 'PopdeemSDKCore' do
 end
 
-target 'PopdeemSample' do
-	pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
-	pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
-end
-
 target 'NavigationSample' do
 	pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
 	pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
