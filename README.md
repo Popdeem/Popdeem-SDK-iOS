@@ -7,7 +7,7 @@ Full documentation in the [Docs](https://github.com/Popdeem/Popdeem-SDK-iOS/tree
 
 Any questions can be directed to me at niall@popdeem.com
 
-Sample projects can be built using this XCode project.
+Sample projects can be built using this XCode project. Feel free to contact me for login details to our Sandbox backend if you wish to play around with these samples.
 
 
 *Updated by Fastlane on 27/Jun/2016 at 16:48:36*
