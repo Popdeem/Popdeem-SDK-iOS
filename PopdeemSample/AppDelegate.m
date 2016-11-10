@@ -23,7 +23,7 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-    [PopdeemSDK withAPIKey:@"913e91e9-35d0-46de-8c92-ac3bedf4f503"];
+    [PopdeemSDK withAPIKey:@"26eb2fcb-06e5-4976-bff4-88c30cc58f58"];
   
     // UIKIT
     [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];

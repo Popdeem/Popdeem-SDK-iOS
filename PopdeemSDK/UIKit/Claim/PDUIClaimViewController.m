@@ -497,6 +497,7 @@
 	[[UIApplication sharedApplication] endBackgroundTask: self.claimTask];
 	self.claimTask = UIBackgroundTaskInvalid;
 	PDLog(@"Background Task Ended");
+	
 }
 
 - (void) instagramVerifySuccess {
