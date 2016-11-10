@@ -79,6 +79,7 @@
 	return nil;
 }
 - (void) awakeFromNib {
+	[super awakeFromNib];
 	self.model = [[PDUIHomeViewModel alloc] initWithController:self];
 }
 
@@ -544,7 +545,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	  PDUIWalletRewardTableViewCell *wcell;
 	  PDUIWalletRewardTableViewCell *lastCell;
-	  PDReward *walletReward;
+//	  PDReward *walletReward;
 	//  __block UIAlertView *av;
 	switch (_segmentedControl.selectedSegmentIndex) {
 		case 0:
@@ -668,7 +669,7 @@
 					AbraLogEvent(ABRA_EVENT_REDEEMED_REWARD, (@{
 																											ABRA_PROPERTYNAME_REWARD_NAME : selectedWalletReward.rewardDescription,
 																											ABRA_PROPERTYNAME_REWARD_ID : [NSString stringWithFormat:@
-																																										 "%li",selectedWalletReward.identifier]
+																																										 "%li",(long)selectedWalletReward.identifier]
 																											}));
 				}
 			}

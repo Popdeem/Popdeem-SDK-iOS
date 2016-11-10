@@ -623,7 +623,7 @@
 		}
 	}
 	if (taggedFriends.count > 0) {
-		AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_TAGGED_FRIENDS : @"Yes", @"Friends Count" : [NSString stringWithFormat:@"%li",taggedFriends.count]}));
+		AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_TAGGED_FRIENDS : @"Yes", @"Friends Count" : [NSString stringWithFormat:@"%li",(unsigned long)taggedFriends.count]}));
 	}
 	
 	__block NSInteger rewardId = _reward.identifier;
@@ -877,7 +877,7 @@
 	
 	
 	UIImage *img = info[UIImagePickerControllerOriginalImage];
-	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
+//	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
 	
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	

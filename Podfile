@@ -42,6 +42,7 @@ target 'SwiftSample' do
 end
 
 target 'PopdeemSDKTests' do
+	pod 'JSONModel'
 	pod 'Expecta', '~> 1.0.0'
 	pod 'Nocilla'
 	pod 'OCMock'

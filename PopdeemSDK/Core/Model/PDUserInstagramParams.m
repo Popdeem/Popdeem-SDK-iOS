@@ -28,15 +28,15 @@
 }
 
 + (JSONKeyMapper*)keyMapper {
-	return [[JSONKeyMapper alloc] initWithDictionary:@{
-																										 @"social_account_id": @"socialAccountId",
-																										 @"instagram_id": @"instagramId",
-																										 @"tester": @"isTester",
-																										 @"access_token": @"accessToken",
-																										 @"access_secret": @"accessSecret",
-																										 @"profile_picture_url": @"profilePictureUrl",
-																										 @"screen_name": @"screenName"
-																										 }];
+	return  [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+																														 @"social_account_id": @"socialAccountId",
+																														 @"instagram_id": @"instagramId",
+																														 @"tester": @"isTester",
+																														 @"access_token": @"accessToken",
+																														 @"access_secret": @"accessSecret",
+																														 @"profile_picture_url": @"profilePictureUrl",
+																														 @"screen_name": @"screenName"
+																														 }];
 }
 
 @end

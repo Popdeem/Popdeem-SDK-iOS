@@ -70,7 +70,7 @@
 	[mutableRequest addValue:[self apiKey] forHTTPHeaderField:@"Api-Key"];
 	[mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	[mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-	NSString *userID = [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]];
+	NSString *userID = [NSString stringWithFormat:@"%li",(long)[[PDUser sharedInstance] identifier]];
 	if (userID.length > 1) {
 		[mutableRequest addValue:userID forHTTPHeaderField:@"User-Id"];
 	}
@@ -83,7 +83,7 @@
 		if (jsonError) {
 			PDLogError(@"Error creating JSON");
 		}
-		[mutableRequest setValue:[NSString stringWithFormat:@"%ld", [JSONData length]] forHTTPHeaderField:@"Content-Length"];
+		[mutableRequest setValue:[NSString stringWithFormat:@"%ld", (unsigned long)[JSONData length]] forHTTPHeaderField:@"Content-Length"];
 		[mutableRequest setHTTPBody:JSONData];
 	}
 	return mutableRequest;

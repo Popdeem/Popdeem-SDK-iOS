@@ -11,6 +11,6 @@
 
 @interface PDUILogoutTableViewCell : UITableViewCell
 @property (nonatomic, assign) PDUISettingsViewController *parent;
-@property (unsafe_unretained, nonatomic) IBOutlet UIButton *logoutButton;
+@property (nonatomic, retain)  UIButton *logoutButton;
 
 @end

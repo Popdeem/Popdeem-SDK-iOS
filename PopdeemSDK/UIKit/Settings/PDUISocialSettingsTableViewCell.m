@@ -134,5 +134,8 @@
 	}	
 }
 
+- (void) startAnimatingSpinner {}
+- (void) stopAnimatingSpinner {}
+
 
 @end

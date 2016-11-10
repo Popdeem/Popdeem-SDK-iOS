@@ -64,7 +64,7 @@
 	[labelAttString appendAttributedString:nameAttString];
 	
 	NSString *rewards = (_brand.numberOfRewardsAvailable > 1) ? @"Rewards" : @"Reward";
-	NSString *available = [NSString stringWithFormat:@"%li %@ Available",_brand.numberOfRewardsAvailable, rewards];
+	NSString *available = [NSString stringWithFormat:@"%li %@ Available",(long)_brand.numberOfRewardsAvailable, rewards];
 	NSMutableAttributedString *availAttString = [[NSMutableAttributedString alloc]
 																						initWithString:[NSString stringWithFormat:@"%@",available]
 																						attributes:@{

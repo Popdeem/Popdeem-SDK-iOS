@@ -19,7 +19,7 @@
   NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,MESSAGES_PATH];
   [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
-			PDLogError(@"Error: ", error.localizedDescription);
+			PDLogError(@"Error: %@", error.localizedDescription);
 			completion(nil, error);
 			return;
 		}
@@ -50,7 +50,7 @@
   NSString *path = [NSString stringWithFormat:@"%@/%@/%ld/mark_as_read",self.baseUrl,MESSAGES_PATH,(long)messageId];
   [session PUT:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
-			PDLogError(@"Error: ", error.localizedDescription);
+			PDLogError(@"Error: %@", error.localizedDescription);
 			completion(error);
 			return;
 		}

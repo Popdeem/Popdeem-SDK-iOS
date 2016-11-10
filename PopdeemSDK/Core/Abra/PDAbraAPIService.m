@@ -21,14 +21,14 @@
 	PDUser *user = [PDUser sharedInstance];
 	NSString *identifier = @"";
 	if ([PDUser sharedInstance]) {
-		identifier = [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]];
+		identifier = [NSString stringWithFormat:@"%li",(long)[[PDUser sharedInstance] identifier]];
 	}
 	if (identifier.length < 2) {
 		return;
 	}
 	NSDictionary *params = @{
 													 ABRA_KEY_TRAITS : @{
-															 ABRA_USER_TRAITS_ID : [NSString stringWithFormat:@"%li",[[PDUser sharedInstance] identifier]],
+															 ABRA_USER_TRAITS_ID : [NSString stringWithFormat:@"%li",(long)[[PDUser sharedInstance] identifier]],
 															 ABRA_USER_TRAITS_FIRST_NAME : user.firstName,
 															 ABRA_USER_TRAITS_LAST_NAME : user.lastName,
 															 ABRA_USER_TRAITS_GENDER : (user.gender == PDGenderMale) ? @"Male" : @"Female",
@@ -51,15 +51,15 @@
 			return;
 		}
 		
-		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-		NSInteger responseStatusCode = [httpResponse statusCode];
+//		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//		NSInteger responseStatusCode = [httpResponse statusCode];
 		
 		[session invalidateAndCancel];
 	}];
 }
 
 - (void) logEvent:(NSString*)eventName properties:(NSDictionary*)properties {
-	PDUser *user = [PDUser sharedInstance];
+//	PDUser *user = [PDUser sharedInstance];
 	NSDictionary *params = @{
 													 ABRA_KEY_EVENT : @{
 															 ABRA_KEY_TAG : eventName,
@@ -77,8 +77,8 @@
 			return;
 		}
 		
-		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-		NSInteger responseStatusCode = [httpResponse statusCode];
+//		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//		NSInteger responseStatusCode = [httpResponse statusCode];
 		
 		[session invalidateAndCancel];
 	}];

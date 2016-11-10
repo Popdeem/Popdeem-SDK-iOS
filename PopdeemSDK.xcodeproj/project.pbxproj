@@ -58,6 +58,7 @@
 		394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */; };
 		394BEFEC1D17E7150045F5F3 /* PDUserInstagramParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFEB1D17E7150045F5F3 /* PDUserInstagramParams.m */; };
 		394BEFF21D1839C90045F5F3 /* PDUIInstagramShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFF01D1839C90045F5F3 /* PDUIInstagramShareViewController.m */; };
+		3950FEEC1DD4990300D206DD /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3950FEEB1DD4990300D206DD /* theme.json */; };
 		39537BC71C639B79001C6796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC61C639B79001C6796 /* main.m */; };
 		39537BCA1C639B79001C6796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC91C639B79001C6796 /* AppDelegate.m */; };
 		39537BD31C639B79001C6796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD11C639B79001C6796 /* Main.storyboard */; };
@@ -477,6 +478,8 @@
 		394BEFEF1D1839C90045F5F3 /* PDUIInstagramShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramShareViewController.h; path = Instagram/Share/PDUIInstagramShareViewController.h; sourceTree = "<group>"; };
 		394BEFF01D1839C90045F5F3 /* PDUIInstagramShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramShareViewController.m; path = Instagram/Share/PDUIInstagramShareViewController.m; sourceTree = "<group>"; };
 		395017A81CDA54A600849DF8 /* default_theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default_theme.json; path = Resources/default_theme.json; sourceTree = "<group>"; };
+		3950FEE81DD4986900D206DD /* SwiftSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSample-Bridging-Header.h"; sourceTree = "<group>"; };
+		3950FEEB1DD4990300D206DD /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		39537BC31C639B79001C6796 /* TabbedTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabbedTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1261,6 +1264,7 @@
 			isa = PBXGroup;
 			children = (
 				39735BCB1D23E60E0008301E /* AppDelegate.swift */,
+				3950FEEB1DD4990300D206DD /* theme.json */,
 				39735BCD1D23E60E0008301E /* FirstViewController.swift */,
 				39735BCF1D23E60E0008301E /* SecondViewController.swift */,
 				39735BD11D23E60E0008301E /* Main.storyboard */,
@@ -1268,6 +1272,7 @@
 				39735BD61D23E60E0008301E /* LaunchScreen.storyboard */,
 				39735BD91D23E60E0008301E /* Info.plist */,
 				39A6703F1D2A6D14001BB6D0 /* Localizable.strings */,
+				3950FEE81DD4986900D206DD /* SwiftSample-Bridging-Header.h */,
 			);
 			path = SwiftSample;
 			sourceTree = "<group>";
@@ -2226,6 +2231,8 @@
 					};
 					39735BC81D23E60E0008301E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = S648X26U8J;
+						LastSwiftMigration = 0810;
 					};
 					39D7D0641B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
@@ -2327,6 +2334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3950FEEC1DD4990300D206DD /* theme.json in Resources */,
 				39735BD81D23E60E0008301E /* LaunchScreen.storyboard in Resources */,
 				39A670401D2A6D14001BB6D0 /* Localizable.strings in Resources */,
 				39735BD51D23E60E0008301E /* Assets.xcassets in Resources */,
@@ -3164,14 +3172,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = S648X26U8J;
 				INFOPLIST_FILE = SwiftSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.SwiftSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -3181,12 +3193,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S648X26U8J;
 				INFOPLIST_FILE = SwiftSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.SwiftSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

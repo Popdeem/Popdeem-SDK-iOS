@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PopdeemSDK : NSObject
 
 @property (nonatomic, strong) NSString *apiKey;
-@property (nonatomic) BOOL *debug;
+@property (nonatomic) BOOL debug;
 
 + (id) sharedInstance;
 

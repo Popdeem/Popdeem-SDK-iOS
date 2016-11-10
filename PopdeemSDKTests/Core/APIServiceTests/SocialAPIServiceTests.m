@@ -23,6 +23,9 @@
   [super setUp];
   [PopdeemSDK testingWithAPIKey:@"8abcb2bd-edf2-4007-bb40-97e43b8a9498"];
   [[LSNocilla sharedInstance] start];
+	stubRequest(@"POST", @"http://insights.popdeem.com/v1/event").
+	withHeaders(@{ @"Accept": @"application/json", @"Api-Key": @"8abcb2bd-edf2-4007-bb40-97e43b8a9498", @"Content-Length": @"173", @"Content-Type": @"application/json", @"Device-Id": @"E1183E0C-3D46-4153-BE43-21564C706053", @"User-Id": @"1231" }).
+	withBody(@"{\"event\":{\"tag\":\"onboard\",\"properties\":{}},\"traits\":{\"id\":\"1231\",\"gender\":\"Male\",\"first_name\":\"John\",\"push_notifications_enabled\":\"No\",\"last_name\":\"Doe\",\"ip\":\"192.168.1.4\"}}");
   // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 

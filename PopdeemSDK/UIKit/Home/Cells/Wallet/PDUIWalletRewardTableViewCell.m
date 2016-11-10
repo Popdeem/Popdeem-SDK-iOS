@@ -91,7 +91,7 @@
 	[labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
 	[_mainLabel setAttributedText:labelAttString];
 	
-	float centerY = self.frame.size.height/2;
+//	float centerY = self.frame.size.height/2;
 	
 	if (reward.type == PDRewardTypeCoupon) {
 		[_instructionsLabel setHidden:YES];
@@ -132,13 +132,13 @@
 - (NSString*) drawString:(PDReward*)reward {
 	NSString *expiresString;
 	if (reward.availableUntil) {
-		NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-		NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-																												fromDate:[NSDate date]
-																													toDate:[NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil]
-																												 options:0];
+//		NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//		NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+//																												fromDate:[NSDate date]
+//																													toDate:[NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil]
+//																												 options:0];
 		
-		NSInteger days = [components day];
+//		NSInteger days = [components day];
 		
 		NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
 		int intervalHours = interval/60/60;

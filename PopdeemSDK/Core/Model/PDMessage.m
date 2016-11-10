@@ -38,17 +38,17 @@
 }
 
 + (JSONKeyMapper*)keyMapper {
-  return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                     @"title": @"title",
-                                                     @"body": @"body",
-                                                     @"sender_name": @"senderName",
-                                                     @"brand_id": @"brandId",
-                                                     @"created_at": @"createdAt",
-                                                     @"id": @"identifier",
-                                                     @"image_url": @"imageUrl",
-                                                     @"read": @"read",
-                                                     @"reward_id": @"rewardId"
-                                                     }];
+	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+																																@"title": @"title",
+																																@"body": @"body",
+																																@"sender_name": @"senderName",
+																																@"brand_id": @"brandId",
+																																@"created_at": @"createdAt",
+																																@"id": @"identifier",
+																																@"image_url": @"imageUrl",
+																																@"read": @"read",
+																																@"reward_id": @"rewardId"
+																																}];
 }
 
 - (void) markAsRead {

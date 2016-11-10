@@ -21,7 +21,7 @@
 		_logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(8, 8, self.frame.size.width-16, self.frame.size.height-16)];
 		[self addSubview:_logoutButton];
 		[_logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
-		[_logoutButton addTarget:self action:@selector(logoutButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+		[_logoutButton addTarget:self action:@selector(logoutButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 		return self;
 	}
 	return nil;

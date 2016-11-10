@@ -45,7 +45,9 @@
   static dispatch_once_t sharedToken;
   dispatch_once(&sharedToken, ^{
     SDK = [[PopdeemSDK alloc] init];
-		SDK.debug = NO;
+		if (SDK) {
+			[SDK setDebug:NO];
+		}
   });
   return SDK;
 }
@@ -289,7 +291,7 @@
 
 + (void) setThirdPartyUserToken:(NSString*)userToken {
   [[PDAPIClient sharedInstance] setThirdPartyToken:userToken];
-  if ([[PDUser sharedInstance] identifier] == nil) {
+  if ([[PDUser sharedInstance] identifier]) {
     return;
   }
   PDUserAPIService *service = [[PDUserAPIService alloc] init];

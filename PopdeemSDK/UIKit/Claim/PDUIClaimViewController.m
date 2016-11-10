@@ -211,7 +211,7 @@
   
   NSMutableString *withString = [[NSMutableString alloc] init];
   if (friendsTagged.count > 2) {
-    withString = [NSMutableString stringWithFormat:@"%@ and %lu others.",[[friendsTagged objectAtIndex:0] name], [friendsTagged count]-1];
+    withString = [NSMutableString stringWithFormat:@"%@ and %u others.",[[friendsTagged objectAtIndex:0] name], [friendsTagged count]-1];
   } else if (friendsTagged.count == 2) {
     withString = [NSMutableString stringWithFormat:@"%@ and %@",[[friendsTagged objectAtIndex:0] name], [[friendsTagged objectAtIndex:1] name]];
   } else if (friendsTagged.count == 1) {

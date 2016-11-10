@@ -43,7 +43,7 @@
 		self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake((2*indent) + imageWidth, centerY, labelWidth, 20)];
 		NSInteger available = [b numberOfRewardsAvailable];
 		NSString *reward = (available == 1) ? @"Reward" : @"Rewards";
-		NSString *infoString = [NSString stringWithFormat:@"%li %@ Available", available, reward];
+		NSString *infoString = [NSString stringWithFormat:@"%li %@ Available", (long)available, reward];
 		[self.infoLabel setText:infoString];
 		[self.infoLabel setTextColor:PopdeemColor(@"popdeem.colors.secondaryFontColor")];
 		[self.infoLabel setFont:PopdeemFont(@"popdeem.fonts.primaryFont", 14)];

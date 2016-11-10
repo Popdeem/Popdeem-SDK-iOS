@@ -228,7 +228,6 @@
 }
 
 - (void) connectTwitterAccount {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
 	PDUITwitterLoginViewController *twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:self.navigationController];
 	if (!twitterVC) {
 		return;
@@ -269,7 +268,7 @@
 }
 
 - (void) connectInstagramAccount {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+//	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self.navigationController delegate:self];
@@ -299,7 +298,7 @@
 }
 
 - (void) facebookLoginSuccess {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+//	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[_tableView reloadInputViews];
 	});
@@ -318,7 +317,7 @@
 }
 
 - (void) instagramLoginSuccess {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+//	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[_tableView reloadInputViews];
 	});
@@ -345,7 +344,7 @@
 }
 
 - (void) twitterLoginSuccess {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+//	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[_tableView reloadData];
 	});
