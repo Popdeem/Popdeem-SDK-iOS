@@ -100,7 +100,7 @@
     }
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     NSInteger responseStatusCode = [httpResponse statusCode];
-    if (responseStatusCode < 500) {
+    if (responseStatusCode <= 500) {
       //Deal with response
       NSError *jsonError;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];

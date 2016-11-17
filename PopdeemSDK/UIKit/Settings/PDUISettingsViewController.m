@@ -84,6 +84,7 @@
 	}
 	
 	NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
+	NSLog(@"%@",pictureUrl);
 	NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		if (data) {
 			UIImage *image = [UIImage imageWithData:data];
@@ -108,16 +109,17 @@
 	[_profileImageView setHidden:YES];
 
 
-	NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
-	[nameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
-	[nameLabel setTextColor:[UIColor whiteColor]];
-	[nameLabel setText:userName];
-	[nameLabel setTextAlignment:NSTextAlignmentCenter];
-	[self.tableHeaderView addSubview:nameLabel];
-	[self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
-	[self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryInverse)];
-	
+	if ([[PDUser sharedInstance] firstName] && [[PDUser sharedInstance] lastName]) {
+		NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
+		UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
+		[nameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
+		[nameLabel setTextColor:[UIColor whiteColor]];
+		[nameLabel setText:userName];
+		[nameLabel setTextAlignment:NSTextAlignmentCenter];
+		[self.tableHeaderView addSubview:nameLabel];
+		[self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+		[self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -410,6 +412,7 @@
 		}];
 		PDSocialMediaManager *man = [PDSocialMediaManager manager];
 		[man logoutFacebook];
+		[man logOut];
 		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 		[cell.socialSwitch setOn:NO animated:NO];
 	}];

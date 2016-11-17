@@ -19,7 +19,7 @@
 #ifdef POPDEEM_ENV_STAGING
 NSString *const API_URL = @"http://api.staging.popdeem.com";
 #else
-NSString *const API_URL = @"http://api.popdeem.com";
+NSString *const API_URL = @"https://api.popdeem.com";
 #endif
 NSString *const USERS_PATH = @"api/v2/users";
 NSString *const REWARDS_PATH = @"api/v2/rewards";

@@ -111,6 +111,13 @@
   [lm logOut];
 }
 
+- (void) logOut {
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:@"popdeemUser"]) {
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"popdeemUser"];
+	}
+	[PDUser resetSharedInstance];
+}
+
 - (void) facebookRequestPublishPermissions:(void (^)(void))success
                                    failure:(void (^)(NSError *err))failure {
   FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
