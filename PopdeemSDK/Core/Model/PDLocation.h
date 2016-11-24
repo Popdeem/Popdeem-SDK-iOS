@@ -30,7 +30,6 @@
 #import <JSONModel/JSONModel.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@class PDLocationBrandParams;
 @interface PDLocationBrandParams : JSONModel
 
 @property (nonatomic) NSInteger *id;
