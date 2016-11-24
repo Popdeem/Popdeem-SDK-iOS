@@ -3,10 +3,8 @@
 #use_frameworks!
 platform :ios, '8.0'
 
-link_with 'PopdeemSDK', 'PopdeemSDKTests', 'TabbedTest'
-
 target 'PopdeemSDK' do
-	pod 'JSONModel'
+	pod 'JSONModel', '~> 1.7.0'
 end
 
 target 'PopdeemSDKCore' do

@@ -16,24 +16,27 @@
 - (id) initFromApi:(NSDictionary *)params {
     if (self = [super init]) {
         
-        self.identifier = [params[@"id"] integerValue];
+        self.id = [params[@"id"] integerValue];
         
         float loc_lat = [params[@"latitude"] floatValue];
         float loc_long = [params[@"longitude"] floatValue];
         self.geoLocation = PDGeoLocationMake(loc_lat, loc_long);
+			self.latitude = loc_lat;
+			self.longitude = loc_long;
         
         id twitterId = params[@"twitter_page_id"];
         self.twitterPageId = (isNilClass(twitterId)) ? nil : twitterId;
         
         id fbid = params[@"fb_page_id"];
-        self.facebookPageId = (isNilClass(fbid)) ? nil : fbid;
+        self.fbPageId = (isNilClass(fbid)) ? nil : fbid;
         
         self.numberOfRewards = [params[@"number_of_rewards"] integerValue];
         
         id brandParams = params[@"brand"];
         if (brandParams) {
-            self.brandIdentifier = [brandParams[@"id"] integerValue];
-            self.brandName = brandParams[@"name"];
+					self.brand = [[PDLocationBrandParams alloc] init];
+					self.brand.id = [brandParams[@"id"] integerValue];
+					self.brand.name = brandParams[@"name"];
         }
         
         return self;
@@ -46,18 +49,12 @@
     if (self = [super initWithString:json error:&err]) {
         return  self;
     }
-    PDLogError(@"JSONModel Error on Score: %@",err);
+    PDLogError(@"JSONModel Error on Location: %@",err);
     return  nil;
 }
 
 + (JSONKeyMapper*)keyMapper {
-    return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"total_score.value": @"total",
-                                                       @"influence_score.engangement_score_value": @"engagement",
-                                                       @"influence_score.reach_score_value": @"reach",
-                                                       @"influence_score.frequency_score_value": @"frequency",
-                                                       @"advocacy_score.value": @"advocacy"
-                                                       }];
+	return [JSONKeyMapper mapperForSnakeCase];
 }
 
 - (float) calculateDistanceFromUser {

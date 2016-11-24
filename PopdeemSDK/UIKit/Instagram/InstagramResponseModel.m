@@ -20,16 +20,18 @@
 	return  nil;
 }
 
-+(JSONKeyMapper*)keyMapper {
-	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
-																																@"access_token": @"accessToken",
-																																@"user.username": @"userName",
-																																@"user.bio": @"bio",
-																																@"user.website": @"website",
-																																@"user.profile_picture": @"profilePictureUrlString",
-																																@"user.full_name": @"fullName",
-																																@"user.id": @"identifier"
-																																}];
++ (JSONKeyMapper *)keyMapper
+{
+	return [JSONKeyMapper mapperForSnakeCase];
+}
+
+@end
+
+@implementation InstagramUserModel
+
++ (JSONKeyMapper *)keyMapper
+{
+	return [JSONKeyMapper mapperForSnakeCase];
 }
 
 @end

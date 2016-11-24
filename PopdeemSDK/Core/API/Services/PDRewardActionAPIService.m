@@ -76,7 +76,7 @@
   //user location
   NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",location.geoLocation.latitude],@"latitude",
                                   [NSString stringWithFormat:@"%.4f",location.geoLocation.longitude], @"longitude",
-                                  [NSString stringWithFormat:@"%ld", (long)location.identifier], @"id",
+                                  [NSString stringWithFormat:@"%ld", (long)location.id], @"id",
                                   nil];
   [params setObject:locationParams forKey:@"location"];
   

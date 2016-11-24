@@ -21,7 +21,7 @@
 }
 
 + (void) add:(PDLocation*)loc {
-    [[PDLocationStore store] setObject:loc forKey:@(loc.identifier)];
+    [[PDLocationStore store] setObject:loc forKey:@(loc.id)];
 }
 
 + (nullable PDLocation*) find:(NSInteger)identifier {
@@ -47,7 +47,7 @@
 + (nonnull NSArray*) locationsForBrandIdentifier:(NSInteger)identifier {
     NSMutableArray *rarr = [NSMutableArray array];
     for (PDLocation *l in [[PDLocationStore store] allValues]) {
-        if (l.brandIdentifier == identifier) {
+        if (l.brand.id == identifier) {
             [rarr addObject:l];
         }
     }
@@ -57,7 +57,7 @@
 + (nonnull NSArray*) locationsForReward:(PDReward*)reward {
   NSMutableArray *rarr = [NSMutableArray array];
   for (PDLocation *l in [[PDLocationStore store] allValues]) {
-    if (l.brandIdentifier == reward.brandId) {
+    if (l.brand.id == reward.brandId) {
       [rarr addObject:l];
     }
   }

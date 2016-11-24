@@ -16,7 +16,7 @@
                   accessSecret:(NSString*)accessSecret
                     completion:(void (^)(NSError *error))completion;
 
-- (void) connectInstagramAccount:(NSString*)userId
+- (void) connectInstagramAccount:(NSInteger)userId
 										 accessToken:(NSString*)accessToken
 											screenName:(NSString*)screenName
 											completion:(void (^)(NSError *error))completion;

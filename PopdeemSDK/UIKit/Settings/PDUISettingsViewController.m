@@ -288,7 +288,7 @@
 	});
 }
 
-- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+- (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
 	PDAPIClient *client = [PDAPIClient sharedInstance];
 	[client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
 		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];

@@ -279,6 +279,8 @@
   [_verifyLocationLabel setText:translationForKey(@"popdeem.claim.verifyLocationFailed", @"You must be at this location to claim this reward. Please come back later, or refresh your location.")];
   [_verifyLocationLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   [_verifyLocationLabel setFont:PopdeemFont(PDThemeFontPrimary, 10)];
+	[_verifyLocationLabel setBackgroundColor:[UIColor clearColor]];
+	[_refreshLocationButton setBackgroundColor:[UIColor clearColor]];
   
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
