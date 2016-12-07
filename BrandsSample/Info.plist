@@ -84,7 +84,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera when you decide to share a photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;We use your location to deliver local rewards&quot;</string>
+	<string>We use your location to deliver local rewards</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We access your photo gallery when you decide to share a photo.</string>
 	<key>TwitterAppConsumerKey</key>

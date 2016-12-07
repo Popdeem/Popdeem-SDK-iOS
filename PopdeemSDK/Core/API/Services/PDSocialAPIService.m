@@ -73,7 +73,11 @@
 											completion:(void (^)(NSError *error))completion {
 	
 	NSMutableDictionary *instagram = [NSMutableDictionary dictionary];
-	[instagram setObject:@(userId) forKey:@"id"];
+
+
+
+	[instagram setObject:[NSNumber numberWithInt:userId] forKey:@"id"];
+
 	[instagram setObject:accessToken forKey:@"access_token"];
 	[instagram setObject:screenName forKey:@"screen_name"];
 	

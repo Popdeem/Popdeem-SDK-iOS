@@ -31,13 +31,13 @@
     self.profilePictureUrl = ([ppurl isKindOfClass:[NSString class]]) ? ppurl : nil;
   
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params[@"score"]
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    self.scores = [[PDScores alloc] initWithJSON:jsonString];
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params[@"score"]
+//                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+//                                                         error:&error];
+//    
+//    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    
+//    self.scores = [[PDScores alloc] initWithJSON:jsonString];
     if (params[@"default_privacy_setting"]) {
       self.defaultPrivacySetting = params[@"default_privacy_setting"];
     }

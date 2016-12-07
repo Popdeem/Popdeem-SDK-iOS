@@ -3,7 +3,6 @@
 #use_frameworks!
 platform :ios, '8.0'
 
-
 target 'PopdeemSDK' do
 	pod 'JSONModel', '~> 1.7.0'
 end

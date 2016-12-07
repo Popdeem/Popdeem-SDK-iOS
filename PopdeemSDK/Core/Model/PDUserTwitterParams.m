@@ -46,7 +46,7 @@
         self.expirationTime = expirationTime;
         NSString *ppurl = params[@"profile_picture_url"];
         self.profilePictureUrl = ([ppurl isKindOfClass:[NSString class]]) ? ppurl : nil;
-        self.scores = [[PDScores alloc] initFromAPI:params[@"score"]];
+//        self.scores = [[PDScores alloc] initFromAPI:params[@"score"]];
         return self;
     }
     return nil;

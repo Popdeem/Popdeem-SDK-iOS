@@ -115,13 +115,13 @@ static PDUser *globalUser = nil;
   user.facebookParams.profilePictureUrl = [dict objectForKey:@"facebook_profile_picture_url"] ? [dict objectForKey:@"facebook_profile_picture_url"] : nil;
   user.facebookParams.identifier = [dict objectForKey:@"facebookID"] ? [dict objectForKey:@"facebookID"] : nil;
   
-  user.facebookParams.scores = [[PDScores alloc] init];
-  user.facebookParams.scores.total = [dict objectForKey:@"totalScore"] ? [[dict objectForKey:@"totalScore"] floatValue] : 0.0;
-  user.facebookParams.scores.reach = [dict objectForKey:@"reachScore"] ? [[dict objectForKey:@"reachScore"] floatValue] : 0.0;
-  user.facebookParams.scores.engagement = [dict objectForKey:@"engagementScore"] ? [[dict objectForKey:@"engagementScore"] floatValue] : 0.0;
-  user.facebookParams.scores.frequency = [dict objectForKey:@"frequencyScore"] ? [[dict objectForKey:@"frequencyScore"] floatValue] : 0.0;
-  user.facebookParams.scores.advocacy = [dict objectForKey:@"advocacyScore"] ? [[dict objectForKey:@"advocacyScore"] floatValue] : 0.0;
-  
+//  user.facebookParams.scores = [[PDScores alloc] init];
+//  user.facebookParams.scores.total = [dict objectForKey:@"totalScore"] ? [[dict objectForKey:@"totalScore"] floatValue] : 0.0;
+//  user.facebookParams.scores.reach = [dict objectForKey:@"reachScore"] ? [[dict objectForKey:@"reachScore"] floatValue] : 0.0;
+//  user.facebookParams.scores.engagement = [dict objectForKey:@"engagementScore"] ? [[dict objectForKey:@"engagementScore"] floatValue] : 0.0;
+//  user.facebookParams.scores.frequency = [dict objectForKey:@"frequencyScore"] ? [[dict objectForKey:@"frequencyScore"] floatValue] : 0.0;
+//  user.facebookParams.scores.advocacy = [dict objectForKey:@"advocacyScore"] ? [[dict objectForKey:@"advocacyScore"] floatValue] : 0.0;
+	
   user.deviceToken = [dict objectForKey:@"deviceToken"] ? [dict objectForKey:@"deviceToken"] : nil;
   
   user.location = PDGeoLocationMake([[dict objectForKey:@"latitude"] floatValue], [[dict objectForKey:@"longitude"] floatValue]);
@@ -163,12 +163,12 @@ static PDUser *globalUser = nil;
     [userDictionary setObject:self.facebookParams.identifier forKey:@"facebookID"];
   }
   
-  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.total] forKey:@"totalScore"];
-  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.reach] forKey:@"reachScore"];
-  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.engagement] forKey:@"engagementScore"];
-  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.frequency] forKey:@"frequencyScore"];
-  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.advocacy] forKey:@"advocacyScore"];
-  
+//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.total] forKey:@"totalScore"];
+//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.reach] forKey:@"reachScore"];
+//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.engagement] forKey:@"engagementScore"];
+//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.frequency] forKey:@"frequencyScore"];
+//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.advocacy] forKey:@"advocacyScore"];
+	
   if (self.deviceToken) {
     [userDictionary setObject:self.deviceToken forKey:@"deviceToken"];
   }

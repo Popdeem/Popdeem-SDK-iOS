@@ -20,7 +20,21 @@
 	return  nil;
 }
 
+<<<<<<< HEAD
 +(JSONKeyMapper*)keyMapper {
+=======
++ (JSONKeyMapper *)keyMapper
+{
+	return [JSONKeyMapper mapperForSnakeCase];
+}
+
+@end
+
+@implementation InstagramUserModel
+
++ (JSONKeyMapper *)keyMapper
+{
+>>>>>>> master
 	return [JSONKeyMapper mapperForSnakeCase];
 }
 
