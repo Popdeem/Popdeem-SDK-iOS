@@ -15,12 +15,31 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.17.0):
     - FBSDKCoreKit
-  - JSONModel (1.4.0)
+  - Firebase/Core (3.10.0):
+    - FirebaseAnalytics (= 3.6.0)
+    - FirebaseCore (= 3.4.5)
+  - FirebaseAnalytics (3.6.0):
+    - FirebaseCore (~> 3.4)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.4.5):
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.8)
+  - GoogleInterchangeUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleSymbolUtilities (1.1.2)
+  - GoogleToolboxForMac/Defines (2.1.0)
+  - GoogleToolboxForMac/NSData+zlib (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
+  - JSONModel (1.7.0)
   - Nocilla (0.11.0)
   - OCMock (3.3.1)
-  - PopdeemSDK (1.0.6):
-    - PopdeemSDK/Core (= 1.0.6)
-  - PopdeemSDK/Core (1.0.6):
+  - PopdeemSDK (1.0.7):
+    - PopdeemSDK/Core (= 1.0.7)
+  - PopdeemSDK/Core (1.0.7):
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -28,7 +47,7 @@ PODS:
     - JSONModel
     - Shimmer
     - STTwitter
-  - PopdeemSDK/UIKit (1.0.6):
+  - PopdeemSDK/UIKit (1.0.7):
     - PopdeemSDK/Core
   - Reveal-iOS-SDK (1.6.2)
   - Shimmer (1.0.2)
@@ -39,7 +58,9 @@ DEPENDENCIES:
   - Crashlytics
   - Expecta (~> 1.0.0)
   - Fabric
+  - Firebase/Core
   - JSONModel
+  - JSONModel (~> 1.7.0)
   - Nocilla
   - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
@@ -59,12 +80,21 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
   FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
   FBSDKShareKit: 9b573d03fbee36cbaf42d5bb1f2bc019e0d72347
-  JSONModel: 58fe3f8c29ff95ed94e7ee7dde87e807f5da5371
+  Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
+  FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
+  FirebaseCore: 1e383fdfe37b6b5d6ff88e84204bdee30276af0f
+  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
+  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
+  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
+  GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  PopdeemSDK: 3ee422bf05361c6caebc957571fd532b4d849435
+  PopdeemSDK: d0196dc0ff05af1148667c23f3cc8f5743b9c815
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 26e7ea774d3efe8983c05066e1c332ebb529a6ff
+
+COCOAPODS: 1.1.1

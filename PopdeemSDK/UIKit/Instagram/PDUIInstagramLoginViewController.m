@@ -225,7 +225,7 @@ CGFloat _cardX,_cardY;
 			NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
 			[request setHTTPMethod:@"POST"];
 			[request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
-//			NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+			NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
 			receivedData = [[NSMutableData alloc] init];
 		} else {
 			// ERROR!
@@ -266,7 +266,7 @@ CGFloat _cardX,_cardY;
 }
 
 - (void) connectWithModel:(InstagramResponseModel*)instagramModel {
-	[_delegate connectInstagramAccount:instagramModel.identifier accessToken:instagramModel.accessToken userName:instagramModel.userName];
+	[_delegate connectInstagramAccount:instagramModel.user.id accessToken:instagramModel.accessToken userName:instagramModel.user.username];
 }
 
 - (NSString *)URLStringWithoutQuery:(NSURL*)url {

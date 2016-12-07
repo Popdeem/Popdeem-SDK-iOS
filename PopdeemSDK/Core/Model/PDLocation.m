@@ -46,7 +46,7 @@
     if (self = [super initWithString:json error:&err]) {
         return  self;
     }
-    PDLogError(@"JSONModel Error on Score: %@",err);
+    PDLogError(@"JSONModel Error on Location: %@",err);
     return  nil;
 }
 

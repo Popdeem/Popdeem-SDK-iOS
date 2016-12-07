@@ -8,13 +8,18 @@
 
 #import <JSONModel/JSONModel.h>
 
-@interface InstagramResponseModel : JSONModel
-@property (nonatomic, retain) NSString *accessToken;
-@property (nonatomic, retain) NSString *identifier;
-@property (nonatomic, retain) NSString *userName;
+@interface InstagramUserModel : JSONModel
+@property (nonatomic) NSInteger id;
+@property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *bio;
 @property (nonatomic, retain) NSString *website;
-@property (nonatomic, retain) NSString *profilePictureUrlString;
+@property (nonatomic, retain) NSString *profilePicture;
 @property (nonatomic, retain) NSString *fullName;
+@end
+
+@interface InstagramResponseModel : JSONModel
+@property (nonatomic, retain) NSString *accessToken;
+@property (nonatomic, retain) InstagramUserModel *user;
+
 - (id) initWithJSON:(NSString*)json;
 @end

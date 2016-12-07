@@ -32,7 +32,7 @@
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
-	[PopdeemSDK setDebug:YES];	
+	[PopdeemSDK setDebug:YES];
 	
 	
 	PDLog(@"API_URL: %@", API_URL);
