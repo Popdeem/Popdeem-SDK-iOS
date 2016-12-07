@@ -281,7 +281,11 @@
   [_verifyLocationLabel setFont:PopdeemFont(PDThemeFontPrimary, 10)];
 	[_verifyLocationLabel setBackgroundColor:[UIColor clearColor]];
 	[_refreshLocationButton setBackgroundColor:[UIColor clearColor]];
+<<<<<<< HEAD
+	
+=======
   
+>>>>>>> master
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_selected"] forState:UIControlStateSelected];
   [_facebookButton setImage:[UIImage imageNamed:@"pduikit_fbbutton_deselected"] forState:UIControlStateNormal];
   [_facebookButton setTitleColor:[UIColor colorWithRed:0.169 green:0.247 blue:0.537 alpha:1.000] forState:UIControlStateSelected];

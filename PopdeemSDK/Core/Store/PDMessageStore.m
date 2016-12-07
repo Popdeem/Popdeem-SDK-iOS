@@ -20,7 +20,7 @@
 }
 
 + (void) add:(PDMessage*)message {
-  [[PDMessageStore store] setObject:message forKey:@(message.identifier)];
+  [[PDMessageStore store] setObject:message forKey:@(message.id)];
 }
 
 + (void) remove:(NSInteger)messageId {

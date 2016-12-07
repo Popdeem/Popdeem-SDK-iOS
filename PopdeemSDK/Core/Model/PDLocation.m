@@ -45,12 +45,13 @@
 }
 
 - (id) initWithJSON:(NSString*)json {
-	NSError *err;
-	if (self = [super initWithString:json error:&err]) {
-		return  self;
-	}
-	PDLogError(@"JSONModel Error on Location: %@",err);
-	return  nil;
+
+    NSError *err;
+    if (self = [super initWithString:json error:&err]) {
+        return  self;
+    }
+    PDLogError(@"JSONModel Error on Location: %@",err);
+    return  nil;
 }
 
 + (JSONKeyMapper*)keyMapper {

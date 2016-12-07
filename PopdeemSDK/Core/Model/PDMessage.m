@@ -23,7 +23,7 @@
     self.image = nil;
     return  self;
   }
-  PDLogError(@"JSONModel Error on Score: %@",err);
+  PDLogError(@"JSONModel Error on Message: %@",err);
   return  nil;
 }
 
@@ -38,24 +38,14 @@
 }
 
 + (JSONKeyMapper*)keyMapper {
-	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
-																																@"title": @"title",
-																																@"body": @"body",
-																																@"sender_name": @"senderName",
-																																@"brand_id": @"brandId",
-																																@"created_at": @"createdAt",
-																																@"id": @"identifier",
-																																@"image_url": @"imageUrl",
-																																@"read": @"read",
-																																@"reward_id": @"rewardId"
-																																}];
+	return [JSONKeyMapper mapperForSnakeCase];
 }
 
 - (void) markAsRead {
   PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
-  [service markMessageAsRead:self.identifier completion:^(NSError *error){
+  [service markMessageAsRead:self.id completion:^(NSError *error){
     if (error) {
-      PDLogError(@"Error while marking message %ld as read",(long)self.identifier);
+      PDLogError(@"Error while marking message %ld as read",(long)self.id);
     } else {
       self.read = YES;
     }

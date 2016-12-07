@@ -112,6 +112,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) BOOL verifyLocation;
 
+@property (nonatomic, strong) PDBrandTheme *theme;
+
 /*!
  * @abstract Init brand from API params.
  *

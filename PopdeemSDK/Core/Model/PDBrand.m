@@ -60,6 +60,11 @@
     } else {
       self.verifyLocation = YES;
     }
+		
+		NSDictionary *theme = params[@"theme"];
+		if (theme) {
+			
+		}
 
     [self calculateDistanceFromUser];
     return self;

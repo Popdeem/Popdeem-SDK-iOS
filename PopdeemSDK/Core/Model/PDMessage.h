@@ -12,7 +12,7 @@
 
 @interface PDMessage : JSONModel
 
-@property (nonatomic) NSInteger identifier;
+@property (nonatomic) NSInteger id;
 @property (nonatomic) NSString *senderName;
 @property (nonatomic,strong) NSNumber<Optional> *brandId;
 @property (nonatomic,strong) NSNumber<Optional> *rewardId;
