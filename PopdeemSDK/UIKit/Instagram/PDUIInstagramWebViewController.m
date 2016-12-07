@@ -59,12 +59,9 @@
 }
 - (IBAction)closeButtonTapped:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:^(void){
-<<<<<<< HEAD
-=======
 		if ([_webView isLoading]) {
 				[_webView stopLoading];
 		}
->>>>>>> master
 	}];
 }
 

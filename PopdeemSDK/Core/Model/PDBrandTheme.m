@@ -7,6 +7,7 @@
 //
 
 #import "PDBrandTheme.h"
+#import "PDLogger.h"
 
 @implementation PDBrandTheme
 
@@ -17,6 +18,15 @@
 	}
 	PDLogError(@"JSONModel Error on Brand Theme: %@",err);
 	return  nil;
+}
+
+- (instancetype) initWithDictionary:(NSDictionary*)dict {
+	NSError *err;
+	if (self = [super initWithDictionary:dict error:&err]) {
+		return self;
+	}
+	PDLogError(@"JSONModel Error on Brand Theme: %@", err);
+	return nil;
 }
 
 +(JSONKeyMapper*)keyMapper {

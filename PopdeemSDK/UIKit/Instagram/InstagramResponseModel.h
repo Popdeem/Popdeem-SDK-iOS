@@ -8,10 +8,6 @@
 
 #import <JSONModel/JSONModel.h>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 @interface InstagramUserModel : JSONModel
 @property (nonatomic) NSInteger id;
 @property (nonatomic, retain) NSString *username;

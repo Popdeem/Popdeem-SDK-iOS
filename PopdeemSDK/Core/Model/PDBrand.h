@@ -28,6 +28,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PDOpeningHoursWeek.h"
+#import "PDBrandTheme.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /*!

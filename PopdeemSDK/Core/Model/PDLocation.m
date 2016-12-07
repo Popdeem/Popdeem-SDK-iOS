@@ -32,11 +32,9 @@
 		
 		self.numberOfRewards = [params[@"number_of_rewards"] integerValue];
 		
-		id brandParams = params[@"brand"];
+		NSDictionary *brandParams = params[@"brand"];
 		if (brandParams) {
-			self.brand = [[PDLocationBrandParams alloc] init];
-			self.brand.id = [brandParams[@"id"] integerValue];
-			self.brand.name = brandParams[@"name"];
+//			self.brand = [PDL]
 		}
 		
 		return self;
@@ -72,10 +70,3 @@
 
 @end
 
-@implementation PDLocationBrandParams
-
-+ (JSONKeyMapper*)keyMapper {
-	return [JSONKeyMapper mapperForSnakeCase];
-}
-
-@end

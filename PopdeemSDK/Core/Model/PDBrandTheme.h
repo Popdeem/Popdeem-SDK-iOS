@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSString *primaryTextColor;
 @property (nonatomic, strong) NSString *secondaryTextColor;
 
+- (instancetype) initWithDictionary:(NSDictionary*)dict;
+
 @end

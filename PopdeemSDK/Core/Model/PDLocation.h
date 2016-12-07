@@ -28,14 +28,10 @@
 #import <Foundation/Foundation.h>
 #import "PDCommon.h"
 #import <JSONModel/JSONModel.h>
+#import "PDLocationBrandParams.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PDLocationBrandParams : JSONModel
 
-@property (nonatomic) NSInteger *id;
-@property (nonatomic, retain) NSString *name;
-
-@end
 
 
 /**

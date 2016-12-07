@@ -61,9 +61,9 @@
       self.verifyLocation = YES;
     }
 		
-		NSDictionary *theme = params[@"theme"];
-		if (theme) {
-			
+		NSDictionary *themeDict = params[@"theme"];
+		if (themeDict) {
+			_theme = [[PDBrandTheme alloc] initWithDictionary:themeDict];
 		}
 
     [self calculateDistanceFromUser];
