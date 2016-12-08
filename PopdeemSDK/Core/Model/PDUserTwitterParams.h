@@ -28,12 +28,13 @@
 #import <Foundation/Foundation.h>
 #import "PDScores.h"
 NS_ASSUME_NONNULL_BEGIN
-@interface PDUserTwitterParams : NSObject
+@interface PDUserTwitterParams : JSONModel
 
 /**
  The Popdeem Social Account Id
  */
 @property (nonatomic) NSInteger socialAccountId;
+@property (nonatomic) BOOL isTester;
 
 /**
  The users Twitter Identifier
@@ -70,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSMutableArray *favouriteBrandIds;
 
-- (nullable PDUserTwitterParams*) initWithParams:(NSDictionary *)params;
+- (nullable instancetype) initWithDictionary:(NSDictionary *)dict;
 
 @end
 NS_ASSUME_NONNULL_END

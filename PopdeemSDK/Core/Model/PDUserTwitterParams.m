@@ -7,49 +7,30 @@
 //
 
 #import "PDUserTwitterParams.h"
+#import "PDLogger.h"
 
 @implementation PDUserTwitterParams
 
-- (nullable PDUserTwitterParams*) initWithParams:(NSDictionary *)params {
-    if (self = [super init]) {
-        NSInteger socId;
-        if ([params[@"social_account_id"] isKindOfClass:[NSString class]]) {
-            socId = [params[@"social_account_id"] integerValue];
-        } else {
-            socId = 0;
-        }
-        self.socialAccountId = socId;
-        NSString *twid = params[@"twitter_id"];
-        self.identifier  = ([twid isKindOfClass:[NSString class]]) ? twid : nil;
-        NSString *accessToken = params[@"access_token"];
-        if ([accessToken isKindOfClass:[NSString class]]) {
-            if (accessToken.length > 0) {
-                self.accessToken = accessToken;
-            } else {
-                self.accessToken = @"";
-            }
-        }
-        NSString *accessSecret = params[@"access_secret"];
-        if ([accessSecret isKindOfClass:[NSString class]]) {
-            if (accessSecret.length > 0) {
-                self.accessSecret = accessSecret;
-            } else {
-                self.accessSecret = @"";
-            }
-        }
-        long expirationTime;
-        if ([params[@"expiration_time"] isKindOfClass:[NSString class]] && [(NSString*)params[@"expiration_time"] length] > 0 ) {
-            expirationTime = [params[@"expiration_time"] longValue];
-        } else {
-            expirationTime = 0;
-        }
-        self.expirationTime = expirationTime;
-        NSString *ppurl = params[@"profile_picture_url"];
-        self.profilePictureUrl = ([ppurl isKindOfClass:[NSString class]]) ? ppurl : nil;
-//        self.scores = [[PDScores alloc] initFromAPI:params[@"score"]];
-        return self;
-    }
-    return nil;
+- (nullable instancetype) initWithDictionary:(NSDictionary *)dict {
+	NSError *err = [[NSError alloc] init];
+	if (self = [super initWithDictionary:dict error:&err]) {
+		return self;
+	}
+	PDLogError(@"JSONModel Error on Twitter Params: %@", err);
+	return nil;
 }
 
++ (JSONKeyMapper*)keyMapper {
+	return [[JSONKeyMapper alloc] initWithDictionary:@{
+																										 @"access_token": @"accessToken",
+																										 @"access_secret": @"accessSecret",
+																										 @"twitter_id": @"identifier",
+																										 @"expiration_time": @"expirationTime",
+																										 @"profile_picture_url": @"profilePictureUrl",
+																										 @"score": @"scores",
+																										 @"social_account_id": @"socialAccountId",
+																										 @"tester": @"isTester",
+																										 @"favourite_brand_ids": @"favouriteBrandIds"
+																										 }];
+}
 @end
