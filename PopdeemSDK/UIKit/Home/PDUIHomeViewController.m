@@ -47,6 +47,8 @@
 @property (nonatomic) PDUIClaimViewController *claimVC;
 @property (nonatomic) BOOL *loggingIn;
 @property (nonatomic, strong) PDLocationValidator *locationValidator;
+@property (nonatomic, retain) UIColor *startingNavColor;
+@property (nonatomic, retain) UIColor *startingNavTextColor;
 @end
 
 @implementation PDUIHomeViewController
@@ -146,6 +148,24 @@
 		}
 	}
 	
+	//Brand Specific Theme
+	if (_brand.theme != nil) {
+		_startingNavColor = self.navigationController.navigationBar.barTintColor;
+		_startingNavTextColor = self.navigationController.navigationBar.tintColor;
+		self.navigationController.navigationBar.translucent = NO;
+		[self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
+		[self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
+		[self.navigationController.navigationBar setTitleTextAttributes:@{
+																																			NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+																																			}];
+		
+		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+																																													NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+																																							 forState:UIControlStateNormal];
+	}
+	
 	if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
 		UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.tableView.frame];
 		[tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
@@ -207,6 +227,41 @@
 		[self.tableView reloadInputViews];
 	}
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME});
+	if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+		self.navigationController.navigationBar.translucent = NO;
+		[self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+		[self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+		[self.navigationController.navigationBar setTitleTextAttributes:@{
+																																			NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+																																			}];
+		
+		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+																																													NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+																																							 forState:UIControlStateNormal];
+		if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+			[self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+		}
+	}
+	
+	//Brand Specific Theme
+	if (_brand.theme != nil) {
+		_startingNavColor = self.navigationController.navigationBar.barTintColor;
+		_startingNavTextColor = self.navigationController.navigationBar.tintColor;
+		self.navigationController.navigationBar.translucent = NO;
+		[self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
+		[self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
+		[self.navigationController.navigationBar setTitleTextAttributes:@{
+																																			NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+																																			}];
+		
+		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+																																													NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+																																							 forState:UIControlStateNormal];
+	}
 }
 
 - (void) reloadAction {
@@ -234,6 +289,18 @@
 	if (_loadingView && !_loggingIn) {
 		[_loadingView hideAnimated:YES];
 	}
+	self.navigationController.navigationBar.translucent = NO;
+	[self.navigationController.navigationBar setBarTintColor:_startingNavColor];
+	[self.navigationController.navigationBar setTintColor:_startingNavTextColor];
+	[self.navigationController.navigationBar setTitleTextAttributes:@{
+																																		NSForegroundColorAttributeName : _startingNavTextColor,
+																																		NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+																																		}];
+	
+	[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+																																												NSForegroundColorAttributeName : _startingNavTextColor,
+																																												NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+																																						 forState:UIControlStateNormal];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -312,6 +379,9 @@
 			if (_model.rewards.count == 0) {
 				if (!_model.rewardsLoading) {
 					PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
+					if (_brand.theme != nil) {
+						[norw setTheme:_brand.theme];
+					}
 					[norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noRewards",@"There are no Rewards available right now. Please check back later.")];
 					return norw;
 				} else {
@@ -319,9 +389,12 @@
 				}
 			} else {
 				reward = [_model.rewards objectAtIndex:indexPath.row];
-				
 				PDUIRewardWithRulesTableViewCell *rwrcell = [self.tableView dequeueReusableCellWithIdentifier:kRewardWithRulesTableViewCell];
-				[rwrcell setupForReward:reward];
+				if (_brand.theme != nil) {
+					[rwrcell setupForReward:reward theme:_brand.theme];
+				} else {
+					[rwrcell setupForReward:reward];
+				}
 				if (rwrcell.rewardImageView.image == nil) {
 					NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
 					NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -348,6 +421,9 @@
 			if (_model.feed.count == 0) {
 				if (!_model.feedLoading) {
 					PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
+					if (_brand.theme != nil) {
+						[norw setTheme:_brand.theme];
+					}
 					[norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noFeed",@"There is nothing in the Feed right now. Please check back later.")];
 					return norw;
 				} else {
@@ -387,6 +463,9 @@
 			if (_model.wallet.count == 0) {
 				if (!_model.walletLoading) {
 					PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
+					if (_brand.theme != nil) {
+						[norw setTheme:_brand.theme];
+					}
 					[norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noWallet",@"There is nothing in your Wallet right now. Please check back later.")];
 					return norw;
 				} else {
@@ -422,7 +501,11 @@
 					return walletCell;
 				} else {
 					PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
-					[walletCell setupForReward:reward];
+					if (_brand.theme != nil) {
+						[walletCell setupForReward:reward theme:_brand.theme];
+					} else {
+						[walletCell setupForReward:reward];
+					}
 					if (walletCell.rewardImageView.image == nil) {
 						NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
 						NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -847,8 +930,6 @@
 	
 	
 }
-
-
 
 
 @end

@@ -320,6 +320,14 @@
 		[_brandNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
 		[_brandNameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
 		[_brandView addSubview:_brandNameLabel];
+		
+		//Colours for Brand
+		if (_brand.theme) {
+			[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
+			_controller.inboxButton.tintColor = PopdeemColorFromHex(_brand.theme.primaryInverseColor);
+			_controller.settingsButton.tintColor = PopdeemColorFromHex(_brand.theme.primaryInverseColor);
+			[_tableHeaderLabel setTextColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
+		}
 	}
 }
 

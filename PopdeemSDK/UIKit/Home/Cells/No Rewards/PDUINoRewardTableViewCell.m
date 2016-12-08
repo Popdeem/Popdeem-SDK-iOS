@@ -25,6 +25,10 @@
 	}
 }
 
+- (void) setTheme:(PDBrandTheme *)theme {
+	[_infoLabel setTextColor:PopdeemColorFromHex(theme.secondaryTextColor)];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }

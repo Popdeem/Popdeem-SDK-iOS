@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
+#import "PDBrandTheme.h"
 
 @interface PDUIRewardWithRulesTableViewCell : UITableViewCell
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
@@ -15,5 +16,5 @@
 
 - (NSString*) infoStringForReward:(PDReward*)reward;
 - (void) setupForReward:(PDReward*)reward;
-
+- (void) setupForReward:(PDReward *)reward theme:(PDBrandTheme*)theme;
 @end
