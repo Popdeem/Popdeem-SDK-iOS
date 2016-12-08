@@ -66,6 +66,11 @@
 			_theme = [[PDBrandTheme alloc] initWithDictionary:themeDict];
 		}
 
+		NSString *vendorSearchTerm = params[@"vendor_search_term"];
+		if (vendorSearchTerm) {
+			_vendorSearchTerm = vendorSearchTerm;
+		}
+		
     [self calculateDistanceFromUser];
     return self;
   }

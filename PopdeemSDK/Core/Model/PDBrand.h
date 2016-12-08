@@ -115,6 +115,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) PDBrandTheme *theme;
 
+@property (nonatomic, strong) NSString *vendorSearchTerm;
+
 /*!
  * @abstract Init brand from API params.
  *
