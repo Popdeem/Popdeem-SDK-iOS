@@ -30,12 +30,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PDUserFacebookParams : NSObject
+@interface PDUserFacebookParams : JSONModel
 
 /**
  The Popdeem Social Account Id
  */
 @property (nonatomic) NSInteger socialAccountId;
+@property (nonatomic) BOOL isTester;
 
 /**
  The users Facebook Identifier
@@ -76,6 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return The newly-initialized PDUserFacebookParams Object
  */
 - (nullable PDUserFacebookParams*) initWithParams:(NSDictionary*)params;
+- (instancetype) initWithDictionary:(NSDictionary *)dict;
 
 @end
 NS_ASSUME_NONNULL_END

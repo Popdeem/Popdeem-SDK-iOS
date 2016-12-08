@@ -7,6 +7,7 @@
 //
 
 #import "PDUserFacebookParams.h"
+#import "PDLogger.h"
 
 @implementation PDUserFacebookParams
 
@@ -17,33 +18,27 @@
   return nil;
 }
 
-- (nullable PDUserFacebookParams*) initWithParams:(NSDictionary *)params {
-  if (self = [super init]) {
-    NSInteger socId = [params[@"social_account_id"] integerValue];
-    self.socialAccountId = socId;
-    NSString *fbid = params[@"facebook_id"];
-    self.identifier  = ([fbid isKindOfClass:[NSString class]]) ? fbid : nil;
-    NSString *accessToken = params[@"access_token"];
-    self.accessToken = ([accessToken isKindOfClass:[NSString class]]) ? accessToken : nil;
-    long expirationTime = [params[@"expiration_time"] longValue];
-    self.expirationTime = expirationTime;
-    NSString *ppurl = params[@"profile_picture_url"];
-    self.profilePictureUrl = ([ppurl isKindOfClass:[NSString class]]) ? ppurl : nil;
-  
-    NSError *error;
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params[@"score"]
-//                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-//                                                         error:&error];
-//    
-//    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    
-//    self.scores = [[PDScores alloc] initWithJSON:jsonString];
-    if (params[@"default_privacy_setting"]) {
-      self.defaultPrivacySetting = params[@"default_privacy_setting"];
-    }
-    return self;
-  }
-  return nil;
+- (instancetype) initWithDictionary:(NSDictionary*)dict {
+	NSError *err;
+	if (self = [super initWithDictionary:dict error:&err]) {
+		return self;
+	}
+	PDLogError(@"JSONModel Error on PDUserFacebookParams: %@",err);
+	return nil;
+}
+
++ (JSONKeyMapper*)keyMapper {
+	return [[JSONKeyMapper alloc] initWithDictionary:@{
+																										 @"access_token": @"accessToken",
+																										 @"facebook_id": @"identifier",
+																										 @"expiration_time": @"expirationTime",
+																										 @"profile_picture_url": @"profilePictureUrl",
+																										 @"score": @"scores",
+																										 @"social_account_id": @"socialAccountId",
+																										 @"tester": @"isTester",
+																										 @"favourite_brand_ids": @"favouriteBrandIds",
+																										 @"default_privacy_setting": @"defaultPrivacySetting"
+																										 }];
 }
 
 @end

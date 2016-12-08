@@ -62,8 +62,10 @@ static PDUser *globalUser = nil;
   user.location = PDGeoLocationMake(loc_lat, loc_long);
   
   NSDictionary *facebookParams = params[@"facebook"];
-  user.facebookParams = [[PDUserFacebookParams alloc] initWithParams:facebookParams];
-  
+	if (facebookParams) {
+		user.facebookParams = [[PDUserFacebookParams alloc] initWithDictionary:facebookParams];
+	}
+	
   NSDictionary *twitterParams = params[@"twitter"];
   user.twitterParams = [[PDUserTwitterParams alloc] initWithParams:twitterParams];
 	
