@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PopdeemSDK.h"
+#import "PDBrandApiService.h"
 
 @interface ViewController ()
 
@@ -28,6 +29,10 @@
 
 - (IBAction)presentHere:(id)sender {
 	[PopdeemSDK presentBrandFlowInNavigationController:self.navigationController];
+	PDBrandApiService *service = [[PDBrandApiService alloc] init];
+	[service getBrandByVendorSearchTerm:@"popdeem" completion:^(PDBrand *b, NSError *error) {
+		NSLog(@"Brand Found: %@",b);
+	}];
 }
 
 

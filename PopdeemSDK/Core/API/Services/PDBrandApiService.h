@@ -7,9 +7,11 @@
 //
 
 #import "PDAPIService.h"
+#import "PDBrand.h"
 
 @interface PDBrandApiService : PDAPIService
 
 - (void) getBrandsWithCompletion:(void (^)(NSError *error))completion;
+- (void) getBrandByVendorSearchTerm:(NSString*)vendorSearchTerm completion:(void (^)(PDBrand *b, NSError *error))completion;
 
 @end
