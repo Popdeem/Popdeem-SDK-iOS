@@ -782,6 +782,9 @@
 		}];
 	} else {
 		PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+		if (_brand) {
+			claimController.brand = _brand;
+		}
 		[claimController setHomeController:self];
 		[[self navigationController] pushViewController:claimController animated:YES];
 	}
