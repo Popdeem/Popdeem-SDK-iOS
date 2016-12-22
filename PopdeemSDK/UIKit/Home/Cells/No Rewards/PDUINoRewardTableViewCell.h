@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDBrandTheme.h"
 
 @interface PDUINoRewardTableViewCell : UITableViewCell
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *infoLabel;
+@property (nonatomic, retain) PDBrandTheme *theme;
+
 - (void) setupWithMessage:(NSString*)message;
 
 @end

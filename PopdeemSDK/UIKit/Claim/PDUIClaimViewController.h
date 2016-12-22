@@ -54,6 +54,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *twitterIconView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *facebookIconView;
 
+@property (nonatomic, assign) PDBrand *brand;
+
 @property (nonatomic) UIBackgroundTaskIdentifier claimTask;
 
 @property (nonatomic, assign) PDUIHomeViewController *homeController;

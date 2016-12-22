@@ -10,6 +10,12 @@
 #import "PDTheme.h"
 #import "PDUtils.h"
 
+@interface PDUIWalletRewardTableViewCell()
+@property (nonatomic, retain) UIColor *primaryAppColor;
+@property (nonatomic, retain) UIColor *primaryFontColor;
+@property (nonatomic, retain) UIColor *secondaryFontColor;
+@end
+
 @implementation PDUIWalletRewardTableViewCell
 
 - (void)awakeFromNib {
@@ -32,7 +38,24 @@
 	// Configure the view for the selected state
 }
 
+- (void) setupForReward:(PDReward *)reward theme:(PDBrandTheme*)theme {
+	_brandTheme = theme;
+	[self setupForReward:reward];
+}
+
 - (void) setupForReward:(PDReward*)reward {
+	if (_brandTheme) {
+		_primaryAppColor = PopdeemColorFromHex(_brandTheme.primaryAppColor);
+		_primaryFontColor = PopdeemColorFromHex(_brandTheme.primaryTextColor);
+		_secondaryFontColor = PopdeemColorFromHex(_brandTheme.secondaryTextColor);
+	} else {
+		_primaryAppColor = PopdeemColor(PDThemeColorPrimaryApp);
+		_primaryFontColor = PopdeemColor(PDThemeColorPrimaryFont);
+		_secondaryFontColor = PopdeemColor(PDThemeColorSecondaryFont);
+	}
+	
+	[_mainLabel setTextColor:_primaryFontColor];
+	
 	self.clipsToBounds = YES;
 	if (reward.coverImageUrl) {
 		if ([reward.coverImageUrl rangeOfString:@"reward_default"].location != NSNotFound) {
@@ -73,7 +96,7 @@
 			initWithString:[NSString stringWithFormat:@"%@ \n",reward.rewardDescription]
 				attributes:@{
 						NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
-						NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+						NSForegroundColorAttributeName : _primaryFontColor
 				}];
 	
 	[labelAttString appendAttributedString:descriptionString];
@@ -82,7 +105,7 @@
 			initWithString:labelLineTwo
 				attributes:@{
 						NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-						NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp)
+						NSForegroundColorAttributeName : _primaryAppColor
 				}];
 	
 	[labelAttString appendAttributedString:infoString];
@@ -104,7 +127,7 @@
 																									initWithString:@"Sweepstake Entry\n\n"
 																									attributes:@{
 																															 NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
-																															 NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+																															 NSForegroundColorAttributeName : _primaryFontColor
 																															 }];
 	[instructionsAttString appendAttributedString:titleString];
 	
@@ -119,7 +142,7 @@
 																					 initWithString:instStr
 																					 attributes:@{
 																												NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-																												NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+																												NSForegroundColorAttributeName : _primaryFontColor
 																												}];
 	[instructionsAttString appendAttributedString:instructionsInfoString];
 	

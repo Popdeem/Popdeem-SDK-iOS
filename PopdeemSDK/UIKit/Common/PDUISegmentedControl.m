@@ -19,7 +19,7 @@
     
     //Remove Background Selection
     [self setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    UIImage *selectedImage = [self selectedImage];
+		UIImage *selectedImage = [self selectedImage:PopdeemColor(PDThemeColorPrimaryApp)];
     [self setBackgroundImage:selectedImage forState:UIControlStateSelected
                                              barMetrics:UIBarMetricsDefault];
     
@@ -40,10 +40,19 @@
   return nil;
 }
 
+- (void) applyTheme:(PDBrandTheme*)theme {
+	UIImage *selectedImage = [self selectedImage:PopdeemColorFromHex(theme.primaryAppColor)];
+	[self setBackgroundImage:selectedImage forState:UIControlStateSelected
+								barMetrics:UIBarMetricsDefault];
+	
+	[self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)} forState:UIControlStateNormal];
+	[self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)} forState:UIControlStateSelected];
+}
+
 //640*80 - 6
 
-- (UIImage*) selectedImage {
-  UIImage *selectedImage = [self imageFromColor:PopdeemColor(PDThemeColorPrimaryApp) rect:CGRectMake(0, 0, 2, 6)];
+- (UIImage*) selectedImage:(UIColor*)color {
+  UIImage *selectedImage = [self imageFromColor:color rect:CGRectMake(0, 0, 2, 6)];
   UIImage *fullImage = [self imageFromColor:[UIColor clearColor] rect:CGRectMake(0, 0, 2, 80)];
   CGSize newSize = CGSizeMake(2, 80);
   UIGraphicsBeginImageContext(newSize);

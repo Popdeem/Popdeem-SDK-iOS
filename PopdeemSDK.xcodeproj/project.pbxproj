@@ -216,6 +216,7 @@
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
 		398F0B8C1DEC8C6F00098F1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */; };
+		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
 		39A6703E1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */; };
 		39A670401D2A6D14001BB6D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39A6703F1D2A6D14001BB6D0 /* Localizable.strings */; };
 		39A7771E1C0756CD004A4E92 /* pduikit_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7770F1C0756CD004A4E92 /* pduikit_camera.png */; };
@@ -610,6 +611,8 @@
 		398E4B7A1C03766500A68529 /* PDUISocialLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialLoginViewModel.h; path = Login/PDUISocialLoginViewModel.h; sourceTree = "<group>"; };
 		398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISocialLoginViewModel.m; path = Login/PDUISocialLoginViewModel.m; sourceTree = "<group>"; };
 		398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		399367261E0BE587003B2991 /* PDUIInboxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIInboxButton.h; sourceTree = "<group>"; };
+		399367271E0BE587003B2991 /* PDUIInboxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIInboxButton.m; sourceTree = "<group>"; };
 		39A6703C1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramLoginViewModel.h; path = Instagram/Login/PDUIInstagramLoginViewModel.h; sourceTree = "<group>"; };
 		39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramLoginViewModel.m; path = Instagram/Login/PDUIInstagramLoginViewModel.m; sourceTree = "<group>"; };
 		39A6703F1D2A6D14001BB6D0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -1927,6 +1930,8 @@
 				39A989831C3BD841002AF910 /* Segmented Control */,
 				BC67F2F27DD82B87CDC1C367 /* Loading */,
 				BC67F73254683A3E6D02541E /* Theme */,
+				399367261E0BE587003B2991 /* PDUIInboxButton.h */,
+				399367271E0BE587003B2991 /* PDUIInboxButton.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2811,6 +2816,7 @@
 				397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */,
 				39ABA6581C47A9030057088E /* PDUIWalletCache.m in Sources */,
 				392B559D1DAF9D130012350A /* PDUILogoutTableViewCell.m in Sources */,
+				399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */,
 				3965AF471D4110560000EB16 /* PDUIBrandSearchTableViewCell.m in Sources */,
 				394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */,
 				39602FBF1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m in Sources */,

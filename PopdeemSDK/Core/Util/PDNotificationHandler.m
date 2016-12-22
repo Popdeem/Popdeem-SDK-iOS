@@ -10,6 +10,7 @@
 #import "PDAPIClient.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDUserAPIService.h"
 
 @interface PDNotificationHandler()
 @property (nonatomic) BOOL shouldGoToUrl;
@@ -45,6 +46,12 @@
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   [[PDAPIClient sharedInstance] setDeviceToken:deviceToken.description];
+	PDUserAPIService *service = [[PDUserAPIService alloc] init];
+	[service updateUserWithCompletion:^(PDUser *user, NSError *error) {
+		if (error) {
+			PDLogError(@"Error User Update: %@",error);
+		}
+	}];
 	AbraOnboardUser();
 }
 

@@ -10,6 +10,16 @@
 #import "PDTheme.h"
 #import "PDUtils.h"
 #import "PDUser.h"
+#import "PDBrandTheme.h"
+
+
+@interface PDUIRewardWithRulesTableViewCell()
+@property (nonatomic, retain) UIColor *primaryAppColor;
+@property (nonatomic, retain) UIColor *primaryFontColor;
+@property (nonatomic, retain) UIColor *secondaryFontColor;
+@property (nonatomic, retain) UIColor *cellBackgroundColor;
+@property (nonatomic, assign) PDBrandTheme *brandTheme;
+@end
 
 @implementation PDUIRewardWithRulesTableViewCell
 
@@ -29,7 +39,22 @@
 	}
 }
 
+- (void) setupForReward:(PDReward *)reward theme:(PDBrandTheme*)theme {
+	_brandTheme = theme;
+	[self setupForReward:reward];
+}
+
 - (void) setupForReward:(PDReward*)reward {
+	
+	if (_brandTheme) {
+		_primaryAppColor = PopdeemColorFromHex(_brandTheme.primaryAppColor);
+		_primaryFontColor = PopdeemColorFromHex(_brandTheme.primaryTextColor);
+		_secondaryFontColor = PopdeemColorFromHex(_brandTheme.secondaryTextColor);
+	} else {
+		_primaryAppColor = PopdeemColor(PDThemeColorPrimaryApp);
+		_primaryFontColor = PopdeemColor(PDThemeColorPrimaryFont);
+		_secondaryFontColor = PopdeemColor(PDThemeColorSecondaryFont);
+	}
 	
 	if (reward.coverImageUrl) {
 		if ([reward.coverImageUrl rangeOfString:@"reward_default"].location != NSNotFound) {
@@ -64,7 +89,7 @@
 			initWithString:[NSString stringWithFormat:@"%@ \n",description]
 				attributes:@{
 						NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
-						NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+						NSForegroundColorAttributeName : _primaryFontColor
 				}];
 	
 	[labelAttString appendAttributedString:descriptionString];
@@ -74,7 +99,7 @@
 				initWithString:[NSString stringWithFormat:@"%@ \n",rules]
 					attributes:@{
 							NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-							NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSecondaryFont)
+							NSForegroundColorAttributeName : _secondaryFontColor
 					}];
 		[labelAttString appendAttributedString:rulesString];
 	}
@@ -82,7 +107,7 @@
 	NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
 			initWithString:info attributes:@{
 					NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-					NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp)
+					NSForegroundColorAttributeName : _primaryAppColor
 			}];
 	
 	[labelAttString appendAttributedString:infoString];
