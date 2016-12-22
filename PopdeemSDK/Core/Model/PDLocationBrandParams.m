@@ -7,6 +7,7 @@
 //
 
 #import "PDLocationBrandParams.h"
+#import "PDLogger.h"
 
 @implementation PDLocationBrandParams
 - (instancetype) initWithDictionary:(NSDictionary*)dict {

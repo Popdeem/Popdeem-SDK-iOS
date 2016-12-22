@@ -9,6 +9,7 @@
 #import "PDUIHomeViewModel.h"
 #import "PDAPIClient.h"
 #import "PDTheme.h"
+#import "PDUIInboxButton.h"
 
 @implementation PDUIHomeViewModel
 
@@ -220,13 +221,12 @@
 	
 	
 	CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
-	_controller.inboxButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	[_controller.inboxButton setBackgroundColor:[UIColor clearColor]];
-	[_controller.inboxButton setFrame:inboxButtonFrame];
-	_controller.inboxButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
-	[_controller.inboxButton setImage:PopdeemImage(@"pduikit_mail") forState:UIControlStateNormal];
+	_controller.inboxButton = [[PDUIInboxButton alloc] initWithFrame:inboxButtonFrame];
+	
 	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
 	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
+	
+	
 	
 	CGRect settingsButtonFrame = CGRectMake(5, 5, 20, 20);
 	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];

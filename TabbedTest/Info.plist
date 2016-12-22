@@ -30,11 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
-	<string>2403</string>
-=======
-	<string>2397</string>
->>>>>>> master
+	<string>2404</string>
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>

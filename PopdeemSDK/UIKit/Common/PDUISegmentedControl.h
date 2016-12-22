@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDBrandTheme.h"
 
 @interface PDUISegmentedControl : UISegmentedControl
 
+- (instancetype) initWithItems:(NSArray *)items color:(UIColor*)color;
+- (void) applyTheme:(PDBrandTheme*)theme;
 
 @end

@@ -189,6 +189,9 @@
 	
 	if (!_segmentedControl) {
 		_segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"Wallet"]];
+		if (_brand.theme) {
+			[_segmentedControl applyTheme:_brand.theme];
+		}
 		_segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
 		_segmentedControl.clipsToBounds = YES;
 		
@@ -289,18 +292,18 @@
 	if (_loadingView && !_loggingIn) {
 		[_loadingView hideAnimated:YES];
 	}
-	self.navigationController.navigationBar.translucent = NO;
-	[self.navigationController.navigationBar setBarTintColor:_startingNavColor];
-	[self.navigationController.navigationBar setTintColor:_startingNavTextColor];
-	[self.navigationController.navigationBar setTitleTextAttributes:@{
-																																		NSForegroundColorAttributeName : _startingNavTextColor,
-																																		NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-																																		}];
-	
-	[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-																																												NSForegroundColorAttributeName : _startingNavTextColor,
-																																												NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-																																						 forState:UIControlStateNormal];
+//	self.navigationController.navigationBar.translucent = NO;
+//	[self.navigationController.navigationBar setBarTintColor:_startingNavColor];
+//	[self.navigationController.navigationBar setTintColor:_startingNavTextColor];
+//	[self.navigationController.navigationBar setTitleTextAttributes:@{
+//																																		NSForegroundColorAttributeName : _startingNavTextColor,
+//																																		NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+//																																		}];
+//	
+//	[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+//																																												NSForegroundColorAttributeName : _startingNavTextColor,
+//																																												NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+//																																						 forState:UIControlStateNormal];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
