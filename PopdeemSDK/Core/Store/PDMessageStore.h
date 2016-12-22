@@ -15,4 +15,5 @@
 + (void) add:(PDMessage*)message;
 + (NSArray*) orderedByDate;
 + (void) removeAllObjects;
++ (NSUInteger) unreadCount;
 @end

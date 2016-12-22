@@ -1,34 +1,25 @@
 //
-//  InboxButton.m
+//  UIButton+MessageButtonFactory.m
 //  PopdeemSDK
 //
 //  Created by Niall Quinn on 22/12/2016.
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
 
-#import "PDUIInboxButton.h"
-#import "PDTheme.h"
-#import "PDConstants.h"
-#import "PDMessageStore.h"
+#import "UIButton+MessageButtonFactory.h"
 
-@implementation PDUIInboxButton
+@implementation UIButton (MessageButtonFactory)
 
-- (instancetype) initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
-		[self setup];
-		return self;
-	}
-	return nil;
-}
-
-- (void) setup {
-	self.backgroundColor = [UIColor clearColor];
-	self.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
-	[self setImage:PopdeemImage(@"pduikit_mail") forState:UIControlStateNormal];
++ (UIButton) inboxButtonWithFrame:(CGRect)frame {
+	UIButton *theButton = [UIButton buttonWithType:UIButtonTypeSystem];
+	[theButton setFrame:frame];
+	theButton.backgroundColor = [UIColor clearColor];
+	theButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	[theButton setImage:PopdeemImage(@"pduikit_mail") forState:UIControlStateNormal];
 	if ([PDMessageStore unreadCount] > 0) {
 		NSUInteger unread = [PDMessageStore unreadCount];
-		float width = self.frame.size.width;
-		float height = self.frame.size.height;
+		float width = theButton.frame.size.width;
+		float height = theButton.frame.size.height;
 		
 		CGRect topRight = CGRectMake(width-9, -4, 13, 13);
 		UILabel *lbl_card_count = [[UILabel alloc]initWithFrame:topRight];
@@ -42,9 +33,9 @@
 		lbl_card_count.layer.shadowColor = [[UIColor clearColor] CGColor];
 		lbl_card_count.layer.shadowOffset = CGSizeMake(0.0, 0.0);
 		lbl_card_count.layer.shadowOpacity = 0.0;
-		lbl_card_count.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:45.0/255.0 blue:143.0/255.0 alpha:1.0];
-		lbl_card_count.font = [UIFont fontWithName:@"ArialMT" size:9];
-		[self addSubview:lbl_card_count];
+		lbl_card_count.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:0 blue:0 alpha:1.0];
+		lbl_card_count.font = [UIFont systemFontOfSize:9];
+		[theButton addSubview:lbl_card_count];
 	}
 }
 

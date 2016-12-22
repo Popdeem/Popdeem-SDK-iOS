@@ -10,6 +10,7 @@
 #import "PDAPIClient.h"
 #import "PDTheme.h"
 #import "PDUIInboxButton.h"
+#import "PDMessageAPIService.h"
 
 @implementation PDUIHomeViewModel
 
@@ -33,6 +34,7 @@
 	[self fetchRewards];
 	[self fetchFeed];
 	[self fetchWallet];
+	[self fetchMessages];
 	
 	_controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
 	[_controller.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
@@ -88,6 +90,29 @@
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
+}
+
+- (void) fetchMessages {
+	PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
+	__weak typeof(self) weakSelf = self;
+	[service fetchMessagesCompletion:^(NSArray *messages, NSError *error){
+		if ([weakSelf.controller.refreshControl isRefreshing]) {
+			[weakSelf.controller.refreshControl endRefreshing];
+		}
+		if (error) {
+			PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
+		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[weakSelf refreshMessageIcon];
+		});
+	}];
+}
+
+- (void) refreshMessageIcon {
+	[_controller.inboxButton removeFromSuperview];
+	_controller.inboxButton = [[PDUIInboxButton alloc] initWithFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
+	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
+	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
 }
 
 - (void) brandImageDidDownload {

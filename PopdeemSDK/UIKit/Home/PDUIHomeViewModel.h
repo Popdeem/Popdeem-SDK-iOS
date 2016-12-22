@@ -50,5 +50,7 @@
 - (void) setupView;
 - (void) claimNoAction:(PDReward*)reward closestLocation:(PDLocation*)loc;
 - (void) updateSubViews;
+- (void) fetchMessages;
+- (void) refreshMessageIcon;
 
 @end

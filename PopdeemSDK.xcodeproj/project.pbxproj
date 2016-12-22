@@ -217,6 +217,7 @@
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
 		398F0B8C1DEC8C6F00098F1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */; };
 		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
+		3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */; };
 		39A6703E1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */; };
 		39A670401D2A6D14001BB6D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39A6703F1D2A6D14001BB6D0 /* Localizable.strings */; };
 		39A7771E1C0756CD004A4E92 /* pduikit_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7770F1C0756CD004A4E92 /* pduikit_camera.png */; };
@@ -613,6 +614,8 @@
 		398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		399367261E0BE587003B2991 /* PDUIInboxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIInboxButton.h; sourceTree = "<group>"; };
 		399367271E0BE587003B2991 /* PDUIInboxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIInboxButton.m; sourceTree = "<group>"; };
+		399367291E0BF023003B2991 /* UIButton+MessageButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MessageButtonFactory.h"; sourceTree = "<group>"; };
+		3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MessageButtonFactory.m"; sourceTree = "<group>"; };
 		39A6703C1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramLoginViewModel.h; path = Instagram/Login/PDUIInstagramLoginViewModel.h; sourceTree = "<group>"; };
 		39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramLoginViewModel.m; path = Instagram/Login/PDUIInstagramLoginViewModel.m; sourceTree = "<group>"; };
 		39A6703F1D2A6D14001BB6D0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -1932,6 +1935,8 @@
 				BC67F73254683A3E6D02541E /* Theme */,
 				399367261E0BE587003B2991 /* PDUIInboxButton.h */,
 				399367271E0BE587003B2991 /* PDUIInboxButton.m */,
+				399367291E0BF023003B2991 /* UIButton+MessageButtonFactory.h */,
+				3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2883,6 +2888,7 @@
 				396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
+				3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */,
 				3980A7051D36465100D5F179 /* PlaceholderTableViewCell.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				390B4FCB1DF8607F00E692D4 /* PDBrandTheme.m in Sources */,

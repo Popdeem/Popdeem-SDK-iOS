@@ -43,4 +43,14 @@
   [[PDMessageStore store] removeAllObjects];
 }
 
++ (NSUInteger) unreadCount {
+	NSUInteger count = 0;
+	for (PDMessage *message in [[PDMessageStore store] allValues]) {
+		if (!message.read) {
+			count += 1;
+		}
+	}
+	return count;
+}
+
 @end

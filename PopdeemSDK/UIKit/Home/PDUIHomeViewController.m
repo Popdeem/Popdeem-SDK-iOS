@@ -27,6 +27,7 @@
 #import "PDUIFBLoginWithWritePermsViewController.h"
 #import "PDUINoRewardTableViewCell.h"
 #import "PDUISettingsViewController.h"
+#import "PDUIInboxButton.h"
 
 
 #define kPlaceholderCell @"PlaceholderCell"
@@ -185,6 +186,7 @@
 		[self.model fetchRewards];
 		[self.model fetchFeed];
 		[self.model fetchWallet];
+		[self.model fetchMessages];
 	});
 	
 	if (!_segmentedControl) {
@@ -265,6 +267,10 @@
 																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
 																																							 forState:UIControlStateNormal];
 	}
+	
+	//Refresh inboxButton
+	[_model refreshMessageIcon];
+	
 }
 
 - (void) reloadAction {
