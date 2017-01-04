@@ -11,6 +11,7 @@
 #import "PDTheme.h"
 #import "PDUIInboxButton.h"
 #import "PDMessageAPIService.h"
+#import "UIButton+MessageButtonFactory.h"
 
 @implementation PDUIHomeViewModel
 
@@ -34,7 +35,7 @@
 	[self fetchRewards];
 	[self fetchFeed];
 	[self fetchWallet];
-	[self fetchMessages];
+	[self fetchInbox];
 	
 	_controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
 	[_controller.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
@@ -92,7 +93,7 @@
 	}];
 }
 
-- (void) fetchMessages {
+- (void) fetchInbox {
 	PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
 	__weak typeof(self) weakSelf = self;
 	[service fetchMessagesCompletion:^(NSArray *messages, NSError *error){
@@ -110,9 +111,10 @@
 
 - (void) refreshMessageIcon {
 	[_controller.inboxButton removeFromSuperview];
-	_controller.inboxButton = [[PDUIInboxButton alloc] initWithFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
+	_controller.inboxButton = [UIButton inboxButtonWithFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
 	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
 	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
+	[_controller.view setNeedsDisplay];
 }
 
 - (void) brandImageDidDownload {
@@ -245,8 +247,7 @@
 	[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	
 	
-	CGRect inboxButtonFrame = CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20);
-	_controller.inboxButton = [[PDUIInboxButton alloc] initWithFrame:inboxButtonFrame];
+	[self refreshMessageIcon];
 	
 	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
 	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
@@ -419,5 +420,8 @@
 																		}];
 }
 
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

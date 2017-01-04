@@ -405,7 +405,7 @@
 	
 	if (_reward.action == PDRewardActionPhoto && _image == nil) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
-																										message:@"A photo is required for this action. Please add a photo"
+																										message:@"A photo is required for this action. Please add a photo."
 																									 delegate:self
 																					cancelButtonTitle:@"OK"
 																					otherButtonTitles:nil];
@@ -519,7 +519,7 @@
 - (void) validateInstagramOptionsAndClaim {
 	if (!_image) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
-																										message:@"A photo is required for this action. Please add a photo"
+																										message:@"A photo is required for this action. Please add a photo."
 																									 delegate:self
 																					cancelButtonTitle:@"OK"
 																					otherButtonTitles:nil];

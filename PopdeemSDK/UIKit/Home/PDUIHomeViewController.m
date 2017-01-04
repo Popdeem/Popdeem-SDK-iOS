@@ -121,6 +121,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postVerified) name:InstagramVerifySuccessFromWallet object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade:) name:InstagramPostMade object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:NotificationReceived object:nil];
 	[self registerNibs];
 	
 	[super viewDidLoad];
@@ -186,7 +187,7 @@
 		[self.model fetchRewards];
 		[self.model fetchFeed];
 		[self.model fetchWallet];
-		[self.model fetchMessages];
+		[self.model fetchInbox];
 	});
 	
 	if (!_segmentedControl) {

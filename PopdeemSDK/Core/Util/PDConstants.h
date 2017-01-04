@@ -67,6 +67,7 @@ extern NSString *const FacebookPublishFailure;
 extern NSString *const FacebookLoginSuccess;
 extern NSString *const FacebookLoginFailure;
 extern NSString *const InstagramPostMade;
+extern NSString *const NotificationReceived;
     //
 //End NSNotificationCenter Strings
 //

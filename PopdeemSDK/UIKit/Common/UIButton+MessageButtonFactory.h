@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIButton (MessageButtonFactory)
-+ (UIButton) inboxButtonWithFrame:(CGRect)frame;
++ (UIButton*) inboxButtonWithFrame:(CGRect)frame;
 @end

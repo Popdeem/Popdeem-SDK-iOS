@@ -166,14 +166,7 @@
   if (NSClassFromString(@"PopdeemUIKItCore")){
     
   }
-  PDNotificationHandler *handler = [PDNotificationHandler sharedInstance];
-  [handler showRemoteNotification:userInfo completion:^(BOOL success){
-    
-  }];
-  PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
-  [service markMessageAsRead:[userInfo[@"message_id"] integerValue] completion:^(NSError *error){
-    
-  }];
+  [[NSNotificationCenter defaultCenter] postNotificationName:NotificationReceived object:nil];
 }
 
 + (BOOL) canOpenUrl:(NSURL*)url	

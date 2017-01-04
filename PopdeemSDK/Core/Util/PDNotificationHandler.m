@@ -11,6 +11,7 @@
 #import "PDTheme.h"
 #import "PDUtils.h"
 #import "PDUserAPIService.h"
+#import "PDConstants.h"
 
 @interface PDNotificationHandler()
 @property (nonatomic) BOOL shouldGoToUrl;
@@ -62,67 +63,68 @@
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion {
   _completionBlock = completion;
   
-  NSString *imageUrl = [userInfo objectForKey:@"image_url"];
-  UIImage *image;
-  if ([imageUrl isKindOfClass:[NSNull class]]) {
-		image = PopdeemImage(@"popdeem.images.defaultItemImage");
-  } else {
-    imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"popdeem-dev" withString:@"popdeem"];
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
-    image = [UIImage imageWithData:imageData];
-  }
-  
-  _alertView = [[PDSDKCustomIOS7AlertView alloc] init];
-  
-  UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 180)];
-  
-  UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, contentView.frame.size.width, 25)];
-  [header setTextAlignment:NSTextAlignmentCenter];
-  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
-    [header setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-  } else {
-    [header setFont:[UIFont systemFontOfSize:16]];
-  }
-  [header setText:@"New Message"];
-  [header setTextColor:[UIColor blackColor]];
-  [contentView addSubview:header];
-  
-  UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-25,35, 50, 50)];
-  imageView.contentMode = UIViewContentModeScaleAspectFill;
-  imageView.layer.cornerRadius = 5.0;
-  imageView.layer.masksToBounds = YES;
-  [imageView setImage:image];
-  
-  [contentView addSubview:imageView];
-  
-  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, contentView.frame.size.width, 25)];
-  [title setTextAlignment:NSTextAlignmentCenter];
-  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
-    [title setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-  } else {
-    [title setFont:[UIFont systemFontOfSize:16]];
-  }
-  [title setText:[userInfo objectForKey:@"body"]];
-  [title setTextColor:[UIColor blackColor]];
-  [contentView addSubview:title];
-  
-  UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(10, 115, contentView.frame.size.width-20, 55)];
-  message.lineBreakMode = NSLineBreakByWordWrapping;
-  message.numberOfLines = 4;
-  [message setTextAlignment:NSTextAlignmentCenter];
-//  [message setFont:PopdeemFont(@"popdeem.messagePopup.font", 12)];
-  [message setText:[userInfo objectForKey:@"content"]];
-  [message setTextColor:[UIColor darkGrayColor]];
-  [contentView addSubview:message];
-  
-  [_alertView setContainerView:contentView];
-  if ([userInfo objectForKey:@"target_url"]) {
-    [self presentUrlAlert:_alertView url:[userInfo objectForKey:@"target_url"]];
-  } else if ([userInfo objectForKey:@"deep_link"]) {
-    [self presentDeepLinkAlert:_alertView deepLink:[userInfo objectForKey:@"deep_link"]];
-  } else {
-    [self presentAppAlert:_alertView];
-  }
+//  NSString *imageUrl = [userInfo objectForKey:@"image_url"];
+//  UIImage *image;
+//  if ([imageUrl isKindOfClass:[NSNull class]]) {
+//		image = PopdeemImage(@"popdeem.images.defaultItemImage");
+//  } else {
+//    imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"popdeem-dev" withString:@"popdeem"];
+//    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
+//    image = [UIImage imageWithData:imageData];
+//  }
+//  
+//  _alertView = [[PDSDKCustomIOS7AlertView alloc] init];
+//  
+//  UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 180)];
+//  
+//  UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, contentView.frame.size.width, 25)];
+//  [header setTextAlignment:NSTextAlignmentCenter];
+//  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
+//    [header setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+//  } else {
+//    [header setFont:[UIFont systemFontOfSize:16]];
+//  }
+//  [header setText:@"New Message"];
+//  [header setTextColor:[UIColor blackColor]];
+//  [contentView addSubview:header];
+//  
+//  UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-25,35, 50, 50)];
+//  imageView.contentMode = UIViewContentModeScaleAspectFill;
+//  imageView.layer.cornerRadius = 5.0;
+//  imageView.layer.masksToBounds = YES;
+//  [imageView setImage:image];
+//  
+//  [contentView addSubview:imageView];
+//  
+//  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, contentView.frame.size.width, 25)];
+//  [title setTextAlignment:NSTextAlignmentCenter];
+//  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
+//    [title setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+//  } else {
+//    [title setFont:[UIFont systemFontOfSize:16]];
+//  }
+//  [title setText:[userInfo objectForKey:@"body"]];
+//  [title setTextColor:[UIColor blackColor]];
+//  [contentView addSubview:title];
+//  
+//  UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(10, 115, contentView.frame.size.width-20, 55)];
+//  message.lineBreakMode = NSLineBreakByWordWrapping;
+//  message.numberOfLines = 4;
+//  [message setTextAlignment:NSTextAlignmentCenter];
+////  [message setFont:PopdeemFont(@"popdeem.messagePopup.font", 12)];
+//  [message setText:[userInfo objectForKey:@"content"]];
+//  [message setTextColor:[UIColor darkGrayColor]];
+//  [contentView addSubview:message];
+//  
+//  [_alertView setContainerView:contentView];
+//  if ([userInfo objectForKey:@"target_url"]) {
+//    [self presentUrlAlert:_alertView url:[userInfo objectForKey:@"target_url"]];
+//  } else if ([userInfo objectForKey:@"deep_link"]) {
+//    [self presentDeepLinkAlert:_alertView deepLink:[userInfo objectForKey:@"deep_link"]];
+//  } else {
+//    [self presentAppAlert:_alertView];
+//  }
+	
 }
 
 - (void) presentUrlAlert:(PDSDKCustomIOS7AlertView*)alertView url:(NSString*)url {
