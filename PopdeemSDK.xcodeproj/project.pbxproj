@@ -83,121 +83,6 @@
 		3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */; };
 		397142331D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142311D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m */; };
 		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
-		39735ADC1D23C7490008301E /* PopdeemSDKCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 39735ADB1D23C7490008301E /* PopdeemSDKCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735AE21D23C7720008301E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE11D23C7720008301E /* CoreLocation.framework */; };
-		39735AE41D23C7840008301E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE31D23C7840008301E /* Security.framework */; };
-		39735AE61D23C7890008301E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE51D23C7890008301E /* Social.framework */; };
-		39735AE81D23C7950008301E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735AE71D23C7950008301E /* SystemConfiguration.framework */; };
-		39735AE91D23C8550008301E /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */; };
-		39735AEA1D23C8550008301E /* UIColor+ColorOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */; };
-		39735AEB1D23C8550008301E /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
-		39735AEC1D23C8550008301E /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
-		39735AED1D23C8550008301E /* PDRewardStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FF1C036304001DA473 /* PDRewardStore.m */; };
-		39735AEE1D23C8550008301E /* PDWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA5011C036304001DA473 /* PDWallet.m */; };
-		39735AEF1D23C8550008301E /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
-		39735AF01D23C8550008301E /* PDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0259BE1A6F5B3827F5D /* PDUtils.m */; };
-		39735AF11D23C8550008301E /* PDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDF77E9C2BC42F475282 /* PDConstants.m */; };
-		39735AF21D23C8550008301E /* PDGeolocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEDA56C9ACABEF53A08A /* PDGeolocationManager.m */; };
-		39735AF31D23C8550008301E /* PDSocialMediaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEA55D8643F97E44A4AD /* PDSocialMediaManager.m */; };
-		39735AF41D23C8550008301E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
-		39735AF51D23C8550008301E /* PDSDKCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */; };
-		39735AF61D23C8550008301E /* PDLocationValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E3071C6DEA51000120D4 /* PDLocationValidator.m */; };
-		39735AF71D23C8550008301E /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
-		39735AF81D23C8550008301E /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
-		39735AF91D23C8550008301E /* PDBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F09D8703806E4EB93264 /* PDBrand.m */; };
-		39735AFA1D23C8550008301E /* PDFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FFE3DB5E8203430170C6 /* PDFeeds.m */; };
-		39735AFB1D23C8550008301E /* PDReward.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB3FE741B22C74D4A257 /* PDReward.m */; };
-		39735AFC1D23C8550008301E /* PDScores.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB072FF7574FC00933C0 /* PDScores.m */; };
-		39735AFD1D23C8550008301E /* PDFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FE5072EA22D083C45380 /* PDFeedItem.m */; };
-		39735AFE1D23C8550008301E /* PDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F866213BA9B492FB005B /* PDLocation.m */; };
-		39735AFF1D23C8550008301E /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
-		39735B001D23C8550008301E /* PDReferral.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FB138AFDB8475775021B /* PDReferral.m */; };
-		39735B011D23C8550008301E /* PDURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDA747BB4787ACBCC9A9 /* PDURLSession.m */; };
-		39735B021D23C8550008301E /* PDUser+Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F89FF91371885F0B43F6 /* PDUser+Facebook.m */; };
-		39735B031D23C8550008301E /* PDOpeningHoursDay.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F48B372E10AF910E9DF7 /* PDOpeningHoursDay.m */; };
-		39735B041D23C8550008301E /* PDOpeningHoursWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6C0C7E739CB86F6515 /* PDOpeningHoursWeek.m */; };
-		39735B051D23C8550008301E /* PDSocialMediaFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F98E0D4534F9808FA7BD /* PDSocialMediaFriend.m */; };
-		39735B061D23C8550008301E /* PDUserTwitterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6499A11C2A5AB3AC2AE /* PDUserTwitterParams.m */; };
-		39735B071D23C8550008301E /* PDUserInstagramParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFEB1D17E7150045F5F3 /* PDUserInstagramParams.m */; };
-		39735B081D23C8550008301E /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
-		39735B091D23C8550008301E /* PDRewardCustomAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */; };
-		39735B0A1D23C8550008301E /* PDInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */; };
-		39735B0B1D23C8550008301E /* PDInstagramAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894771D1AC04400BCE17E /* PDInstagramAPIService.m */; };
-		39735B0C1D23C8550008301E /* PDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */; };
-		39735B0D1D23C8550008301E /* PDFeedAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FD6E966611691DB623D7 /* PDFeedAPIService.m */; };
-		39735B0E1D23C8550008301E /* PDUserAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FBBA773A19C55FF08C6C /* PDUserAPIService.m */; };
-		39735B0F1D23C8550008301E /* PDBrandApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FF0E6854328471162315 /* PDBrandApiService.m */; };
-		39735B101D23C8550008301E /* PDRewardAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F27493A67F748B19C2F6 /* PDRewardAPIService.m */; };
-		39735B111D23C8550008301E /* PDSocialAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F78F33CE8F9134D02ABC /* PDSocialAPIService.m */; };
-		39735B121D23C8550008301E /* PDWalletAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FEC0CFB9324C3DE2AAA0 /* PDWalletAPIService.m */; };
-		39735B131D23C8550008301E /* PDLocationAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F72645898839719EF769 /* PDLocationAPIService.m */; };
-		39735B141D23C8550008301E /* PDReferralAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F4F1791BAA97309411E8 /* PDReferralAPIService.m */; };
-		39735B151D23C8550008301E /* PDRewardActionAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65791336AC729A1FB3D /* PDRewardActionAPIService.m */; };
-		39735B161D23C8550008301E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
-		39735B171D23C8550008301E /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
-		39735B181D23C8550008301E /* PDAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F65BF774ACE4D6E2CACA /* PDAPIClient.m */; };
-		39735B191D23C8550008301E /* PDNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FA50A957A3764748EF64 /* PDNetworkError.m */; };
-		39735B1A1D23C8550008301E /* NSURLSession+Popdeem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F0521517D04945EBCFDE /* NSURLSession+Popdeem.m */; };
-		39735B1B1D23C85E0008301E /* PDNetworkError.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FBFC43B1F1FFB9F13D2A /* PDNetworkError.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B1C1D23C85E0008301E /* NSURLSession+Popdeem.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4BB97818CD3B43E3A12 /* NSURLSession+Popdeem.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B1D1D23C8640008301E /* PDAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FC8425A034478627B82B /* PDAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B1E1D23C8700008301E /* PDAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F7DF66DB5FA8514BC364 /* PDAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B1F1D23C8700008301E /* PDFeedAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4C01336D4CAE7FF60FB /* PDFeedAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B201D23C8700008301E /* PDUserAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4A09A24DC6F9C77D440 /* PDUserAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B211D23C8700008301E /* PDBrandApiService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4AA7FCF897050B6FE6A /* PDBrandApiService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B221D23C8700008301E /* PDRewardAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F4CB300FA77B737F385E /* PDRewardAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B231D23C8700008301E /* PDSocialAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FB8A5D1136F33891E72B /* PDSocialAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B241D23C8700008301E /* PDWalletAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FEA2B5B08F1F2099935B /* PDWalletAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B251D23C8700008301E /* PDLocationAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F32C9F68BBD8CAC67A6B /* PDLocationAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B261D23C8700008301E /* PDReferralAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F909A48D90F8B69E19E5 /* PDReferralAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B271D23C8700008301E /* PDRewardActionAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FD35C97C481E7B4E94F1 /* PDRewardActionAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B281D23C8700008301E /* PDMessageAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B291D23C8700008301E /* PDMomentAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B2A1D23C8780008301E /* PDInstagramAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894701D1ABFFE00BCE17E /* PDInstagramAPIClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B2B1D23C8780008301E /* PDInstagramAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894761D1AC04400BCE17E /* PDInstagramAPIService.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B2C1D23C8930008301E /* PDUser.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FF81C6E0A9A231CE6FE4 /* PDUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B2D1D23C8930008301E /* PDBrand.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FEC3F75949725292F426 /* PDBrand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B2E1D23C8930008301E /* PDFeeds.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FF59F96E53614CB77B90 /* PDFeeds.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B2F1D23C8930008301E /* PDReward.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F8D82295C72E404956E2 /* PDReward.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B301D23C8930008301E /* PDScores.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F61D2DAFF16950F2F11C /* PDScores.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B311D23C8930008301E /* PDFeedItem.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F52A3CB7FE2B77A0DDCB /* PDFeedItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B321D23C8930008301E /* PDLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F9D6AE1A1E6162AD05A9 /* PDLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B331D23C8930008301E /* PDMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 393A8C401C591E30001F650C /* PDMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B341D23C8930008301E /* PDReferral.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B351D23C8930008301E /* PDURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FD41F4A3215835B48282 /* PDURLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B361D23C8930008301E /* PDUser+Facebook.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FD969767A7C8B857115E /* PDUser+Facebook.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B371D23C8930008301E /* PDOpeningHoursDay.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FDD74A2E45FB36948272 /* PDOpeningHoursDay.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B381D23C8930008301E /* PDOpeningHoursWeek.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F5A345F527890EBC0236 /* PDOpeningHoursWeek.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B391D23C8930008301E /* PDSocialMediaFriend.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F85574F43691853864E0 /* PDSocialMediaFriend.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B3A1D23C8930008301E /* PDUserTwitterParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F32784B6CE0B0F6826CD /* PDUserTwitterParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B3B1D23C8930008301E /* PDUserInstagramParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 394BEFEA1D17E7150045F5F3 /* PDUserInstagramParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B3C1D23C8930008301E /* PDUserFacebookParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F782A6DC710569DD5DB0 /* PDUserFacebookParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B3D1D23C8930008301E /* PDRewardCustomAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FCD8902CC5CD75C180E1 /* PDRewardCustomAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B3E1D23C8A90008301E /* PDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FDF824643AEEF7E9F2A1 /* PDUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B3F1D23C8A90008301E /* PDCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F2830CA3AB87C33E47AB /* PDCommon.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B401D23C8A90008301E /* PDConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FE7E0D2E0BA29BB80554 /* PDConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B411D23C8A90008301E /* PDGeolocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FFB094C0C5B47033A565 /* PDGeolocationManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B421D23C8A90008301E /* PDSocialMediaManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67F07B38BD59459659DB91 /* PDSocialMediaManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B431D23C8A90008301E /* PDNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 39BF5ADF1C1ED29E000BF32E /* PDNotificationHandler.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B441D23C8A90008301E /* PDSDKCustomIOS7AlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 39BF5AE21C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B451D23C8A90008301E /* PDLocationValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3921E3061C6DEA51000120D4 /* PDLocationValidator.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B461D23C8A90008301E /* PDMomentsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B471D23C8C10008301E /* PDBrandStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA4FA1C036304001DA473 /* PDBrandStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B481D23C8C10008301E /* PDLocationStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA4FC1C036304001DA473 /* PDLocationStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B491D23C8C10008301E /* PDRewardStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA4FE1C036304001DA473 /* PDRewardStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B4A1D23C8C10008301E /* PDWallet.h in Headers */ = {isa = PBXBuildFile; fileRef = A90FA5001C036304001DA473 /* PDWallet.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B4B1D23C8C10008301E /* PDMessageStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 393A8C431C5923D0001F650C /* PDMessageStore.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B4C1D23C8C70008301E /* NSURL+OAuthAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894821D1D406C00BCE17E /* NSURL+OAuthAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B4D1D23C8C70008301E /* UIColor+ColorOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = 397894851D1D622D00BCE17E /* UIColor+ColorOperations.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B5F1D23CA000008301E /* PDTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = BC67FCF8A7E7E1AF483C9757 /* PDTheme.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		39735B601D23CA040008301E /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
-		39735B611D23CA160008301E /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
-		39735B621D23CA190008301E /* PopdeemSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 397478F01B8F16530015C661 /* PopdeemSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		39735B981D23D0E10008301E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B931D23D0E10008301E /* Bolts.framework */; };
-		39735B991D23D0E10008301E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B941D23D0E10008301E /* FBSDKCoreKit.framework */; };
-		39735B9A1D23D0E10008301E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B951D23D0E10008301E /* FBSDKLoginKit.framework */; };
-		39735B9B1D23D0E10008301E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B961D23D0E10008301E /* FBSDKShareKit.framework */; };
-		39735B9C1D23D0E10008301E /* STTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39735B971D23D0E10008301E /* STTwitter.framework */; };
 		39735BCC1D23E60E0008301E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39735BCB1D23E60E0008301E /* AppDelegate.swift */; };
 		39735BCE1D23E60E0008301E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39735BCD1D23E60E0008301E /* FirstViewController.swift */; };
 		39735BD01D23E60E0008301E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39735BCF1D23E60E0008301E /* SecondViewController.swift */; };
@@ -216,6 +101,8 @@
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
 		398F0B8C1DEC8C6F00098F1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */; };
+		3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */; };
+		3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A27A1E2535760058EA12 /* PDMultiLoginViewModel.m */; };
 		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
 		3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */; };
 		39A6703E1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */; };
@@ -258,7 +145,6 @@
 		39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990F1C86F7F000BB0DD8 /* Localizable.strings */; };
 		39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDUIClaimViewModel.m */; };
 		39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* PDUINoRewardsTableViewCell.m */; };
-		39EDADCA1C07333F001102B3 /* PDUIRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC51C07333F001102B3 /* PDUIRewardTableViewController.m */; };
 		39EF1A401CBCF4430089821E /* SecondTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1A3F1CBCF4430089821E /* SecondTabViewController.m */; };
 		39F5F6DF1D895282008DE497 /* NSURLSession+Abra.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6DE1D895282008DE497 /* NSURLSession+Abra.m */; };
 		39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E11D89532A008DE497 /* PDAbraClient.m */; };
@@ -279,7 +165,6 @@
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
 		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
-		5B2B97AE8816EC4602B2A360 /* libPods-PopdeemSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE1755911810215CDAC287E /* libPods-PopdeemSDKCore.a */; };
 		8111F3615B8081DFB5225CA5 /* libPods-BrandsSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A737E2DF8D7E47497456E905 /* libPods-BrandsSample.a */; };
 		88F52FC89649ECBB6835A94F /* libPods-NavigationSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */; };
 		A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E61C07369800A43320 /* PDUIRewardTableViewController.m */; };
@@ -560,7 +445,6 @@
 		397142321D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIWalletRewardTableViewCell.xib; path = Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib; sourceTree = "<group>"; };
 		39730B271CE23D9A004B37A1 /* PDUIMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageCell.h; path = MessageCenter/PDUIMessageCell.h; sourceTree = "<group>"; };
 		39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageCell.m; path = MessageCenter/PDUIMessageCell.m; sourceTree = "<group>"; };
-		39735AD91D23C7490008301E /* PopdeemSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopdeemSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39735ADB1D23C7490008301E /* PopdeemSDKCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopdeemSDKCore.h; sourceTree = "<group>"; };
 		39735ADD1D23C7490008301E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39735AE11D23C7720008301E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -612,6 +496,11 @@
 		398E4B7A1C03766500A68529 /* PDUISocialLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialLoginViewModel.h; path = Login/PDUISocialLoginViewModel.h; sourceTree = "<group>"; };
 		398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISocialLoginViewModel.m; path = Login/PDUISocialLoginViewModel.m; sourceTree = "<group>"; };
 		398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3992A2751E25355A0058EA12 /* PDMultiLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMultiLoginViewController.h; path = Login/MultiLogin/PDMultiLoginViewController.h; sourceTree = "<group>"; };
+		3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMultiLoginViewController.m; path = Login/MultiLogin/PDMultiLoginViewController.m; sourceTree = "<group>"; };
+		3992A2771E25355A0058EA12 /* PDMultiLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDMultiLoginViewController.xib; path = Login/MultiLogin/PDMultiLoginViewController.xib; sourceTree = "<group>"; };
+		3992A2791E2535760058EA12 /* PDMultiLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMultiLoginViewModel.h; path = Login/MultiLogin/PDMultiLoginViewModel.h; sourceTree = "<group>"; };
+		3992A27A1E2535760058EA12 /* PDMultiLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMultiLoginViewModel.m; path = Login/MultiLogin/PDMultiLoginViewModel.m; sourceTree = "<group>"; };
 		399367261E0BE587003B2991 /* PDUIInboxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIInboxButton.h; sourceTree = "<group>"; };
 		399367271E0BE587003B2991 /* PDUIInboxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIInboxButton.m; sourceTree = "<group>"; };
 		399367291E0BF023003B2991 /* UIButton+MessageButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MessageButtonFactory.h"; sourceTree = "<group>"; };
@@ -916,23 +805,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C839CB5674D5EF948BCDA1D7 /* libPods-TabbedTest.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39735AD51D23C7490008301E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39735B981D23D0E10008301E /* Bolts.framework in Frameworks */,
-				39735B991D23D0E10008301E /* FBSDKCoreKit.framework in Frameworks */,
-				39735B9A1D23D0E10008301E /* FBSDKLoginKit.framework in Frameworks */,
-				39735B9B1D23D0E10008301E /* FBSDKShareKit.framework in Frameworks */,
-				39735B9C1D23D0E10008301E /* STTwitter.framework in Frameworks */,
-				39735AE81D23C7950008301E /* SystemConfiguration.framework in Frameworks */,
-				39735AE61D23C7890008301E /* Social.framework in Frameworks */,
-				39735AE41D23C7840008301E /* Security.framework in Frameworks */,
-				39735AE21D23C7720008301E /* CoreLocation.framework in Frameworks */,
-				5B2B97AE8816EC4602B2A360 /* libPods-PopdeemSDKCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1348,6 +1220,7 @@
 		398E4B751C03730100A68529 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				3992A2741E25352D0058EA12 /* MultiLogin */,
 				398E4B761C03744B00A68529 /* PDUISocialLoginViewController.h */,
 				398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */,
 				398E4B7A1C03766500A68529 /* PDUISocialLoginViewModel.h */,
@@ -1357,6 +1230,18 @@
 				BC67FF08261302BD08EC80D6 /* PDUISocialLoginHandler.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		3992A2741E25352D0058EA12 /* MultiLogin */ = {
+			isa = PBXGroup;
+			children = (
+				3992A2751E25355A0058EA12 /* PDMultiLoginViewController.h */,
+				3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */,
+				3992A2771E25355A0058EA12 /* PDMultiLoginViewController.xib */,
+				3992A2791E2535760058EA12 /* PDMultiLoginViewModel.h */,
+				3992A27A1E2535760058EA12 /* PDMultiLoginViewModel.m */,
+			);
+			name = MultiLogin;
 			sourceTree = "<group>";
 		};
 		39A989831C3BD841002AF910 /* Segmented Control */ = {
@@ -1456,7 +1341,6 @@
 				39D7D0701B8F0DCF00E45D0B /* PopdeemSDKTests.xctest */,
 				393D2B761C3AD0D300F1E253 /* NavigationSample.app */,
 				39537BC31C639B79001C6796 /* TabbedTest.app */,
-				39735AD91D23C7490008301E /* PopdeemSDKCore.framework */,
 				39735BC91D23E60E0008301E /* SwiftSample.app */,
 				3922FAA21DC0BDA100501E1D /* BrandsSample.app */,
 			);
@@ -2012,70 +1896,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		39735AD61D23C7490008301E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39735B471D23C8C10008301E /* PDBrandStore.h in Headers */,
-				39735B261D23C8700008301E /* PDReferralAPIService.h in Headers */,
-				39735B281D23C8700008301E /* PDMessageAPIService.h in Headers */,
-				39735B331D23C8930008301E /* PDMessage.h in Headers */,
-				39735B441D23C8A90008301E /* PDSDKCustomIOS7AlertView.h in Headers */,
-				39735B231D23C8700008301E /* PDSocialAPIService.h in Headers */,
-				39735B461D23C8A90008301E /* PDMomentsManager.h in Headers */,
-				39735B201D23C8700008301E /* PDUserAPIService.h in Headers */,
-				39735B341D23C8930008301E /* PDReferral.h in Headers */,
-				39735B1D1D23C8640008301E /* PDAPIClient.h in Headers */,
-				39735B4B1D23C8C10008301E /* PDMessageStore.h in Headers */,
-				39735B1C1D23C85E0008301E /* NSURLSession+Popdeem.h in Headers */,
-				39735B491D23C8C10008301E /* PDRewardStore.h in Headers */,
-				39735B381D23C8930008301E /* PDOpeningHoursWeek.h in Headers */,
-				39735B3D1D23C8930008301E /* PDRewardCustomAvailability.h in Headers */,
-				39735B431D23C8A90008301E /* PDNotificationHandler.h in Headers */,
-				39735B241D23C8700008301E /* PDWalletAPIService.h in Headers */,
-				39735B481D23C8C10008301E /* PDLocationStore.h in Headers */,
-				39735B271D23C8700008301E /* PDRewardActionAPIService.h in Headers */,
-				39735B1B1D23C85E0008301E /* PDNetworkError.h in Headers */,
-				39735B321D23C8930008301E /* PDLocation.h in Headers */,
-				39735B3E1D23C8A90008301E /* PDUtils.h in Headers */,
-				39735B411D23C8A90008301E /* PDGeolocationManager.h in Headers */,
-				39735B311D23C8930008301E /* PDFeedItem.h in Headers */,
-				39735B2A1D23C8780008301E /* PDInstagramAPIClient.h in Headers */,
-				39735B4A1D23C8C10008301E /* PDWallet.h in Headers */,
-				39735B291D23C8700008301E /* PDMomentAPIService.h in Headers */,
-				39735B421D23C8A90008301E /* PDSocialMediaManager.h in Headers */,
-				39735B361D23C8930008301E /* PDUser+Facebook.h in Headers */,
-				39735B3A1D23C8930008301E /* PDUserTwitterParams.h in Headers */,
-				39735B3C1D23C8930008301E /* PDUserFacebookParams.h in Headers */,
-				39735B221D23C8700008301E /* PDRewardAPIService.h in Headers */,
-				39735B451D23C8A90008301E /* PDLocationValidator.h in Headers */,
-				39735B391D23C8930008301E /* PDSocialMediaFriend.h in Headers */,
-				39735B3F1D23C8A90008301E /* PDCommon.h in Headers */,
-				39735B2B1D23C8780008301E /* PDInstagramAPIService.h in Headers */,
-				39735B371D23C8930008301E /* PDOpeningHoursDay.h in Headers */,
-				39735B2E1D23C8930008301E /* PDFeeds.h in Headers */,
-				39735B1F1D23C8700008301E /* PDFeedAPIService.h in Headers */,
-				39735B2D1D23C8930008301E /* PDBrand.h in Headers */,
-				39735B4C1D23C8C70008301E /* NSURL+OAuthAdditions.h in Headers */,
-				39735B621D23CA190008301E /* PopdeemSDK.h in Headers */,
-				39735B251D23C8700008301E /* PDLocationAPIService.h in Headers */,
-				39735B4D1D23C8C70008301E /* UIColor+ColorOperations.h in Headers */,
-				39735B301D23C8930008301E /* PDScores.h in Headers */,
-				39735ADC1D23C7490008301E /* PopdeemSDKCore.h in Headers */,
-				39735B3B1D23C8930008301E /* PDUserInstagramParams.h in Headers */,
-				39735B2C1D23C8930008301E /* PDUser.h in Headers */,
-				39735B1E1D23C8700008301E /* PDAPIService.h in Headers */,
-				39735B211D23C8700008301E /* PDBrandApiService.h in Headers */,
-				39735B5F1D23CA000008301E /* PDTheme.h in Headers */,
-				39735B2F1D23C8930008301E /* PDReward.h in Headers */,
-				39735B401D23C8A90008301E /* PDConstants.h in Headers */,
-				39735B351D23C8930008301E /* PDURLSession.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		3922FAA11DC0BDA100501E1D /* BrandsSample */ = {
 			isa = PBXNativeTarget;
@@ -2138,26 +1958,6 @@
 			productName = TabbedTest;
 			productReference = 39537BC31C639B79001C6796 /* TabbedTest.app */;
 			productType = "com.apple.product-type.application";
-		};
-		39735AD81D23C7490008301E /* PopdeemSDKCore */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39735ADE1D23C7490008301E /* Build configuration list for PBXNativeTarget "PopdeemSDKCore" */;
-			buildPhases = (
-				774A8A73A213108576F522F1 /* [CP] Check Pods Manifest.lock */,
-				39735AD41D23C7490008301E /* Sources */,
-				39735AD51D23C7490008301E /* Frameworks */,
-				39735AD61D23C7490008301E /* Headers */,
-				39735AD71D23C7490008301E /* Resources */,
-				F804078193D1ADC45B63D5D0 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PopdeemSDKCore;
-			productName = PopdeemSDKCore;
-			productReference = 39735AD91D23C7490008301E /* PopdeemSDKCore.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 		39735BC81D23E60E0008301E /* SwiftSample */ = {
 			isa = PBXNativeTarget;
@@ -2226,7 +2026,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Popdeem;
 				TargetAttributes = {
 					3922FAA11DC0BDA100501E1D = {
@@ -2252,10 +2052,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					39735AD81D23C7490008301E = {
-						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = A6BJ87CDY8;
 					};
 					39735BC81D23E60E0008301E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -2287,7 +2083,6 @@
 				39D7D06F1B8F0DCF00E45D0B /* PopdeemSDKTests */,
 				393D2B751C3AD0D300F1E253 /* NavigationSample */,
 				39537BC21C639B79001C6796 /* TabbedTest */,
-				39735AD81D23C7490008301E /* PopdeemSDKCore */,
 				39735BC81D23E60E0008301E /* SwiftSample */,
 				3922FAA11DC0BDA100501E1D /* BrandsSample */,
 			);
@@ -2349,13 +2144,6 @@
 				39537BD51C639B79001C6796 /* Assets.xcassets in Resources */,
 				394495EA1D9A8413003BA702 /* Quicksand-Regular.otf in Resources */,
 				39537BD31C639B79001C6796 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39735AD71D23C7490008301E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2529,21 +2317,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		774A8A73A213108576F522F1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		85412172AB2BA3FA899B41EC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2694,21 +2467,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F804078193D1ADC45B63D5D0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2743,65 +2501,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39735AD41D23C7490008301E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39735AFE1D23C8550008301E /* PDLocation.m in Sources */,
-				39735B0B1D23C8550008301E /* PDInstagramAPIService.m in Sources */,
-				39735B611D23CA160008301E /* PopdeemSDK.m in Sources */,
-				39735AFF1D23C8550008301E /* PDMessage.m in Sources */,
-				39735B171D23C8550008301E /* PDMomentAPIService.m in Sources */,
-				39735B601D23CA040008301E /* PDTheme.m in Sources */,
-				39735B081D23C8550008301E /* PDUserFacebookParams.m in Sources */,
-				39735AFC1D23C8550008301E /* PDScores.m in Sources */,
-				39735AFB1D23C8550008301E /* PDReward.m in Sources */,
-				39735AF71D23C8550008301E /* PDMomentsManager.m in Sources */,
-				39735AFA1D23C8550008301E /* PDFeeds.m in Sources */,
-				39735B011D23C8550008301E /* PDURLSession.m in Sources */,
-				39735B151D23C8550008301E /* PDRewardActionAPIService.m in Sources */,
-				39735B001D23C8550008301E /* PDReferral.m in Sources */,
-				39735B0D1D23C8550008301E /* PDFeedAPIService.m in Sources */,
-				39735B121D23C8550008301E /* PDWalletAPIService.m in Sources */,
-				39735B061D23C8550008301E /* PDUserTwitterParams.m in Sources */,
-				39735B021D23C8550008301E /* PDUser+Facebook.m in Sources */,
-				39735B0C1D23C8550008301E /* PDAPIService.m in Sources */,
-				39735AF21D23C8550008301E /* PDGeolocationManager.m in Sources */,
-				39735B051D23C8550008301E /* PDSocialMediaFriend.m in Sources */,
-				39735AE91D23C8550008301E /* NSURL+OAuthAdditions.m in Sources */,
-				39735AF01D23C8550008301E /* PDUtils.m in Sources */,
-				39735B181D23C8550008301E /* PDAPIClient.m in Sources */,
-				39735B141D23C8550008301E /* PDReferralAPIService.m in Sources */,
-				39735B131D23C8550008301E /* PDLocationAPIService.m in Sources */,
-				39735AEF1D23C8550008301E /* PDMessageStore.m in Sources */,
-				39735AEA1D23C8550008301E /* UIColor+ColorOperations.m in Sources */,
-				39735B0F1D23C8550008301E /* PDBrandApiService.m in Sources */,
-				39735AF81D23C8550008301E /* PDUser.m in Sources */,
-				39735B161D23C8550008301E /* PDMessageAPIService.m in Sources */,
-				39735AF11D23C8550008301E /* PDConstants.m in Sources */,
-				39735B071D23C8550008301E /* PDUserInstagramParams.m in Sources */,
-				39735AEC1D23C8550008301E /* PDLocationStore.m in Sources */,
-				39735AF41D23C8550008301E /* PDNotificationHandler.m in Sources */,
-				39735B0E1D23C8550008301E /* PDUserAPIService.m in Sources */,
-				39735B101D23C8550008301E /* PDRewardAPIService.m in Sources */,
-				39735B031D23C8550008301E /* PDOpeningHoursDay.m in Sources */,
-				39735AEB1D23C8550008301E /* PDBrandStore.m in Sources */,
-				39735B041D23C8550008301E /* PDOpeningHoursWeek.m in Sources */,
-				39735B091D23C8550008301E /* PDRewardCustomAvailability.m in Sources */,
-				39735AF91D23C8550008301E /* PDBrand.m in Sources */,
-				39735AEE1D23C8550008301E /* PDWallet.m in Sources */,
-				39735B111D23C8550008301E /* PDSocialAPIService.m in Sources */,
-				39735B1A1D23C8550008301E /* NSURLSession+Popdeem.m in Sources */,
-				39735B0A1D23C8550008301E /* PDInstagramAPIClient.m in Sources */,
-				39735AF31D23C8550008301E /* PDSocialMediaManager.m in Sources */,
-				39735AF51D23C8550008301E /* PDSDKCustomIOS7AlertView.m in Sources */,
-				39735AED1D23C8550008301E /* PDRewardStore.m in Sources */,
-				39735AFD1D23C8550008301E /* PDFeedItem.m in Sources */,
-				39735B191D23C8550008301E /* PDNetworkError.m in Sources */,
-				39735AF61D23C8550008301E /* PDLocationValidator.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		39735BC51D23E60E0008301E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2818,6 +2517,8 @@
 			files = (
 				3922FABB1DC0BF4900501E1D /* PDBrandsUIHandler.m in Sources */,
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
+				3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */,
+				3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */,
 				397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */,
 				39ABA6581C47A9030057088E /* PDUIWalletCache.m in Sources */,
 				392B559D1DAF9D130012350A /* PDUILogoutTableViewCell.m in Sources */,
@@ -2860,7 +2561,6 @@
 				396443FB1D13EC5A00BB67F9 /* PDUICardViewController.m in Sources */,
 				391FAE7A1D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m in Sources */,
 				398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */,
-				39EDADCA1C07333F001102B3 /* PDUIRewardTableViewController.m in Sources */,
 				3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */,
 				390B4FC81DF8550C00E692D4 /* (null) in Sources */,
@@ -3096,7 +2796,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = NavigationSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.NavigationSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3112,7 +2812,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NavigationSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.NavigationSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3162,73 +2862,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		39735ADF1D23C7490008301E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09C617A135AD4E9AD46ADC21 /* Pods-PopdeemSDKCore.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/Frameworks/**",
-					"$(SRCROOT)/PopdeemSDK/**",
-				);
-				INFOPLIST_FILE = PopdeemSDKCore/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/Products/**",
-					"$(SRCROOT)/Frameworks/**",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDKCore;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		39735AE01D23C7490008301E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51A8D384AE4508E261030AD1 /* Pods-PopdeemSDKCore.release.xcconfig */;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/Frameworks/**",
-					"$(SRCROOT)/PopdeemSDK/**",
-				);
-				INFOPLIST_FILE = PopdeemSDKCore/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/Products/**",
-					"$(SRCROOT)/Frameworks/**",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDKCore;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -3286,8 +2919,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -3330,8 +2965,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -3350,6 +2987,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -3528,15 +3166,6 @@
 			buildConfigurations = (
 				39537BDA1C639B79001C6796 /* Debug */,
 				39537BDB1C639B79001C6796 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		39735ADE1D23C7490008301E /* Build configuration list for PBXNativeTarget "PopdeemSDKCore" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				39735ADF1D23C7490008301E /* Debug */,
-				39735AE01D23C7490008301E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

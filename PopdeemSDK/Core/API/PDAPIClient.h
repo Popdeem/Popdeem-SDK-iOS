@@ -102,6 +102,16 @@ NS_ASSUME_NONNULL_BEGIN
                                      success:(void (^)(PDUser *user))success
                                      failure:(void (^)(NSError *error))failure;
 
+- (void) registerUserWithTwitterAccessToken:(NSString*)accessToken
+															 accessSecret:(NSString*)accessSecret
+																		 userId:(NSString*)userId
+																 screenName:(NSString*)userName
+																		success:(void (^)(PDUser *user))success
+																		failure:(void (^)(NSError*))failure;
+
+- (void) registerWithTwitter:(void (^)(void))success
+										 failure:(void (^)(NSError *error))failure;
+
 
 - (void) connectTwitterAccount:(NSString*)userId
                    accessToken:(NSString*)accessToken

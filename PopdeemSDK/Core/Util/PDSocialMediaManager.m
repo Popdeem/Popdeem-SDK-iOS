@@ -17,6 +17,7 @@
 
 @interface PDSocialMediaManager() {
   ACAccount *singleAccount;
+	BOOL twitterRegister;
 }
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
@@ -220,45 +221,56 @@
 
 #pragma mark - Twitter -
 
+- (void) registerWithTwitter:(void (^)(void))success
+										 failure:(void (^)(NSError *error))failure {
+	twitterRegister = YES;
+	[self nextStepTwitter:success failure:failure];
+}
+
 - (void) loginWithTwitter:(void (^)(void))success
                   failure:(void (^)(NSError *error))failure {
   
   
   //Attempt to discover if user is signed in to Twitter on iOS
-  
-  ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-  
-  ACAccountStoreRequestAccessCompletionHandler handler = ^(BOOL granted, NSError *error) {
-    
-    if (error) {
-      failure(error);
-    }
-    
-    if (granted == NO) {
-      
-    }
-    
-    self.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
-    
-    if (self.iOSAccounts.count > 0) {
-      [self chooseAccount:^(ACAccount *account) {
-        [self twitterLoginWithAccount:account success:success failure:failure];
-      } failure:^(NSError *error) {
-        failure(error);
-      }];
-    } else if (self.iOSAccounts.count == 1) {
-      [self twitterLoginWithAccount:[self.iOSAccounts objectAtIndex:0] success:success failure:failure];
-    } else {
-      //Login with safari
-      self.endSuccess = success;
-      self.endError = failure;
-      [self loginOnTheWeb];
-    }
-  };
-  
-  [self.accountStore requestAccessToAccountsWithType:accountType
-                                             options:NULL
-                                          completion:handler];
+	twitterRegister = NO;
+	[self nextStepTwitter:success failure:failure];
+}
+
+- (void) nextStepTwitter:(void (^)(void))success
+								 failure:(void (^)(NSError *error))failure{
+	ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	
+	ACAccountStoreRequestAccessCompletionHandler handler = ^(BOOL granted, NSError *error) {
+		
+		if (error) {
+			failure(error);
+		}
+		
+		if (granted == NO) {
+			
+		}
+		
+		self.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
+		
+		if (self.iOSAccounts.count > 0) {
+			[self chooseAccount:^(ACAccount *account) {
+				[self twitterLoginWithAccount:account success:success failure:failure];
+			} failure:^(NSError *error) {
+				failure(error);
+			}];
+		} else if (self.iOSAccounts.count == 1) {
+			[self twitterLoginWithAccount:[self.iOSAccounts objectAtIndex:0] success:success failure:failure];
+		} else {
+			//Login with safari
+			self.endSuccess = success;
+			self.endError = failure;
+			[self loginOnTheWeb];
+		}
+	};
+	
+	[self.accountStore requestAccessToAccountsWithType:accountType
+																						 options:NULL
+																					completion:handler];
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -296,8 +308,17 @@
                                                                          NSString *oAuthTokenSecret,
                                                                          NSString *userID,
                                                                          NSString *screenName) {
-                                                            
-                                                            [self twitterConnectWithPopdeem:oAuthToken secret:oAuthTokenSecret userID:userID screenName:username success:success failure:failure];
+																														
+																														if (twitterRegister) {
+																															[self twitterRegisterWithPopdeem:oAuthToken
+																																												secret:oAuthTokenSecret
+																																												userId:userID
+																																										screenName:screenName
+																																											 success:success
+																																											 failure:failure];
+																														} else {
+																																[self twitterConnectWithPopdeem:oAuthToken secret:oAuthTokenSecret userID:userID screenName:username success:success failure:failure];
+																														}
                                                           } errorBlock:^(NSError *error) {
                                                             failure(error);
                                                           }];
@@ -307,15 +328,6 @@
   } errorBlock:^(NSError *error) {
     failure(error);
   }];
-  
-}
-
-- (void) twitterRegisterWithPopdeem:(NSString*)oAuthToken
-                             secret:(NSString*)oAuthSecret
-                             userID:(NSString*)userID
-                         screenName:(NSString*)screenName
-                            success:(void (^)(void))success
-                            failure:(void (^)(NSError* error))failure {
   
 }
 
@@ -419,6 +431,22 @@
                            success:(void (^)(void))success
                            failure:(void (^)(NSError* error))failure {
   [[PDAPIClient sharedInstance] connectTwitterAccount:userID accessToken:oAuthToken accessSecret:oAuthSecret success:success failure:failure];
+}
+
+- (void) twitterRegisterWithPopdeem:(NSString*)oAuthToken
+														 secret:(NSString*)oAuthSecret
+														 userId:(NSString*)userId screenName:(NSString*)screenName
+														success:(void (^)(void))success
+														failure:(void (^)(NSError*))failure {
+	[[PDAPIClient sharedInstance] registerUserWithTwitterAccessToken:oAuthToken
+																											accessSecret:oAuthSecret
+																														userId:userId
+																												screenName:screenName
+																													 success:^(PDUser *user){
+																														 NSLog(@"Register Success");
+																														 success();
+	}
+																													 failure:failure];
 }
 
 - (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion {

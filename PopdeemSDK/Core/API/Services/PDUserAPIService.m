@@ -74,6 +74,113 @@
     }];
 }
 
+
+- (void) registerUserWithTwitterId:(NSString*)userId
+											 accessToken:(NSString*)accessToken
+											accessSecret:(NSString*)accessSecret
+													 success:(void (^)(PDUser *user))success
+													 failure:(void (^)(NSError *error))failure {
+	
+	NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
+	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+	NSMutableDictionary *params = @{@"user": @{
+																			@"twitter": @{
+																					@"id": userId,
+																					@"access_token": accessToken,
+																					@"access_secret": accessSecret
+																					},
+																			@"unique_identifier": deviceId
+																			}};
+	
+	NSURLSession *session = [NSURLSession createPopdeemSession];
+	[session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+		if (error) {
+			//Handle Error
+			dispatch_async(dispatch_get_main_queue(), ^{
+				PDLogAlert(@"%@", [error localizedDescription]);
+				failure(error);
+			});
+			return;
+		}
+		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+		NSInteger responseStatusCode = [httpResponse statusCode];
+		if (responseStatusCode <= 500) {
+			//Deal with response
+			NSError *jsonError;
+			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+			if (jsonError) {
+				PDLogAlert(@"%@", [jsonError localizedDescription]);
+				failure(jsonError);
+				return ;
+			}
+			if (!jsonObject[@"user"]) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					failure([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+				});
+				return;
+			}
+			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+			[session invalidateAndCancel];
+			AbraOnboardUser();
+			dispatch_async(dispatch_get_main_queue(), ^{
+				success(user);
+			});
+		} else {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				failure([PDNetworkError errorForStatusCode:responseStatusCode]);
+			});
+		}
+	}];
+}
+
+- (void) userRegisterWithParams:(NSDictionary*)params
+												success:(void (^)(void))success
+												failure:(void (^)(NSError *error))failure {
+	
+//	NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
+//	NSURLSession *session = [NSURLSession createPopdeemSession];
+//	[session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+//		if (error) {
+//			//Handle Error
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				PDLogAlert(@"%@", [error localizedDescription]);
+//				completion(nil, error);
+//			});
+//			return;
+//		}
+//		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//		NSInteger responseStatusCode = [httpResponse statusCode];
+//		if (responseStatusCode <= 500) {
+//			//Deal with response
+//			NSError *jsonError;
+//			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+//			if (jsonError) {
+//				PDLogAlert(@"%@", [jsonError localizedDescription]);
+//				completion(nil, jsonError);
+//				return ;
+//			}
+//			if (!jsonObject[@"user"]) {
+//				dispatch_async(dispatch_get_main_queue(), ^{
+//					completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+//				});
+//				return;
+//			}
+//			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+//			[session invalidateAndCancel];
+//			AbraOnboardUser();
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				completion(user, nil);
+//			});
+//		} else {
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
+//			});
+//		}
+//	}];
+}
+
+
+
 - (void) registerUserwithFacebookAccesstoken:(NSString*)facebookAccessToken
                                   facebookId:(NSString*)facebookId
                                   completion:(void (^)(PDUser *user, NSError *error))completion {
@@ -88,45 +195,45 @@
 																				 @"unique_identifier": deviceId
 																				 }};
 	
-  NSURLSession *session = [NSURLSession createPopdeemSession];
-  [session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
-    if (error) {
-      //Handle Error
-      dispatch_async(dispatch_get_main_queue(), ^{
+	NSURLSession *session = [NSURLSession createPopdeemSession];
+	[session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+		if (error) {
+			//Handle Error
+			dispatch_async(dispatch_get_main_queue(), ^{
 				PDLogAlert(@"%@", [error localizedDescription]);
-        completion(nil, error);
-      });
-      return;
-    }
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-    NSInteger responseStatusCode = [httpResponse statusCode];
-    if (responseStatusCode <= 500) {
-      //Deal with response
-      NSError *jsonError;
-      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+				completion(nil, error);
+			});
+			return;
+		}
+		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+		NSInteger responseStatusCode = [httpResponse statusCode];
+		if (responseStatusCode <= 500) {
+			//Deal with response
+			NSError *jsonError;
+			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
 			if (jsonError) {
 				PDLogAlert(@"%@", [jsonError localizedDescription]);
 				completion(nil, jsonError);
 				return ;
 			}
-      if (!jsonObject[@"user"]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-          completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
-        });
-        return;
-      }
-      PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
-      [session invalidateAndCancel];
+			if (!jsonObject[@"user"]) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+				});
+				return;
+			}
+			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+			[session invalidateAndCancel];
 			AbraOnboardUser();
-      dispatch_async(dispatch_get_main_queue(), ^{
-        completion(user, nil);
-      });
-    } else {
-      dispatch_async(dispatch_get_main_queue(), ^{
-        completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
-      });
-    }
-  }];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				completion(user, nil);
+			});
+		} else {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
+			});
+		}
+	}];
 }
 
 - (void) updateUserWithCompletion:(void (^)(PDUser *user, NSError *error))completion {
@@ -136,8 +243,10 @@
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
 	  
   NSMutableDictionary *user = [NSMutableDictionary dictionary];
-  [user setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.latitude] forKey:@"latitude"];
-  [user setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.longitude] forKey:@"longitude"];
+  [user setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.latitude]
+					forKey:@"latitude"];
+  [user setValue:[NSString stringWithFormat:@"%f",_user.lastLocation.longitude]
+					forKey:@"longitude"];
   [user setValue:@"ios" forKey:@"platform"];
   NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
   [user setValue:deviceId forKey:@"unique_identifier"];
@@ -154,10 +263,14 @@
   if ([[PDAPIClient sharedInstance] referral] != nil) {
     PDReferral *r = [[PDAPIClient sharedInstance] referral];
     NSMutableDictionary *referDict = [NSMutableDictionary dictionary];
-    if (r.senderId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",(long)[r senderId]] forKey:@"referrer_id"];
-    if (r.typeString) [referDict setObject:[r typeString] forKey:@"type"];
-    if (r.senderAppName) [referDict setObject:[r senderAppName] forKey:@"referrer_app_name"];
-    if (r.requestId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",(long)[r requestId]] forKey:@"request_id"];
+    if (r.senderId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",(long)[r senderId]]
+																			forKey:@"referrer_id"];
+    if (r.typeString) [referDict setObject:[r typeString]
+																		forKey:@"type"];
+    if (r.senderAppName) [referDict setObject:[r senderAppName]
+																			 forKey:@"referrer_app_name"];
+    if (r.requestId > 0) [referDict setObject:[NSString stringWithFormat:@"%ld",(long)[r requestId]]
+																			 forKey:@"request_id"];
     [user setValue:referDict forKey:@"referral"];
     [[PDAPIClient sharedInstance] setReferral:nil];
   }
@@ -180,7 +293,9 @@
     if (responseStatusCode < 500) {
       //Deal with response
       NSError *jsonError;
-      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
+																																 options:NSJSONReadingAllowFragments
+																																	 error:&jsonError];
 			if (jsonError) {
 				PDLogAlert(@"%@", [jsonError localizedDescription]);
 				completion(nil, jsonError);
@@ -188,7 +303,10 @@
 			}
       if (!jsonObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
-          completion(nil, [NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+          completion(nil, [NSError errorWithDomain:@"PDAPIError"
+																							code:27200
+																					userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response"
+																																							 forKey:NSLocalizedDescriptionKey]]);
         });
         return;
       }
@@ -236,7 +354,9 @@
     NSInteger responseStatusCode = [httpResponse statusCode];
     if (responseStatusCode < 400) {
       NSError *jsonError;
-      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data
+																																 options:NSJSONReadingAllowFragments
+																																	 error:&jsonError];
 			if (jsonError) {
 				PDLogAlert(@"%@", [jsonError localizedDescription]);
 				completion(jsonError);
@@ -244,7 +364,10 @@
 			}
       if (!jsonObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
-          completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+          completion([NSError errorWithDomain:@"PDAPIError"
+																				 code:27200
+																		 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response"
+																																					forKey:NSLocalizedDescriptionKey]]);
         });
         return;
       }

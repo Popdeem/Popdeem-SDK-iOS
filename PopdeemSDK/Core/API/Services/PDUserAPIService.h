@@ -20,6 +20,12 @@
                                   facebookId:(NSString*)facebookId
                                   completion:(void (^)(PDUser *user, NSError *error))completion;
 
+- (void) registerUserWithTwitterId:(NSString*)userId
+											 accessToken:(NSString*)accessToken
+											accessSecret:(NSString*)accessSecret
+													 success:(void (^)(PDUser *user))success
+													 failure:(void (^)(NSError *error))failure;
+
 - (void) updateUserWithCompletion:(void (^)(PDUser *user, NSError *error))completion;
 
 - (void) nonSocialUserInitWithCompletion:(void (^)(NSError *error))completion;

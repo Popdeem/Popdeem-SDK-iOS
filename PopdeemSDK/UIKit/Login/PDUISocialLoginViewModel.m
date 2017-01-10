@@ -89,22 +89,6 @@
 		[self addUserToUserDefaults:[PDUser sharedInstance]];
 		[self.viewController dismissViewControllerAnimated:YES completion:^{}];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-//    if (_viewController.shouldAskLocation) {
-//      [self fetchLocationCompletion:^(NSError *error){
-////        if (error) {
-////          NSLog(@"Something went wrong: %@",error);
-////          [[PDSocialMediaManager manager] logoutFacebook];
-////          dispatch_async(dispatch_get_main_queue(), ^{
-////            [self.loadingView hideAnimated:YES];
-////          });
-////          return;
-////        }
-//				
-//        [self renderSuccess];
-//      }];
-//    } else {
-//      [self renderSuccess];
-//    }
   }];
 }
 
@@ -217,12 +201,12 @@
 }
 
 - (void) setState:(LoginState)state {
-  self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
+  self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards.");
   self.image = PopdeemImage(@"popdeem.images.loginImage");
   self.taglineString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards.");
-  self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Facebook to earn additional Rewards.");
-  self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Facebook account to turn social features on. This will give you access to exclusive content and new social rewards.");
-  self.termsLabelString = translationForKey(@"popdeem.sociallogin.terms", @"By signing in with Facebook you accept the terms of our privacy policy.");
+  self.headingString = translationForKey(@"popdeem.sociallogin.heading", @"Connect your Social Account to earn additional Rewards.");
+  self.bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards.");
+  self.termsLabelString = translationForKey(@"popdeem.sociallogin.terms", @"By signing in you accept the terms of our privacy policy.");
   
   switch (state) {
     case LoginStateContinue:

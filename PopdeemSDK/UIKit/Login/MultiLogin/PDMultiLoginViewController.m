@@ -7,8 +7,15 @@
 //
 
 #import "PDMultiLoginViewController.h"
+#import "PDSocialMediaManager.h"
+#import "PDMultiLoginViewModel.h"
+#import "PDTheme.h"
+#import "PDConstants.h"
+#import "PDUser.h"
+#import "PDAbraClient.h"
 
 @interface PDMultiLoginViewController ()
+@property (nonatomic, retain) PDMultiLoginViewModel viewModel;
 
 @end
 
@@ -16,6 +23,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	//View Setup
+	_viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self];
+	[_viewModel setup];
+	
+	[_titleLabel setText:_viewModel.titleString];
+	[_titleLabel setFont:_viewModel.titleFont];
+	[_titleLabel setTextColor:_viewModel.titleColor];
+	
+	[_bodyLabel setText:_viewModel.bodyString];
+	[_bodyLabel setTextColor:_viewModel.bodyColor];
+	[_bodyLabel setFont:_viewModel.bodyFont];
+	
+	[_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
+	[_twitterLoginButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+	
+	[_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
+	[_instagramLoginButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+	
+	//Facebook setup
+	self.facebookLoginButton.readPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
+	
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -33,5 +62,74 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)twitterLoginButtonPressed:(id)sender {
+	NSLog(@"Twitter Pressed");
+	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
+	[manager registerWithTwitter:^{
+		NSLog(@"Success");
+		//Continue to next stage of app, login has happened.
+	} failure:^(NSError *error) {
+		NSLog(@"Failure");
+		//Show some error, something went wrong
+	}];
+}
+
+- (IBAction)instagramLoginButtonPressed:(id)sender {
+}
+
+- (void) proceedWithFacebookLoggedInUser {
+	//Now Facebook Login has happened, we should perform register/fetch from Popdeem
+	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+	[self.loadingView showAnimated:YES];
+	[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
+		PDLog(@"Facebook Friends Updated");
+	}];
+	[[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
+		if (error) {
+			PDLogError(@"Something went wrong: %@",error);
+			[[PDSocialMediaManager manager] logoutFacebook];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_loadingView hideAnimated:YES];
+			});
+			return;
+		}
+		[self addUserToUserDefaults:[PDUser sharedInstance]];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[_loadingView hideAnimated:YES];
+		});
+		[self.viewController dismissViewControllerAnimated:YES completion:^{}];
+		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
+	}];
+}
+
+#pragma mark - FB Login Delegate Methods -
+- (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
+	//Perform Popdeem User Login
+	if (error) {
+		//Show error message
+		return;
+	}
+	
+	if (result.isCancelled) {
+		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
+																								 message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
+																								delegate:self.viewController
+																			 cancelButtonTitle:@"OK"
+																			 otherButtonTitles: nil];
+		[av show];
+		return;
+	}
+	
+	[self proceedWithFacebookLoggedInUser];
+}
+
+- (BOOL) loginButtonWillLogin:(FBSDKLoginButton *)loginButton {
+	_viewController.facebookLoginOccurring = YES;
+	return YES;
+}
+
+- (void) addUserToUserDefaults:(PDUser*)user {
+	[[NSUserDefaults standardUserDefaults] setObject:[user dictionaryRepresentation] forKey:@"popdeemUser"];
+}
 
 @end

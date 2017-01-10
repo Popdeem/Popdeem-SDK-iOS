@@ -31,6 +31,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (nonatomic, strong) IBOutlet FBSDKLoginButton *loginButton;
+@property (nonatomic, strong) IBOutlet UIButton *twitterLoginButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *continueButton;
 @property (nonatomic, weak) id delegate;
 

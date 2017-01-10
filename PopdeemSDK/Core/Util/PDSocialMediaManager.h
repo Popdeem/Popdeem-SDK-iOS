@@ -43,6 +43,9 @@
                                   success:(void (^)(void))success
                                   failure:(void (^)(NSError *err))failure;
 
+- (void) registerWithTwitter:(void (^)(void))success
+										 failure:(void (^)(NSError *error))failure;
+
 - (void) logoutFacebook;
 
 - (void) logOut;

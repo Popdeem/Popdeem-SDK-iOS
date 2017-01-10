@@ -39,7 +39,6 @@ DEPENDENCIES:
   - Crashlytics
   - Expecta (~> 1.0.0)
   - Fabric
-  - JSONModel
   - JSONModel (~> 1.7.0)
   - Nocilla
   - OCMock
@@ -68,6 +67,6 @@ SPEC CHECKSUMS:
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
 
-PODFILE CHECKSUM: 750cfef34c2732ae84c5569aaa9b31a38cece3e0
+PODFILE CHECKSUM: e76697fe1e8fa683374870f3371d158aaf8fb990
 
 COCOAPODS: 1.1.1

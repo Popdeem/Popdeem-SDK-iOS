@@ -66,6 +66,11 @@
     }];
 }
 
+- (void) registerUserWithTwitterAccessToken:(NSString*)accessToken accessSecret:(NSString*)accessSecret userId:(NSString*)userId screenName:(NSString*)userName success:(void (^)(PDUser *user))success failure:(void (^)(NSError*))failure {
+	PDUserAPIService *service  = [[PDUserAPIService alloc] init];
+	[service registerUserWithTwitterId:userId accessToken:accessToken accessSecret:accessSecret success:success failure:failure];
+}
+
 #pragma mark - Update User Location and DeviceToken -
 
 - (void) updateUserLocationAndDeviceTokenSuccess:(void (^)(PDUser *user))success

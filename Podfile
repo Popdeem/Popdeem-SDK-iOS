@@ -7,9 +7,6 @@ target 'PopdeemSDK' do
 	pod 'JSONModel', '~> 1.7.0'
 end
 
-target 'PopdeemSDKCore' do
-end
-
 target 'NavigationSample' do
 	pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
 	pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
@@ -40,7 +37,6 @@ target 'SwiftSample' do
 end
 
 target 'PopdeemSDKTests' do
-	pod 'JSONModel'
 	pod 'Expecta', '~> 1.0.0'
 	pod 'Nocilla'
 	pod 'OCMock'

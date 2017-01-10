@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBSDKCoreKit.h"
+#import "FBSDKLoginKit.h"
+#import "PDUIModalLoadingView.h"
 
-@interface PDMultiLoginViewController : UIViewController
+@interface PDMultiLoginViewController : UIViewController <FBSDKLoginButtonDelegate>
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *bodyLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *twitterLoginButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *instagramLoginButton;
+@property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 
 @end

@@ -14,6 +14,7 @@
 #import "PDUserAPIService.h"
 #import "PDUser+Facebook.h"
 #import "PopdeemSDK.h"
+#import "PDMultiLoginViewController.h"
 
 static NSString *const PDUseCountKey = @"PDUseCount";
 
@@ -85,7 +86,8 @@ static NSString *const PDUseCountKey = @"PDUseCount";
   UIViewController *topController = [PDUIKitUtils topViewController];
   [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
-  PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
+//  PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
+	PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] init];
   [topController presentViewController:vc animated:YES completion:^{}];
   [self setUsesCount:self.usesCount+1];
   PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
