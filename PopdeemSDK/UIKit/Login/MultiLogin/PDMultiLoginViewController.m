@@ -13,10 +13,15 @@
 #import "PDConstants.h"
 #import "PDUser.h"
 #import "PDAbraClient.h"
+#import "PDUser+Facebook.h"
+#import "PDLogger.h"
+#import "PDUtils.h"
+#import "PDUserAPIService.h"
+#import "PDAPIClient.h"
 
 @interface PDMultiLoginViewController ()
-@property (nonatomic, retain) PDMultiLoginViewModel viewModel;
-
+@property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
+@property (nonatomic) BOOL facebookLoginOccurring;
 @end
 
 @implementation PDMultiLoginViewController
@@ -44,6 +49,7 @@
 	
 	//Facebook setup
 	self.facebookLoginButton.readPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
+	[self.facebookLoginButton setDelegate:self];
 	
     // Do any additional setup after loading the view from its nib.
 }
@@ -68,6 +74,10 @@
 	[manager registerWithTwitter:^{
 		NSLog(@"Success");
 		//Continue to next stage of app, login has happened.
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[_loadingView hideAnimated:YES];
+		});
+		[self proceedWithTwitterLoggedInUser];
 	} failure:^(NSError *error) {
 		NSLog(@"Failure");
 		//Show some error, something went wrong
@@ -75,12 +85,21 @@
 }
 
 - (IBAction)instagramLoginButtonPressed:(id)sender {
+	NSLog(@"Instagram Button Pressed");
+	
+}
+
+- (void) proceedWithTwitterLoggedInUser {
+	[self addUserToUserDefaults:[PDUser sharedInstance]];
+	AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void) proceedWithFacebookLoggedInUser {
 	//Now Facebook Login has happened, we should perform register/fetch from Popdeem
 	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
 	[self.loadingView showAnimated:YES];
+	
 	[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
 		PDLog(@"Facebook Friends Updated");
 	}];
@@ -97,7 +116,7 @@
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[_loadingView hideAnimated:YES];
 		});
-		[self.viewController dismissViewControllerAnimated:YES completion:^{}];
+		[self dismissViewControllerAnimated:YES completion:^{}];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
 	}];
 }
@@ -113,7 +132,7 @@
 	if (result.isCancelled) {
 		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
 																								 message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
-																								delegate:self.viewController
+																								delegate:self
 																			 cancelButtonTitle:@"OK"
 																			 otherButtonTitles: nil];
 		[av show];
@@ -124,12 +143,31 @@
 }
 
 - (BOOL) loginButtonWillLogin:(FBSDKLoginButton *)loginButton {
-	_viewController.facebookLoginOccurring = YES;
+	self.facebookLoginOccurring = YES;
 	return YES;
 }
 
 - (void) addUserToUserDefaults:(PDUser*)user {
 	[[NSUserDefaults standardUserDefaults] setObject:[user dictionaryRepresentation] forKey:@"popdeemUser"];
+}
+
+- (void) registerWithModel:(InstagramResponseModel*)model {
+	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+	[self.loadingView showAnimated:YES];
+	PDUserAPIService *service = [[PDUserAPIService alloc] init];
+//	service registerUserWithInstagramId:model.user.id accessToken:<#(NSString *)#> fullName:<#(NSString *)#> userName:<#(NSString *)#> profilePicture:<#(NSString *)#> success:<#^(PDUser *user)success#> failure:<#^(NSError *error)failure#>
+	
+}
+
+#pragma mark - Instagram Login Delegate Methods
+
+- (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+	PDAPIClient *client = [PDAPIClient sharedInstance];
+	[client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+	} failure:^(NSError* error){
+		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+	}];
 }
 
 @end

@@ -77,6 +77,7 @@
 	}];
 }
 
+
 - (void) viewDidAppear:(BOOL)animated {
   BOOL isLoggedIn = [[PDSocialMediaManager manager] isLoggedInWithFacebook];
   if (isLoggedIn && !_facebookLoginOccurring) {

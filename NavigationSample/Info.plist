@@ -110,12 +110,12 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>&quot;We use your location to deliver local rewards&quot;</string>
-	<key>PopdeemTwitterCallbackScheme</key>
-	<string>popdeemstagingtwitter</string>
 	<key>TwitterAppConsumerKey</key>
 	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
 	<key>TwitterAppConsumerSecret</key>
 	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
+	<key>PopdeemTwitterCallbackScheme</key>
+	<string>popdeemstagingtwitter</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

@@ -40,10 +40,10 @@ static PDUser *globalUser = nil;
 	}
   user.preferredSocialMediaType = preferredSocialMediaType;
   NSString *firstName = params[@"first_name"];
-  user.firstName = [firstName isKindOfClass:[NSString class]] ? firstName : nil;
+  user.firstName = [firstName isKindOfClass:[NSString class]] ? firstName : @"";
   
   NSString *lastName = params[@"last_name"];
-  user.lastName = [lastName isKindOfClass:[NSString class]] ? lastName : nil;
+  user.lastName = [lastName isKindOfClass:[NSString class]] ? lastName : @"";
   
   NSString *sex = params[@"sex"];
   if ([sex isEqualToString:@"male"]) {
@@ -100,8 +100,8 @@ static PDUser *globalUser = nil;
 + (PDUser*) initFromUserDefaults:(NSDictionary*)dict {
   PDUser *user = [PDUser sharedInstance];
   
-  user.firstName = [dict objectForKey:@"firstName"] ? [dict objectForKey:@"firstName"] : nil;
-  user.lastName = [dict objectForKey:@"lastName"] ? [dict objectForKey:@"lastName"] : nil;
+  user.firstName = [dict objectForKey:@"firstName"] ? [dict objectForKey:@"firstName"] : @"";
+  user.lastName = [dict objectForKey:@"lastName"] ? [dict objectForKey:@"lastName"] : @"";
   user.identifier = [[dict objectForKey:@"identifier"] integerValue];
   
   NSString *gender = [dict objectForKey:@"gender"];
@@ -141,7 +141,9 @@ static PDUser *globalUser = nil;
   NSMutableDictionary *userDictionary = [NSMutableDictionary dictionary];
   
   [userDictionary setObject:self.firstName forKey:@"firstName"];
-  [userDictionary setObject:self.lastName forKey:@"lastName"];
+	if (self.lastName) {
+		[userDictionary setObject:self.lastName forKey:@"lastName"];
+	}
   [userDictionary setObject:@(self.identifier) forKey:@"identifier"];
   
   NSString *gender = @"";

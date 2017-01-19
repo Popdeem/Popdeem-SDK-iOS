@@ -18,6 +18,7 @@
 @interface PDUIInstagramLoginViewController ()
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @property (nonatomic) BOOL tappedClosed;
+@property (nonatomic) BOOL connectMode;
 @end
 
 NSString *client_id;
@@ -29,9 +30,32 @@ CGFloat _cardX,_cardY;
 
 - (instancetype) initForParent:(UIViewController*)parent delegate:(PDUIClaimViewModel*)delegate {
 	connected = NO;
+	_connectMode = YES;
 	if (self = [super init]) {
 		_parent = parent;
 		_delegate = delegate;
+		self.viewModel = [[PDUIInstagramLoginViewModel alloc] initForParent:self];
+		return self;
+	}
+	return nil;
+}
+
+- (instancetype) initForParent:(UIViewController*)parent {
+	connected = NO;
+	_connectMode = NO;
+	if (self = [super init]) {
+		_parent = parent;
+		self.viewModel = [[PDUIInstagramLoginViewModel alloc] initForParent:self];
+		return self;
+	}
+	return nil;
+}
+
+- (instancetype) initForParent:(UIViewController*)parent connectMode:(BOOL)connectMode {
+	connected = NO;
+	_connectMode = connectMode;
+	if (self = [super init]) {
+		_parent = parent;
 		self.viewModel = [[PDUIInstagramLoginViewModel alloc] initForParent:self];
 		return self;
 	}
@@ -53,10 +77,8 @@ CGFloat _cardX,_cardY;
 	_cardView.layer.cornerRadius = 5.0;
 	_cardView.layer.masksToBounds = YES;
 	
-	
 	CGFloat cardCenterX = cardWidth/2;
 	CGFloat imageWidth = cardWidth * 0.40;
-	
 	
 	CGFloat labelPadding = cardWidth*0.10;
 	
@@ -259,7 +281,11 @@ CGFloat _cardX,_cardY;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *response = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
 	InstagramResponseModel *instagramModel = [[InstagramResponseModel alloc] initWithJSON:response];
-	[self connectWithModel:instagramModel];
+	if (_connectMode) {
+		[self connectWithModel:instagramModel];
+	} else {
+		[self registerWithModel:instagramModel];
+	}
 	[self.cardView setHidden:YES];
 	[_webViewController dismissViewControllerAnimated:NO completion:nil];
 	[self dismissViewControllerAnimated:NO completion:nil];
@@ -267,6 +293,12 @@ CGFloat _cardX,_cardY;
 
 - (void) connectWithModel:(InstagramResponseModel*)instagramModel {
 	[_delegate connectInstagramAccount:instagramModel.user.id accessToken:instagramModel.accessToken userName:instagramModel.user.username];
+}
+
+- (void) registerWithModel:(InstagramResponseModel*)instagramModel {
+	if ([_parent respondsToSelector:@selector(registerWithInstagram:)]) {
+		[_parent performSelector:@selector(registerWithInstagram:) withObject:instagramModel];
+	}
 }
 
 - (NSString *)URLStringWithoutQuery:(NSURL*)url {

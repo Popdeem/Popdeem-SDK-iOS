@@ -10,6 +10,7 @@
 #import "FBSDKCoreKit.h"
 #import "FBSDKLoginKit.h"
 #import "PDUIModalLoadingView.h"
+#import "InstagramResponseModel.h"
 
 @interface PDMultiLoginViewController : UIViewController <FBSDKLoginButtonDelegate>
 
@@ -20,5 +21,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *twitterLoginButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *instagramLoginButton;
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
+
+- (void) registerWithModel:(InstagramResponseModel*)model;
 
 @end

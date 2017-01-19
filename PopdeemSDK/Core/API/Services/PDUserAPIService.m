@@ -121,7 +121,7 @@
 			}
 			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
 			[session invalidateAndCancel];
-			AbraOnboardUser();
+//			AbraOnboardUser();
 			dispatch_async(dispatch_get_main_queue(), ^{
 				success(user);
 			});
@@ -131,6 +131,67 @@
 			});
 		}
 	}];
+}
+
+- (void) registerUserWithInstagramId:(NSInteger)instagramId
+												 accessToken:(NSString*)accessToken
+														fullName:(NSString*)fullName
+														userName:(NSString*)userName
+											profilePicture:(NSString*)profilePicture
+														 success:(void (^)(PDUser *user))success
+														 failure:(void (^)(NSError *error))failure {
+	
+	NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
+	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+//	NSMutableDictionary *params = @{@"user": @{
+//																			@"instagram": @{
+//																					@"id": instagramId,
+//																					@"access_token": accessToken,
+//																					@"full_name": fullName,
+//																					@"profile_picture" : profilePicture
+//																					},
+//																			@"unique_identifier": deviceId
+//																			}};
+	
+	NSURLSession *session = [NSURLSession createPopdeemSession];
+//	[session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
+//		if (error) {
+//			//Handle Error
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				PDLogAlert(@"%@", [error localizedDescription]);
+//				failure(error);
+//			});
+//			return;
+//		}
+//		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+//		NSInteger responseStatusCode = [httpResponse statusCode];
+//		if (responseStatusCode <= 500) {
+//			//Deal with response
+//			NSError *jsonError;
+//			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+//			if (jsonError) {
+//				PDLogAlert(@"%@", [jsonError localizedDescription]);
+//				failure(jsonError);
+//				return ;
+//			}
+//			if (!jsonObject[@"user"]) {
+//				dispatch_async(dispatch_get_main_queue(), ^{
+//					failure([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+//				});
+//				return;
+//			}
+//			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+//			[session invalidateAndCancel];
+//			//			AbraOnboardUser();
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				success(user);
+//			});
+//		} else {
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				failure([PDNetworkError errorForStatusCode:responseStatusCode]);
+//			});
+//		}
+//	}];
 }
 
 - (void) userRegisterWithParams:(NSDictionary*)params

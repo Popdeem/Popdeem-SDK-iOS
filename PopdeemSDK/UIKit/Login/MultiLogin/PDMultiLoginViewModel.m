@@ -13,7 +13,7 @@
 
 @implementation PDMultiLoginViewModel
 
-- (instancetype) init {
+- (instancetype) initForViewController:(PDMultiLoginViewController*)controller {
 	if (self = [super init]) {
 		return self;
 	}
@@ -30,7 +30,7 @@
 	_titleFont = PopdeemFont(PDThemeFontBold, 18.0);
 	_titleString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards.");
 	
-	_bodyColor = PopdeemColor(PDThemeColorPrimaryApp);
+	_bodyColor = PopdeemColor(PDThemeColorPrimaryFont);
 	_bodyFont = PopdeemFont(PDThemeFontPrimary, 14.0);
 	_bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards.");
 	

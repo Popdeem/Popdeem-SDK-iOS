@@ -559,6 +559,7 @@
 		39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSDKCustomIOS7AlertView.m; sourceTree = "<group>"; };
 		39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessageAPIService.h; sourceTree = "<group>"; };
 		39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessageAPIService.m; sourceTree = "<group>"; };
+		39C1E0A81E30CF8200D413C7 /* InstagramLoginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramLoginDelegate.h; path = Protocols/InstagramLoginDelegate.h; sourceTree = "<group>"; };
 		39D3F8121CADC31400A69575 /* pduikit_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_x.png; path = Resources/pduikit_x.png; sourceTree = "<group>"; };
 		39D3F8131CADC31400A69575 /* pduikit_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_x@2x.png"; path = "Resources/pduikit_x@2x.png"; sourceTree = "<group>"; };
 		39D3F8141CADC31400A69575 /* pduikit_x@3x copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_x@3x copy.png"; path = "Resources/pduikit_x@3x copy.png"; sourceTree = "<group>"; };
@@ -1304,6 +1305,14 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		39C1E0A71E30CF6000D413C7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				39C1E0A81E30CF8200D413C7 /* InstagramLoginDelegate.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		39D3F81F1CB2BDAC00A69575 /* Friend Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1663,6 +1672,7 @@
 		BC67F591CB1E9DF1136B7D20 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				39C1E0A71E30CF6000D413C7 /* Protocols */,
 				39F5F6DC1D89523E008DE497 /* Abra */,
 				3973616E1D26AA370008301E /* Data */,
 				397894811D1D403800BCE17E /* Categories */,
