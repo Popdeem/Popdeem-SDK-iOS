@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InstagramLoginDelegate.h"
 
-@interface PDUISettingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface PDUISettingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InstagramLoginDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *tableHeaderView;

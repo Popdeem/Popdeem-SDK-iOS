@@ -312,7 +312,7 @@
 	[manager isLoggedInWithInstagram:^(BOOL isLoggedIn){
 		if (!isLoggedIn) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController delegate:self];
+				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController delegate:self connectMode:YES];
 				if (!instaVC) {
 					return;
 				}

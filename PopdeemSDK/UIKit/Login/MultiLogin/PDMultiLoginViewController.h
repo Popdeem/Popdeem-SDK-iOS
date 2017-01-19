@@ -11,8 +11,9 @@
 #import "FBSDKLoginKit.h"
 #import "PDUIModalLoadingView.h"
 #import "InstagramResponseModel.h"
+#import "InstagramLoginDelegate.h"
 
-@interface PDMultiLoginViewController : UIViewController <FBSDKLoginButtonDelegate>
+@interface PDMultiLoginViewController : UIViewController <FBSDKLoginButtonDelegate, InstagramLoginDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleLabel;

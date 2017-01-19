@@ -7,6 +7,7 @@
 //
 
 #import <JSONModel/JSONModel.h>
+#import "PDScores.h"
 
 @interface PDUserInstagramParams : JSONModel
 
@@ -14,9 +15,11 @@
 @property (nonatomic, retain) NSString<Optional> *instagramId;
 @property (nonatomic, retain) NSString<Optional> *screenName;
 @property (nonatomic) BOOL isTester;
-@property (nonatomic, retain) NSString *accessToken;
-@property (nonatomic, retain) NSString *accessSecret;
-@property (nonatomic, retain) NSString *profilePictureUrl;
+@property (nonatomic, retain) NSString<Optional> *accessToken;
+@property (nonatomic, retain) NSString<Optional> *accessSecret;
+@property (nonatomic, retain) NSString<Optional> *profilePictureUrl;
+@property (nonatomic, retain) PDScores<Optional> *score;
+@property (nonatomic, retain) NSArray<Optional> *favBrands;
 
 - (id) initWithJSON:(NSString*)json;
 - (id) initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err;

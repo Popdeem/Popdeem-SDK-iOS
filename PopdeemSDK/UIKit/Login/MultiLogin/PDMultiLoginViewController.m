@@ -18,6 +18,7 @@
 #import "PDUtils.h"
 #import "PDUserAPIService.h"
 #import "PDAPIClient.h"
+#import "PDUIInstagramLoginViewController.h"
 
 @interface PDMultiLoginViewController ()
 @property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
@@ -86,7 +87,11 @@
 
 - (IBAction)instagramLoginButtonPressed:(id)sender {
 	NSLog(@"Instagram Button Pressed");
-	
+	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self delegate:self connectMode:NO];
+	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+	[self presentViewController:instaVC animated:YES completion:^(void){}];
 }
 
 - (void) proceedWithTwitterLoggedInUser {
@@ -162,12 +167,16 @@
 #pragma mark - Instagram Login Delegate Methods
 
 - (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
-	PDAPIClient *client = [PDAPIClient sharedInstance];
-	[client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
-		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+	PDUserAPIService *service = [[PDUserAPIService alloc] init];
+	
+	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
+		[self addUserToUserDefaults:user];
+		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
+		[self dismissViewControllerAnimated:YES completion:^{}];
 	} failure:^(NSError* error){
-		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+		NSLog(@"Failure to connect instagram");
 	}];
+
 }
 
 @end

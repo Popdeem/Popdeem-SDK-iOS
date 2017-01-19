@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "PDReward.h"
 #import "PDLocation.h"
+#import "InstagramLoginDelegate.h"
 @class PDUIClaimViewController;
 
-@interface PDUIClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate>
+@interface PDUIClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate, InstagramLoginDelegate>
 
 typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 	FacebookOnly = 0,

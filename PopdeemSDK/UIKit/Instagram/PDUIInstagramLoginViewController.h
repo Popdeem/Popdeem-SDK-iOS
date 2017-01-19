@@ -12,6 +12,7 @@
 #import "PDUIInstagramWebViewController.h"
 #import "NSURL+OAuthAdditions.h"
 #import "PDUIInstagramLoginViewModel.h"
+#import "InstagramLoginDelegate.h"
 
 @class PDUIClaimViewModel;
 
@@ -21,7 +22,7 @@
 }
 @property (nonatomic, retain) PDUIInstagramLoginViewModel *viewModel;
 @property (nonatomic, assign) UIViewController *parent;
-@property (nonatomic, assign) PDUIClaimViewModel *delegate;
+@property (nonatomic, assign) id<InstagramLoginDelegate> delegate;
 @property (nonatomic, retain) UIView *backingView;
 @property (nonatomic, retain) UIView *cardView;
 @property (nonatomic, retain) UILabel *label;
@@ -31,7 +32,7 @@
 @property (nonatomic, retain) PDUIInstagramWebViewController *webViewController;
 @property (nonatomic, retain) IBOutlet UIWebView *webview;;
 
-- (instancetype) initForParent:(UIViewController*)parent delegate:(PDUIClaimViewModel*)delegate;
+- (instancetype) initForParent:(UIViewController*)parent delegate:(id<InstagramLoginDelegate>)delegate connectMode:(BOOL)connectMode;
 - (instancetype) initForParent:(UIViewController*)parent connectMode:(BOOL)connectMode;
 
 @end

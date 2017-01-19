@@ -28,9 +28,9 @@ CGFloat _cardX,_cardY;
 
 @implementation PDUIInstagramLoginViewController
 
-- (instancetype) initForParent:(UIViewController*)parent delegate:(PDUIClaimViewModel*)delegate {
+- (instancetype) initForParent:(UIViewController*)parent delegate:(id<InstagramLoginDelegate>)delegate connectMode:(BOOL)connectMode {
 	connected = NO;
-	_connectMode = YES;
+	_connectMode = connectMode;
 	if (self = [super init]) {
 		_parent = parent;
 		_delegate = delegate;
@@ -296,9 +296,7 @@ CGFloat _cardX,_cardY;
 }
 
 - (void) registerWithModel:(InstagramResponseModel*)instagramModel {
-	if ([_parent respondsToSelector:@selector(registerWithInstagram:)]) {
-		[_parent performSelector:@selector(registerWithInstagram:) withObject:instagramModel];
-	}
+	[_delegate connectInstagramAccount:instagramModel.user.id accessToken:instagramModel.accessToken userName:instagramModel.user.username];
 }
 
 - (NSString *)URLStringWithoutQuery:(NSURL*)url {

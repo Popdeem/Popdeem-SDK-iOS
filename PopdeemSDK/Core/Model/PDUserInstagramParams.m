@@ -21,22 +21,23 @@
 }
 
 - (id) initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err {
-	if ([super initWithDictionary:dict error:err]) {
+	if ([super initWithDictionary:dict error:&err]) {
 		return self;
 	}
+	PDLogError(@"JSONModel Error on Instagram Params: %@",err);
 	return nil;
 }
 
 + (JSONKeyMapper*)keyMapper {
-	return  [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
-																														 @"social_account_id": @"socialAccountId",
-																														 @"instagram_id": @"instagramId",
-																														 @"tester": @"isTester",
-																														 @"access_token": @"accessToken",
-																														 @"access_secret": @"accessSecret",
-																														 @"profile_picture_url": @"profilePictureUrl",
-																														 @"screen_name": @"screenName"
-																														 }];
+	return  [[JSONKeyMapper alloc] initWithDictionary:@{@"social_account_id": @"socialAccountId",
+																											@"instagram_id": @"instagramId",
+																											@"tester": @"isTester",
+																											@"access_token": @"accessToken",
+																											@"access_secret": @"accessSecret",
+																											@"profile_picture_url": @"profilePictureUrl",
+																											@"score" : @"score",
+																											@"favourite_brand_ids" : @"favBrands"
+																											}];
 }
 
 @end
