@@ -47,13 +47,15 @@
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   [[PDAPIClient sharedInstance] setDeviceToken:deviceToken.description];
+	if ([[PDUser sharedInstance] identifier] == nil) {
+		return;
+	}
 	PDUserAPIService *service = [[PDUserAPIService alloc] init];
 	[service updateUserWithCompletion:^(PDUser *user, NSError *error) {
 		if (error) {
 			PDLogError(@"Error User Update: %@",error);
 		}
 	}];
-	AbraOnboardUser();
 }
 
 - (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

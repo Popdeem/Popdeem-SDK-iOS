@@ -23,6 +23,7 @@
 @interface PDMultiLoginViewController ()
 @property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
 @property (nonatomic) BOOL facebookLoginOccurring;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *cancelButton;
 @end
 
 @implementation PDMultiLoginViewController
@@ -51,6 +52,7 @@
 	//Facebook setup
 	self.facebookLoginButton.readPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
 	[self.facebookLoginButton setDelegate:self];
+	self.facebookLoginButton; 
 	
     // Do any additional setup after loading the view from its nib.
 }
@@ -177,6 +179,16 @@
 		NSLog(@"Failure to connect instagram");
 	}];
 
+}
+- (IBAction)cancelButtonPressed:(id)sender {
+	[self dismissAction:sender];
+}
+
+- (IBAction) dismissAction:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:^{
+		//Any cleanup to do?
+	}];
+	AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Dismiss Button"});
 }
 
 @end

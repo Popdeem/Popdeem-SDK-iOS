@@ -76,4 +76,6 @@
 
 - (void) isLoggedInWithInstagram:(void (^)(BOOL isLoggedIn))completion;
 
+- (BOOL) isLoggedInWithAnyNetwork;
+
 @end

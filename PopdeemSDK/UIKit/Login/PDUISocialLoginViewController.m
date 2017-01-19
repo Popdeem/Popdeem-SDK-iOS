@@ -66,17 +66,6 @@
   self.imageView.clipsToBounds = YES;
 }
 
-- (IBAction)twitterButtonPressed:(id)sender {
-	NSLog(@"Twitter Pressed");
-	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
-	[manager registerWithTwitter:^{
-		NSLog(@"Success");
-		[self.viewModel setLoginState:LoginStateContinue];
-	} failure:^(NSError *error) {
-		NSLog(@"Failure");
-	}];
-}
-
 
 - (void) viewDidAppear:(BOOL)animated {
   BOOL isLoggedIn = [[PDSocialMediaManager manager] isLoggedInWithFacebook];

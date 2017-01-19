@@ -645,20 +645,20 @@
 			//Rewards
 			if (_model.rewards.count == 0) return;
 			if ([_model.rewards objectAtIndex:indexPath.row]) {
-				if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-					dispatch_async(dispatch_get_main_queue(), ^{
-						PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController
-																																																								 loginType:PDFacebookLoginTypeRead];
-						if (!fbVC) {
-							return;
-						}
-						self.definesPresentationContext = YES;
-						fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-						fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-						[self presentViewController:fbVC animated:YES completion:^(void){}];
-					});
-					return;
-				}
+//				if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+//					dispatch_async(dispatch_get_main_queue(), ^{
+//						PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController
+//																																																								 loginType:PDFacebookLoginTypeRead];
+//						if (!fbVC) {
+//							return;
+//						}
+//						self.definesPresentationContext = YES;
+//						fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//						fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//						[self presentViewController:fbVC animated:YES completion:^(void){}];
+//					});
+//					return;
+//				}
 				dispatch_async(dispatch_get_main_queue(), ^{
 					[self processClaimForIndexPath:indexPath];
 				});

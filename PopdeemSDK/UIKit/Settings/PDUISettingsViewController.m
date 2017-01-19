@@ -192,7 +192,7 @@
 			logoutCell = [self.tableView dequeueReusableCellWithIdentifier:kLogoutNib];
 			[logoutCell setParent:self];
 			PDSocialMediaManager *man = [PDSocialMediaManager manager];
-			if ([man isLoggedInWithFacebook]) {
+			if ([man isLoggedInWithAnyNetwork]) {
 				[logoutCell.logoutButton setHidden:NO];
 				[logoutCell.logoutButton setTitle:@"Log Out" forState:UIControlStateNormal];
 			} else {
@@ -311,7 +311,7 @@
 }
 
 - (void) facebookLoginFailure {
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[cell.socialSwitch setOn:NO];
 		[_tableView reloadInputViews];

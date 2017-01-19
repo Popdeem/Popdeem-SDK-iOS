@@ -509,4 +509,20 @@
 	}];
 }
 
+- (BOOL) isLoggedInWithAnyNetwork {
+	BOOL isLoggedIn = NO;
+	if ([[[PDUser sharedInstance] facebookParams] accessToken] != nil) {
+		return YES;
+	}
+	if ([[[PDUser sharedInstance] twitterParams] accessToken] != nil) {
+		return YES;
+	}
+	
+	if ([[[PDUser sharedInstance] instagramParams] accessToken] !=nil) {
+		return YES;
+	}
+	
+	return NO;
+}
+
 @end

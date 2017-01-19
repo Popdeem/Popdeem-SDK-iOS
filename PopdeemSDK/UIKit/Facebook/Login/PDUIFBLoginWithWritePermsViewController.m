@@ -224,10 +224,21 @@
 }
 
 - (void) dismiss {
-	if (connected) {
-		[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
-	} else {
-		[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishFailure object:nil];
+	switch (_viewModel.loginType) {
+			case PDFacebookLoginTypeRead:
+			if (connected) {
+				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];
+			} else {
+				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginFailure object:nil];
+			}
+			break;
+		case PDFacebookLoginTypePublish:
+			if (connected) {
+				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
+			} else {
+				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishFailure object:nil];
+			}
+			break;
 	}
 	[self dismissViewControllerAnimated:YES completion:^(void){}];
 }

@@ -29,25 +29,12 @@
                            didFinishLaunchingWithOptions:launchOptions];
   [application setStatusBarStyle:UIStatusBarStyleLightContent];
   [PopdeemSDK withAPIKey:@"26eb2fcb-06e5-4976-bff4-88c30cc58f58"];
-  [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
+  [PopdeemSDK enableSocialLoginWithNumberOfPrompts:300];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
 	[PopdeemSDK setDebug:YES];
 	
-	
 	PDLog(@"API_URL: %@", API_URL);
-	
-
-  [PopdeemSDK setThirdPartyUserToken:@"third_party_token"];
-	
-	NSArray *fontFamilies = [UIFont familyNames];
-	
-	for (int i = 0; i < [fontFamilies count]; i++)
-	{
-		NSString *fontFamily = [fontFamilies objectAtIndex:i];
-		NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
-		NSLog (@"%@: %@", fontFamily, fontNames);
-	}
 	
   return YES;
 }
