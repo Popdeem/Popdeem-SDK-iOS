@@ -560,6 +560,12 @@
 		39BF5AE81C1EF55B000BF32E /* PDMessageAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessageAPIService.h; sourceTree = "<group>"; };
 		39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessageAPIService.m; sourceTree = "<group>"; };
 		39C1E0A81E30CF8200D413C7 /* InstagramLoginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramLoginDelegate.h; path = Protocols/InstagramLoginDelegate.h; sourceTree = "<group>"; };
+		39C1E0AA1E320B6200D413C7 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
+		39C1E0AB1E320B6200D413C7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		39C1E0AC1E320B6200D413C7 /* report.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = report.xml; sourceTree = "<group>"; };
+		39C1E0AE1E320B6200D413C7 /* TabbedTest.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = TabbedTest.zip; sourceTree = "<group>"; };
+		39C1E0B01E320B6200D413C7 /* report.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = report.html; sourceTree = "<group>"; };
+		39C1E0B11E320B6200D413C7 /* report.junit */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = report.junit; sourceTree = "<group>"; };
 		39D3F8121CADC31400A69575 /* pduikit_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_x.png; path = Resources/pduikit_x.png; sourceTree = "<group>"; };
 		39D3F8131CADC31400A69575 /* pduikit_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_x@2x.png"; path = "Resources/pduikit_x@2x.png"; sourceTree = "<group>"; };
 		39D3F8141CADC31400A69575 /* pduikit_x@3x copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_x@3x copy.png"; path = "Resources/pduikit_x@3x copy.png"; sourceTree = "<group>"; };
@@ -1313,6 +1319,35 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		39C1E0A91E320B6200D413C7 /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				39C1E0AA1E320B6200D413C7 /* Fastfile */,
+				39C1E0AB1E320B6200D413C7 /* README.md */,
+				39C1E0AC1E320B6200D413C7 /* report.xml */,
+				39C1E0AD1E320B6200D413C7 /* sim_build */,
+				39C1E0AF1E320B6200D413C7 /* test_output */,
+			);
+			path = fastlane;
+			sourceTree = "<group>";
+		};
+		39C1E0AD1E320B6200D413C7 /* sim_build */ = {
+			isa = PBXGroup;
+			children = (
+				39C1E0AE1E320B6200D413C7 /* TabbedTest.zip */,
+			);
+			path = sim_build;
+			sourceTree = "<group>";
+		};
+		39C1E0AF1E320B6200D413C7 /* test_output */ = {
+			isa = PBXGroup;
+			children = (
+				39C1E0B01E320B6200D413C7 /* report.html */,
+				39C1E0B11E320B6200D413C7 /* report.junit */,
+			);
+			path = test_output;
+			sourceTree = "<group>";
+		};
 		39D3F81F1CB2BDAC00A69575 /* Friend Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1326,6 +1361,7 @@
 		39D7D05C1B8F0DCF00E45D0B = {
 			isa = PBXGroup;
 			children = (
+				39C1E0A91E320B6200D413C7 /* fastlane */,
 				392A9D141D36892700F11FDF /* Harcourt.gpx */,
 				A90FA4F91C0361F5001DA473 /* Podfile */,
 				A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */,
@@ -2066,7 +2102,7 @@
 					39735BC81D23E60E0008301E = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = S648X26U8J;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0820;
 					};
 					39D7D0641B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
