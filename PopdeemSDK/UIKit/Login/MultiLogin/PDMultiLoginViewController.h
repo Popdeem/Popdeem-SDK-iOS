@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FBSDKCoreKit.h"
-#import "FBSDKLoginKit.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PDUIModalLoadingView.h"
 #import "InstagramResponseModel.h"
 #import "InstagramLoginDelegate.h"
