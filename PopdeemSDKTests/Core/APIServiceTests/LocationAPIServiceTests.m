@@ -103,7 +103,7 @@
     [expectation fulfill];
     PDLocation *loc = [PDLocationStore find:159];
     expect(loc).toNot.beNil;
-    expect(loc.identifier).to.equal(159);
+    expect(loc.id).to.equal(159);
     [self afterEach];
   }];
   [self waitForExpectationsWithTimeout:5 handler:^(NSError *error) {
@@ -174,7 +174,7 @@
     expect(error).to.beNil;
     PDLocation *loc = [PDLocationStore find:159];
     expect(loc).toNot.beNil;
-    expect(loc.identifier).to.equal(159);
+    expect(loc.id).to.equal(159);
     [expectation fulfill];
     [self afterEach];
   }];
@@ -245,7 +245,7 @@
     expect(error).to.beNil;
     PDLocation *loc = [PDLocationStore find:159];
     expect(loc).toNot.beNil;
-    expect(loc.identifier).to.equal(159);
+    expect(loc.id).to.equal(159);
     [expectation fulfill];
     [self afterEach];
   }];

@@ -52,7 +52,6 @@
 	//Facebook setup
 	self.facebookLoginButton.readPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
 	[self.facebookLoginButton setDelegate:self];
-	self.facebookLoginButton; 
 	
     // Do any additional setup after loading the view from its nib.
 }

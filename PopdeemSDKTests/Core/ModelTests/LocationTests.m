@@ -37,7 +37,7 @@
 }
 
 - (void) testIdentifier {
-    expect(location.identifier).to.equal(159);
+    expect(location.id).to.equal(159);
 }
 
 - (void) testLocation {
@@ -50,7 +50,7 @@
 }
 
 - (void) testFacebookPageId {
-    expect(location.facebookPageId).to.beNil;
+    expect(location.fbPageId).to.beNil;
 }
 
 - (void) testNumberOfRewards {
@@ -58,10 +58,10 @@
 }
 
 - (void) testBrandName {
-    expect(location.brandName).to.equal(@"NO user brand");
+//    expect(location.brand.name).to.equal(@"NO user brand");
 }
 
 - (void) testBrandId {
-    expect(location.brandIdentifier).to.equal(102);
+//    expect(location.brand.id).to.equal(102);
 }
 @end

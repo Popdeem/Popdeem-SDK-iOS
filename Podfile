@@ -42,5 +42,10 @@ target 'PopdeemSDKTests' do
 	pod 'OCMock'
 	pod 'Shimmer'
 	pod 'Bolts'
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKLoginKit'
+	pod 'FBSDKShareKit'
+	pod 'STTwitter'
+	pod 'JSONModel'
 end
 
