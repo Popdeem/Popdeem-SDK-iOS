@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The users Twitter Identifier
  */
-@property (nonatomic, strong)  NSString *identifier;
+@property (nonatomic, strong)  NSString<Optional> *identifier;
 
 /**
  The users Twitter Access Token

@@ -81,6 +81,21 @@
 	}
 	return nil;
 }
+	
+- (instancetype) initWithBrandId:(NSInteger)brandId {
+	if (self = [self initFromNib]) {
+		PDBrand *b = [PDBrandStore findBrandByIdentifier:brandId];
+		if (!b) {
+			NSLog(@"Error finding brand with ID: %ld", brandId);
+			return nil;
+		}
+		_brand = b;
+		_model.brand = b;
+		return self;
+	}
+	return nil;
+}
+	
 - (void) awakeFromNib {
 	[super awakeFromNib];
 	self.model = [[PDUIHomeViewModel alloc] initWithController:self];
