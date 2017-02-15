@@ -2106,6 +2106,7 @@
 					};
 					39D7D0641B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0820;
 					};
 					39D7D06F1B8F0DCF00E45D0B = {
 						CreatedOnToolsVersion = 6.4;
@@ -3042,7 +3043,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D5D1F8CFFB7CEE791DBD2E4 /* Pods-PopdeemSDK.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -3051,6 +3054,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -3058,7 +3064,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 030E2C57F0BB1E43FE74AA96 /* Pods-PopdeemSDK.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -3067,6 +3075,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.PopdeemSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

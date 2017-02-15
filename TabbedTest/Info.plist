@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2518</string>
+	<string>2533</string>
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>
@@ -40,9 +40,9 @@
 	<key>InstagramCallback</key>
 	<string>https://www.popdeem.com/igredirect</string>
 	<key>InstagramClientId</key>
-	<string>d116f603b2e94e5592bd277c98b9fb71</string>
+	<string>721403853f784eea86023a9e96ccde44</string>
 	<key>InstagramClientSecret</key>
-	<string>d657dabd5caa4466923c3de4eef5f191</string>
+	<string>0b14e780896e42be88cefcddb3ac64dc</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>

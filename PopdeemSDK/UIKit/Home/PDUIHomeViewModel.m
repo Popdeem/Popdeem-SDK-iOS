@@ -396,7 +396,7 @@
 																		twitter:NO
 																	instagram:NO
 																		success:^(){
-																			PDLog(@"No Action Reward Was CLaimed");
+																			PDLog(@"No Action Reward Was Claimed");
 																			[PDRewardStore deleteReward:weakReward.identifier];
 																			weakSelf.rewards = [PDRewardStore allRewards];
 																			[weakSelf.controller.tableView reloadData];

@@ -1,7 +1,7 @@
 {
   "popdeem" : {
 		"colors" : {
-			"primaryAppColor" : "#40BADA",
+			"primaryAppColor" : "#7D6554 ",
 			"primaryInverseColor" : "#FFFFFF",
 			"viewBackgroundColor" : "#EBEBF2",
 			"primaryFontColor" : "#000000",
@@ -14,7 +14,7 @@
 		"images" : {
 			"loginImage" : "pduikit_default_login",
 			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "sdkTestCover"
+			"homeHeaderImage" : "rtr_home_header"
 		},
 		"fonts" : {
 			"primaryFont" : "Quicksand-Regular",
