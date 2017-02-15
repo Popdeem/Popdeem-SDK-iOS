@@ -878,7 +878,7 @@
 	
 	UIImage *img = info[UIImagePickerControllerOriginalImage];
 //	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
-	
+	img = [self normalizedImage:img];
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	
 	if (!CGRectEqualToRect(CGRectMake(0, 0, img.size.width, img.size.height), cropRect)) {
@@ -915,6 +915,16 @@
 	[self calculateTwitterCharsLeft];
 	NSString *source = (picker.sourceType == UIImagePickerControllerSourceTypeCamera) ? @"Camera" : @"Photo Library";
 	AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_PHOTO : @"Yes", @"Source" : source}));
+}
+
+- (UIImage *)normalizedImage:(UIImage*)image {
+	if (image.imageOrientation == UIImageOrientationUp) return image;
+	
+	UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+	[image drawInRect:(CGRect){0, 0, image.size}];
+	UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return normalizedImage;
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
