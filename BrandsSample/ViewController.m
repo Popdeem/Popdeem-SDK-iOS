@@ -35,6 +35,17 @@
 	}];
 }
 
+- (IBAction)presentForSearchTerm:(id)sender {
+    UITextField *input = (UITextField*)sender;
+    NSString *searchTerm = input.text;
+    PDBrandApiService *service = [[PDBrandApiService alloc] init];
+    [service getBrandByVendorSearchTerm:searchTerm completion:^(PDBrand *b, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@",error);
+        }
+        
+    }];
+}
 
 
 

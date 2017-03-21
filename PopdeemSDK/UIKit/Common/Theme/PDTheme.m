@@ -90,7 +90,7 @@ static const NSString *kVariablesKey = @"Variables";
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 
     if (error) {
-        [NSException raise:@"JSON Error - can't parse" format:@""];
+        [NSException raise:@"JSON Error - can't parse. Please check your Popdeem theme file is valid JSON" format:@""];
         return nil;
     }
 

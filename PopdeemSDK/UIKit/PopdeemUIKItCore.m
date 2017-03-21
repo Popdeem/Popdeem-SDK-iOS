@@ -51,5 +51,9 @@
 	[navController pushViewController:[[PDUIBrandsListTableViewController alloc] init] animated:YES];
 }
 
+- (void) presentRewardsForBrand:(PDBrand*)brand inNavigationController:(UINavigationController*)navController {
+    [navController pushViewController:[[PDUIHomeViewController alloc] initWithBrand:brand] animated:YES];
+}
+
 
 @end

@@ -28,6 +28,7 @@
 #import "PDUINoRewardTableViewCell.h"
 #import "PDUISettingsViewController.h"
 #import "PDUIInboxButton.h"
+#import "PDBrandApiService.h"
 
 
 #define kPlaceholderCell @"PlaceholderCell"
@@ -81,7 +82,7 @@
 	}
 	return nil;
 }
-	
+
 - (instancetype) initWithBrandId:(NSInteger)brandId {
 	if (self = [self initFromNib]) {
 		PDBrand *b = [PDBrandStore findBrandByIdentifier:brandId];

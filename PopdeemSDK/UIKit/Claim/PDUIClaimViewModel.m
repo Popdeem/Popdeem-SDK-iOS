@@ -815,6 +815,19 @@
 			[_viewController.textView resignFirstResponder];
 		}
 	}]];
+	if (self.image != nil) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+			weakSelf.alertWindow.hidden = YES;
+			weakSelf.alertWindow = nil;
+			weakSelf.image = nil;
+			[weakSelf.imageView setImage:nil];
+			[weakSelf.imageView setHidden:YES];
+			[weakSelf.viewController.view setNeedsDisplay];
+			if ([_viewController.textView isFirstResponder]) {
+				[_viewController.textView resignFirstResponder];
+			}
+		}]];
+	}
 	
 	[_alertWindow.rootViewController presentViewController:alert animated:YES completion:nil];
 }
@@ -874,7 +887,7 @@
 		[_imageView addGestureRecognizer:imageTap];
 		[_imageView setUserInteractionEnabled:YES];
 	}
-	
+	[self.imageView setHidden:NO];
 	
 	UIImage *img = info[UIImagePickerControllerOriginalImage];
 //	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
@@ -928,7 +941,7 @@
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
-	_image = [self resizeImage:image withMinDimension:480];
+	_image = [self resizeImage:image withMinDimension:460];
 	_imageView.image = _image;
 	
 }

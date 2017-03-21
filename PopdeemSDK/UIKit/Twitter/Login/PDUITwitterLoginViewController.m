@@ -76,7 +76,7 @@
 	[self.label setTextAlignment:NSTextAlignmentCenter];
 	[self.label sizeToFit];
 	CGSize labelSize = [_label sizeThatFits:_label.bounds.size];
-	[self.label setFrame:CGRectMake(_label.frame.origin.x, currentY , _label.frame.size.width, labelSize.height)];
+	[self.label setFrame:CGRectMake(labelPadding, currentY , cardWidth-(2*labelPadding), labelSize.height)];
 	[_cardView addSubview:_label];
 	
 	currentY += 40 + labelSize.height;

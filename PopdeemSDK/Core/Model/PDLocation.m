@@ -32,9 +32,9 @@
 		
 		self.numberOfRewards = [params[@"number_of_rewards"] integerValue];
 		
-		NSDictionary *brandParams = params[@"brand"];
+		id brandParams = params[@"brand"];
 		if (brandParams) {
-//			self.brand = [PDL]
+			self.brand = [[PDLocationBrandParams alloc] initWithDictionary:brandParams];
 		}
 		
 		return self;

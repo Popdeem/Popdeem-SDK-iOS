@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString<Optional> *imageUrl;
 @property (nonatomic, strong) UIImage<Optional> *image;
 @property (nonatomic) NSInteger createdAt;
+@property (nonatomic) NSDate<Optional> *sentTime;
 @property (nonatomic, strong) NSString<Optional> *title;
 @property (nonatomic, strong) NSString *body;
 

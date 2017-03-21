@@ -16,6 +16,11 @@
 @property (nonatomic, retain) UILabel *mainLabel;
 @property (nonatomic, retain) UILabel *rulesLabel;
 @property (nonatomic, retain) UILabel *infoLabel;
+@property (nonatomic, retain) UILabel *unifiedLabel;
+@property (nonatomic, retain) UIColor *primaryAppColor;
+@property (nonatomic, retain) UIColor *primaryFontColor;
+@property (nonatomic, retain) UIColor *secondaryFontColor;
+
 
 - (id) initWithFrame:(CGRect)frame reward:(PDReward*)reward;
 

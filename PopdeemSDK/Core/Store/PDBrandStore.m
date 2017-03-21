@@ -31,6 +31,17 @@
     return [[PDBrandStore store] objectForKey:@(identifier)];
 }
 
++ (nullable PDBrand*) findBrandBySearchTerm:(NSString*)searchTerm {
+    PDBrand *found = nil;
+    for (PDBrand *b in [[PDBrandStore store] allValues]) {
+        if ([b.vendorSearchTerm isEqualToString:searchTerm]) {
+            found = b;
+            break;
+        }
+    }
+    return found;
+}
+
 + (NSArray *) orderedByDistanceFromUser {
     return [[[PDBrandStore store] allValues] sortedArrayUsingSelector:@selector(compareDistance:)];
 }

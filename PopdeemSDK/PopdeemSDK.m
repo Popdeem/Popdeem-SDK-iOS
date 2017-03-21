@@ -127,6 +127,15 @@
 #pragma clang diagnostic pop
 }
 
++ (void) presentRewardsForBrand:(PDBrand*)b inNavigationController:(UINavigationController*)navController {
+    id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
+    SEL selector = NSSelectorFromString(@"presentRewardsForBrand:inNavigationController:");
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [uiKitCore performSelector:selector withObject:b withObject:navController];
+#pragma clang diagnostic pop
+}
+
 + (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated {
   id uiKitCore = [[self sharedInstance]popdeemUIKitCore];
   SEL selector = NSSelectorFromString(@"pushRewardsToNavigationController:animated");
@@ -163,9 +172,6 @@
 }
 
 + (void) handleRemoteNotification:(NSDictionary*)userInfo {
-  if (NSClassFromString(@"PopdeemUIKItCore")){
-    
-  }
   [[NSNotificationCenter defaultCenter] postNotificationName:NotificationReceived object:nil];
 }
 

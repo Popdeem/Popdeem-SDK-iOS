@@ -39,6 +39,25 @@
 	return nil;
 }
 
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+	if (self = [self initFromNib]) {
+		return self;
+	}
+	return nil;
+}
+
+
+- (instancetype) init {
+	if (self = [self initFromNib]) {
+		return self;
+	}
+	return nil;
+}
+
+- (void) awakeFromNib {
+	[super awakeFromNib];
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self registerNibs];

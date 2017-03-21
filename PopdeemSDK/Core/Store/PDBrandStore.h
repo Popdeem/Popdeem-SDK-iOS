@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (nullable PDBrand*) findBrandByIdentifier:(NSInteger)identifier;
 
++ (nullable PDBrand*) findBrandBySearchTerm:(NSString*)searchTerm;
+
 /**
  Brands ordered by distance to user
  

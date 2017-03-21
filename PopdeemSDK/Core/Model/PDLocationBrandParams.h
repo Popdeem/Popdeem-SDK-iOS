@@ -9,7 +9,7 @@
 #import <JSONModel/JSONModel.h>
 
 @interface PDLocationBrandParams : JSONModel
-@property (nonatomic) NSInteger *id;
+@property (nonatomic) NSInteger id;
 @property (nonatomic, retain) NSString *name;
 
 - (instancetype) initWithDictionary:(NSDictionary *)dict;

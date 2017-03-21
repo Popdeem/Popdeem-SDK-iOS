@@ -52,6 +52,7 @@
 #import "PDConstants.h"
 #import "PDUtils.h"
 #import "PDTheme.h"
+#import "PDBrand.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -75,6 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) setUpThemeFile:(NSString*)themeName;
 
 + (void) presentRewardFlow;
++ (void) presentRewardsForBrand:(PDBrand*)b inNavigationController:(UINavigationController*)navController;
 + (void) presentHomeFlowInNavigationController:(UINavigationController*)navController;
 + (void) presentBrandFlowInNavigationController:(UINavigationController*)navController;
 + (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated;

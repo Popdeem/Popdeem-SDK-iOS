@@ -152,9 +152,9 @@
 		
 		NSMutableArray *arr = [NSMutableArray array];
 		for (PDReward *r in [PDWallet orderedByDate]) {
-			if (r.brandId == _brand.identifier) {
+//			if (r.brandId == _brand.identifier) {
 				[arr addObject:r];
-			}
+//			}
 		}
 		weakSelf.wallet = [arr copy];
 		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];

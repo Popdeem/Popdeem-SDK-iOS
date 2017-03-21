@@ -41,196 +41,74 @@
     float labelX = imageSize + 2*leftIndent;
     float labelWidth = frame.size.width - labelX - indent;
     
-    
-    _mainLabel = [[UILabel alloc] init];
-    
-    NSAttributedString *mainAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardDescription
-                                                                             attributes:@{
-                                                                                     NSFontAttributeName: PopdeemFont(PDThemeFontBold, 14)
-                                                                             }];
-    CGRect mainLabelRect = [mainAttributedText boundingRectWithSize:(CGSize){labelWidth, 40}
-                                                            options:NSStringDrawingUsesLineFragmentOrigin
-                                                            context:nil];
-    
-    CGSize mainLabelsize = mainLabelRect.size;
-    
-    //The max is 40, so pad it out if needed
-    float padding = 0;
-    float currentY = 0;
-    
-    [_mainLabel setFrame: CGRectMake(labelX, currentY, labelWidth, mainLabelsize.height)];
-    [_mainLabel setText:reward.rewardDescription];
-    [_mainLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
-    [_mainLabel setTextColor:[UIColor blackColor]];
-    [_mainLabel setTextAlignment:NSTextAlignmentLeft];
-    [_mainLabel setNumberOfLines:0];
-    [_mainLabel setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];
-    [_mainLabel sizeToFit];
-    [self addSubview:_mainLabel];
-    currentY += mainLabelsize.height + 3;
-    CGSize rulesLabelsize;
-    if (rules) {
-      _rulesLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, labelWidth, 30)];
-      NSAttributedString *rulesAttributedText = [[NSAttributedString alloc] initWithString:_reward.rewardRules
-                                                                                attributes:@{
-                                                                                        NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12)
-                                                                                }];
-      CGRect rulesLabelRect = [rulesAttributedText boundingRectWithSize:(CGSize){labelWidth, 30}
-                                                                options:NSStringDrawingUsesLineFragmentOrigin
-                                                                context:nil];
-      
-      rulesLabelsize = rulesLabelRect.size;
-      padding = 0;
-//      float rulesPadding = 0;
-      [_rulesLabel sizeToFit];
-      [_rulesLabel setFrame:CGRectMake(labelX, currentY, labelWidth, rulesLabelsize.height)];
-      [_rulesLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
-      [_rulesLabel setTextColor:[UIColor blackColor]];
-      [_rulesLabel setText:reward.rewardRules];
-      [_rulesLabel setNumberOfLines:0];
-      currentY += _rulesLabel.frame.size.height+3;
-      [self addSubview:_rulesLabel];
-      
-//      [_mainLabel setFrame:CGRectMake(labelX, _rulesLabel.frame.origin.y-mainLabelsize.height, labelWidth, mainLabelsize.height)];
-    }
-    
-    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, labelWidth, 15)];
-    
-    NSString *action;
-    
-    NSArray *types = _reward.socialMediaTypes;
-    if (types.count > 0) {
-      if (types.count > 1) {
-        //Both Networks
-        switch (reward.action) {
-          case PDRewardActionCheckin:
-            action = @"Check-in or Tweet Required";
-            break;
-          case PDRewardActionPhoto:
-            action = @"Photo Required";
-            break;
-          case PDRewardActionNone:
-            action = @"No Action Required";
-          default:
-            action = @"No Action Required";
-            break;
-        }
-      } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
-        //Facebook Only
-        switch (reward.action) {
-          case PDRewardActionCheckin:
-            action = @"Check-in Required";
-            break;
-          case PDRewardActionPhoto:
-            action = @"Photo Required";
-            break;
-          case PDRewardActionNone:
-            action = @"No Action Required";
-          default:
-            action = @"No Action Required";
-            break;
-        }
-      } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
-        //Twitter Only
-        switch (reward.action) {
-          case PDRewardActionCheckin:
-            action = @"Tweet Required";
-            break;
-          case PDRewardActionPhoto:
-            action = @"Tweet with Photo Required";
-            break;
-          case PDRewardActionNone:
-            action = @"No Action Required";
-          default:
-            action = @"No Action Required";
-            break;
-        }
-			} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
-				//Twitter Only
-				action = @"Instagram Photo Required";
-				
+		
+		_unifiedLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0, labelWidth, self.frame.size.height)];
+		[_unifiedLabel setNumberOfLines:5];
+		
+		_primaryAppColor = PopdeemColor(PDThemeColorPrimaryApp);
+		_primaryFontColor = PopdeemColor(PDThemeColorPrimaryFont);
+		_secondaryFontColor = PopdeemColor(PDThemeColorSecondaryFont);
+		
+		if (reward.coverImageUrl) {
+			if ([reward.coverImageUrl rangeOfString:@"reward_default"].location != NSNotFound) {
+				[self.logoImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
+			} else if (reward.coverImage) {
+				[self.logoImageView setImage:reward.coverImage];
+			} else {
+				[self.logoImageView setImage:nil];
 			}
-		} else if (types.count == 0) {
-      switch (reward.action) {
-        case PDRewardActionCheckin:
-          action = @"Check-in Required";
-          break;
-        case PDRewardActionPhoto:
-          action = @"Photo Required";
-          break;
-        case PDRewardActionNone:
-          action = @"No Action Required";
-        default:
-          action = @"No Action Required";
-          break;
-      }
-    }
-    NSString *exp = nil;
-    if (reward.unlimitedAvailability == NO) {
-      NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-      NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                          fromDate:[NSDate date]
-                                                            toDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]
-                                                           options:0];
-      
-      NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
-                                                               fromDate:[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil]];
-      
-      NSInteger days = [components day];
-      
-      NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:_reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
-      int intervalHours = interval/60/60;
-      int intervalDays = interval/60/60/24;
-      
-      if (days>6) {
-        exp = [NSString stringWithFormat:@"Exp %ld %@",(long)untilComponents.day, [self monthforIndex:untilComponents.month]];
-      } else if (intervalDays < 7 && intervalHours > 23) {
-        exp = [NSString stringWithFormat:@"Exp %ld days",(long)intervalDays];
-      } else {
-        exp = [NSString stringWithFormat:@"Exp %ld hours",(long)intervalHours];
-      }
-    }
-    
-    if (reward.unlimitedAvailability) {
-      [_infoLabel setText:[NSString stringWithFormat:@"%@",action]];
-    } else {
-      [_infoLabel setText:[NSString stringWithFormat:@"%@ | %@",action,exp]];
-    }
-    
-    [_infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
-    [_infoLabel setTextAlignment:NSTextAlignmentLeft];
-    [_infoLabel sizeToFit];
-    [self addSubview:_infoLabel];
-    
-    //Apply Theme
-    [self setBackgroundColor:[UIColor clearColor]];
-    if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
-      [self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
-      self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
-    }
-    [_mainLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
-    [_rulesLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
-    [_infoLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
-  
-    
-    //Layout
-    float labelsHeight = _mainLabel.frame.size.height ;
-    if (rules) {
-      labelsHeight += _rulesLabel.frame.size.height;
-    }
-    labelsHeight += _infoLabel.frame.size.height;
-    labelsHeight += 10;
-    
-    float topPadding = (self.frame.size.height - labelsHeight)/2;
-    currentY = topPadding;
-    [_mainLabel setFrame:CGRectMake(_mainLabel.frame.origin.x, currentY, _mainLabel.frame.size.width, _mainLabel.frame.size.height)];
-    currentY += _mainLabel.frame.size.height + 5;
-    if (rules) {
-      [_rulesLabel setFrame:CGRectMake(_rulesLabel.frame.origin.x, currentY, _rulesLabel.frame.size.width, _rulesLabel.frame.size.height)];
-      currentY += _rulesLabel.frame.size.height + 5;
-    }
-    [_infoLabel setFrame:CGRectMake(_infoLabel.frame.origin.x, currentY, _infoLabel.frame.size.width, _infoLabel.frame.size.height)];
-    return self;
+		} else {
+			[self.logoImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
+		}
+		
+		NSString *description = reward.rewardDescription;
+		NSString *rulesStr = reward.rewardRules;
+		if (rulesStr.length > 70) {
+			rulesStr = [NSString stringWithFormat:@"%@...",[rulesStr substringWithRange:NSMakeRange(0, 70)]];
+		}
+		NSString *info = [self infoStringForReward:reward];
+		
+		NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
+		ps.paragraphSpacing = 2.0;
+		ps.lineSpacing = 0;
+		NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@""
+																																											 attributes:@{}];
+		
+		NSMutableParagraphStyle *innerParagraphStyle = [[NSMutableParagraphStyle alloc] init];
+		innerParagraphStyle.lineSpacing = 0;
+		
+		
+		NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc]
+																										initWithString:[NSString stringWithFormat:@"%@ \n",description]
+																										attributes:@{
+																																 NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
+																																 NSForegroundColorAttributeName : _primaryFontColor
+																																 }];
+		
+		[labelAttString appendAttributedString:descriptionString];
+		
+		if (rulesStr.length > 0) {
+			NSMutableAttributedString *rulesString = [[NSMutableAttributedString alloc]
+																								initWithString:[NSString stringWithFormat:@"%@ \n",rulesStr]
+																								attributes:@{
+																														 NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+																														 NSForegroundColorAttributeName : _secondaryFontColor
+																														 }];
+			[labelAttString appendAttributedString:rulesString];
+		}
+		
+		NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
+																						 initWithString:info attributes:@{
+																																							NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+																																							NSForegroundColorAttributeName : _primaryAppColor
+																																							}];
+		
+		[labelAttString appendAttributedString:infoString];
+		[labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
+		[_unifiedLabel setAttributedText:labelAttString];
+		
+		[self addSubview:_unifiedLabel];
+		return self;
   }
   return nil;
 }
@@ -281,6 +159,109 @@
       break;
   }
   return nil;
+}
+
+- (NSString*) infoStringForReward:(PDReward*)reward {
+	NSString *action;
+	
+	NSArray *types = reward.socialMediaTypes;
+	if (types.count > 0) {
+		if (types.count > 1) {
+			//Both Networks
+			switch (reward.action) {
+				case PDRewardActionCheckin:
+					action = @"Check-in or Tweet Required";
+					break;
+				case PDRewardActionPhoto:
+					action = @"Photo Required";
+					break;
+				case PDRewardActionNone:
+					action = @"No Action Required";
+				default:
+					action = @"No Action Required";
+					break;
+			}
+		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+			//Facebook Only
+			switch (reward.action) {
+				case PDRewardActionCheckin:
+					action = @"Check-in Required";
+					break;
+				case PDRewardActionPhoto:
+					action = @"Photo Required";
+					break;
+				case PDRewardActionNone:
+					action = @"No Action Required";
+				default:
+					action = @"No Action Required";
+					break;
+			}
+		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+			//Twitter Only
+			switch (reward.action) {
+				case PDRewardActionCheckin:
+					action = @"Tweet Required";
+					break;
+				case PDRewardActionPhoto:
+					action = @"Tweet with Photo Required";
+					break;
+				case PDRewardActionNone:
+					action = @"No Action Required";
+				default:
+					action = @"No Action Required";
+					break;
+			}
+		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+			//Twitter Only
+			action = @"Instagram Photo Required";
+			
+		}
+	} else if (types.count == 0) {
+		switch (reward.action) {
+			case PDRewardActionCheckin:
+				action = @"Check-in Required";
+				break;
+			case PDRewardActionPhoto:
+				action = @"Photo Required";
+				break;
+			case PDRewardActionNone:
+				action = @"No Action Required";
+			default:
+				action = @"No Action Required";
+				break;
+		}
+	}
+	NSString *exp = nil;
+	if (reward.unlimitedAvailability == NO) {
+		NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+		NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+																												fromDate:[NSDate date]
+																													toDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]
+																												 options:0];
+		
+		NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]];
+		
+		NSInteger days = [components day];
+		
+		NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
+		int intervalHours = interval/60/60;
+		int intervalDays = interval/60/60/24;
+		
+		if (days>6) {
+			exp = [NSString stringWithFormat:@"Exp %ld %@",(long)untilComponents.day, [self monthforIndex:untilComponents.month]];
+		} else if (intervalDays < 7 && intervalHours > 23) {
+			exp = [NSString stringWithFormat:@"Exp %ld days",(long)intervalDays];
+		} else {
+			exp = [NSString stringWithFormat:@"Exp %ld hours",(long)intervalHours];
+		}
+	}
+	
+	if (reward.unlimitedAvailability) {
+		return [NSString stringWithFormat:@"%@",action];
+	} else {
+		return [NSString stringWithFormat:@"%@ | %@",action,exp];
+	}
+	
 }
 
 @end
