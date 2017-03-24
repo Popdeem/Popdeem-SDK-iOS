@@ -137,7 +137,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  * @abstract Download the brand cover image from the server.
  *
- * @param competion Callback for completion.
+ * @param completion Callback for completion.
  */
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion;
 

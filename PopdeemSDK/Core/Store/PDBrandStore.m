@@ -7,6 +7,7 @@
 //
 
 #import "PDBrandStore.h"
+#import "PDUser.h"
 
 @implementation PDBrandStore
 
@@ -43,6 +44,9 @@
 }
 
 + (NSArray *) orderedByDistanceFromUser {
+  if ([[PDUser sharedInstance] userToken] == nil) {
+    return [[[PDBrandStore store] allValues] sortedArrayUsingSelector:@selector(compare:)];
+  }
     return [[[PDBrandStore store] allValues] sortedArrayUsingSelector:@selector(compareDistance:)];
 }
 

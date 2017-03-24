@@ -317,6 +317,14 @@
     [user setValue:[[PDAPIClient sharedInstance] deviceToken]  forKey:@"device_token"];
     [_user setDeviceToken:[[PDAPIClient sharedInstance] deviceToken]];
   }
+  if ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] != nil) {
+  
+    NSString *majorVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *minorVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString *versionString = [NSString stringWithFormat:@"%@", majorVersion];
+    [user setValue:versionString forKey:@"app_version"];
+  }
+  
   
   NSString *putPath = [NSString stringWithFormat:@"%@/%@/%ld",self.baseUrl,USERS_PATH,(long)_user.identifier];
   NSURLSession *session = [NSURLSession createPopdeemSession];

@@ -32,5 +32,6 @@
 - (instancetype) initWithBrand:(PDBrand*)b;
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender;
 - (void) redeemButtonPressed;
+- (void) setBrandVendorSearchTerm:(NSString *)brandVendorSearchTerm;
 
 @end

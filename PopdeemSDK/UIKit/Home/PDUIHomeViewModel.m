@@ -320,7 +320,7 @@
 		if (_brand.logoImage) {
 			[_logoImageView setImage:_brand.logoImage];
 		} else {
-			if ([_brand.logoUrlString rangeOfString:@"default"].location != NSNotFound) {
+			if ([_brand.logoUrlString rangeOfString:@"default"].location == NSNotFound) {
 				NSURL *url = [NSURL URLWithString:_brand.logoUrlString];
 				NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 					if (data) {

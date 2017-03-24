@@ -30,6 +30,7 @@
 #import "PDNotificationHandler.h"
 #import "PDMessageAPIService.h"
 #import "PDUserAPIService.h"
+#import "PDBrandApiService.h"
 #import "PDReferral.h"
 #import "PDMomentsManager.h"
 #import "PDAPIClient.h"
@@ -59,6 +60,15 @@
 
 + (BOOL) debugMode {
 	return [[PopdeemSDK sharedInstance] debug];
+}
+
++ (void) startupBrands {
+    PDBrandApiService *service = [[PDBrandApiService alloc] init];
+    [service getBrandsWithCompletion:^(NSError *error) {
+        if (error) {
+            PDLogError(@"Error Fetching Brands: %@", error.localizedDescription);
+        }
+    }];
 }
 
 + (void) withAPIKey:(NSString*)apiKey {
