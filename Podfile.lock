@@ -24,7 +24,6 @@ PODS:
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
-    - FBSDKShareKit
     - JSONModel
     - Shimmer
     - STTwitter
@@ -42,7 +41,6 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - FBSDKShareKit
   - JSONModel
-  - JSONModel (~> 1.7.0)
   - Nocilla
   - OCMock
   - PopdeemSDK (from `../Popdeem-SDK-iOS`)
@@ -65,10 +63,10 @@ SPEC CHECKSUMS:
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  PopdeemSDK: e69c8dddb3b0c350864f604948740e9ef435250a
+  PopdeemSDK: 63c9321d48cf0f5f4fd203b0020abe676cee38b5
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
 
-PODFILE CHECKSUM: 6fdeb932cba66ebdb2332af8585e7c2f117f6a33
+PODFILE CHECKSUM: 7ea5d91b0f52ea95a112ce7136a622f962ce0666
 
 COCOAPODS: 1.2.0

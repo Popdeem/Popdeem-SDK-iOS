@@ -1,7 +1,7 @@
 {
   "popdeem" : {
 		"colors" : {
-			"primaryAppColor" : "#7D6554 ",
+			"primaryAppColor" : "#31241C ",
 			"primaryInverseColor" : "#FFFFFF",
 			"viewBackgroundColor" : "#EBEBF2",
 			"primaryFontColor" : "#000000",
@@ -17,9 +17,9 @@
 			"homeHeaderImage" : "rtr_home_header"
 		},
 		"fonts" : {
-			"primaryFont" : "Quicksand-Regular",
-			"boldFont" : "Quicksand-Bold",
-			"lightFont" : "Quicksand-Light"
+			"primaryFont" : "OpenSans-Regular",
+			"boldFont" : "OpenSans-Bold",
+			"lightFont" : "OpenSans-Light"
 		},
 		"nav" : {
 			"useTheme" : "true"

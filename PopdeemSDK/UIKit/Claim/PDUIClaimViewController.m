@@ -14,6 +14,7 @@
 #import "PDUIFriendPickerViewController.h"
 #import "PDUser+Facebook.h"
 #import "PDSocialMediaFriend.h"
+#import "PDUISelectNetworkViewController.h"
 
 @interface PDUIClaimViewController () {
   NSArray *_mediaTypes;
@@ -74,6 +75,7 @@
   }
   return nil;
 }
+
 
 - (void) setupWithReward:(PDReward*)reward {
   _reward = reward;
@@ -137,6 +139,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [_locationFailedView setHidden:YES];
+  
+  
   [self setupView];
 	_viewModel = [[PDUIClaimViewModel alloc] initWithMediaTypes:_mediaTypes andReward:_reward location:_location controller:self];
   [_viewModel setViewController:self];
@@ -157,6 +161,25 @@
 	[self.addHashtagButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
+  
+  [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+  
+  [self.shareButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [self.shareButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+  [self.shareButton.layer setCornerRadius:3.0];
+  
+  [self.alreadySharedButton setTintColor:[UIColor blackColor]];
+  [[self.alreadySharedButton layer] setBorderColor:[UIColor blackColor].CGColor];
+  [[self.alreadySharedButton layer] setBorderWidth:1.0f];
+  [[self.alreadySharedButton layer] setCornerRadius:3.0];
+  if (_reward.instagramForcedTag) {
+    [self.alreadySharedButton setTitle:[NSString stringWithFormat:@"I've already shared with %@", _reward.instagramForcedTag] forState:UIControlStateNormal];
+  } else {
+    [self.alreadySharedButton setTitle:@"I've already shared" forState:UIControlStateNormal];
+  }
+  [self.alreadySharedButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15.0)];
+  [self.shareButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15.0)];
+  
 }
 
 - (void) setupView {
@@ -216,7 +239,14 @@
 																																													NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
 																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
 																																							 forState:UIControlStateNormal];
+    
+    [self.shareButton setBackgroundColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
+    [self.shareButton setTitleColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor) forState:UIControlStateNormal];
+    
 	}
+  [[NSNotificationCenter defaultCenter] addObserver:_viewModel
+                                           selector:@selector(keyboardWillShow:)
+                                               name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void) viewWillLayoutSubviews {
@@ -607,6 +637,11 @@
 	NSString *newText = [self.textView.text stringByAppendingString:hashtagString];
 	[self.textView setText:newText];
 	[_viewModel validateHashTag];
+}
+- (IBAction)alreadySharedButtonPressed:(id)sender {
+  PDUISelectNetworkViewController *selNet = [[PDUISelectNetworkViewController alloc] initWithMediaTypes:_mediaTypes andReward:_reward brand:_brand];
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+  [self.navigationController pushViewController:selNet animated:YES];
 }
 
 @end

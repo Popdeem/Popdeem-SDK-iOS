@@ -7,7 +7,7 @@
 		<key>BrandsSample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>26</integer>
+			<integer>8</integer>
 		</dict>
 		<key>NavigationSample.xcscheme</key>
 		<dict>
@@ -54,6 +54,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>TestSize.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
 		<key>libPopdeemSDK.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -63,6 +68,21 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3922FAA11DC0BDA100501E1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>393C39D61E852BF700315493</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>393C39F11E852BF700315493</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>393C39FC1E852BF700315493</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -826,6 +826,7 @@
       claimController.brand = _brand;
     }
     [claimController setHomeController:self];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationController] pushViewController:claimController animated:YES];
   }
 }

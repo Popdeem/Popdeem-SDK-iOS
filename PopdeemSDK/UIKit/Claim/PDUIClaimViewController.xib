@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +14,7 @@
                 <outlet property="addFriendsButton" destination="uox-N7-Qef" id="g6R-QO-OE7"/>
                 <outlet property="addHashtagButton" destination="2Gr-Ua-pQx" id="PvK-Kj-asw"/>
                 <outlet property="addPhotoButton" destination="Rur-5r-Gdk" id="4xV-0Z-UPf"/>
+                <outlet property="alreadySharedButton" destination="StD-WV-SQ3" id="Yxh-MW-frH"/>
                 <outlet property="claimButtonView" destination="XxC-57-5PT" id="Xb9-mt-2gv"/>
                 <outlet property="controlButtonsView" destination="QVt-fX-G8J" id="bwe-DX-Vab"/>
                 <outlet property="facebookIconView" destination="mqk-Vz-Woi" id="WcH-53-j2C"/>
@@ -27,6 +27,7 @@
                 <outlet property="refreshLocationButton" destination="w0z-jL-L75" id="AXk-Q5-10c"/>
                 <outlet property="rewardInfoView" destination="URn-F7-REZ" id="SJk-7c-tGA"/>
                 <outlet property="rewardInfoViewHeightConstraint" destination="3CR-s1-1i5" id="5iQ-a9-mHd"/>
+                <outlet property="shareButton" destination="MT4-ac-r3V" id="p4T-vI-T3z"/>
                 <outlet property="textView" destination="FtA-wC-9gB" id="b3w-FV-Hjd"/>
                 <outlet property="twitterButtonView" destination="bcx-cq-ec7" id="Kfc-cq-BJJ"/>
                 <outlet property="twitterCharacterCountLabel" destination="tbK-Jj-ibT" id="ugA-if-FEg"/>
@@ -348,7 +349,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XxC-57-5PT">
-                    <rect key="frame" x="0.0" y="359" width="375" height="65"/>
+                    <rect key="frame" x="0.0" y="359" width="375" height="130"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MT4-ac-r3V">
                             <rect key="frame" x="8" y="8" width="359" height="49"/>
@@ -364,15 +365,26 @@
                                 <action selector="claimButtonTapped:" destination="-1" eventType="touchUpInside" id="7iU-oG-4GS"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StD-WV-SQ3">
+                            <rect key="frame" x="8" y="65" width="359" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="dOn-jD-lq4"/>
+                            </constraints>
+                            <state key="normal" title="I have already shared"/>
+                            <connections>
+                                <action selector="alreadySharedButtonPressed:" destination="-1" eventType="touchUpInside" id="K2P-II-PS3"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="MT4-ac-r3V" secondAttribute="bottom" constant="8" id="O2E-Oe-m8t"/>
                         <constraint firstItem="MT4-ac-r3V" firstAttribute="leading" secondItem="XxC-57-5PT" secondAttribute="leading" constant="8" id="PQP-PH-BIQ"/>
+                        <constraint firstItem="StD-WV-SQ3" firstAttribute="top" secondItem="MT4-ac-r3V" secondAttribute="bottom" constant="8" id="Zf9-SI-GN4"/>
+                        <constraint firstItem="StD-WV-SQ3" firstAttribute="leading" secondItem="XxC-57-5PT" secondAttribute="leading" constant="8" id="fmO-H2-Wfy"/>
                         <constraint firstAttribute="trailing" secondItem="MT4-ac-r3V" secondAttribute="trailing" constant="8" id="htC-dr-87O"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="oir-wT-oDU"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="oir-wT-oDU"/>
+                        <constraint firstAttribute="trailing" secondItem="StD-WV-SQ3" secondAttribute="trailing" constant="8" id="uY6-LG-YS8"/>
                         <constraint firstItem="MT4-ac-r3V" firstAttribute="top" secondItem="XxC-57-5PT" secondAttribute="top" constant="8" id="w2S-bS-bUX"/>
-                        <constraint firstAttribute="height" constant="65" id="zcj-gQ-lYB"/>
+                        <constraint firstAttribute="height" constant="130" id="zcj-gQ-lYB"/>
                     </constraints>
                 </view>
             </subviews>
@@ -417,7 +429,7 @@
                 <constraint firstItem="FtA-wC-9gB" firstAttribute="leading" secondItem="0it-oE-mA7" secondAttribute="leading" id="ykw-iU-UdJ"/>
                 <constraint firstItem="QVt-fX-G8J" firstAttribute="top" secondItem="Kh4-I8-2ik" secondAttribute="bottom" id="ysZ-lM-vwU"/>
             </constraints>
-            <point key="canvasLocation" x="549" y="239"/>
+            <point key="canvasLocation" x="427.5" y="236.5"/>
         </view>
     </objects>
     <resources>
