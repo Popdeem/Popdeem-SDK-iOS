@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 		PopdeemSDK.withAPIKey("26eb2fcb-06e5-4976-bff4-88c30cc58f58")
+    PopdeemSDK.startupBrands()
 		PopdeemSDK.enableSocialLogin(withNumberOfPrompts: 3)
 		PopdeemSDK.register(forPushNotificationsApplication: application)
 		PopdeemSDK.setUpThemeFile("theme")

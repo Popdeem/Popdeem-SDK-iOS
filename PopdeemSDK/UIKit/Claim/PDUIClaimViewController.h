@@ -54,6 +54,9 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *twitterIconView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *facebookIconView;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *shareButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *alreadySharedButton;
+
 @property (nonatomic, assign) PDBrand *brand;
 
 @property (nonatomic) UIBackgroundTaskIdentifier claimTask;

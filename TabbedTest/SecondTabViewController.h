@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDUIHomeViewController.h"
 
-@interface SecondTabViewController : UIViewController
+@interface SecondTabViewController : PDUIHomeViewController
+
 
 @end

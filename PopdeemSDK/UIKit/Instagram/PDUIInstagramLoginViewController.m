@@ -19,6 +19,7 @@
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @property (nonatomic) BOOL tappedClosed;
 @property (nonatomic) BOOL connectMode;
+@property (nonatomic) BOOL directConnect;
 @end
 
 NSString *client_id;
@@ -62,8 +63,23 @@ CGFloat _cardX,_cardY;
 	return nil;
 }
 
+- (instancetype) initForParent:(UIViewController*)parent delegate:(id<InstagramLoginDelegate>)delegate connectMode:(BOOL)connectMode directConnect:(BOOL)directConnect {
+  connected = NO;
+  _connectMode = connectMode;
+  _directConnect = directConnect;
+  _delegate = delegate;
+  if (self = [super init]) {
+    _parent = parent;
+    self.viewModel = [[PDUIInstagramLoginViewModel alloc] initForParent:self];
+    return self;
+  }
+  return nil;
+}
+
 - (void) renderView {
-	
+  
+  if (_directConnect) return;
+  
 	CGFloat currentY = 0;
 	
 	CGFloat cardWidth = _parent.view.frame.size.width * 0.8;
@@ -153,13 +169,17 @@ CGFloat _cardX,_cardY;
 	[_cardView addSubview:_actionButton];
 	[self renderView];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-	
+  
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
 //	[UIView animateWithDuration:0.5 animations:^{
 //		[_cardView setFrame:CGRectMake(_cardX, _cardY, _cardView.frame.size.width, _cardView.frame.size.height)];
 //	}];
+  if (_directConnect) {
+    [self connectInstagram];
+  }
 }
 
 - (void)didReceiveMemoryWarning {

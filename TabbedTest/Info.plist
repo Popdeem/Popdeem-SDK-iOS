@@ -30,7 +30,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
 	<string>2635</string>
+=======
+	<string>2633</string>
+>>>>>>> Direct_Connect
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>
@@ -108,6 +112,10 @@
 		<string>Quicksand-Bold.otf</string>
 		<string>Quicksand-Regular.otf</string>
 		<string>Quicksand-Light.otf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Semibold.ttf</string>
+		<string>OpenSans-Light.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

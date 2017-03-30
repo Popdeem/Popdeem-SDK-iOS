@@ -18,6 +18,7 @@
 #import "PDUserAPIService.h"
 
 
+
 @interface PDUISelectNetworkViewController ()
 
 @property (nonatomic, retain) NSArray *mediaTypes;
@@ -90,11 +91,13 @@
   [self.instagramButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [self.instagramButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
   
+
   if ([[[PDUser sharedInstance] instagramParams] accessToken]) {
     [self.instagramButton setTitle:@"Scan Instagram" forState:UIControlStateNormal];
   } else {
     [self.instagramButton setTitle:@"Connect to Instagram" forState:UIControlStateNormal];
   }
+
   [[PDSocialMediaManager manager] isLoggedInWithInstagram:^(BOOL isLoggedIn) {
     if (isLoggedIn) {
       dispatch_async(dispatch_get_main_queue(), ^{
@@ -223,7 +226,6 @@
 
 - (void) connectTwitter {
   PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
-  
   if ([[PDUser sharedInstance] isRegistered]) {
     [manager loginWithTwitter:^(void){
       //Twitter Connected Successfully
