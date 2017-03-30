@@ -22,6 +22,7 @@
   PDLocation *_location;
   BOOL goingToTag;
 }
+
 @property (nonatomic, strong) CALayer *textViewBordersLayer;
 @property (nonatomic, strong) CALayer *buttonsViewBordersLayer;
 @property (nonatomic, strong) CALayer *twitterButtonViewBordersLayer;

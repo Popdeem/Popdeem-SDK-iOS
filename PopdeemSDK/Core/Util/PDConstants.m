@@ -35,6 +35,13 @@ NSString *const INSTAGRAM_URL = @"https://api.instagram.com/v1";
  */
 
 /*
+ * Network Type
+ */
+NSString *const FACEBOOK_NETWORK = @"facebook";
+NSString *const TWITTER_NETWORK = @"twitter";
+NSString *const INSTAGRAM_NETWORK = @"instagram";
+
+/*
  NSNotificationCenter Strings
  */
 NSString *const PDAPIClientDidClaimRewardNotification = @"PDAPIClientDidClaimRewardNotification";

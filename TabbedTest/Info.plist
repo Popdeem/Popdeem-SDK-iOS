@@ -30,11 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
-	<string>2635</string>
-=======
-	<string>2633</string>
->>>>>>> Direct_Connect
+	<string>2653</string>
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>

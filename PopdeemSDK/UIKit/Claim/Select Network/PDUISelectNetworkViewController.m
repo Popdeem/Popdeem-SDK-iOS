@@ -16,7 +16,7 @@
 #import "PDUITwitterLoginViewController.h"
 #import "PDAPIClient.h"
 #import "PDUserAPIService.h"
-
+#import "PDBackgroundScan.h"
 
 
 @interface PDUISelectNetworkViewController ()
@@ -55,6 +55,7 @@
     _reward = reward;
     _brand = brand;
     return self;
+    
   }
   return nil;
 }
@@ -137,7 +138,7 @@
 
 - (IBAction)facebookButtonPressed:(id)sender {
   if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-    //Go to scan page
+    [self scanFacebook];
     return;
   }
   //Connect to Facebook and then scan
@@ -288,7 +289,7 @@
 }
 
 - (void) facebookLoginSuccess {
-  //TODO: Segue to Scan here
+  [self scanFacebook];
   NSLog(@"Connected Facebook");
   [self.facebookButton setTitle:@"Scan Facebook" forState:UIControlStateNormal];
 }
@@ -305,6 +306,22 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Scanning -
+
+- (void) scanFacebook {
+  PDBackgroundScan *scan = [[PDBackgroundScan alloc] init];
+  [scan scanNetwork:FACEBOOK_NETWORK reward:_reward success:^(BOOL validated){
+    PDLog(@"Scan Successful");
+  } failure:^(NSError *error) {
+    if (error) {
+      PDLogError(@"Error on scan: %@", error.localizedDescription);
+    } else {
+      PDLog(@"Scan not successfuk");
+    }
+
+  }];
 }
 
 @end

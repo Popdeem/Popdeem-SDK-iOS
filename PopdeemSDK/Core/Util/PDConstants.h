@@ -41,6 +41,10 @@ extern NSString *const BRANDS_PATH;
 extern NSString *const MOMENTS_PATH;
 extern NSString *const INSTAGRAM_URL;
 
+extern NSString *const FACEBOOK_NETWORK;
+extern NSString *const TWITTER_NETWORK;
+extern NSString *const INSTAGRAM_NETWORK;
+
 //
 //NSNotificationCenter Strings
 //
