@@ -135,6 +135,7 @@
 		39ABA6651C4D073D0057088E /* PDUIHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA6641C4D073D0057088E /* PDUIHomeViewModel.m */; };
 		39AF13F61D5487B00097B0F7 /* PDUISettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AF13F41D5487B00097B0F7 /* PDUISettingsViewController.m */; };
 		39AF13FA1D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AF13F81D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m */; };
+		39B42FB11E8D0975006D3209 /* PDUISelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B42FB01E8D0975006D3209 /* PDUISelectNetworkViewController.m */; };
 		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
 		39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE31C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m */; };
 		39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */; };
@@ -550,6 +551,9 @@
 		39AF13F71D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialSettingsTableViewCell.h; path = Settings/PDUISocialSettingsTableViewCell.h; sourceTree = "<group>"; };
 		39AF13F81D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISocialSettingsTableViewCell.m; path = Settings/PDUISocialSettingsTableViewCell.m; sourceTree = "<group>"; };
 		39AF13F91D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUISocialSettingsTableViewCell.xib; path = Settings/PDUISocialSettingsTableViewCell.xib; sourceTree = "<group>"; };
+		39B42FB01E8D0975006D3209 /* PDUISelectNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISelectNetworkViewController.m; path = "Claim/Select Network/PDUISelectNetworkViewController.m"; sourceTree = "<group>"; };
+		39B42FB21E8D09FC006D3209 /* PDUISelectNetworkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUISelectNetworkViewController.xib; path = "Claim/Select Network/PDUISelectNetworkViewController.xib"; sourceTree = "<group>"; };
+		39B42FB31E8D0A21006D3209 /* PDUISelectNetworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUISelectNetworkViewController.h; path = "Claim/Select Network/PDUISelectNetworkViewController.h"; sourceTree = "<group>"; };
 		39BB0DDC1C89DBF5008FCB8C /* pduikit_popdeemArrowB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pduikit_popdeemArrowB.png; sourceTree = "<group>"; };
 		39BB0DDD1C89DBF5008FCB8C /* pduikit_popdeemArrowB@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pduikit_popdeemArrowB@2x.png"; sourceTree = "<group>"; };
 		39BB0DDE1C89DBF5008FCB8C /* pduikit_popdeemArrowB@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pduikit_popdeemArrowB@3x.png"; sourceTree = "<group>"; };
@@ -913,6 +917,7 @@
 		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
+				39B42FAF1E8D095D006D3209 /* Select Network */,
 				392787121C0716F600F8DCD9 /* PDUIClaimViewController.h */,
 				392787131C0716F600F8DCD9 /* PDUIClaimViewController.m */,
 				39EDADBD1C072851001102B3 /* PDUIClaimViewModel.h */,
@@ -1309,6 +1314,16 @@
 				392B559C1DAF9D130012350A /* PDUILogoutTableViewCell.xib */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		39B42FAF1E8D095D006D3209 /* Select Network */ = {
+			isa = PBXGroup;
+			children = (
+				39B42FB01E8D0975006D3209 /* PDUISelectNetworkViewController.m */,
+				39B42FB21E8D09FC006D3209 /* PDUISelectNetworkViewController.xib */,
+				39B42FB31E8D0A21006D3209 /* PDUISelectNetworkViewController.h */,
+			);
+			name = "Select Network";
 			sourceTree = "<group>";
 		};
 		39C1E0A71E30CF6000D413C7 /* Protocols */ = {
@@ -2639,6 +2654,7 @@
 				3980A7051D36465100D5F179 /* PlaceholderTableViewCell.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				390B4FCB1DF8607F00E692D4 /* PDBrandTheme.m in Sources */,
+				39B42FB11E8D0975006D3209 /* PDUISelectNetworkViewController.m in Sources */,
 				392423761C230F4E0038D953 /* PDUILazyLoader.m in Sources */,
 				394495E41D9A807F003BA702 /* UIImage+RoundedCorner.m in Sources */,
 				3921E30C1C71D84B000120D4 /* PDUIFeedImageViewController.m in Sources */,
