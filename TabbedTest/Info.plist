@@ -30,11 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-<<<<<<< Updated upstream
-	<string>2541</string>
-=======
 	<string>2635</string>
->>>>>>> Stashed changes
 	<key>FacebookAppID</key>
 	<string>370441856449418</string>
 	<key>FacebookDisplayName</key>
