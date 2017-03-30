@@ -120,6 +120,7 @@
 				return;
 			}
 			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+      [user addUserToUserDefaults];
 			[session invalidateAndCancel];
 //			AbraOnboardUser();
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -182,6 +183,7 @@
 				return;
 			}
 			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+      [user addUserToUserDefaults];
 			[session invalidateAndCancel];
 			//			AbraOnboardUser();
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -285,6 +287,7 @@
 				return;
 			}
 			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+      [user addUserToUserDefaults];
 			[session invalidateAndCancel];
 			AbraOnboardUser();
 			dispatch_async(dispatch_get_main_queue(), ^{

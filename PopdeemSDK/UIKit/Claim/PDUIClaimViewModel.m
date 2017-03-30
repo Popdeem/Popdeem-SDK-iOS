@@ -16,6 +16,7 @@
 #import "PDUIFBLoginWithWritePermsViewController.h"
 #import "UIImage+Resize.h"
 #import "PDUITwitterLoginViewController.h"
+#import "PDUserAPIService.h"
 
 @import Photos;
 
@@ -691,12 +692,21 @@
 }
 
 - (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
-	PDAPIClient *client = [PDAPIClient sharedInstance];
-	[client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
-		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
-	} failure:^(NSError* error){
-		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
-	}];
+	PDAPIClient *client = [PDAPIClient sharedInstance];  
+  if ([[PDUser sharedInstance] isRegistered]) {
+    [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
+      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+    } failure:^(NSError* error){
+      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+    }];
+  } else {
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+    } failure:^(NSError *error) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+    }];
+  }
 }
 
 - (void) didClaimRewardId:(NSInteger)rewardId {

@@ -152,5 +152,7 @@ The users last name
 - (NSArray*) socialMediaFriendsOrderedAlpha;
 
 + (void) resetSharedInstance;
+- (BOOL) isRegistered;
+- (void) addUserToUserDefaults;
 
 @end

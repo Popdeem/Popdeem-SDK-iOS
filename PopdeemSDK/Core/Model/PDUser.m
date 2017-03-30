@@ -208,5 +208,12 @@ static PDUser *globalUser = nil;
   return nil;
 }
 
+- (BOOL) isRegistered {
+  return _userToken != nil;
+}
+
+- (void) addUserToUserDefaults {
+  [[NSUserDefaults standardUserDefaults] setObject:[self dictionaryRepresentation] forKey:@"popdeemUser"];
+}
 
 @end

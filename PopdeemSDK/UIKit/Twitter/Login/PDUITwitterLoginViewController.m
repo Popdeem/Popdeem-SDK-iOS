@@ -10,6 +10,7 @@
 #import "PDSocialMediaManager.h"
 #import "PDConstants.h"
 #import "PopdeemSDK.h"
+#import "PDUser.h"
 
 @interface PDUITwitterLoginViewController ()
 
@@ -130,16 +131,30 @@
 	[_viewModel setIsLoading:YES];
 	[self pullModel];
 	[self.view setUserInteractionEnabled:NO];
-	[manager loginWithTwitter:^(void){
-		//Twitter Connected Successfully
-		PDLog(@"Twitter Logged in");
-		connected = YES;
-		[self dismiss];
-	} failure:^(NSError *error) {
-		PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
-		connected = NO;
-		[self dismiss];
-	}];
+  
+  if ([[PDUser sharedInstance] isRegistered]) {
+    [manager loginWithTwitter:^(void){
+      //Twitter Connected Successfully
+      PDLog(@"Twitter Logged in");
+      connected = YES;
+      [self dismiss];
+    } failure:^(NSError *error) {
+      PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
+      connected = NO;
+      [self dismiss];
+    }];
+  } else {
+    [manager registerWithTwitter:^{
+      //Twitter Connected Successfully
+      PDLog(@"Twitter Logged in");
+      connected = YES;
+      [self dismiss];
+    } failure:^(NSError *error) {
+      PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
+      connected = NO;
+      [self dismiss];
+    }];
+  }
 }
 
 - (void)didReceiveMemoryWarning {

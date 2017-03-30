@@ -20,6 +20,7 @@
 #import "PDSocialMediaManager.h"
 #import "PDUIModalLoadingView.h"
 #import "PDUILogoutTableViewCell.h"
+#import "PDUserAPIService.h"
 
 #define kSocialNib @"SocialNib"
 #define kLogoutNib @"LogoutNib"
@@ -309,13 +310,25 @@
 
 - (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
 	PDAPIClient *client = [PDAPIClient sharedInstance];
-	[client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
-		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-		[cell.socialSwitch setOn:YES animated:YES];
-	} failure:^(NSError* error){
-		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-		[cell.socialSwitch setOn:NO animated:NO];
-	}];
+  
+  if ([[PDUser sharedInstance] isRegistered]) {
+    [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
+      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+      [cell.socialSwitch setOn:YES animated:YES];
+    } failure:^(NSError* error){
+      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+      [cell.socialSwitch setOn:NO animated:NO];
+    }];
+  } else {
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user) {
+      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+      [cell.socialSwitch setOn:YES animated:YES];
+    } failure:^(NSError *error) {
+      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+      [cell.socialSwitch setOn:NO animated:NO];
+    }];
+  }
 }
 
 - (void) facebookLoginSuccess {
