@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-  <device id="retina4_7" orientation="portrait">
-    <adaptation id="fullscreen"/>
-  </device>
-  <dependencies>
-    <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-    <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-  </dependencies>
-  <objects>
-    <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUISelectNetworkViewController">
-      <connections>
-        <outlet property="bottomLabel" destination="W2X-Ik-cjG" id="gwQ-ym-Ij2"/>
-        <outlet property="facebookButton" destination="LNs-qz-Nmi" id="Ejf-x7-om7"/>
-        <outlet property="instagramButton" destination="ZAD-ps-mfe" id="zxQ-uh-jAK"/>
-        <outlet property="topLabel" destination="sNQ-ht-kle" id="rNC-vZ-tLN"/>
-        <outlet property="twitterButton" destination="l9P-VL-YBk" id="Rq6-HK-xgq"/>
-        <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-      </connections>
-    </placeholder>
-    <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-    <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-      <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-      <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-      <subviews>
-        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose what network you shared your experience with #Hashtag to claim your reward: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNQ-ht-kle">
-          <rect key="frame" x="16" y="20" width="343" height="71"/>
-          <constraints>
-            <constraint firstAttribute="height" constant="71" id="7Ph-6h-tPh"/>
-          </constraints>
-          <fontDescription key="fontDescription" type="system" pointSize="14"/>
-          <nil key="textColor"/>
-          <nil key="highlightedColor"/>
-        </label>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNs-qz-Nmi">
-          <rect key="frame" x="26" y="99" width="323" height="60"/>
-          <constraints>
-            <constraint firstAttribute="height" constant="60" id="LE3-Mc-9gb"/>
-          </constraints>
-          <state key="normal" title="Connect Facebook"/>
-          <connections>
-            <action selector="facebookButtonPressed:" destination="-1" eventType="touchUpInside" id="Xhn-7i-GSY"/>
-          </connections>
-        </button>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9P-VL-YBk">
-          <rect key="frame" x="26" y="167" width="323" height="60"/>
-          <constraints>
-            <constraint firstAttribute="height" constant="60" id="K7t-Gg-gm0"/>
-          </constraints>
-          <state key="normal" title="Connect Twitter"/>
-          <connections>
-            <action selector="twitterButtonPressed:" destination="-1" eventType="touchUpInside" id="R4T-Z6-A3Q"/>
-          </connections>
-        </button>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAD-ps-mfe">
-          <rect key="frame" x="26" y="235" width="323" height="60"/>
-          <constraints>
-            <constraint firstAttribute="height" constant="60" id="O7u-PN-EQv"/>
-          </constraints>
-          <state key="normal" title="Connect Instagram"/>
-          <connections>
-            <action selector="instagramButtonPressed:" destination="-1" eventType="touchUpInside" id="RlZ-7P-FfA"/>
-          </connections>
-        </button>
-        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: You must have shared your experience with the #Hashtag in the last 48 hours to be eligible for a reward." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2X-Ik-cjG">
-          <rect key="frame" x="26" y="303" width="323" height="79"/>
-          <constraints>
-            <constraint firstAttribute="height" constant="79" id="kSJ-DN-jt5"/>
-          </constraints>
-          <fontDescription key="fontDescription" type="system" pointSize="12"/>
-          <nil key="textColor"/>
-          <nil key="highlightedColor"/>
-        </label>
-      </subviews>
-      <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-      <constraints>
-        <constraint firstItem="l9P-VL-YBk" firstAttribute="top" secondItem="LNs-qz-Nmi" secondAttribute="bottom" constant="8" id="5AT-Om-2cm"/>
-        <constraint firstItem="LNs-qz-Nmi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="71B-BH-L8O"/>
-        <constraint firstAttribute="trailing" secondItem="sNQ-ht-kle" secondAttribute="trailing" constant="16" id="BRh-Mf-KxI"/>
-        <constraint firstItem="l9P-VL-YBk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="Ebe-Gw-uwx"/>
-        <constraint firstAttribute="trailing" secondItem="W2X-Ik-cjG" secondAttribute="trailing" constant="26" id="JOJ-8J-9is"/>
-        <constraint firstItem="W2X-Ik-cjG" firstAttribute="top" secondItem="ZAD-ps-mfe" secondAttribute="bottom" constant="8" id="QaU-DJ-NIw"/>
-        <constraint firstItem="W2X-Ik-cjG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="S4A-NB-c5q"/>
-        <constraint firstItem="ZAD-ps-mfe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="aJQ-I3-xhT"/>
-        <constraint firstAttribute="trailing" secondItem="ZAD-ps-mfe" secondAttribute="trailing" constant="26" id="b1b-Bq-OfQ"/>
-        <constraint firstItem="LNs-qz-Nmi" firstAttribute="top" secondItem="sNQ-ht-kle" secondAttribute="bottom" constant="8" id="bFc-kP-mg3"/>
-        <constraint firstItem="sNQ-ht-kle" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="mHX-IX-oXh"/>
-        <constraint firstItem="ZAD-ps-mfe" firstAttribute="top" secondItem="l9P-VL-YBk" secondAttribute="bottom" constant="8" id="oX6-dv-wKP"/>
-        <constraint firstAttribute="trailing" secondItem="l9P-VL-YBk" secondAttribute="trailing" constant="26" id="qxk-wD-hDh"/>
-        <constraint firstAttribute="trailing" secondItem="LNs-qz-Nmi" secondAttribute="trailing" constant="26" id="vde-Fj-N0n"/>
-        <constraint firstItem="sNQ-ht-kle" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="zSv-sO-ePt"/>
-      </constraints>
-      <point key="canvasLocation" x="33.5" y="54.5"/>
-    </view>
-  </objects>
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUISelectNetworkViewController">
+            <connections>
+                <outlet property="bottomLabel" destination="W2X-Ik-cjG" id="gwQ-ym-Ij2"/>
+                <outlet property="facebookButton" destination="LNs-qz-Nmi" id="Ejf-x7-om7"/>
+                <outlet property="instagramButton" destination="ZAD-ps-mfe" id="zxQ-uh-jAK"/>
+                <outlet property="topLabel" destination="sNQ-ht-kle" id="rNC-vZ-tLN"/>
+                <outlet property="twitterButton" destination="l9P-VL-YBk" id="Rq6-HK-xgq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose what network you shared your experience with #Hashtag to claim your reward: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNQ-ht-kle">
+                    <rect key="frame" x="16" y="20" width="343" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="71" id="7Ph-6h-tPh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNs-qz-Nmi">
+                    <rect key="frame" x="26" y="99" width="323" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="LE3-Mc-9gb"/>
+                    </constraints>
+                    <state key="normal" title="Connect Facebook"/>
+                    <connections>
+                        <action selector="facebookButtonPressed:" destination="-1" eventType="touchUpInside" id="Xhn-7i-GSY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9P-VL-YBk">
+                    <rect key="frame" x="26" y="167" width="323" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="K7t-Gg-gm0"/>
+                    </constraints>
+                    <state key="normal" title="Connect Twitter"/>
+                    <connections>
+                        <action selector="twitterButtonPressed:" destination="-1" eventType="touchUpInside" id="R4T-Z6-A3Q"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAD-ps-mfe">
+                    <rect key="frame" x="26" y="235" width="323" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="O7u-PN-EQv"/>
+                    </constraints>
+                    <state key="normal" title="Connect Instagram"/>
+                    <connections>
+                        <action selector="instagramButtonPressed:" destination="-1" eventType="touchUpInside" id="5nX-qd-NIQ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: You must have shared your experience with the #Hashtag in the last 48 hours to be eligible for a reward." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2X-Ik-cjG">
+                    <rect key="frame" x="26" y="303" width="323" height="79"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="79" id="kSJ-DN-jt5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="l9P-VL-YBk" firstAttribute="top" secondItem="LNs-qz-Nmi" secondAttribute="bottom" constant="8" id="5AT-Om-2cm"/>
+                <constraint firstItem="LNs-qz-Nmi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="71B-BH-L8O"/>
+                <constraint firstAttribute="trailing" secondItem="sNQ-ht-kle" secondAttribute="trailing" constant="16" id="BRh-Mf-KxI"/>
+                <constraint firstItem="l9P-VL-YBk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="Ebe-Gw-uwx"/>
+                <constraint firstAttribute="trailing" secondItem="W2X-Ik-cjG" secondAttribute="trailing" constant="26" id="JOJ-8J-9is"/>
+                <constraint firstItem="W2X-Ik-cjG" firstAttribute="top" secondItem="ZAD-ps-mfe" secondAttribute="bottom" constant="8" id="QaU-DJ-NIw"/>
+                <constraint firstItem="W2X-Ik-cjG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="S4A-NB-c5q"/>
+                <constraint firstItem="ZAD-ps-mfe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="aJQ-I3-xhT"/>
+                <constraint firstAttribute="trailing" secondItem="ZAD-ps-mfe" secondAttribute="trailing" constant="26" id="b1b-Bq-OfQ"/>
+                <constraint firstItem="LNs-qz-Nmi" firstAttribute="top" secondItem="sNQ-ht-kle" secondAttribute="bottom" constant="8" id="bFc-kP-mg3"/>
+                <constraint firstItem="sNQ-ht-kle" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="mHX-IX-oXh"/>
+                <constraint firstItem="ZAD-ps-mfe" firstAttribute="top" secondItem="l9P-VL-YBk" secondAttribute="bottom" constant="8" id="oX6-dv-wKP"/>
+                <constraint firstAttribute="trailing" secondItem="l9P-VL-YBk" secondAttribute="trailing" constant="26" id="qxk-wD-hDh"/>
+                <constraint firstAttribute="trailing" secondItem="LNs-qz-Nmi" secondAttribute="trailing" constant="26" id="vde-Fj-N0n"/>
+                <constraint firstItem="sNQ-ht-kle" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="zSv-sO-ePt"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
 </document>

@@ -17,6 +17,7 @@
 #import "PDAPIClient.h"
 #import "PDUserAPIService.h"
 #import "PDBackgroundScan.h"
+#import "PDUIScanViewController.h"
 
 
 @interface PDUISelectNetworkViewController ()
@@ -24,6 +25,9 @@
 @property (nonatomic, retain) NSArray *mediaTypes;
 @property (nonatomic, retain) PDReward *reward;
 @property (nonatomic, retain) PDBrand *brand;
+
+@property (nonatomic) BOOL instagramLoggedIn;
+@property (nonatomic) BOOL twitterLoggedIn;
 
 @end
 
@@ -82,8 +86,10 @@
   [self.twitterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   
   if ([[PDSocialMediaManager manager] isLoggedInWithTwitter]) {
+    _twitterLoggedIn = YES;
     [self.twitterButton setTitle:@"Scan Twitter" forState:UIControlStateNormal];
   } else {
+    _twitterLoggedIn = NO;
     [self.twitterButton setTitle:@"Connect to Twitter" forState:UIControlStateNormal];
   }
   
@@ -94,8 +100,10 @@
   
 
   if ([[[PDUser sharedInstance] instagramParams] accessToken]) {
+    _instagramLoggedIn = YES;
     [self.instagramButton setTitle:@"Scan Instagram" forState:UIControlStateNormal];
   } else {
+    _instagramLoggedIn = NO;
     [self.instagramButton setTitle:@"Connect to Instagram" forState:UIControlStateNormal];
   }
 
@@ -138,7 +146,7 @@
 
 - (IBAction)facebookButtonPressed:(id)sender {
   if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-    [self scanFacebook];
+    [self pushScanForNetwork:FACEBOOK_NETWORK];
     return;
   }
   //Connect to Facebook and then scan
@@ -151,18 +159,16 @@
       [self connectTwitter];
       return;
     }
-    //TODO: Segue to Scan
+    [self pushScanForNetwork:TWITTER_NETWORK];
   }];
 }
 
 - (IBAction)instagramButtonPressed:(id)sender {
-  [[PDSocialMediaManager manager] isLoggedInWithInstagram:^(BOOL isLoggedIn) {
-    if (isLoggedIn) {
-      //TODO: Segue to Scan
-    } else {
-      [self connectInstagram];
-    }
-  }];
+  if (_instagramLoggedIn) {
+    [self pushScanForNetwork:INSTAGRAM_NETWORK];
+  } else {
+    [self connectInstagram];
+  }
 }
 
 #pragma mark - Instagram Login -
@@ -188,6 +194,7 @@
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
                                                 }));
+  [self pushScanForNetwork:INSTAGRAM_NETWORK];
 }
 
 - (void) instagramLoginUserDismissed {
@@ -253,7 +260,7 @@
 
 - (void) twitterLoginSuccess {
   [self.twitterButton setTitle:@"Scan Twitter" forState:UIControlStateNormal];
-  //TODO: Segue to Scan
+  [self pushScanForNetwork:TWITTER_NETWORK];
 }
 
 - (void) twitterLoginFailure {
@@ -289,7 +296,7 @@
 }
 
 - (void) facebookLoginSuccess {
-  [self scanFacebook];
+  [self pushScanForNetwork:FACEBOOK_NETWORK];
   NSLog(@"Connected Facebook");
   [self.facebookButton setTitle:@"Scan Facebook" forState:UIControlStateNormal];
 }
@@ -310,18 +317,9 @@
 
 #pragma mark - Scanning -
 
-- (void) scanFacebook {
-  PDBackgroundScan *scan = [[PDBackgroundScan alloc] init];
-  [scan scanNetwork:FACEBOOK_NETWORK reward:_reward success:^(BOOL validated){
-    PDLog(@"Scan Successful");
-  } failure:^(NSError *error) {
-    if (error) {
-      PDLogError(@"Error on scan: %@", error.localizedDescription);
-    } else {
-      PDLog(@"Scan not successfuk");
-    }
-
-  }];
+- (void) pushScanForNetwork:(NSString*)network {
+  PDUIScanViewController *scanner = [[PDUIScanViewController alloc] initWithReward:_reward andNetwork:network];
+  [self.navigationController pushViewController:scanner animated:YES];
 }
 
 @end

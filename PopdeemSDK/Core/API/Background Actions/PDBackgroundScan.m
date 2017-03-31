@@ -49,12 +49,11 @@
         return;
       }
 
-      BOOL isValidated = [jsonObject[@"validated"] boolValue];
-
+      BOOL validated = [[jsonObject objectForKey:@"validated"] boolValue];
 
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
-        success(isValidated);
+        success(validated);
       });
     } else {
       dispatch_async(dispatch_get_main_queue(), ^{
