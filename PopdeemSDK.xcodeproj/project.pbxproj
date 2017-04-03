@@ -214,6 +214,8 @@
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
 		39FD1C291C04B24B00CC3B0C /* PDUIKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */; };
+		39FDF1E01E926106007AE076 /* PDBGScanResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */; };
+		39FDF1E51E9263EB007AE076 /* PDUIPostScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1E31E9263EB007AE076 /* PDUIPostScanViewController.m */; };
 		63F4E73194730CB38C37B5D0 /* PDUIScanNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F4E97996C0F2E33782473E /* PDUIScanNetwork.m */; };
 		8111F3615B8081DFB5225CA5 /* libPods-BrandsSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A737E2DF8D7E47497456E905 /* libPods-BrandsSample.a */; };
 		88F52FC89649ECBB6835A94F /* libPods-NavigationSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */; };
@@ -819,6 +821,11 @@
 		39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pduikit_rewardsIconSuccess@2x.png"; path = "Resources/pduikit_rewardsIconSuccess@2x.png"; sourceTree = "<group>"; };
 		39FD1C271C04B24B00CC3B0C /* PDUIKitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIKitUtils.h; path = Utilities/PDUIKitUtils.h; sourceTree = "<group>"; };
 		39FD1C281C04B24B00CC3B0C /* PDUIKitUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIKitUtils.m; path = Utilities/PDUIKitUtils.m; sourceTree = "<group>"; };
+		39FDF1DE1E926106007AE076 /* PDBGScanResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBGScanResponseModel.h; sourceTree = "<group>"; };
+		39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBGScanResponseModel.m; sourceTree = "<group>"; };
+		39FDF1E21E9263EB007AE076 /* PDUIPostScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIPostScanViewController.h; path = "Claim/Post Scan/PDUIPostScanViewController.h"; sourceTree = "<group>"; };
+		39FDF1E31E9263EB007AE076 /* PDUIPostScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIPostScanViewController.m; path = "Claim/Post Scan/PDUIPostScanViewController.m"; sourceTree = "<group>"; };
+		39FDF1E41E9263EB007AE076 /* PDUIPostScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIPostScanViewController.xib; path = "Claim/Post Scan/PDUIPostScanViewController.xib"; sourceTree = "<group>"; };
 		45F90F542DAEED98D1BA0AE8 /* Pods-NavigationSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample.debug.xcconfig"; sourceTree = "<group>"; };
 		466C6E196147881D2B02BA0B /* Pods-TabbedTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.release.xcconfig"; sourceTree = "<group>"; };
 		51A8D384AE4508E261030AD1 /* Pods-PopdeemSDKCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.release.xcconfig"; sourceTree = "<group>"; };
@@ -1107,6 +1114,7 @@
 		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
+				39FDF1E11E9263CD007AE076 /* Post-Scan */,
 				39BF98EC1E8E64A90025A3F2 /* Scan */,
 				39B42FA71E8BF6E7006D3209 /* Select Network */,
 				392787121C0716F600F8DCD9 /* PDUIClaimViewController.h */,
@@ -1948,6 +1956,16 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		39FDF1E11E9263CD007AE076 /* Post-Scan */ = {
+			isa = PBXGroup;
+			children = (
+				39FDF1E21E9263EB007AE076 /* PDUIPostScanViewController.h */,
+				39FDF1E31E9263EB007AE076 /* PDUIPostScanViewController.m */,
+				39FDF1E41E9263EB007AE076 /* PDUIPostScanViewController.xib */,
+			);
+			name = "Post-Scan";
+			sourceTree = "<group>";
+		};
 		48B1EA15DD3FC0CD7A96452B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2234,6 +2252,8 @@
 				BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */,
 				BC67FCD8902CC5CD75C180E1 /* PDRewardCustomAvailability.h */,
 				BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */,
+				39FDF1DE1E926106007AE076 /* PDBGScanResponseModel.h */,
+				39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3167,6 +3187,7 @@
 				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,
 				39BF99541E8E99830025A3F2 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
 				A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */,
+				39FDF1E51E9263EB007AE076 /* PDUIPostScanViewController.m in Sources */,
 				39FA7B661D6DAF2E00031D5B /* PDLogger.m in Sources */,
 				390B4FCE1DF8636900E692D4 /* PDLocationBrandParams.m in Sources */,
 				395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */,
@@ -3204,6 +3225,7 @@
 				BC67FA1D98852C3D1CE13D66 /* PDUIModalLoadingView.m in Sources */,
 				39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */,
 				391FAE7D1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m in Sources */,
+				39FDF1E01E926106007AE076 /* PDBGScanResponseModel.m in Sources */,
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,
 				39BF5AEA1C1EF55B000BF32E /* PDMessageAPIService.m in Sources */,
 				39ABA6621C4D06ED0057088E /* PDUIHomeViewController.m in Sources */,

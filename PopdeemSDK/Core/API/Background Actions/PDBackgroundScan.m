@@ -14,7 +14,7 @@
 
 - (void) scanNetwork:(NSString*)network
               reward:(PDReward *)reward
-             success:(void (^)(BOOL validated))success
+             success:(void (^)(BOOL validated, PDBGScanResponseModel *response))success
              failure:(void (^)(NSError *error))failure {
 
   NSDictionary *params = @{
@@ -22,7 +22,7 @@
                            };
 
   NSURLSession *session = [NSURLSession createPopdeemSession];
-  NSString *path = [NSString stringWithFormat:@"%@/%@/%zd/autodiscovery?network=%@",self.baseUrl,REWARDS_PATH,reward.identifier,network];
+  NSString *path = [NSString stringWithFormat:@"%@/%@/%zd/autodiscovery",self.baseUrl,REWARDS_PATH,reward.identifier];
   [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error) {
     if (error) {
       //Handle Error
@@ -51,10 +51,20 @@
 
       BOOL validated = [[jsonObject objectForKey:@"validated"] boolValue];
 
-      [session invalidateAndCancel];
-      dispatch_async(dispatch_get_main_queue(), ^{
-        success(validated);
-      });
+      if (validated) {
+        NSError *err = [[NSError alloc] init];
+        PDBGScanResponseModel *response = [[PDBGScanResponseModel alloc] initWithDictionary:jsonObject error:&err];
+        [session invalidateAndCancel];
+        dispatch_async(dispatch_get_main_queue(), ^{
+          success(validated, response);
+        });
+      } else {
+        [session invalidateAndCancel];
+        dispatch_async(dispatch_get_main_queue(), ^{
+          success(validated, nil);
+        });
+      }
+    
     } else {
       dispatch_async(dispatch_get_main_queue(), ^{
         PDLogAlert(@"Response Code: %li",responseStatusCode);

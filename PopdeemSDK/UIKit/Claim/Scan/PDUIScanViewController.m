@@ -77,11 +77,13 @@
 
 - (void) scan {
   PDBackgroundScan *scan = [[PDBackgroundScan alloc] init];
-  [scan scanNetwork:_network reward:_reward success:^(BOOL validated){
-    PDLog(@"Scan Successful");
-    [_activityIndicator stopAnimating];
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Found Post!" message:@"Your post was found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [av show];
+  [scan scanNetwork:_network reward:_reward success:^(BOOL validated, PDBGScanResponseModel *response){
+    if (validated == YES) {
+      PDLog(@"Scan Successful");
+      [_activityIndicator stopAnimating];
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Found Post!" message:@"Your post was found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+      [av show];
+    }
   } failure:^(NSError *error) {
     if (error) {
       PDLogError(@"Error on scan: %@", error.localizedDescription);

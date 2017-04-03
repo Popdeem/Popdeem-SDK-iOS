@@ -76,7 +76,7 @@
 
 
 
-	[instagram setObject:[NSNumber numberWithInt:userId] forKey:@"id"];
+	[instagram setObject:[NSNumber numberWithInteger:userId] forKey:@"id"];
 
 	[instagram setObject:accessToken forKey:@"access_token"];
 	[instagram setObject:screenName forKey:@"screen_name"];

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "PDAPIService.h"
 #import "PDReward.h"
+#import "PDBGScanResponseModel.h"
 
 @interface PDBackgroundScan : PDAPIService
 
 - (void) scanNetwork:(NSString*)network
               reward:(PDReward *)reward
-             success:(void (^)(BOOL isValidated))success
+             success:(void (^)(BOOL isValidated, PDBGScanResponseModel *response))success
              failure:(void (^)(NSError *error))failure;
 
 @end
