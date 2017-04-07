@@ -112,6 +112,7 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, retain) NSArray *claimingSocialNetworks;
 
 @property (nonatomic) BOOL instagramVerified;
+@property (nonatomic) BOOL autoDiscovered;
 @property (nonatomic) BOOL verifyLocation;
 @property (nonatomic) BOOL revoked;
 @property (nonatomic) CGFloat distanceFromUser;

@@ -108,6 +108,68 @@
   }];
 }
 
+- (void) claimReward:(NSInteger)rewardId location:(PDLocation*)location withPost:(PDBGScanResponseModel*)socialPost completion:(void (^)(NSError *error))completion {
+  NSURLSession *session = [NSURLSession createPopdeemSession];
+  NSString *path = [NSString stringWithFormat:@"%@/%@/%ld/claim_discovered",self.baseUrl,REWARDS_PATH,(long)rewardId];
+  
+  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  
+  [params setObject:socialPost.text forKey:@"message"];
+  
+  if (socialPost.mediaUrl) {
+    [params setObject:socialPost.mediaUrl forKey:@"file"];
+  }
+  
+  PDUser *user = [PDUser sharedInstance];
+  if ([socialPost.network isEqualToString:FACEBOOK_NETWORK]) {
+    NSMutableDictionary *facebookParams = [NSMutableDictionary dictionary];
+    [facebookParams setObject:user.facebookParams.accessToken forKey:@"access_token"];
+    [params setObject:facebookParams forKey:@"facebook"];
+  } else if ([socialPost.network isEqualToString:TWITTER_NETWORK]) {
+    NSMutableDictionary *twitterParams = [NSMutableDictionary dictionary];
+    [twitterParams setObject:user.twitterParams.accessToken forKey:@"access_token"];
+    [twitterParams setObject:user.twitterParams.accessSecret forKey:@"access_secret"];
+    [params setObject:twitterParams forKey:@"twitter"];
+  } else {
+    NSMutableDictionary *instagramParams = [NSMutableDictionary dictionary];
+    [instagramParams setObject:user.instagramParams.accessToken forKey:@"access_token"];
+    [params setObject:instagramParams forKey:@"instagram"];
+  }
+  
+  NSDictionary *locationParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%.4f",location.geoLocation.latitude],@"latitude",
+                                  [NSString stringWithFormat:@"%.4f",location.geoLocation.longitude], @"longitude",
+                                  [NSString stringWithFormat:@"%ld", (long)location.id], @"id",
+                                  nil];
+  [params setObject:locationParams forKey:@"location"];
+  
+  [session POST:path params:params completion:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
+    if (error) {
+      [session invalidateAndCancel];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        PDLogAlert(@"%@",error.localizedDescription);
+        completion(error);
+      });
+      return;
+    }
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    NSInteger responseStatusCode = [httpResponse statusCode];
+    
+    if (responseStatusCode < 400) {
+      [PDRewardStore deleteReward:rewardId];
+      [session invalidateAndCancel];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        completion(nil);
+      });
+    } else {
+      [session invalidateAndCancel];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        PDLogAlert(@"%@",[PDNetworkError errorForStatusCode:responseStatusCode]);
+        completion([PDNetworkError errorForStatusCode:responseStatusCode]);
+      });
+    }
+  }];
+}
+
 - (void) redeemReward:(NSInteger)rewardId
            completion:(void (^)(NSError *error))completion {
   

@@ -356,9 +356,7 @@
 - (void) calculateTwitterCharsLeft {
 	//Build the string
 	NSString *endString = [NSString stringWithString:_viewController.textView.text];
-	if (_reward.twitterForcedTag) {
-		endString = [endString stringByAppendingString:[NSString stringWithFormat:@" %@",_reward.twitterForcedTag]];
-	}
+
 	NSString *sampleMediaString = @"";
 	for (int i = 0 ; i < _reward.twitterMediaLength ; i++) {
 		sampleMediaString = [sampleMediaString stringByAppendingString:@" "];

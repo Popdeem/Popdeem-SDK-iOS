@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PDBGScanResponseModel.h"
+#import "PDReward.h"
 
-@interface PDUIPostScanViewController : UIViewController
+@interface PDUIPostScanViewController : UIViewController <UIAlertViewDelegate>
 
-- (instancetype) initWithModel:(PDBGScanResponseModel*)model;
+- (instancetype) initWithReward:(PDReward*)reward network:(NSString*)network;
 
 @end

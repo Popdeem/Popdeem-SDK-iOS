@@ -17,7 +17,7 @@
 #import "PDAPIClient.h"
 #import "PDUserAPIService.h"
 #import "PDBackgroundScan.h"
-#import "PDUIScanViewController.h"
+#import "PDUIPostScanViewController.h"
 
 
 @interface PDUISelectNetworkViewController ()
@@ -29,6 +29,9 @@
 @property (nonatomic) BOOL instagramLoggedIn;
 @property (nonatomic) BOOL twitterLoggedIn;
 
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonHC;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonHC;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *instagramButtonHC;
 @end
 
 @implementation PDUISelectNetworkViewController
@@ -67,7 +70,24 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  [self.topLabel setText:[NSString stringWithFormat:@"Choose what network you shared your experience with %@ to claim your reward:", _reward.instagramForcedTag]];
+  //Determine what text to show at the top, depending on what networks can be used to scan.
+  //TODO use new global hashtag when JD is done.
+  NSString *topLabelText = @"";
+  if (_mediaTypes.count > 1) {
+    topLabelText = [NSString stringWithFormat:@"Choose what network you shared your experience with %@ to claim your reward:", _reward.instagramForcedTag];
+  } else {
+    if ([_mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
+      topLabelText = [NSString stringWithFormat:@"Scan Facebook for a story with %@ to claim your reward:", _reward.instagramForcedTag];
+    }
+    if ([_mediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
+      topLabelText = [NSString stringWithFormat:@"Scan Twitter for a story with %@ to claim your reward:", _reward.twitterForcedTag];
+    }
+    if ([_mediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
+      topLabelText = [NSString stringWithFormat:@"Scan Instagram for a story with %@ to claim your reward:", _reward.instagramForcedTag];
+    }
+  }
+  
+  [self.topLabel setText:topLabelText];
   [self.topLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   [self.topLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
   
@@ -99,7 +119,8 @@
   [self.instagramButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
   
 
-  if ([[[PDUser sharedInstance] instagramParams] accessToken]) {
+  //Just a dirty way to determine if a user is "logged in" with instagram. We verify the token later.
+  if ([[[[PDUser sharedInstance] instagramParams] accessToken] length] > 0) {
     _instagramLoggedIn = YES;
     [self.instagramButton setTitle:@"Scan Instagram" forState:UIControlStateNormal];
   } else {
@@ -107,12 +128,15 @@
     [self.instagramButton setTitle:@"Connect to Instagram" forState:UIControlStateNormal];
   }
 
+  //Verify the token for real. This takes a moment - above is to avoid the text on the button changing before the users eyes.
   [[PDSocialMediaManager manager] isLoggedInWithInstagram:^(BOOL isLoggedIn) {
     if (isLoggedIn) {
+      _instagramLoggedIn = YES;
       dispatch_async(dispatch_get_main_queue(), ^{
         [self.instagramButton setTitle:@"Scan Instagram" forState:UIControlStateNormal];
       });
     } else {
+      _instagramLoggedIn = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
         [self.instagramButton setTitle:@"Connect to Instagram" forState:UIControlStateNormal];
       });
@@ -123,10 +147,22 @@
   [self.bottomLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.bottomLabel setFont:PopdeemFont(PDThemeFontLight, 12)];
   
-    // Do any additional setup after loading the view from its nib.
+  
+  //Hide the buttons that dont apply
+  if (![_mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
+    [self.facebookButton setHidden:YES];
+    self.facebookButtonHC.constant = 0;
+  }
+  if (![_mediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
+    [self.twitterButton setHidden:YES];
+    self.twitterButtonHC.constant = 0;
+  }
+  if (![_mediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
+    [self.instagramButton setHidden:YES];
+    self.instagramButtonHC.constant = 0;
+  }
+  
 }
-
-
 
 
 - (void)didReceiveMemoryWarning {
@@ -164,7 +200,7 @@
 }
 
 - (IBAction)instagramButtonPressed:(id)sender {
-  if (_instagramLoggedIn) {
+  if (_instagramLoggedIn == YES) {
     [self pushScanForNetwork:INSTAGRAM_NETWORK];
   } else {
     [self connectInstagram];
@@ -318,8 +354,9 @@
 #pragma mark - Scanning -
 
 - (void) pushScanForNetwork:(NSString*)network {
-  PDUIScanViewController *scanner = [[PDUIScanViewController alloc] initWithReward:_reward andNetwork:network];
-  [self.navigationController pushViewController:scanner animated:YES];
+  PDUIPostScanViewController *postScan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:network];
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+  [self.navigationController pushViewController:postScan animated:YES];
 }
 
 @end

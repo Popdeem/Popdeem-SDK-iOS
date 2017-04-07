@@ -13,6 +13,7 @@
 #import "PopdeemSDK.h"
 #import "DGActivityIndicatorView.h"
 #import "PDBackgroundScan.h"
+#import "PDUIPostScanViewController.h"
 
 
 @interface PDUIScanViewController ()
@@ -58,7 +59,29 @@
     networkString = @"Instagram";
   }
   
-  [_topLabel setText:[NSString stringWithFormat:@"Scanning for stories on %@ with %@", networkString, _reward.instagramForcedTag]];
+  NSMutableAttributedString *topLabelAttributedString = [[NSMutableAttributedString alloc] initWithString:@""
+                                                                                                attributes:@{}];
+
+
+  NSMutableAttributedString *mainString = [[NSMutableAttributedString alloc]
+                                                initWithString:[NSString stringWithFormat:@"Scanning for stories on %@ with ",networkString]
+                                                 attributes:@{
+                                                              NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+                                                              NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                              }];
+  
+  NSMutableAttributedString *hashTagString = [[NSMutableAttributedString alloc]
+                                              initWithString:_reward.instagramForcedTag
+                                              attributes:@{
+                                                           NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
+                                                           NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                           }];
+  
+  [topLabelAttributedString appendAttributedString:mainString];
+  [topLabelAttributedString appendAttributedString:hashTagString];
+  
+  [_topLabel setAttributedText:topLabelAttributedString];
+  
   [_topLabel setFont:PopdeemFont(PDThemeFontLight, 14)];
   [_topLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   
@@ -72,7 +95,6 @@
   [_activityIndicator startAnimating];
   
   [self scan];
-  
 }
 
 - (void) scan {
@@ -81,7 +103,11 @@
     if (validated == YES) {
       PDLog(@"Scan Successful");
       [_activityIndicator stopAnimating];
-      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Found Post!" message:@"Your post was found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//      PDUIPostScanViewController *postScan = [[PDUIPostScanViewController alloc] initWithModel:response andReward:_reward];
+//      [self.navigationController pushViewController:postScan animated:YES];
+    } else {
+      //No Validate
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Post not Found!" message:@"Your post was not found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
       [av show];
     }
   } failure:^(NSError *error) {

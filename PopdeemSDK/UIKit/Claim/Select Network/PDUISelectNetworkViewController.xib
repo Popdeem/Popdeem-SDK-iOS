@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,9 +12,12 @@
             <connections>
                 <outlet property="bottomLabel" destination="W2X-Ik-cjG" id="gwQ-ym-Ij2"/>
                 <outlet property="facebookButton" destination="LNs-qz-Nmi" id="Ejf-x7-om7"/>
+                <outlet property="facebookButtonHC" destination="LE3-Mc-9gb" id="SWp-Fh-CyP"/>
                 <outlet property="instagramButton" destination="ZAD-ps-mfe" id="zxQ-uh-jAK"/>
+                <outlet property="instagramButtonHC" destination="O7u-PN-EQv" id="cAr-BU-Oon"/>
                 <outlet property="topLabel" destination="sNQ-ht-kle" id="rNC-vZ-tLN"/>
                 <outlet property="twitterButton" destination="l9P-VL-YBk" id="Rq6-HK-xgq"/>
+                <outlet property="twitterButtonHC" destination="K7t-Gg-gm0" id="Wll-pt-S9D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

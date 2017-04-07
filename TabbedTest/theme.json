@@ -1,7 +1,7 @@
 {
   "popdeem" : {
 		"colors" : {
-			"primaryAppColor" : "#31241C ",
+			"primaryAppColor" : "#40BADA",
 			"primaryInverseColor" : "#FFFFFF",
 			"viewBackgroundColor" : "#EBEBF2",
 			"primaryFontColor" : "#000000",
@@ -14,12 +14,12 @@
 		"images" : {
 			"loginImage" : "pduikit_default_login",
 			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "rtr_home_header"
+			"homeHeaderImage" : "sdkTestCover"
 		},
 		"fonts" : {
-			"primaryFont" : "OpenSans-Regular",
-			"boldFont" : "OpenSans-Bold",
-			"lightFont" : "OpenSans-Light"
+			"primaryFont" : "Quicksand-Regular",
+			"boldFont" : "Quicksand-Bold",
+			"lightFont" : "Quicksand-Light"
 		},
 		"nav" : {
 			"useTheme" : "true"

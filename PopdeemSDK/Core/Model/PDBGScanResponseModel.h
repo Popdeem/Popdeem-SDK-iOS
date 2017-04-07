@@ -15,9 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSString<Optional> *network;
 @property (nonatomic, retain) NSString<Optional> *objectId;
 @property (nonatomic, retain) NSString<Optional> *text;
+@property (nonatomic, retain) NSString<Optional> *socialName;
+@property (nonatomic, retain) NSString<Optional> *profilePictureUrl;
 @property (nonatomic) BOOL validated;
 
 - (id) initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err;
+- (NSDictionary*) toDictionary;
 
 @end
 NS_ASSUME_NONNULL_END

@@ -171,6 +171,11 @@
 			self.claimedAt = [params[@"claimed_at"] intValue];
 		}
 		
+    if (params[@"autodiscovered"] != nil) {
+      NSNumber *autoDisc = params[@"autodiscovered"];
+      self.autoDiscovered = [autoDisc boolValue];
+    }
+    
     [self calculateDistanceToUser];
     return self;
   }

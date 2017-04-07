@@ -236,7 +236,46 @@
     [_segmentedControl addTarget:self action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
   
+  UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+  UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+  
+  // Setting the swipe direction.
+  [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+  [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+  
+  // Adding the swipe gesture on image view
+  [self.tableView addGestureRecognizer:swipeLeft];
+  [self.tableView addGestureRecognizer:swipeRight];
+  
   [self renderView];
+}
+
+- (void)handleSwipe:(UISwipeGestureRecognizer *)swipe {
+  
+  NSInteger selected = _segmentedControl.selectedSegmentIndex;
+  if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+    switch (selected) {
+      case 0:
+        return;
+        break;
+      default:
+        [_segmentedControl setSelectedSegmentIndex:selected-1];
+        [self.tableView reloadData];
+        break;
+    }
+  }
+  
+  if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
+    switch (selected) {
+      case 2:
+        return;
+        break;
+      default:
+        [_segmentedControl setSelectedSegmentIndex:selected+1];
+        [self.tableView reloadData];
+        break;
+    }
+  }
 }
 
 - (void) inboxAction {
@@ -514,7 +553,7 @@
       } else {
         reward = [_model.wallet objectAtIndex:indexPath.row];
         
-        if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram && reward.instagramVerified == NO) {
+        if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram && reward.instagramVerified == NO && reward.autoDiscovered == NO) {
           PDUIInstagramUnverifiedWalletTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kInstaUnverifiedTableViewCell];
           [walletCell setupForReward:reward];
           if (autoVerify && verifyRewardId == reward.identifier) {

@@ -1,12 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUIPostScanViewController">
             <connections>
+                <outlet property="activityIndicator" destination="EsX-I6-wZ9" id="Ue6-Ip-3yf"/>
+                <outlet property="backToRewardButton" destination="cR3-fm-ebd" id="SNN-yx-z17"/>
+                <outlet property="claimButton" destination="NxK-Q3-B1U" id="mNr-SL-KSQ"/>
+                <outlet property="postImageView" destination="hXO-eS-tr2" id="4WL-cc-Mfn"/>
+                <outlet property="postTextLabel" destination="6Wh-nc-Wrx" id="Eyk-6V-3Dw"/>
+                <outlet property="postView" destination="3xK-dS-Aag" id="VEz-Zn-27B"/>
+                <outlet property="profilePicture" destination="laS-6C-9kd" id="hP5-CJ-Mjs"/>
+                <outlet property="topLabel" destination="bzD-NK-bDT" id="Wsp-dB-hrR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +25,105 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xK-dS-Aag" userLabel="PostView">
+                    <rect key="frame" x="16" y="78" width="343" height="469"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-5D-G7Z" userLabel="topView">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="laS-6C-9kd" userLabel="profilePicImageView">
+                                    <rect key="frame" x="8" y="10" width="50" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="SY7-a0-GGt"/>
+                                        <constraint firstAttribute="height" constant="50" id="kXS-k4-JfX"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rjjwhelan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wh-nc-Wrx" userLabel="postLabel">
+                                    <rect key="frame" x="66" y="10" width="269" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="3OJ-SX-bgq"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="6Wh-nc-Wrx" firstAttribute="leading" secondItem="laS-6C-9kd" secondAttribute="trailing" constant="8" id="FXL-xO-mAa"/>
+                                <constraint firstItem="6Wh-nc-Wrx" firstAttribute="top" secondItem="VTI-5D-G7Z" secondAttribute="top" constant="10" id="Usw-0X-FOE"/>
+                                <constraint firstAttribute="trailing" secondItem="6Wh-nc-Wrx" secondAttribute="trailing" constant="8" id="hKw-jH-kHd"/>
+                                <constraint firstItem="laS-6C-9kd" firstAttribute="leading" secondItem="VTI-5D-G7Z" secondAttribute="leading" constant="8" id="j9f-07-YBs"/>
+                                <constraint firstAttribute="height" constant="70" id="n6I-Aj-d8I"/>
+                                <constraint firstItem="laS-6C-9kd" firstAttribute="top" secondItem="VTI-5D-G7Z" secondAttribute="top" constant="10" id="v1a-2w-q2K"/>
+                            </constraints>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXO-eS-tr2" userLabel="postImageView">
+                            <rect key="frame" x="0.0" y="70" width="343" height="399"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="VTI-5D-G7Z" secondAttribute="trailing" id="JFJ-bH-Yjk"/>
+                        <constraint firstAttribute="bottom" secondItem="hXO-eS-tr2" secondAttribute="bottom" id="b5O-y2-TG6"/>
+                        <constraint firstItem="VTI-5D-G7Z" firstAttribute="top" secondItem="3xK-dS-Aag" secondAttribute="top" id="gKr-9w-ve3"/>
+                        <constraint firstItem="VTI-5D-G7Z" firstAttribute="leading" secondItem="3xK-dS-Aag" secondAttribute="leading" id="iFy-he-Wno"/>
+                        <constraint firstItem="hXO-eS-tr2" firstAttribute="leading" secondItem="3xK-dS-Aag" secondAttribute="leading" id="in8-GI-Hz8"/>
+                        <constraint firstItem="hXO-eS-tr2" firstAttribute="top" secondItem="laS-6C-9kd" secondAttribute="bottom" constant="10" id="npm-OL-7Ff"/>
+                        <constraint firstAttribute="trailing" secondItem="hXO-eS-tr2" secondAttribute="trailing" id="qRv-LE-xWr"/>
+                    </constraints>
+                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey Richard, we found your post with #hashtag. Thanks for sharing, you have unlocked your reward!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzD-NK-bDT">
+                    <rect key="frame" x="16" y="20" width="343" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="PxG-qh-i8q"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NxK-Q3-B1U">
+                    <rect key="frame" x="16" y="569" width="343" height="49"/>
+                    <color key="backgroundColor" red="0.040377654139999997" green="0.48322576280000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="kaF-az-kkL"/>
+                    </constraints>
+                    <state key="normal" title="Claim Reward">
+                        <color key="titleColor" red="0.99963909390000005" green="1" blue="0.99975615740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="claimButtonPressed:" destination="-1" eventType="touchUpInside" id="Rtr-K2-VEI"/>
+                    </connections>
+                </button>
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EsX-I6-wZ9" customClass="DGActivityIndicatorView">
+                    <rect key="frame" x="137" y="0.0" width="100" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cR3-fm-ebd">
+                    <rect key="frame" x="16" y="618" width="343" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Back to Reward"/>
+                    <connections>
+                        <action selector="backToRewardButtonPressed:" destination="-1" eventType="touchUpInside" id="p6p-Dd-A0h"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3xK-dS-Aag" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="CM1-se-iHx"/>
+                <constraint firstItem="NxK-Q3-B1U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Jch-7j-RaJ"/>
+                <constraint firstItem="3xK-dS-Aag" firstAttribute="top" secondItem="bzD-NK-bDT" secondAttribute="bottom" constant="8" id="STr-98-fty"/>
+                <constraint firstAttribute="trailing" secondItem="3xK-dS-Aag" secondAttribute="trailing" constant="16" id="Vf0-vm-Dha"/>
+                <constraint firstItem="bzD-NK-bDT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Vky-Lv-P6I"/>
+                <constraint firstAttribute="bottom" secondItem="3xK-dS-Aag" secondAttribute="bottom" constant="120" id="YHt-QB-EWf"/>
+                <constraint firstAttribute="trailing" secondItem="bzD-NK-bDT" secondAttribute="trailing" constant="16" id="c5k-zC-Ryk"/>
+                <constraint firstItem="NxK-Q3-B1U" firstAttribute="top" secondItem="hXO-eS-tr2" secondAttribute="bottom" constant="22" id="rOq-na-lhk"/>
+                <constraint firstItem="bzD-NK-bDT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="x9b-wM-SKE"/>
+                <constraint firstAttribute="trailing" secondItem="NxK-Q3-B1U" secondAttribute="trailing" constant="16" id="y3x-LT-FeV"/>
+            </constraints>
+            <point key="canvasLocation" x="35.5" y="53.5"/>
         </view>
     </objects>
 </document>

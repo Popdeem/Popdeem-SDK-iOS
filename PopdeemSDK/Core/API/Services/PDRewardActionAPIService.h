@@ -8,6 +8,7 @@
 
 #import "PDAPIService.h"
 #import "PDLocation.h"
+#import "PDBGScanResponseModel.h"
 #import <UIKit/UIKit.h>
 
 @interface PDRewardActionAPIService : PDAPIService
@@ -21,6 +22,8 @@
              twitter:(BOOL)twitter
 					 instagram:(BOOL)instagram
           completion:(void (^)(NSError *error))completion;
+
+- (void) claimReward:(NSInteger)rewardId location:(PDLocation*)location withPost:(PDBGScanResponseModel*)socialPost completion:(void (^)(NSError *error))completion;
 
 
 - (void) redeemReward:(NSInteger)rewardId
