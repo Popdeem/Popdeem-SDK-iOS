@@ -17,9 +17,9 @@
 			"homeHeaderImage" : "sdkTestCover"
 		},
 		"fonts" : {
-			"primaryFont" : "Quicksand-Regular",
-			"boldFont" : "Quicksand-Bold",
-			"lightFont" : "Quicksand-Light"
+			"primaryFont" : "OpenSans",
+			"boldFont" : "OpenSans-Bold",
+			"lightFont" : "OpenSans-Light"
 		},
 		"nav" : {
 			"useTheme" : "true"

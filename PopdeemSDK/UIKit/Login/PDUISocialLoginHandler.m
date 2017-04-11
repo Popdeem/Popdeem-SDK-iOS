@@ -86,8 +86,8 @@ static NSString *const PDUseCountKey = @"PDUseCount";
   UIViewController *topController = [PDUIKitUtils topViewController];
   [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
-  PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
-//	PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] init];
+//  PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
+	PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] init];
   [topController presentViewController:vc animated:YES completion:^{}];
   [self setUsesCount:self.usesCount+1];
   PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);

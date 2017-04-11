@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,14 +18,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGS-M4-hee">
-                    <rect key="frame" x="16" y="204" width="343" height="259"/>
+                    <rect key="frame" x="16" y="154.5" width="288" height="259"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scanning for stories that include #hashtag" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDB-0f-AVX">
-                            <rect key="frame" x="8" y="8" width="327" height="40"/>
+                            <rect key="frame" x="8" y="8" width="272" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="aXd-Hx-XAs"/>
                             </constraints>
@@ -34,14 +34,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-la-JPb" customClass="DGActivityIndicatorView">
-                            <rect key="frame" x="121" y="79" width="100" height="100"/>
+                            <rect key="frame" x="93.5" y="79" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="G52-dE-dCe"/>
                                 <constraint firstAttribute="height" constant="100" id="yqs-ZN-yar"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This usually takes a few moment. Please wait..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-Tx-xh2">
-                            <rect key="frame" x="8" y="211" width="327" height="40"/>
+                            <rect key="frame" x="8" y="211" width="272" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="C5T-mU-uNP"/>
                             </constraints>

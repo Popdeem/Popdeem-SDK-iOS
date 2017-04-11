@@ -103,9 +103,6 @@
 }
 
 - (void) setupViewForFailedValidation {
-  [_activityIndicator setHidden:YES];
-  [_activityIndicator stopAnimating];
-  
  
   _failedLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, self.view.frame.size.width-20, 100)];
   
@@ -143,6 +140,7 @@
   [_failedLabel setNumberOfLines:0];
   [_failedLabel setTextAlignment:NSTextAlignmentCenter];
   [_failedLabel sizeToFit];
+  [_failedLabel setFrame:CGRectMake(10, 20, self.view.frame.size.width-20, _failedLabel.frame.size.height)];
   
   [_backToRewardButton setFrame:CGRectMake(16, _failedLabel.frame.size.height + 40, self.view.frame.size.width-32, 49)];
   _backToRewardButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
@@ -155,14 +153,15 @@
   [self.view addSubview:_failedLabel];
   [_failedLabel setHidden:YES];
   
-  
-  [UIView transitionWithView:_activityIndicator
-                    duration:0.5
-                     options:UIViewAnimationOptionTransitionCrossDissolve
-                  animations:^{
-                    [self.activityIndicator setHidden:YES];
-                  }
-                  completion:NULL];
+  [_activityIndicator stopAnimating];
+  [_activityIndicator setHidden:YES];
+//  [UIView transitionWithView:_activityIndicator
+//                    duration:0.5
+//                     options:UIViewAnimationOptionTransitionCrossDissolve
+//                  animations:^{
+//                    [self.activityIndicator setHidden:YES];
+//                  }
+//                  completion:NULL];
   
   [UIView transitionWithView:_failedLabel
                     duration:0.5
@@ -185,7 +184,13 @@
 - (void) setupPostView {
   
   if (_postModel.mediaUrl != nil) {
-    NSURL *url = [NSURL URLWithString:_postModel.mediaUrl];
+    NSString *urlString = @"";
+    if ([_postModel.mediaUrl containsString:@"https"]) {
+      urlString = _postModel.mediaUrl;
+    } else {
+      urlString = [_postModel.mediaUrl stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
+    }
+    NSURL *url = [NSURL URLWithString:urlString];
     NSURLSessionTask *task1 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
       if (data) {
         UIImage *image = [UIImage imageWithData:data];

@@ -45,12 +45,19 @@
 	
 	[_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
 	[_twitterLoginButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+  _twitterLoginButton.layer.cornerRadius = 5.0;
+  _twitterLoginButton.clipsToBounds = YES;
 	
-	[_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
+
+  [_instagramLoginButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
 	[_instagramLoginButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+  _instagramLoginButton.layer.cornerRadius = 5.0;
+  _instagramLoginButton.clipsToBounds = YES;
 	
 	//Facebook setup
 	self.facebookLoginButton.readPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
+  _facebookLoginButton.layer.cornerRadius = 5.0;
+  _facebookLoginButton.clipsToBounds = YES;
 	[self.facebookLoginButton setDelegate:self];
 	
     // Do any additional setup after loading the view from its nib.
@@ -88,7 +95,7 @@
 
 - (IBAction)instagramLoginButtonPressed:(id)sender {
 	NSLog(@"Instagram Button Pressed");
-	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self delegate:self connectMode:NO];
+	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self delegate:self connectMode:NO directConnect:YES];
 	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
