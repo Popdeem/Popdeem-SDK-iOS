@@ -23,20 +23,20 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb370441856449418</string>
+				<string>fb1706317436274686</string>
 				<string>popdeemstaging</string>
 				<string>popdeemstagingtwitter</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2809</string>
+	<string>2818</string>
 	<key>FacebookAppID</key>
-	<string>370441856449418</string>
+	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
 	<string>Popdeem</string>
 	<key>FacebookNamespace</key>
-	<string>popdeemstaging</string>
+	<string>kuresocialrewards</string>
 	<key>InstagramCallback</key>
 	<string>https://www.popdeem.com/igredirect</string>
 	<key>InstagramClientId</key>
