@@ -115,6 +115,7 @@
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   
   [params setObject:socialPost.text forKey:@"message"];
+  [params setObject:socialPost.postKey forKey:@"post_key"];
   
   if (socialPost.mediaUrl) {
     [params setObject:socialPost.mediaUrl forKey:@"file"];
