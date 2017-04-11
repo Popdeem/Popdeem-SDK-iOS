@@ -92,6 +92,16 @@
 }
 
 - (void) checkInstagram {
+  //Just a dirty way to determine if a user is "logged in" with instagram. We verify the token later.
+  if ([[[[PDUser sharedInstance] instagramParams] accessToken] length] > 0) {
+    [self.socialSwitch setOn:YES animated:YES];
+    [self setNeedsDisplay];
+  } else {
+    [self.socialSwitch setOn:NO animated:YES];
+    [self setNeedsDisplay];
+  }
+  
+  //Verify the token for real. This takes a moment - above is to avoid the text on the button changing before the users eyes.
 	PDSocialMediaManager *man = [PDSocialMediaManager manager];
 	[man isLoggedInWithInstagram:^(BOOL isLoggedIn){
 		dispatch_async(dispatch_get_main_queue(), ^{
