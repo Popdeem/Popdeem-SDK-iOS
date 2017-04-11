@@ -77,7 +77,7 @@
 
 - (void) setupForVerifyFailure {
 	_headerText = translationForKey(@"popdeem.instagram.verify.verifyFailure.headerText", @"Verify Failure");
-	_messageText = [NSString stringWithFormat:translationForKey(@"popdeem.instagram.verify.verifyFailure.messageText", @"We could not find your post. Please go to Instagram and ensure that your post includes the hashtag %@ and try verify again. You can also verify this post at a later date in the Wallet."),_viewController.reward.instagramForcedTag];
+	_messageText = [NSString stringWithFormat:translationForKey(@"popdeem.instagram.verify.verifyFailure.messageText", @"We could not find your post. Please go to Instagram and ensure that your post includes the hashtag %@ and try verify again. You can also verify this post at a later date in the Wallet."),_viewController.reward.forcedTag];
 	_buttonText = translationForKey(@"popdeem.instagram.verify.verifySuccess.buttonText", @"Go");
 }
 

@@ -71,7 +71,7 @@
                                                               }];
   
   NSMutableAttributedString *hashTagString = [[NSMutableAttributedString alloc]
-                                              initWithString:_reward.instagramForcedTag
+                                              initWithString:_reward.forcedTag
                                               attributes:@{
                                                            NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)

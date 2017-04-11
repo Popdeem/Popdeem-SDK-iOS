@@ -111,7 +111,9 @@
 		_twitterPrefilledTextString = _reward.twitterPrefilledMessage;
 	}
 	
-	if (_reward.twitterForcedTag) {
+  if (_reward.forcedTag) {
+    _twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.forcedTag];
+  } else if (_reward.twitterForcedTag) {
 		_twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
 	}
 	
@@ -119,7 +121,9 @@
 		_instagramPrefilledTextString = _reward.instagramPrefilledMessage;
 	}
 	
-	if (_reward.instagramForcedTag) {
+  if (_reward.forcedTag) {
+    _instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.forcedTag];
+  } else if (_reward.instagramForcedTag) {
 		_instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag];
 	}
 	
@@ -271,9 +275,15 @@
 	_willTweet = YES;
 	[_viewController.twitterButton setSelected:YES];
 	[_viewController.twitterForcedTagLabel setHidden:NO];
-	if (_reward.twitterForcedTag.length > 0) {
-		[_viewController.addHashtagButton setHidden:NO];
-	}
+  if (_reward.forcedTag) {
+    if (_reward.forcedTag.length > 0) {
+      [_viewController.addHashtagButton setHidden:NO];
+    }
+  } else {
+    if (_reward.twitterForcedTag.length > 0) {
+      [_viewController.addHashtagButton setHidden:NO];
+    }
+  }
 	
 	if (_twitterForcedTagString) {
 		[_viewController.twitterForcedTagLabel setText:_twitterForcedTagString];
@@ -452,7 +462,7 @@
 	[twView showAnimated:YES];
 	if (_twitterForcedTagString && !_hashtagValidated) {
 		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!"
-																										 message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.twitterForcedTag]
+																										 message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.forcedTag]
 																										delegate:self
 																					 cancelButtonTitle:@"OK"
 																					 otherButtonTitles: nil];
@@ -573,10 +583,18 @@
 	
 	NSString *searchString = @"";
 	if (_willTweet) {
-		searchString = _reward.twitterForcedTag;
+    if (_reward.forcedTag) {
+      searchString = _reward.forcedTag;
+    } else {
+      searchString = _reward.twitterForcedTag;
+    }
 	}
 	if (_willInstagram) {
-		searchString = _reward.instagramForcedTag;
+    if (_reward.forcedTag) {
+      searchString = _reward.forcedTag;
+    } else {
+      searchString = _reward.instagramForcedTag;
+    }
 	}
 	
 	if (!searchString) {

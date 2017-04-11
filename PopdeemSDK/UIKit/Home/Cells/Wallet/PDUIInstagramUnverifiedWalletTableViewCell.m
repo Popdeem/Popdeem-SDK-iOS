@@ -109,7 +109,7 @@
 }
 
 - (void) alertNotVerified {
-	NSString *message = [NSString stringWithFormat:@"Please ensure your Instagram post includes the required hashtag '%@'. You may edit the post and come back here to verify. Unverified rewards expire in 24 hours.",_reward.instagramForcedTag];
+	NSString *message = [NSString stringWithFormat:@"Please ensure your Instagram post includes the required hashtag '%@'. You may edit the post and come back here to verify. Unverified rewards expire in 24 hours.",_reward.forcedTag];
 	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Instagram Post Not Verified"
 																							 message:message
 																							delegate:nil

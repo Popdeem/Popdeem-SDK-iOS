@@ -74,16 +74,16 @@
   //TODO use new global hashtag when JD is done.
   NSString *topLabelText = @"";
   if (_mediaTypes.count > 1) {
-    topLabelText = [NSString stringWithFormat:@"Choose what network you shared your experience with %@ to claim your reward:", _reward.instagramForcedTag];
+    topLabelText = [NSString stringWithFormat:@"Choose what network you shared your experience with %@ to claim your reward:", _reward.forcedTag];
   } else {
     if ([_mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
-      topLabelText = [NSString stringWithFormat:@"Scan Facebook for a story with %@ to claim your reward:", _reward.instagramForcedTag];
+      topLabelText = [NSString stringWithFormat:@"Scan Facebook for a story with %@ to claim your reward:", _reward.forcedTag];
     }
     if ([_mediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
-      topLabelText = [NSString stringWithFormat:@"Scan Twitter for a story with %@ to claim your reward:", _reward.twitterForcedTag];
+      topLabelText = [NSString stringWithFormat:@"Scan Twitter for a story with %@ to claim your reward:", _reward.forcedTag];
     }
     if ([_mediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
-      topLabelText = [NSString stringWithFormat:@"Scan Instagram for a story with %@ to claim your reward:", _reward.instagramForcedTag];
+      topLabelText = [NSString stringWithFormat:@"Scan Instagram for a story with %@ to claim your reward:", _reward.forcedTag];
     }
   }
   
@@ -143,7 +143,7 @@
     }
   }];
   
-  [self.bottomLabel setText:[NSString stringWithFormat:@"Note: You must have shared your experience with the %@ in the last 48 hours to be eligible for a reward.", _reward.instagramForcedTag]];
+  [self.bottomLabel setText:[NSString stringWithFormat:@"Note: You must have shared your experience with the %@ in the last 48 hours to be eligible for a reward.", _reward.forcedTag]];
   [self.bottomLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.bottomLabel setFont:PopdeemFont(PDThemeFontLight, 12)];
   

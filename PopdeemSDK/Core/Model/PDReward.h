@@ -108,6 +108,8 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic, strong, nullable) NSString *instagramForcedTag;
 @property (nonatomic, strong, nullable) NSString *instagramPrefilledMessage;
 
+@property (nonatomic, strong, nullable) NSString *forcedTag;
+
 @property (nonatomic) PDSocialMediaType claimedSocialNetwork;
 @property (nonatomic, retain) NSArray *claimingSocialNetworks;
 

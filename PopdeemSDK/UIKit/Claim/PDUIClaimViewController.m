@@ -173,8 +173,8 @@
   [[self.alreadySharedButton layer] setBorderColor:[UIColor blackColor].CGColor];
   [[self.alreadySharedButton layer] setBorderWidth:1.0f];
   [[self.alreadySharedButton layer] setCornerRadius:3.0];
-  if (_reward.instagramForcedTag) {
-    [self.alreadySharedButton setTitle:[NSString stringWithFormat:@"I've already shared with %@", _reward.instagramForcedTag] forState:UIControlStateNormal];
+  if (_reward.forcedTag) {
+    [self.alreadySharedButton setTitle:[NSString stringWithFormat:@"I've already shared with %@", _reward.forcedTag] forState:UIControlStateNormal];
   } else {
     [self.alreadySharedButton setTitle:@"I've already shared" forState:UIControlStateNormal];
   }
@@ -299,7 +299,9 @@
 		if (_reward.twitterForcedTag.length > 0) {
 			[self.addHashtagButton setHidden:NO];
 		}
-    if (_viewModel.reward.twitterForcedTag) {
+    if (_viewModel.reward.forcedTag) {
+      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.forcedTag]];
+    } else if (_viewModel.reward.twitterForcedTag) {
       [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.twitterForcedTag]];
     }
     [self.twitterCharacterCountLabel setHidden:NO];
@@ -307,11 +309,13 @@
   }
 	if (_viewModel.willInstagram) {
 		[self.twitterForcedTagLabel setHidden:NO];
-		if (_reward.instagramForcedTag.length > 0) {
+		if (_reward.forcedTag.length > 0) {
 			[self.addHashtagButton setHidden:NO];
 		}
 		[self.addHashtagButton setHidden:NO];
-		if (_viewModel.reward.instagramForcedTag) {
+    if (_viewModel.reward.forcedTag) {
+      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.forcedTag]];
+    }else if (_viewModel.reward.instagramForcedTag) {
 			[self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
 		}
 		[self.twitterCharacterCountLabel setHidden:YES];
@@ -624,9 +628,17 @@
 - (IBAction)addHashtagButtonPressed:(id)sender {
 	NSString *hashtagString;
 	if (_viewModel.willTweet) {
-		hashtagString = _reward.twitterForcedTag;
+    if (_reward.forcedTag) {
+      hashtagString = _reward.forcedTag;
+    } else {
+      hashtagString = _reward.twitterForcedTag;
+    }
 	} else if (_viewModel.willInstagram) {
-		hashtagString = _reward.instagramForcedTag;
+    if (_reward.forcedTag) {
+      hashtagString = _reward.forcedTag;
+    } else {
+      hashtagString = _reward.instagramForcedTag;;
+    }
 	} else {
 		return;
 	}

@@ -176,6 +176,10 @@
       self.autoDiscovered = [autoDisc boolValue];
     }
     
+    if (params[@"global_hashtag"] != nil) {
+      self.forcedTag = params[@"global_hashtag"];
+    }
+    
     [self calculateDistanceToUser];
     return self;
   }
