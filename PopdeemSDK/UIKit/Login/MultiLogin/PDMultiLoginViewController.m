@@ -197,4 +197,8 @@
 	AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Dismiss Button"});
 }
 
+- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+  PDLog(@"Log Out");
+}
+
 @end

@@ -12,8 +12,4 @@
 
 @property (nonatomic, weak) IBOutlet UIView *popupView;
 
-- (void)presentAsModal;
-
-- (void)dismiss;
-
 @end

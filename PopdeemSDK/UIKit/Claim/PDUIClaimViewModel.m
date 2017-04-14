@@ -456,7 +456,7 @@
 }
 
 - (void) validateTwitterOptionsAndClaim {
-	__weak PDUIModalLoadingView *twView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+	PDUIModalLoadingView *twView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
 																																				titleText:translationForKey(@"popdeem.common.wait", @"Please wait")
 																																	descriptionText:translationForKey(@"popdeem.claim.twitter.check", @"Checking Credentials")];
 	[twView showAnimated:YES];

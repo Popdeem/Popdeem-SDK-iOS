@@ -47,7 +47,7 @@
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   [[PDAPIClient sharedInstance] setDeviceToken:deviceToken.description];
-	if ([[PDUser sharedInstance] identifier] == nil) {
+	if (![[PDUser sharedInstance] identifier]) {
 		return;
 	}
 	PDUserAPIService *service = [[PDUserAPIService alloc] init];

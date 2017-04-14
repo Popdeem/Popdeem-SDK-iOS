@@ -25,7 +25,6 @@ keyForRewardAction((rewardAction))
 + (instancetype) sharedInstance;
 @property (nonatomic, strong) NSString *projectToken;
 
-- (void) logEvent:(NSString*)eventName properties:(NSDictionary*)properties;
 - (void) onboardUser;
 extern void logEvent(NSString *eventName, NSDictionary *properties);
 extern NSString* keyForRewardType(NSInteger rewardType);

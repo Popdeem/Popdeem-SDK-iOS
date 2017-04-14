@@ -39,9 +39,9 @@
     self.facebook = contacts[@"facebook"];
     self.twitter = [contacts[@"twitter"] isKindOfClass:[NSString class]] ? contacts[@"twitter"] : @"";
     
-    if (params[@"opening_hours"]) {
-      self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];
-    }
+//    if (params[@"opening_hours"]) {
+//      self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];
+//    }
     
     //Parse Locations and calculate distance
     NSArray *locations = params[@"locations"];
@@ -51,7 +51,9 @@
     }
     
     NSString *rewardsAvail = params[@"number_of_rewards_available"];
-    _rewardsAvailable = [rewardsAvail isKindOfClass:[NSString class]] ? rewardsAvail.integerValue : 0;
+    if (rewardsAvail) {
+      _rewardsAvailable = [rewardsAvail isKindOfClass:[NSString class]] ? rewardsAvail.integerValue : 0;
+    }
     
     self.verifyLocation = NO;
     NSString *locationVerification = params[@"location_verification"];
