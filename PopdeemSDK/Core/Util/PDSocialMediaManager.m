@@ -203,7 +203,7 @@
 
 - (void) checkFacebookTokenIsValid:(void (^)(BOOL valid))completion {
 	
-	NSString *access_token = [[[PDUser sharedInstance] facebookParams] accessToken];
+//	NSString *access_token = [[[PDUser sharedInstance] facebookParams] accessToken];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
 																																	 parameters:@{@"fields": @"id"}
@@ -510,7 +510,6 @@
 }
 
 - (BOOL) isLoggedInWithAnyNetwork {
-	BOOL isLoggedIn = NO;
 	if ([[[PDUser sharedInstance] facebookParams] accessToken] != nil) {
 		return YES;
 	}

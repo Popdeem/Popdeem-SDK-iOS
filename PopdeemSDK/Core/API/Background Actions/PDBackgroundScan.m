@@ -53,7 +53,7 @@
 
       if (validated) {
         NSError *err = [[NSError alloc] init];
-        PDBGScanResponseModel *response = [[PDBGScanResponseModel alloc] initWithDictionary:jsonObject error:&err];
+        PDBGScanResponseModel *response = [[PDBGScanResponseModel alloc] initWithDictionary:jsonObject error:err];
         [session invalidateAndCancel];
         dispatch_async(dispatch_get_main_queue(), ^{
           success(validated, response);

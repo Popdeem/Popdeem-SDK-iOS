@@ -252,8 +252,6 @@
 	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
 	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
 	
-	
-	
 	CGRect settingsButtonFrame = CGRectMake(5, 5, 20, 20);
 	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];
 	[_controller.settingsButton setBackgroundColor:[UIColor clearColor]];

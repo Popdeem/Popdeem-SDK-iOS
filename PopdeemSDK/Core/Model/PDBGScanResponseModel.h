@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSString<Optional> *postKey;
 @property (nonatomic) BOOL validated;
 
-- (id) initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err;
+- (id) initWithDictionary:(NSDictionary *)dict error:(NSError *)err;
 - (NSDictionary*) toDictionary;
 
 @end

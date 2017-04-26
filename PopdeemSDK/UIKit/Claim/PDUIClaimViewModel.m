@@ -887,21 +887,15 @@
 																							 name:UIKeyboardWillShowNotification object:nil];
 
 	__block PHObjectPlaceholder *placeholder;
-	if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-//		if (_willInstagram) {
-			[[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+  [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
 				PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
 				placeholder = request.placeholderForCreatedAsset;
-				_imageURLString = [NSString stringWithFormat:@"assets-library://asset/asset.JPG?id=%@&ext=JPG",placeholder.localIdentifier];
-			} completionHandler:^(BOOL success, NSError *error){
+    _imageURLString = placeholder.localIdentifier;
+  } completionHandler:^(BOOL success, NSError *error){
 				if (success) {
-					PDLog(@"Saved Image");
-				}
-			}];
-	} else {
-		NSURL *imageURL = info[@"UIImagePickerControllerReferenceURL"];
-		_imageURLString = [imageURL absoluteString];
-	}
+          PDLog(@"Saved Image");
+        }
+  }];
 	
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];

@@ -51,7 +51,6 @@
 @property (nonatomic, strong) PDLocationValidator *locationValidator;
 @property (nonatomic, retain) UIColor *startingNavColor;
 @property (nonatomic, retain) UIColor *startingNavTextColor;
-@property (nonnull, strong) NSString *brandVendorSearchTerm;
 @end
 
 @implementation PDUIHomeViewController
@@ -1012,10 +1011,6 @@
   if (!selectedWalletReward) return;
   
   
-}
-
-- (void) setBrandVendorSearchTerm:(NSString *)brandVendorSearchTerm {
-  _brandVendorSearchTerm = brandVendorSearchTerm;
 }
 
 

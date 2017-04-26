@@ -17,20 +17,7 @@
   return nil;
 }
 
-- (void) logReferral:(PDReferral*)referral {
-  NSURLSession *session = [NSURLSession createPopdeemSession];
-  NSDictionary *params;
-  /*
-   referral : {
-   referrer_id : 1231,
-   type: install OR open
-   }
-   */
-  
-  NSDictionary *referralDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",referral.senderId], @"referrer_id", referral.typeString , @"type", nil];
-  [params setValue:referralDict forKey:@"referral"];
-  NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,FEEDS_PATH];
-  
+- (void) logReferral:(PDReferral*)referral {  
 }
 
 @end

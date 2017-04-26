@@ -11,7 +11,7 @@
 
 @interface PDUISegmentedControl : UISegmentedControl
 
-- (instancetype) initWithItems:(NSArray *)items color:(UIColor*)color;
+- (instancetype) initWithItems:(NSArray *)items;
 - (void) applyTheme:(PDBrandTheme*)theme;
 
 @end

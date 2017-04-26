@@ -39,9 +39,9 @@
     self.facebook = contacts[@"facebook"];
     self.twitter = [contacts[@"twitter"] isKindOfClass:[NSString class]] ? contacts[@"twitter"] : @"";
     
-//    if (params[@"opening_hours"]) {
-//      self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];
-//    }
+    if (params[@"opening_hours"]) {
+      self.openingHours = [[PDOpeningHoursWeek alloc] initFromDictionary:params[@"opening_hours"]];
+    }
     
     //Parse Locations and calculate distance
     NSArray *locations = params[@"locations"];

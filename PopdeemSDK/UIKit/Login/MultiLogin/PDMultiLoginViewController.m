@@ -167,7 +167,7 @@
 - (void) registerWithModel:(InstagramResponseModel*)model {
 	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
 	[self.loadingView showAnimated:YES];
-	PDUserAPIService *service = [[PDUserAPIService alloc] init];
+//	PDUserAPIService *service = [[PDUserAPIService alloc] init];
 //	service registerUserWithInstagramId:model.user.id accessToken:<#(NSString *)#> fullName:<#(NSString *)#> userName:<#(NSString *)#> profilePicture:<#(NSString *)#> success:<#^(PDUser *user)success#> failure:<#^(NSError *error)failure#>
 	
 }

@@ -25,12 +25,13 @@
 			<array>
 				<string>fb1706317436274686</string>
 				<string>popdeemstaging</string>
+				<string>kuresocialrewards</string>
 				<string>popdeemstagingtwitter</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2862</string>
+	<string>2883</string>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>

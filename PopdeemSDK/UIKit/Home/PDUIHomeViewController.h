@@ -27,6 +27,7 @@
 @property (nonatomic) PDUIModalLoadingView *loadingView;
 @property (nonatomic, strong) UIButton *inboxButton;
 @property (nonatomic, strong) UIButton *settingsButton;
+@property (nonnull, strong) NSString *brandVendorSearchTerm;
 
 - (instancetype) initFromNib;
 - (instancetype) initWithBrand:(PDBrand*)b;

@@ -36,7 +36,7 @@
 }
 
 - (void)presentRewardFlow {
-  UIViewController *topController = [PDUIKitUtils topViewController];
+//  UIViewController *topController = [PDUIKitUtils topViewController];
   
 //  PDUINavigationController *navController = [[PDUINavigationController alloc]initWithRootViewController:[[PDUIRewardHomeTableViewController alloc] init]];
 //  navController.view.frame = CGRectMake(0, 0, topController.view.frame.size.width, CGRectGetHeight(topController.view.frame)-80);

@@ -11,11 +11,13 @@
 
 @implementation PDBGScanResponseModel
 
-- (id) initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err {
-  if ([super initWithDictionary:dict error:err]) {
+- (id) initWithDictionary:(NSDictionary *)dict error:(NSError *)err {
+  if ([super initWithDictionary:dict error:&err]) {
     return self;
   }
-  PDLogError(@"JSONModel Error on Social Response Params: %@",err);
+  if (err) {
+    PDLogError(@"JSONModel Error on Social Response Params: %@",err.userInfo);
+  }
   return nil;
 }
 

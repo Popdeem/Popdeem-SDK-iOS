@@ -177,8 +177,7 @@
 			return;
 		}
 
-		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-		NSInteger responseStatusCode = [httpResponse statusCode];
+//		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
 		NSError *jsonError;
 		NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
 		if (jsonError) {

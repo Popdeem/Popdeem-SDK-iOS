@@ -28,7 +28,7 @@
 	if ([PDMessageStore unreadCount] > 0) {
 		NSUInteger unread = [PDMessageStore unreadCount];
 		float width = self.frame.size.width;
-		float height = self.frame.size.height;
+//		float height = self.frame.size.height;
 		
 		CGRect topRight = CGRectMake(width-9, -4, 13, 13);
 		UILabel *lbl_card_count = [[UILabel alloc]initWithFrame:topRight];
