@@ -23,6 +23,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *instagramLoginButton;
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 
+- (instancetype) initFromNib;
 - (void) registerWithModel:(InstagramResponseModel*)model;
 
 @end

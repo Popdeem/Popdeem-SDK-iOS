@@ -28,6 +28,15 @@
 
 @implementation PDMultiLoginViewController
 
+- (instancetype) initFromNib {
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
+  if (self = [self initWithNibName:@"PDMultiLoginViewController" bundle:podBundle]) {
+    self.view.backgroundColor = [UIColor whiteColor];
+    return self;
+  }
+  return nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
