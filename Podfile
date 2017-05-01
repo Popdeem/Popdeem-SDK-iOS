@@ -20,6 +20,7 @@ end
 
 target 'TabbedTest' do
 	pod 'PopdeemSDK', :path => '../Popdeem-SDK-iOS'
+  pod 'PopdeemSDK/UIKit', :path => '../Popdeem-SDK-iOS'
 	pod 'Fabric'
 	pod 'Crashlytics'
 end

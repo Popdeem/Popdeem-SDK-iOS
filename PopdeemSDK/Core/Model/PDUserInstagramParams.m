@@ -28,13 +28,12 @@
 }
 
 + (JSONKeyMapper*)keyMapper {
-	return  [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"social_account_id": @"socialAccountId",
+	return  [[JSONKeyMapper alloc] initWithDictionary:@{@"social_account_id": @"socialAccountId",
 																											@"instagram_id": @"instagramId",
 																											@"tester": @"isTester",
 																											@"access_token": @"accessToken",
 																											@"access_secret": @"accessSecret",
 																											@"profile_picture_url": @"profilePictureUrl",
-																											@"score" : @"score",
 																											@"favourite_brand_ids" : @"favBrands"
 																											}];
 }

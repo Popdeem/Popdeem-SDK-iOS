@@ -31,13 +31,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2920</string>
+	<string>2911</string>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
 	<string>Popdeem</string>
 	<key>FacebookNamespace</key>
-	<string>kuresocialrewards</string>
+	<string>popdeemrewards</string>
 	<key>InstagramCallback</key>
 	<string>https://www.popdeem.com/igredirect</string>
 	<key>InstagramClientId</key>
@@ -87,7 +87,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera when you decide to share a photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We use your location to deliver local rewards"</string>
+	<string>&quot;We use your location to deliver local rewards&quot;</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We access your photo gallery when you decide to share a photo.</string>
 	<key>TwitterAppConsumerKey</key>

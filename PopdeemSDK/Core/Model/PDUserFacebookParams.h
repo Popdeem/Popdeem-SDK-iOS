@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The users scores for this social account
  */
-@property (nonatomic, strong) PDScores *scores;
+@property (nonatomic, strong) PDScores<Optional> *scores;
 
 /**
  The favourite brand ids for this social account
