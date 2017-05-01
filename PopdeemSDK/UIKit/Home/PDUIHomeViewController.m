@@ -220,7 +220,7 @@
   });
   
   if (!_segmentedControl) {
-    _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"Wallet"]];
+    _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"History"]];
     if (_brand.theme) {
       [_segmentedControl applyTheme:_brand.theme];
     }

@@ -13,7 +13,7 @@
 #import "PDLocation.h"
 #import "PDUIModalLoadingView.h"
 #import "PDBrand.h"
-
+NS_ASSUME_NONNULL_BEGIN
 @interface PDUIHomeViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (nonatomic, assign) PDBrand *brand;
@@ -29,10 +29,11 @@
 @property (nonatomic, strong) UIButton *settingsButton;
 @property (nonnull, strong) NSString *brandVendorSearchTerm;
 
-- (instancetype) initFromNib;
-- (instancetype) initWithBrand:(PDBrand*)b;
+- (_Nullable instancetype) initFromNib;
+- (_Nullable instancetype) initWithBrand:(PDBrand*)b;
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender;
 - (void) redeemButtonPressed;
 - (void) setBrandVendorSearchTerm:(NSString *)brandVendorSearchTerm;
 
 @end
+NS_ASSUME_NONNULL_END

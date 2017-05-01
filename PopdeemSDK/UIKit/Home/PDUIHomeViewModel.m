@@ -112,7 +112,10 @@
 - (void) refreshMessageIcon {
 	[_controller.inboxButton removeFromSuperview];
 	_controller.inboxButton = [UIButton inboxButtonWithFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
+#pragma clang diagnostic pop
 	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
 	[_controller.view setNeedsDisplay];
 }
@@ -248,17 +251,21 @@
 	
 	
 	[self refreshMessageIcon];
-	
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
+#pragma clang diagnostic pop
 	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
-	
 	CGRect settingsButtonFrame = CGRectMake(5, 5, 20, 20);
 	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];
 	[_controller.settingsButton setBackgroundColor:[UIColor clearColor]];
 	[_controller.settingsButton setFrame:settingsButtonFrame];
 	_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
 	[_controller.settingsButton setImage:PopdeemImage(@"pduikit_settings") forState:UIControlStateNormal];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
 	[_controller.settingsButton addTarget:_controller action:@selector(settingsAction) forControlEvents:UIControlEventTouchUpInside];
+#pragma clang diagnostic pop
 	[_controller.tableView.tableHeaderView addSubview:_controller.settingsButton];
 	
 	if (!_tableHeaderImageView) {

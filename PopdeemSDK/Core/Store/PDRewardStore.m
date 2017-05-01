@@ -80,7 +80,10 @@
 }
 
 + (NSArray *) orderedByDistanceFromUser {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
   return [[[PDRewardStore store] allValues] sortedArrayUsingSelector:@selector(compareDistance:)];
+#pragma clang diagnostic pop
 }
 
 + (NSArray *) orderedByDate {

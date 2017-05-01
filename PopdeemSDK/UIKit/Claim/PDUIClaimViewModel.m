@@ -398,7 +398,10 @@
 										 [_viewController keyboardUp];
 									 } completion:^(BOOL finished){
                    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
                      UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:_viewController action:@selector(hiderTap)];
+#pragma clang diagnostic pop
                      //
                      self.viewController.navigationItem.rightBarButtonItem = typingDone;
                      self.viewController.navigationItem.hidesBackButton = YES;

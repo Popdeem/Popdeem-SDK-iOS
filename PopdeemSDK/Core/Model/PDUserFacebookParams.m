@@ -28,7 +28,7 @@
 }
 
 + (JSONKeyMapper*)keyMapper {
-	return [[JSONKeyMapper alloc] initWithDictionary:@{
+	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
 																										 @"access_token": @"accessToken",
 																										 @"facebook_id": @"identifier",
 																										 @"expiration_time": @"expirationTime",

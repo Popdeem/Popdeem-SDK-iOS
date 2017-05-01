@@ -5,6 +5,8 @@
 
 #import "UIImage+RoundedCorner.h"
 #import "UIImage+Alpha.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 
 // Private helper methods
 @interface UIImage ()
@@ -77,3 +79,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop

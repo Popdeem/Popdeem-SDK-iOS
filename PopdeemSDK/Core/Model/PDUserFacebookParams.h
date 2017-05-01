@@ -76,7 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param params the API params
  @return The newly-initialized PDUserFacebookParams Object
  */
-- (nullable PDUserFacebookParams*) initWithParams:(NSDictionary*)params;
 - (instancetype) initWithDictionary:(NSDictionary *)dict;
 
 @end

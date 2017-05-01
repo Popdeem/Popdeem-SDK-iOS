@@ -6,7 +6,8 @@
 #import "UIImage+Resize.h"
 #import "UIImage+RoundedCorner.h"
 #import "UIImage+Alpha.h"
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 // Private helper methods
 @interface UIImage ()
 - (UIImage *)resizedImage:(CGSize)newSize
@@ -93,7 +94,7 @@
             break;
             
         default:
-            [NSException raise:NSInvalidArgumentException format:@"Unsupported content mode: %d", contentMode];
+            [NSException raise:NSInvalidArgumentException format:@"Unsupported content mode: %ld", (long)contentMode];
     }
     
     CGSize newSize = CGSizeMake(self.size.width * ratio, self.size.height * ratio);
@@ -147,7 +148,7 @@
 // Returns an affine transform that takes into account the image orientation when drawing a scaled image
 - (CGAffineTransform)transformForOrientation:(CGSize)newSize {
     CGAffineTransform transform = CGAffineTransformIdentity;
-    
+
     switch (self.imageOrientation) {
         case UIImageOrientationDown:           // EXIF = 3
         case UIImageOrientationDownMirrored:   // EXIF = 4
@@ -186,3 +187,4 @@
 }
 
 @end
+#pragma clang diagnostic pop

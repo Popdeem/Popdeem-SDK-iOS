@@ -245,9 +245,12 @@
     [self.shareButton setTitleColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor) forState:UIControlStateNormal];
     
 	}
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
   [[NSNotificationCenter defaultCenter] addObserver:_viewModel
                                            selector:@selector(keyboardWillShow:)
                                                name:UIKeyboardWillShowNotification object:nil];
+#pragma clang diagnostic pop
 }
 
 - (void) viewWillLayoutSubviews {

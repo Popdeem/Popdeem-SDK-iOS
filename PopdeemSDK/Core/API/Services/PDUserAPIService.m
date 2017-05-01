@@ -83,7 +83,7 @@
 	
 	NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
 	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-	NSMutableDictionary *params = @{@"user": @{
+	NSDictionary *params = @{@"user": @{
 																			@"twitter": @{
 																					@"id": userId,
 																					@"access_token": accessToken,
@@ -144,8 +144,8 @@
 	
 	NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
 	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-	NSString *idString = [NSString stringWithFormat:@"%d", instagramId];
-	NSMutableDictionary *params = @{@"user": @{
+	NSString *idString = [NSString stringWithFormat:@"%ld", instagramId];
+	NSDictionary *params = @{@"user": @{
 																			@"instagram": @{
 																					@"id": idString,
 																					@"access_token": accessToken,
@@ -251,7 +251,7 @@
   
   NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
   NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-	NSMutableDictionary *params = @{@"user": @{
+	NSDictionary *params = @{@"user": @{
 																				 @"facebook": @{
 																						 @"id": facebookId,
 																						 @"access_token": facebookAccessToken
@@ -323,7 +323,6 @@
   if ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] != nil) {
   
     NSString *majorVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    NSString *minorVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     NSString *versionString = [NSString stringWithFormat:@"%@", majorVersion];
     [user setValue:versionString forKey:@"app_version"];
   }

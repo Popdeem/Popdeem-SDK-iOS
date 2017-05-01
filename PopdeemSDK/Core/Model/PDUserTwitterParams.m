@@ -21,7 +21,7 @@
 }
 
 + (JSONKeyMapper*)keyMapper {
-	return [[JSONKeyMapper alloc] initWithDictionary:@{
+	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
 																										 @"access_token": @"accessToken",
 																										 @"access_secret": @"accessSecret",
 																										 @"twitter_id": @"identifier",

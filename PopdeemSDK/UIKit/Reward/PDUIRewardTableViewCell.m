@@ -16,7 +16,6 @@
   if (self = [super initWithFrame:frame]){
     
     self.frame = frame;
-    BOOL rules = reward.rewardRules.length > 0;
     
     self.reward = reward;
     self.separatorInset = UIEdgeInsetsZero;
@@ -37,10 +36,8 @@
     _logoImageView.clipsToBounds = YES;
     [self addSubview:_logoImageView];
     
-//    float centerLineY = frame.size.height/2;
     float labelX = imageSize + 2*leftIndent;
     float labelWidth = frame.size.width - labelX - indent;
-    
 		
 		_unifiedLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0, labelWidth, self.frame.size.height)];
 		[_unifiedLabel setNumberOfLines:5];
