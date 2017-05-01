@@ -60,7 +60,7 @@
 
   [_instagramLoginButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
 	[_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  _instagramLoginButton.layer.cornerRadius = 3.0;
+  _instagramLoginButton.layer.cornerRadius = 5.0;
   _instagramLoginButton.clipsToBounds = YES;
 	
 	//Facebook setup
