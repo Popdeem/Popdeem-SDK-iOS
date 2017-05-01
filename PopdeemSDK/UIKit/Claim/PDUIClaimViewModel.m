@@ -391,14 +391,20 @@
 }
 
 - (void) keyboardWillShow:(NSNotification*)notification {
-	[UIView animateWithDuration:2.0
+	[UIView animateWithDuration:1.0
 												delay:0.0
 											options: UIViewAnimationOptionCurveEaseInOut
 									 animations:^{
 										 [_viewController keyboardUp];
-									 } completion:^(BOOL finished){}];
-	
-	[self.viewController.view setNeedsLayout];
+									 } completion:^(BOOL finished){
+                   
+                     UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:_viewController action:@selector(hiderTap)];
+                     //
+                     self.viewController.navigationItem.rightBarButtonItem = typingDone;
+                     self.viewController.navigationItem.hidesBackButton = YES;
+
+                   }];
+  [self.viewController.view setNeedsLayout];
 }
 
 - (void) dealloc {

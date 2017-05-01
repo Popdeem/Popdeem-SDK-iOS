@@ -1,15 +1,16 @@
 {
   "popdeem" : {
 		"colors" : {
-			"primaryAppColor" : "#40BADA",
-			"primaryInverseColor" : "#FFFFFF",
+			"primaryAppColor" : "#31241C",
+			"primaryInverseColor" : "#FFD530",
 			"viewBackgroundColor" : "#EBEBF2",
 			"primaryFontColor" : "#000000",
 			"secondaryFontColor" : "#424242",
 			"tableViewCellBackgroundColor" : "#FFFFFF",
 			"tableViewSeperatorColor" : "#C0C0C0",
 			"navBarTintColor" : "#FFFFFF",
-			"segmentedControlBackgroundColor" : "#FFFFFF"
+			"segmentedControlBackgroundColor" : "#FFFFFF",
+      "homeHeaderTextColor" : "#FFFFFF"
 		},
 		"images" : {
 			"loginImage" : "pduikit_default_login",

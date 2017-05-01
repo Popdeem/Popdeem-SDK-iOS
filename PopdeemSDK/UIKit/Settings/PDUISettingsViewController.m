@@ -138,7 +138,7 @@
 		[nameLabel setTextAlignment:NSTextAlignmentCenter];
 		[self.tableHeaderView addSubview:nameLabel];
 		[self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
-		[self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+		[self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 	}
 }
 

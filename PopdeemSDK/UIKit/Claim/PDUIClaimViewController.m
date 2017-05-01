@@ -433,10 +433,6 @@
 	if (_keyboardIsUp) {
 		return;
 	}
-  UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hiderTap)];
-  
-  self.navigationItem.rightBarButtonItem = typingDone;
-  self.navigationItem.hidesBackButton = YES;
   [self.keyboardHiderView setHidden:NO];
   [self.view bringSubviewToFront:self.keyboardHiderView];
   [self.textView becomeFirstResponder];

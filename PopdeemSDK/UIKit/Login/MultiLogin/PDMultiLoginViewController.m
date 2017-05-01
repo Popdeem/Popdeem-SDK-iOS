@@ -44,13 +44,13 @@
 	[_bodyLabel setFont:_viewModel.bodyFont];
 	
 	[_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
-	[_twitterLoginButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+	[_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _twitterLoginButton.layer.cornerRadius = 5.0;
   _twitterLoginButton.clipsToBounds = YES;
 	
 
   [_instagramLoginButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
-	[_instagramLoginButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+	[_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _instagramLoginButton.layer.cornerRadius = 5.0;
   _instagramLoginButton.clipsToBounds = YES;
 	

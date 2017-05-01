@@ -256,7 +256,7 @@
 	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];
 	[_controller.settingsButton setBackgroundColor:[UIColor clearColor]];
 	[_controller.settingsButton setFrame:settingsButtonFrame];
-	_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
 	[_controller.settingsButton setImage:PopdeemImage(@"pduikit_settings") forState:UIControlStateNormal];
 	[_controller.settingsButton addTarget:_controller action:@selector(settingsAction) forControlEvents:UIControlEventTouchUpInside];
 	[_controller.tableView.tableHeaderView addSubview:_controller.settingsButton];
@@ -297,7 +297,7 @@
 		[_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
 		[_tableHeaderLabel setNumberOfLines:3];
 		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontPrimary,16)];
-		[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+		[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 		[_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
 		[_tableHeaderLabel sizeToFit];
 		[_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];
@@ -348,9 +348,9 @@
 		//Colours for Brand
 		if (_brand.theme) {
 			[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-			_controller.inboxButton.tintColor = PopdeemColorFromHex(_brand.theme.primaryInverseColor);
-			_controller.settingsButton.tintColor = PopdeemColorFromHex(_brand.theme.primaryInverseColor);
-			[_tableHeaderLabel setTextColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
+			_controller.inboxButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
+			_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
+			[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 		}
 	}
 }

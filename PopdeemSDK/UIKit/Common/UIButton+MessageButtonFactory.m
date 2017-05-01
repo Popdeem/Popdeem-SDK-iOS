@@ -17,7 +17,7 @@
 	UIButton *theButton = [UIButton buttonWithType:UIButtonTypeSystem];
 	[theButton setFrame:frame];
 	theButton.backgroundColor = [UIColor clearColor];
-	theButton.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	theButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
 	[theButton setImage:PopdeemImage(@"pduikit_mail") forState:UIControlStateNormal];
 	if ([PDMessageStore unreadCount] > 0) {
 		NSUInteger unread = [PDMessageStore unreadCount];

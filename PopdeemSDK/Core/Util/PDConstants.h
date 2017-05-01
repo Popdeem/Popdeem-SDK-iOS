@@ -95,6 +95,7 @@ extern NSString *const PDThemeFontPrimary;
 extern NSString *const PDThemeFontBold;
 extern NSString *const PDThemeFontLight;
 extern NSString *const PDThemeNavUseTheme;
+extern NSString *const PDThemeColorHomeHeaderText;
 
 //
 //NSCoding Keys

@@ -23,7 +23,7 @@
 
 - (void) setup {
 	self.backgroundColor = [UIColor clearColor];
-	self.tintColor = PopdeemColor(PDThemeColorPrimaryInverse);
+	self.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
 	[self setImage:PopdeemImage(@"pduikit_mail") forState:UIControlStateNormal];
 	if ([PDMessageStore unreadCount] > 0) {
 		NSUInteger unread = [PDMessageStore unreadCount];

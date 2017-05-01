@@ -28,9 +28,8 @@
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];
   [application setStatusBarStyle:UIStatusBarStyleLightContent];
-  [PopdeemSDK withAPIKey:@"26eb2fcb-06e5-4976-bff4-88c30cc58f58"];
+  [PopdeemSDK withAPIKey:@"643a7b1a-4d0f-416c-8fc5-b2066f13089b"];
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:300];
-  [PopdeemSDK startupBrands];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
 	[PopdeemSDK setDebug:YES];

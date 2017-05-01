@@ -11,7 +11,7 @@
 #import "PDUtils.h"
 
 
-#define POPDEEM_ENV_STAGING
+//#define POPDEEM_ENV_STAGING
 
 /*
  API URL Strings
@@ -91,6 +91,7 @@ NSString *const PDThemeFontPrimary = @"popdeem.fonts.primaryFont";
 NSString *const PDThemeFontBold = @"popdeem.fonts.boldFont";
 NSString *const PDThemeFontLight = @"popdeem.fonts.lightFont";
 NSString *const PDThemeNavUseTheme = @"popdeem.nav.useTheme";
+NSString *const PDThemeColorHomeHeaderText = @"popdeem.colors.homeHeaderTextColor";
 
 /*
  NSCoding Keys
