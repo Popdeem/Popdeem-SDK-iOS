@@ -117,6 +117,7 @@
   [self.instagramButton setBackgroundColor:[UIColor colorWithRed:0.27 green:0.39 blue:0.64 alpha:1.00]];
   [self.instagramButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [self.instagramButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
+  self.instagramButton.clipsToBounds = YES;
   
 
   //Just a dirty way to determine if a user is "logged in" with instagram. We verify the token later.

@@ -34,6 +34,8 @@
     } else {
       self.type = PDRewardTypeCoupon;
     }
+    self.type = PDRewardTypeCredit;
+    self.creditString = @"$10.00";
     
     //Wrap integers in NSNumber Values
     NSMutableArray *socMediaTypes = [NSMutableArray array];

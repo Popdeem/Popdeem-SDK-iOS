@@ -5,32 +5,32 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - Crashlytics (3.8.3):
+  - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Expecta (1.0.5)
   - Fabric (1.6.11)
-  - FBSDKCoreKit (4.17.0):
+  - FBSDKCoreKit (4.22.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.17.0):
+  - FBSDKLoginKit (4.22.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.17.0):
+  - FBSDKShareKit (4.22.0):
     - FBSDKCoreKit
   - JSONModel (1.7.0)
   - Nocilla (0.11.0)
-  - OCMock (3.3.1)
-  - PopdeemSDK (1.0.13):
-    - PopdeemSDK/Core (= 1.0.13)
-  - PopdeemSDK/Core (1.0.13):
+  - OCMock (3.4)
+  - PopdeemSDK (1.0.15):
+    - PopdeemSDK/Core (= 1.0.15)
+  - PopdeemSDK/Core (1.0.15):
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
     - JSONModel
     - Shimmer
     - STTwitter
-  - PopdeemSDK/UIKit (1.0.13):
+  - PopdeemSDK/UIKit (1.0.15):
     - PopdeemSDK/Core
   - Shimmer (1.0.2)
-  - STTwitter (0.2.5)
+  - STTwitter (0.2.6)
 
 DEPENDENCIES:
   - Bolts
@@ -54,18 +54,18 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
-  FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
-  FBSDKShareKit: 9b573d03fbee36cbaf42d5bb1f2bc019e0d72347
+  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
+  FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
+  FBSDKShareKit: 21ab3c8d173f4fa20c47c1061f3a9fac5950b5fa
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
-  OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  PopdeemSDK: 88a8c90f7e81492f00d402cc3a831507b8b3d649
+  OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
+  PopdeemSDK: fa035e8247b66007f788598bbd66a1033f0f1f15
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  STTwitter: 5c157e8dcb4f0e4cf5b4374393021b7d7b7fd497
+  STTwitter: 30ee2f79eff78c3d633a1edc869e97db9c9ead59
 
 PODFILE CHECKSUM: 8c5a4d585f6ad23775b5ec061a15cd9a1ce68824
 

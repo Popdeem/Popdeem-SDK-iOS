@@ -54,6 +54,7 @@ NSString *const PDUserDidLogout = @"PDUserDidLogout";
 NSString *const InstagramLoginSuccess = @"InstagramLoginSuccess";
 NSString *const InstagramLoginFailure = @"InstagramLoginFailure";
 NSString *const InstagramLoginuserDismissed = @"InstagramLoginuserDismissed";
+NSString *const InstagramLoginCancelPressed = @"InstagramLoginCancelPressed";
 NSString *const TwitterLoginSuccess = @"TwitterLoginSuccess";
 NSString *const TwitterLoginFailure = @"TwitterLoginFailure";
 NSString *const InstagramVerifySuccessFromWallet = @"InstagramVerifySuccessFromWallet";

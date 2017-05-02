@@ -82,7 +82,7 @@
 			formatter = [[NSDateFormatter alloc] init];
 			[formatter setDateFormat:@"d MMM y"];
 			stringDate = [formatter stringFromDate:creditDate];
-			labelLineTwo = [NSString stringWithFormat:@"Redeemed: %@",stringDate];
+			labelLineTwo = [NSString stringWithFormat:@"%@ granted on %@",reward.creditString, stringDate];
 			break;
 		case PDRewardTypeCoupon:
 		case PDRewardTypeInstant:

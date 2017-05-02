@@ -15,7 +15,7 @@
 		"images" : {
 			"loginImage" : "pduikit_default_login",
 			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "sdkTestCover"
+			"homeHeaderImage" : "PDSDK_Home_Header"
 		},
 		"fonts" : {
 			"primaryFont" : "OpenSans",

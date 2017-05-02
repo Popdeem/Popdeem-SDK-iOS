@@ -67,7 +67,19 @@
 	self.facebookLoginButton.readPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
   _facebookLoginButton.layer.cornerRadius = 5.0;
   _facebookLoginButton.clipsToBounds = YES;
+  [_facebookLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
 	[self.facebookLoginButton setDelegate:self];
+  [_facebookLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
+  [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  
+//  [self.facebookLoginButton.imageView setImage:nil];
+  for (NSLayoutConstraint *l in self.facebookLoginButton.constraints) {
+    if ( l.constant == 28 ){
+      // Then disable it...
+      l.active = false;
+      break;
+    }
+  }
 	
     // Do any additional setup after loading the view from its nib.
 }

@@ -18,6 +18,7 @@
 @interface PDUIInstagramLoginViewController ()
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @property (nonatomic) BOOL tappedClosed;
+@property (nonatomic) BOOL cancelPressed;
 @property (nonatomic) BOOL connectMode;
 @property (nonatomic) BOOL directConnect;
 @end
@@ -77,6 +78,8 @@ CGFloat _cardX,_cardY;
 }
 
 - (void) renderView {
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewCancelPressed) name:InstagramLoginCancelPressed object:nil];
   
   if (_directConnect) return;
   
@@ -201,6 +204,9 @@ CGFloat _cardX,_cardY;
 	} else {
 		[[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
 	}
+  if (_cancelPressed) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginuserDismissed object:nil];
+  }
 	[self dismissViewControllerAnimated:YES completion:^(void){}];
 }
 
@@ -327,6 +333,11 @@ CGFloat _cardX,_cardY;
 
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) webViewCancelPressed {
+  _cancelPressed = YES;
+  [self performSelector:@selector(dismissWithTap) withObject:nil afterDelay:0.5];
 }
 
 @end

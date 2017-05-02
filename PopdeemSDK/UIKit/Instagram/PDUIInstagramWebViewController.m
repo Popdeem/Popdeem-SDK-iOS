@@ -58,6 +58,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)closeButtonTapped:(id)sender {
+  [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginCancelPressed object:nil];
 	[self dismissViewControllerAnimated:YES completion:^(void){
 		if (_webView && [_webView isLoading]) {
 				[_webView stopLoading];
