@@ -88,6 +88,7 @@
         labelLineTwo = [NSString stringWithFormat:@"%@ rewarded on %@",reward.creditString, stringDate];
         [self.arrowImageView setHidden:YES];
       } else {
+        [self.arrowImageView setHidden:NO];
         labelLineTwo = translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.");
       }
 			break;
