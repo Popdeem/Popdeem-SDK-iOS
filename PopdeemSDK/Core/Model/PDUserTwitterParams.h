@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The expiration time of the Access Token
  */
-@property (nonatomic) long expirationTime;
+
 
 /**
  The users Twitter Profile Picture Url

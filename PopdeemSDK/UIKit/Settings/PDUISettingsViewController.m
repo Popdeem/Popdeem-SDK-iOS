@@ -446,7 +446,13 @@
 		[man logoutFacebook];
 		[man logOut];
 		PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-		[cell.socialSwitch setOn:NO animated:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [cell.socialSwitch setOn:NO animated:NO];
+      [self.profileImageView setHidden:YES];
+      [self.tableHeaderNameLabel setHidden:YES];
+      [self.tableHeaderNameLabel setText:@""];
+      [self.view setNeedsDisplay];
+    });
 	}];
 	UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 	}];

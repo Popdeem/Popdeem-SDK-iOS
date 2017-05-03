@@ -49,11 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString  *accessToken;
 
 /**
- The expiratio time of the Access Token
- */
-@property (nonatomic) long expirationTime;
-
-/**
  The users Facebook Profile Picture Url
  */
 @property (nonatomic, strong) NSString *profilePictureUrl;

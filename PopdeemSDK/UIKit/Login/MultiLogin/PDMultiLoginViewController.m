@@ -64,11 +64,8 @@
   _instagramLoginButton.clipsToBounds = YES;
 	
 	//Facebook setup
-	self.facebookLoginButton.readPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_posts", @"user_friends", @"user_education_history"];
   _facebookLoginButton.layer.cornerRadius = 5.0;
   _facebookLoginButton.clipsToBounds = YES;
-  [_facebookLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
-	[self.facebookLoginButton setDelegate:self];
   [_facebookLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
   [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
   
@@ -99,22 +96,26 @@
 }
 */
 - (IBAction)twitterLoginButtonPressed:(id)sender {
+  _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+  _loadingView.titleLabel.text = @"Logging in.";
+  [_loadingView showAnimated:YES];
 	NSLog(@"Twitter Pressed");
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
 	[manager registerWithTwitter:^{
 		NSLog(@"Success");
 		//Continue to next stage of app, login has happened.
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[_loadingView hideAnimated:YES];
-		});
 		[self proceedWithTwitterLoggedInUser];
 	} failure:^(NSError *error) {
 		NSLog(@"Failure");
+    [_loadingView hideAnimated:YES];
 		//Show some error, something went wrong
 	}];
 }
 
 - (IBAction)instagramLoginButtonPressed:(id)sender {
+  _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+  _loadingView.titleLabel.text = @"Logging in.";
+  [_loadingView showAnimated:YES];
 	NSLog(@"Instagram Button Pressed");
 	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self delegate:self connectMode:NO directConnect:YES];
 	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -124,73 +125,16 @@
 }
 
 - (void) proceedWithTwitterLoggedInUser {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_loadingView hideAnimated:YES];
+  });
 	[self addUserToUserDefaults:[PDUser sharedInstance]];
 	AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void) proceedWithFacebookLoggedInUser {
-	//Now Facebook Login has happened, we should perform register/fetch from Popdeem
-	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
-	[self.loadingView showAnimated:YES];
-	
-	[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
-		PDLog(@"Facebook Friends Updated");
-	}];
-	[[PDSocialMediaManager manager] nextStepForFacebookLoggedInUser:^(NSError *error) {
-		if (error) {
-			PDLogError(@"Something went wrong: %@",error);
-			[[PDSocialMediaManager manager] logoutFacebook];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_loadingView hideAnimated:YES];
-			});
-			return;
-		}
-		[self addUserToUserDefaults:[PDUser sharedInstance]];
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[_loadingView hideAnimated:YES];
-		});
-		[self dismissViewControllerAnimated:YES completion:^{}];
-		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-	}];
-}
-
-#pragma mark - FB Login Delegate Methods -
-- (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error {
-	//Perform Popdeem User Login
-	if (error) {
-		//Show error message
-		return;
-	}
-	
-	if (result.isCancelled) {
-		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
-																								 message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
-																								delegate:self
-																			 cancelButtonTitle:@"OK"
-																			 otherButtonTitles: nil];
-		[av show];
-		return;
-	}
-	
-	[self proceedWithFacebookLoggedInUser];
-}
-
-- (BOOL) loginButtonWillLogin:(FBSDKLoginButton *)loginButton {
-	self.facebookLoginOccurring = YES;
-	return YES;
-}
-
 - (void) addUserToUserDefaults:(PDUser*)user {
 	[[NSUserDefaults standardUserDefaults] setObject:[user dictionaryRepresentation] forKey:@"popdeemUser"];
-}
-
-- (void) registerWithModel:(InstagramResponseModel*)model {
-	self.loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
-	[self.loadingView showAnimated:YES];
-//	PDUserAPIService *service = [[PDUserAPIService alloc] init];
-//	service registerUserWithInstagramId:model.user.id accessToken:<#(NSString *)#> fullName:<#(NSString *)#> userName:<#(NSString *)#> profilePicture:<#(NSString *)#> success:<#^(PDUser *user)success#> failure:<#^(NSError *error)failure#>
-	
 }
 
 #pragma mark - Instagram Login Delegate Methods
@@ -201,25 +145,74 @@
 	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
 		[self addUserToUserDefaults:user];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-		[self dismissViewControllerAnimated:YES completion:^{}];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [_loadingView hideAnimated:YES];
+      [self dismissViewControllerAnimated:YES completion:^{}];
+    });
 	} failure:^(NSError* error){
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [_loadingView hideAnimated:YES];
+    });
 		NSLog(@"Failure to connect instagram");
 	}];
 
 }
 - (IBAction)cancelButtonPressed:(id)sender {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_loadingView hideAnimated:YES];
+		});
 	[self dismissAction:sender];
 }
 
 - (IBAction) dismissAction:(id)sender {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_loadingView hideAnimated:YES];
+  });
 	[self dismissViewControllerAnimated:YES completion:^{
 		//Any cleanup to do?
 	}];
 	AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Dismiss Button"});
 }
 
-- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
-  PDLog(@"Log Out");
+#pragma mark - Facebook Login -
+- (IBAction) connectFacebook:(id)sender {
+  self.facebookLoginOccurring = YES;
+  _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+  _loadingView.titleLabel.text = @"Logging in.";
+  [_loadingView showAnimated:YES];
+  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
+                                                                     @"public_profile",
+                                                                     @"email",
+                                                                     @"user_birthday",
+                                                                     @"user_posts",
+                                                                     @"user_friends",
+                                                                     @"user_education_history"]
+                                               registerWithPopdeem:YES
+                                                           success:^(void) {
+                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                               [self facebookLoginSuccess];
+                                                             });
+                                                             
+                                                           } failure:^(NSError *error) {
+                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                               [self facebookLoginFailure];
+                                                             });
+                                                           }];
 }
+
+- (void) facebookLoginSuccess {
+  [_loadingView hideAnimated:YES];
+  AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
+  [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+- (void) facebookLoginFailure {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_loadingView hideAnimated:YES];
+  });
+  NSLog(@"Could not connect user to facebook");
+}
+
+
 
 @end

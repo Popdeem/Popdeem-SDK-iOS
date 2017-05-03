@@ -31,7 +31,6 @@
 	return [[JSONKeyMapper alloc] initWithDictionary:@{
 																										 @"access_token": @"accessToken",
 																										 @"facebook_id": @"identifier",
-																										 @"expiration_time": @"expirationTime",
 																										 @"profile_picture_url": @"profilePictureUrl",
 																										 @"social_account_id": @"socialAccountId",
 																										 @"tester": @"isTester",
