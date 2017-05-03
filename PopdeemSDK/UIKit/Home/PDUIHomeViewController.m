@@ -779,6 +779,9 @@
           
           return;
         }
+        if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {
+          return;
+        }
         if (selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && selectedWalletReward.instagramVerified == NO) {
           return;
         }

@@ -34,8 +34,6 @@
     } else {
       self.type = PDRewardTypeCoupon;
     }
-    self.type = PDRewardTypeCredit;
-    self.creditString = @"$10.00";
     
     //Wrap integers in NSNumber Values
     NSMutableArray *socMediaTypes = [NSMutableArray array];
@@ -93,7 +91,7 @@
     } else {
       self.unlimitedAvailability = NO;
     }
-		
+    
 		NSMutableArray *claimingNets = [NSMutableArray arrayWithCapacity:3];
 		NSArray *claimed_social_networks = params[@"claiming_social_networks"];
 		if (claimed_social_networks != nil) {

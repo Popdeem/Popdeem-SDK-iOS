@@ -77,16 +77,19 @@
 		case PDRewardTypeSweepstake:
 			labelLineTwo = translationForKey(@"popdeem.wallet.sweepstake.redeemText", @"You have been entered in this competition.");
 			break;
-		case PDRewardTypeCredit:
-			creditDate = [NSDate dateWithTimeIntervalSince1970:reward.claimedAt];
-			formatter = [[NSDateFormatter alloc] init];
-			[formatter setDateFormat:@"d MMM y"];
-			stringDate = [formatter stringFromDate:creditDate];
-			labelLineTwo = [NSString stringWithFormat:@"%@ granted on %@",reward.creditString, stringDate];
-			break;
+    case PDRewardTypeCredit:
 		case PDRewardTypeCoupon:
 		case PDRewardTypeInstant:
-			labelLineTwo = translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.");
+      if (reward.creditString.length > 0) {
+        creditDate = [NSDate dateWithTimeIntervalSince1970:reward.claimedAt];
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"d MMM y"];
+        stringDate = [formatter stringFromDate:creditDate];
+        labelLineTwo = [NSString stringWithFormat:@"%@ rewarded on %@",reward.creditString, stringDate];
+        [self.arrowImageView setHidden:YES];
+      } else {
+        labelLineTwo = translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.");
+      }
 			break;
 	}
 	
