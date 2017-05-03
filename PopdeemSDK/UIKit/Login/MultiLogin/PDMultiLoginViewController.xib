@@ -49,11 +49,6 @@
                         <action selector="twitterLoginButtonPressed:" destination="-1" eventType="touchUpInside" id="asg-qu-0gU"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQA-9l-ziQ" userLabel="Facebook Login Button">
-                    <rect key="frame" x="16" y="311" width="343" height="45"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whg-BB-TEr" customClass="UIButton">
                     <rect key="frame" x="16" y="496" width="343" height="45"/>
                     <color key="backgroundColor" red="0.17254901959999999" green="0.26274509800000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>

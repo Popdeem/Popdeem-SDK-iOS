@@ -510,6 +510,7 @@
 																											 });
 		return;
 	}
+  [twView hideAnimated:YES];
 	[self makeClaim];
 	return;
 }
