@@ -300,7 +300,7 @@
 
 + (void) setThirdPartyUserToken:(NSString*)userToken {
   [[PDAPIClient sharedInstance] setThirdPartyToken:userToken];
-  if ([[PDUser sharedInstance] identifier]) {
+  if (![[PDUser sharedInstance] identifier]) {
     return;
   }
   PDUserAPIService *service = [[PDUserAPIService alloc] init];

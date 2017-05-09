@@ -158,15 +158,14 @@
 
 - (NSString*) drawString:(PDReward*)reward {
 	NSString *expiresString;
-	if (reward.availableUntil) {
-//		NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//		NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-//																												fromDate:[NSDate date]
-//																													toDate:[NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil]
-//																												 options:0];
-		
-//		NSInteger days = [components day];
-		
+  if (reward.recurrence) {
+    if ([reward.recurrence isEqualToString:@"Monthly"]) {
+      return @"Draw takes place monthly.";
+    } else {
+      NSString *cap = [reward.recurrence capitalizedString];
+      return [NSString stringWithFormat:@"Draw takes place on %@", cap];
+    }
+  } else if (reward.availableUntil) {
 		NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
 		int intervalHours = interval/60/60;
 		int intervalDays = interval/60/60/24;

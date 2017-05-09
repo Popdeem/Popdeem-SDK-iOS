@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,13 +23,46 @@
                     </tabBar>
                     <connections>
                         <segue destination="xhT-Em-YLt" kind="relationship" relationship="viewControllers" id="5rA-Ig-CPn"/>
-                        <segue destination="sqi-5d-d8r" kind="relationship" relationship="viewControllers" id="Hgh-TJ-JPj"/>
                         <segue destination="i8p-Py-pfV" kind="relationship" relationship="viewControllers" id="3F3-vw-h58"/>
+                        <segue destination="OL6-5m-ebI" kind="relationship" relationship="viewControllers" id="cTr-fW-nzh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="hzQ-tK-RSY">
+            <objects>
+                <viewController id="OL6-5m-ebI" customClass="SecondTabViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hR9-ke-BDo"/>
+                        <viewControllerLayoutGuide type="bottom" id="F9z-FW-q8o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Bi-1b-KXy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q3-gb-xtA">
+                                <rect key="frame" x="16" y="318" width="343" height="30"/>
+                                <state key="normal" title="test Trigger"/>
+                                <connections>
+                                    <action selector="testTrigger:" destination="OL6-5m-ebI" eventType="touchUpInside" id="8rI-F0-U3P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1q3-gb-xtA" firstAttribute="leading" secondItem="8Bi-1b-KXy" secondAttribute="leadingMargin" id="ft6-QK-mtp"/>
+                            <constraint firstItem="1q3-gb-xtA" firstAttribute="centerY" secondItem="8Bi-1b-KXy" secondAttribute="centerY" id="rcG-b5-M0R"/>
+                            <constraint firstItem="1q3-gb-xtA" firstAttribute="trailing" secondItem="8Bi-1b-KXy" secondAttribute="trailingMargin" id="vJ4-7O-FRC"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Pud-hA-l5u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w6m-LN-b6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077.5999999999999" y="103.89805097451276"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="vgf-ym-TPo">
@@ -43,7 +77,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EPc-TW-Gf0" id="eJ8-NE-n3R">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -79,56 +113,6 @@
             </objects>
             <point key="canvasLocation" x="1078" y="-609"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Chu-sR-hGe">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sqi-5d-d8r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="vEW-bc-1hL"/>
-                    <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="eOO-iH-hhS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="QkB-nN-k2k" kind="relationship" relationship="rootViewController" id="Lsk-Eb-J1r"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VLx-5g-bbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1078" y="141"/>
-        </scene>
-        <!--Second Tab View Controller-->
-        <scene sceneID="C8q-0j-hCp">
-            <objects>
-                <tableViewController id="QkB-nN-k2k" customClass="SecondTabViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fbI-Jg-oyT">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GCh-rb-U02">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GCh-rb-U02" id="Am1-Io-l8o">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="QkB-nN-k2k" id="Bz0-uB-IBH"/>
-                            <outlet property="delegate" destination="QkB-nN-k2k" id="bdb-C5-qls"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="OvB-PY-XVN"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B6X-x1-pqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1841" y="141"/>
-        </scene>
         <!--Third Tab View Controller Table View Controller-->
         <scene sceneID="4ih-ha-QIa">
             <objects>
@@ -142,7 +126,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UNH-oY-zNw" id="V97-rx-p59">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

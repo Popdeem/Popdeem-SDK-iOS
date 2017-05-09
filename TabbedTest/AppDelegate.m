@@ -33,17 +33,7 @@
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
 	[PopdeemSDK setDebug:YES];
-  
-	PDLog(@"API_URL: %@", API_URL);
-	
-  NSArray *fontFamilies = [UIFont familyNames];
-  
-  for (int i = 0; i < [fontFamilies count]; i++)
-  {
-    NSString *fontFamily = [fontFamilies objectAtIndex:i];
-    NSArray *fontNames = [UIFont fontNamesForFamilyName:[fontFamilies objectAtIndex:i]];
-    NSLog (@"%@: %@", fontFamily, fontNames);
-  }
+  [PopdeemSDK setThirdPartyUserToken:@"101950-BLz3npqGQndsopP5R3hje7tHXCnbKeGhveTgYnv5QBXCpN38dT4oYHoWfMYyuB"];
   
   return YES;
 }

@@ -180,6 +180,10 @@
       self.forcedTag = params[@"global_hashtag"];
     }
     
+    if (params[@"recurrence"] != nil) {
+      self.recurrence = params[@"recurrence"];
+    }
+    
     [self calculateDistanceToUser];
     return self;
   }

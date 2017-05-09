@@ -16,7 +16,6 @@
 @implementation SecondTabViewController
 
 - (void)viewDidLoad {
-    [super setBrandVendorSearchTerm:@"mmitm"];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -31,8 +30,8 @@
 }
 
 - (IBAction)testTrigger:(id)sender {
-//  [PopdeemSDK logMoment:@"post_payment"];
-	[PopdeemSDK presentBrandFlowInNavigationController:self.navigationController];
+  [PopdeemSDK logMoment:@"post_payment"];
+
 }
 
 /*
