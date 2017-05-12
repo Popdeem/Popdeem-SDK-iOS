@@ -47,6 +47,7 @@
 	[_titleLabel setText:_viewModel.titleString];
 	[_titleLabel setFont:_viewModel.titleFont];
 	[_titleLabel setTextColor:_viewModel.titleColor];
+  [_titleLabel sizeToFit];
 	
 	[_bodyLabel setText:_viewModel.bodyString];
 	[_bodyLabel setTextColor:_viewModel.bodyColor];
@@ -68,6 +69,12 @@
   _facebookLoginButton.clipsToBounds = YES;
   [_facebookLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
   [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  
+  if (_viewModel.image) {
+    [self.imageView setImage:_viewModel.image];
+  }
+  [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+  _imageView.clipsToBounds = YES;
   
 //  [self.facebookLoginButton.imageView setImage:nil];
   for (NSLayoutConstraint *l in self.facebookLoginButton.constraints) {

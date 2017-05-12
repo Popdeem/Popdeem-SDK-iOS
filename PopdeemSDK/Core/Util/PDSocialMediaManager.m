@@ -210,7 +210,7 @@
 																																	 HTTPMethod:@"GET"];
 		[request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
 			if (error) {
-				PDLogError(@"Error checking Token: %@",error.localizedDescription);
+				PDLogError(@"Error checking Token: %@", error.localizedDescription);
 				completion(NO);
 				return;
 			}

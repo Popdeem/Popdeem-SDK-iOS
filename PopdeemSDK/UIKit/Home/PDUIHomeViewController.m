@@ -283,6 +283,7 @@
 }
 - (void) settingsAction {
   PDUISettingsViewController *mvc = [[PDUISettingsViewController alloc] initFromNib];
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   [self.navigationController pushViewController:mvc animated:YES];
 }
 
@@ -502,7 +503,7 @@
           if (_brand.theme != nil) {
             [norw setTheme:_brand.theme];
           }
-          [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noFeed",@"There is nothing in the Feed right now. Please check back later.")];
+          [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noFeed",@"There is nothing in the feed right now.\nPlease check back later.")];
           return norw;
         } else {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
@@ -544,7 +545,7 @@
           if (_brand.theme != nil) {
             [norw setTheme:_brand.theme];
           }
-          [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noWallet",@"There is nothing in your Wallet right now. Please check back later.")];
+          [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noWallet",@"There is nothing in your history right now.\nPlease check back later.")];
           return norw;
         } else {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];

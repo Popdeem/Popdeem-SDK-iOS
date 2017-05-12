@@ -88,6 +88,7 @@
 }
 
 - (void) setupHeaderView {
+  
 	self.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
 	self.tableView.tableHeaderView = self.tableHeaderView;
 	
@@ -129,17 +130,43 @@
 	[_profileImageView setHidden:YES];
 
 
-	if ([[PDUser sharedInstance] firstName] && [[PDUser sharedInstance] lastName]) {
-		NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
-		UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
-		[nameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
-		[nameLabel setTextColor:[UIColor whiteColor]];
-		[nameLabel setText:userName];
-		[nameLabel setTextAlignment:NSTextAlignmentCenter];
-		[self.tableHeaderView addSubview:nameLabel];
-		[self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
-		[self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
-	}
+  if ([[PDSocialMediaManager manager] isLoggedInWithAnyNetwork]) {
+    if ([[PDUser sharedInstance] firstName] && [[PDUser sharedInstance] lastName]) {
+      NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
+      _tableHeaderNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
+      [_tableHeaderNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
+      [_tableHeaderNameLabel setTextColor:[UIColor whiteColor]];
+      [_tableHeaderNameLabel setText:userName];
+      [_tableHeaderNameLabel setTextAlignment:NSTextAlignmentCenter];
+      [self.tableHeaderView addSubview:_tableHeaderNameLabel];
+      [self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+      [self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
+    }
+  }
+}
+
+- (void) setProfile {
+  if ([[PDUser sharedInstance] firstName] && [[PDUser sharedInstance] lastName]) {
+    NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
+    [_tableHeaderNameLabel setText:userName];
+    [_tableHeaderNameLabel setHidden:NO];
+  }
+  NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
+  NSLog(@"%@",pictureUrl);
+  NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    if (data) {
+      UIImage *image = [UIImage imageWithData:data];
+      if (image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          UIImage *profileImage = [UIImage imageWithData:data];
+          [_profileImageView setImage:profileImage];
+          [_profileImageView setHidden:NO];
+          [self.view setNeedsDisplay];
+        });
+      }
+    }
+  }];
+  [task resume];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,7 +191,12 @@
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-	return 2;
+  PDSocialMediaManager *man = [PDSocialMediaManager manager];
+  if ([man isLoggedInWithAnyNetwork]) {
+    return 2;
+  } else {
+    return 1;
+  }
 }
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -335,6 +367,7 @@
 //	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[_tableView reloadInputViews];
+    [self setProfile];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
@@ -346,7 +379,7 @@
 	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[cell.socialSwitch setOn:NO];
-		[_tableView reloadInputViews];
+		[self setProfile];
 	});
 }
 
@@ -354,6 +387,7 @@
 //	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[_tableView reloadInputViews];
+    [self setProfile];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
@@ -381,6 +415,7 @@
 //	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[_tableView reloadData];
+    [self setupHeaderView];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,

@@ -14,7 +14,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *tableHeaderView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *tableHeaderImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *tableHeaderNameLabel;
+@property (nonatomic, retain) UILabel *tableHeaderNameLabel;
 
 - (instancetype) initFromNib;
 - (void) connectFacebookAccount;

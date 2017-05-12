@@ -16,7 +16,7 @@
 	[super awakeFromNib];
 	self.separatorInset = UIEdgeInsetsZero;
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
-	[_infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+	[_infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
 	[_infoLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
 	[self setBackgroundColor:[UIColor clearColor]];
 	if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {

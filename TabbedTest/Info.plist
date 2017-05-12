@@ -24,20 +24,19 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1706317436274686</string>
-				<string>popdeemstaging</string>
-				<string>kuresocialrewards</string>
-				<string>popdeemstagingtwitter</string>
+				<string>popdeemtwitter</string>
+				<string>popdeem</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3023</string>
+	<string>3090</string>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
 	<string>Popdeem</string>
 	<key>FacebookNamespace</key>
-	<string>kuresocialrewards</string>
+	<string>popdeemrewards</string>
 	<key>InstagramCallback</key>
 	<string>https://www.popdeem.com/igredirect</string>
 	<key>InstagramClientId</key>
@@ -46,6 +45,7 @@
 	<string>0b14e780896e42be88cefcddb3ac64dc</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>instagram</string>
 		<string>instagram</string>
 		<string>fbapi</string>
 		<string>fbapi20130214</string>

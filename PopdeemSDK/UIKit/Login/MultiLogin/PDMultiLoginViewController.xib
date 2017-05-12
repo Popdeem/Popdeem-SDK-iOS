@@ -59,10 +59,10 @@
                         <action selector="connectFacebook:" destination="-1" eventType="touchUpInside" id="m5k-T1-E3Y"/>
                     </connections>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New: Social Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09q-IF-jId">
-                    <rect key="frame" x="16" y="387" width="343" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New: Social Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09q-IF-jId">
+                    <rect key="frame" x="16" y="392" width="343" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="u0f-Ae-JPG"/>
+                        <constraint firstAttribute="height" constant="16" id="u0f-Ae-JPG"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
@@ -72,7 +72,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="371"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKg-C5-Rw2">
-                    <rect key="frame" x="16" y="416" width="343" height="72"/>
+                    <rect key="frame" x="16" y="414" width="343" height="72"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="72" id="GBh-HE-Qp9"/>
                     </constraints>
@@ -102,13 +102,13 @@
                 <constraint firstAttribute="trailing" secondItem="CSN-dF-pXj" secondAttribute="trailing" id="1lq-Pv-yTw"/>
                 <constraint firstItem="25a-7f-Yar" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="8ic-XO-JgD"/>
                 <constraint firstItem="1wF-oE-hL7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="A12-ab-5wJ"/>
-                <constraint firstItem="whg-BB-TEr" firstAttribute="top" secondItem="fKg-C5-Rw2" secondAttribute="bottom" constant="8" id="EKw-yK-caz"/>
+                <constraint firstItem="whg-BB-TEr" firstAttribute="top" secondItem="fKg-C5-Rw2" secondAttribute="bottom" constant="10" id="EKw-yK-caz"/>
                 <constraint firstItem="25a-7f-Yar" firstAttribute="top" secondItem="whg-BB-TEr" secondAttribute="bottom" constant="8" id="Efb-NA-C4N"/>
                 <constraint firstItem="CSN-dF-pXj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OdP-0n-ddc"/>
                 <constraint firstItem="fKg-C5-Rw2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PbC-Hy-snU"/>
                 <constraint firstItem="09q-IF-jId" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PgN-aY-7Jv"/>
-                <constraint firstItem="09q-IF-jId" firstAttribute="top" secondItem="CSN-dF-pXj" secondAttribute="bottom" constant="16" id="Tc7-n9-FJG"/>
-                <constraint firstItem="fKg-C5-Rw2" firstAttribute="top" secondItem="09q-IF-jId" secondAttribute="bottom" constant="8" id="Vd0-cq-JSb"/>
+                <constraint firstItem="09q-IF-jId" firstAttribute="top" secondItem="CSN-dF-pXj" secondAttribute="bottom" constant="21" id="Tc7-n9-FJG"/>
+                <constraint firstItem="fKg-C5-Rw2" firstAttribute="top" secondItem="09q-IF-jId" secondAttribute="bottom" constant="6" id="Vd0-cq-JSb"/>
                 <constraint firstItem="CSN-dF-pXj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WS7-jY-c21"/>
                 <constraint firstAttribute="bottom" secondItem="1wF-oE-hL7" secondAttribute="bottom" constant="20" id="ZpZ-1B-uoc"/>
                 <constraint firstAttribute="trailing" secondItem="whg-BB-TEr" secondAttribute="trailing" constant="16" id="bxV-eb-YQI"/>

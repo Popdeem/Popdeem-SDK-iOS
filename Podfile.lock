@@ -18,16 +18,16 @@ PODS:
   - JSONModel (1.7.0)
   - Nocilla (0.11.0)
   - OCMock (3.4)
-  - PopdeemSDK (1.0.15):
-    - PopdeemSDK/Core (= 1.0.15)
-  - PopdeemSDK/Core (1.0.15):
+  - PopdeemSDK (1.0.19):
+    - PopdeemSDK/Core (= 1.0.19)
+  - PopdeemSDK/Core (1.0.19):
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
     - JSONModel
     - Shimmer
     - STTwitter
-  - PopdeemSDK/UIKit (1.0.15):
+  - PopdeemSDK/UIKit (1.0.19):
     - PopdeemSDK/Core
   - Shimmer (1.0.2)
   - STTwitter (0.2.6)
@@ -63,7 +63,7 @@ SPEC CHECKSUMS:
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
-  PopdeemSDK: fa035e8247b66007f788598bbd66a1033f0f1f15
+  PopdeemSDK: 29309a4724a544d0a22faede6ff95a86d08b95b8
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 30ee2f79eff78c3d633a1edc869e97db9c9ead59
 

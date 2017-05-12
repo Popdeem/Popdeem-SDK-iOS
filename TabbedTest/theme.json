@@ -13,7 +13,7 @@
       "homeHeaderTextColor" : "#FFFFFF"
 		},
 		"images" : {
-			"loginImage" : "pduikit_default_login",
+			"loginImage" : "Heinebros_login",
 			"defaultItemImage" : "pduikit_starG",
 			"homeHeaderImage" : "PDSDK_Home_Header"
 		},
