@@ -29,7 +29,6 @@
   NSString *apiString = [NSString stringWithFormat:@"%@/%@/%@",self.baseUrl,USERS_PATH,userId];
 	
 	
-	
   NSURLSession *session = [NSURLSession createPopdeemSession];
   [session GET:apiString
         params:nil
@@ -61,10 +60,26 @@
           return;
         }
         PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
+        if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
+          PDUserAPIService *service = [[PDUserAPIService alloc] init];
+          [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+            if (error) {
+              PDLogError(@"Error updating User: %@", error.localizedDescription);
+              dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
+              });
+            } else {
+              dispatch_async(dispatch_get_main_queue(), ^{
+                completion(user, nil);
+              });
+            }
+          }];
+        } else {
+          dispatch_async(dispatch_get_main_queue(), ^{
+            completion(user, nil);
+          });
+        }
         [session invalidateAndCancel];
-        dispatch_async(dispatch_get_main_queue(), ^{
-          completion(user, nil);
-        });
       } else {
         [session invalidateAndCancel];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -120,12 +135,34 @@
 				return;
 			}
 			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
-      [user addUserToUserDefaults];
-			[session invalidateAndCancel];
-//			AbraOnboardUser();
-			dispatch_async(dispatch_get_main_queue(), ^{
-				success(user);
-			});
+      if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
+        PDUserAPIService *service = [[PDUserAPIService alloc] init];
+        [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+          if (error) {
+            PDLogError(@"Error updating User: %@", error.localizedDescription);
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [user addUserToUserDefaults];
+              [session invalidateAndCancel];
+              AbraOnboardUser();
+              failure([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+          } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [user addUserToUserDefaults];
+              [session invalidateAndCancel];
+              AbraOnboardUser();
+              success(user);
+            });
+          }
+        }];
+      } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [session invalidateAndCancel];
+          [user addUserToUserDefaults];
+          AbraOnboardUser();
+          success(user);
+        });
+      }
 		} else {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				failure([PDNetworkError errorForStatusCode:responseStatusCode]);
@@ -183,12 +220,35 @@
 				return;
 			}
 			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
-      [user addUserToUserDefaults];
-			[session invalidateAndCancel];
-			//			AbraOnboardUser();
-			dispatch_async(dispatch_get_main_queue(), ^{
-				success(user);
-			});
+      if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
+        PDUserAPIService *service = [[PDUserAPIService alloc] init];
+        [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+          if (error) {
+            PDLogError(@"Error updating User: %@", error.localizedDescription);
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [user addUserToUserDefaults];
+              [session invalidateAndCancel];
+              AbraOnboardUser();
+              failure([PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+          } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [user addUserToUserDefaults];
+              [session invalidateAndCancel];
+              AbraOnboardUser();
+              success(user);
+            });
+          }
+        }];
+      } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [session invalidateAndCancel];
+          [user addUserToUserDefaults];
+          AbraOnboardUser();
+          success(user);
+        });
+      }
+
 		} else {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				failure([PDNetworkError errorForStatusCode:responseStatusCode]);
@@ -288,11 +348,31 @@
 			}
 			PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
       [user addUserToUserDefaults];
-			[session invalidateAndCancel];
-			AbraOnboardUser();
-			dispatch_async(dispatch_get_main_queue(), ^{
-				completion(user, nil);
-			});
+      if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
+        PDUserAPIService *service = [[PDUserAPIService alloc] init];
+        [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+          if (error) {
+            PDLogError(@"Error updating User: %@", error.localizedDescription);
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [session invalidateAndCancel];
+              AbraOnboardUser();
+              completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+          } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+              [session invalidateAndCancel];
+              AbraOnboardUser();
+              completion(user, nil);
+            });
+          }
+        }];
+      } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [session invalidateAndCancel];
+          AbraOnboardUser();
+          completion(user, nil);
+        });
+      }
 		} else {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
