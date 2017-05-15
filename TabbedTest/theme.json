@@ -2,6 +2,7 @@
   "popdeem" : {
 		"colors" : {
 			"primaryAppColor" : "#31241C",
+      "secondaryAppColor" : "#FFD530",
 			"primaryInverseColor" : "#FFD530",
 			"viewBackgroundColor" : "#EBEBF2",
 			"primaryFontColor" : "#000000",
@@ -9,7 +10,8 @@
 			"tableViewCellBackgroundColor" : "#FFFFFF",
 			"tableViewSeperatorColor" : "#C0C0C0",
 			"navBarTintColor" : "#FFFFFF",
-			"segmentedControlBackgroundColor" : "#FFFFFF",
+			"segmentedControlBackgroundColor" : "#31241C",
+      "segmentedControlForegroundColor" : "#FFFFFF",
       "homeHeaderTextColor" : "#FFFFFF"
 		},
 		"images" : {

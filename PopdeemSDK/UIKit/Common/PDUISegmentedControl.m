@@ -19,12 +19,12 @@
     
     //Remove Background Selection
     [self setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-		UIImage *selectedImage = [self selectedImage:PopdeemColor(PDThemeColorPrimaryApp)];
+		UIImage *selectedImage = [self selectedImage:PopdeemColor(PDThemeColorSecondaryApp)];
     [self setBackgroundImage:selectedImage forState:UIControlStateSelected
                                              barMetrics:UIBarMetricsDefault];
     
-    [self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)} forState:UIControlStateNormal];
-    [self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)} forState:UIControlStateSelected];
+    [self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSegmentedControlForeground)} forState:UIControlStateNormal];
+    [self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSegmentedControlForeground)} forState:UIControlStateSelected];
     
     //Remove Divider Image
     [self setDividerImage:[UIImage new] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:(UIBarMetricsDefault)];

@@ -17,6 +17,7 @@
 @property (nonatomic, retain) UIColor *primaryAppColor;
 @property (nonatomic, retain) UIColor *primaryFontColor;
 @property (nonatomic, retain) UIColor *secondaryFontColor;
+@property (nonatomic, retain) UIColor *secondaryAppColor;
 @property (nonatomic, retain) UIColor *cellBackgroundColor;
 @property (nonatomic, assign) PDBrandTheme *brandTheme;
 @end
@@ -54,6 +55,7 @@
 		_primaryAppColor = PopdeemColor(PDThemeColorPrimaryApp);
 		_primaryFontColor = PopdeemColor(PDThemeColorPrimaryFont);
 		_secondaryFontColor = PopdeemColor(PDThemeColorSecondaryFont);
+    _secondaryAppColor = PopdeemColor(PDThemeColorSecondaryApp);
 	}
 	
 	if (reward.coverImageUrl) {
@@ -104,10 +106,12 @@
 		[labelAttString appendAttributedString:rulesString];
 	}
 	
+  
+  UIColor *bottomTextColor = _secondaryAppColor ? _secondaryAppColor : _primaryAppColor;
 	NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
 			initWithString:info attributes:@{
-					NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-					NSForegroundColorAttributeName : _primaryAppColor
+					NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
+					NSForegroundColorAttributeName : bottomTextColor
 			}];
 	
 	[labelAttString appendAttributedString:infoString];
