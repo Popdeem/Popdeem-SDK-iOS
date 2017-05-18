@@ -5,7 +5,6 @@
 //  Created by Niall Quinn on 04/02/2016.
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
-
 #import "AppDelegate.h"
 #import "PopdeemSDK.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -33,7 +32,7 @@
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
 	[PopdeemSDK setDebug:YES];
-  [PopdeemSDK setThirdPartyUserToken:@"101950-BLz3npqGQndsopP5R3hje7tHXCnbKeGhveTgYnv5QBXCpN38dT4oYHoWfMYyuB"];
+  [PopdeemSDK setThirdPartyUserToken:@"niall_test"];
   
   return YES;
 }
@@ -113,6 +112,10 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+  NSLog(@"======= MEMORY WARNING ========");
 }
 
 @end

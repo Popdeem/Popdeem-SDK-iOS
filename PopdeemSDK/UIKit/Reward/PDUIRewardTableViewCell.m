@@ -9,6 +9,7 @@
 #import "PDUIRewardTableViewCell.h"
 #import "PDUser.h"
 #import "PDTheme.h"
+#import "PDUtils.h"
 
 @implementation PDUIRewardTableViewCell
 
@@ -170,7 +171,7 @@
 					action = @"Check-in or Tweet Required";
 					break;
 				case PDRewardActionPhoto:
-					action = @"Photo Required";
+					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
@@ -185,7 +186,7 @@
 					action = @"Check-in Required";
 					break;
 				case PDRewardActionPhoto:
-					action = @"Photo Required";
+					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
@@ -200,7 +201,7 @@
 					action = @"Tweet Required";
 					break;
 				case PDRewardActionPhoto:
-					action = @"Tweet with Photo Required";
+					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
@@ -219,7 +220,7 @@
 				action = @"Check-in Required";
 				break;
 			case PDRewardActionPhoto:
-				action = @"Photo Required";
+				action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 				break;
 			case PDRewardActionNone:
 				action = @"No Action Required";

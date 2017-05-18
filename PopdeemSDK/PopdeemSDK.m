@@ -35,6 +35,7 @@
 #import "PDMomentsManager.h"
 #import "PDAPIClient.h"
 #import "PDMessageStore.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface PopdeemSDK()
 @property (nonatomic, strong)id uiKitCore;
@@ -182,6 +183,9 @@
 }
 
 + (void) handleRemoteNotification:(NSDictionary*)userInfo {
+  [[PDNotificationHandler sharedInstance] showRemoteNotification:userInfo completion:^(BOOL success) {
+    PDLog(@"Notification Shown");
+  }];
   [[NSNotificationCenter defaultCenter] postNotificationName:NotificationReceived object:nil];
 }
 

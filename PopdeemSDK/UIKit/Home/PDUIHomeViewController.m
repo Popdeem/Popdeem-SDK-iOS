@@ -461,7 +461,7 @@
           if (_brand.theme != nil) {
             [norw setTheme:_brand.theme];
           }
-          [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noRewards",@"There are no Rewards available right now. Please check back later.")];
+          [norw setupWithMessage:translationForKey(@"popdeem.home.infoCell.noRewards",@"There are no Rewards available right now.\nPlease check back later.")];
           return norw;
         } else {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];

@@ -891,6 +891,7 @@
 	[_viewController presentViewController:picker animated:YES completion:NULL];
 	
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 	[[NSNotificationCenter defaultCenter] addObserver:self
 																					 selector:@selector(keyboardWillShow:)
@@ -973,12 +974,10 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
 	_image = [self resizeImage:image withMinDimension:460];
 	_imageView.image = _image;
-	
 }
 
 - (UIImage *)resizeImage:(UIImage *)inImage
-				withMinDimension:(CGFloat)minDimension
-{
+				withMinDimension:(CGFloat)minDimension {
 	
 	CGFloat aspect = inImage.size.width / inImage.size.height;
 	CGSize newSize;

@@ -65,67 +65,67 @@
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion {
   _completionBlock = completion;
   
-//  NSString *imageUrl = [userInfo objectForKey:@"image_url"];
-//  UIImage *image;
-//  if ([imageUrl isKindOfClass:[NSNull class]]) {
-//		image = PopdeemImage(@"popdeem.images.defaultItemImage");
-//  } else {
-//    imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"popdeem-dev" withString:@"popdeem"];
-//    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
-//    image = [UIImage imageWithData:imageData];
-//  }
-//  
-//  _alertView = [[PDSDKCustomIOS7AlertView alloc] init];
-//  
-//  UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 180)];
-//  
-//  UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, contentView.frame.size.width, 25)];
-//  [header setTextAlignment:NSTextAlignmentCenter];
-//  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
-//    [header setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-//  } else {
-//    [header setFont:[UIFont systemFontOfSize:16]];
-//  }
-//  [header setText:@"New Message"];
-//  [header setTextColor:[UIColor blackColor]];
-//  [contentView addSubview:header];
-//  
-//  UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-25,35, 50, 50)];
-//  imageView.contentMode = UIViewContentModeScaleAspectFill;
-//  imageView.layer.cornerRadius = 5.0;
-//  imageView.layer.masksToBounds = YES;
-//  [imageView setImage:image];
-//  
-//  [contentView addSubview:imageView];
-//  
-//  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 95, contentView.frame.size.width, 25)];
-//  [title setTextAlignment:NSTextAlignmentCenter];
-//  if (PopdeemThemeHasValueForKey(PDThemeFontPrimary)) {
-//    [title setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-//  } else {
-//    [title setFont:[UIFont systemFontOfSize:16]];
-//  }
-//  [title setText:[userInfo objectForKey:@"body"]];
-//  [title setTextColor:[UIColor blackColor]];
-//  [contentView addSubview:title];
-//  
-//  UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(10, 115, contentView.frame.size.width-20, 55)];
-//  message.lineBreakMode = NSLineBreakByWordWrapping;
-//  message.numberOfLines = 4;
-//  [message setTextAlignment:NSTextAlignmentCenter];
-////  [message setFont:PopdeemFont(@"popdeem.messagePopup.font", 12)];
-//  [message setText:[userInfo objectForKey:@"content"]];
-//  [message setTextColor:[UIColor darkGrayColor]];
-//  [contentView addSubview:message];
-//  
-//  [_alertView setContainerView:contentView];
-//  if ([userInfo objectForKey:@"target_url"]) {
-//    [self presentUrlAlert:_alertView url:[userInfo objectForKey:@"target_url"]];
-//  } else if ([userInfo objectForKey:@"deep_link"]) {
-//    [self presentDeepLinkAlert:_alertView deepLink:[userInfo objectForKey:@"deep_link"]];
-//  } else {
-//    [self presentAppAlert:_alertView];
-//  }
+  NSString *imageUrl = [userInfo objectForKey:@"image_url"];
+  UIImage *image;
+  UIImage *fbImage = PopdeemImage(@"pduikit_fb_hi");
+  UIImage *twImage = PopdeemImage(@"Twitter_Logo_Blue");
+  UIImage *instaImage = PopdeemImage(@"pduikit_instagram_hi");
+  
+  _alertView = [[PDSDKCustomIOS7AlertView alloc] init];
+  
+  UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 220)];
+  
+  UIImageView *twImageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-15, 35, 40, 30)];
+  twImageView.contentMode = UIViewContentModeScaleAspectFit;
+  twImageView.layer.masksToBounds = YES;
+  [twImageView setImage:twImage];
+  
+  UIImageView *fbImageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x-65, 35, 40, 30)];
+  fbImageView.contentMode = UIViewContentModeScaleAspectFit;
+  fbImageView.layer.masksToBounds = YES;
+  [fbImageView setImage:fbImage];
+  
+  UIImageView *inImageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentView.center.x+35, 35, 40, 30)];
+  inImageView.contentMode = UIViewContentModeScaleAspectFit;
+  inImageView.layer.masksToBounds = YES;
+  [inImageView setImage:instaImage];
+  
+  [contentView addSubview:fbImageView];
+  [contentView addSubview:twImageView];
+  [contentView addSubview:inImageView];
+  
+  float currentY = 35 + 40 + 15;
+  
+  UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, contentView.center.y-12.5, contentView.frame.size.width, 25)];
+  [title setTextAlignment:NSTextAlignmentCenter];
+  if (PopdeemThemeHasValueForKey(PDThemeFontBold)) {
+    [title setFont:PopdeemFont(PDThemeFontBold, 16)];
+  } else {
+    [title setFont:[UIFont systemFontOfSize:16]];
+  }
+  [title setText:[userInfo objectForKey:@"body"]];
+  [title setTextColor:[UIColor blackColor]];
+  [contentView addSubview:title];
+  
+  currentY = contentView.center.y + 12.5;
+  
+  UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(30, currentY, contentView.frame.size.width-60, (contentView.frame.size.height/2) - 25)];
+  message.lineBreakMode = NSLineBreakByWordWrapping;
+  message.numberOfLines = 0;
+  [message setTextAlignment:NSTextAlignmentCenter];
+  [message setFont:PopdeemFont(PDThemeFontPrimary, 12)];
+  [message setText:@"Earn additional rewards.\nCheck out our 'Social' section in the menu to earn bonus rewards."];
+  [message setTextColor:[UIColor darkGrayColor]];
+  [contentView addSubview:message];
+  
+  [_alertView setContainerView:contentView];
+  if ([userInfo objectForKey:@"target_url"]) {
+    [self presentUrlAlert:_alertView url:[userInfo objectForKey:@"target_url"]];
+  } else if ([userInfo objectForKey:@"deep_link"]) {
+    [self presentDeepLinkAlert:_alertView deepLink:[userInfo objectForKey:@"deep_link"]];
+  } else {
+    [self presentAppAlert:_alertView];
+  }
 	
 }
 

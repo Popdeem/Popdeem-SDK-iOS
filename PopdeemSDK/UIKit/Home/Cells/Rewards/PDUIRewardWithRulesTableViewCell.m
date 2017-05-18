@@ -141,7 +141,7 @@
 					action = @"Check-in or Tweet Required";
 					break;
 				case PDRewardActionPhoto:
-					action = @"Photo Required";
+					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
@@ -156,7 +156,7 @@
 					action = @"Check-in Required";
 					break;
 				case PDRewardActionPhoto:
-					action = @"Photo Required";
+					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
@@ -171,7 +171,7 @@
 					action = @"Tweet Required";
 					break;
 				case PDRewardActionPhoto:
-					action = @"Tweet with Photo Required";
+					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
@@ -181,16 +181,16 @@
 			}
 		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
 			//Twitter Only
-			action = @"Instagram Photo Required";
+			action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 			
 		}
 	} else if (types.count == 0) {
 		switch (reward.action) {
 			case PDRewardActionCheckin:
-				action = @"Check-in Required";
+				action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
 				break;
 			case PDRewardActionPhoto:
-				action = @"Photo Required";
+				action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 				break;
 			case PDRewardActionNone:
 				action = @"No Action Required";

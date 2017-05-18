@@ -13,6 +13,8 @@
 /*
  API URL Strings
  */
+//#define POPDEEM_ENV_STAGING
+
 #ifdef POPDEEM_ENV_STAGING
 NSString *const API_URL = @"http://api.staging.popdeem.com";
 #else

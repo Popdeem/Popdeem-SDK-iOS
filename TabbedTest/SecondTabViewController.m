@@ -32,7 +32,6 @@
 
 - (IBAction)testTrigger:(id)sender {
   [PopdeemSDK logMoment:@"post_payment"];
-
 }
 
 /*
