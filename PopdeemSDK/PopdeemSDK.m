@@ -286,7 +286,8 @@
 }
 
 - (void) nonSocialRegister {
-  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"PopdeemNonSocialRegistered"] == nil) {
+  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"popdeemUser"] == nil) {
+    PDLog(@"Sending Non Social User details");
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
     [service nonSocialUserInitWithCompletion:^(NSError *error){
       if (!error) {

@@ -28,7 +28,7 @@
     NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Reward" ofType:@"json"];
     NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
     NSData *data = [userJSON dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err = [[NSError alloc] init];
+    NSError *err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:27501 userInfo:nil];
     id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
     
     reward = [[PDReward alloc] initFromApi:json];

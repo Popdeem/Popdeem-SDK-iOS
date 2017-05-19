@@ -52,7 +52,7 @@
       BOOL validated = [[jsonObject objectForKey:@"validated"] boolValue];
 
       if (validated) {
-        NSError *err = [[NSError alloc] init];
+        NSError *err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:27501 userInfo:nil];
         PDBGScanResponseModel *response = [[PDBGScanResponseModel alloc] initWithDictionary:jsonObject error:err];
         [session invalidateAndCancel];
         dispatch_async(dispatch_get_main_queue(), ^{

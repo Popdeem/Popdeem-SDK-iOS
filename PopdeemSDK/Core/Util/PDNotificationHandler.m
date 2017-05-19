@@ -48,6 +48,7 @@
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   [[PDAPIClient sharedInstance] setDeviceToken:deviceToken.description];
 	if (![[PDUser sharedInstance] identifier]) {
+    [[PopdeemSDK sharedInstance] nonSocialRegister];
 		return;
 	}
 	PDUserAPIService *service = [[PDUserAPIService alloc] init];

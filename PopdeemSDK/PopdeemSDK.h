@@ -102,6 +102,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) logout;
 
+- (void) nonSocialRegister;
+
 + (NSString*) instagramClientId;
 + (NSString*) instagramClientSecret;
 + (NSString*) instagramCallback;

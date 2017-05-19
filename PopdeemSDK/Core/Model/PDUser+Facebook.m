@@ -69,8 +69,6 @@
              
            [[PDUser taggableFriends] removeAllObjects];
            [[PDUser taggableFriends] addObjectsFromArray:sortedArray];
-           
-             PDLog(@"Got Friends, there are %ld",[[PDUser taggableFriends] count]);
              callback(YES);
          } else {
              PDLogError(@"Error fetching facebook friends %@",error.localizedDescription);

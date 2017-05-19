@@ -12,7 +12,7 @@
 @implementation PDUserTwitterParams
 
 - (nullable instancetype) initWithDictionary:(NSDictionary *)dict {
-	NSError *err = [[NSError alloc] init];
+	NSError *err = [[NSError alloc] initWithDomain:NSURLErrorDomain code:27501 userInfo:nil];
 	if (self = [super initWithDictionary:dict error:&err]) {
 		return self;
 	}
