@@ -144,7 +144,7 @@
     }
   }];
   
-  [self.bottomLabel setText:[NSString stringWithFormat:@"Note: You must have shared your experience with the %@ in the last 48 hours to be eligible for a reward.", _reward.forcedTag]];
+  [self.bottomLabel setText:[NSString stringWithFormat:@"Note: You must have shared your experience with %@ in the last 48 hours to be eligible for a reward.", _reward.forcedTag]];
   [self.bottomLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.bottomLabel setFont:PopdeemFont(PDThemeFontLight, 12)];
   
@@ -161,6 +161,13 @@
   if (![_mediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
     [self.instagramButton setHidden:YES];
     self.instagramButtonHC.constant = 0;
+  }
+  
+  if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
+    UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
+    [self.view addSubview:tvbg];
+    [self.view sendSubviewToBack:tvbg];
   }
   
 }

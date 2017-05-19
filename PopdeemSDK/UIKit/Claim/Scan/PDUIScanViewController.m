@@ -91,8 +91,16 @@
   
   [_activityIndicator setSize:55.0f];
   [_activityIndicator setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_activityIndicator setBackgroundColor:[UIColor clearColor]];
   [_activityIndicator setType:DGActivityIndicatorAnimationTypeBallPulse];
   [_activityIndicator startAnimating];
+  
+  if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
+    UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
+    [self.view addSubview:tvbg];
+    [self.view sendSubviewToBack:tvbg];
+  }
   
   [self scan];
 }

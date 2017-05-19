@@ -362,6 +362,13 @@
   [_twitterButton setTitleColor:[UIColor colorWithRed:0.200 green:0.412 blue:0.596 alpha:1.000] forState:UIControlStateSelected];
   [_twitterButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
   
+  if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
+    UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
+    [self.view addSubview:tvbg];
+    [self.view sendSubviewToBack:tvbg];
+  }
+  
   switch (_viewModel.socialMediaTypesAvailable) {
     case FacebookOnly:
       [self.facebookButton setHidden:NO];
@@ -406,13 +413,20 @@
 //  _facebookButtonViewBordersLayer.frame = CGRectMake(-1, 0, _facebookButton.frame.size.width+1, _facebookButton.frame.size.height);
 //  [_facebookButton.layer addSublayer:_facebookButtonViewBordersLayer];
 //  _facebookButton.clipsToBounds = YES;
-//  
-//  _twitterButtonViewBordersLayer = [CALayer layer];
-//  _twitterButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
-//  _twitterButtonViewBordersLayer.borderWidth = 0.5;
-//  _twitterButtonViewBordersLayer.frame = CGRectMake(0, 0, _twitterButton.frame.size.width+1, _twitterButton.frame.size.height);
-//  [_twitterButton.layer addSublayer:_twitterButtonViewBordersLayer];
-//  _twitterButton.clipsToBounds = YES;
+//
+  _twitterButtonViewBordersLayer = [CALayer layer];
+  _twitterButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
+  _twitterButtonViewBordersLayer.borderWidth = 0.5;
+  _twitterButtonViewBordersLayer.frame = CGRectMake(-1, 0, _twitterButton.frame.size.width+2, _twitterButton.frame.size.height);
+  [_twitterButtonView.layer addSublayer:_twitterButtonViewBordersLayer];
+  _twitterButtonView.clipsToBounds = YES;
+  
+  _twitterButtonViewBordersLayer = [CALayer layer];
+  _twitterButtonViewBordersLayer.borderColor = [UIColor colorWithRed:0.783922 green:0.780392 blue:0.8 alpha:1].CGColor;
+  _twitterButtonViewBordersLayer.borderWidth = 0.5;
+  _twitterButtonViewBordersLayer.frame = CGRectMake(-1, 0, _twitterButtonView.frame.size.width+2, _twitterButtonView.frame.size.height);
+  [_twitterButtonView.layer addSublayer:_twitterButtonViewBordersLayer];
+  _twitterButtonView.clipsToBounds = YES;
 }
 
 - (IBAction)cameraButtonTapped:(id)sender {

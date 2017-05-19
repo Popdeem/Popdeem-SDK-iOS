@@ -27,9 +27,11 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *postImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *claimButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *postView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *topView;
 @property (unsafe_unretained, nonatomic) IBOutlet DGActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) NSString *network;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *backToRewardButton;
+@property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 
 @property (nonatomic, retain) PDBGScanResponseModel *postModel;
 @property (nonatomic, retain) PDReward *reward;
@@ -343,12 +345,21 @@
 }
 
 - (IBAction)claimButtonPressed:(id)sender {
+  _loadingView = [[PDUIModalLoadingView alloc]
+                  initForView:self.navigationController.view
+                  titleText:@"Please Wait"
+                  descriptionText:@"Claiming your Reward"];
+  [_loadingView showAnimated:YES];
+  [_claimButton setEnabled:NO];
   PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
   [service claimReward:_reward.identifier location:_reward.locations.firstObject withPost:_postModel completion:^(NSError *error) {
+    [_loadingView hideAnimated:YES];
+    [_claimButton setEnabled:YES];
     if (!error) {
       [self didClaimRewardId:_reward.identifier];
     } else {
       PDLogError(@"Error claiming: %@",error);
+      [self backToRewardButtonPressed:nil];
     }
   }];
 }
@@ -391,8 +402,26 @@
   [_activityIndicator setSize:55.0f];
   [_activityIndicator setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
   [_activityIndicator setType:DGActivityIndicatorAnimationTypeBallPulse];
+  [_activityIndicator setBackgroundColor:[UIColor clearColor]];
   [_activityIndicator startAnimating];
   scanStartTime = CFAbsoluteTimeGetCurrent();
+  if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
+    UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
+    [self.view addSubview:tvbg];
+    [self.view sendSubviewToBack:tvbg];
+  }
+  
+  _topView.layer.borderColor = PopdeemColor(PDThemeColorTableViewSeperator).CGColor;
+  _topView.layer.borderWidth = 1.0;
+  _postView.layer.borderColor = PopdeemColor(PDThemeColorTableViewSeperator).CGColor;
+  _postView.layer.borderWidth = 1.0;
+  
+  _postView.layer.shadowOffset = CGSizeMake(0, 0); //default is (0.0, -3.0)
+  _postView.layer.shadowColor = [UIColor blackColor].CGColor; //default is black
+  _postView.layer.shadowRadius = 3.0; //default is 3.0
+  _postView.layer.shadowOpacity = .5;
+  
   [self scan];
     // Do any additional setup after loading the view from its nib.
 }

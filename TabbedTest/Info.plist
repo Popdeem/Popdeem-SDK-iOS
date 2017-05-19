@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3208</string>
+	<string>3230</string>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
@@ -93,9 +93,9 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We access your photo gallery when you decide to share a photo.</string>
 	<key>TwitterAppConsumerKey</key>
-	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
+	<string>YuD6eTyLWpyfzjJZYKlTGa1Wt</string>
 	<key>TwitterAppConsumerSecret</key>
-	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
+	<string>DGDAgAEzuWQW0vQBnUhl2IBIQp9sGPgLqSpiRIbuLoB9adBHyW</string>
 	<key>TwitterCallbackScheme</key>
 	<string>popdeemstagingtwitter</string>
 	<key>UIAppFonts</key>

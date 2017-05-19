@@ -92,6 +92,13 @@
   [self.doneButton setTitle:translationForKey(@"popdeem.redeem.doneButton.title", @"Done") forState:UIControlStateNormal];
   [self.doneButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
   [self.doneButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 18.0)];
+  
+  if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
+    UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
+    [self.view addSubview:tvbg];
+    [self.view sendSubviewToBack:tvbg];
+  }
 }
 
 - (void) viewDidAppear:(BOOL)animated {

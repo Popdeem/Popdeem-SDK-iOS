@@ -17,7 +17,8 @@
 		"images" : {
 			"loginImage" : "Heinebros_login",
 			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "PDSDK_Home_Header"
+			"homeHeaderImage" : "PDSDK_Home_Header",
+      "tableViewBackgroundImage" : "heine_bg"
 		},
 		"fonts" : {
 			"primaryFont" : "OpenSans",

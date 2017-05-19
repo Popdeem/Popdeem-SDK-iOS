@@ -217,7 +217,6 @@
 		39FDF1E01E926106007AE076 /* PDBGScanResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */; };
 		39FDF1E51E9263EB007AE076 /* PDUIPostScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1E31E9263EB007AE076 /* PDUIPostScanViewController.m */; };
 		39FDF1EA1E95061F007AE076 /* PDUIScanFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1E81E95061F007AE076 /* PDUIScanFailViewController.m */; };
-		63F4E73194730CB38C37B5D0 /* PDUIScanNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F4E97996C0F2E33782473E /* PDUIScanNetwork.m */; };
 		8111F3615B8081DFB5225CA5 /* libPods-BrandsSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A737E2DF8D7E47497456E905 /* libPods-BrandsSample.a */; };
 		88F52FC89649ECBB6835A94F /* libPods-NavigationSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */; };
 		A1F9F2CB7133E306166861E9 /* libPods-TestSize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DF0C6380A4739C49CA6D09 /* libPods-TestSize.a */; };
@@ -835,8 +834,6 @@
 		51A8D384AE4508E261030AD1 /* Pods-PopdeemSDKCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.release.xcconfig"; sourceTree = "<group>"; };
 		524864261E95CB1A01E7DCAC /* Pods-SwiftSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSample/Pods-SwiftSample.release.xcconfig"; sourceTree = "<group>"; };
 		59E2576634FEBE9B041432E6 /* Pods-BrandsSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrandsSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrandsSample/Pods-BrandsSample.debug.xcconfig"; sourceTree = "<group>"; };
-		63F4E5B12E6E0B4B88B00523 /* PDUIScanNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIScanNetwork.h; path = Claim/Scan/PDUIScanNetwork.h; sourceTree = "<group>"; };
-		63F4E97996C0F2E33782473E /* PDUIScanNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIScanNetwork.m; path = Claim/Scan/PDUIScanNetwork.m; sourceTree = "<group>"; };
 		7D4DD4D1DD84E3D440EDD90B /* Pods-BrandsSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrandsSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrandsSample/Pods-BrandsSample.release.xcconfig"; sourceTree = "<group>"; };
 		9FE1755911810215CDAC287E /* libPods-PopdeemSDKCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigationSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1129,7 +1126,6 @@
 				392787141C0716F600F8DCD9 /* PDUIClaimViewController.xib */,
 				392787161C071BFA00F8DCD9 /* PD_SZTextView.h */,
 				392787171C071BFA00F8DCD9 /* PD_SZTextView.m */,
-				63F4E388220A8BA0551CF742 /* Scan */,
 			);
 			name = Claim;
 			sourceTree = "<group>";
@@ -2035,15 +2031,6 @@
 				A8DF0C6380A4739C49CA6D09 /* libPods-TestSize.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		63F4E388220A8BA0551CF742 /* Scan */ = {
-			isa = PBXGroup;
-			children = (
-				63F4E97996C0F2E33782473E /* PDUIScanNetwork.m */,
-				63F4E5B12E6E0B4B88B00523 /* PDUIScanNetwork.h */,
-			);
-			name = Scan;
 			sourceTree = "<group>";
 		};
 		BC67F00548709376630E993B /* Util */ = {
@@ -3280,7 +3267,6 @@
 				39BF994D1E8E99830025A3F2 /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
 				398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */,
 				39F5F6EB1D895387008DE497 /* PDAbraConstants.m in Sources */,
-				63F4E73194730CB38C37B5D0 /* PDUIScanNetwork.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
