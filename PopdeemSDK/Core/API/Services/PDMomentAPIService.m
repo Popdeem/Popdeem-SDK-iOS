@@ -20,10 +20,7 @@
   [params setValue:momentString forKey:@"trigger_action"];
   if ([[PDUser sharedInstance] userToken] == nil) {
     NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    [params setValue:deviceId forKey:@"unique_identifier"];
-    if ([[PDAPIClient sharedInstance] deviceToken]) {
-      [params setValue:[[PDAPIClient sharedInstance] deviceToken] forKey:@"device_token"];
-    }
+    [params setValue:[NSDictionary dictionaryWithObject:deviceId forKey:@"unique_identifier"] forKey:@"user"];
   }
   [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
     NSError *jsonError;
