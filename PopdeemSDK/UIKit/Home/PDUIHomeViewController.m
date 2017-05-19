@@ -227,11 +227,11 @@
     _segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
     _segmentedControl.clipsToBounds = YES;
     
-    CALayer *topBottomBorders = [CALayer layer];
-    topBottomBorders.borderColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1.0].CGColor;
-    topBottomBorders.borderWidth = 0.5;
-    topBottomBorders.frame = CGRectMake(-1, 0, _segmentedControl.frame.size.width+2, _segmentedControl.frame.size.height);
-    [_segmentedControl.layer addSublayer:topBottomBorders];
+//    CALayer *topBottomBorders = [CALayer layer];
+//    topBottomBorders.borderColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1.0].CGColor;
+//    topBottomBorders.borderWidth = 0.5;
+//    topBottomBorders.frame = CGRectMake(-1, 0, _segmentedControl.frame.size.width+2, _segmentedControl.frame.size.height);
+//    [_segmentedControl.layer addSublayer:topBottomBorders];
     [_segmentedControl addTarget:self action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
   
