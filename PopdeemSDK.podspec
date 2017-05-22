@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "PopdeemSDK"
-  s.version      = "1.0.23"
+  s.version      = "1.0.24"
   s.summary      = "PopdeemSDK is used to interact with the Popdeem API on iOS."
   s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
   s.homepage     = "https://github.com/Popdeem/Popdeem-SDK-iOS.git"
