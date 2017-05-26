@@ -140,6 +140,12 @@
       [self dismiss];
     } failure:^(NSError *error) {
       PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
+      if ([[error.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+          [av show];
+        });
+      }
       connected = NO;
       [self dismiss];
     }];

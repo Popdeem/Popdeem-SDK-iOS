@@ -362,20 +362,38 @@
   
   if ([[PDUser sharedInstance] isRegistered]) {
     [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
-      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-      [cell.socialSwitch setOn:YES animated:YES];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        [cell.socialSwitch setOn:YES animated:YES];
+        [self.view setNeedsDisplay];
+      });
     } failure:^(NSError* error){
-      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-      [cell.socialSwitch setOn:NO animated:NO];
+      if ([[error.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+          [av show];
+        });
+      }
+      dispatch_async(dispatch_get_main_queue(), ^{
+        PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        [cell.socialSwitch setOn:NO animated:YES];
+        [self.view setNeedsDisplay];
+      });
     }];
   } else {
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
     [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user) {
-      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-      [cell.socialSwitch setOn:YES animated:YES];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        [cell.socialSwitch setOn:YES animated:YES];
+        [self.view setNeedsDisplay];
+      });
     } failure:^(NSError *error) {
-      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-      [cell.socialSwitch setOn:NO animated:NO];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        [cell.socialSwitch setOn:NO animated:NO];
+        [self.view setNeedsDisplay];
+      });
     }];
   }
 }

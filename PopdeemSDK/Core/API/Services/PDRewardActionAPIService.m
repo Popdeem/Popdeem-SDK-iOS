@@ -99,6 +99,11 @@
         completion(nil);
       });
     } else {
+      if (data !=nil ){
+        NSError *jsonError;
+        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+        PDLog(@"%@", jsonObject);
+      }
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
 				PDLogAlert(@"%@",[PDNetworkError errorForStatusCode:responseStatusCode]);

@@ -52,8 +52,8 @@
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");
     self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismissed) name:InstagramLoginuserDismissed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismiss) name:InstagramLoginuserDismissed object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
@@ -533,33 +533,44 @@
 }
 
 - (void) instagramLoginSuccess {
-	[_viewModel instagramLoginSuccess];
-	[_instagramSwitch setOn:YES animated:NO];
-	PDLog(@"Instagram Connected");
-	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
-																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
-																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
-																								}));
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_viewModel instagramLoginSuccess];
+    [_instagramSwitch setOn:YES animated:NO];
+    PDLog(@"Instagram Connected");
+    AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+                                                  ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
+                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+                                                  }));
+  });
 }
 
-- (void) instagramLoginUserDismissed {
-	[_viewModel instagramLoginFailure];
-	[_instagramSwitch setOn:NO animated:YES];
-	[self.twitterForcedTagLabel setHidden:YES];
-	[self.addHashtagButton setHidden:YES];
+- (void) instagramLoginUserDismiss {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_viewModel instagramLoginFailure];
+    [_instagramSwitch setOn:NO animated:YES];
+    [self.twitterForcedTagLabel setHidden:YES];
+    [self.addHashtagButton setHidden:YES];
+  });
 }
 
-- (void) instagramLoginFailure {
-	[_viewModel instagramLoginFailure];
-	[_instagramSwitch setOn:NO animated:YES];
-	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
-																							 message:@"There was a problem connecting your Instagram Account. Please try again later."
-																							delegate:self
-																		 cancelButtonTitle:@"OK"
-																		 otherButtonTitles:nil];
-	[self.twitterForcedTagLabel setHidden:YES];
-	[self.addHashtagButton setHidden:YES];
-	[av show];
+- (void) instagramLoginFailure:(NSNotification*)notification{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_viewModel instagramLoginFailure];
+    [_instagramSwitch setOn:NO animated:YES];
+    if ([[notification.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+      [av show];
+    } else {
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                   message:@"There was a problem connecting your Instagram Account. Please try again later."
+                                                  delegate:self
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+      [av show];
+    }
+    [self.twitterForcedTagLabel setHidden:YES];
+    [self.addHashtagButton setHidden:YES];
+  });
 }
 
 - (void) instagramPostMade {

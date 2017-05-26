@@ -29,6 +29,7 @@
 #import "PDUISettingsViewController.h"
 #import "PDUIInboxButton.h"
 #import "PDBrandApiService.h"
+#import "PDUISocialLoginHandler.h"
 
 
 #define kPlaceholderCell @"PlaceholderCell"
@@ -300,6 +301,9 @@
     _model.rewards = [PDRewardStore orderedByDate];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
+  }
+  if (_didLogin) {
+    [self userDidLogin];
   }
   AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME});
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
@@ -847,6 +851,12 @@
   if (reward.action == PDRewardActionSocialLogin) {
     return;
   } else if (reward.action == PDRewardActionNone) {
+    if (![[PDUser sharedInstance] isRegistered]) {
+      PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
+      [loginHandler presentLoginModal];
+      _didLogin = YES;
+      return;
+    }
     _locationValidator = [[PDLocationValidator alloc] init];
     [_locationValidator validateLocationForReward:reward completion:^(BOOL validated, PDLocation *closestLocation){
       if (validated) {
@@ -931,6 +941,7 @@
   [self.model fetchRewards];
   [self.model fetchFeed];
   [self.model fetchWallet];
+  [_segmentedControl setSelectedSegmentIndex:2];
   AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"

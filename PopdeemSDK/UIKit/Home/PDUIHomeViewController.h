@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UITableViewCell *rewardsCell;
 @property (nonatomic, strong) PDUIMsgCntrTblViewController *messageCenter;
 @property (nonatomic) BOOL didClaim;
+@property (nonatomic) BOOL didLogin;
 @property (nonatomic) NSInteger claimedRewardId;
 @property (nonatomic) PDLocation *closestLocation;
 @property (nonatomic) PDUIModalLoadingView *loadingView;

@@ -690,7 +690,6 @@
 																							 registerWithPopdeem:YES
 																													 success:^(void) {
 		_willFacebook = YES;
-		[_viewController.facebookButton setSelected:YES];
 		[self loginWithWritePerms];
 	} failure:^(NSError *error) {
 		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
@@ -700,7 +699,9 @@
 																			 otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
 		[av show];
 		_willFacebook = NO;
-		[_viewController.facebookButton setSelected:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [_viewController.facebookSwitch setOn:NO animated:YES];
+    });
 	}];
 }
 
@@ -723,7 +724,7 @@
     [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
     } failure:^(NSError* error){
-      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:self userInfo:error.userInfo];
     }];
   } else {
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
@@ -808,16 +809,18 @@
 }
 
 - (void) twitterLoginFailure {
-	PDLogError(@"Twitter didnt log in");
-	if (!_mustTweet) {
-		_willTweet = NO;
-		[_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
-	}
-	[_loadingView hideAnimated:YES];
-	[_viewController.twitterSwitch setOn:NO animated:NO];
-	[_viewController.twitterForcedTagLabel setHidden:YES];
-	[_viewController.twitterCharacterCountLabel setHidden:YES];
-	[_viewController.addHashtagButton setHidden:YES];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    PDLogError(@"Twitter didnt log in");
+    if (!_mustTweet) {
+      _willTweet = NO;
+      [_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
+    }
+    [_loadingView hideAnimated:YES];
+    [_viewController.twitterSwitch setOn:NO animated:NO];
+    [_viewController.twitterForcedTagLabel setHidden:YES];
+    [_viewController.twitterCharacterCountLabel setHidden:YES];
+    [_viewController.addHashtagButton setHidden:YES];
+  });
 }
 
 #pragma mark - Adding Photo -
