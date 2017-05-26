@@ -187,7 +187,7 @@
 
 - (void) disconnectInstagramAccountWithCompletion:(void (^)(NSError *error))completion {
 	NSString *instagramAccessToken = [[[PDUser sharedInstance] instagramParams] accessToken];
-	NSString *instagramId = [NSString stringWithFormat:@"%li,",[[[PDUser sharedInstance] instagramParams] socialAccountId]];
+	NSString *instagramId = [NSString stringWithFormat:@"%@",[[[PDUser sharedInstance] instagramParams] instagramId]];
 	if (instagramId == nil || instagramAccessToken == nil) return;
 	NSDictionary *params = @{
 													 @"user" : @{
@@ -283,7 +283,7 @@
 
 - (void) disconnectFacebookAccountWithCompletion:(void (^)(NSError *error))completion {
   NSString *facebookAccessToken = [[[PDUser sharedInstance] facebookParams] accessToken];
-  NSString *facebookId = [NSString stringWithFormat:@"%li,",[[[PDUser sharedInstance] facebookParams] socialAccountId]];
+  NSString *facebookId = [NSString stringWithFormat:@"%@",[[[PDUser sharedInstance] facebookParams] identifier]];
   if (facebookAccessToken == nil || facebookId == nil) return;
   NSDictionary *params = @{
                            @"user" : @{

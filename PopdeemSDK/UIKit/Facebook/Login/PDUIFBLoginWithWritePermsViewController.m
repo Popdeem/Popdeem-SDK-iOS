@@ -14,6 +14,7 @@
 #import "PDTheme.h"
 #import "PDSocialMediaManager.h"
 #import "PDUIModalLoadingView.h"
+#import "PDUser.h"
 
 @interface PDUIFBLoginWithWritePermsViewController ()
 
