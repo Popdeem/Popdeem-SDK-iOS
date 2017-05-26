@@ -116,7 +116,7 @@ NS_ASSUME_NONNULL_BEGIN
                        success:(void (^)(void))success
                        failure:(void (^)(NSError *error))failure;
 
-- (void) connectInstagramAccount:(NSInteger)userId
+- (void) connectInstagramAccount:(NSString*)userId
 										 accessToken:(NSString*)accessToken
 											screenName:(NSString*)screenName
 												 success:(void (^)(void))success

@@ -96,6 +96,11 @@
 													 success:(void (^)(PDUser *user))success
 													 failure:(void (^)(NSError *error))failure {
 	
+  if (userId == nil || accessToken == nil || accessSecret == nil) {
+    failure([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Invalid Credentials" forKey:NSLocalizedDescriptionKey]]);
+    return;
+  }
+  
 	NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
 	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 	NSDictionary *params = @{@"user": @{
@@ -171,7 +176,7 @@
 	}];
 }
 
-- (void) registerUserWithInstagramId:(NSInteger)instagramId
+- (void) registerUserWithInstagramId:(NSString*)instagramId
 												 accessToken:(NSString*)accessToken
 														fullName:(NSString*)fullName
 														userName:(NSString*)userName
@@ -179,12 +184,17 @@
 														 success:(void (^)(PDUser *user))success
 														 failure:(void (^)(NSError *error))failure {
 	
+  if (instagramId == nil || accessToken == nil) {
+    failure([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Invalid Credentials" forKey:NSLocalizedDescriptionKey]]);
+    return;
+  }
+  
 	NSString *apiString = [NSString stringWithFormat:@"%@/%@",self.baseUrl,USERS_PATH];
 	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-	NSString *idString = [NSString stringWithFormat:@"%ld", instagramId];
+	
 	NSDictionary *params = @{@"user": @{
 																			@"instagram": @{
-																					@"id": idString,
+																					@"id": instagramId,
 																					@"access_token": accessToken,
 																					@"full_name": fullName,
 																					@"profile_picture" : profilePicture

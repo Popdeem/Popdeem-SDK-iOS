@@ -163,10 +163,12 @@ static PDUser *globalUser = nil;
   }
   [userDictionary setObject:gender forKey:@"gender"];
   [userDictionary setObject:self.userToken forKey:@"authentication_token"];
-  [userDictionary setObject:self.facebookParams.accessToken forKey:@"facebook_access_token"];
-  [userDictionary setObject:self.facebookParams.profilePictureUrl forKey:@"facebook_profile_picture_url"];
-  if (self.facebookParams.identifier) {
-    [userDictionary setObject:self.facebookParams.identifier forKey:@"facebookID"];
+  if (self.facebookParams) {
+    [userDictionary setObject:self.facebookParams.accessToken forKey:@"facebook_access_token"];
+    [userDictionary setObject:self.facebookParams.profilePictureUrl forKey:@"facebook_profile_picture_url"];
+    if (self.facebookParams.identifier) {
+      [userDictionary setObject:self.facebookParams.identifier forKey:@"facebookID"];
+    }
   }
   
 //  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.total] forKey:@"totalScore"];

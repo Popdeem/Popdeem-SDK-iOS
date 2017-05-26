@@ -9,7 +9,7 @@
 #import <JSONModel/JSONModel.h>
 
 @interface InstagramUserModel : JSONModel
-@property (nonatomic) NSInteger id;
+@property (nonatomic, retain) NSString *id;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *bio;
 @property (nonatomic, retain) NSString *website;

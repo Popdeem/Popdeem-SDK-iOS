@@ -105,7 +105,7 @@
 }
 
 #pragma mark - Connect Instagram Account -
-- (void) connectInstagramAccount:(NSInteger)userId
+- (void) connectInstagramAccount:(NSString*)userId
 										 accessToken:(NSString*)accessToken
 											screenName:(NSString*)screenName
 												 success:(void (^)(void))success

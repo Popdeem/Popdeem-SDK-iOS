@@ -16,11 +16,16 @@
                   accessSecret:(NSString*)accessSecret
                     completion:(void (^)(NSError *error))completion;
 
-- (void) connectInstagramAccount:(NSInteger)userId
+- (void) connectInstagramAccount:(NSString*)userId
 										 accessToken:(NSString*)accessToken
 											screenName:(NSString*)screenName
 											completion:(void (^)(NSError *error))completion;
 
+- (void) connectFacebookAccount:(NSInteger)userId
+                     accessToken:(NSString*)accessToken
+                      completion:(void (^)(NSError *error))completion;
+
+- (void) disconnectFacebookAccountWithCompletion:(void (^)(NSError *error))completion;
 - (void) disconnectTwitterAccountWithCompletion:(void (^)(NSError *error))completion;
 - (void) disconnectInstagramAccountWithCompletion:(void (^)(NSError *error))completion;
 @end

@@ -255,7 +255,7 @@
   [av show];
 }
 
-- (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
   PDAPIClient *client = [PDAPIClient sharedInstance];
   
   if ([[PDUser sharedInstance] isRegistered]) {

@@ -271,14 +271,31 @@
 }
 
 - (void) disconnectFacebookAccount {
-	PDSocialMediaManager *man = [PDSocialMediaManager manager];
-	[man logoutFacebook];
-	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-	[cell.socialSwitch setOn:NO animated:NO];
-	AbraLogEvent(ABRA_EVENT_LOGOUT, (@{
-																	ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
-																	ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-																	}));
+  UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    PDSocialMediaManager *man = [PDSocialMediaManager manager];
+    [man logoutFacebook];
+    PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
+    [socialService disconnectFacebookAccountWithCompletion:^(NSError *err){
+      
+    }];
+    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [cell.socialSwitch setOn:NO animated:NO];
+    AbraLogEvent(ABRA_EVENT_LOGOUT, (@{
+                                       ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
+                                       ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+                                       }));  }];
+  UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [cell.socialSwitch setOn:YES];
+      [_tableView reloadData];
+    });
+  }];
+  UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Disconnect Facebook Account" message:@"This action will disconnect your Facebook account. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
+  [ac addAction:ok];
+  [ac addAction:cancel];
+  [self presentViewController:ac animated:YES completion:^{
+  }];
 }
 
 - (void) connectTwitterAccount {
@@ -340,7 +357,7 @@
 	});
 }
 
-- (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
 	PDAPIClient *client = [PDAPIClient sharedInstance];
   
   if ([[PDUser sharedInstance] isRegistered]) {
@@ -477,6 +494,13 @@
 				[_tableView reloadData];
 			});
 		}];
+    [socialService disconnectFacebookAccountWithCompletion:^(NSError *err){
+      PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [cell.socialSwitch setOn:NO];
+        [_tableView reloadData];
+      });
+    }];
 		PDSocialMediaManager *man = [PDSocialMediaManager manager];
 		[man logoutFacebook];
 		[man logOut];
