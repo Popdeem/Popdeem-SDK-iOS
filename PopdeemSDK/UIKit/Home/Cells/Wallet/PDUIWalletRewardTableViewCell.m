@@ -85,7 +85,7 @@
         formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"d MMM y"];
         stringDate = [formatter stringFromDate:creditDate];
-        labelLineTwo = [NSString stringWithFormat:@"%@ rewarded on %@",reward.creditString, stringDate];
+        labelLineTwo = [NSString stringWithFormat:@"%@ was added to your account on %@",reward.creditString, stringDate];
         [self.arrowImageView setHidden:YES];
       } else {
         [self.arrowImageView setHidden:NO ];
