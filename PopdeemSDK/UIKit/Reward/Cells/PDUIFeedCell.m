@@ -40,7 +40,9 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, frame.size.width-(left + 20), 20)];
-    [_nameLabel setText:[NSString stringWithFormat:@"%@ %@",feedItem.userFirstName,feedItem.userLastName]];
+    if (![feedItem.userFirstName isKindOfClass:[NSNull class]]) {
+      [_nameLabel setText:[NSString stringWithFormat:@"%@ %@",feedItem.userFirstName,feedItem.userLastName]];
+    }
     [_nameLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
     [_nameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
     [_nameLabel setNumberOfLines:1];

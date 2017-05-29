@@ -71,7 +71,7 @@
 
 - (void) checkFacebook {
 	PDSocialMediaManager *man = [PDSocialMediaManager manager];
-	if ([man isLoggedInWithFacebook]) {
+	if ([man isLoggedInWithFacebook] && [[[PDUser sharedInstance] facebookParams] accessToken] != nil && [[[PDUser sharedInstance] facebookParams] accessToken].length > 0) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self.socialSwitch setOn:YES animated:YES];
 			[self setNeedsDisplay];

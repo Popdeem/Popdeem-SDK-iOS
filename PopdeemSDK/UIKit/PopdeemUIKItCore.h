@@ -19,5 +19,4 @@
 
 - (void) pushRewardsToNavigationController:(UINavigationController*)navController animated:(BOOL)animated;
 - (void) presentBrandFlowInNavigationController:(UINavigationController*)navController;
-
 @end

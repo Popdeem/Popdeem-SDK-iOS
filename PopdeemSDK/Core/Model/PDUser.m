@@ -163,17 +163,17 @@ static PDUser *globalUser = nil;
   }
   [userDictionary setObject:gender forKey:@"gender"];
   [userDictionary setObject:self.userToken forKey:@"authentication_token"];
-  [userDictionary setObject:self.facebookParams.accessToken forKey:@"facebook_access_token"];
-  [userDictionary setObject:self.facebookParams.profilePictureUrl forKey:@"facebook_profile_picture_url"];
-  if (self.facebookParams.identifier) {
-    [userDictionary setObject:self.facebookParams.identifier forKey:@"facebookID"];
+  if (self.facebookParams) {
+    if (self.facebookParams.accessToken != nil) {
+       [userDictionary setObject:self.facebookParams.accessToken forKey:@"facebook_access_token"];
+    }
+    if (self.facebookParams.profilePictureUrl != nil) {
+      [userDictionary setObject:self.facebookParams.profilePictureUrl forKey:@"facebook_profile_picture_url"];
+    }
+    if (self.facebookParams.identifier) {
+      [userDictionary setObject:self.facebookParams.identifier forKey:@"facebookID"];
+    }
   }
-  
-//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.total] forKey:@"totalScore"];
-//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.reach] forKey:@"reachScore"];
-//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.engagement] forKey:@"engagementScore"];
-//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.frequency] forKey:@"frequencyScore"];
-//  [userDictionary setObject:[NSNumber numberWithFloat:self.scores.advocacy] forKey:@"advocacyScore"];
 	
   if (self.deviceToken) {
     [userDictionary setObject:self.deviceToken forKey:@"deviceToken"];

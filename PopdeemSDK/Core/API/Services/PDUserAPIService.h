@@ -26,7 +26,7 @@
 													 success:(void (^)(PDUser *user))success
 													 failure:(void (^)(NSError *error))failure;
 
-- (void) registerUserWithInstagramId:(NSInteger)instagramId
+- (void) registerUserWithInstagramId:(NSString*)instagramId
 												 accessToken:(NSString*)accessToken
 														fullName:(NSString*)fullName
 														userName:(NSString*)userName

@@ -51,23 +51,23 @@ static NSString *const PDUseCountKey = @"PDUseCount";
               PDLog(@"Facebook Friends Updated");
             }];
           } else {
-            [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile",
-                                                                               @"email",
-                                                                               @"user_birthday",
-                                                                               @"user_posts",
-                                                                               @"user_friends",
-                                                                               @"user_education_history"]
-                                                         registerWithPopdeem:YES
-                                                                     success:^{
-                                                                       [[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
-                                                                       }];
-                                                                     } failure:^(NSError *err) {
-                                                                       if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
-                                                                         PDLog(@"User Cancelled Login");
-                                                                       } else {
-                                                                         PDLogError(@"Error: %@",err.localizedDescription);
-                                                                       }
-                                                                     }];
+//            [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile",
+//                                                                               @"email",
+//                                                                               @"user_birthday",
+//                                                                               @"user_posts",
+//                                                                               @"user_friends",
+//                                                                               @"user_education_history"]
+//                                                         registerWithPopdeem:YES
+//                                                                     success:^{
+//                                                                       [[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
+//                                                                       }];
+//                                                                     } failure:^(NSError *err) {
+//                                                                       if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
+//                                                                         PDLog(@"User Cancelled Login");
+//                                                                       } else {
+//                                                                         PDLogError(@"Error: %@",err.localizedDescription);
+//                                                                       }
+//                                                                     }];
           }
         }];
       }

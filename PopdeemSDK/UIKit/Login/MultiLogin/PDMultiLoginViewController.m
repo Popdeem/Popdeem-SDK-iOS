@@ -114,7 +114,9 @@
 		[self proceedWithTwitterLoggedInUser];
 	} failure:^(NSError *error) {
 		NSLog(@"Failure");
-    [_loadingView hideAnimated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [_loadingView hideAnimated:YES];
+    });
 		//Show some error, something went wrong
 	}];
 }
@@ -146,7 +148,7 @@
 
 #pragma mark - Instagram Login Delegate Methods
 
-- (void) connectInstagramAccount:(NSInteger)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
 	PDUserAPIService *service = [[PDUserAPIService alloc] init];
 	
 	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
@@ -208,7 +210,10 @@
 }
 
 - (void) facebookLoginSuccess {
-  [_loadingView hideAnimated:YES];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [_loadingView hideAnimated:YES];
+  });
+  
   AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
   [self dismissViewControllerAnimated:YES completion:^{}];
 }
@@ -219,7 +224,5 @@
   });
   NSLog(@"Could not connect user to facebook");
 }
-
-
 
 @end

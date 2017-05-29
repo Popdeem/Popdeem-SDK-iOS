@@ -14,6 +14,7 @@
 #import <Accounts/Accounts.h>
 #import <STTwitter/STTwitter.h>
 #import "PDInstagramAPIClient.h"
+#import "PDSocialAPIService.h"
 
 @interface PDSocialMediaManager() {
   ACAccount *singleAccount;
@@ -96,11 +97,22 @@
        [[[PDUser sharedInstance] facebookParams] setIdentifier:facebookID];
        PDLog(@"facebook ID: %@",facebookID);
        
-       [[PDAPIClient sharedInstance] registerUserwithFacebookAccesstoken:facebookAccessToken facebookId:facebookID success:^(PDUser *user) {
-         success();
-       } failure:^(NSError *error) {
-         failure(error);
-       }];
+       if ([[PDUser sharedInstance] isRegistered]) {
+         PDSocialAPIService *socService = [[PDSocialAPIService alloc] init];
+         [socService connectFacebookAccount:[facebookID integerValue] accessToken:facebookAccessToken completion:^(NSError *error) {
+           if (error) {
+             failure(error);
+             return;
+           }
+           success();
+         }];
+       } else {
+         [[PDAPIClient sharedInstance] registerUserwithFacebookAccesstoken:facebookAccessToken facebookId:facebookID success:^(PDUser *user) {
+           success();
+         } failure:^(NSError *error) {
+           failure(error);
+         }];
+       }
      } else {
        failure(error);
      }
@@ -205,17 +217,11 @@
 	
 //	NSString *access_token = [[[PDUser sharedInstance] facebookParams] accessToken];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-																																	 parameters:@{@"fields": @"id"}
-																																	 HTTPMethod:@"GET"];
-		[request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-			if (error) {
-				PDLogError(@"Error checking Token: %@", error.localizedDescription);
-				completion(NO);
-				return;
-			}
-			completion(YES);
-		}];
+    if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"email"]) {
+      completion(YES);
+    } else {
+      completion(NO);
+    }
 	});
 }
 
@@ -412,12 +418,20 @@
 - (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier {
   
   [_twitterAPI postAccessTokenRequestWithPIN:verifier successBlock:^(NSString *oauthToken, NSString *oauthTokenSecret, NSString *userID, NSString *screenName) {
-    [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
-      self.endSuccess();
-    } failure:^(NSError *error){
-      //Something went wrong
-      self.endError(error);
-    }];
+    if (twitterRegister) {
+      [self twitterRegisterWithPopdeem:oauthToken secret:oauthTokenSecret userId:userID screenName:screenName success:^{
+        self.endSuccess();
+      } failure:^(NSError *error) {
+        self.endError(error);
+      }];
+    } else {
+      [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
+        self.endSuccess();
+      } failure:^(NSError *error){
+        //Something went wrong
+        self.endError(error);
+      }];
+    }
     //Now connect social account
   } errorBlock:^(NSError *error) {
     PDLogError(@"Twitter Error: %@", [error localizedDescription]);
@@ -516,7 +530,6 @@
 	if ([[[PDUser sharedInstance] twitterParams] accessToken] != nil) {
 		return YES;
 	}
-	
 	if ([[[PDUser sharedInstance] instagramParams] accessToken] !=nil) {
 		return YES;
 	}

@@ -11,5 +11,6 @@
 @interface PDUISocialLoginHandler : NSObject
 
 - (void)showPromptIfNeededWithMaxAllowed:(NSNumber*)numberOfTimes;
+- (void) presentLoginModal;
 
 @end

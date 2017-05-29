@@ -41,17 +41,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The users Facebook Identifier
  */
-@property (nonatomic, strong)  NSString *identifier;
+@property (nonatomic, strong)  NSString<Optional>  *identifier;
 
 /**
  The users Facebook Access Token
  */
-@property (nonatomic, strong) NSString  *accessToken;
+@property (nonatomic, strong) NSString<Optional>  *accessToken;
 
 /**
  The users Facebook Profile Picture Url
  */
-@property (nonatomic, strong) NSString *profilePictureUrl;
+@property (nonatomic, strong) NSString<Optional>  *profilePictureUrl;
 
 /**
  The users scores for this social account
@@ -61,9 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The favourite brand ids for this social account
  */
-@property (nonatomic, strong) NSMutableArray *favouriteBrandIds;
+@property (nonatomic, strong) NSMutableArray<Optional>  *favouriteBrandIds;
 
-@property (nonatomic, strong) NSString *defaultPrivacySetting;
+@property (nonatomic, strong) NSString<Optional>  *defaultPrivacySetting;
 
 /**
  Creates an instance of the PDUserFacebookParams from the given API paramaters
