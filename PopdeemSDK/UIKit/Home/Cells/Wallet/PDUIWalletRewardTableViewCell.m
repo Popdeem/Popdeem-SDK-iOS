@@ -83,7 +83,7 @@
       if (reward.creditString.length > 0) {
         creditDate = [NSDate dateWithTimeIntervalSince1970:reward.claimedAt];
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"d MMM y"];
+        [formatter setDateFormat:@"d MMM"];
         stringDate = [formatter stringFromDate:creditDate];
         labelLineTwo = [NSString stringWithFormat:@"%@ was added to your account on %@",reward.creditString, stringDate];
         [self.arrowImageView setHidden:YES];

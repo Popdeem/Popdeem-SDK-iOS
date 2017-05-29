@@ -224,6 +224,4 @@
   NSLog(@"Could not connect user to facebook");
 }
 
-
-
 @end
