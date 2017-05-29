@@ -148,8 +148,18 @@
 - (void) setProfile {
   if ([[PDUser sharedInstance] firstName] && [[PDUser sharedInstance] lastName]) {
     NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
+    if (_tableHeaderNameLabel == nil) {
+      _tableHeaderNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
+      [_tableHeaderNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
+      [_tableHeaderNameLabel setTextColor:[UIColor whiteColor]];
+      [_tableHeaderNameLabel setTextAlignment:NSTextAlignmentCenter];
+      [self.tableHeaderView addSubview:_tableHeaderNameLabel];
+      [self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+      [self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
+    }
     [_tableHeaderNameLabel setText:userName];
     [_tableHeaderNameLabel setHidden:NO];
+    [self.view setNeedsDisplay];
   }
   NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
   NSLog(@"%@",pictureUrl);
@@ -365,6 +375,7 @@
       dispatch_async(dispatch_get_main_queue(), ^{
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:YES animated:YES];
+        [self setProfile];
         [self.view setNeedsDisplay];
       });
     } failure:^(NSError* error){
@@ -386,6 +397,7 @@
       dispatch_async(dispatch_get_main_queue(), ^{
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:YES animated:YES];
+        [self setProfile];
         [self.view setNeedsDisplay];
       });
     } failure:^(NSError *error) {

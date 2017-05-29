@@ -397,7 +397,7 @@
 																withMessage:nil
 															taggedFriends:nil
 																			image:nil
-																	 facebook:YES
+																	 facebook:NO
 																		twitter:NO
 																	instagram:NO
 																		success:^(){

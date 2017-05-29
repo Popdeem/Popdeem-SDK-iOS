@@ -213,6 +213,7 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
   });
+  
   AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
   [self dismissViewControllerAnimated:YES completion:^{}];
 }

@@ -13,6 +13,7 @@
 #import "PDUser+Facebook.h"
 #import "PDWallet.h"
 #import "PopdeemSDK.h"
+#import "FBSDKCoreKit.h"
 
 @implementation PDRewardActionAPIService
 
@@ -56,7 +57,11 @@
   //Facebook and Twitter credentials
   if (facebook) {
     NSMutableDictionary *facebookParams = [NSMutableDictionary dictionary];
-    [facebookParams setObject:user.facebookParams.accessToken forKey:@"access_token"];
+    if (user.facebookParams.accessToken != nil && user.facebookParams.accessToken.length > 0) {
+      [facebookParams setObject:user.facebookParams.accessToken forKey:@"access_token"];
+    } else if ([FBSDKAccessToken currentAccessToken] != nil) {
+      [facebookParams setObject:[[FBSDKAccessToken currentAccessToken] tokenString] forKey:@"access_token"];
+    }
     if (taggedFriends.count > 0) {
       [facebookParams setObject:user.selectedFriendsJSONRepresentation  forKey:@"associated_account_ids"];
     }

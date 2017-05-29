@@ -418,12 +418,20 @@
 - (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier {
   
   [_twitterAPI postAccessTokenRequestWithPIN:verifier successBlock:^(NSString *oauthToken, NSString *oauthTokenSecret, NSString *userID, NSString *screenName) {
-    [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
-      self.endSuccess();
-    } failure:^(NSError *error){
-      //Something went wrong
-      self.endError(error);
-    }];
+    if (twitterRegister) {
+      [self twitterRegisterWithPopdeem:oauthToken secret:oauthTokenSecret userId:userID screenName:screenName success:^{
+        self.endSuccess();
+      } failure:^(NSError *error) {
+        self.endError(error);
+      }];
+    } else {
+      [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
+        self.endSuccess();
+      } failure:^(NSError *error){
+        //Something went wrong
+        self.endError(error);
+      }];
+    }
     //Now connect social account
   } errorBlock:^(NSError *error) {
     PDLogError(@"Twitter Error: %@", [error localizedDescription]);

@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3426</string>
+	<string>3462</string>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
@@ -97,7 +97,7 @@
 	<key>TwitterAppConsumerSecret</key>
 	<string>DGDAgAEzuWQW0vQBnUhl2IBIQp9sGPgLqSpiRIbuLoB9adBHyW</string>
 	<key>TwitterCallbackScheme</key>
-	<string>popdeemstagingtwitter</string>
+	<string>popdeemtwitter</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Gotham-Rounded-Bold.ttf</string>

@@ -290,13 +290,14 @@
 
 - (void) viewDidAppear:(BOOL)animated {
   [self.view setUserInteractionEnabled:YES];
+  [_model fetchRewards];
+  [_model fetchWallet];
   if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
   }
   if (_didClaim) {
     claimAction = NO;
     _didClaim = NO;
-    [_model fetchWallet];
     [_segmentedControl setSelectedSegmentIndex:2];
     _model.rewards = [PDRewardStore orderedByDate];
     [self.tableView reloadData];
