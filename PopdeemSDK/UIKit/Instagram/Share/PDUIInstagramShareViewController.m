@@ -308,9 +308,9 @@ CGFloat _cardWidth;
 
 - (void)appDidEnterBackground:(NSNotification *)notification {
 	if (_leavingToInstagram) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 		[self dismissViewControllerAnimated:YES completion:^(void){
+      [[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
+      [[NSNotificationCenter defaultCenter] removeObserver:self];
 		}];
 		AbraLogEvent(ABRA_EVENT_CLICKED_NEXT_INSTAGRAM_TUTORIAL, nil);
 	}
