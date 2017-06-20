@@ -165,7 +165,7 @@
 	
 	NSDictionary *params = @{@"instagram": @{
 															 @"access_token": [[[PDUser sharedInstance] instagramParams] accessToken],
-															 @"reward_id": [NSString stringWithFormat:@"%li", reward.identifier]
+                               @"reward_id": [NSString stringWithFormat:@"%li", (long)reward.identifier]
 															 }};
 	
 	[session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){

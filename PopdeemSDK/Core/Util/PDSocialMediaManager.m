@@ -99,7 +99,7 @@
        
        if ([[PDUser sharedInstance] isRegistered]) {
          PDSocialAPIService *socService = [[PDSocialAPIService alloc] init];
-         [socService connectFacebookAccount:[facebookID integerValue] accessToken:facebookAccessToken completion:^(NSError *error) {
+         [socService connectFacebookAccount:facebookID accessToken:facebookAccessToken completion:^(NSError *error) {
            if (error) {
              failure(error);
              return;

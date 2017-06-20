@@ -231,14 +231,14 @@
 	}];
 }
 
-- (void) connectFacebookAccount:(NSInteger)userId
+- (void) connectFacebookAccount:(NSString*)userId
                     accessToken:(NSString*)accessToken
                      completion:(void (^)(NSError *error))completion {
  
   NSMutableDictionary *facebook = [NSMutableDictionary dictionary];
   
   
-  [facebook setObject:[NSNumber numberWithInteger:userId] forKey:@"id"];
+  [facebook setObject:userId forKey:@"id"];
   
   [facebook setObject:accessToken forKey:@"access_token"];
   
@@ -265,7 +265,13 @@
       if (jsonObject == nil) {
         completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
         return;
-      };
+      }
+      if (jsonObject[@"error"]) {
+        NSString *errorString = jsonObject[@"error"][0];
+        PDLog(@"JSON Error = %@",errorString);
+        completion([NSError errorWithDomain:@"PDUserError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Social account is already connected to a different user" forKey:NSLocalizedDescriptionKey]]);
+        return;
+      }
       [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{

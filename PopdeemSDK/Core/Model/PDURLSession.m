@@ -39,7 +39,7 @@
         if (jsonError) {
             PDLogError(@"Error creating JSON: %@",jsonError.localizedDescription);
         }
-        [mutableRequest setValue:[NSString stringWithFormat:@"%ld", [JSONData length]] forHTTPHeaderField:@"Content-Length"];
+      [mutableRequest setValue:[NSString stringWithFormat:@"%ld", (unsigned long)[JSONData length]] forHTTPHeaderField:@"Content-Length"];
         [mutableRequest setHTTPBody:JSONData];
     }
     

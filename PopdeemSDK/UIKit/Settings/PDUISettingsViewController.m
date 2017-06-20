@@ -414,8 +414,9 @@
 }
 
 - (void) facebookLoginSuccess {
-//	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+  PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 	dispatch_async(dispatch_get_main_queue(), ^{
+    [cell.socialSwitch setOn:YES];
 		[_tableView reloadInputViews];
     [self setProfile];
 	});

@@ -21,7 +21,7 @@
 											screenName:(NSString*)screenName
 											completion:(void (^)(NSError *error))completion;
 
-- (void) connectFacebookAccount:(NSInteger)userId
+- (void) connectFacebookAccount:(NSString*)userId
                      accessToken:(NSString*)accessToken
                       completion:(void (^)(NSError *error))completion;
 

@@ -17,13 +17,14 @@
 #import "PDUser.h"
 
 @interface PDUIFBLoginWithWritePermsViewController ()
-
+@property (nonatomic) BOOL success;
 @end
 
 @implementation PDUIFBLoginWithWritePermsViewController
 
 - (instancetype) initForParent:(UIViewController*)parent loginType:(PDFacebookLoginType)loginType {
 	connected = NO;
+  _success = NO;
 	if (self = [super init]) {
 		_parent = parent;
 		self.viewModel = [[PDUIFBLoginWithWritePermsViewModel alloc] initForParent:self loginType:loginType];
@@ -162,15 +163,29 @@
 																		 delegate:self
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];
-			[av show];
+      _success = NO;
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [av show];
+      });
 			AbraLogEvent(ABRA_EVENT_CANCELLED_FACEBOOK_LOGIN, nil);
-		} else {
+    } else if ([[err.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        _success = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [av show];
+        });
+      });
+    } else  {
 			av = [[UIAlertView alloc] initWithTitle:@"Something went wrong"
 																			message:@"Please try again later"
 																		 delegate:self
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];
-			[av show];
+      _success = NO;
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [av show];
+      });
 			PDLogError(@"Error: %@", err.localizedDescription);
 		}
 	}];
@@ -191,7 +206,10 @@
 																											delegate:self
 																						 cancelButtonTitle:@"OK"
 																						 otherButtonTitles:nil];
-			[noperm show];
+      _success = NO;
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [noperm show];
+      });
 			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
 		}
 	}];
@@ -212,7 +230,10 @@
 																											delegate:self
 																						 cancelButtonTitle:@"OK"
 																						 otherButtonTitles:nil];
-			[noperm show];
+      _success = NO;
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [noperm show];
+      });
 			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
 		}
 	}];
@@ -220,7 +241,19 @@
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[self dismissViewControllerAnimated:YES completion:^{
-		[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
+    if (self.viewModel.loginType == PDFacebookLoginTypeRead) {
+      if (_success) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];
+      } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginFailure object:nil];
+      }
+    } else {
+      if (_success) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
+      } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishFailure object:nil];
+      }
+    }
 	}];
 }
 

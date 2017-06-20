@@ -617,6 +617,7 @@
 }
 
 -(void) facebookWritePermFailure {
+  
 }
 
 - (void) dealloc {

@@ -27,7 +27,7 @@
 		UILabel *lbl_card_count = [[UILabel alloc]initWithFrame:topRight];
 		lbl_card_count.textColor = [UIColor whiteColor];
 		lbl_card_count.textAlignment = NSTextAlignmentCenter;
-		lbl_card_count.text = [NSString stringWithFormat:@"%ld",unread];
+    lbl_card_count.text = [NSString stringWithFormat:@"%ld",(unsigned long)unread];
 		lbl_card_count.layer.borderWidth = 1;
 		lbl_card_count.layer.cornerRadius = 6;
 		lbl_card_count.layer.masksToBounds = YES;
