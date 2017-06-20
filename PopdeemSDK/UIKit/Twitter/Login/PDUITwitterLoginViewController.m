@@ -13,7 +13,7 @@
 #import "PDUser.h"
 
 @interface PDUITwitterLoginViewController ()
-
+@property (nonatomic) BOOL valid;
 @end
 
 @implementation PDUITwitterLoginViewController
@@ -28,7 +28,22 @@
 	return nil;
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+}
+
+- (void) appWillEnterForeground:(id)sender {
+  [self performSelector:@selector(dismissIfWaiting) withObject:nil afterDelay:1.0];
+}
+
+- (void) dismissIfWaiting {
+  if (!_valid) {
+    connected = NO;
+    [self dismiss];
+  }
+}
+
 - (void)viewDidLoad {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	[super viewDidLoad];
 	[_viewModel setup];
 	[self.view setBackgroundColor:[UIColor clearColor]];
@@ -131,10 +146,10 @@
 	[_viewModel setIsLoading:YES];
 	[self pullModel];
 	[self.view setUserInteractionEnabled:NO];
-  
   if ([[PDUser sharedInstance] isRegistered]) {
     [manager loginWithTwitter:^(void){
       //Twitter Connected Successfully
+      _valid = YES;
       PDLog(@"Twitter Logged in");
       connected = YES;
       [self dismiss];
@@ -146,19 +161,17 @@
           [av show];
         });
       }
-      connected = NO;
-      [self dismiss];
     }];
   } else {
     [manager registerWithTwitter:^{
       //Twitter Connected Successfully
       PDLog(@"Twitter Logged in");
+      _valid = YES;
       connected = YES;
       [self dismiss];
     } failure:^(NSError *error) {
+      _valid = NO;
       PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
-      connected = NO;
-      [self dismiss];
     }];
   }
 }

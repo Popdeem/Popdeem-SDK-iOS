@@ -24,6 +24,7 @@
 @property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
 @property (nonatomic) BOOL facebookLoginOccurring;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *cancelButton;
+@property (nonatomic) BOOL twitterValid;
 @end
 
 @implementation PDMultiLoginViewController
@@ -39,7 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	//View Setup
 	_viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self];
 	[_viewModel setup];
@@ -93,6 +94,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) appWillEnterForeground:(id)sender {
+  [self performSelector:@selector(dismissIfWaiting) withObject:nil afterDelay:1.0];
+}
+
+- (void) dismissIfWaiting {
+  if (!_twitterValid) {
+    if (_loadingView) {
+      [_loadingView hideAnimated:YES];
+    }
+  }
+}
+
 /*
 #pragma mark - Navigation
 
@@ -110,7 +123,9 @@
 	[manager registerWithTwitter:^{
 		//Continue to next stage of app, login has happened.
 		[self proceedWithTwitterLoggedInUser];
+    _twitterValid = YES;
 	} failure:^(NSError *error) {
+    _twitterValid = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
       [_loadingView hideAnimated:YES];
     });
