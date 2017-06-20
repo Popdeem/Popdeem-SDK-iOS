@@ -247,7 +247,7 @@ CGFloat _cardX,_cardY;
 		//Show login view
 		[_webViewController.loadingView hideAnimated:YES];
 	}
-	NSLog(@"URL: %@", [[request URL] URLStringWithoutQuery]);
+	PDLog(@"URL: %@", [[request URL] URLStringWithoutQuery]);
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
 		[_webViewController.loadingView hideAnimated:YES];
 		// Extract oauth_verifier from URL query

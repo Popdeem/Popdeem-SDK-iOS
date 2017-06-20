@@ -58,7 +58,7 @@
       };
       if (jsonObject[@"error"]) {
         NSString *errorString = jsonObject[@"error"][0];
-        NSLog(@"%@",errorString);
+        PDLog(@"%@",errorString);
         completion([NSError errorWithDomain:@"PDUserError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Social account is already connected to a different user" forKey:NSLocalizedDescriptionKey]]);
         return;
       }
@@ -117,7 +117,7 @@
 			};
       if (jsonObject[@"error"]) {
         NSString *errorString = jsonObject[@"error"][0];
-        NSLog(@"%@",errorString);
+        PDLog(@"JSON Error = %@",errorString);
         completion([NSError errorWithDomain:@"PDUserError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Social account is already connected to a different user" forKey:NSLocalizedDescriptionKey]]);
         return;
       }

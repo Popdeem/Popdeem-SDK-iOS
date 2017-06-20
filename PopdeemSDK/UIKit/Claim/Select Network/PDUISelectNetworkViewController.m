@@ -355,7 +355,6 @@
 
 - (void) facebookLoginSuccess {
   [self pushScanForNetwork:FACEBOOK_NETWORK];
-  NSLog(@"Connected Facebook");
   [self.facebookButton setTitle:@"Scan Facebook" forState:UIControlStateNormal];
 }
 

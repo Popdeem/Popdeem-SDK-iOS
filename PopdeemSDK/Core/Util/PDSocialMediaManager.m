@@ -244,39 +244,10 @@
 
 - (void) nextStepTwitter:(void (^)(void))success
 								 failure:(void (^)(NSError *error))failure{
-	ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	ACAccountStoreRequestAccessCompletionHandler handler = ^(BOOL granted, NSError *error) {
-		
-		if (error) {
-			failure(error);
-		}
-		
-		if (granted == NO) {
-			
-		}
-		
-		self.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
-		
-		if (self.iOSAccounts.count > 0) {
-			[self chooseAccount:^(ACAccount *account) {
-				[self twitterLoginWithAccount:account success:success failure:failure];
-			} failure:^(NSError *error) {
-				failure(error);
-			}];
-		} else if (self.iOSAccounts.count == 1) {
-			[self twitterLoginWithAccount:[self.iOSAccounts objectAtIndex:0] success:success failure:failure];
-		} else {
-			//Login with safari
-			self.endSuccess = success;
-			self.endError = failure;
-			[self loginOnTheWeb];
-		}
-	};
-	
-	[self.accountStore requestAccessToAccountsWithType:accountType
-																						 options:NULL
-																					completion:handler];
+  //Login with safari
+  self.endSuccess = success;
+  self.endError = failure;
+  [self loginOnTheWeb];
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -457,7 +428,6 @@
 																														userId:userId
 																												screenName:screenName
 																													 success:^(PDUser *user){
-																														 NSLog(@"Register Success");
 																														 success();
 	}
 																													 failure:failure];

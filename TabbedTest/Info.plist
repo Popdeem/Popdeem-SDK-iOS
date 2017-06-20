@@ -24,13 +24,13 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1706317436274686tabbedtest</string>
-				<string>popdeemtwitter</string>
+				<string>popdeemtwitter1</string>
 				<string>popdeem</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3497</string>
+	<string>3511</string>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
@@ -97,7 +97,7 @@
 	<key>TwitterAppConsumerSecret</key>
 	<string>DGDAgAEzuWQW0vQBnUhl2IBIQp9sGPgLqSpiRIbuLoB9adBHyW</string>
 	<key>TwitterCallbackScheme</key>
-	<string>popdeemtwitter</string>
+	<string>popdeemtwitter1</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Gotham-Rounded-Bold.ttf</string>

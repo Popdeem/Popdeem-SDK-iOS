@@ -105,21 +105,28 @@
 	}
 	
 	NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
-	NSLog(@"%@",pictureUrl);
-	NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		if (data) {
-			UIImage *image = [UIImage imageWithData:data];
-			if (image) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					UIImage *profileImage = [UIImage imageWithData:data];
-					[_profileImageView setImage:profileImage];
-					[_profileImageView setHidden:NO];
-					[self.view setNeedsDisplay];
-				});
-			}
-		}
-	}];
-	[task resume];
+  if (pictureUrl == nil || pictureUrl.length == 0) {
+    pictureUrl = [[[PDUser sharedInstance] instagramParams] profilePictureUrl];
+  }
+  if (pictureUrl == nil || pictureUrl.length == 0) {
+    pictureUrl = [[[PDUser sharedInstance] twitterParams] profilePictureUrl];
+  }
+  if (pictureUrl != nil && pictureUrl.length > 0) {
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+      if (data) {
+        UIImage *image = [UIImage imageWithData:data];
+        if (image) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *profileImage = [UIImage imageWithData:data];
+            [_profileImageView setImage:profileImage];
+            [_profileImageView setHidden:NO];
+            [self.view setNeedsDisplay];
+          });
+        }
+      }
+    }];
+    [task resume];
+  }
 	float centerx = self.view.frame.size.width/2;
 	
 	_profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(centerx-40, 20, 80, 80)];
@@ -162,21 +169,28 @@
     [self.view setNeedsDisplay];
   }
   NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
-  NSLog(@"%@",pictureUrl);
-  NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    if (data) {
-      UIImage *image = [UIImage imageWithData:data];
-      if (image) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-          UIImage *profileImage = [UIImage imageWithData:data];
-          [_profileImageView setImage:profileImage];
-          [_profileImageView setHidden:NO];
-          [self.view setNeedsDisplay];
-        });
+  if (pictureUrl == nil || pictureUrl.length == 0) {
+    pictureUrl = [[[PDUser sharedInstance] instagramParams] profilePictureUrl];
+  }
+  if (pictureUrl == nil || pictureUrl.length == 0) {
+    pictureUrl = [[[PDUser sharedInstance] twitterParams] profilePictureUrl];
+  }
+  if (pictureUrl != nil && pictureUrl.length > 0) {
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+      if (data) {
+        UIImage *image = [UIImage imageWithData:data];
+        if (image) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *profileImage = [UIImage imageWithData:data];
+            [_profileImageView setImage:profileImage];
+            [_profileImageView setHidden:NO];
+            [self.view setNeedsDisplay];
+          });
+        }
       }
-    }
-  }];
-  [task resume];
+    }];
+    [task resume];
+  }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -546,8 +560,6 @@
   if ([[[PDUser sharedInstance] instagramParams] accessToken] != nil && [[[PDUser sharedInstance] instagramParams] accessToken].length > 0) {
     [accounts addObject:@"instagram"];
   }
-  
-  NSLog(@"%@", accounts);
   
   if (accounts.count == 0) {
     PDSocialMediaManager *man = [PDSocialMediaManager manager];

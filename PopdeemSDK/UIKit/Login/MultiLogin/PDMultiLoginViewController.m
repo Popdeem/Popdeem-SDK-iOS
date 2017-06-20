@@ -85,7 +85,7 @@
     }
   }
 	
-    // Do any additional setup after loading the view from its nib.
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelButtonPressed:) name:InstagramLoginuserDismissed object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,14 +106,11 @@
   _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
   _loadingView.titleLabel.text = @"Logging in.";
   [_loadingView showAnimated:YES];
-	NSLog(@"Twitter Pressed");
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
 	[manager registerWithTwitter:^{
-		NSLog(@"Success");
 		//Continue to next stage of app, login has happened.
 		[self proceedWithTwitterLoggedInUser];
 	} failure:^(NSError *error) {
-		NSLog(@"Failure");
     dispatch_async(dispatch_get_main_queue(), ^{
       [_loadingView hideAnimated:YES];
     });
@@ -125,7 +122,6 @@
   _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
   _loadingView.titleLabel.text = @"Logging in.";
   [_loadingView showAnimated:YES];
-	NSLog(@"Instagram Button Pressed");
 	PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self delegate:self connectMode:NO directConnect:YES];
 	instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -162,7 +158,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
       [_loadingView hideAnimated:YES];
     });
-		NSLog(@"Failure to connect instagram");
 	}];
 
 }
@@ -222,7 +217,6 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
   });
-  NSLog(@"Could not connect user to facebook");
 }
 
 @end

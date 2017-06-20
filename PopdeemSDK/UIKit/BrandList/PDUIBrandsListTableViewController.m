@@ -284,14 +284,14 @@
 - (void)keyboardWillChange:(NSNotification *)notification {
 	keyboardRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardRect = [self.view convertRect:keyboardRect fromView:nil]; //this is it!
-	NSLog(@"%.2f",keyboardRect.size.height);
+	PDLog(@"%.2f",keyboardRect.size.height);
 }
 
 - (void) updateViewForKeyboard {
 	
 	float usableHeight = self.view.frame.size.height-keyboardRect.size.height;
 	
-	NSLog(@"%.2f",usableHeight);
+	PDLog(@"%.2f",usableHeight);
 	float newTVH = usableHeight;
 	
 	[UIView animateWithDuration:0.5
@@ -301,7 +301,7 @@
 										 [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.view.frame.size.width, newTVH)];
 									 }
 									 completion:^(BOOL finished){
-										 NSLog(@"Done!");
+										 PDLog(@"Done!");
 									 }];
 	
 }

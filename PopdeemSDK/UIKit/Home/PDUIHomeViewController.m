@@ -88,7 +88,7 @@
   if (self = [self initFromNib]) {
     PDBrand *b = [PDBrandStore findBrandByIdentifier:brandId];
     if (!b) {
-      NSLog(@"Error finding brand with ID: %ld", brandId);
+      PDLog(@"Error finding brand with ID: %ld", brandId);
       return nil;
     }
     _brand = b;

@@ -180,7 +180,6 @@
 }
 
 - (void) appWillTerminate:(id)sender {
-	NSLog(@"terminate");
 	[timer invalidate];
 }
 
