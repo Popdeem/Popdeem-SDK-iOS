@@ -27,6 +27,7 @@
 
 @interface PDUISettingsViewController ()
 @property (nonatomic, retain) UIImageView *profileImageView;
+@property (nonatomic) NSInteger logoutLoops;
 @end
 
 @implementation PDUISettingsViewController
@@ -60,6 +61,7 @@
 }
 
 - (void)viewDidLoad {
+  _logoutLoops = 0;
 	[super viewDidLoad];
 	[self registerNibs];
 	self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -536,6 +538,7 @@
  */
 
 - (void) logoutAction {
+  _logoutLoops += 1;
   
   NSMutableArray *accounts = [[NSMutableArray alloc] initWithCapacity:3];
   if ([[[PDUser sharedInstance] facebookParams] accessToken] != nil && [[[PDUser sharedInstance] facebookParams] accessToken].length > 0) {
@@ -548,11 +551,11 @@
     [accounts addObject:@"instagram"];
   }
   
-  if (accounts.count == 0) {
+  if (accounts.count == 0 || _logoutLoops > 4) {
     PDSocialMediaManager *man = [PDSocialMediaManager manager];
     [man logOut];
     [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogout object:nil];
-    
+    _logoutLoops = 0;
     dispatch_async(dispatch_get_main_queue(), ^{
       [self.profileImageView setHidden:YES];
       [self.tableHeaderNameLabel setHidden:YES];
