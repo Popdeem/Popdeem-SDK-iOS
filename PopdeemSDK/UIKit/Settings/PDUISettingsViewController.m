@@ -557,6 +557,7 @@
       [self.profileImageView setHidden:YES];
       [self.tableHeaderNameLabel setHidden:YES];
       [self.tableHeaderNameLabel setText:@""];
+      [self.tableView reloadData];
       [self dismissViewControllerAnimated:YES completion:^{
       }];
     });
