@@ -97,13 +97,11 @@
 	PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
 	__weak typeof(self) weakSelf = self;
 	[service fetchMessagesCompletion:^(NSArray *messages, NSError *error){
-		if ([weakSelf.controller.refreshControl isRefreshing]) {
-			[weakSelf.controller.refreshControl endRefreshing];
-		}
-		if (error) {
+    if (error) {
 			PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf refreshMessageIcon];
 		});
 	}];
@@ -300,10 +298,10 @@
 	}
 	
 	if (!_tableHeaderLabel) {
-		_tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 50)];
+		_tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 100)];
 		[_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
 		[_tableHeaderLabel setNumberOfLines:3];
-		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontPrimary,16)];
+		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontPrimary,14)];
 		[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 		[_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
 		[_tableHeaderLabel sizeToFit];

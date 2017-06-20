@@ -34,6 +34,10 @@
   [PopdeemSDK logMoment:@"post_payment"];
 }
 
+- (IBAction)testLogout:(id)sender {
+  [PopdeemSDK logout];
+}
+
 /*
 #pragma mark - Navigation
 

@@ -36,7 +36,7 @@
 	[self setBackgroundColor:[UIColor clearColor]];
 	if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
 		[self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
-		self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
+    self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
 	}
 }
 

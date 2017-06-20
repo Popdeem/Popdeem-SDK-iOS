@@ -1001,14 +1001,7 @@
 }
 
 - (void) loggedOut {
-  [self.model fetchRewards];
-  [self.model fetchFeed];
-  [self.model fetchWallet];
-  [self.navigationController popViewControllerAnimated:YES];
-  [self.segmentedControl setSelectedSegmentIndex:0];
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self.tableView reloadData];
-  });
+//Remove the refreshing which is not necessary
 }
 
 - (void) postVerified {
