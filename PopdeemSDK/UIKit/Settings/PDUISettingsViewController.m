@@ -104,29 +104,8 @@
 		[bgImageView addSubview:gradientView];
 	}
 	
-	NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
-  if (pictureUrl == nil || pictureUrl.length == 0) {
-    pictureUrl = [[[PDUser sharedInstance] instagramParams] profilePictureUrl];
-  }
-  if (pictureUrl == nil || pictureUrl.length == 0) {
-    pictureUrl = [[[PDUser sharedInstance] twitterParams] profilePictureUrl];
-  }
-  if (pictureUrl != nil && pictureUrl.length > 0) {
-    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-      if (data) {
-        UIImage *image = [UIImage imageWithData:data];
-        if (image) {
-          dispatch_async(dispatch_get_main_queue(), ^{
-            UIImage *profileImage = [UIImage imageWithData:data];
-            [_profileImageView setImage:profileImage];
-            [_profileImageView setHidden:NO];
-            [self.view setNeedsDisplay];
-          });
-        }
-      }
-    }];
-    [task resume];
-  }
+  [self getPicture];
+  
 	float centerx = self.view.frame.size.width/2;
 	
 	_profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(centerx-40, 20, 80, 80)];
@@ -152,28 +131,17 @@
   }
 }
 
-- (void) setProfile {
-  if ([[PDUser sharedInstance] firstName] && [[PDUser sharedInstance] lastName]) {
-    NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
-    if (_tableHeaderNameLabel == nil) {
-      _tableHeaderNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
-      [_tableHeaderNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
-      [_tableHeaderNameLabel setTextColor:[UIColor whiteColor]];
-      [_tableHeaderNameLabel setTextAlignment:NSTextAlignmentCenter];
-      [self.tableHeaderView addSubview:_tableHeaderNameLabel];
-      [self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
-      [self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
-    }
-    [_tableHeaderNameLabel setText:userName];
-    [_tableHeaderNameLabel setHidden:NO];
-    [self.view setNeedsDisplay];
-  }
+- (void) getPicture {
   NSString *pictureUrl = [[[PDUser sharedInstance] facebookParams] profilePictureUrl];
   if (pictureUrl == nil || pictureUrl.length == 0) {
     pictureUrl = [[[PDUser sharedInstance] instagramParams] profilePictureUrl];
   }
   if (pictureUrl == nil || pictureUrl.length == 0) {
     pictureUrl = [[[PDUser sharedInstance] twitterParams] profilePictureUrl];
+  }
+  if ([pictureUrl characterAtIndex:0] == "\\" && [pictureUrl characterAtIndex:1] == "\\") {
+    NSString *a = @"https:";
+    pictureUrl = [a stringByAppendingString:pictureUrl];
   }
   if (pictureUrl != nil && pictureUrl.length > 0) {
     NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:pictureUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -191,6 +159,25 @@
     }];
     [task resume];
   }
+}
+
+- (void) setProfile {
+  if ([[PDUser sharedInstance] firstName] && [[PDUser sharedInstance] lastName]) {
+    NSString *userName = [NSString stringWithFormat:@"%@ %@",[[PDUser sharedInstance] firstName],[[PDUser sharedInstance] lastName]];
+    if (_tableHeaderNameLabel == nil) {
+      _tableHeaderNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
+      [_tableHeaderNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
+      [_tableHeaderNameLabel setTextColor:[UIColor whiteColor]];
+      [_tableHeaderNameLabel setTextAlignment:NSTextAlignmentCenter];
+      [self.tableHeaderView addSubview:_tableHeaderNameLabel];
+      [self.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+      [self.tableHeaderNameLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
+    }
+    [_tableHeaderNameLabel setText:userName];
+    [_tableHeaderNameLabel setHidden:NO];
+    [self.view setNeedsDisplay];
+  }
+  [self getPicture];
 }
 
 - (void)didReceiveMemoryWarning {
