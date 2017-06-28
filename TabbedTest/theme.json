@@ -1,32 +1,30 @@
 {
   "popdeem" : {
-		"colors" : {
-			"primaryAppColor" : "#31241C",
-      "secondaryAppColor" : "#FFD530",
-			"primaryInverseColor" : "#FFD530",
-			"viewBackgroundColor" : "#EBEBF2",
-			"primaryFontColor" : "#000000",
-			"secondaryFontColor" : "#424242",
-			"tableViewCellBackgroundColor" : "#FFFFFF",
-			"tableViewSeperatorColor" : "#C0C0C0",
-			"navBarTintColor" : "#FFFFFF",
-			"segmentedControlBackgroundColor" : "#31241C",
+    "colors" : {
+      "primaryAppColor" : "#404041",
+      "secondaryAppColor" : "#fcc24c",
+      "primaryInverseColor" : "#fcc24c",
+      "viewBackgroundColor" : "#e9e9e9",
+      "primaryFontColor" : "#000000",
+      "secondaryFontColor" : "#424242",
+      "tableViewCellBackgroundColor" : "#e9e9e9",
+      "tableViewSeperatorColor" : "#C0C0C0",
+      "navBarTintColor" : "#fcc24c",
+      "segmentedControlBackgroundColor" : "#404041",
       "segmentedControlForegroundColor" : "#FFFFFF",
       "homeHeaderTextColor" : "#FFFFFF"
-		},
-		"images" : {
-			"loginImage" : "Heinebros_login",
-			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "PDSDK_Home_Header",
-      "tableViewBackgroundImage" : "heine_bg"
-		},
-		"fonts" : {
-			"primaryFont" : "OpenSans",
-			"boldFont" : "OpenSans-Bold",
-			"lightFont" : "OpenSans-Light"
-		},
-		"nav" : {
-			"useTheme" : "true"
-		}
-	}
+    },
+    "images" : {
+      "defaultItemImage" : "pduikit_starG",
+      "homeHeaderImage" : "Stamp_Header"
+    },
+    "fonts" : {
+      "primaryFont" : "FuturaCom-Regular",
+      "boldFont" : "FuturaCom-Bold",
+      "lightFont" : "FuturaCom-Light"
+    },
+    "nav" : {
+      "useTheme" : "true"
+    }
+  }
 }

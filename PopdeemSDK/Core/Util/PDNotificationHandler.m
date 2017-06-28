@@ -128,6 +128,12 @@
     [self presentAppAlert:_alertView];
   }
 	
+	int badgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
+	if (badgeNumber > 0) {
+		badgeNumber = badgeNumber - 1;
+	}
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
+	
 }
 
 - (void) presentUrlAlert:(PDSDKCustomIOS7AlertView*)alertView url:(NSString*)url {
