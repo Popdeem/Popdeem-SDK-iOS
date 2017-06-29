@@ -239,12 +239,12 @@
 		_controller.edgesForExtendedLayout = UIRectEdgeNone;
 	}
 	
-	if (_brand) {
-		[_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 190)];
-	} else {
+//	if (_brand) {
+//		[_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 190)];
+//	} else {
 		[_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
-	}
-	
+//	}
+		
 	[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
 	
 	
@@ -303,52 +303,56 @@
 		[_tableHeaderLabel setNumberOfLines:3];
 		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontPrimary,14)];
 		[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
-		[_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
+		if (_brand) {
+			[_tableHeaderLabel setText:[NSString stringWithFormat:@"Share your %@ experience on social networks to earn more rewards.", _brand.name]];
+		} else {
+			[_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
+		}
 		[_tableHeaderLabel sizeToFit];
 		[_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];
 		[_controller.tableView.tableHeaderView addSubview:_tableHeaderLabel];
 	}
 	
 	if (_brand) {
-		//Setup the brand View
-		_brandView = [[UIView alloc] initWithFrame:CGRectMake(0, 140, _controller.view.frame.size.width, 50)];
-		[_controller.tableView.tableHeaderView addSubview:_brandView];
-		[_brandView setBackgroundColor:[UIColor whiteColor]];
-		[_controller.tableView.tableHeaderView addSubview:_brandView];
-		
-		_logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2.5, 45, 45)];
-		_logoImageView.layer.minificationFilter = kCAFilterTrilinear;
-		_logoImageView.layer.shouldRasterize = YES;
-		_logoImageView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-		if (_brand.logoImage) {
-			[_logoImageView setImage:_brand.logoImage];
-		} else {
-			if ([_brand.logoUrlString rangeOfString:@"default"].location == NSNotFound) {
-				NSURL *url = [NSURL URLWithString:_brand.logoUrlString];
-				NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-					if (data) {
-						UIImage *image = [UIImage imageWithData:data];
-						if (image) {
-							dispatch_async(dispatch_get_main_queue(), ^{
-								[_logoImageView setImage:image];
-								[_brand setLogoImage:image];
-							});
-						}
-					}
-				}];
-				[task2 resume];
-				[_logoImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
-			}
-		}
-		[_brandView addSubview:_logoImageView];
-		[_logoImageView setBackgroundColor:[UIColor whiteColor]];
-		[_logoImageView setContentMode:UIViewContentModeScaleAspectFill];
-		
-		_brandNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 10, _brandView.frame.size.width-61-8, 30)];
-		[_brandNameLabel setText:_brand.name];
-		[_brandNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
-		[_brandNameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
-		[_brandView addSubview:_brandNameLabel];
+//		//Setup the brand View
+//		_brandView = [[UIView alloc] initWithFrame:CGRectMake(0, 140, _controller.view.frame.size.width, 50)];
+//		[_controller.tableView.tableHeaderView addSubview:_brandView];
+//		[_brandView setBackgroundColor:[UIColor whiteColor]];
+//		[_controller.tableView.tableHeaderView addSubview:_brandView];
+//
+//		_logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2.5, 45, 45)];
+//		_logoImageView.layer.minificationFilter = kCAFilterTrilinear;
+//		_logoImageView.layer.shouldRasterize = YES;
+//		_logoImageView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+//		if (_brand.logoImage) {
+//			[_logoImageView setImage:_brand.logoImage];
+//		} else {
+//			if ([_brand.logoUrlString rangeOfString:@"default"].location == NSNotFound) {
+//				NSURL *url = [NSURL URLWithString:_brand.logoUrlString];
+//				NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//					if (data) {
+//						UIImage *image = [UIImage imageWithData:data];
+//						if (image) {
+//							dispatch_async(dispatch_get_main_queue(), ^{
+//								[_logoImageView setImage:image];
+//								[_brand setLogoImage:image];
+//							});
+//						}
+//					}
+//				}];
+//				[task2 resume];
+//				[_logoImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
+//			}
+//		}
+//		[_brandView addSubview:_logoImageView];
+//		[_logoImageView setBackgroundColor:[UIColor whiteColor]];
+//		[_logoImageView setContentMode:UIViewContentModeScaleAspectFill];
+//
+//		_brandNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 10, _brandView.frame.size.width-61-8, 30)];
+//		[_brandNameLabel setText:_brand.name];
+//		[_brandNameLabel setFont:PopdeemFont(PDThemeFontBold, 17)];
+//		[_brandNameLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+//		[_brandView addSubview:_brandNameLabel];
 		
 		//Colours for Brand
 		if (_brand.theme) {
@@ -361,13 +365,13 @@
 }
 
 - (void) updateSubViews {
-	if (_brand) {
-		[_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 190)];
-		[_tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 205)];
-	} else {
+//	if (_brand) {
+//		[_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 190)];
+//		[_tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 205)];
+//	} else {
 		[_controller.tableView.tableHeaderView setFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
 		[_tableHeaderView setFrame:CGRectMake(0, 0, _controller.view.frame.size.width, 140)];
-	}
+//	}
 	[_tableHeaderLabel setFrame:CGRectMake(20, 45, _controller.tableView.tableHeaderView.frame.size.width-40, 50)];
 	if (_tableHeaderImageView) {
 		[_tableHeaderImageView setFrame:_controller.tableView.tableHeaderView.frame];

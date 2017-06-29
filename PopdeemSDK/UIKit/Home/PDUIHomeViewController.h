@@ -16,7 +16,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface PDUIHomeViewController : UITableViewController <UIAlertViewDelegate>
 
-@property (nonatomic, assign) PDBrand *brand;
+@property (nonatomic, retain) PDBrand *brand;
 @property (nonatomic, retain) PDUISegmentedControl *segmentedControl;
 @property (nonatomic, strong) PDUIRewardTableViewController *rewardTableViewController;
 @property (nonatomic, strong) UITableViewCell *rewardsCell;

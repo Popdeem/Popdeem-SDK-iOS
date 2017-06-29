@@ -29,9 +29,27 @@
 
 - (IBAction)presentHere:(id)sender {
 	[PopdeemSDK presentBrandFlowInNavigationController:self.navigationController];
+}
+
+- (IBAction)showRTR:(id)sender {
 	PDBrandApiService *service = [[PDBrandApiService alloc] init];
-	[service getBrandByVendorSearchTerm:@"popdeem" completion:^(PDBrand *b, NSError *error) {
-		NSLog(@"Brand Found: %@",b);
+	[service getBrandByVendorSearchTerm:@"1777" completion:^(PDBrand *b, NSError *error) {
+		if (error) {
+			NSLog(@"Error: %@",error);
+		} else {
+				[PopdeemSDK presentRewardsForBrand:b inNavigationController:self.navigationController];
+		}
+	}];
+}
+
+- (IBAction)showBearMkt:(id)sender {
+	PDBrandApiService *service = [[PDBrandApiService alloc] init];
+	[service getBrandByVendorSearchTerm:@"869" completion:^(PDBrand *b, NSError *error) {
+		if (error) {
+			NSLog(@"Error: %@",error);
+		} else {
+			[PopdeemSDK presentRewardsForBrand:b inNavigationController:self.navigationController];
+		}
 	}];
 }
 
@@ -43,7 +61,6 @@
         if (error) {
             NSLog(@"Error: %@",error);
         }
-        
     }];
 }
 

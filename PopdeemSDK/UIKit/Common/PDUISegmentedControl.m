@@ -41,12 +41,13 @@
 }
 
 - (void) applyTheme:(PDBrandTheme*)theme {
-	UIImage *selectedImage = [self selectedImage:PopdeemColorFromHex(theme.primaryAppColor)];
+	UIImage *selectedImage = [self selectedImage:PopdeemColorFromHex(theme.primaryInverseColor)];
 	[self setBackgroundImage:selectedImage forState:UIControlStateSelected
 								barMetrics:UIBarMetricsDefault];
-	
-	[self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)} forState:UIControlStateNormal];
-	[self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)} forState:UIControlStateSelected];
+
+	[self setBackgroundColor:PopdeemColorFromHex(theme.primaryAppColor)];
+	[self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSegmentedControlForeground)} forState:UIControlStateNormal];
+	[self setTitleTextAttributes:@{NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14), NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSegmentedControlForeground)} forState:UIControlStateSelected];
 }
 
 //640*80 - 6

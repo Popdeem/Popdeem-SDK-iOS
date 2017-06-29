@@ -156,12 +156,12 @@
   [super viewDidLoad];
   
   [self.tableView setUserInteractionEnabled:YES];
-  if (_brand) {
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 190)];
-  } else {
+//  if (_brand) {
+//    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 190)];
+//  } else {
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
-  }
-  
+//  }
+		
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
@@ -993,11 +993,11 @@
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
   [self.view setNeedsLayout];
   [self.view setNeedsDisplay];
-  if (_brand) {
-    [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 190)];
-  } else {
+//  if (_brand) {
+//    [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 190)];
+//  } else {
     [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 140)];
-  }
+//  }
 }
 
 - (void) loggedOut {
