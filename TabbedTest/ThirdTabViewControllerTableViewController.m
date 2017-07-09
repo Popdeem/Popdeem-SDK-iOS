@@ -16,7 +16,7 @@
 @implementation ThirdTabViewControllerTableViewController
 
 - (void)viewDidLoad {
-  [super setBrandVendorSearchTerm:@"popdeemcafe"];
+  [super setBrandVendorSearchTerm:@"108"];
   [super viewDidLoad];
   // Do any additional setup after loading the view.
 }
@@ -32,7 +32,7 @@
 
 - (IBAction)testTrigger:(id)sender {
   //  [PopdeemSDK logMoment:@"post_payment"];
-  [PopdeemSDK presentBrandFlowInNavigationController:self.navigationController];
+//  [PopdeemSDK presentBrandFlowInNavigationController:self.navigationController];
 }
 
 /*

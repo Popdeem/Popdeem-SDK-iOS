@@ -68,7 +68,9 @@
     [service getBrandsWithCompletion:^(NSError *error) {
         if (error) {
             PDLogError(@"Error Fetching Brands: %@", error.localizedDescription);
-        }
+				} else {
+					[[NSNotificationCenter defaultCenter] postNotificationName:DidFetchBrands object:nil];
+				}
     }];
 }
 

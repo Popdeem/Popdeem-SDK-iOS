@@ -28,11 +28,11 @@
                            didFinishLaunchingWithOptions:launchOptions];
   [application setStatusBarStyle:UIStatusBarStyleLightContent];
   
-  [PopdeemSDK withAPIKey:@"2c40177a-2ed7-4427-bda4-40fea1f84129"];
+  [PopdeemSDK withAPIKey:@"0745f7ed-8058-480c-9e45-76c21e83f596"];
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:300];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
-  
+	[PopdeemSDK startupBrands];
 	[PopdeemSDK setDebug:YES];
   [PopdeemSDK setThirdPartyUserToken:@"niall_test"];
 

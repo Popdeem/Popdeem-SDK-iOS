@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3575</string>
+	<string>3609</string>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
@@ -67,24 +67,8 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>api.popdeem.com</key>
-			<dict>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>api.staging.popdeem.com</key>
-			<dict>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>insights.popdeem.com</key>
-			<dict>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera when you decide to share a photo.</string>

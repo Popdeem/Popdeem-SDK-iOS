@@ -21,7 +21,9 @@
 
 + (void) add:(PDReward *)reward {
     //Convert the NSInteger to NSNumber for setting
-    [[PDRewardStore store] setObject:reward forKey:@(reward.identifier)];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[[PDRewardStore store] setObject:reward forKey:@(reward.identifier)];
+	});
 }
 
 + (void) deleteReward:(NSInteger)rewardId {

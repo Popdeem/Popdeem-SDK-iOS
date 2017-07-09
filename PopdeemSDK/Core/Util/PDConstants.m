@@ -68,6 +68,7 @@ NSString *const InstagramVerifyFailure = @"InstagramVerifyFailure";
 NSString *const InstagramVerifyNoAttempt = @"InstagramVerifyNoAttempt";
 NSString *const InstagramPostMade = @"InstagramPostMade";
 NSString *const NotificationReceived = @"NotificationReceived";
+NSString *const DidFetchBrands = @"DidFetchBrands";
 /*
  End NSNotificationCenter Strings
  */
