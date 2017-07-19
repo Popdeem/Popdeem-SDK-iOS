@@ -183,7 +183,6 @@
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[self dismissViewControllerAnimated:YES completion:^{
-		
 	}];
 }
 
@@ -193,7 +192,8 @@
 	} else {
 		[[NSNotificationCenter defaultCenter] postNotificationName:TwitterLoginFailure object:nil];
 	}
-	[self dismissViewControllerAnimated:YES completion:^(void){}];
+	[self dismissViewControllerAnimated:YES completion:^(void){
+	}];
 }
 
 /*

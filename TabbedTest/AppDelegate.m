@@ -28,7 +28,7 @@
                            didFinishLaunchingWithOptions:launchOptions];
   [application setStatusBarStyle:UIStatusBarStyleLightContent];
   
-  [PopdeemSDK withAPIKey:@"0745f7ed-8058-480c-9e45-76c21e83f596"];
+  [PopdeemSDK withAPIKey:@"d7de6f74-93b9-4caf-b53e-660d2ad37230"];
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:300];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];

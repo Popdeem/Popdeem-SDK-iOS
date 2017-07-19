@@ -108,32 +108,32 @@
       
       if (intervalDays > 1) {
         if (reward.type == PDRewardTypeSweepstake) {
-          expiresString = [NSString stringWithFormat:@"Draw in %ld days",(long)intervalDays];
+          expiresString = [NSString stringWithFormat:translationForKey(@"popdeem.wallet.reward.drawInXDays", @"Draw in %ld days"),(long)intervalDays];
         } else {
-          expiresString = [NSString stringWithFormat:@"Expires in %ld days",(long)intervalDays];
+          expiresString = [NSString stringWithFormat:translationForKey(@"popdeem.wallet.reward.expiresInXDays", @"Expires in %ld days"),(long)intervalDays];
         }
       }
       if (intervalDays == 1) {
-        expiresString = @"Expires in 1 day";
+        expiresString = translationForKey(@"popdeem.wallet.reward.expiresIn1Day", @"Expires in 1 day");
         if (reward.type == PDRewardTypeSweepstake) {
-          expiresString = @"Draw in 1 day";
+          expiresString = translationForKey(@"popdeem.wallet.reward.drawIn1Day", @"Draw in 1 day");
         } else {
-          expiresString = @"Expires in 1 day";
+          expiresString = translationForKey(@"popdeem.wallet.reward.expiresIn1Day", @"Expires in 1 day");
         }
       }
       if (intervalDays == 0) {
         
         if (intervalHours == 0) {
           if (reward.type == PDRewardTypeSweepstake) {
-            expiresString = @"Draw has happened. Standy by.";
+            expiresString = translationForKey(@"popdeem.wallet.drawHappened", @"Draw has happened. Standy by.");
           } else {
             expiresString = @"Expired";
           }
         } else {
           if (reward.type == PDRewardTypeSweepstake) {
-            expiresString = [NSString stringWithFormat:@"Draw in %ld hours",(long)intervalHours];
+            expiresString = [NSString stringWithFormat:translationForKey(@"popdeem.wallet.reward.drawInXHours", @"Draw in %ld hours"),(long)intervalHours];
           } else {
-            expiresString = [NSString stringWithFormat:@"Expires in %ld hours",(long)intervalHours];
+            expiresString = [NSString stringWithFormat:translationForKey(@"popdeem.wallet.reward.expiresInXHours", @"Expires in %ld hours"),(long)intervalHours];
           }
         }
       }

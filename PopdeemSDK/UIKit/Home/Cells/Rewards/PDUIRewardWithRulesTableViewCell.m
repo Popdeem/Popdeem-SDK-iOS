@@ -138,45 +138,45 @@
 			//Both Networks
 			switch (reward.action) {
 				case PDRewardActionCheckin:
-					action = @"Check-in or Tweet Required";
+					action = translationForKey(@"popdeem.claim.action.checkinOrTweet", @"Check-in or Tweet Required");
 					break;
 				case PDRewardActionPhoto:
 					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
-					action = @"No Action Required";
+					action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 				default:
-					action = @"No Action Required";
+					action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 					break;
 			}
 		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
 			//Facebook Only
 			switch (reward.action) {
 				case PDRewardActionCheckin:
-					action = @"Check-in Required";
+					action = translationForKey(@"popdeem.claim.action.checkinOrTweet", @"Check-in or Tweet Required");
 					break;
 				case PDRewardActionPhoto:
 					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
-					action = @"No Action Required";
+					action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 				default:
-					action = @"No Action Required";
+					action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 					break;
 			}
 		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
 			//Twitter Only
 			switch (reward.action) {
 				case PDRewardActionCheckin:
-					action = @"Tweet Required";
+					action = translationForKey(@"popdeem.claim.action.tweet", @"Tweet Required");
 					break;
 				case PDRewardActionPhoto:
 					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 					break;
 				case PDRewardActionNone:
-					action = @"No Action Required";
+					action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 				default:
-					action = @"No Action Required";
+					action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 					break;
 			}
 		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
@@ -193,9 +193,9 @@
 				action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
 				break;
 			case PDRewardActionNone:
-				action = @"No Action Required";
+				action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 			default:
-				action = @"No Action Required";
+				action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
 				break;
 		}
 	}

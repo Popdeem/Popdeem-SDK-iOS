@@ -206,7 +206,7 @@
 	if (_mustFacebook) {
 		[_viewController.facebookSwitch setOn:YES animated:NO];
 		_willFacebook = YES;
-		UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:@"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish" delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
+		UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.reward.facebookRequired", @"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish") delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
 		[fbV show];
 		return;
 	}
@@ -240,7 +240,7 @@
 	if (_mustTweet) {
 		_willTweet = YES;
 		[_viewController.twitterSwitch setOn:YES animated:NO];
-		UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.message", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
+		UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.tweetRequired", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
 		[twitterV show];
 		[self validateHashTag];
 		return;
@@ -422,8 +422,8 @@
 	}
 	
 	if (_reward.action == PDRewardActionPhoto && _image == nil) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
-																										message:@"A photo is required for this action. Please add a photo."
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
+																										message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
 																									 delegate:self
 																					cancelButtonTitle:@"OK"
 																					otherButtonTitles:nil];
@@ -470,8 +470,8 @@
 																																	descriptionText:translationForKey(@"popdeem.claim.twitter.check", @"Checking Credentials")];
 	[twView showAnimated:YES];
 	if (_twitterForcedTagString && !_hashtagValidated) {
-		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!"
-																										 message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter",_reward.forcedTag]
+		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
+																										 message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.forcedTag]
 																										delegate:self
 																					 cancelButtonTitle:@"OK"
 																					 otherButtonTitles: nil];
@@ -537,8 +537,8 @@
 
 - (void) validateInstagramOptionsAndClaim {
 	if (!_image) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Photo Required"
-																										message:@"A photo is required for this action. Please add a photo."
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
+																										message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
 																									 delegate:self
 																					cancelButtonTitle:@"OK"
 																					otherButtonTitles:nil];
@@ -551,8 +551,8 @@
 		return;
 	}
 	if (_instagramForcedTagString && !_hashtagValidated) {
-		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:@"Oops!"
-																										 message:[NSString stringWithFormat:@"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Instagram",_reward.instagramForcedTag]
+		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
+																										 message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.instagramForcedTag]
 																										delegate:self
 																					 cancelButtonTitle:@"OK"
 																					 otherButtonTitles: nil];
@@ -693,7 +693,7 @@
 		[self loginWithWritePerms];
 	} failure:^(NSError *error) {
 		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
-																								 message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook")
+																								 message:translationForKey(@"popdeem.claim.facebook.cannotConnect", @"We couldnt connect you to Facebook")
 																								delegate:nil
 																			 cancelButtonTitle:nil
 																			 otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];

@@ -324,7 +324,7 @@
 - (void) twitterLoginFailure {
   PDLogError(@"Twitter didnt log in");
   UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
-                                               message:@"We couldnt connect you to Twitter"
+                                               message:translationForKey(@"popdeem.common.cantConnectTwitter", @"We couldnt connect you to Twitter")
                                               delegate:nil
                                      cancelButtonTitle:nil
                                      otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
@@ -361,7 +361,7 @@
 - (void) facebookLoginFailure {
   [self.facebookButton setTitle:@"Connect to Facebook" forState:UIControlStateNormal];
   UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
-                                               message:translationForKey(@"popdeem.claim.facebook.connect", @"We couldnt connect you to Facebook")
+                                               message:translationForKey(@"popdeem.common.cantConnectFacebook", @"We couldnt connect you to Facebook")
                                               delegate:nil
                                      cancelButtonTitle:nil
                                      otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];

@@ -28,6 +28,7 @@
 @interface PDUISettingsViewController ()
 @property (nonatomic, retain) UIImageView *profileImageView;
 @property (nonatomic) NSInteger logoutLoops;
+@property (nonatomic, retain) PDUITwitterLoginViewController *twitterVC;
 @end
 
 @implementation PDUISettingsViewController
@@ -280,7 +281,8 @@
 	fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginSuccess) name:FacebookLoginSuccess object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginFailure) name:FacebookLoginFailure object:nil];
-	[self presentViewController:fbVC animated:YES completion:^(void){}];
+	[self presentViewController:fbVC animated:YES completion:^(void){
+	}];
 }
 
 - (void) disconnectFacebookAccount {
@@ -312,16 +314,16 @@
 }
 
 - (void) connectTwitterAccount {
-	PDUITwitterLoginViewController *twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:self.navigationController];
-	if (!twitterVC) {
+	_twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:self.navigationController];
+	if (!_twitterVC) {
 		return;
 	}
 	self.definesPresentationContext = YES;
-	twitterVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	twitterVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	_twitterVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	_twitterVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginSuccess) name:TwitterLoginSuccess object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginFailure) name:TwitterLoginFailure object:nil];
-	[self.navigationController presentViewController:twitterVC animated:YES completion:^(void){
+	[self presentViewController:_twitterVC animated:YES completion:^(void){
 	}];
 }
 
@@ -477,6 +479,9 @@
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
 																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
 																								}));
+	
+	[_twitterVC removeFromParentViewController];
+	_twitterVC = nil;
 }
 
 - (void) twitterLoginFailure {
@@ -485,6 +490,7 @@
 		[cell.socialSwitch setOn:NO];
 		[_tableView reloadData];
 	});
+	[_twitterVC removeFromParentViewController];
 }
 
 - (void) disconnectInstagramAccount {

@@ -142,7 +142,8 @@
 																																							titleText:@"Logging in.."
 																																				descriptionText:@"Please wait while we log you in."];
 	[loadingView showAnimated:YES];
-	[[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[@"public_profile",
+	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
+	[manager loginWithFacebookReadPermissions:@[@"public_profile",
 																																		 @"email",
 																																		 @"user_birthday",
 																																		 @"user_posts",

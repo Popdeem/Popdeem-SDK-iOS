@@ -29,7 +29,7 @@
 }
 
 - (void) setup {
-	self.labelText = translationForKey(@"popdeem.twitter.connect.read.labelText",@"Connect your Twitter account to claim Twitter Rewards.");
+	self.labelText = translationForKey(@"popdeem.twitter.connect.read.labelText", @"Connect your Twitter account to claim Twitter Rewards.");
 	self.labelColor = PopdeemColor(PDThemeColorPrimaryFont);
 	self.labelFont = PopdeemFont(PDThemeFontBold, 14);
 	

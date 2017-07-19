@@ -15,13 +15,12 @@
 			"homeHeaderTextColor" : "#FFFFFF"
 		},
 		"images" : {
-			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "Stamp_Header"
+			"defaultItemImage" : "pduikit_starG"
 		},
 		"fonts" : {
-			"primaryFont" : "FuturaCom-Regular",
-			"boldFont" : "FuturaCom-Bold",
-			"lightFont" : "FuturaCom-Light"
+			"primaryFont" : "Verdana",
+			"boldFont" : "Verdana-Bold",
+			"lightFont" : "Verdana-Light"
 		},
 		"nav" : {
 			"useTheme" : "true"

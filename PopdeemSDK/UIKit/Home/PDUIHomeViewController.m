@@ -221,7 +221,11 @@
   });
   
   if (!_segmentedControl) {
-    _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[@"Rewards",@"Activity",@"History"]];
+    _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[
+																																			translationForKey(@"popdeem.home.segmentedControl.rewards", @"Rewards"),
+																																			translationForKey(@"popdeem.home.segmentedControl.activity", @"Activity"),
+																																			translationForKey(@"popdeem.home.segmentedControl.wallet", @"History")
+																																			]];
     if (_brand.theme) {
       [_segmentedControl applyTheme:_brand.theme];
     }
