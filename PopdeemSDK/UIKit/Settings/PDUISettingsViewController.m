@@ -29,6 +29,7 @@
 @property (nonatomic, retain) UIImageView *profileImageView;
 @property (nonatomic) NSInteger logoutLoops;
 @property (nonatomic, retain) PDUITwitterLoginViewController *twitterVC;
+@property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @end
 
 @implementation PDUISettingsViewController
@@ -374,16 +375,23 @@
 
 - (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
 	PDAPIClient *client = [PDAPIClient sharedInstance];
-  
+	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Connecting Instagram"];
+	[_loadingView showAnimated:YES];
   if ([[PDUser sharedInstance] isRegistered]) {
     [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
       dispatch_async(dispatch_get_main_queue(), ^{
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:YES animated:YES];
         [self setProfile];
+				[self.tableView reloadData];
+				[self.tableView reloadInputViews];
         [self.view setNeedsDisplay];
+				[_loadingView hideAnimated:YES];
       });
     } failure:^(NSError* error){
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_loadingView hideAnimated:YES];
+			});
       if ([[error.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
         dispatch_async(dispatch_get_main_queue(), ^{
           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -393,6 +401,7 @@
       dispatch_async(dispatch_get_main_queue(), ^{
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:NO animated:YES];
+				[_loadingView hideAnimated:YES];
         [self.view setNeedsDisplay];
       });
     }];
@@ -402,11 +411,15 @@
       dispatch_async(dispatch_get_main_queue(), ^{
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:YES animated:YES];
+				[_loadingView hideAnimated:YES];
+				[self.tableView reloadData];
+				[self.tableView reloadInputViews];
         [self setProfile];
         [self.view setNeedsDisplay];
       });
     } failure:^(NSError *error) {
       dispatch_async(dispatch_get_main_queue(), ^{
+				[_loadingView hideAnimated:YES];
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:NO animated:NO];
         [self.view setNeedsDisplay];
@@ -443,13 +456,13 @@
 //	PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[_tableView reloadInputViews];
+		[self.tableView reloadData];
     [self setProfile];
 	});
 	AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
 																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
 																								}));
-  [self.tableView reloadData];
 }
 
 - (void) instagramLoginFailure {
