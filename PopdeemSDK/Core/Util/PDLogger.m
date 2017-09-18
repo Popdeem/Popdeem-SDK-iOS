@@ -16,7 +16,7 @@
 	NSString *_filename = [NSString stringWithUTF8String:filename];
 	NSString *pretty_message = [NSString stringWithFormat:@"Popdeem Debug Log\n\t[%@ : l%d]\n\t",_filename,line];
 	NSString *full_message = [pretty_message stringByAppendingString:message];
-	
+
 	va_list args;
 	va_start(args, full_message);
 	NSLogv(full_message, args);

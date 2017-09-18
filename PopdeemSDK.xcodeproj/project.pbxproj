@@ -2356,6 +2356,7 @@
 				3922FAA01DC0BDA100501E1D /* Resources */,
 				58175935DBB34F85147A0364 /* [CP] Embed Pods Frameworks */,
 				9AB1EBD16F7D737133D0F421 /* [CP] Copy Pods Resources */,
+				39A78A601F6003A4003B1D9A /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -2811,6 +2812,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestSize/Pods-TestSize-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		39A78A601F6003A4003B1D9A /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
 		};
 		39BB0DE01C89E20B008FCB8C /* Build Bump */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3636,6 +3651,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -3658,6 +3674,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

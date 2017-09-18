@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,7 +32,7 @@
                         <constraint firstAttribute="height" constant="45" id="BkN-nj-HRa"/>
                     </constraints>
                     <color key="tintColor" red="0.97418036429999999" green="0.99528425929999997" blue="0.97958502560000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Log in with Instagram"/>
+                    <state key="normal" title="Log in with Instagram" backgroundImage="PDUI_IGBG.png"/>
                     <connections>
                         <action selector="instagramLoginButtonPressed:" destination="-1" eventType="touchUpInside" id="H96-hH-I6w"/>
                     </connections>
@@ -124,6 +124,7 @@
         </view>
     </objects>
     <resources>
+        <image name="PDUI_IGBG.png" width="350" height="50"/>
         <image name="pduikit_cancelbutton.png" width="49" height="49"/>
         <image name="pduikit_default_login.png" width="495" height="528"/>
     </resources>

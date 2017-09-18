@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PopdeemSDK.enableSocialLogin(withNumberOfPrompts: 3)
 		PopdeemSDK.register(forPushNotificationsApplication: application)
 		PopdeemSDK.setUpThemeFile("theme")
+		
+		for fontFamily in UIFont.familyNames {
+			let fontNames = UIFont.fontNames(forFamilyName: fontFamily)
+			print("\(fontFamily): \(fontNames)")
+		}
+		
 		return true
 	}
 	

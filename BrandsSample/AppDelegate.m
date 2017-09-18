@@ -26,11 +26,13 @@
 	[[FBSDKApplicationDelegate sharedInstance] application:application
 													 didFinishLaunchingWithOptions:launchOptions];
 	[application setStatusBarStyle:UIStatusBarStyleLightContent];
-	[PopdeemSDK withAPIKey:@"0745f7ed-8058-480c-9e45-76c21e83f596"];
+	[PopdeemSDK withAPIKey:@"26eb2fcb-06e5-4976-bff4-88c30cc58f58"];
 	[PopdeemSDK enableSocialLoginWithNumberOfPrompts:INT_MAX];
 	[PopdeemSDK registerForPushNotificationsApplication:application];
 	[PopdeemSDK setUpThemeFile:@"Theme"];
 	[PopdeemSDK setDebug:YES];
+	[Fabric with:@[[Crashlytics class]]];
+
 	
 //	NSArray *fontFamilies = [UIFont familyNames];
 //	

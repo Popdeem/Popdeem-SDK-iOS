@@ -7,7 +7,7 @@
 			"viewBackgroundColor" : "#e9e9e9",
 			"primaryFontColor" : "#000000",
 			"secondaryFontColor" : "#424242",
-			"tableViewCellBackgroundColor" : "#e9e9e9",
+			"tableViewCellBackgroundColor" : "#ffffff",
 			"tableViewSeperatorColor" : "#C0C0C0",
 			"navBarTintColor" : "#fcc24c",
 			"segmentedControlBackgroundColor" : "#404041",
@@ -18,9 +18,9 @@
 			"defaultItemImage" : "pduikit_starG"
 		},
 		"fonts" : {
-			"primaryFont" : "Verdana",
-			"boldFont" : "Verdana-Bold",
-			"lightFont" : "Verdana-Light"
+			"primaryFont" : "FuturaCom-Regular",
+			"boldFont" : "FuturaCom-Bold",
+			"lightFont" : "FuturaCom-Light"
 		},
 		"nav" : {
 			"useTheme" : "true"

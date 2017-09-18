@@ -153,7 +153,7 @@
 			//Facebook Only
 			switch (reward.action) {
 				case PDRewardActionCheckin:
-					action = translationForKey(@"popdeem.claim.action.checkinOrTweet", @"Check-in or Tweet Required");
+					action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
 					break;
 				case PDRewardActionPhoto:
 					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");

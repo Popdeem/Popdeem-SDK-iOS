@@ -503,6 +503,11 @@
   [params setValue:@"ios" forKey:@"platform"];
   NSString *apiString = [NSString stringWithFormat:@"%@/%@/init_non_social_user",self.baseUrl,USERS_PATH];
   NSURLSession *session = [NSURLSession createPopdeemSession];
+	
+	if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
+		[params setObject:[[PDAPIClient sharedInstance] thirdPartyToken] forKey:@"third_party_user_token"];
+	}
+	
   [session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error) {
     if (error) {
       //Handle Error

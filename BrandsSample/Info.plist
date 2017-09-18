@@ -15,55 +15,48 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb370441856449418</string>
+				<string>fb1706317436274686brandssample</string>
 				<string>popdeemstaging</string>
 				<string>popdeemstagingtwitter</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>4</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>f3e1331a9e08ff100bf63475f5ac2f67675253d6</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
-	<string>370441856449418</string>
+	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
 	<string>Popdeem</string>
 	<key>FacebookNamespace</key>
-	<string>popdeemstaging</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>insights.popdeem.com</key>
-			<dict>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>api.staging.popdeem.com</key>
-			<dict>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>api.popdeem.com</key>
-			<dict>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>We need access to your camera when you decide to share a photo.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We use your location to deliver local rewards</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We access your photo gallery when you decide to share a photo.</string>
+	<string>popdeemrewards</string>
+	<key>FacebookUrlSchemeSuffix</key>
+	<string>brandssample</string>
+	<key>InstagramCallback</key>
+	<string>https://www.popdeem.com/igredirect</string>
+	<key>InstagramClientId</key>
+	<string>721403853f784eea86023a9e96ccde44</string>
+	<key>InstagramClientSecret</key>
+	<string>0b14e780896e42be88cefcddb3ac64dc</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
@@ -81,18 +74,41 @@
 		<string>fbauth2</string>
 		<string>fb-messenger-api20140430</string>
 	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>api.popdeem.com</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>api.staging.popdeem.com</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>insights.popdeem.com</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera when you decide to share a photo.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use your location to deliver local rewards</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We access your photo gallery when you decide to share a photo.</string>
 	<key>TwitterAppConsumerKey</key>
-	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
+	<string>YuD6eTyLWpyfzjJZYKlTGa1Wt</string>
 	<key>TwitterAppConsumerSecret</key>
-	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
+	<string>DGDAgAEzuWQW0vQBnUhl2IBIQp9sGPgLqSpiRIbuLoB9adBHyW</string>
 	<key>TwitterCallbackScheme</key>
-	<string>popdeemstagingtwitter</string>
-	<key>InstagramClientSecret</key>
-	<string>12e0e2b5d1194389bc82c3018406c3dc</string>
-	<key>InstagramClientId</key>
-	<string>1b9912d9b75f4f29bb6c60afd63d1b67</string>
-	<key>InstagramCallback</key>
-	<string>https://www.popdeem.com/igredirect</string>
+	<string>popdeemtwitterabc</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Gotham-Rounded-Bold.ttf</string>
