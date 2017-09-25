@@ -4,9 +4,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PDUINavigationController.h"
 
 @interface PDRewardHandler : NSObject
 
+@property (nonatomic, retain) PDUINavigationController *navController;
+
 -(void)handleRewardsFlow;
+-(void)presentRewardFlow;
 
 @end

@@ -25,11 +25,19 @@
   self.transitioningDelegate = self;
   self.modalPresentationStyle = UIModalPresentationCustom;
   [self defaults];
-  
-  
+	
+	UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
+	self.navigationItem.rightBarButtonItem = bbItem;
+	
   [[self navigationBar]setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];//[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];
   [[self navigationBar]setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
   self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:PopdeemColor(PDThemeColorPrimaryInverse)};
+}
+
+- (void) dismiss {
+	[self dismissViewControllerAnimated:YES completion:^{
+		NSLog(@"User Dismissed");
+	}];
 }
 
 

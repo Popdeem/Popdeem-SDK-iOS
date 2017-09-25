@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  [PopdeemSDK enableSocialLoginWithNumberOfPrompts:3];
     // Do any additional setup after loading the view.
 }
 
@@ -38,6 +37,9 @@
   [PopdeemSDK logout];
 }
 
+- (IBAction)presentPopdeemCordovaStyle:(id)sender {
+	[PopdeemSDK presentRewardFlow];
+}
 /*
 #pragma mark - Navigation
 

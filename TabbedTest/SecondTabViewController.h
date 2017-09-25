@@ -11,5 +11,6 @@
 
 @interface SecondTabViewController : UIViewController
 
+- (IBAction)presentPopdeemCordovaStyle:(id)sender;
 
 @end
