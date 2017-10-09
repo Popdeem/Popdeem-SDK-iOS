@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  *@return apiKey
  */
 + (nullable NSString*) getPopdeemApiKey:(NSError**)err;
++ (nullable NSString*) getThemeFileName;
 
 /*!
  * @abstract Get Twitter Consumer Key

@@ -32,9 +32,10 @@
   [PopdeemSDK enableSocialLoginWithNumberOfPrompts:300];
   [PopdeemSDK registerForPushNotificationsApplication:application];
   [PopdeemSDK setUpThemeFile:@"theme"];
-	[PopdeemSDK setThirdPartyUserToken:@"45210624-f79iktVMdYBbV6bGQ9DNS2h4SkYMZXjbdKTH5ynRokpyu1Yzy6s6YpujrWk7YW"];
-	[PopdeemSDK startupBrands];
+//	[PopdeemSDK setThirdPartyUserToken:@"45210624-f79iktVMdYBbV6bGQ9DNS2h4SkYMZXjbdKTH5ynRokpyu1Yzy6s6YpujrWk7YW"];
+//	[PopdeemSDK startupBrands];
 	[PopdeemSDK setDebug:YES];
+	[Fabric with:@[[Crashlytics class]]];
 
   return YES;
 }

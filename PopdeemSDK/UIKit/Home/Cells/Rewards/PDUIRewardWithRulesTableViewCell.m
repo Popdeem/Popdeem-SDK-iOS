@@ -55,7 +55,7 @@
 		_primaryAppColor = PopdeemColor(PDThemeColorPrimaryApp);
 		_primaryFontColor = PopdeemColor(PDThemeColorPrimaryFont);
 		_secondaryFontColor = PopdeemColor(PDThemeColorSecondaryFont);
-    _secondaryAppColor = PopdeemColor(PDThemeColorSecondaryApp);
+    _secondaryAppColor = PopdeemColor(PDThemeColorPrimaryApp);
 	}
 	
 	if (reward.coverImageUrl) {

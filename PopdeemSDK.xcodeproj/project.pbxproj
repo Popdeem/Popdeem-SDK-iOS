@@ -2481,6 +2481,7 @@
 				397892731D1AA89E00BCE17E /* Embed Frameworks */,
 				48BE60A8A1D572F1A6255295 /* [CP] Embed Pods Frameworks */,
 				BA6DE76A222DF9FF44124949 /* [CP] Copy Pods Resources */,
+				399D9DF21F7BA1F8009CA958 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -2838,6 +2839,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestSize/Pods-TestSize-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		399D9DF21F7BA1F8009CA958 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3e1331a9e08ff100bf63475f5ac2f67675253d6 350a323fe2e39bc479beb4a3dce17913883bc2eec777e0ccb9b59d1507686dca";
 		};
 		39A78A601F6003A4003B1D9A /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3667,6 +3682,7 @@
 				CODE_SIGN_ENTITLEMENTS = TabbedTest/TabbedTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = S648X26U8J;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3679,6 +3695,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3691,6 +3708,7 @@
 				CODE_SIGN_ENTITLEMENTS = TabbedTest/TabbedTest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Richard Whelan (42ETNVH2GY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S648X26U8J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3702,6 +3720,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Popdeem.TabbedTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

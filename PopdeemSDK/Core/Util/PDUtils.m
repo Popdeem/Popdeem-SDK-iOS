@@ -56,6 +56,16 @@
     return apiKey;
 }
 
++ (NSString*) getThemeFileName {
+	NSString *theme = nil;
+	if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"PopdeemThemeFileName"]) {
+		theme = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"PopdeemThemeFileName"];
+	} else {
+		PDLogError(@"No Popdeem Theme File Name Found");
+	}
+	return theme;
+}
+
 + (NSString*) getTwitterConsumerKey:(NSError**)err {
     NSString *twitterConsumerKey = nil;
     if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterAppConsumerKey"]) {

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>PopdeemApiKey</key>
+	<string>d7de6f74-93b9-4caf-b53e-660d2ad37230</string>
+	<key>PopdeemThemeFileName</key>
+	<string>theme</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -29,7 +33,21 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3765</string>
+	<string>3790</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>f3e1331a9e08ff100bf63475f5ac2f67675253d6</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>1706317436274686</string>
 	<key>FacebookDisplayName</key>
@@ -72,13 +90,13 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera when you decide to share a photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We use your location to deliver local rewards"</string>
+	<string>&quot;We use your location to deliver local rewards&quot;</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We access your photo gallery when you decide to share a photo.</string>
 	<key>TwitterAppConsumerKey</key>
-	<string>YuD6eTyLWpyfzjJZYKlTGa1Wt</string>
+	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
 	<key>TwitterAppConsumerSecret</key>
-	<string>DGDAgAEzuWQW0vQBnUhl2IBIQp9sGPgLqSpiRIbuLoB9adBHyW</string>
+	<string>rHTmAWpw1gPCoCy7AzA43j9eMqb2GJb24qcMfIHeOvepARFsmt</string>
 	<key>TwitterCallbackScheme</key>
 	<string>popdeemtwitterabc</string>
 	<key>UIAppFonts</key>
