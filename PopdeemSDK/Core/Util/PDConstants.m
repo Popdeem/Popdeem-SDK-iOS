@@ -82,6 +82,7 @@ NSString *const PDThemeColorViewBackground = @"popdeem.colors.viewBackgroundColo
 NSString *const PDThemeColorPrimaryFont = @"popdeem.colors.primaryFontColor";
 NSString *const PDThemeColorSecondaryFont = @"popdeem.colors.secondaryFontColor";
 NSString *const PDThemeColorSecondaryApp = @"popdeem.colors.secondaryAppColor";
+NSString *const PDThemeColorTertiaryFont = @"popdeem.colors.tertiaryFontColor";
 NSString *const PDThemeColorTableViewCellBackground = @"popdeem.colors.tableViewCellBackgroundColor";
 NSString *const PDThemeColorTableViewSeperator = @"popdeem.colors.tableViewSeperatorColor";
 NSString *const PDThemeColorNavBarTint = @"popdeem.colors.navBarTintColor";

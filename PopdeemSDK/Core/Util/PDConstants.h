@@ -87,6 +87,7 @@ extern NSString *const PDThemeColorViewBackground;
 extern NSString *const PDThemeColorPrimaryFont;
 extern NSString *const PDThemeColorSecondaryFont;
 extern NSString *const PDThemeColorSecondaryApp;
+extern NSString *const PDThemeColorTertiaryFont;
 extern NSString *const PDThemeColorTableViewCellBackground;
 extern NSString *const PDThemeColorTableViewSeperator;
 extern NSString *const PDThemeColorNavBarTint;

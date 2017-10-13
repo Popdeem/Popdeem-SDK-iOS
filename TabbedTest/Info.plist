@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>PopdeemApiKey</key>
-	<string>d7de6f74-93b9-4caf-b53e-660d2ad37230</string>
-	<key>PopdeemThemeFileName</key>
-	<string>theme</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -33,7 +29,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3790</string>
+	<string>3809</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -90,9 +86,13 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera when you decide to share a photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;We use your location to deliver local rewards&quot;</string>
+	<string>"We use your location to deliver local rewards"</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We access your photo gallery when you decide to share a photo.</string>
+	<key>PopdeemApiKey</key>
+	<string>d7de6f74-93b9-4caf-b53e-660d2ad37230</string>
+	<key>PopdeemThemeFileName</key>
+	<string>theme</string>
 	<key>TwitterAppConsumerKey</key>
 	<string>rAzr7Tn0wOVBs6Oij13AYecVA</string>
 	<key>TwitterAppConsumerSecret</key>
