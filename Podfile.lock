@@ -18,16 +18,16 @@ PODS:
   - JSONModel (1.7.0)
   - Nocilla (0.11.0)
   - OCMock (3.4)
-  - PopdeemSDK (1.0.40):
-    - PopdeemSDK/Core (= 1.0.40)
-  - PopdeemSDK/Core (1.0.40):
+  - PopdeemSDK (1.0.44):
+    - PopdeemSDK/Core (= 1.0.44)
+  - PopdeemSDK/Core (1.0.44):
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
     - JSONModel
     - Shimmer
     - STTwitter
-  - PopdeemSDK/UIKit (1.0.40):
+  - PopdeemSDK/UIKit (1.0.44):
     - PopdeemSDK/Core
   - Shimmer (1.0.2)
   - STTwitter (0.2.6)
@@ -50,7 +50,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   PopdeemSDK:
-    :path: "../Popdeem-SDK-iOS"
+    :path: ../Popdeem-SDK-iOS
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -63,10 +63,10 @@ SPEC CHECKSUMS:
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
-  PopdeemSDK: e56382e2567d25f58a6beeeae414c61794d2525d
+  PopdeemSDK: a6b36196f28d34102064a36641dfcc57c29df440
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 30ee2f79eff78c3d633a1edc869e97db9c9ead59
 
 PODFILE CHECKSUM: 8c5a4d585f6ad23775b5ec061a15cd9a1ce68824
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

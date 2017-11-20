@@ -125,6 +125,7 @@ CGFloat _cardX,_cardY;
 	
 	self.actionButton = [[UIButton alloc] initWithFrame:buttonFrame];
 	[_actionButton setBackgroundColor:_viewModel.buttonColor];
+    [_actionButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
 	[_actionButton.titleLabel setFont:_viewModel.buttonLabelFont];
 	[_actionButton setTitle:_viewModel.buttonText forState:UIControlStateNormal];
 	[_actionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];

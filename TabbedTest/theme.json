@@ -1,32 +1,32 @@
 {
-	"popdeem" : {
-		"colors" : {
-			"primaryAppColor" : "#ffffff",
-			"secondaryAppColor" : "#D33625",
-			"primaryInverseColor" : "#D33625",
-			"viewBackgroundColor" : "#ffffff",
-			"primaryFontColor" : "#000000",
-			"secondaryFontColor" : "#424242",
-			"tertiaryFontColor" : "#D33625",
-			"tableViewCellBackgroundColor" : "#ffffff",
-			"tableViewSeperatorColor" : "#C0C0C0",
-			"navBarTintColor" : "#D33625",
-			"segmentedControlBackgroundColor" : "#ffffff",
-			"segmentedControlForegroundColor" : "#D33625",
-			"homeHeaderTextColor" : "#FFFFFF"
-		},
-		"images" : {
-			"loginImage" : "pduikit_default_login",
-			"defaultItemImage" : "pduikit_starG",
-			"homeHeaderImage" : "Cover Image"
-		},
-		"fonts" : {
-			"primaryFont" : "Avenir-Book",
-			"boldFont" : "Avenir-Bold",
-			"lightFont" : "Avenir-Light"
-		},
-		"nav" : {
-			"useTheme" : "true"
-		}
-	}
+    "popdeem" : {
+        "colors" : {
+            "primaryAppColor" : "#FAF8FA",
+            "secondaryAppColor" : "#D76878",
+            "primaryInverseColor" : "#D76878",
+            "viewBackgroundColor" : "#FDFDFD",
+            "primaryFontColor" : "#000000",
+            "secondaryFontColor" : "#424242",
+            "tertiaryFontColor" : "#D76878",
+            "tableViewCellBackgroundColor" : "#FAF8FA",
+            "tableViewSeperatorColor" : "#C0C0C0",
+            "navBarTintColor" : "#F4989B",
+            "segmentedControlBackgroundColor" : "#FAF8FA",
+            "segmentedControlForegroundColor" : "#D76878",
+            "homeHeaderTextColor" : "#FFFFFF"
+        },
+        "images" : {
+            "loginImage" : "pduikit_default_login",
+            "defaultItemImage" : "pduikit_starG",
+            "homeHeaderImage" : "sugarmoo_header"
+        },
+        "fonts" : {
+            "primaryFont" : "Avenir-Book",
+            "boldFont" : "Avenir-Bold",
+            "lightFont" : "Avenir-Light"
+        },
+        "nav" : {
+            "useTheme" : "true"
+        }
+    }
 }
