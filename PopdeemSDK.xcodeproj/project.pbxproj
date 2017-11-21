@@ -16,63 +16,23 @@
 		3921E30C1C71D84B000120D4 /* PDUIFeedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E30B1C71D84B000120D4 /* PDUIFeedImageViewController.m */; };
 		3921E3111C71DD68000120D4 /* PDUISingleMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E30F1C71DD68000120D4 /* PDUISingleMessageViewController.m */; };
 		3921E3141C71E1BB000120D4 /* PDUISingleMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3921E3131C71E1BB000120D4 /* PDUISingleMessageViewModel.m */; };
-		3922FAA61DC0BDA100501E1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922FAA51DC0BDA100501E1D /* main.m */; };
-		3922FAA91DC0BDA100501E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922FAA81DC0BDA100501E1D /* AppDelegate.m */; };
-		3922FAAC1DC0BDA100501E1D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922FAAB1DC0BDA100501E1D /* ViewController.m */; };
-		3922FAAF1DC0BDA100501E1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3922FAAD1DC0BDA100501E1D /* Main.storyboard */; };
-		3922FAB11DC0BDA100501E1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3922FAB01DC0BDA100501E1D /* Assets.xcassets */; };
-		3922FAB41DC0BDA100501E1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3922FAB21DC0BDA100501E1D /* LaunchScreen.storyboard */; };
 		3922FABB1DC0BF4900501E1D /* PDBrandsUIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3922FABA1DC0BF4900501E1D /* PDBrandsUIHandler.m */; };
 		392423761C230F4E0038D953 /* PDUILazyLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 392423751C230F4E0038D953 /* PDUILazyLoader.m */; };
 		392787101C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927870F1C0617D500F8DCD9 /* PDSocialLoginViewModelTests.m */; };
 		392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDUIClaimViewController.m */; };
 		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
 		392B559D1DAF9D130012350A /* PDUILogoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */; };
-		3931C4611CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C4591CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf */; };
-		3931C4621CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45A1CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf */; };
-		3931C4631CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45B1CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf */; };
-		3931C4641CCE6BA7005F5044 /* Gotham-Rounded-Book-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45C1CCE6BA7005F5044 /* Gotham-Rounded-Book-Italic.ttf */; };
-		3931C4651CCE6BA7005F5044 /* Gotham-Rounded-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45D1CCE6BA7005F5044 /* Gotham-Rounded-Light-Italic.ttf */; };
-		3931C4661CCE6BA7005F5044 /* Gotham-Rounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45E1CCE6BA7005F5044 /* Gotham-Rounded-Light.ttf */; };
-		3931C4671CCE6BA7005F5044 /* Gotham-Rounded-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C45F1CCE6BA7005F5044 /* Gotham-Rounded-Medium-Italic.ttf */; };
-		3931C4681CCE6BA7005F5044 /* Gotham-Rounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3931C4601CCE6BA7005F5044 /* Gotham-Rounded-Medium.ttf */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
-		393C39D21E85216300315493 /* ThirdTabViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393C39D11E85216300315493 /* ThirdTabViewControllerTableViewController.m */; };
-		393C39DB1E852BF700315493 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 393C39DA1E852BF700315493 /* main.m */; };
-		393C39DE1E852BF700315493 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 393C39DD1E852BF700315493 /* AppDelegate.m */; };
-		393C39E11E852BF700315493 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393C39E01E852BF700315493 /* FirstViewController.m */; };
-		393C39E41E852BF700315493 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393C39E31E852BF700315493 /* SecondViewController.m */; };
-		393C39E71E852BF700315493 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393C39E51E852BF700315493 /* Main.storyboard */; };
-		393C39E91E852BF700315493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393C39E81E852BF700315493 /* Assets.xcassets */; };
-		393C39EC1E852BF700315493 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393C39EA1E852BF700315493 /* LaunchScreen.storyboard */; };
-		393C39F71E852BF700315493 /* TestSizeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 393C39F61E852BF700315493 /* TestSizeTests.m */; };
-		393C3A021E852BF700315493 /* TestSizeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 393C3A011E852BF700315493 /* TestSizeUITests.m */; };
-		393D2B7A1C3AD0D300F1E253 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 393D2B791C3AD0D300F1E253 /* main.m */; };
-		393D2B7D1C3AD0D300F1E253 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 393D2B7C1C3AD0D300F1E253 /* AppDelegate.m */; };
-		393D2B801C3AD0D300F1E253 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393D2B7F1C3AD0D300F1E253 /* ViewController.m */; };
-		393D2B831C3AD0D300F1E253 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B811C3AD0D300F1E253 /* Main.storyboard */; };
-		393D2B851C3AD0D300F1E253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B841C3AD0D300F1E253 /* Assets.xcassets */; };
-		393D2B881C3AD0D300F1E253 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B861C3AD0D300F1E253 /* LaunchScreen.storyboard */; };
-		393D2B8E1C3AD1A100F1E253 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 393D2B8D1C3AD1A100F1E253 /* theme.json */; };
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
 		394495E31D9A807F003BA702 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DF1D9A807F003BA702 /* UIImage+Resize.m */; };
 		394495E41D9A807F003BA702 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495E11D9A807F003BA702 /* UIImage+RoundedCorner.m */; };
-		394495E81D9A8413003BA702 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 394495E51D9A8413003BA702 /* Quicksand-Bold.otf */; };
-		394495E91D9A8413003BA702 /* Quicksand-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 394495E61D9A8413003BA702 /* Quicksand-Light.otf */; };
-		394495EA1D9A8413003BA702 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 394495E71D9A8413003BA702 /* Quicksand-Regular.otf */; };
 		39450F361D14188900AA4883 /* PDUIInstagramWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */; };
 		394863CC1D54CE190000ABDE /* PDUITwitterLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394863CA1D54CE190000ABDE /* PDUITwitterLoginViewController.m */; };
 		394863CF1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394863CE1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m */; };
 		394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */; };
 		394BEFEC1D17E7150045F5F3 /* PDUserInstagramParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFEB1D17E7150045F5F3 /* PDUserInstagramParams.m */; };
 		394BEFF21D1839C90045F5F3 /* PDUIInstagramShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFF01D1839C90045F5F3 /* PDUIInstagramShareViewController.m */; };
-		3950FEEC1DD4990300D206DD /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 3950FEEB1DD4990300D206DD /* theme.json */; };
-		39537BC71C639B79001C6796 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC61C639B79001C6796 /* main.m */; };
-		39537BCA1C639B79001C6796 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39537BC91C639B79001C6796 /* AppDelegate.m */; };
-		39537BD31C639B79001C6796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD11C639B79001C6796 /* Main.storyboard */; };
-		39537BD51C639B79001C6796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD41C639B79001C6796 /* Assets.xcassets */; };
-		39537BD81C639B79001C6796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39537BD61C639B79001C6796 /* LaunchScreen.storyboard */; };
 		395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
 		395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
 		39602FBF1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39602FBE1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m */; };
@@ -87,17 +47,9 @@
 		3965AF6E1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965AF6C1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m */; };
 		3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */; };
 		396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */; };
-		396B15671C3BC40600FC774D /* PDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396B15661C3BC40600FC774D /* PDViewController.m */; };
-		396B15691C3BC66900FC774D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396B15681C3BC66900FC774D /* Localizable.strings */; };
 		3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */; };
 		397142331D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142311D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m */; };
 		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
-		39735BCC1D23E60E0008301E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39735BCB1D23E60E0008301E /* AppDelegate.swift */; };
-		39735BCE1D23E60E0008301E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39735BCD1D23E60E0008301E /* FirstViewController.swift */; };
-		39735BD01D23E60E0008301E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39735BCF1D23E60E0008301E /* SecondViewController.swift */; };
-		39735BD31D23E60E0008301E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39735BD11D23E60E0008301E /* Main.storyboard */; };
-		39735BD51D23E60E0008301E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39735BD41D23E60E0008301E /* Assets.xcassets */; };
-		39735BD81D23E60E0008301E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39735BD61D23E60E0008301E /* LaunchScreen.storyboard */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
 		397894721D1ABFFE00BCE17E /* PDInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */; };
 		397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894771D1AC04400BCE17E /* PDInstagramAPIService.m */; };
@@ -109,13 +61,11 @@
 		398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
-		398F0B8C1DEC8C6F00098F1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */; };
 		3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */; };
 		3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A27A1E2535760058EA12 /* PDMultiLoginViewModel.m */; };
 		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
 		3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */; };
 		39A6703E1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */; };
-		39A670401D2A6D14001BB6D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39A6703F1D2A6D14001BB6D0 /* Localizable.strings */; };
 		39A7771E1C0756CD004A4E92 /* pduikit_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7770F1C0756CD004A4E92 /* pduikit_camera.png */; };
 		39A7771F1C0756CD004A4E92 /* pduikit_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777101C0756CD004A4E92 /* pduikit_camera@2x.png */; };
 		39A777201C0756CD004A4E92 /* pduikit_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777111C0756CD004A4E92 /* pduikit_camera@3x.png */; };
@@ -144,10 +94,6 @@
 		39ABA6651C4D073D0057088E /* PDUIHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39ABA6641C4D073D0057088E /* PDUIHomeViewModel.m */; };
 		39AF13F61D5487B00097B0F7 /* PDUISettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AF13F41D5487B00097B0F7 /* PDUISettingsViewController.m */; };
 		39AF13FA1D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AF13F81D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m */; };
-		39B42FA31E8BF43B006D3209 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B42F9F1E8BF43B006D3209 /* OpenSans-Bold.ttf */; };
-		39B42FA41E8BF43B006D3209 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B42FA01E8BF43B006D3209 /* OpenSans-Light.ttf */; };
-		39B42FA51E8BF43B006D3209 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B42FA11E8BF43B006D3209 /* OpenSans-Regular.ttf */; };
-		39B42FA61E8BF43B006D3209 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B42FA21E8BF43B006D3209 /* OpenSans-Semibold.ttf */; };
 		39B42FAB1E8BF798006D3209 /* PDUISelectNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B42FA91E8BF798006D3209 /* PDUISelectNetworkViewController.m */; };
 		39B42FB71E8D14F5006D3209 /* PDBackgroundScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B42FB61E8D14F5006D3209 /* PDBackgroundScan.m */; };
 		39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BF5AE01C1ED29E000BF32E /* PDNotificationHandler.m */; };
@@ -190,26 +136,12 @@
 		39D3F8221CB2BDB900A69575 /* PDUIFriendPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F8211CB2BDB900A69575 /* PDUIFriendPickerViewController.m */; };
 		39DACEE41D5347E700DBA1FC /* PDUINoRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DACEE21D5347E700DBA1FC /* PDUINoRewardTableViewCell.m */; };
 		39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDUIRedeemViewController.m */; };
-		39EB990E1C86F78600BB0DD8 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990D1C86F78600BB0DD8 /* theme.json */; };
-		39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39EB990F1C86F7F000BB0DD8 /* Localizable.strings */; };
 		39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDUIClaimViewModel.m */; };
 		39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* PDUINoRewardsTableViewCell.m */; };
-		39EF1A401CBCF4430089821E /* SecondTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1A3F1CBCF4430089821E /* SecondTabViewController.m */; };
 		39F5F6DF1D895282008DE497 /* NSURLSession+Abra.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6DE1D895282008DE497 /* NSURLSession+Abra.m */; };
 		39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E11D89532A008DE497 /* PDAbraClient.m */; };
 		39F5F6E91D89536C008DE497 /* PDAbraAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */; };
 		39F5F6EB1D895387008DE497 /* PDAbraConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6EA1D895387008DE497 /* PDAbraConstants.m */; };
-		39F6A2B61DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2AE1DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf */; };
-		39F6A2B71DC359F200F64C19 /* Gotham-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2AF1DC359F200F64C19 /* Gotham-Rounded-Bold.ttf */; };
-		39F6A2B81DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B01DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf */; };
-		39F6A2B91DC359F200F64C19 /* Gotham-Rounded-Book_.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B11DC359F200F64C19 /* Gotham-Rounded-Book_.ttf */; };
-		39F6A2BA1DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B21DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf */; };
-		39F6A2BB1DC359F200F64C19 /* Gotham-Rounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */; };
-		39F6A2BC1DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */; };
-		39F6A2BD1DC359F200F64C19 /* Gotham-Rounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */; };
-		39F6A2BF1DC35A9C00F64C19 /* Theme.json in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2BE1DC35A9C00F64C19 /* Theme.json */; };
-		39F6A2C21DC3701900F64C19 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2C01DC3701900F64C19 /* Quicksand-Bold.otf */; };
-		39F6A2C31DC3701900F64C19 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6A2C11DC3701900F64C19 /* Quicksand-Regular.otf */; };
 		39FA7B661D6DAF2E00031D5B /* PDLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FA7B651D6DAF2E00031D5B /* PDLogger.m */; };
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
@@ -219,9 +151,6 @@
 		39FDF1E01E926106007AE076 /* PDBGScanResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */; };
 		39FDF1E51E9263EB007AE076 /* PDUIPostScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1E31E9263EB007AE076 /* PDUIPostScanViewController.m */; };
 		39FDF1EA1E95061F007AE076 /* PDUIScanFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1E81E95061F007AE076 /* PDUIScanFailViewController.m */; };
-		8111F3615B8081DFB5225CA5 /* libPods-BrandsSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A737E2DF8D7E47497456E905 /* libPods-BrandsSample.a */; };
-		88F52FC89649ECBB6835A94F /* libPods-NavigationSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */; };
-		A1F9F2CB7133E306166861E9 /* libPods-TestSize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DF0C6380A4739C49CA6D09 /* libPods-TestSize.a */; };
 		A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E61C07369800A43320 /* PDUIRewardTableViewController.m */; };
 		A92281EC1C07369800A43320 /* PDUIRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E81C07369800A43320 /* PDUIRewardTableViewCell.m */; };
 		A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281F01C07465700A43320 /* PDUINavigationController.m */; };
@@ -231,7 +160,6 @@
 		A9582F9C1C05D15600D62456 /* PDLocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FD1C036304001DA473 /* PDLocationStore.m */; };
 		A9582F9D1C05D15800D62456 /* PDBrandStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A90FA4FB1C036304001DA473 /* PDBrandStore.m */; };
 		A9582FA11C05D8DF00D62456 /* PDSocialLoginHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */; };
-		B96ACE9E4DD10CB6C160874F /* libPods-SwiftSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F4E102262B31F7E8D22725 /* libPods-SwiftSample.a */; };
 		BC67F05A5F7252792A093778 /* PDTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F9151C58B38184DC2385 /* PDTheme.m */; };
 		BC67F143C3A9F6940F1DE548 /* PopdeemUIKItCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */; };
 		BC67F1694B13D69FD9AD00E6 /* Brands.json in Resources */ = {isa = PBXBuildFile; fileRef = BC67F6855AC77922041DBC9B /* Brands.json */; };
@@ -292,7 +220,6 @@
 		BC67FF8D2B030DD6410173B2 /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F7563AA957CD78C051E7 /* UserAPIServiceTests.m */; };
 		BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
 		BC67FFAF6CF0555B014F2D5B /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
-		C839CB5674D5EF948BCDA1D7 /* libPods-TabbedTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6480DC9E4C7CAAF921C5FBD /* libPods-TabbedTest.a */; };
 		EE46155708F75BF49EFDEC29 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E27422E6D81757E79B4A62 /* libPods-PopdeemSDK.a */; };
 		FD4C09D0F4D709A497FB1921 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F4ED81B8E7E757DB400C70 /* libPods-PopdeemSDKTests.a */; };
 /* End PBXBuildFile section */
@@ -346,11 +273,9 @@
 /* Begin PBXFileReference section */
 		030E2C57F0BB1E43FE74AA96 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
 		09C617A135AD4E9AD46ADC21 /* Pods-PopdeemSDKCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.debug.xcconfig"; sourceTree = "<group>"; };
-		0D778BABA5A91A8CBAFABD5F /* Pods-TestSize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSize.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestSize/Pods-TestSize.release.xcconfig"; sourceTree = "<group>"; };
 		15F4ED81B8E7E757DB400C70 /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E27422E6D81757E79B4A62 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5D1F8CFFB7CEE791DBD2E4 /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		358618FD295CC1ADC73E1283 /* Pods-TabbedTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.debug.xcconfig"; sourceTree = "<group>"; };
 		390B4FC91DF8607F00E692D4 /* PDBrandTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBrandTheme.h; sourceTree = "<group>"; };
 		390B4FCA1DF8607F00E692D4 /* PDBrandTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBrandTheme.m; sourceTree = "<group>"; };
 		390B4FCC1DF8636900E692D4 /* PDLocationBrandParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLocationBrandParams.h; sourceTree = "<group>"; };
@@ -374,15 +299,6 @@
 		3921E3121C71E1BB000120D4 /* PDUISingleMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISingleMessageViewModel.h; path = MessageCenter/PDUISingleMessageViewModel.h; sourceTree = "<group>"; };
 		3921E3131C71E1BB000120D4 /* PDUISingleMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISingleMessageViewModel.m; path = MessageCenter/PDUISingleMessageViewModel.m; sourceTree = "<group>"; };
 		3922FAA21DC0BDA100501E1D /* BrandsSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrandsSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3922FAA51DC0BDA100501E1D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3922FAA71DC0BDA100501E1D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3922FAA81DC0BDA100501E1D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3922FAAA1DC0BDA100501E1D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3922FAAB1DC0BDA100501E1D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		3922FAAE1DC0BDA100501E1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3922FAB01DC0BDA100501E1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3922FAB31DC0BDA100501E1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3922FAB51DC0BDA100501E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3922FAB91DC0BF4900501E1D /* PDBrandsUIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDBrandsUIHandler.h; path = BrandList/PDBrandsUIHandler.h; sourceTree = "<group>"; };
 		3922FABA1DC0BF4900501E1D /* PDBrandsUIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDBrandsUIHandler.m; path = BrandList/PDBrandsUIHandler.m; sourceTree = "<group>"; };
 		392423741C230F4E0038D953 /* PDUILazyLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUILazyLoader.h; path = Utilities/PDUILazyLoader.h; sourceTree = "<group>"; };
@@ -394,62 +310,23 @@
 		392787161C071BFA00F8DCD9 /* PD_SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PD_SZTextView.h; path = Claim/PD_SZTextView.h; sourceTree = "<group>"; };
 		392787171C071BFA00F8DCD9 /* PD_SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PD_SZTextView.m; path = Claim/PD_SZTextView.m; sourceTree = "<group>"; };
 		392A9D131D36527900F11FDF /* pduikit_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_placeholder.png; path = Resources/pduikit_placeholder.png; sourceTree = "<group>"; };
-		392A9D141D36892700F11FDF /* Harcourt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Harcourt.gpx; sourceTree = "<group>"; };
 		392B559A1DAF9D130012350A /* PDUILogoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUILogoutTableViewCell.h; path = Settings/PDUILogoutTableViewCell.h; sourceTree = "<group>"; };
 		392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUILogoutTableViewCell.m; path = Settings/PDUILogoutTableViewCell.m; sourceTree = "<group>"; };
 		392B559C1DAF9D130012350A /* PDUILogoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUILogoutTableViewCell.xib; path = Settings/PDUILogoutTableViewCell.xib; sourceTree = "<group>"; };
-		3931C4591CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Bold-Italic.ttf"; path = "Fonts/Gotham-Rounded-Bold-Italic.ttf"; sourceTree = "<group>"; };
-		3931C45A1CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Bold.ttf"; path = "Fonts/Gotham-Rounded-Bold.ttf"; sourceTree = "<group>"; };
-		3931C45B1CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Book_.ttf"; path = "Fonts/Gotham-Rounded-Book_.ttf"; sourceTree = "<group>"; };
-		3931C45C1CCE6BA7005F5044 /* Gotham-Rounded-Book-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Book-Italic.ttf"; path = "Fonts/Gotham-Rounded-Book-Italic.ttf"; sourceTree = "<group>"; };
-		3931C45D1CCE6BA7005F5044 /* Gotham-Rounded-Light-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Light-Italic.ttf"; path = "Fonts/Gotham-Rounded-Light-Italic.ttf"; sourceTree = "<group>"; };
-		3931C45E1CCE6BA7005F5044 /* Gotham-Rounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Light.ttf"; path = "Fonts/Gotham-Rounded-Light.ttf"; sourceTree = "<group>"; };
-		3931C45F1CCE6BA7005F5044 /* Gotham-Rounded-Medium-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Medium-Italic.ttf"; path = "Fonts/Gotham-Rounded-Medium-Italic.ttf"; sourceTree = "<group>"; };
-		3931C4601CCE6BA7005F5044 /* Gotham-Rounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Rounded-Medium.ttf"; path = "Fonts/Gotham-Rounded-Medium.ttf"; sourceTree = "<group>"; };
 		393A8C401C591E30001F650C /* PDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessage.h; sourceTree = "<group>"; };
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
 		393A8C431C5923D0001F650C /* PDMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMessageStore.h; path = Core/Store/PDMessageStore.h; sourceTree = "<group>"; };
 		393A8C441C5923D0001F650C /* PDMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMessageStore.m; path = Core/Store/PDMessageStore.m; sourceTree = "<group>"; };
-		393C39D01E85216300315493 /* ThirdTabViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdTabViewControllerTableViewController.h; sourceTree = "<group>"; };
-		393C39D11E85216300315493 /* ThirdTabViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdTabViewControllerTableViewController.m; sourceTree = "<group>"; };
 		393C39D71E852BF700315493 /* TestSize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSize.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		393C39DA1E852BF700315493 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		393C39DC1E852BF700315493 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		393C39DD1E852BF700315493 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		393C39DF1E852BF700315493 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		393C39E01E852BF700315493 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		393C39E21E852BF700315493 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		393C39E31E852BF700315493 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		393C39E61E852BF700315493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		393C39E81E852BF700315493 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		393C39EB1E852BF700315493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		393C39ED1E852BF700315493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393C39F21E852BF700315493 /* TestSizeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSizeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		393C39F61E852BF700315493 /* TestSizeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSizeTests.m; sourceTree = "<group>"; };
-		393C39F81E852BF700315493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393C39FD1E852BF700315493 /* TestSizeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSizeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		393C3A011E852BF700315493 /* TestSizeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSizeUITests.m; sourceTree = "<group>"; };
-		393C3A031E852BF700315493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393D2B761C3AD0D300F1E253 /* NavigationSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		393D2B791C3AD0D300F1E253 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		393D2B7B1C3AD0D300F1E253 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		393D2B7C1C3AD0D300F1E253 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		393D2B7E1C3AD0D300F1E253 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		393D2B7F1C3AD0D300F1E253 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		393D2B821C3AD0D300F1E253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		393D2B841C3AD0D300F1E253 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		393D2B871C3AD0D300F1E253 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		393D2B891C3AD0D300F1E253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		393D2B8D1C3AD1A100F1E253 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
 		394495DC1D9A807F003BA702 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		394495DD1D9A807F003BA702 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		394495DE1D9A807F003BA702 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		394495DF1D9A807F003BA702 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		394495E01D9A807F003BA702 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		394495E11D9A807F003BA702 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
-		394495E51D9A8413003BA702 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
-		394495E61D9A8413003BA702 /* Quicksand-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.otf"; sourceTree = "<group>"; };
-		394495E71D9A8413003BA702 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		39450F331D14188900AA4883 /* PDUIInstagramWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramWebViewController.h; path = Instagram/PDUIInstagramWebViewController.h; sourceTree = "<group>"; };
 		39450F341D14188900AA4883 /* PDUIInstagramWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramWebViewController.m; path = Instagram/PDUIInstagramWebViewController.m; sourceTree = "<group>"; };
 		39450F351D14188900AA4883 /* PDUIInstagramWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIInstagramWebViewController.xib; path = Instagram/PDUIInstagramWebViewController.xib; sourceTree = "<group>"; };
@@ -468,18 +345,9 @@
 		394BEFEF1D1839C90045F5F3 /* PDUIInstagramShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramShareViewController.h; path = Instagram/Share/PDUIInstagramShareViewController.h; sourceTree = "<group>"; };
 		394BEFF01D1839C90045F5F3 /* PDUIInstagramShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramShareViewController.m; path = Instagram/Share/PDUIInstagramShareViewController.m; sourceTree = "<group>"; };
 		395017A81CDA54A600849DF8 /* default_theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default_theme.json; path = Resources/default_theme.json; sourceTree = "<group>"; };
-		3950FEE81DD4986900D206DD /* SwiftSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSample-Bridging-Header.h"; sourceTree = "<group>"; };
-		3950FEEB1DD4990300D206DD /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		39537BC31C639B79001C6796 /* TabbedTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabbedTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		39537BC61C639B79001C6796 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		39537BC81C639B79001C6796 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		39537BC91C639B79001C6796 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		39537BD21C639B79001C6796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		39537BD41C639B79001C6796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		39537BD71C639B79001C6796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		39537BD91C639B79001C6796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentsManager.h; sourceTree = "<group>"; };
 		395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMomentsManager.m; sourceTree = "<group>"; };
 		395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentAPIService.h; sourceTree = "<group>"; };
@@ -523,9 +391,6 @@
 		3966F6A81C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIMsgCntrTblViewController.xib; path = MessageCenter/PDUIMsgCntrTblViewController.xib; sourceTree = "<group>"; };
 		396A9A631CEC9CA100C7EBDD /* PDUIMessageLogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageLogoutCell.h; path = MessageCenter/PDUIMessageLogoutCell.h; sourceTree = "<group>"; };
 		396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageLogoutCell.m; path = MessageCenter/PDUIMessageLogoutCell.m; sourceTree = "<group>"; };
-		396B15651C3BC40600FC774D /* PDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDViewController.h; sourceTree = "<group>"; };
-		396B15661C3BC40600FC774D /* PDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDViewController.m; sourceTree = "<group>"; };
-		396B15681C3BC66900FC774D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		397142271D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIRewardWithRulesTableViewCell.h; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.h; sourceTree = "<group>"; };
 		397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIRewardWithRulesTableViewCell.m; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.m; sourceTree = "<group>"; };
@@ -535,8 +400,6 @@
 		397142321D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIWalletRewardTableViewCell.xib; path = Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib; sourceTree = "<group>"; };
 		39730B271CE23D9A004B37A1 /* PDUIMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageCell.h; path = MessageCenter/PDUIMessageCell.h; sourceTree = "<group>"; };
 		39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageCell.m; path = MessageCenter/PDUIMessageCell.m; sourceTree = "<group>"; };
-		39735ADB1D23C7490008301E /* PopdeemSDKCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopdeemSDKCore.h; sourceTree = "<group>"; };
-		39735ADD1D23C7490008301E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39735AE11D23C7720008301E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		39735AE31D23C7840008301E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		39735AE51D23C7890008301E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -552,13 +415,6 @@
 		39735B961D23D0E10008301E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		39735B971D23D0E10008301E /* STTwitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = STTwitter.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/STTwitter.framework"; sourceTree = "<group>"; };
 		39735BC91D23E60E0008301E /* SwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		39735BCB1D23E60E0008301E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		39735BCD1D23E60E0008301E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		39735BCF1D23E60E0008301E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		39735BD21D23E60E0008301E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		39735BD41D23E60E0008301E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		39735BD71D23E60E0008301E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		39735BD91D23E60E0008301E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
 		397894701D1ABFFE00BCE17E /* PDInstagramAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDInstagramAPIClient.h; path = Instagram/PDInstagramAPIClient.h; sourceTree = "<group>"; };
@@ -585,7 +441,6 @@
 		398E4B781C03744B00A68529 /* PDUISocialLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUISocialLoginViewController.xib; path = Login/PDUISocialLoginViewController.xib; sourceTree = "<group>"; };
 		398E4B7A1C03766500A68529 /* PDUISocialLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialLoginViewModel.h; path = Login/PDUISocialLoginViewModel.h; sourceTree = "<group>"; };
 		398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISocialLoginViewModel.m; path = Login/PDUISocialLoginViewModel.m; sourceTree = "<group>"; };
-		398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3992A2751E25355A0058EA12 /* PDMultiLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMultiLoginViewController.h; path = Login/MultiLogin/PDMultiLoginViewController.h; sourceTree = "<group>"; };
 		3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMultiLoginViewController.m; path = Login/MultiLogin/PDMultiLoginViewController.m; sourceTree = "<group>"; };
 		3992A2771E25355A0058EA12 /* PDMultiLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDMultiLoginViewController.xib; path = Login/MultiLogin/PDMultiLoginViewController.xib; sourceTree = "<group>"; };
@@ -597,7 +452,6 @@
 		3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MessageButtonFactory.m"; sourceTree = "<group>"; };
 		39A6703C1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramLoginViewModel.h; path = Instagram/Login/PDUIInstagramLoginViewModel.h; sourceTree = "<group>"; };
 		39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramLoginViewModel.m; path = Instagram/Login/PDUIInstagramLoginViewModel.m; sourceTree = "<group>"; };
-		39A6703F1D2A6D14001BB6D0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		39A772DB1BECB941007ED334 /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDKTests.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDKTests.a"; sourceTree = "<group>"; };
 		39A7770F1C0756CD004A4E92 /* pduikit_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_camera.png; path = Resources/pduikit_camera.png; sourceTree = "<group>"; };
@@ -640,10 +494,6 @@
 		39AF13F71D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialSettingsTableViewCell.h; path = Settings/PDUISocialSettingsTableViewCell.h; sourceTree = "<group>"; };
 		39AF13F81D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISocialSettingsTableViewCell.m; path = Settings/PDUISocialSettingsTableViewCell.m; sourceTree = "<group>"; };
 		39AF13F91D54881B0097B0F7 /* PDUISocialSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUISocialSettingsTableViewCell.xib; path = Settings/PDUISocialSettingsTableViewCell.xib; sourceTree = "<group>"; };
-		39B42F9F1E8BF43B006D3209 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "Fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		39B42FA01E8BF43B006D3209 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "Fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		39B42FA11E8BF43B006D3209 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		39B42FA21E8BF43B006D3209 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "Fonts/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		39B42FA81E8BF798006D3209 /* PDUISelectNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISelectNetworkViewController.h; path = "Claim/Select Network/PDUISelectNetworkViewController.h"; sourceTree = "<group>"; };
 		39B42FA91E8BF798006D3209 /* PDUISelectNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISelectNetworkViewController.m; path = "Claim/Select Network/PDUISelectNetworkViewController.m"; sourceTree = "<group>"; };
 		39B42FAA1E8BF798006D3209 /* PDUISelectNetworkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUISelectNetworkViewController.xib; path = "Claim/Select Network/PDUISelectNetworkViewController.xib"; sourceTree = "<group>"; };
@@ -777,22 +627,15 @@
 		39E35DCD1C8F263D00AA0BCD /* pduikit_cancelbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pduikit_cancelbutton.png; sourceTree = "<group>"; };
 		39E35DCE1C8F263D00AA0BCD /* pduikit_cancelbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pduikit_cancelbutton@2x.png"; sourceTree = "<group>"; };
 		39E35DCF1C8F263D00AA0BCD /* pduikit_cancelbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pduikit_cancelbutton@3x.png"; sourceTree = "<group>"; };
-		39EB99011C84B75E00BB0DD8 /* libPopdeemSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libPopdeemSDK.h; sourceTree = "<group>"; };
-		39EB99031C84B75E00BB0DD8 /* libPopdeemSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libPopdeemSDK.m; sourceTree = "<group>"; };
 		39EB99081C85DA4600BB0DD8 /* PDUIRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIRedeemViewController.h; sourceTree = "<group>"; };
 		39EB99091C85DA4600BB0DD8 /* PDUIRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIRedeemViewController.m; sourceTree = "<group>"; };
 		39EB990C1C85E46D00BB0DD8 /* PDUIRedeemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDUIRedeemViewController.xib; sourceTree = "<group>"; };
-		39EB990D1C86F78600BB0DD8 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
-		39EB990F1C86F7F000BB0DD8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		39ED88EA1D8AF552002305AA /* TabbedTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TabbedTest.entitlements; sourceTree = "<group>"; };
 		39EDADBD1C072851001102B3 /* PDUIClaimViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIClaimViewModel.h; path = Claim/PDUIClaimViewModel.h; sourceTree = "<group>"; };
 		39EDADBE1C072851001102B3 /* PDUIClaimViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimViewModel.m; path = Claim/PDUIClaimViewModel.m; sourceTree = "<group>"; };
 		39EDADC01C07333F001102B3 /* PDUINoRewardsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUINoRewardsTableViewCell.h; sourceTree = "<group>"; };
 		39EDADC11C07333F001102B3 /* PDUINoRewardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUINoRewardsTableViewCell.m; sourceTree = "<group>"; };
 		39EDADC41C07333F001102B3 /* PDUIRewardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIRewardTableViewController.h; sourceTree = "<group>"; };
 		39EDADC51C07333F001102B3 /* PDUIRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIRewardTableViewController.m; sourceTree = "<group>"; };
-		39EF1A3E1CBCF4430089821E /* SecondTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTabViewController.h; sourceTree = "<group>"; };
-		39EF1A3F1CBCF4430089821E /* SecondTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTabViewController.m; sourceTree = "<group>"; };
 		39F5F6DD1D895282008DE497 /* NSURLSession+Abra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+Abra.h"; path = "Abra/NSURLSession+Abra.h"; sourceTree = "<group>"; };
 		39F5F6DE1D895282008DE497 /* NSURLSession+Abra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+Abra.m"; path = "Abra/NSURLSession+Abra.m"; sourceTree = "<group>"; };
 		39F5F6E01D89532A008DE497 /* PDAbraClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDAbraClient.h; path = Abra/PDAbraClient.h; sourceTree = "<group>"; };
@@ -801,17 +644,6 @@
 		39F5F6E71D89536C008DE497 /* PDAbraAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDAbraAPIService.h; path = Abra/PDAbraAPIService.h; sourceTree = "<group>"; };
 		39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDAbraAPIService.m; path = Abra/PDAbraAPIService.m; sourceTree = "<group>"; };
 		39F5F6EA1D895387008DE497 /* PDAbraConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDAbraConstants.m; path = Abra/PDAbraConstants.m; sourceTree = "<group>"; };
-		39F6A2AE1DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Bold-Italic.ttf"; sourceTree = "<group>"; };
-		39F6A2AF1DC359F200F64C19 /* Gotham-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Bold.ttf"; sourceTree = "<group>"; };
-		39F6A2B01DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Book-Italic.ttf"; sourceTree = "<group>"; };
-		39F6A2B11DC359F200F64C19 /* Gotham-Rounded-Book_.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Book_.ttf"; sourceTree = "<group>"; };
-		39F6A2B21DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Light-Italic.ttf"; sourceTree = "<group>"; };
-		39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Light.ttf"; sourceTree = "<group>"; };
-		39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Medium-Italic.ttf"; sourceTree = "<group>"; };
-		39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Medium.ttf"; sourceTree = "<group>"; };
-		39F6A2BE1DC35A9C00F64C19 /* Theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Theme.json; sourceTree = "<group>"; };
-		39F6A2C01DC3701900F64C19 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
-		39F6A2C11DC3701900F64C19 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		39FA7B641D6DAF2E00031D5B /* PDLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLogger.h; sourceTree = "<group>"; };
 		39FA7B651D6DAF2E00031D5B /* PDLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLogger.m; sourceTree = "<group>"; };
 		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
@@ -835,12 +667,7 @@
 		39FDF1E71E95061F007AE076 /* PDUIScanFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIScanFailViewController.h; path = "Claim/Post Scan Failure/PDUIScanFailViewController.h"; sourceTree = "<group>"; };
 		39FDF1E81E95061F007AE076 /* PDUIScanFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIScanFailViewController.m; path = "Claim/Post Scan Failure/PDUIScanFailViewController.m"; sourceTree = "<group>"; };
 		39FDF1E91E95061F007AE076 /* PDUIScanFailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIScanFailViewController.xib; path = "Claim/Post Scan Failure/PDUIScanFailViewController.xib"; sourceTree = "<group>"; };
-		45F90F542DAEED98D1BA0AE8 /* Pods-NavigationSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample.debug.xcconfig"; sourceTree = "<group>"; };
-		466C6E196147881D2B02BA0B /* Pods-TabbedTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabbedTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest.release.xcconfig"; sourceTree = "<group>"; };
 		51A8D384AE4508E261030AD1 /* Pods-PopdeemSDKCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.release.xcconfig"; sourceTree = "<group>"; };
-		524864261E95CB1A01E7DCAC /* Pods-SwiftSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSample/Pods-SwiftSample.release.xcconfig"; sourceTree = "<group>"; };
-		59E2576634FEBE9B041432E6 /* Pods-BrandsSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrandsSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrandsSample/Pods-BrandsSample.debug.xcconfig"; sourceTree = "<group>"; };
-		7D4DD4D1DD84E3D440EDD90B /* Pods-BrandsSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrandsSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrandsSample/Pods-BrandsSample.release.xcconfig"; sourceTree = "<group>"; };
 		9FE1755911810215CDAC287E /* libPods-PopdeemSDKCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigationSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A737E2DF8D7E47497456E905 /* libPods-BrandsSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrandsSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -969,11 +796,8 @@
 		BC67FFB094C0C5B47033A565 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
 		BC67FFE3DB5E8203430170C6 /* PDFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeeds.m; sourceTree = "<group>"; };
 		C6480DC9E4C7CAAF921C5FBD /* libPods-TabbedTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TabbedTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA573E87BA54908BCA493250 /* Pods-SwiftSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftSample/Pods-SwiftSample.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F4E102262B31F7E8D22725 /* libPods-SwiftSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwiftSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3167F0F1F2AC80AB22D3C19 /* Pods-NavigationSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample.release.xcconfig"; sourceTree = "<group>"; };
 		F32DC6C7367756EB4D6D92DE /* Pods-PopdeemSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.release.xcconfig"; sourceTree = "<group>"; };
-		F9FE9C27350D0CA934242777 /* Pods-TestSize.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSize.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestSize/Pods-TestSize.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -981,7 +805,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8111F3615B8081DFB5225CA5 /* libPods-BrandsSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,7 +812,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1F9F2CB7133E306166861E9 /* libPods-TestSize.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,7 +833,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88F52FC89649ECBB6835A94F /* libPods-NavigationSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,7 +840,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C839CB5674D5EF948BCDA1D7 /* libPods-TabbedTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,7 +847,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B96ACE9E4DD10CB6C160874F /* libPods-SwiftSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,32 +911,6 @@
 			name = SingleMessage;
 			sourceTree = "<group>";
 		};
-		3922FAA31DC0BDA100501E1D /* BrandsSample */ = {
-			isa = PBXGroup;
-			children = (
-				39F6A2AD1DC359F200F64C19 /* Fonts */,
-				3922FAA71DC0BDA100501E1D /* AppDelegate.h */,
-				3922FAA81DC0BDA100501E1D /* AppDelegate.m */,
-				39F6A2BE1DC35A9C00F64C19 /* Theme.json */,
-				3922FAAA1DC0BDA100501E1D /* ViewController.h */,
-				3922FAAB1DC0BDA100501E1D /* ViewController.m */,
-				3922FAAD1DC0BDA100501E1D /* Main.storyboard */,
-				3922FAB01DC0BDA100501E1D /* Assets.xcassets */,
-				3922FAB21DC0BDA100501E1D /* LaunchScreen.storyboard */,
-				3922FAB51DC0BDA100501E1D /* Info.plist */,
-				3922FAA41DC0BDA100501E1D /* Supporting Files */,
-			);
-			path = BrandsSample;
-			sourceTree = "<group>";
-		};
-		3922FAA41DC0BDA100501E1D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3922FAA51DC0BDA100501E1D /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		392787111C0715DD00F8DCD9 /* Claim */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,100 +927,6 @@
 				392787171C071BFA00F8DCD9 /* PD_SZTextView.m */,
 			);
 			name = Claim;
-			sourceTree = "<group>";
-		};
-		3931C4481CCE68A6005F5044 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				394495E51D9A8413003BA702 /* Quicksand-Bold.otf */,
-				394495E61D9A8413003BA702 /* Quicksand-Light.otf */,
-				394495E71D9A8413003BA702 /* Quicksand-Regular.otf */,
-				3931C4591CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf */,
-				3931C45A1CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf */,
-				3931C45B1CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf */,
-				3931C45C1CCE6BA7005F5044 /* Gotham-Rounded-Book-Italic.ttf */,
-				3931C45D1CCE6BA7005F5044 /* Gotham-Rounded-Light-Italic.ttf */,
-				3931C45E1CCE6BA7005F5044 /* Gotham-Rounded-Light.ttf */,
-				3931C45F1CCE6BA7005F5044 /* Gotham-Rounded-Medium-Italic.ttf */,
-				3931C4601CCE6BA7005F5044 /* Gotham-Rounded-Medium.ttf */,
-				39B42F9F1E8BF43B006D3209 /* OpenSans-Bold.ttf */,
-				39B42FA01E8BF43B006D3209 /* OpenSans-Light.ttf */,
-				39B42FA11E8BF43B006D3209 /* OpenSans-Regular.ttf */,
-				39B42FA21E8BF43B006D3209 /* OpenSans-Semibold.ttf */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
-		393C39D81E852BF700315493 /* TestSize */ = {
-			isa = PBXGroup;
-			children = (
-				393C39DC1E852BF700315493 /* AppDelegate.h */,
-				393C39DD1E852BF700315493 /* AppDelegate.m */,
-				393C39DF1E852BF700315493 /* FirstViewController.h */,
-				393C39E01E852BF700315493 /* FirstViewController.m */,
-				393C39E21E852BF700315493 /* SecondViewController.h */,
-				393C39E31E852BF700315493 /* SecondViewController.m */,
-				393C39E51E852BF700315493 /* Main.storyboard */,
-				393C39E81E852BF700315493 /* Assets.xcassets */,
-				393C39EA1E852BF700315493 /* LaunchScreen.storyboard */,
-				393C39ED1E852BF700315493 /* Info.plist */,
-				393C39D91E852BF700315493 /* Supporting Files */,
-			);
-			path = TestSize;
-			sourceTree = "<group>";
-		};
-		393C39D91E852BF700315493 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				393C39DA1E852BF700315493 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		393C39F51E852BF700315493 /* TestSizeTests */ = {
-			isa = PBXGroup;
-			children = (
-				393C39F61E852BF700315493 /* TestSizeTests.m */,
-				393C39F81E852BF700315493 /* Info.plist */,
-			);
-			path = TestSizeTests;
-			sourceTree = "<group>";
-		};
-		393C3A001E852BF700315493 /* TestSizeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				393C3A011E852BF700315493 /* TestSizeUITests.m */,
-				393C3A031E852BF700315493 /* Info.plist */,
-			);
-			path = TestSizeUITests;
-			sourceTree = "<group>";
-		};
-		393D2B771C3AD0D300F1E253 /* NavigationSample */ = {
-			isa = PBXGroup;
-			children = (
-				393D2B7B1C3AD0D300F1E253 /* AppDelegate.h */,
-				393D2B7C1C3AD0D300F1E253 /* AppDelegate.m */,
-				393D2B7E1C3AD0D300F1E253 /* ViewController.h */,
-				393D2B7F1C3AD0D300F1E253 /* ViewController.m */,
-				396B15651C3BC40600FC774D /* PDViewController.h */,
-				396B15661C3BC40600FC774D /* PDViewController.m */,
-				393D2B811C3AD0D300F1E253 /* Main.storyboard */,
-				393D2B841C3AD0D300F1E253 /* Assets.xcassets */,
-				393D2B861C3AD0D300F1E253 /* LaunchScreen.storyboard */,
-				393D2B891C3AD0D300F1E253 /* Info.plist */,
-				393D2B781C3AD0D300F1E253 /* Supporting Files */,
-				393D2B8D1C3AD1A100F1E253 /* theme.json */,
-				396B15681C3BC66900FC774D /* Localizable.strings */,
-			);
-			path = NavigationSample;
-			sourceTree = "<group>";
-		};
-		393D2B781C3AD0D300F1E253 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				393D2B791C3AD0D300F1E253 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		394863C71D54CDD70000ABDE /* Twitter */ = {
@@ -1283,37 +982,6 @@
 				39450F351D14188900AA4883 /* PDUIInstagramWebViewController.xib */,
 			);
 			name = Login;
-			sourceTree = "<group>";
-		};
-		39537BC41C639B79001C6796 /* TabbedTest */ = {
-			isa = PBXGroup;
-			children = (
-				398F0B8B1DEC8C6F00098F1E /* GoogleService-Info.plist */,
-				39ED88EA1D8AF552002305AA /* TabbedTest.entitlements */,
-				3931C4481CCE68A6005F5044 /* Fonts */,
-				39537BC81C639B79001C6796 /* AppDelegate.h */,
-				39537BC91C639B79001C6796 /* AppDelegate.m */,
-				39537BD11C639B79001C6796 /* Main.storyboard */,
-				39537BD41C639B79001C6796 /* Assets.xcassets */,
-				39537BD61C639B79001C6796 /* LaunchScreen.storyboard */,
-				39537BD91C639B79001C6796 /* Info.plist */,
-				39537BC51C639B79001C6796 /* Supporting Files */,
-				39EB990D1C86F78600BB0DD8 /* theme.json */,
-				39EB990F1C86F7F000BB0DD8 /* Localizable.strings */,
-				39EF1A3E1CBCF4430089821E /* SecondTabViewController.h */,
-				39EF1A3F1CBCF4430089821E /* SecondTabViewController.m */,
-				393C39D01E85216300315493 /* ThirdTabViewControllerTableViewController.h */,
-				393C39D11E85216300315493 /* ThirdTabViewControllerTableViewController.m */,
-			);
-			path = TabbedTest;
-			sourceTree = "<group>";
-		};
-		39537BC51C639B79001C6796 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				39537BC61C639B79001C6796 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		396443F41D12B6A600BB67F9 /* Instagram */ = {
@@ -1409,32 +1077,6 @@
 				3965AF6D1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.xib */,
 			);
 			name = Wallet;
-			sourceTree = "<group>";
-		};
-		39735ADA1D23C7490008301E /* PopdeemSDKCore */ = {
-			isa = PBXGroup;
-			children = (
-				39735ADB1D23C7490008301E /* PopdeemSDKCore.h */,
-				39735ADD1D23C7490008301E /* Info.plist */,
-			);
-			path = PopdeemSDKCore;
-			sourceTree = "<group>";
-		};
-		39735BCA1D23E60E0008301E /* SwiftSample */ = {
-			isa = PBXGroup;
-			children = (
-				39735BCB1D23E60E0008301E /* AppDelegate.swift */,
-				3950FEEB1DD4990300D206DD /* theme.json */,
-				39735BCD1D23E60E0008301E /* FirstViewController.swift */,
-				39735BCF1D23E60E0008301E /* SecondViewController.swift */,
-				39735BD11D23E60E0008301E /* Main.storyboard */,
-				39735BD41D23E60E0008301E /* Assets.xcassets */,
-				39735BD61D23E60E0008301E /* LaunchScreen.storyboard */,
-				39735BD91D23E60E0008301E /* Info.plist */,
-				39A6703F1D2A6D14001BB6D0 /* Localizable.strings */,
-				3950FEE81DD4986900D206DD /* SwiftSample-Bridging-Header.h */,
-			);
-			path = SwiftSample;
 			sourceTree = "<group>";
 		};
 		3973616E1D26AA370008301E /* Data */ = {
@@ -1736,20 +1378,10 @@
 			isa = PBXGroup;
 			children = (
 				39C1E0A91E320B6200D413C7 /* fastlane */,
-				392A9D141D36892700F11FDF /* Harcourt.gpx */,
 				A90FA4F91C0361F5001DA473 /* Podfile */,
 				A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */,
 				39D7D0671B8F0DCF00E45D0B /* PopdeemSDK */,
 				39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */,
-				393D2B771C3AD0D300F1E253 /* NavigationSample */,
-				3922FAA31DC0BDA100501E1D /* BrandsSample */,
-				39537BC41C639B79001C6796 /* TabbedTest */,
-				39EB99001C84B75E00BB0DD8 /* libPopdeemSDK */,
-				39735ADA1D23C7490008301E /* PopdeemSDKCore */,
-				39735BCA1D23E60E0008301E /* SwiftSample */,
-				393C39D81E852BF700315493 /* TestSize */,
-				393C39F51E852BF700315493 /* TestSizeTests */,
-				393C3A001E852BF700315493 /* TestSizeUITests */,
 				39D7D0661B8F0DCF00E45D0B /* Products */,
 				4EF69A0328B0579398DD2DED /* Frameworks */,
 				48B1EA15DD3FC0CD7A96452B /* Pods */,
@@ -1813,15 +1445,6 @@
 			name = "No Rewards";
 			sourceTree = "<group>";
 		};
-		39EB99001C84B75E00BB0DD8 /* libPopdeemSDK */ = {
-			isa = PBXGroup;
-			children = (
-				39EB99011C84B75E00BB0DD8 /* libPopdeemSDK.h */,
-				39EB99031C84B75E00BB0DD8 /* libPopdeemSDK.m */,
-			);
-			path = libPopdeemSDK;
-			sourceTree = "<group>";
-		};
 		39F5F6DC1D89523E008DE497 /* Abra */ = {
 			isa = PBXGroup;
 			children = (
@@ -1835,23 +1458,6 @@
 				39F5F6EA1D895387008DE497 /* PDAbraConstants.m */,
 			);
 			name = Abra;
-			sourceTree = "<group>";
-		};
-		39F6A2AD1DC359F200F64C19 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				39F6A2C01DC3701900F64C19 /* Quicksand-Bold.otf */,
-				39F6A2C11DC3701900F64C19 /* Quicksand-Regular.otf */,
-				39F6A2AE1DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf */,
-				39F6A2AF1DC359F200F64C19 /* Gotham-Rounded-Bold.ttf */,
-				39F6A2B01DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf */,
-				39F6A2B11DC359F200F64C19 /* Gotham-Rounded-Book_.ttf */,
-				39F6A2B21DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf */,
-				39F6A2B31DC359F200F64C19 /* Gotham-Rounded-Light.ttf */,
-				39F6A2B41DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf */,
-				39F6A2B51DC359F200F64C19 /* Gotham-Rounded-Medium.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		39FD1C151C046DA100CC3B0C /* Resources */ = {
@@ -2005,22 +1611,12 @@
 		48B1EA15DD3FC0CD7A96452B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				59E2576634FEBE9B041432E6 /* Pods-BrandsSample.debug.xcconfig */,
-				7D4DD4D1DD84E3D440EDD90B /* Pods-BrandsSample.release.xcconfig */,
-				45F90F542DAEED98D1BA0AE8 /* Pods-NavigationSample.debug.xcconfig */,
-				F3167F0F1F2AC80AB22D3C19 /* Pods-NavigationSample.release.xcconfig */,
 				2D5D1F8CFFB7CEE791DBD2E4 /* Pods-PopdeemSDK.debug.xcconfig */,
 				030E2C57F0BB1E43FE74AA96 /* Pods-PopdeemSDK.release.xcconfig */,
 				09C617A135AD4E9AD46ADC21 /* Pods-PopdeemSDKCore.debug.xcconfig */,
 				51A8D384AE4508E261030AD1 /* Pods-PopdeemSDKCore.release.xcconfig */,
 				A9C52977BCDFEE7AB508D258 /* Pods-PopdeemSDKTests.debug.xcconfig */,
 				F32DC6C7367756EB4D6D92DE /* Pods-PopdeemSDKTests.release.xcconfig */,
-				DA573E87BA54908BCA493250 /* Pods-SwiftSample.debug.xcconfig */,
-				524864261E95CB1A01E7DCAC /* Pods-SwiftSample.release.xcconfig */,
-				358618FD295CC1ADC73E1283 /* Pods-TabbedTest.debug.xcconfig */,
-				466C6E196147881D2B02BA0B /* Pods-TabbedTest.release.xcconfig */,
-				F9FE9C27350D0CA934242777 /* Pods-TestSize.debug.xcconfig */,
-				0D778BABA5A91A8CBAFABD5F /* Pods-TestSize.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2376,12 +1972,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3922FAB81DC0BDA100501E1D /* Build configuration list for PBXNativeTarget "BrandsSample" */;
 			buildPhases = (
-				E1F12C3D8534E74986E1C891 /* [CP] Check Pods Manifest.lock */,
 				3922FA9E1DC0BDA100501E1D /* Sources */,
 				3922FA9F1DC0BDA100501E1D /* Frameworks */,
 				3922FAA01DC0BDA100501E1D /* Resources */,
-				58175935DBB34F85147A0364 /* [CP] Embed Pods Frameworks */,
-				9AB1EBD16F7D737133D0F421 /* [CP] Copy Pods Resources */,
 				39A78A601F6003A4003B1D9A /* Run Script */,
 			);
 			buildRules = (
@@ -2397,12 +1990,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 393C3A041E852BF700315493 /* Build configuration list for PBXNativeTarget "TestSize" */;
 			buildPhases = (
-				FDBECA09D79B9A3481F04535 /* [CP] Check Pods Manifest.lock */,
 				393C39D31E852BF700315493 /* Sources */,
 				393C39D41E852BF700315493 /* Frameworks */,
 				393C39D51E852BF700315493 /* Resources */,
-				51CE044E3C25BC24060B30C4 /* [CP] Embed Pods Frameworks */,
-				32C0182166AD620B7E2EAF92 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2453,12 +2043,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 393D2B8C1C3AD0D300F1E253 /* Build configuration list for PBXNativeTarget "NavigationSample" */;
 			buildPhases = (
-				28B01EC141B6496CF99497F9 /* [CP] Check Pods Manifest.lock */,
 				393D2B721C3AD0D200F1E253 /* Sources */,
 				393D2B731C3AD0D300F1E253 /* Frameworks */,
 				393D2B741C3AD0D300F1E253 /* Resources */,
-				74B3A109DC8DC6D3BB6B8928 /* [CP] Embed Pods Frameworks */,
-				12CD2D317E8A6872E51FE901 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2473,14 +2060,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39537BDC1C639B79001C6796 /* Build configuration list for PBXNativeTarget "TabbedTest" */;
 			buildPhases = (
-				BEB6869DE1E5B3FADBA9A02B /* [CP] Check Pods Manifest.lock */,
 				39537BBF1C639B79001C6796 /* Sources */,
 				39537BC01C639B79001C6796 /* Frameworks */,
 				39537BC11C639B79001C6796 /* Resources */,
 				39BB0DE01C89E20B008FCB8C /* Build Bump */,
 				397892731D1AA89E00BCE17E /* Embed Frameworks */,
-				48BE60A8A1D572F1A6255295 /* [CP] Embed Pods Frameworks */,
-				BA6DE76A222DF9FF44124949 /* [CP] Copy Pods Resources */,
 				399D9DF21F7BA1F8009CA958 /* Run Script */,
 			);
 			buildRules = (
@@ -2496,12 +2080,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39735BDA1D23E60E0008301E /* Build configuration list for PBXNativeTarget "SwiftSample" */;
 			buildPhases = (
-				E977C85D79E9C58BCAC5E367 /* [CP] Check Pods Manifest.lock */,
 				39735BC51D23E60E0008301E /* Sources */,
 				39735BC61D23E60E0008301E /* Frameworks */,
 				39735BC71D23E60E0008301E /* Resources */,
-				50F4CC5D14E1C2EC306DD505 /* [CP] Embed Pods Frameworks */,
-				B7F92BF065CFF21116D4FEBF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2648,20 +2229,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39F6A2BD1DC359F200F64C19 /* Gotham-Rounded-Medium.ttf in Resources */,
-				3922FAB41DC0BDA100501E1D /* LaunchScreen.storyboard in Resources */,
-				39F6A2BA1DC359F200F64C19 /* Gotham-Rounded-Light-Italic.ttf in Resources */,
-				39F6A2BC1DC359F200F64C19 /* Gotham-Rounded-Medium-Italic.ttf in Resources */,
-				39F6A2C31DC3701900F64C19 /* Quicksand-Regular.otf in Resources */,
-				39F6A2B61DC359F200F64C19 /* Gotham-Rounded-Bold-Italic.ttf in Resources */,
-				39F6A2BB1DC359F200F64C19 /* Gotham-Rounded-Light.ttf in Resources */,
-				3922FAB11DC0BDA100501E1D /* Assets.xcassets in Resources */,
-				3922FAAF1DC0BDA100501E1D /* Main.storyboard in Resources */,
-				39F6A2B91DC359F200F64C19 /* Gotham-Rounded-Book_.ttf in Resources */,
-				39F6A2C21DC3701900F64C19 /* Quicksand-Bold.otf in Resources */,
-				39F6A2BF1DC35A9C00F64C19 /* Theme.json in Resources */,
-				39F6A2B71DC359F200F64C19 /* Gotham-Rounded-Bold.ttf in Resources */,
-				39F6A2B81DC359F200F64C19 /* Gotham-Rounded-Book-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2669,9 +2236,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				393C39EC1E852BF700315493 /* LaunchScreen.storyboard in Resources */,
-				393C39E91E852BF700315493 /* Assets.xcassets in Resources */,
-				393C39E71E852BF700315493 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2693,11 +2257,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396B15691C3BC66900FC774D /* Localizable.strings in Resources */,
-				393D2B881C3AD0D300F1E253 /* LaunchScreen.storyboard in Resources */,
-				393D2B8E1C3AD1A100F1E253 /* theme.json in Resources */,
-				393D2B851C3AD0D300F1E253 /* Assets.xcassets in Resources */,
-				393D2B831C3AD0D300F1E253 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2705,27 +2264,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3931C4621CCE6BA7005F5044 /* Gotham-Rounded-Bold.ttf in Resources */,
-				3931C4681CCE6BA7005F5044 /* Gotham-Rounded-Medium.ttf in Resources */,
-				394495E81D9A8413003BA702 /* Quicksand-Bold.otf in Resources */,
-				39B42FA41E8BF43B006D3209 /* OpenSans-Light.ttf in Resources */,
-				3931C4651CCE6BA7005F5044 /* Gotham-Rounded-Light-Italic.ttf in Resources */,
-				3931C4671CCE6BA7005F5044 /* Gotham-Rounded-Medium-Italic.ttf in Resources */,
-				3931C4631CCE6BA7005F5044 /* Gotham-Rounded-Book_.ttf in Resources */,
-				39EB99101C86F7F000BB0DD8 /* Localizable.strings in Resources */,
-				3931C4611CCE6BA7005F5044 /* Gotham-Rounded-Bold-Italic.ttf in Resources */,
-				3931C4661CCE6BA7005F5044 /* Gotham-Rounded-Light.ttf in Resources */,
-				39B42FA51E8BF43B006D3209 /* OpenSans-Regular.ttf in Resources */,
-				394495E91D9A8413003BA702 /* Quicksand-Light.otf in Resources */,
-				39B42FA61E8BF43B006D3209 /* OpenSans-Semibold.ttf in Resources */,
-				39537BD81C639B79001C6796 /* LaunchScreen.storyboard in Resources */,
-				3931C4641CCE6BA7005F5044 /* Gotham-Rounded-Book-Italic.ttf in Resources */,
-				398F0B8C1DEC8C6F00098F1E /* GoogleService-Info.plist in Resources */,
-				39EB990E1C86F78600BB0DD8 /* theme.json in Resources */,
-				39B42FA31E8BF43B006D3209 /* OpenSans-Bold.ttf in Resources */,
-				39537BD51C639B79001C6796 /* Assets.xcassets in Resources */,
-				394495EA1D9A8413003BA702 /* Quicksand-Regular.otf in Resources */,
-				39537BD31C639B79001C6796 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2733,11 +2271,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3950FEEC1DD4990300D206DD /* theme.json in Resources */,
-				39735BD81D23E60E0008301E /* LaunchScreen.storyboard in Resources */,
-				39A670401D2A6D14001BB6D0 /* Localizable.strings in Resources */,
-				39735BD51D23E60E0008301E /* Assets.xcassets in Resources */,
-				39735BD31D23E60E0008301E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2780,168 +2313,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12CD2D317E8A6872E51FE901 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mailCircle.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail_blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_search.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tagGoButton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x_icon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default_theme.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_brand_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_user.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep1.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep2.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandPlaceHolderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandsListTableViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/PDUIClaimViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan Failure/PDUIScanFailViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan/PDUIPostScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Scan/PDUIScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Select Network/PDUISelectNetworkViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Friend Picker/PDUIFriendPickerViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/PDUIHomeViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Instagram/PDUIInstagramWebViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/MultiLogin/PDMultiLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/PDUISocialLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMessageCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMsgCntrTblViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUISingleMessageViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Placeholder/PlaceholderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Reward/PDUIRedeemViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUILogoutTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISocialSettingsTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Twitter/Login/PDUITwitterLoginViewController.xib",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2480412D7BAB09C119A97954 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2958,186 +2329,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		28B01EC141B6496CF99497F9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NavigationSample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		32C0182166AD620B7E2EAF92 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestSize/Pods-TestSize-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mailCircle.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail_blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_search.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tagGoButton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x_icon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default_theme.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_brand_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_user.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep1.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep2.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandPlaceHolderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandsListTableViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/PDUIClaimViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan Failure/PDUIScanFailViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan/PDUIPostScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Scan/PDUIScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Select Network/PDUISelectNetworkViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Friend Picker/PDUIFriendPickerViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/PDUIHomeViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Instagram/PDUIInstagramWebViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/MultiLogin/PDMultiLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/PDUISocialLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMessageCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMsgCntrTblViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUISingleMessageViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Placeholder/PlaceholderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Reward/PDUIRedeemViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUILogoutTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISocialSettingsTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Twitter/Login/PDUITwitterLoginViewController.xib",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestSize/Pods-TestSize-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		399D9DF21F7BA1F8009CA958 /* Run Script */ = {
@@ -3182,81 +2373,6 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
-		48BE60A8A1D572F1A6255295 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		50F4CC5D14E1C2EC306DD505 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSample/Pods-SwiftSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		51CE044E3C25BC24060B30C4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestSize/Pods-TestSize-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		58175935DBB34F85147A0364 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrandsSample/Pods-BrandsSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		74B3A109DC8DC6D3BB6B8928 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigationSample/Pods-NavigationSample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		85412172AB2BA3FA899B41EC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3275,168 +2391,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9AB1EBD16F7D737133D0F421 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BrandsSample/Pods-BrandsSample-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mailCircle.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail_blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_search.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tagGoButton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x_icon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default_theme.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_brand_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_user.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep1.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep2.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandPlaceHolderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandsListTableViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/PDUIClaimViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan Failure/PDUIScanFailViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan/PDUIPostScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Scan/PDUIScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Select Network/PDUISelectNetworkViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Friend Picker/PDUIFriendPickerViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/PDUIHomeViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Instagram/PDUIInstagramWebViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/MultiLogin/PDMultiLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/PDUISocialLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMessageCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMsgCntrTblViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUISingleMessageViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Placeholder/PlaceholderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Reward/PDUIRedeemViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUILogoutTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISocialSettingsTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Twitter/Login/PDUITwitterLoginViewController.xib",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrandsSample/Pods-BrandsSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B479D08B2FE6EAF37B562F05 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3449,348 +2403,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-PopdeemSDKTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7F92BF065CFF21116D4FEBF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSample/Pods-SwiftSample-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mailCircle.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail_blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_search.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tagGoButton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x_icon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default_theme.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_brand_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_user.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep1.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep2.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandPlaceHolderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandsListTableViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/PDUIClaimViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan Failure/PDUIScanFailViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan/PDUIPostScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Scan/PDUIScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Select Network/PDUISelectNetworkViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Friend Picker/PDUIFriendPickerViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/PDUIHomeViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Instagram/PDUIInstagramWebViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/MultiLogin/PDMultiLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/PDUISocialLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMessageCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMsgCntrTblViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUISingleMessageViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Placeholder/PlaceholderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Reward/PDUIRedeemViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUILogoutTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISocialSettingsTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Twitter/Login/PDUITwitterLoginViewController.xib",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftSample/Pods-SwiftSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA6DE76A222DF9FF44124949 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/bluePopdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit-branddummycell@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_addFriend@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_arrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_camera@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_deselectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_facebook_hires@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fbbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_fb_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagrambutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hi@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_instagram_hires.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mailCircle.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_mail_blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeader@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_popdeemHeaderLight@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rainbow@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_refresh@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIcon@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_rewardsIconSuccess@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_search.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_selectedCheck@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_settings@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_starG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tagGoButton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_tickGrey@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_deselected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_twitterbutton_selected@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x@3x copy.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pduikit_x_icon.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_Back@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/PDUI_IGBG@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/pd_message@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/Twitter_Logo_Blue@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Resources/default_theme.json",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_brand_placeholder.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_cancelbutton@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_login@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_default_user.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep1.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_instagramstep2.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@2x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/pduikit_popdeemArrowB@3x.png",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandPlaceHolderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandSearchTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandsListTableViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/BrandList/PDUIBrandTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/PDUIClaimViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan Failure/PDUIScanFailViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Post Scan/PDUIPostScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Scan/PDUIScanViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Claim/Select Network/PDUISelectNetworkViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Facebook/Login/PDUIFBLoginWithWritePermsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Friend Picker/PDUIFriendPickerViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/No Rewards/PDUINoRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIInstagramUnverifiedWalletTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/Cells/Wallet/PDUIWalletRewardTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Home/PDUIHomeViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Instagram/PDUIInstagramWebViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/MultiLogin/PDMultiLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Login/PDUISocialLoginViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMessageCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUIMsgCntrTblViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/MessageCenter/PDUISingleMessageViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Placeholder/PlaceholderTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Reward/PDUIRedeemViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUILogoutTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISettingsViewController.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Settings/PDUISocialSettingsTableViewCell.xib",
-				"${PODS_ROOT}/../PopdeemSDK/UIKit/Twitter/Login/PDUITwitterLoginViewController.xib",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TabbedTest/Pods-TabbedTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BEB6869DE1E5B3FADBA9A02B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TabbedTest-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3812,42 +2424,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E1F12C3D8534E74986E1C891 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BrandsSample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E977C85D79E9C58BCAC5E367 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SwiftSample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F0CE59034B9740732A56D287 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3863,24 +2439,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FDBECA09D79B9A3481F04535 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TestSize-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3888,9 +2446,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3922FAAC1DC0BDA100501E1D /* ViewController.m in Sources */,
-				3922FAA91DC0BDA100501E1D /* AppDelegate.m in Sources */,
-				3922FAA61DC0BDA100501E1D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3898,10 +2453,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				393C39E41E852BF700315493 /* SecondViewController.m in Sources */,
-				393C39DE1E852BF700315493 /* AppDelegate.m in Sources */,
-				393C39E11E852BF700315493 /* FirstViewController.m in Sources */,
-				393C39DB1E852BF700315493 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3909,7 +2460,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				393C39F71E852BF700315493 /* TestSizeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3917,7 +2467,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				393C3A021E852BF700315493 /* TestSizeUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3925,10 +2474,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396B15671C3BC40600FC774D /* PDViewController.m in Sources */,
-				393D2B801C3AD0D300F1E253 /* ViewController.m in Sources */,
-				393D2B7D1C3AD0D300F1E253 /* AppDelegate.m in Sources */,
-				393D2B7A1C3AD0D300F1E253 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3936,10 +2481,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39537BCA1C639B79001C6796 /* AppDelegate.m in Sources */,
-				39EF1A401CBCF4430089821E /* SecondTabViewController.m in Sources */,
-				393C39D21E85216300315493 /* ThirdTabViewControllerTableViewController.m in Sources */,
-				39537BC71C639B79001C6796 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3947,9 +2488,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39735BD01D23E60E0008301E /* SecondViewController.swift in Sources */,
-				39735BCC1D23E60E0008301E /* AppDelegate.swift in Sources */,
-				39735BCE1D23E60E0008301E /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4170,93 +2708,9 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		3922FAAD1DC0BDA100501E1D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3922FAAE1DC0BDA100501E1D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3922FAB21DC0BDA100501E1D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3922FAB31DC0BDA100501E1D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		393C39E51E852BF700315493 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				393C39E61E852BF700315493 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		393C39EA1E852BF700315493 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				393C39EB1E852BF700315493 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		393D2B811C3AD0D300F1E253 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				393D2B821C3AD0D300F1E253 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		393D2B861C3AD0D300F1E253 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				393D2B871C3AD0D300F1E253 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		39537BD11C639B79001C6796 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39537BD21C639B79001C6796 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		39537BD61C639B79001C6796 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39537BD71C639B79001C6796 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		39735BD11D23E60E0008301E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39735BD21D23E60E0008301E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		39735BD61D23E60E0008301E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39735BD71D23E60E0008301E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		3922FAB61DC0BDA100501E1D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59E2576634FEBE9B041432E6 /* Pods-BrandsSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4277,7 +2731,6 @@
 		};
 		3922FAB71DC0BDA100501E1D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D4DD4D1DD84E3D440EDD90B /* Pods-BrandsSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4297,7 +2750,6 @@
 		};
 		393C3A051E852BF700315493 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9FE9C27350D0CA934242777 /* Pods-TestSize.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4316,7 +2768,6 @@
 		};
 		393C3A061E852BF700315493 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D778BABA5A91A8CBAFABD5F /* Pods-TestSize.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4402,7 +2853,6 @@
 		};
 		393D2B8A1C3AD0D300F1E253 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45F90F542DAEED98D1BA0AE8 /* Pods-NavigationSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4419,7 +2869,6 @@
 		};
 		393D2B8B1C3AD0D300F1E253 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3167F0F1F2AC80AB22D3C19 /* Pods-NavigationSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4435,7 +2884,6 @@
 		};
 		39537BDA1C639B79001C6796 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 358618FD295CC1ADC73E1283 /* Pods-TabbedTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TabbedTest/TabbedTest.entitlements;
@@ -4461,7 +2909,6 @@
 		};
 		39537BDB1C639B79001C6796 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 466C6E196147881D2B02BA0B /* Pods-TabbedTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TabbedTest/TabbedTest.entitlements;
@@ -4486,7 +2933,6 @@
 		};
 		39735BDB1D23E60E0008301E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA573E87BA54908BCA493250 /* Pods-SwiftSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4507,7 +2953,6 @@
 		};
 		39735BDC1D23E60E0008301E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 524864261E95CB1A01E7DCAC /* Pods-SwiftSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;

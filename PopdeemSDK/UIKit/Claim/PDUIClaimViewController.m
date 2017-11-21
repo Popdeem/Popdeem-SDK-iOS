@@ -159,7 +159,13 @@
 	
 	[self.twitterForcedTagLabel setTextColor:[UIColor lightGrayColor]];
 	[self.addHashtagButton setHidden:YES];
-	[self.addHashtagButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    UIColor *tertiaryFontColor = [UIColor blackColor];
+    if ([PDTheme.sharedInstance hasValueForKey:PDThemeColorTertiaryFont]) {
+        tertiaryFontColor = PopdeemColor(PDThemeColorTertiaryFont);
+    } else {
+        tertiaryFontColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
+	[self.addHashtagButton setTintColor:tertiaryFontColor];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
   
