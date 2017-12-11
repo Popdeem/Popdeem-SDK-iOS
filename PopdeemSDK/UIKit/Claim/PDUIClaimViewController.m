@@ -165,7 +165,8 @@
     } else {
         tertiaryFontColor = PopdeemColor(PDThemeColorPrimaryApp);
     }
-	[self.addHashtagButton setTintColor:tertiaryFontColor];
+	[self.addHashtagButton setTintColor:[UIColor blackColor]];
+    [self.addHashtagButton setTitleColor:tertiaryFontColor forState:UIControlStateNormal];
   [_refreshLocationButton addTarget:self action:@selector(refreshLocationTapped) forControlEvents:UIControlEventTouchUpInside];
   [_refreshLocationButton setUserInteractionEnabled:YES];
   

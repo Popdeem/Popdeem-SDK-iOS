@@ -145,12 +145,12 @@
   [_failedLabel setFrame:CGRectMake(10, 20, self.view.frame.size.width-20, _failedLabel.frame.size.height)];
   
   [_backToRewardButton setFrame:CGRectMake(16, _failedLabel.frame.size.height + 40, self.view.frame.size.width-32, 49)];
-  _backToRewardButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
+  _backToRewardButton.layer.borderColor = [UIColor blackColor].CGColor;
   _backToRewardButton.layer.borderWidth = 2.0;
   _backToRewardButton.backgroundColor = [UIColor clearColor];
   _backToRewardButton.layer.cornerRadius = 5.0;
   _backToRewardButton.clipsToBounds = YES;
-  _backToRewardButton.tintColor = PopdeemColor(PDThemeColorPrimaryApp);
+  _backToRewardButton.tintColor = [UIColor blackColor];
   
   [self.view addSubview:_failedLabel];
   [_failedLabel setHidden:YES];

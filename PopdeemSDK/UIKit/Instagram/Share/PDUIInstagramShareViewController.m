@@ -133,7 +133,7 @@ CGFloat _cardWidth;
 	currentY += _viewTwoImageView.frame.size.height;
 	
 	_viewTwoActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
-	[_viewTwoActionButton setBackgroundColor:_viewModel.viewTwoActionButtonColor];
+    [_viewTwoActionButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setFont:_viewModel.viewTwoActionButtonFont];
 	[_viewTwoActionButton setTitle:_viewModel.viewTwoActionButtonText forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -172,18 +172,15 @@ CGFloat _cardWidth;
 	[_firstView addSubview:_viewOneImageView];
 	
 	_viewOneActionButton = [[UIButton alloc] initWithFrame:_viewTwoActionButton.frame];
-	[_viewOneActionButton setBackgroundColor:_viewModel.viewOneActionButtonColor];
+	[_viewOneActionButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
 	[_viewOneActionButton.titleLabel setFont:_viewModel.viewOneActionButtonFont];
 	[_viewOneActionButton setTitleColor:_viewModel.viewOneActionButtonTextColor forState:UIControlStateNormal];
-	[_viewOneActionButton setTitleColor:_viewModel.viewOneActionButtonTextColor forState:UIControlStateSelected];
+	[_viewOneActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
 	[_viewOneActionButton setTitle:_viewModel.viewOneActionButtonText forState:UIControlStateNormal];
 	[_viewOneActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-	_viewOneActionButton.layer.borderColor = _viewModel.viewOneActionButtonBorderColor.CGColor;
-	_viewOneActionButton.layer.borderWidth = 1.0;
 	[_viewOneActionButton setTag:1];
 	[_viewOneActionButton addTarget:self action:@selector(scroll) forControlEvents:UIControlEventTouchUpInside];
 	[_firstView addSubview:_viewOneActionButton];
-	
 	
 	_cardWidth = cardWidth;
 	midY = self.view.frame.size.height/2;
