@@ -210,7 +210,6 @@
                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                                [self facebookLoginSuccess];
                                                              });
-                                                             
                                                            } failure:^(NSError *error) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                                [self facebookLoginFailure];

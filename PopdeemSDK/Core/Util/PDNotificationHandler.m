@@ -12,6 +12,7 @@
 #import "PDUtils.h"
 #import "PDUserAPIService.h"
 #import "PDConstants.h"
+#import "PDMessageAPIService.h"
 
 @interface PDNotificationHandler()
 @property (nonatomic) BOOL shouldGoToUrl;
@@ -133,6 +134,17 @@
 		badgeNumber = badgeNumber - 1;
 		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
 	}
+    
+    //Mark incoming message as read (user got it)
+    NSInteger messageId = [[userInfo objectForKey:@"message_id"] integerValue];
+    if (messageId != 0) {
+        PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
+        [service markMessageAsRead:messageId completion:^(NSError *error) {
+            if (error) {
+                PDLog(@"Mark Message as read error: %@", error);
+            }
+        }];
+    }
 	
 }
 
