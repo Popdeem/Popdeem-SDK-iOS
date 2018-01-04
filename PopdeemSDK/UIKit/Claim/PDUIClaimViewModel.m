@@ -833,7 +833,7 @@
 	
 	__weak __typeof(self) weakSelf = self;
 	
-	UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose Source" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 		weakSelf.alertWindow.hidden = YES;
 		weakSelf.alertWindow = nil;
