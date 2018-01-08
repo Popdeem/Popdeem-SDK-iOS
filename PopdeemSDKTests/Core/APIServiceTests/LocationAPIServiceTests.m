@@ -46,7 +46,7 @@
 
 - (void) testGetAllLocations_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test 500 Error get All Locations"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -67,7 +67,7 @@
 - (void) testGetAllLocations_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test 504 Error get All Locations"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -92,7 +92,7 @@
   
   NSMutableString *locationArr = [NSMutableString stringWithFormat:@"{\"locations\" : [%@]}", locationJSON];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)    .andReturn(200)
   .withBody(locationArr)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -117,7 +117,7 @@
 - (void) testGetLocationForID_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test 500 Error get Location"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -139,7 +139,7 @@
 - (void) testGetLocationForID_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test 504 Error get Location"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -163,7 +163,7 @@
   NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Location" ofType:@"json"];
   NSString *locationJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(200)
   .withBody(locationJSON)
@@ -189,7 +189,7 @@
 
 - (void) testGetLocationsForBrandId_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test Get Locations for Brand ID 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/locations",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/locations",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -209,7 +209,7 @@
 
 - (void) testGetLocationsForBrandId_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test Get Locations for Brand ID 504 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/locations",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/locations",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -234,7 +234,7 @@
   
   NSMutableString *locationArr = [NSMutableString stringWithFormat:@"{\"locations\" : [%@]}", locationJSON];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/locations",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/locations",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(200)
   .withBody(locationArr)

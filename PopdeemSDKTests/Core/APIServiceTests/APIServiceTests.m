@@ -29,7 +29,7 @@
 
 - (void)testAPIURL {
     PDAPIService *apiservice = [[PDAPIService alloc] init];
-    expect(apiservice.baseUrl).to.equal(API_URL);
+    expect(apiservice.baseUrl).to.equal([[PopdeemSDK sharedInstance] apiURL]);
 }
 
 @end

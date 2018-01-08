@@ -52,7 +52,7 @@
  */
 - (void) testGetUserDetails_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",API_URL,USERS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -79,7 +79,7 @@
 
 - (void) testGetUserDetails_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",API_URL,USERS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -113,7 +113,7 @@
   NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
   NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",API_URL,USERS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(200)
   .withBody(userJSON)
@@ -142,7 +142,7 @@
  */
 - (void) testRegisterUser_500Error {
 //  XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 500 Error"];
-//  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,USERS_PATH];
+//  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
 //  stubRequest(@"POST", requestString)
 //  .andReturn(500)
 //  .withHeaders(@{@"Content-Type": @"application/json"});
@@ -164,7 +164,7 @@
 
 - (void) testRegisterUser_504Error {
 //  XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 504 Error"];
-//  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,USERS_PATH];
+//  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
 //  stubRequest(@"POST", requestString)
 //  .andReturn(504)
 //  .withHeaders(@{@"Content-Type": @"application/json"});
@@ -193,7 +193,7 @@
 //  NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
 //  NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
 //  
-//  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,USERS_PATH];
+//  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
 //  stubRequest(@"POST", requestString)
 //  .andReturn(200)
 //  .withBody(userJSON)
@@ -221,7 +221,7 @@
 
 - (void) testUpdateUser_500Error {
 //  XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 500 Error"];
-//  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",API_URL,USERS_PATH];
+//  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
 //  stubRequest(@"PUT", requestString)
 //  .andReturn(500)
 //  .withHeaders(@{@"Content-Type": @"application/json"});
@@ -245,7 +245,7 @@
 - (void) testUpdateUser_504Error {
 //  XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async 504 Error"];
 //  
-//  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",API_URL,USERS_PATH];
+//  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
 //  stubRequest(@"PUT", requestString)
 //  .andReturn(504)
 //  .withHeaders(@{@"Content-Type": @"application/json"});
@@ -271,7 +271,7 @@
 //  NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"User" ofType:@"json"];
 //  NSString *userJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
 //  
-//  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",API_URL,USERS_PATH];
+//  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1231",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
 //  stubRequest(@"PUT", requestString)
 //  .andReturn(200)
 //  .withBody(userJSON)

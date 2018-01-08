@@ -45,7 +45,7 @@
 #pragma mark - Get Feeds -
 
 - (NSString*)apiUrl {
-    return [NSString stringWithFormat:@"%@/%@",API_URL,FEEDS_PATH];
+    return [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],FEEDS_PATH];
 }
 
 - (void) testGetFeeds_500Error {

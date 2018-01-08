@@ -47,7 +47,7 @@
 
 - (void) testGetAllRewardsInWallet_500Error {
     XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",API_URL,REWARDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",[[PopdeemSDK sharedInstance] apiURL],REWARDS_PATH];
     stubRequest(@"GET", requestString)
     .andReturn(500)
     .withHeaders(@{@"Content-Type": @"application/json"});
@@ -67,7 +67,7 @@
 
 - (void) testGetAllRewardsInWallet_504Error {
     XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 504 Error"];
-    NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",API_URL,REWARDS_PATH];
+    NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",[[PopdeemSDK sharedInstance] apiURL],REWARDS_PATH];
     stubRequest(@"GET", requestString)
     .andReturn(504)
     .withHeaders(@{@"Content-Type": @"application/json"});
@@ -89,7 +89,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 504 Error"];
     NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Rewards" ofType:@"json"];
     NSString *rewardsJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
-    NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",API_URL,REWARDS_PATH];
+    NSString *requestString = [NSString stringWithFormat:@"%@/%@/wallet",[[PopdeemSDK sharedInstance] apiURL],REWARDS_PATH];
     stubRequest(@"GET", requestString)
     .andReturn(200)
     .withBody(rewardsJSON)

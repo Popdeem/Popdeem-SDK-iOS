@@ -46,7 +46,7 @@
 
 - (void) testGetAllRewards_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,REWARDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],REWARDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -66,7 +66,7 @@
 - (void) testGetAllRewards_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"test get all rewards 504 Error"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,REWARDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],REWARDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -89,7 +89,7 @@
   NSString *rewardsJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
   
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,REWARDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],REWARDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(200)
   .withBody(rewardsJSON)
@@ -115,7 +115,7 @@
 - (void) testGetRewardsForLocationID_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test Get Rewards for Location ID 500 Error"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -136,7 +136,7 @@
 - (void) testGetRewardsForLocationID_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test Get Rewards for Location ID 504 Error"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -159,7 +159,7 @@
   NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Rewards" ofType:@"json"];
   NSString *rewardsJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",API_URL,LOCATIONS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",[[PopdeemSDK sharedInstance] apiURL],LOCATIONS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(200)
   .withBody(rewardsJSON)
@@ -184,7 +184,7 @@
 
 - (void) testGetRewardsForBrandID_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test Get Rewards for Location ID 500"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -205,7 +205,7 @@
 - (void) testGetRewardsForBrandID_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test Get Rewards for Location ID 504"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -228,7 +228,7 @@
   NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Rewards" ofType:@"json"];
   NSString *rewardsJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/1/rewards",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(200)
   .withBody(rewardsJSON)

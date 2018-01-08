@@ -44,7 +44,7 @@
 
 - (void) testGetBrands_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test 500 error on get Brands"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -65,7 +65,7 @@
 - (void) testGetBrands_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"Test 504 error on get Brands"];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -88,7 +88,7 @@
   NSString *resourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Brands" ofType:@"json"];
   NSString *brandsJSON = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
   
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@",API_URL,BRANDS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@",[[PopdeemSDK sharedInstance] apiURL],BRANDS_PATH];
   stubRequest(@"GET", requestString)
   .andReturn(200)
   .withBody(brandsJSON)

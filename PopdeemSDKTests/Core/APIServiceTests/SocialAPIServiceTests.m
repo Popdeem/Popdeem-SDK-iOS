@@ -44,7 +44,7 @@
 
 - (void) testConnectTwitterAccount_500Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"test Twitter 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/connect_social_account",API_URL,USERS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/connect_social_account",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
   stubRequest(@"POST", requestString)
   .andReturn(500)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -67,7 +67,7 @@
 
 - (void) testConnectTwitterAccount_504Error {
   XCTestExpectation *expectation = [self expectationWithDescription:@"test Twitter 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/connect_social_account",API_URL,USERS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/connect_social_account",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
   stubRequest(@"POST", requestString)
   .andReturn(504)
   .withHeaders(@{@"Content-Type": @"application/json"});
@@ -90,7 +90,7 @@
 
 - (void) testConnectTwitterAccount_200OK {
   XCTestExpectation *expectation = [self expectationWithDescription:@"test Twitter 500 Error"];
-  NSString *requestString = [NSString stringWithFormat:@"%@/%@/connect_social_account",API_URL,USERS_PATH];
+  NSString *requestString = [NSString stringWithFormat:@"%@/%@/connect_social_account",[[PopdeemSDK sharedInstance] apiURL],USERS_PATH];
   stubRequest(@"POST", requestString)
   .andReturn(200)
   .withHeaders(@{@"Content-Type": @"application/json"});

@@ -56,12 +56,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, PDEnv) {
+  PDEnvProduction = 0,
+  PDEnvStaging
+};
+
 @interface PopdeemSDK : NSObject
 
 @property (nonatomic, strong) NSString *apiKey;
 @property (nonatomic) BOOL debug;
+@property (nonatomic) PDEnv env;
 
 + (id) sharedInstance;
+- (NSString*) apiURL;
++ (void) setEnv:(PDEnv)env;
 
 + (void) setDebug:(BOOL)debug;
 + (BOOL) debugMode;

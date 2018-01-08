@@ -38,7 +38,7 @@
 #import <UserNotifications/UserNotifications.h>
 
 @interface PopdeemSDK()
-@property (nonatomic, strong)id uiKitCore;
+  @property (nonatomic, strong)id uiKitCore;
 @end
 @implementation PopdeemSDK
 
@@ -49,9 +49,33 @@
     SDK = [[PopdeemSDK alloc] init];
 		if (SDK) {
 			[SDK setDebug:NO];
+      [SDK setEnv:PDEnvProduction];
 		}
   });
   return SDK;
+}
+
++ (void) setEnv:(PDEnv)env {
+  PopdeemSDK *SDK = [PopdeemSDK sharedInstance];
+  [SDK setEnv:env];
+}
+  
+- (NSString*) apiURL {
+  PopdeemSDK *SDK = [PopdeemSDK sharedInstance];
+  if (SDK) {
+    switch ([SDK env]) {
+      case PDEnvProduction:
+        return @"https://api.popdeem.com";
+      break;
+      case PDEnvStaging:
+        return @"http://api.staging.popdeem.com";
+      break;
+      default:
+        return @"https://api.popdeem.com";
+      break;
+    }
+  }
+  return @"https://api.popdeem.com";
 }
 
 + (void) setDebug:(BOOL)debug {

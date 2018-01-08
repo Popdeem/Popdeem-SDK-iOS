@@ -19,4 +19,3 @@ target 'PopdeemSDKTests' do
 	pod 'STTwitter'
 	pod 'JSONModel'
 end
-

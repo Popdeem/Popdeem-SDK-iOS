@@ -7,12 +7,13 @@
 //
 
 #import "PDAPIService.h"
+#import "PopdeemSDK.h"
 
 @implementation PDAPIService
 
 - (id) init {
     if (self = [super init]) {
-        self.baseUrl = API_URL;
+        self.baseUrl = [[PopdeemSDK sharedInstance] apiURL];
         return self;
     }
     return nil;

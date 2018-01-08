@@ -30,7 +30,6 @@
 //
 //API URL Strings
 //
-extern NSString *const API_URL;
 extern NSString *const USERS_PATH;
 extern NSString *const REWARDS_PATH;
 extern NSString *const LOCATIONS_PATH;
