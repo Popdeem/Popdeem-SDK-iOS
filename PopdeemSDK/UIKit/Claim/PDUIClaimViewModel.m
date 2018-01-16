@@ -680,29 +680,36 @@
 }
 
 - (void) loginWithReadAndWritePerms {
-	[[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
-																																		 @"public_profile",
-																																		 @"email",
-																																		 @"user_birthday",
-																																		 @"user_posts",
-																																		 @"user_friends",
-																																		 @"user_education_history"]
-																							 registerWithPopdeem:YES
-																													 success:^(void) {
-		_willFacebook = YES;
-		[self loginWithWritePerms];
-	} failure:^(NSError *error) {
-		UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
-																								 message:translationForKey(@"popdeem.claim.facebook.cannotConnect", @"We couldnt connect you to Facebook")
-																								delegate:nil
-																			 cancelButtonTitle:nil
-																			 otherButtonTitles:translationForKey(@"popdeem.common.ok", @"OK"), nil];
-		[av show];
-		_willFacebook = NO;
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [_viewController.facebookSwitch setOn:NO animated:YES];
-    });
-	}];
+  
+  PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.viewController.navigationController
+                                                                                                         loginType:PDFacebookLoginTypeRead];
+  if (!fbVC) {
+    return;
+  }
+  self.viewController.definesPresentationContext = YES;
+  fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+  fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginSuccess) name:FacebookLoginSuccess object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginFailure) name:FacebookLoginFailure object:nil];
+  [self.viewController presentViewController:fbVC animated:YES completion:^(void){
+  }];
+}
+
+- (void) facebookLoginSuccess {
+  
+  AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+                                                ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
+                                                ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+                                                }));
+  
+  if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+    [self loginWithWritePerms];
+  }
+  [self.viewController.facebookSwitch setOn:YES];
+}
+
+- (void) facebookLoginFailure {
+  [self.viewController.facebookSwitch setOn:NO];
 }
 
 - (void) loginWithWritePerms {

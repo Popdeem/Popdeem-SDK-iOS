@@ -10,6 +10,7 @@
 #import "PDRewardStore.h"
 #import "PDUser.h"
 #import "PopdeemSDK.h"
+#import "PDRReward.h"
 
 @implementation PDRewardAPIService
 
@@ -50,7 +51,9 @@
 			}
 			[PDRewardStore removeAllRewards];
 			for (id attributes in jsonObject[@"rewards"]) {
-				PDReward *reward = [[PDReward alloc] initFromApi:attributes];
+//        PDReward *reward = [[PDReward alloc] initFromApi:attributes];
+        PDRReward *reward = [[PDReward alloc] initFromApi:attributes];
+        
 				[PDRewardStore add:reward];
 			}
 			[session invalidateAndCancel];

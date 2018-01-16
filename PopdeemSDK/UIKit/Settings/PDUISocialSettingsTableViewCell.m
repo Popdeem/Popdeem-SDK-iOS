@@ -12,8 +12,8 @@
 #import "PDSocialMediaManager.h"
 
 @interface PDUISocialSettingsTableViewCell()
-@property (nonatomic) PDSocialMediaType socialMediaType;
-@property (nonatomic) BOOL working;
+  @property (nonatomic) PDSocialMediaType socialMediaType;
+  @property (nonatomic) BOOL working;
 @end
 @implementation PDUISocialSettingsTableViewCell
 

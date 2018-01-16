@@ -26,12 +26,20 @@
     [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
     self.imageView.clipsToBounds = YES;
     [self.view addSubview:self.imageView];
+  
+    if (self.parent) {
+      [self.view setFrame:_parent.view.frame];
+    }
     
     PDUICheckinCell *cell = [[PDUICheckinCell alloc] initWithFrame:CGRectMake(0, imageHeight, imageWidth, 75) forFeedItem:_item];
     [cell setFrame:CGRectMake(0, imageHeight+5, imageWidth, 75)];
     [self.view addSubview:cell];
-    
+  
+  if (_item.userFirstName != nil && ![_item.userFirstName isEqual:[NSNull null]] && [_item.userFirstName rangeOfString:@"<null>"].location == NSNotFound) {
     [self setTitle:[NSString stringWithFormat:@"%@'s Action",_item.userFirstName]];
+  } else {
+    [self setTitle:@"User's Action"];
+  }
 }
 
 - (void) viewDidAppear:(BOOL)animated {

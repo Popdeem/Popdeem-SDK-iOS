@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) PDFeedItem *item;
+@property (nonatomic, assign) UITableViewController *parent;
 
 @end

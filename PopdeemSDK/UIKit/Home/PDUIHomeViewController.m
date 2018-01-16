@@ -748,6 +748,7 @@
       if ([(PDFeedItem*)_model.feed[indexPath.row] actionImage]) {
         [self.view setUserInteractionEnabled:NO];
         PDUIFeedImageViewController *ivc = [[PDUIFeedImageViewController alloc] init];
+        ivc.parent = self;
         ivc.item = _model.feed[indexPath.row];
         [[self navigationController] pushViewController:ivc animated:YES];
       }

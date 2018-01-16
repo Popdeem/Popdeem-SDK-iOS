@@ -65,6 +65,7 @@
 		3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A27A1E2535760058EA12 /* PDMultiLoginViewModel.m */; };
 		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
 		3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */; };
+		39A2167D200E5006007A516B /* PDRReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2167C200E5006007A516B /* PDRReward.m */; };
 		39A6703E1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */; };
 		39A7771E1C0756CD004A4E92 /* pduikit_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7770F1C0756CD004A4E92 /* pduikit_camera.png */; };
 		39A7771F1C0756CD004A4E92 /* pduikit_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777101C0756CD004A4E92 /* pduikit_camera@2x.png */; };
@@ -419,6 +420,8 @@
 		399367271E0BE587003B2991 /* PDUIInboxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIInboxButton.m; sourceTree = "<group>"; };
 		399367291E0BF023003B2991 /* UIButton+MessageButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MessageButtonFactory.h"; sourceTree = "<group>"; };
 		3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MessageButtonFactory.m"; sourceTree = "<group>"; };
+		39A2167B200E5006007A516B /* PDRReward.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDRReward.h; sourceTree = "<group>"; };
+		39A2167C200E5006007A516B /* PDRReward.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDRReward.m; sourceTree = "<group>"; };
 		39A6703C1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramLoginViewModel.h; path = Instagram/Login/PDUIInstagramLoginViewModel.h; sourceTree = "<group>"; };
 		39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramLoginViewModel.m; path = Instagram/Login/PDUIInstagramLoginViewModel.m; sourceTree = "<group>"; };
 		39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -1788,6 +1791,8 @@
 				BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */,
 				39FDF1DE1E926106007AE076 /* PDBGScanResponseModel.h */,
 				39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */,
+				39A2167B200E5006007A516B /* PDRReward.h */,
+				39A2167C200E5006007A516B /* PDRReward.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2201,6 +2206,7 @@
 				39B42FAB1E8BF798006D3209 /* PDUISelectNetworkViewController.m in Sources */,
 				392423761C230F4E0038D953 /* PDUILazyLoader.m in Sources */,
 				39B42FB71E8D14F5006D3209 /* PDBackgroundScan.m in Sources */,
+				39A2167D200E5006007A516B /* PDRReward.m in Sources */,
 				394495E41D9A807F003BA702 /* UIImage+RoundedCorner.m in Sources */,
 				39BF99431E8E99830025A3F2 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
 				39BF993C1E8E99830025A3F2 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
