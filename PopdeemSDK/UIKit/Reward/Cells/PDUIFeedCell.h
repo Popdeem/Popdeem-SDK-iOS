@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDFeedItem.h"
+#import "PDRFeedItem.h"
 @interface PDUIFeedCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView *profileImageView;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *captionLabel;
+@property (nonatomic, strong) UIImageView *actionImageView;
 
-- (id) initWithFrame:(CGRect)frame forFeedItem:(PDFeedItem*)feedItem;
-- (NSString*) timeStringForItem:(PDFeedItem*)item;
-- (NSAttributedString*) stringForItem:(PDFeedItem*)feedItem;
+- (id) initWithFrame:(CGRect)frame forFeedItem:(PDRFeedItem*)feedItem;
+- (NSString*) timeStringForItem:(PDRFeedItem*)item;
+- (NSAttributedString*) stringForItem:(PDRFeedItem*)feedItem;
 
 @end

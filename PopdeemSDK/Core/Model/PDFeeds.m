@@ -7,17 +7,26 @@
 //
 
 #import "PDFeeds.h"
+#import "PDRFeedItem.h"
+#import "PDRealm.h"
 
 @implementation PDFeeds
 
 +(NSMutableArray*)feed {
-    static dispatch_once_t pred;
-    static NSMutableArray *sharedInstance = nil;
-    dispatch_once(&pred, ^{
-        sharedInstance = [[NSMutableArray alloc] init];
-    });
-    
-    return sharedInstance;
+//    static dispatch_once_t pred;
+//    static NSMutableArray *sharedInstance = nil;
+//    dispatch_once(&pred, ^{
+//        sharedInstance = [[NSMutableArray alloc] init];
+//    });
+//
+//    return sharedInstance;
+  RLMResults<PDRFeedItem *> *feed = [PDRFeedItem allObjects];
+  NSMutableArray *result = [NSMutableArray array];
+  for (PDRFeedItem *item in feed) {
+    [result addObject:item];
+  }
+  return result;
+  
 }
 
 + (void) add:(PDFeedItem*)item {
@@ -31,8 +40,15 @@
 + (void) populateFromAPI:(NSArray*)items {
     [PDFeeds clearFeed];
     for (NSMutableDictionary *itemDict in items) {
-        PDFeedItem *item = [[PDFeedItem alloc] initFromAPI:itemDict];
-        [PDFeeds add:item];
+//        PDFeedItem *item = [[PDFeedItem alloc] initFromAPI:itemDict];
+//        [PDFeeds add:item];
+      PDRFeedItem *item = [[PDRFeedItem alloc] initFromAPI:itemDict];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm addOrUpdateObject:item];
+        [realm commitWriteTransaction];
+      });
     }
 }
 

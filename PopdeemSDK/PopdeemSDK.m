@@ -36,6 +36,7 @@
 #import "PDAPIClient.h"
 #import "PDMessageStore.h"
 #import <UserNotifications/UserNotifications.h>
+#import "PDRealm.h"
 
 @interface PopdeemSDK()
   @property (nonatomic, strong)id uiKitCore;
@@ -102,6 +103,7 @@
   PopdeemSDK *SDK = [[self class] sharedInstance];
   [SDK setApiKey:apiKey];
   [SDK nonSocialRegister];
+  [PDRealm initRealmDB];
 }
 
 + (void) testingWithAPIKey:(NSString*)apiKey {

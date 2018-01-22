@@ -57,10 +57,13 @@
 		3978947F1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947E1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m */; };
 		397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */; };
+		397BB57C2016256500531902 /* PDUIRewardV2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397BB57A2016256500531902 /* PDUIRewardV2TableViewCell.m */; };
 		3980A7051D36465100D5F179 /* PlaceholderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3980A7031D36465100D5F179 /* PlaceholderTableViewCell.m */; };
 		398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A11DD1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m */; };
 		398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B771C03744B00A68529 /* PDUISocialLoginViewController.m */; };
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
+		399005A12010E96D00C311F6 /* PDRFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 399005A02010E96D00C311F6 /* PDRFeedItem.m */; };
+		399005A42010EAB200C311F6 /* PDRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 399005A32010EAB200C311F6 /* PDRealm.m */; };
 		3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */; };
 		3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A27A1E2535760058EA12 /* PDMultiLoginViewModel.m */; };
 		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
@@ -399,6 +402,9 @@
 		397894831D1D406C00BCE17E /* NSURL+OAuthAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+OAuthAdditions.m"; path = "Categories/NSURL+OAuthAdditions.m"; sourceTree = "<group>"; };
 		397894851D1D622D00BCE17E /* UIColor+ColorOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+ColorOperations.h"; path = "Categories/UIColor+ColorOperations.h"; sourceTree = "<group>"; };
 		397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+ColorOperations.m"; path = "Categories/UIColor+ColorOperations.m"; sourceTree = "<group>"; };
+		397BB5792016256500531902 /* PDUIRewardV2TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIRewardV2TableViewCell.h; path = Home/Cells/Rewards/V2/PDUIRewardV2TableViewCell.h; sourceTree = "<group>"; };
+		397BB57A2016256500531902 /* PDUIRewardV2TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIRewardV2TableViewCell.m; path = Home/Cells/Rewards/V2/PDUIRewardV2TableViewCell.m; sourceTree = "<group>"; };
+		397BB57B2016256500531902 /* PDUIRewardV2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIRewardV2TableViewCell.xib; path = Home/Cells/Rewards/V2/PDUIRewardV2TableViewCell.xib; sourceTree = "<group>"; };
 		397E10751C4D253800B924D0 /* PDUIHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIHomeViewController.xib; path = Home/PDUIHomeViewController.xib; sourceTree = "<group>"; };
 		3980A7021D36465100D5F179 /* PlaceholderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceholderTableViewCell.h; path = Placeholder/PlaceholderTableViewCell.h; sourceTree = "<group>"; };
 		3980A7031D36465100D5F179 /* PlaceholderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceholderTableViewCell.m; path = Placeholder/PlaceholderTableViewCell.m; sourceTree = "<group>"; };
@@ -411,6 +417,10 @@
 		398E4B781C03744B00A68529 /* PDUISocialLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUISocialLoginViewController.xib; path = Login/PDUISocialLoginViewController.xib; sourceTree = "<group>"; };
 		398E4B7A1C03766500A68529 /* PDUISocialLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialLoginViewModel.h; path = Login/PDUISocialLoginViewModel.h; sourceTree = "<group>"; };
 		398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUISocialLoginViewModel.m; path = Login/PDUISocialLoginViewModel.m; sourceTree = "<group>"; };
+		3990059F2010E96D00C311F6 /* PDRFeedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDRFeedItem.h; sourceTree = "<group>"; };
+		399005A02010E96D00C311F6 /* PDRFeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDRFeedItem.m; sourceTree = "<group>"; };
+		399005A22010EAB200C311F6 /* PDRealm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDRealm.h; sourceTree = "<group>"; };
+		399005A32010EAB200C311F6 /* PDRealm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDRealm.m; sourceTree = "<group>"; };
 		3992A2751E25355A0058EA12 /* PDMultiLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMultiLoginViewController.h; path = Login/MultiLogin/PDMultiLoginViewController.h; sourceTree = "<group>"; };
 		3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMultiLoginViewController.m; path = Login/MultiLogin/PDMultiLoginViewController.m; sourceTree = "<group>"; };
 		3992A2771E25355A0058EA12 /* PDMultiLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDMultiLoginViewController.xib; path = Login/MultiLogin/PDMultiLoginViewController.xib; sourceTree = "<group>"; };
@@ -792,6 +802,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		390D45ED20109FCD00307CB7 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				39A2167B200E5006007A516B /* PDRReward.h */,
+				39A2167C200E5006007A516B /* PDRReward.m */,
+				3990059F2010E96D00C311F6 /* PDRFeedItem.h */,
+				399005A02010E96D00C311F6 /* PDRFeedItem.m */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		391FAE741D476124005AFF72 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -981,6 +1002,7 @@
 		397142261D38E3270047F0E0 /* Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				397BB5782016254D00531902 /* V2 */,
 				397142271D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.h */,
 				397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */,
 				397142291D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.xib */,
@@ -1039,6 +1061,16 @@
 				397894861D1D622D00BCE17E /* UIColor+ColorOperations.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		397BB5782016254D00531902 /* V2 */ = {
+			isa = PBXGroup;
+			children = (
+				397BB5792016256500531902 /* PDUIRewardV2TableViewCell.h */,
+				397BB57A2016256500531902 /* PDUIRewardV2TableViewCell.m */,
+				397BB57B2016256500531902 /* PDUIRewardV2TableViewCell.xib */,
+			);
+			name = V2;
 			sourceTree = "<group>";
 		};
 		3980A7061D36465800D5F179 /* Placeholder */ = {
@@ -1590,6 +1622,8 @@
 				395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */,
 				39FA7B641D6DAF2E00031D5B /* PDLogger.h */,
 				39FA7B651D6DAF2E00031D5B /* PDLogger.m */,
+				399005A22010EAB200C311F6 /* PDRealm.h */,
+				399005A32010EAB200C311F6 /* PDRealm.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1749,6 +1783,7 @@
 		BC67FA5FB895CC0BDBDC7C1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				390D45ED20109FCD00307CB7 /* Realm */,
 				BC67FF81C6E0A9A231CE6FE4 /* PDUser.h */,
 				BC67F6177E3E2771EAEAA4AB /* PDUser.m */,
 				BC67FEC3F75949725292F426 /* PDBrand.h */,
@@ -1791,8 +1826,6 @@
 				BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */,
 				39FDF1DE1E926106007AE076 /* PDBGScanResponseModel.h */,
 				39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */,
-				39A2167B200E5006007A516B /* PDRReward.h */,
-				39A2167C200E5006007A516B /* PDRReward.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2098,6 +2131,7 @@
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
 				3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */,
 				3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */,
+				399005A12010E96D00C311F6 /* PDRFeedItem.m in Sources */,
 				39BF99501E8E99830025A3F2 /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */,
 				397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */,
 				39BF99561E8E99830025A3F2 /* DGActivityIndicatorView.m in Sources */,
@@ -2150,6 +2184,7 @@
 				39D3F8221CB2BDB900A69575 /* PDUIFriendPickerViewController.m in Sources */,
 				3965AF401D4110250000EB16 /* PDUIBrandTableViewCell.m in Sources */,
 				39ABA6651C4D073D0057088E /* PDUIHomeViewModel.m in Sources */,
+				397BB57C2016256500531902 /* PDUIRewardV2TableViewCell.m in Sources */,
 				39BF994A1E8E99830025A3F2 /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */,
 				39BF99461E8E99830025A3F2 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
 				3921E3141C71E1BB000120D4 /* PDUISingleMessageViewModel.m in Sources */,
@@ -2171,6 +2206,7 @@
 				39BF99371E8E99830025A3F2 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
 				397142331D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m in Sources */,
 				39BF99391E8E99830025A3F2 /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
+				399005A42010EAB200C311F6 /* PDRealm.m in Sources */,
 				393A8C421C591E30001F650C /* PDMessage.m in Sources */,
 				394863CC1D54CE190000ABDE /* PDUITwitterLoginViewController.m in Sources */,
 				398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */,

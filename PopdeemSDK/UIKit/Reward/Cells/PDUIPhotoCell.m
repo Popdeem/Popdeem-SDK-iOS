@@ -10,15 +10,14 @@
 
 @implementation PDUIPhotoCell
 
-- (id) initWithFrame:(CGRect)frame forFeedItem:(PDFeedItem*)feedItem {
+- (id) initWithFrame:(CGRect)frame forFeedItem:(PDRFeedItem*)feedItem {
     if (self = [super initWithFrame:frame forFeedItem:feedItem]) {
         
-        float indent = 20 + self.profileImageView.frame.size.width + 20;
-        float imageSize = 100;
-        self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(indent, 65, imageSize, imageSize)];
+        float imageSize = self.frame.size.width;
+        self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, imageSize, imageSize)];
         self.actionImageView.clipsToBounds = YES;
-        [self.actionImageView setContentMode:UIViewContentModeScaleAspectFill];
-        [self.actionImageView setImage:feedItem.actionImage];
+        [self.actionImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [self.actionImageView setImage:[UIImage imageWithData:feedItem.actionImageData]];
         [self addSubview:self.actionImageView];
         
         return self;

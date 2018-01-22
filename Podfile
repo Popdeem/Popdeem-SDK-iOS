@@ -5,6 +5,7 @@ platform :ios, '8.0'
 
 target 'PopdeemSDK' do
 	pod 'JSONModel'
+  pod 'Realm'
 end
 
 target 'PopdeemSDKTests' do

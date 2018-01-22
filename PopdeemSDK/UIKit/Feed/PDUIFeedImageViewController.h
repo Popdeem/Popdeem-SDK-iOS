@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDFeedItem.h"
+#import "PDRFeedItem.h"
 
 @interface PDUIFeedImageViewController : UIViewController
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) PDFeedItem *item;
+@property (nonatomic, strong) PDRFeedItem *item;
 @property (nonatomic, assign) UITableViewController *parent;
 
 @end

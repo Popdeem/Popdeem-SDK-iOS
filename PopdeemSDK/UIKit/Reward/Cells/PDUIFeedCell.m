@@ -7,15 +7,16 @@
 //
 
 #import "PDUIFeedCell.h"
-#import "PDFeedItem.h"
+#import "PDRFeedItem.h"
 #import "PDTheme.h"
 #import "PDUIKitUtils.h"
 #import "PDConstants.h"
 @implementation PDUIFeedCell
 
-- (id) initWithFrame:(CGRect)frame forFeedItem:(PDFeedItem*)feedItem {
+- (id) initWithFrame:(CGRect)frame forFeedItem:(PDRFeedItem*)feedItem {
   if (self = [super initWithFrame:frame]) {
-    float cellHeight = 75;
+    self.frame = frame;
+    float cellHeight = 65;
     float indent = 20.0f;
     self.separatorInset = UIEdgeInsetsZero;
     float logoSize = cellHeight-30;
@@ -25,18 +26,13 @@
     self.profileImageView.clipsToBounds = YES;
     [self addSubview:self.profileImageView];
 		
-		if (feedItem.profileImage) {
-			[self.profileImageView setImage:feedItem.profileImage];
+		if (feedItem.profileImageData) {
+			[self.profileImageView setImage:[UIImage imageWithData:feedItem.profileImageData]];
 		}else {
 			[self.profileImageView setImage:[UIImage imageNamed:@"pduikit_default_user"]];
 		}
 		
     float left = indent+logoSize+20;
-//    self.label = [[UILabel alloc] initWithFrame:CGRectMake(left, 10, frame.size.width-(left + 20), cellHeight-20)];
-//    [self.label setNumberOfLines:2];
-//    [self.label setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-//    [self addSubview:self.label];
-//    [self.label setAttributedText:[self stringForItem:feedItem]];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, frame.size.width-(left + 20), 20)];
@@ -53,34 +49,62 @@
     [_nameLabel setNumberOfLines:1];
     [_nameLabel sizeToFit];
     
-    self.captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, _nameLabel.frame.size.height, frame.size.width-(left + 20), 30)];
-    [_captionLabel setText:feedItem.captionString];
-    [_captionLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
-    [_captionLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
-    [_captionLabel setNumberOfLines:2];
-    [_captionLabel sizeToFit];
-		
-    float floatingHeight = cellHeight;
-    float joinedHeight = _nameLabel.frame.size.height + 5 + _captionLabel.frame.size.height;
-    float padding = (floatingHeight-joinedHeight)/2;
-    [self.nameLabel setFrame:CGRectMake(left, padding, _nameLabel.frame.size.width, _nameLabel.frame.size.height)];
-    [self.captionLabel setFrame:CGRectMake(left, padding+_nameLabel.frame.size.height, _captionLabel.frame.size.width, _captionLabel.frame.size.height)];
+    [self.nameLabel setFrame:CGRectMake(left, 0, _nameLabel.frame.size.width, 65)];
     [self addSubview:_nameLabel];
-    [self addSubview:_captionLabel];
+  
     //Apply Theme
     [self setBackgroundColor:[UIColor clearColor]];
     if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
       [self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
     }
+    
+    float imageSize = self.frame.size.width;
+    self.actionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, imageSize, imageSize)];
+    self.actionImageView.clipsToBounds = YES;
+    [self.actionImageView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.actionImageView setImage:[UIImage imageWithData:feedItem.actionImageData]];
+    [self addSubview:self.actionImageView];
+    
+    NSMutableAttributedString *labelString = [[NSMutableAttributedString alloc] init];
+    
+    NSMutableAttributedString *userNameString = [[NSMutableAttributedString alloc]
+                                                 initWithString:[NSString stringWithFormat:@"%@  ",userName]
+                                                 attributes:@{
+                                                              NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
+                                                              NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                              }];
+    [labelString appendAttributedString:userNameString];
+    NSMutableAttributedString *captionString = [[NSMutableAttributedString alloc]
+                                                 initWithString:[NSString stringWithFormat:@"%@",feedItem.captionString]
+                                                 attributes:@{
+                                                              NSFontAttributeName : PopdeemFont(PDThemeFontLight, 12),
+                                                              NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                              }];
+    [labelString appendAttributedString:captionString];
+    
+    float top = 65 + imageSize;
+    UILabel *captionLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent, top + 10, imageSize - 2 * indent, 80)];
+    [captionLabel setAttributedText:labelString];
+    [captionLabel setNumberOfLines:0];
+    [captionLabel sizeToFit];
+    [self addSubview:captionLabel];
+    
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(indent, top + 10 + captionLabel.frame.size.height, imageSize - 2*indent, 20)];
+    [timeLabel setText:feedItem.timeAgoString];
+    [timeLabel setFont:PopdeemFont(PDThemeFontLight, 12)];
+    [timeLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
+    [self addSubview:timeLabel];
+    
     return self;
   }
+  
   return nil;
 }
 
-- (NSAttributedString*) stringForItem:(PDFeedItem*)feedItem {
+- (NSAttributedString*) stringForItem:(PDRFeedItem*)feedItem {
   NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
   
-  NSAttributedString *nameString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@ ",feedItem.userFirstName,feedItem.userLastName]
+  NSAttributedString *nameString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@",feedItem.userFirstName,feedItem.userLastName]
                                                                    attributes:@{
                                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp),
                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14)
@@ -131,7 +155,7 @@
   return string;
 }
 
-- (NSString*) timeStringForItem:(PDFeedItem*)item {
+- (NSString*) timeStringForItem:(PDRFeedItem*)item {
   
   NSString *timeAgoString = [item timeAgoString];
   

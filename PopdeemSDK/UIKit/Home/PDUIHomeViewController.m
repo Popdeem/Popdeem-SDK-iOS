@@ -215,10 +215,12 @@
   [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     [self.model fetchRewards];
-    [self.model fetchFeed];
+//    [self.model fetchFeed];
     [self.model fetchWallet];
     [self.model fetchInbox];
   });
+  
+  self.model.feed = [PDFeeds feed];
   
   if (!_segmentedControl) {
     _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[
@@ -461,7 +463,7 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   PDReward *reward;
-  PDFeedItem *feedItem;
+  PDRFeedItem *feedItem;
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       if (_model.rewards.count == 0) {
@@ -525,26 +527,9 @@
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
         feedItem = [_model.feed objectAtIndex:indexPath.row];
-        if (feedItem.actionImage) {
-          return [[PDUIPhotoCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 165) forFeedItem:feedItem];
-        } else {
-          if (feedItem.imageUrlString) {
-            NSURL *url = [NSURL URLWithString:feedItem.imageUrlString];
-            NSURLSessionTask *imageTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-              if (data) {
-                UIImage *image = [UIImage imageWithData:data];
-                if (image) {
-                  feedItem.actionImage = image;
-                  dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                  });
-                }
-              }
-            }];
-            [imageTask resume];
-          }
-          return [[PDUICheckinCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) forFeedItem:feedItem];
-        }
+        float width = self.view.frame.size.width;
+        float feedHeight = 65 + 80 + 20 + width;
+        return [[PDUIFeedCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, feedHeight) forFeedItem:feedItem];
       }
       break;
     case 2:
@@ -680,8 +665,10 @@
       if (_model.feed.count == 0) {
         return 100;
       }
-      if (_model.feed.count > index && [(PDFeedItem*)[_model.feed objectAtIndex:index] actionImage] != nil) {
-        return 175;
+      if (_model.feed.count > index && [(PDRFeedItem*)[_model.feed objectAtIndex:index] actionImageData] != nil) {
+        float width = self.view.frame.size.width;
+        float feedHeight = 65 + 80 + 20 + width;
+        return feedHeight;
       } else {
         return 75;
       }
@@ -745,7 +732,7 @@
     case 1:
       //Feed
       if (_model.feed.count == 0) return;
-      if ([(PDFeedItem*)_model.feed[indexPath.row] actionImage]) {
+      if ([(PDRFeedItem*)_model.feed[indexPath.row] actionImageData]) {
         [self.view setUserInteractionEnabled:NO];
         PDUIFeedImageViewController *ivc = [[PDUIFeedImageViewController alloc] init];
         ivc.parent = self;
@@ -951,7 +938,8 @@
 
 - (void) userDidLogin {
   [self.model fetchRewards];
-  [self.model fetchFeed];
+//  [self.model fetchFeed];
+  self.model.feed = [PDFeeds feed];
   [self.model fetchWallet];
   [_segmentedControl setSelectedSegmentIndex:2];
   AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{

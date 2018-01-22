@@ -12,6 +12,7 @@
 #import "PDUIInboxButton.h"
 #import "PDMessageAPIService.h"
 #import "UIButton+MessageButtonFactory.h"
+#import "PDRFeedItem.h"
 
 @implementation PDUIHomeViewModel
 
@@ -33,7 +34,8 @@
 - (void) setup {
 	
 	[self fetchRewards];
-	[self fetchFeed];
+//  [self fetchFeed]
+  self.feed = [PDFeeds feed];
 	[self fetchWallet];
 	[self fetchInbox];
 	
@@ -190,42 +192,17 @@
 
 - (void) fetchFeed {
 	_feedLoading = YES;
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pdfeeds.fd"];
-	BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:appFile];
-	if (fileExists) {
-		NSMutableArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
-		[PDFeeds initWithContentsOfArray:data];
-		_feed = [[PDFeeds feed] copy];
-	}
-	
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getFeedsSuccess:^{
-		weakSelf.feedLoading = NO;
-		if (_brand) {
-			NSMutableArray *fd = [NSMutableArray array];
-			for (PDFeedItem *item in [PDFeeds feed]) {
-				if ([item.brandName isEqualToString:_brand.name]) {
-					[fd addObject:item];
-				}
-				weakSelf.feed = [fd copy];
-			}
-		} else {
-			weakSelf.feed = [PDFeeds feed];
-		}
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
-		});
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-		NSString *documentsDirectory = [paths objectAtIndex:0];
-		NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"pd_feeds.fd"];
-		[NSKeyedArchiver archiveRootObject:weakSelf.feed toFile:appFile];
+    weakSelf.feed = [PDFeeds feed];
+    [weakSelf.controller.refreshControl endRefreshing];
+    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    _feedLoading = NO;
 	} failure:^(NSError *error){
 		//TODO: Handle Error
 		_feedLoading = NO;
+    [weakSelf.controller.refreshControl endRefreshing];
+    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
 			[weakSelf.controller.refreshControl endRefreshing];

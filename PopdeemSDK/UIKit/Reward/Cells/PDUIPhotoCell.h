@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) UIImageView *actionImageView;
 
-- (id) initWithFrame:(CGRect)frame forFeedItem:(PDFeedItem*)feedItem;
+- (id) initWithFrame:(CGRect)frame forFeedItem:(PDRFeedItem*)feedItem;
 
 @end

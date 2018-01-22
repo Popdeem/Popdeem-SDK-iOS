@@ -7,11 +7,11 @@
 //
 
 #import "PDUICheckinCell.h"
-#import "PDFeedItem.h"
+#import "PDRFeedItem.h"
 
 @implementation PDUICheckinCell
 
-- (id) initWithFrame:(CGRect)frame forFeedItem:(PDFeedItem*)feedItem {
+- (id) initWithFrame:(CGRect)frame forFeedItem:(PDRFeedItem*)feedItem {
     if (self = [super initWithFrame:frame forFeedItem:feedItem]) {
         return self;
     }
