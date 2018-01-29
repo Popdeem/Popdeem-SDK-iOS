@@ -42,7 +42,8 @@
 	_controller.title = translationForKey(@"popdeem.rewards.title", @"Rewards");
 	[_controller.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
 	[_controller.tableView setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
-	[_controller.tableView setSeparatorColor:PopdeemColor(PDThemeColorTableViewSeperator)];
+  [_controller.tableView setSeparatorColor:[UIColor clearColor]];
+  _controller.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
 }
 
@@ -104,20 +105,8 @@
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.controller.refreshControl endRefreshing];
-			[weakSelf refreshMessageIcon];
 		});
 	}];
-}
-
-- (void) refreshMessageIcon {
-	[_controller.inboxButton removeFromSuperview];
-	_controller.inboxButton = [UIButton inboxButtonWithFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
-#pragma clang diagnostic pop
-	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
-	[_controller.view setNeedsDisplay];
 }
 
 - (void) brandImageDidDownload {
@@ -223,26 +212,7 @@
 //	}
 		
 	[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
-	
-	
-	[self refreshMessageIcon];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-	[_controller.inboxButton addTarget:_controller action:@selector(inboxAction) forControlEvents:UIControlEventTouchUpInside];
-#pragma clang diagnostic pop
-	[_controller.tableView.tableHeaderView addSubview:_controller.inboxButton];
-	CGRect settingsButtonFrame = CGRectMake(5, 5, 20, 20);
-	_controller.settingsButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	[_controller.settingsButton setBackgroundColor:[UIColor clearColor]];
-	[_controller.settingsButton setFrame:settingsButtonFrame];
-	_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
-	[_controller.settingsButton setImage:PopdeemImage(@"pduikit_settings") forState:UIControlStateNormal];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-	[_controller.settingsButton addTarget:_controller action:@selector(settingsAction) forControlEvents:UIControlEventTouchUpInside];
-#pragma clang diagnostic pop
-	[_controller.tableView.tableHeaderView addSubview:_controller.settingsButton];
-	
+  
 	if (!_tableHeaderImageView) {
 		if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage") || _brand.coverImage != nil) {
 			_tableHeaderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
@@ -334,8 +304,6 @@
 		//Colours for Brand
 		if (_brand.theme) {
 			[_controller.tableView.tableHeaderView setBackgroundColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-			_controller.inboxButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
-			_controller.settingsButton.tintColor = PopdeemColor(PDThemeColorHomeHeaderText);
 			[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 		}
 	}
@@ -353,10 +321,6 @@
 	if (_tableHeaderImageView) {
 		[_tableHeaderImageView setFrame:_controller.tableView.tableHeaderView.frame];
 	}
-	[_controller.inboxButton setFrame:CGRectMake(_controller.tableView.tableHeaderView.frame.size.width-5-20, 5, 20, 20)];
-	[_controller.settingsButton setFrame:CGRectMake(5, 5, 20, 20)];
-	[_controller.tableView.tableHeaderView bringSubviewToFront:_controller.settingsButton];
-	[_controller.tableView.tableHeaderView bringSubviewToFront:_controller.inboxButton];
 }
 
 - (void) claimNoAction:(PDReward*)reward closestLocation:(PDLocation*)loc {

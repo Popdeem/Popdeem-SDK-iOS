@@ -51,6 +51,8 @@
 		397142331D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142311D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m */; };
 		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
 		397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 397478EF1B8F16530015C661 /* PopdeemSDK.m */; };
+		3975A91B2018D4780081517F /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3975A9192018D4780081517F /* ProfileTableViewCell.m */; };
+		3975A9262018EB280081517F /* PDUIProfileButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3975A9242018EB280081517F /* PDUIProfileButtonTableViewCell.m */; };
 		397894721D1ABFFE00BCE17E /* PDInstagramAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */; };
 		397894781D1AC04400BCE17E /* PDInstagramAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 397894771D1AC04400BCE17E /* PDInstagramAPIService.m */; };
 		3978947C1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978947B1D1AD43100BCE17E /* PDUIInstagramVerifyViewController.m */; };
@@ -292,6 +294,7 @@
 		392B559A1DAF9D130012350A /* PDUILogoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUILogoutTableViewCell.h; path = Settings/PDUILogoutTableViewCell.h; sourceTree = "<group>"; };
 		392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUILogoutTableViewCell.m; path = Settings/PDUILogoutTableViewCell.m; sourceTree = "<group>"; };
 		392B559C1DAF9D130012350A /* PDUILogoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUILogoutTableViewCell.xib; path = Settings/PDUILogoutTableViewCell.xib; sourceTree = "<group>"; };
+		39376BC0201F432000A02F94 /* PDHomeSegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDHomeSegueDelegate.h; path = Protocols/PDHomeSegueDelegate.h; sourceTree = "<group>"; };
 		393A8C401C591E30001F650C /* PDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessage.h; sourceTree = "<group>"; };
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
 		393A8C431C5923D0001F650C /* PDMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMessageStore.h; path = Core/Store/PDMessageStore.h; sourceTree = "<group>"; };
@@ -390,6 +393,12 @@
 		39735B971D23D0E10008301E /* STTwitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = STTwitter.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PopdeemSDK-ctheyfxmqmqacxcykoihxfymdttf/Build/Products/Debug-iphoneos/STTwitter.framework"; sourceTree = "<group>"; };
 		397478EF1B8F16530015C661 /* PopdeemSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopdeemSDK.m; sourceTree = "<group>"; };
 		397478F01B8F16530015C661 /* PopdeemSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopdeemSDK.h; sourceTree = "<group>"; };
+		3975A9182018D4780081517F /* ProfileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProfileTableViewCell.h; path = Home/Cells/Profile/ProfileTableViewCell.h; sourceTree = "<group>"; };
+		3975A9192018D4780081517F /* ProfileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ProfileTableViewCell.m; path = Home/Cells/Profile/ProfileTableViewCell.m; sourceTree = "<group>"; };
+		3975A91A2018D4780081517F /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProfileTableViewCell.xib; path = Home/Cells/Profile/ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		3975A9232018EB280081517F /* PDUIProfileButtonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIProfileButtonTableViewCell.h; path = Home/Cells/Profile/PDUIProfileButtonTableViewCell.h; sourceTree = "<group>"; };
+		3975A9242018EB280081517F /* PDUIProfileButtonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIProfileButtonTableViewCell.m; path = Home/Cells/Profile/PDUIProfileButtonTableViewCell.m; sourceTree = "<group>"; };
+		3975A9252018EB280081517F /* PDUIProfileButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIProfileButtonTableViewCell.xib; path = Home/Cells/Profile/PDUIProfileButtonTableViewCell.xib; sourceTree = "<group>"; };
 		397894701D1ABFFE00BCE17E /* PDInstagramAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDInstagramAPIClient.h; path = Instagram/PDInstagramAPIClient.h; sourceTree = "<group>"; };
 		397894711D1ABFFE00BCE17E /* PDInstagramAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDInstagramAPIClient.m; path = Instagram/PDInstagramAPIClient.m; sourceTree = "<group>"; };
 		397894761D1AC04400BCE17E /* PDInstagramAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDInstagramAPIService.h; path = Instagram/PDInstagramAPIService.h; sourceTree = "<group>"; };
@@ -992,6 +1001,7 @@
 		397142211D38E0C10047F0E0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3975A9142018D4370081517F /* Profile */,
 				39DACEE01D5347BE00DBA1FC /* No Rewards */,
 				3971422F1D3D0A2F0047F0E0 /* Wallet */,
 				397142261D38E3270047F0E0 /* Rewards */,
@@ -1028,6 +1038,19 @@
 			children = (
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		3975A9142018D4370081517F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3975A9182018D4780081517F /* ProfileTableViewCell.h */,
+				3975A9192018D4780081517F /* ProfileTableViewCell.m */,
+				3975A91A2018D4780081517F /* ProfileTableViewCell.xib */,
+				3975A9232018EB280081517F /* PDUIProfileButtonTableViewCell.h */,
+				3975A9242018EB280081517F /* PDUIProfileButtonTableViewCell.m */,
+				3975A9252018EB280081517F /* PDUIProfileButtonTableViewCell.xib */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		3978946F1D1ABFBB00BCE17E /* Instagram */ = {
@@ -1285,6 +1308,7 @@
 			isa = PBXGroup;
 			children = (
 				39C1E0A81E30CF8200D413C7 /* InstagramLoginDelegate.h */,
+				39376BC0201F432000A02F94 /* PDHomeSegueDelegate.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -2195,6 +2219,7 @@
 				39BF994F1E8E99830025A3F2 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
 				391FAE7A1D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m in Sources */,
 				398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */,
+				3975A91B2018D4780081517F /* ProfileTableViewCell.m in Sources */,
 				3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */,
 				39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */,
@@ -2230,6 +2255,7 @@
 				39FDBA511F793E36001864A2 /* PDUICordovaHome.m in Sources */,
 				39BF99491E8E99830025A3F2 /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
 				396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */,
+				3975A9262018EB280081517F /* PDUIProfileButtonTableViewCell.m in Sources */,
 				39BF99411E8E99830025A3F2 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				39BF993F1E8E99830025A3F2 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,

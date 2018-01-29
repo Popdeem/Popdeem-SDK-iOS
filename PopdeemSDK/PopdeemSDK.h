@@ -53,6 +53,7 @@
 #import "PDUtils.h"
 #import "PDTheme.h"
 #import "PDBrand.h"
+#import "PDHomeSegueDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -66,6 +67,7 @@ typedef NS_ENUM(NSUInteger, PDEnv) {
 @property (nonatomic, strong) NSString *apiKey;
 @property (nonatomic) BOOL debug;
 @property (nonatomic) PDEnv env;
+@property (nonatomic) id<PDHomeSegueDelegate> segueDelegate;
 
 + (id) sharedInstance;
 - (NSString*) apiURL;

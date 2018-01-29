@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDReward.h"
+#import "PDBrandTheme.h"
 
 @interface PDUIRewardV2TableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIView *backingCard;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *backingCard;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *infoArea;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *label;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *actionLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *expiryLabel;
+
+- (id) initWithFrame:(CGRect)frame;
+- (void) setupForReward:(PDReward*)reward;
+- (void) setupForReward:(PDReward *)reward theme:(PDBrandTheme*)theme;
 
 @end

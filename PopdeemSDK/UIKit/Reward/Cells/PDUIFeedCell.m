@@ -29,8 +29,9 @@
 		if (feedItem.profileImageData) {
 			[self.profileImageView setImage:[UIImage imageWithData:feedItem.profileImageData]];
 		}else {
-			[self.profileImageView setImage:[UIImage imageNamed:@"pduikit_default_user"]];
+			[self.profileImageView setImage:PopdeemImage(@"pduikit_default_user")];
 		}
+    [self.profileImageView setBackgroundColor:[UIColor grayColor]];
 		
     float left = indent+logoSize+20;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
