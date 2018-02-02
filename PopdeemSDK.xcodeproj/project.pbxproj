@@ -148,6 +148,7 @@
 		39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E11D89532A008DE497 /* PDAbraClient.m */; };
 		39F5F6E91D89536C008DE497 /* PDAbraAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */; };
 		39F5F6EB1D895387008DE497 /* PDAbraConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6EA1D895387008DE497 /* PDAbraConstants.m */; };
+		39F6F4822024723A002A55D6 /* PDUIDirectToSocialHomeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F4812024723A002A55D6 /* PDUIDirectToSocialHomeHandler.m */; };
 		39FA7B661D6DAF2E00031D5B /* PDLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FA7B651D6DAF2E00031D5B /* PDLogger.m */; };
 		39FD1C251C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C231C048F7B00CC3B0C /* pduikit_rewardsIconSuccess.png */; };
 		39FD1C261C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FD1C241C048F7B00CC3B0C /* pduikit_rewardsIconSuccess@2x.png */; };
@@ -634,6 +635,8 @@
 		39F5F6E71D89536C008DE497 /* PDAbraAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDAbraAPIService.h; path = Abra/PDAbraAPIService.h; sourceTree = "<group>"; };
 		39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDAbraAPIService.m; path = Abra/PDAbraAPIService.m; sourceTree = "<group>"; };
 		39F5F6EA1D895387008DE497 /* PDAbraConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDAbraConstants.m; path = Abra/PDAbraConstants.m; sourceTree = "<group>"; };
+		39F6F48020247239002A55D6 /* PDUIDirectToSocialHomeHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDUIDirectToSocialHomeHandler.h; sourceTree = "<group>"; };
+		39F6F4812024723A002A55D6 /* PDUIDirectToSocialHomeHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDUIDirectToSocialHomeHandler.m; sourceTree = "<group>"; };
 		39FA7B641D6DAF2E00031D5B /* PDLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLogger.h; sourceTree = "<group>"; };
 		39FA7B651D6DAF2E00031D5B /* PDLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLogger.m; sourceTree = "<group>"; };
 		39FD1C161C046DAE00CC3B0C /* pduikit_rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pduikit_rainbow.png; path = Resources/pduikit_rainbow.png; sourceTree = "<group>"; };
@@ -1934,6 +1937,8 @@
 				BC67FA65603CD0B3A2DBADFF /* Common */,
 				BC67F132A37E5A0051B009AC /* PopdeemUIKItCore.m */,
 				BC67F1CB2B233BA0D90D0C0D /* PopdeemUIKItCore.h */,
+				39F6F48020247239002A55D6 /* PDUIDirectToSocialHomeHandler.h */,
+				39F6F4812024723A002A55D6 /* PDUIDirectToSocialHomeHandler.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2274,6 +2279,7 @@
 				39BF993C1E8E99830025A3F2 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
 				39BF993D1E8E99830025A3F2 /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */,
 				3921E30C1C71D84B000120D4 /* PDUIFeedImageViewController.m in Sources */,
+				39F6F4822024723A002A55D6 /* PDUIDirectToSocialHomeHandler.m in Sources */,
 				A92281EC1C07369800A43320 /* PDUIRewardTableViewCell.m in Sources */,
 				394BEFF21D1839C90045F5F3 /* PDUIInstagramShareViewController.m in Sources */,
 				39F5F6E91D89536C008DE497 /* PDAbraAPIService.m in Sources */,

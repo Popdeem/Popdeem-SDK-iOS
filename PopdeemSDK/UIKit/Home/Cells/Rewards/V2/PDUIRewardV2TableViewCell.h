@@ -19,6 +19,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *actionLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *expiryLabel;
 
++ (PDUIRewardV2TableViewCell *)cellFromNibNamed:(NSString *)nibName;
 - (id) initWithFrame:(CGRect)frame;
 - (void) setupForReward:(PDReward*)reward;
 - (void) setupForReward:(PDReward *)reward theme:(PDBrandTheme*)theme;

@@ -21,9 +21,9 @@
 
 -(void)handleRewardsFlow {
 	[self presentRewardFlow];
-//  UIViewController *topController = [PDUIKitUtils topViewController];
-//  [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-//
+  UIViewController *topController = [PDUIKitUtils topViewController];
+  [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+
 //  //TODO not handle logged in better
 //  if(![[PDSocialMediaManager manager] isLoggedIn]){
 //    PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];

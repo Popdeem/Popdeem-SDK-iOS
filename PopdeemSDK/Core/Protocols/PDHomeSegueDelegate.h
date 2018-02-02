@@ -6,9 +6,8 @@
 //  Copyright © 2018 Popdeem. All rights reserved.
 //
 
-#ifndef PDHomeSegueDelegate_h
-#define PDHomeSegueDelegate_h
+@protocol PDHomeSegueDelegate <NSObject>
 
 - (void) segueToPopdeemHome;
 
-#endif /* PDHomeSegueDelegate_h */
+@end

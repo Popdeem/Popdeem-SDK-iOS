@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,6 +16,7 @@
                 <outlet property="facebookLoginButton" destination="whg-BB-TEr" id="Kgp-8V-fFA"/>
                 <outlet property="imageView" destination="CSN-dF-pXj" id="gFu-jZ-A6h"/>
                 <outlet property="instagramLoginButton" destination="1wF-oE-hL7" id="mKC-jM-pSF"/>
+                <outlet property="rewardView" destination="WDI-t6-pTD" id="LVj-iD-AOo"/>
                 <outlet property="titleLabel" destination="09q-IF-jId" id="7pf-ib-OJQ"/>
                 <outlet property="twitterLoginButton" destination="25a-7f-Yar" id="EtK-ex-hU7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -95,6 +97,13 @@
                         <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="mRU-nw-E5C"/>
                     </connections>
                 </button>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDI-t6-pTD" userLabel="RewardView">
+                    <rect key="frame" x="0.0" y="388" width="375" height="100"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="pbR-jc-a2a"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -107,13 +116,16 @@
                 <constraint firstItem="CSN-dF-pXj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OdP-0n-ddc"/>
                 <constraint firstItem="fKg-C5-Rw2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PbC-Hy-snU"/>
                 <constraint firstItem="09q-IF-jId" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PgN-aY-7Jv"/>
+                <constraint firstItem="whg-BB-TEr" firstAttribute="top" secondItem="WDI-t6-pTD" secondAttribute="bottom" constant="8" id="R9L-oi-FLT"/>
                 <constraint firstItem="09q-IF-jId" firstAttribute="top" secondItem="CSN-dF-pXj" secondAttribute="bottom" constant="21" id="Tc7-n9-FJG"/>
                 <constraint firstItem="fKg-C5-Rw2" firstAttribute="top" secondItem="09q-IF-jId" secondAttribute="bottom" constant="6" id="Vd0-cq-JSb"/>
                 <constraint firstItem="CSN-dF-pXj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WS7-jY-c21"/>
                 <constraint firstAttribute="bottom" secondItem="1wF-oE-hL7" secondAttribute="bottom" constant="20" id="ZpZ-1B-uoc"/>
+                <constraint firstItem="WDI-t6-pTD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zzf-Np-gEa"/>
                 <constraint firstAttribute="trailing" secondItem="whg-BB-TEr" secondAttribute="trailing" constant="16" id="bxV-eb-YQI"/>
                 <constraint firstItem="whg-BB-TEr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="eBa-xC-EYZ"/>
                 <constraint firstItem="1wF-oE-hL7" firstAttribute="top" secondItem="25a-7f-Yar" secondAttribute="bottom" constant="8" id="fJ4-o1-kF3"/>
+                <constraint firstAttribute="trailing" secondItem="WDI-t6-pTD" secondAttribute="trailing" id="jvl-Do-bBb"/>
                 <constraint firstAttribute="trailing" secondItem="09q-IF-jId" secondAttribute="trailing" constant="16" id="nrS-l8-QiN"/>
                 <constraint firstAttribute="trailing" secondItem="25a-7f-Yar" secondAttribute="trailing" constant="16" id="pIy-KY-ApT"/>
                 <constraint firstItem="PO4-6d-yeQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="pXQ-pj-jr7"/>

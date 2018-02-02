@@ -12,6 +12,7 @@
 #import "PDBrandTheme.h"
 #import "PDUtils.h"
 #import <UIKit/UIKit.h>
+#import "PopdeemSDK.h"
 
 @interface PDUIRewardV2TableViewCell()
   @property (nonatomic, retain) UIColor *primaryAppColor;
@@ -24,6 +25,21 @@
 @end
 
 @implementation PDUIRewardV2TableViewCell
+
++ (PDUIRewardV2TableViewCell *)cellFromNibNamed:(NSString *)nibName {
+  NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
+  NSArray *nibContents = [podBundle loadNibNamed:nibName owner:self options:NULL];
+  NSEnumerator *nibEnumerator = [nibContents objectEnumerator];
+  PDUIRewardV2TableViewCell *customCell = nil;
+  NSObject* nibItem = nil;
+  while ((nibItem = [nibEnumerator nextObject]) != nil) {
+    if ([nibItem isKindOfClass:[PDUIRewardV2TableViewCell class]]) {
+      customCell = (PDUIRewardV2TableViewCell *)nibItem;
+      break; // we have a winner
+    }
+  }
+  return customCell;
+}
 
 - (void)awakeFromNib {
   [super awakeFromNib];

@@ -12,8 +12,11 @@
 #import "PDUIModalLoadingView.h"
 #import "InstagramResponseModel.h"
 #import "InstagramLoginDelegate.h"
+#import "PDUIRewardV2TableViewCell.h"
 
 @interface PDMultiLoginViewController : UIViewController <InstagramLoginDelegate>
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *rewardView;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleLabel;

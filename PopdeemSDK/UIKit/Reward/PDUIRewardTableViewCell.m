@@ -175,6 +175,10 @@
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
+          break;
+        case PDRewardActionSocialLogin:
+          action = @"Connect Account";
+          break;
 				default:
 					action = @"No Action Required";
 					break;
@@ -190,6 +194,10 @@
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
+          break;
+        case PDRewardActionSocialLogin:
+          action = @"Connect Account";
+          break;
 				default:
 					action = @"No Action Required";
 					break;
@@ -205,6 +213,10 @@
 					break;
 				case PDRewardActionNone:
 					action = @"No Action Required";
+          break;
+        case PDRewardActionSocialLogin:
+          action = @"Connect Account";
+          break;
 				default:
 					action = @"No Action Required";
 					break;

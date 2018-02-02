@@ -19,11 +19,15 @@
 #import "PDUserAPIService.h"
 #import "PDAPIClient.h"
 #import "PDUIInstagramLoginViewController.h"
+#import "PDRewardAPIService.h"
+#import "PDUIHomeViewController.h"
+#import "PDUIRewardTableViewCell.h"
 
 @interface PDMultiLoginViewController ()
 @property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
 @property (nonatomic) BOOL facebookLoginOccurring;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *cancelButton;
+@property (nonatomic, retain) PDUIRewardTableViewCell *rewardCell;
 @property (nonatomic) BOOL twitterValid;
 @end
 
@@ -38,8 +42,45 @@
   return nil;
 }
 
+- (void) setupSocialLoginReward:(PDReward*)reward {
+  _rewardCell = [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:reward];
+  if (_rewardCell.logoImageView.image == nil) {
+    NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
+    NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+      if (data) {
+        UIImage *image = [UIImage imageWithData:data];
+        if (image) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+            _rewardCell.logoImageView.image = image;
+            reward.coverImage = image;
+          });
+        }
+      }
+    }];
+    [task2 resume];
+  }
+  [_rewardView addSubview:_rewardCell];
+  [_rewardView setHidden:NO];
+  [_titleLabel setHidden:YES];
+  [_bodyLabel setHidden:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+  NSArray *rewards = [PDRewardStore allRewards];
+  if (rewards.count == 0) {
+    PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
+    [service getAllRewardsWithCompletion:^(NSError *error) {
+      for (PDReward* reward in [PDRewardStore allRewards]){
+        if (reward.action == PDRewardActionSocialLogin) {
+          [self setupSocialLoginReward:reward];
+          break;
+        }
+      }
+    }];
+  }
+  
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	//View Setup
 	_viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self];
@@ -56,13 +97,21 @@
 	
 	[_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
 	[_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
   _twitterLoginButton.layer.cornerRadius = 5.0;
   _twitterLoginButton.clipsToBounds = YES;
 	
-  [_instagramLoginButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
 	[_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _instagramLoginButton.layer.cornerRadius = 5.0;
   _instagramLoginButton.clipsToBounds = YES;
+  UIImage *image = [UIImage imageNamed:@"PDUI_IGBG"];
+  if (image == nil) {
+    NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
+    NSString *imagePath = [podBundle pathForResource:@"PDUI_IGBG" ofType:@"png"];
+    image = [UIImage imageWithContentsOfFile:imagePath];
+  }
+  [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  [_instagramLoginButton setBackgroundImage:image forState:UIControlStateNormal];
 	
 	//Facebook setup
   _facebookLoginButton.layer.cornerRadius = 5.0;
