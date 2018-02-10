@@ -66,6 +66,7 @@ extern NSString *const InstagramVerifyFailure;
 extern NSString *const InstagramVerifySuccessFromWallet;
 extern NSString *const InstagramVerifyFailureFromWallet;
 extern NSString *const InstagramVerifyNoAttempt;
+extern NSString *const InstagramAppReturn;
 extern NSString *const FacebookPublishSuccess;
 extern NSString *const FacebookPublishFailure;
 extern NSString *const FacebookLoginSuccess;

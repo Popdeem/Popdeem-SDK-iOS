@@ -9,6 +9,7 @@
 #import "PDUIDirectToSocialHomeHandler.h"
 #import "PDUIKitUtils.h"
 #import "PDUIHomeViewController.h"
+#import "PDUINavigationController.h"
 
 @implementation PDUIDirectToSocialHomeHandler
 
@@ -31,13 +32,13 @@
   _navController = [[PDUINavigationController alloc] initWithRootViewController:homeVc];
   _navController.view.frame = topController.view.frame;
   
-  CATransition *transition = [[CATransition alloc] init];
-  transition.duration = 0.3;
-  transition.type = kCATransitionPush;
-  transition.subtype = kCATransitionFromRight;
-  [topController.view.window.layer addAnimation:transition forKey:kCATransition];
+//  CATransition *transition = [[CATransition alloc] init];
+//  transition.duration = 0.3;
+//  transition.type = kCATransitionPush;
+//  transition.subtype = kCATransitionFromRight;
+//  [topController.view.window.layer addAnimation:transition forKey:kCATransition];
   
-  [topController presentViewController:_navController animated:NO completion:^{
+  [topController presentViewController:_navController animated:YES completion:^{
   }];
   
 }

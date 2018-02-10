@@ -30,6 +30,7 @@
 }
 
 - (void)viewDidLoad {
+  self.view.frame = _parent.view.frame;
 	[_viewModel setup];
 	[super viewDidLoad];
 	[self.view setBackgroundColor:[UIColor clearColor]];

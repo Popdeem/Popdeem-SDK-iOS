@@ -125,7 +125,13 @@ CGFloat _cardX,_cardY;
 	
 	self.actionButton = [[UIButton alloc] initWithFrame:buttonFrame];
 	[_actionButton setBackgroundColor:_viewModel.buttonColor];
-    [_actionButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
+  UIImage *igimage = [UIImage imageNamed:@"PDUI_IGBG"];
+  if (igimage == nil) {
+    NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
+    NSString *imagePath = [podBundle pathForResource:@"PDUI_IGBG" ofType:@"png"];
+    igimage = [UIImage imageWithContentsOfFile:imagePath];
+  }
+  [_actionButton setBackgroundImage:igimage forState:UIControlStateNormal];
 	[_actionButton.titleLabel setFont:_viewModel.buttonLabelFont];
 	[_actionButton setTitle:_viewModel.buttonText forState:UIControlStateNormal];
 	[_actionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];

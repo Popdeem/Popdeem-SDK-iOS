@@ -22,6 +22,7 @@
 		392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787131C0716F600F8DCD9 /* PDUIClaimViewController.m */; };
 		392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392787171C071BFA00F8DCD9 /* PD_SZTextView.m */; };
 		392B559D1DAF9D130012350A /* PDUILogoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */; };
+		392D8F55202F0A3700BDC764 /* PDUIInstagramScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F53202F0A3700BDC764 /* PDUIInstagramScanViewController.m */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
@@ -295,6 +296,9 @@
 		392B559A1DAF9D130012350A /* PDUILogoutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUILogoutTableViewCell.h; path = Settings/PDUILogoutTableViewCell.h; sourceTree = "<group>"; };
 		392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUILogoutTableViewCell.m; path = Settings/PDUILogoutTableViewCell.m; sourceTree = "<group>"; };
 		392B559C1DAF9D130012350A /* PDUILogoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUILogoutTableViewCell.xib; path = Settings/PDUILogoutTableViewCell.xib; sourceTree = "<group>"; };
+		392D8F52202F0A3700BDC764 /* PDUIInstagramScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramScanViewController.h; path = Claim/Scan/PDUIInstagramScanViewController.h; sourceTree = "<group>"; };
+		392D8F53202F0A3700BDC764 /* PDUIInstagramScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramScanViewController.m; path = Claim/Scan/PDUIInstagramScanViewController.m; sourceTree = "<group>"; };
+		392D8F54202F0A3700BDC764 /* PDUIInstagramScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIInstagramScanViewController.xib; path = Claim/Scan/PDUIInstagramScanViewController.xib; sourceTree = "<group>"; };
 		39376BC0201F432000A02F94 /* PDHomeSegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDHomeSegueDelegate.h; path = Protocols/PDHomeSegueDelegate.h; sourceTree = "<group>"; };
 		393A8C401C591E30001F650C /* PDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessage.h; sourceTree = "<group>"; };
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
@@ -1221,6 +1225,9 @@
 				39BF98ED1E8E64C10025A3F2 /* PDUIScanViewController.h */,
 				39BF98EE1E8E64C10025A3F2 /* PDUIScanViewController.m */,
 				39BF98EF1E8E64C10025A3F2 /* PDUIScanViewController.xib */,
+				392D8F52202F0A3700BDC764 /* PDUIInstagramScanViewController.h */,
+				392D8F53202F0A3700BDC764 /* PDUIInstagramScanViewController.m */,
+				392D8F54202F0A3700BDC764 /* PDUIInstagramScanViewController.xib */,
 			);
 			name = Scan;
 			sourceTree = "<group>";
@@ -2267,6 +2274,7 @@
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
 				3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */,
 				3980A7051D36465100D5F179 /* PlaceholderTableViewCell.m in Sources */,
+				392D8F55202F0A3700BDC764 /* PDUIInstagramScanViewController.m in Sources */,
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				39BF99381E8E99830025A3F2 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
 				390B4FCB1DF8607F00E692D4 /* PDBrandTheme.m in Sources */,

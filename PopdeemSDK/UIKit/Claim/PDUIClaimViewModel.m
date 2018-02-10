@@ -17,6 +17,7 @@
 #import "UIImage+Resize.h"
 #import "PDUITwitterLoginViewController.h"
 #import "PDUserAPIService.h"
+#import "PDUIInstagramVerifyViewController.h"
 
 @import Photos;
 
@@ -655,28 +656,31 @@
 	
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
-	[client claimReward:_reward.identifier
-						 location:_location withMessage:message
-				taggedFriends:taggedFriends
-								image:_image facebook:_willFacebook
-							twitter:_willTweet
-						instagram:_willInstagram
-							success:^(){
-								
-								if (_willInstagram) {
-									[[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
-								}
-		[self didClaimRewardId:rewardId];
-								
-	} failure:^(NSError *error){
-		[self PDAPIClient:client didFailWithError:error];
-	}];
+  if (!_willInstagram) {
+    [client claimReward:_reward.identifier
+               location:_location withMessage:message
+          taggedFriends:taggedFriends
+                  image:_image facebook:_willFacebook
+                twitter:_willTweet
+              instagram:_willInstagram
+                success:^(){
+                  
+                  [self didClaimRewardId:rewardId];
+                  
+                } failure:^(NSError *error){
+                  [self PDAPIClient:client didFailWithError:error];
+                }];
+  } else {
+    if (_willInstagram) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
+    }
+  }
 	
-	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
-																								 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
-																					 descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
-	[_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-	[_loadingView showAnimated:YES];
+//  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+//                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
+//                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
+//  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+//  [_loadingView showAnimated:YES];
 }
 
 - (void) loginWithReadAndWritePerms {
@@ -745,6 +749,16 @@
 
 - (void) didClaimRewardId:(NSInteger)rewardId {
 	
+  //Here is where we will show the ambassador popup or verify the instagram action
+  
+  if (_willInstagram) {
+    //Do the verify flow.
+    NSLog(@"Instagram was Chosen");
+    PDUIInstagramVerifyViewController *verifyController = [[PDUIInstagramVerifyViewController alloc] initForParent:self.viewController forReward:_reward];
+    [self.viewController.navigationController pushViewController:verifyController animated:YES];
+    return;
+  }
+  
 	if (_viewController.claimTask != UIBackgroundTaskInvalid) {
 		[_viewController endBackgroundUpdateTask];
 	}

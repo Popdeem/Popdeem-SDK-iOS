@@ -547,9 +547,10 @@
               UIImage *image = [UIImage imageWithData:data];
               if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                  PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                  if (updateCell) {
-                    updateCell.rewardImageView.image = image;
+                  id updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                  if (updateCell != nil && [updateCell isKindOfClass:[PDUIRewardV2TableViewCell class]]) {
+                    PDUIRewardV2TableViewCell *updaterwrcell = (PDUIRewardV2TableViewCell*)updateCell;
+                    updaterwrcell.rewardImageView.image = image;
                     reward.coverImage = image;
                   }
                 });

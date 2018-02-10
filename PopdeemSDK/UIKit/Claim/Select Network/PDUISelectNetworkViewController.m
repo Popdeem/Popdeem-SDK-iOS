@@ -116,7 +116,13 @@
   [self.instagramButton.layer setCornerRadius:10.0];
   [self.instagramButton setBackgroundColor:[UIColor colorWithRed:0.27 green:0.39 blue:0.64 alpha:1.00]];
   [self.instagramButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  [self.instagramButton setBackgroundImage:[UIImage imageNamed:@"PDUI_IGBG"] forState:UIControlStateNormal];
+  UIImage *igimage = [UIImage imageNamed:@"PDUI_IGBG"];
+  if (igimage == nil) {
+    NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
+    NSString *imagePath = [podBundle pathForResource:@"PDUI_IGBG" ofType:@"png"];
+    igimage = [UIImage imageWithContentsOfFile:imagePath];
+  }
+  [self.instagramButton setBackgroundImage:igimage forState:UIControlStateNormal];
   self.instagramButton.clipsToBounds = YES;
   
 

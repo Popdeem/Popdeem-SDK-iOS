@@ -15,6 +15,7 @@
 #import "PDUser+Facebook.h"
 #import "PDSocialMediaFriend.h"
 #import "PDUISelectNetworkViewController.h"
+#import "PDUIPostScanViewController.h"
 
 @interface PDUIClaimViewController () {
   NSArray *_mediaTypes;
@@ -60,6 +61,7 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermSuccess) name:FacebookPublishSuccess object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermFailure) name:FacebookPublishFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
     return self;
   }
   return nil;
@@ -683,10 +685,20 @@
 	[self.textView setText:newText];
 	[_viewModel validateHashTag];
 }
+
 - (IBAction)alreadySharedButtonPressed:(id)sender {
   PDUISelectNetworkViewController *selNet = [[PDUISelectNetworkViewController alloc] initWithMediaTypes:_mediaTypes andReward:_reward brand:_brand];
   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   [self.navigationController pushViewController:selNet animated:YES];
+}
+
+- (void) backFromInstagram {
+  if (_viewModel.willInstagram) {
+    //We know user was at Instagram, and instagram post is being attempted
+    NSLog(@"Back From Instagram");
+    PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
+    [self.navigationController pushViewController:scan animated:YES];
+  }
 }
 
 @end
