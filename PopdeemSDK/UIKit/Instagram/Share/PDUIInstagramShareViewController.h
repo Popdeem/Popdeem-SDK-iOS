@@ -19,6 +19,7 @@
 @property (nonatomic, retain) UIPageViewController *pageViewController;
 @property (nonatomic,retain) UIView *firstView;
 @property (nonatomic,retain) UIView *secondView;
+@property (nonatomic,retain) UIView *thirdView;
 
 @property (nonatomic, retain) UILabel *viewOneLabelOne;
 @property (nonatomic, retain) UILabel *viewOneLabelTwo;
@@ -29,6 +30,11 @@
 @property (nonatomic, retain) UILabel *viewTwoLabelTwo;
 @property (nonatomic, retain) UIImageView *viewTwoImageView;
 @property (nonatomic, retain) UIButton *viewTwoActionButton;
+
+@property (nonatomic, retain) UILabel *viewThreeLabelOne;
+@property (nonatomic, retain) UILabel *viewThreeLabelTwo;
+@property (nonatomic, retain) UIImageView *viewThreeImageView;
+@property (nonatomic, retain) UIButton *viewThreeActionButton;
 
 @property (nonatomic, retain) UIDocumentInteractionController *dic;
 @property (nonatomic, retain) NSString *message;

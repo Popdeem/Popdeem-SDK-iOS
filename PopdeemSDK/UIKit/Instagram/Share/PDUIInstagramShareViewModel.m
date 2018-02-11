@@ -27,10 +27,11 @@
 	
 	self.viewTwoLabelOneText = translationForKey(@"popdeem.instagram.share.stepTwo.label1", @"Make sure you are logged into the correct account on Instagram.");
 	self.viewTwoLabelTwoText = translationForKey(@"popdeem.instagram.share.stepTwo.label2", @"Your post will publish to whichever account you are currently logged into on the Instagram app.");
-	self.viewTwoActionButtonText = translationForKey(@"popdeem.instagram.share.stepTwo.buttonText", @"Okay, Gotcha");
+	self.viewTwoActionButtonText = translationForKey(@"popdeem.instagram.share.stepTwo.buttonText", @"Next");
   
   self.viewThreeLabelOneText = translationForKey(@"popdeem.instagram.share.stepThree.label1", @"Be sure to select 'Feed' in the Instagram App.");
-  self.viewThreeLabelTwoText = translationForKey(@"popdeem.instagram.share.stepThree.label2", @"We will be unable to detect your post if you publish to your story.");
+  self.viewThreeLabelTwoText = translationForKey(@"popdeem.instagram.share.stepThree.label2", @"If you publish to your story, we will be unable to detect your post, and you will be unable to claim your reward.");
+  self.viewThreeActionButtonText = translationForKey(@"popdeem.instagram.share.stepThree.buttonText", @"Okay, Gotcha");
 	
 	self.viewOneLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
 	self.viewOneLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);

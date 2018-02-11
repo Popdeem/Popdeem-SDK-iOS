@@ -87,7 +87,7 @@ CGFloat _cardWidth;
 	[self.view addSubview:_cardView];
 	
 	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
-	[_scrollView setContentSize:CGSizeMake(2*cardWidth, cardHeight)];
+	[_scrollView setContentSize:CGSizeMake(3*cardWidth, cardHeight)];
 	[_scrollView setBounces:NO];
 	[_scrollView setDelegate:self];
 	[_scrollView setShowsVerticalScrollIndicator:NO];
@@ -100,6 +100,9 @@ CGFloat _cardWidth;
 	_secondView = [[UIView alloc] initWithFrame:CGRectMake(cardWidth, 0, cardWidth, cardHeight)];
 	[_scrollView addSubview:_secondView];
 	
+  _thirdView = [[UIView alloc] initWithFrame:CGRectMake(2*cardWidth, 0, cardWidth, cardHeight)];
+  [_scrollView addSubview:_thirdView];
+  
 	_viewTwoLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
 	[_viewTwoLabelOne setText:_viewModel.viewTwoLabelOneText];
 	[_viewTwoLabelOne setFont:_viewModel.viewTwoLabelOneFont];
@@ -133,13 +136,16 @@ CGFloat _cardWidth;
 	currentY += _viewTwoImageView.frame.size.height;
 	
 	_viewTwoActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
-  [_viewTwoActionButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_viewTwoActionButton setBackgroundColor:[UIColor whiteColor]];
+  [_viewTwoActionButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setFont:_viewModel.viewTwoActionButtonFont];
 	[_viewTwoActionButton setTitle:_viewModel.viewTwoActionButtonText forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
 	[_viewTwoActionButton setTag:1];
-	[_viewTwoActionButton addTarget:self action:@selector(shareOnInstagram) forControlEvents:UIControlEventTouchUpInside];
+	[_viewTwoActionButton addTarget:self action:@selector(scroll) forControlEvents:UIControlEventTouchUpInside];
 	[_secondView addSubview:_viewTwoActionButton];
+  _viewTwoActionButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
+  _viewTwoActionButton.layer.borderWidth = 1.0;
 	
 	cardHeight = currentY + 30 + 40 + 20;
 	[_secondView setFrame:CGRectMake(cardWidth, 0, cardWidth, cardHeight)];
@@ -183,6 +189,51 @@ CGFloat _cardWidth;
 	[_firstView addSubview:_viewOneActionButton];
   _viewOneActionButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
   _viewOneActionButton.layer.borderWidth = 1.0;
+  
+  
+  currentY = 0;
+  
+  _viewThreeLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
+  [_viewThreeLabelOne setText:_viewModel.viewThreeLabelOneText];
+  [_viewThreeLabelOne setFont:_viewModel.viewThreeLabelOneFont];
+  [_viewThreeLabelOne setTextColor:_viewModel.viewThreeLabelOneColor];
+  [_viewThreeLabelOne setNumberOfLines:4];
+  [_viewThreeLabelOne setTextAlignment:NSTextAlignmentCenter];
+  labelSize = [_viewThreeLabelOne sizeThatFits:_viewThreeLabelOne.bounds.size];
+  [_viewThreeLabelOne setFrame:CGRectMake(_viewThreeLabelOne.frame.origin.x, 40 , _viewThreeLabelOne.frame.size.width, labelSize.height)];
+  [_thirdView addSubview:_viewThreeLabelOne];
+  currentY = 30 + labelSize.height;
+  
+  _viewThreeLabelTwo = [[UILabel alloc] initWithFrame:CGRectMake(20, currentY+30, _viewThreeLabelOne.frame.size.width, 70)];
+  [_viewThreeLabelTwo setText:_viewModel.viewThreeLabelTwoText];
+  [_viewThreeLabelTwo setFont:_viewModel.viewThreeLabelTwoFont];
+  [_viewThreeLabelTwo setTextColor:_viewModel.viewThreeLabelTwoColor];
+  [_viewThreeLabelTwo setNumberOfLines:4];
+  [_viewThreeLabelTwo setTextAlignment:NSTextAlignmentCenter];
+  labelSize = [_viewThreeLabelTwo sizeThatFits:_viewThreeLabelTwo.bounds.size];
+  [_viewThreeLabelTwo setFrame:CGRectMake(_viewThreeLabelTwo.frame.origin.x, currentY+30 , _viewThreeLabelTwo.frame.size.width, labelSize.height)];
+  [_thirdView addSubview:_viewThreeLabelTwo];
+  
+  currentY += 30 + labelSize.height + 30;
+  
+  _viewThreeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, currentY, cardWidth-20, cardHeight*0.30)];
+  [_viewThreeImageView setImage:_viewModel.viewThreeImage];
+  [_viewThreeImageView setContentMode:UIViewContentModeScaleAspectFit];
+  _viewThreeImageView.backgroundColor = [UIColor clearColor];
+  _viewThreeImageView.clipsToBounds = YES;
+  [_thirdView addSubview:_viewThreeImageView];
+  
+  currentY += _viewTwoImageView.frame.size.height;
+  
+  _viewThreeActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
+  [_viewThreeActionButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_viewThreeActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [_viewThreeActionButton.titleLabel setFont:_viewModel.viewThreeActionButtonFont];
+  [_viewThreeActionButton setTitle:_viewModel.viewThreeActionButtonText forState:UIControlStateNormal];
+  [_viewThreeActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+  [_viewThreeActionButton setTag:1];
+  [_viewThreeActionButton addTarget:self action:@selector(shareOnInstagram) forControlEvents:UIControlEventTouchUpInside];
+  [_thirdView addSubview:_viewThreeActionButton];
 	
 	_cardWidth = cardWidth;
 	midY = self.view.frame.size.height/2;
@@ -192,7 +243,12 @@ CGFloat _cardWidth;
 }
 
 - (void) scroll {
-	[_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
+  if (_scrollView.contentOffset.x == 0) {
+    [_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
+  }
+  if (_scrollView.contentOffset.x == _cardWidth) {
+    [_scrollView setContentOffset:CGPointMake(2*_cardWidth, 0) animated:YES];
+  }
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INSTA_TUTORIAL_MODULE_TWO});
 }
 
