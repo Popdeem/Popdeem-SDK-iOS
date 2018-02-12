@@ -7,15 +7,94 @@
 //
 
 #import "PDUIGratitudeProgressView.h"
+#import "PDTheme.h"
+#import "PDConstants.h"
+#import "PDUtils.h"
+
+@interface PDUIGratitudeProgressView()
+
+@end
 
 @implementation PDUIGratitudeProgressView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+- (id) initWithInitialValue:(float)value frame:(CGRect)frame {
+  if (self = [super init]) {
+    _initialValue = value;
+    self.frame = frame;
+    
+    float barHeight = 25;
+    float padding = 20;
+    _barWidth = frame.size.width-(2*padding);
+    float barY = frame.size.height - barHeight;
+    _progressBackingView = [[UIView alloc] initWithFrame:CGRectMake(padding, barY, _barWidth, barHeight)];
+    _progressBackingView.layer.cornerRadius = 8.0;
+    _progressBackingView.clipsToBounds = YES;
+    _progressBackingView.layer.borderColor = [UIColor colorWithRed:0.59 green:0.59 blue:0.59 alpha:1.00].CGColor;
+    _progressBackingView.layer.borderWidth = 1.0;
+    _progressBackingView.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.00];
+    
+    _progressCurrentView = [[UIView alloc] initWithFrame:CGRectMake(padding, barY, _barWidth*(value/100), barHeight)];
+     _progressCurrentView.layer.cornerRadius = 8.0;
+    _progressCurrentView.clipsToBounds = YES;
+    _progressCurrentView.backgroundColor = PopdeemColor(PDThemeColorPrimaryApp);
+    
+    float labelWidth = frame.size.width / 0.16;
+    float labelHeight = frame.size.height - barHeight;
+    float level1labelx = padding + (_barWidth*0.30) - (labelWidth/2);
+    float level2labelx = padding + (_barWidth*0.60) - (labelWidth/2);
+    float level3labelx = padding + (_barWidth*0.90) - (labelWidth/2);
+  
+    _level1Label = [[UILabel alloc] initWithFrame:CGRectMake(level1labelx, barY-labelHeight, labelWidth, labelHeight)];
+    _level2Label = [[UILabel alloc] initWithFrame:CGRectMake(level2labelx, barY-labelHeight, labelWidth, labelHeight)];
+    _level3Label = [[UILabel alloc] initWithFrame:CGRectMake(level3labelx, barY-labelHeight, labelWidth, labelHeight)];
+    
+    [_level1Label setFont:PopdeemFont(PDThemeFontPrimary, 10)];
+    [_level2Label setFont:PopdeemFont(PDThemeFontPrimary, 10)];
+    [_level3Label setFont:PopdeemFont(PDThemeFontPrimary, 10)];
+    
+    [_level1Label setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+    [_level2Label setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+    [_level3Label setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+    
+    [_level1Label setText:translationForKey(@"popdeem.gratitude.level1Name", @"🥉\nBronze\nAmbassador")];
+    [_level1Label setTextAlignment:NSTextAlignmentCenter];
+    [_level1Label setNumberOfLines:3];
+    
+    [_level2Label setText:translationForKey(@"popdeem.gratitude.level2Name", @"🥈\nSilver\nAmbassador")];
+    [_level2Label setTextAlignment:NSTextAlignmentCenter];
+    [_level2Label setNumberOfLines:3];
+    
+    [_level3Label setText:translationForKey(@"popdeem.gratitude.level3Name", @"🥇\nGold\nAmbassador")];
+    [_level3Label setTextAlignment:NSTextAlignmentCenter];
+    [_level3Label setNumberOfLines:3];
+    
+    
+    return self;
+  }
+  return nil;
 }
-*/
+
+- (void) didMoveToSuperview {
+  [self addSubview:_progressBackingView];
+  [self addSubview:_progressCurrentView];
+  [self addSubview:_level1Label];
+  [self addSubview:_level2Label];
+  [self addSubview:_level3Label];
+  [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:60] afterDelay:1.0];
+}
+
+- (void) animateToValue:(NSNumber*)value {
+  [UIView animateWithDuration:1.0f delay:0.0 options:UIViewAnimationOptionTransitionNone
+                   animations:^{
+                     float newperc = value.floatValue/100;
+                     
+                     _progressCurrentView.frame = CGRectMake(_progressCurrentView.frame.origin.x, _progressCurrentView.frame.origin.y, _barWidth*newperc, _progressCurrentView.frame.size.height);
+                   }
+                   completion:^(BOOL finished) {
+                   }
+   ];
+}
+
 
 @end

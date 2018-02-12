@@ -10,6 +10,7 @@
 #import "PDUser.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDUIGratitudeProgressView.h"
 
 @implementation ProfileTableViewCell
 
@@ -17,6 +18,7 @@
     [super awakeFromNib];
     // Initialization code
   [self setProfile];
+  [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -37,6 +39,13 @@
   }
   self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
   self.profileImageView.layer.masksToBounds = YES;
+  
+  if (!_progressView) {
+   _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:60 frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75)];
+    [self addSubview:_progressView];
+  } else {
+    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:60 frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75)];
+  }
 
   [self getPicture];
 }

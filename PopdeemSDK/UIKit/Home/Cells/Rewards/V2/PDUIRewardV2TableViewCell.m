@@ -116,10 +116,11 @@
   NSString *rules = reward.rewardRules;
 
   NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
-  ps.paragraphSpacing = 2.0;
+  ps.paragraphSpacing = 8.0;
   ps.lineSpacing = 0;
+  
   NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@""
-                                                                                     attributes:@{}];
+                                                                                     attributes:@{NSParagraphStyleAttributeName: ps}];
   
   NSMutableParagraphStyle *innerParagraphStyle = [[NSMutableParagraphStyle alloc] init];
   innerParagraphStyle.lineSpacing = 0;
@@ -129,20 +130,34 @@
                                                   initWithString:[NSString stringWithFormat:@"%@ \n",description]
                                                   attributes:@{
                                                                NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
-                                                               NSForegroundColorAttributeName : _primaryFontColor
+                                                               NSForegroundColorAttributeName : _primaryFontColor, NSParagraphStyleAttributeName: innerParagraphStyle
                                                                }];
   
   [labelAttString appendAttributedString:descriptionString];
   
   if (rules.length > 0) {
     NSMutableAttributedString *rulesString = [[NSMutableAttributedString alloc]
-                                              initWithString:[NSString stringWithFormat:@"%@ \n",rules]
+                                              initWithString:[NSString stringWithFormat:@"%@",rules]
                                               attributes:@{
                                                            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-                                                           NSForegroundColorAttributeName : _secondaryFontColor
+                                                           NSForegroundColorAttributeName : _secondaryFontColor,
+                                                           NSParagraphStyleAttributeName: innerParagraphStyle
                                                            }];
     [labelAttString appendAttributedString:rulesString];
   }
+  
+  NSString *info = [self expiryStringForReward:reward];
+  info = [@"\n" stringByAppendingString:info];
+  UIColor *bottomTextColor = _tertiaryFontColor ? _tertiaryFontColor : _primaryAppColor;
+  NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
+                                           initWithString:info attributes:@{
+                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
+                                                                            NSForegroundColorAttributeName : bottomTextColor
+                                                                            }];
+  
+  [labelAttString appendAttributedString:infoString];
+  
+  [labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
   
   [_label setAttributedText:labelAttString];
   
@@ -151,13 +166,13 @@
   topBorder.backgroundColor = [UIColor grayColor].CGColor;
   [_infoArea.layer addSublayer:topBorder];
   
-  NSString *info = [self infoStringForReward:reward];
-  NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
-                                           initWithString:info attributes:@{
+  NSString *action = [self infoStringForReward:reward];
+  NSMutableAttributedString *actionString = [[NSMutableAttributedString alloc]
+                                           initWithString:action attributes:@{
                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontLight, 12),
                                                                             NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSecondaryFont)
                                                                             }];
-  [_actionLabel setAttributedText:infoString];
+  [_actionLabel setAttributedText:actionString];
   
   NSString *exp = [self expiryStringForReward:reward];
   NSMutableAttributedString *expiryString = [[NSMutableAttributedString alloc]
@@ -167,6 +182,47 @@
                                                                             }];
   [_expiryLabel setAttributedText:expiryString];
   
+  if (reward.socialMediaTypes.count == 3) {
+    //Three Social Icons
+    [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
+    [_socialIconTwo setImage:PopdeemImage(@"pduirewardinstagramicon")];
+    [_socialIconThree setImage:PopdeemImage(@"pduirewardfacebookicon")];
+    [_socialIconOne setHidden:NO];
+    [_socialIconTwo setHidden:NO];
+    [_socialIconThree setHidden:NO];
+  } else if (reward.socialMediaTypes.count == 2) {
+    if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
+      [_socialIconOne setHidden:NO];
+    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+      [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
+      [_socialIconOne setHidden:NO];
+    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
+      [_socialIconOne setHidden:NO];
+    }
+    if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+      [_socialIconTwo setImage:PopdeemImage(@"pduirewardfacebookicon")];
+      [_socialIconTwo setHidden:NO];
+    } else if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+      [_socialIconTwo setImage:PopdeemImage(@"pduirewardtwittericon")];
+      [_socialIconTwo setHidden:NO];
+    } else if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+      [_socialIconTwo setImage:PopdeemImage(@"pduirewardfacebookicon")];
+      [_socialIconTwo setHidden:NO];
+    }
+  } else if (reward.socialMediaTypes.count == 1) {
+    if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
+      [_socialIconOne setHidden:NO];
+    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+      [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
+      [_socialIconOne setHidden:NO];
+    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
+      [_socialIconOne setHidden:NO];
+    }
+  }
 }
 
 - (NSString*) infoStringForReward:(PDReward*)reward {
@@ -295,16 +351,16 @@
     
     if (intervalMonths > 0) {
       if (intervalMonths > 1) {
-        exp = [NSString stringWithFormat:@"🕐 %ld months remaining",intervalMonths];
+        exp = [NSString stringWithFormat:@"🕐 %ld months left to claim.",intervalMonths];
       } else {
-       exp = [NSString stringWithFormat:@"🕐 %ld month remaining",intervalMonths];
+       exp = [NSString stringWithFormat:@"🕐 %ld month left to claim.",intervalMonths];
       }
     } else if (intervalDays > 6) {
-      exp = [NSString stringWithFormat:@"🕐 %ld weeks remaining",intervalWeeks];
+      exp = [NSString stringWithFormat:@"🕐 %ld weeks left to claim.",intervalWeeks];
     } else if (intervalDays < 7 && intervalHours > 23) {
-      exp = [NSString stringWithFormat:@"🕐 %ld days remaining.",(long)intervalDays];
+      exp = [NSString stringWithFormat:@"🕐 %ld days left to claim.",(long)intervalDays];
     } else {
-      exp = [NSString stringWithFormat:@"🕐 %ld hours remaining.",(long)intervalHours];
+      exp = [NSString stringWithFormat:@"🕐 %ld hours left to claim.",(long)intervalHours];
     }
   }
   

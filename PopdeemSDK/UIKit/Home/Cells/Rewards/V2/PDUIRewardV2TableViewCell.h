@@ -18,6 +18,9 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *label;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *actionLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *expiryLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialIconOne;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialIconTwo;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialIconThree;
 
 + (PDUIRewardV2TableViewCell *)cellFromNibNamed:(NSString *)nibName;
 - (id) initWithFrame:(CGRect)frame;

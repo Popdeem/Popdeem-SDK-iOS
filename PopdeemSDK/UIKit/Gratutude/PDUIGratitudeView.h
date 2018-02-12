@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDUIGratitudeProgressView.h"
+
+@class PDUIGratitudeViewController;
 
 @interface PDUIGratitudeView : UIView
 
-@property (nonatomic, assign) UIView *parent;
+@property (nonatomic, assign) PDUIGratitudeViewController *parent;
 @property (nonatomic, retain) UIView *backingView;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) UILabel *bodyLabel;
+@property (nonatomic, retain) PDUIGratitudeProgressView *progressView;
+@property (nonatomic, retain) UILabel *infoLabel;
+@property (nonatomic, retain) UIButton *profileButton;
 
-- (PDUIGratitudeView*) initForView:(UIView*)parent;
+- (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent;
 - (void) showAnimated:(BOOL)animated;
 - (void) hideAnimated:(BOOL)animated;
 

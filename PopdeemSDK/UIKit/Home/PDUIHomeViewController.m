@@ -33,6 +33,7 @@
 #import "PDUIRewardV2TableViewCell.h"
 #import "ProfileTableViewCell.h"
 #import "PDUIProfileButtonTableViewCell.h"
+#import "PDUIGratitudeViewController.h"
 
 
 #define kPlaceholderCell @"PlaceholderCell"
@@ -334,6 +335,10 @@
     _model.rewards = [PDRewardStore orderedByDate];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
+    PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] init];
+    [self presentViewController:gViewController animated:YES completion:^{
+      
+    }];
   }
   if (_didLogin) {
     [self userDidLogin];
@@ -505,7 +510,11 @@
       break;
     case 2:
       if (section == 0) {
-        return 3;
+        if ([[PDUser sharedInstance] isRegistered]) {
+          return 3;
+        } else {
+          return 2;
+        }
       } else if (section == 1) {
         return _model.wallet.count > 0 ? _model.wallet.count : 1;
       }
@@ -590,22 +599,39 @@
       break;
     case 2:
       if (indexPath.section == 0) {
+        if ([[PDUser sharedInstance] isRegistered]) {
+          if (indexPath.row == 0) {
+            ProfileTableViewCell *profile = [[self tableView] dequeueReusableCellWithIdentifier:kNProfileCell];
+            [profile setProfile];
+            return profile;
+          }
+          if (indexPath.row == 1) {
+            PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            return socialAccountCell;
+          }
+          if (indexPath.row == 2) {
+            PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [messagesCell.label setText:@"Messages"];
+            return messagesCell;
+          }
+        } else {
+          if (indexPath.row == 0) {
+            PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            return socialAccountCell;
+          }
+          if (indexPath.row == 1) {
+            PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
+            [messagesCell.label setText:@"Messages"];
+            return messagesCell;
+          }
+        }
         if (indexPath.row == 0) {
           ProfileTableViewCell *profile = [[self tableView] dequeueReusableCellWithIdentifier:kNProfileCell];
           [profile setProfile];
           return profile;
         }
-        if (indexPath.row == 1) {
-          PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-          [socialAccountCell.label setText:@"Connect Social Media Accounts"];
-          return socialAccountCell;
-        }
-        if (indexPath.row == 2) {
-          PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-          [messagesCell.label setText:@"Messages"];
-          return messagesCell;
-        }
-        
       } else {
         if (_model.wallet.count == 0) {
           if (!_model.walletLoading) {
@@ -758,7 +784,15 @@
     case 2:
       //Wallet
       if (indexPath.section == 0) {
-        return 50;
+        if ([[PDUser sharedInstance] isRegistered]) {
+          if (indexPath.row == 0) {
+            return 125;
+          } else {
+            return 50;
+          }
+        } else {
+          return 50;
+        }
       } else {
         if (walletSelectedIndex && [indexPath isEqual:walletSelectedIndex]) {
           if (indexPath.row < _model.wallet.count) {
@@ -814,13 +848,24 @@
       break;
     case 2:
       if (indexPath.section == 0) {
-        if (indexPath.row == 1) {
-          //Settings
-          [self settingsAction];
-        }
-        if (indexPath.row == 2) {
-          //Messages
-          [self messagesTapped];
+        if ([[PDUser sharedInstance] isRegistered]) {
+          if (indexPath.row == 1) {
+            //Settings
+            [self settingsAction];
+          }
+          if (indexPath.row == 2) {
+            //Messages
+            [self messagesTapped];
+          }
+        } else {
+          if (indexPath.row == 0) {
+            //Settings
+            [self settingsAction];
+          }
+          if (indexPath.row == 1) {
+            //Messages
+            [self messagesTapped];
+          }
         }
       } else {
         if (_model.wallet.count == 0) return;

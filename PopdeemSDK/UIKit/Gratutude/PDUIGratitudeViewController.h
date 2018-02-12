@@ -11,5 +11,5 @@
 @interface PDUIGratitudeViewController : UIViewController
 
 @property (nonatomic, retain) PDUIGratitudeView *gratitudeView;
-
+- (void) dismissAction;
 @end

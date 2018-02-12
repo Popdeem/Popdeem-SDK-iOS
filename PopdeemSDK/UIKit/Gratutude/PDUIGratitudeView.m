@@ -11,10 +11,11 @@
 #import "PopdeemSDK.h"
 #import "PDUser.h"
 #import "PDTheme.h"
+#import "PDUIGratitudeViewController.h"
 
 @implementation PDUIGratitudeView
 
-- (PDUIGratitudeView*) initForView:(UIView*)parent {
+- (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent {
   if (self = [super init]) {
     self.frame = [[UIScreen mainScreen] bounds];
     _parent = parent;
@@ -65,8 +66,34 @@
     [_bodyLabel setText:translationForKey(@"popdeem.gratitude.bodyText", @"Thanks for sharing. You earned an additional 10 points to your account and moved up in status.")];
     
     currentY += bodyLabelHeight;
+    float gratitudePadding = viewHeight * 0.04;
+    currentY += gratitudePadding;
+    float progressHeight = viewHeight * 0.12;
+    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:40 frame:CGRectMake(0, currentY, viewWidth, progressHeight)];
     
+    float buttonHeight = 52;
     
+    _profileButton = [[UIButton alloc] initWithFrame:CGRectMake(labelPadding, viewHeight - 30 - buttonHeight, viewWidth - (2* labelPadding), buttonHeight)];
+    [_profileButton setBackgroundColor:[UIColor whiteColor]];
+    _profileButton.layer.cornerRadius = 8.0;
+    _profileButton.layer.borderWidth = 1.0;
+    _profileButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
+    _profileButton.titleLabel.textColor = PopdeemColor(PDThemeColorPrimaryApp);
+    _profileButton.titleLabel.font = PopdeemFont(PDThemeFontBold, 17);
+    [_profileButton setTitle:translationForKey(@"popdeem.gratitude.buttonTitle", @"Go to Profile") forState:UIControlStateNormal];
+    [_profileButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
+    [_profileButton addTarget:self action:@selector(dismissAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    float infoTop = currentY + progressHeight + 15;
+    float infoBottom = viewHeight - 30 - buttonHeight - 15;
+    float infoHeight = infoBottom - infoTop;
+    
+    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, infoTop, viewWidth - (2*labelPadding), infoHeight)];
+    [_infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
+    [_infoLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+    [_infoLabel setText:translationForKey(@"popdeem.gratitude.infoText", @"Unlock new rewards and VIP offers as you move up in status.")];
+    [_infoLabel setTextAlignment:NSTextAlignmentCenter];
+    [_infoLabel setNumberOfLines:0];
     
     return self;
   }
@@ -80,6 +107,9 @@
   [self addSubview:_imageView];
   [self addSubview:_titleLabel];
   [self addSubview:_bodyLabel];
+  [self addSubview:_progressView];
+  [self addSubview:_infoLabel];
+  [self addSubview:_profileButton];
 }
 
 - (void) showAnimated:(BOOL)animated {
@@ -91,8 +121,8 @@
     [[self layer] addAnimation:loaderIn forKey:kCATransitionReveal];
   }
   [self setHidden:NO];
-  [_parent addSubview:self];
-  [_parent bringSubviewToFront:self];
+  [_parent.view addSubview:self];
+  [_parent.view bringSubviewToFront:self];
 }
 
 - (void) hideAnimated:(BOOL)animated {
@@ -107,4 +137,7 @@
   [self removeFromSuperview];
 }
 
+- (void) dismissAction {
+  [_parent dismissAction];
+}
 @end

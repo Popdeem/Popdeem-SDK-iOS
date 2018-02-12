@@ -17,6 +17,7 @@
     // Initialization code
   [self.label setFont:PopdeemFont(PDThemeFontPrimary, 16)];
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+  self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
