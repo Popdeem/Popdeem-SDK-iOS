@@ -24,6 +24,8 @@
 		392B559D1DAF9D130012350A /* PDUILogoutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392B559B1DAF9D130012350A /* PDUILogoutTableViewCell.m */; };
 		392D8F55202F0A3700BDC764 /* PDUIInstagramScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F53202F0A3700BDC764 /* PDUIInstagramScanViewController.m */; };
 		392D8F5920310AF600BDC764 /* PDUIGratitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5820310AF600BDC764 /* PDUIGratitudeView.m */; };
+		392D8F62203116A600BDC764 /* PDUIGratitudeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5F203116A600BDC764 /* PDUIGratitudeViewController.m */; };
+		392D8F652031F52300BDC764 /* PDUIGratitudeProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
@@ -302,6 +304,11 @@
 		392D8F54202F0A3700BDC764 /* PDUIInstagramScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIInstagramScanViewController.xib; path = Claim/Scan/PDUIInstagramScanViewController.xib; sourceTree = "<group>"; };
 		392D8F5720310AF600BDC764 /* PDUIGratitudeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIGratitudeView.h; path = Gratutude/PDUIGratitudeView.h; sourceTree = "<group>"; };
 		392D8F5820310AF600BDC764 /* PDUIGratitudeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIGratitudeView.m; path = Gratutude/PDUIGratitudeView.m; sourceTree = "<group>"; };
+		392D8F5F203116A600BDC764 /* PDUIGratitudeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIGratitudeViewController.m; path = Gratutude/PDUIGratitudeViewController.m; sourceTree = "<group>"; };
+		392D8F60203116A600BDC764 /* PDUIGratitudeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIGratitudeViewController.h; path = Gratutude/PDUIGratitudeViewController.h; sourceTree = "<group>"; };
+		392D8F61203116A600BDC764 /* PDUIGratitudeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIGratitudeViewController.xib; path = Gratutude/PDUIGratitudeViewController.xib; sourceTree = "<group>"; };
+		392D8F632031F52300BDC764 /* PDUIGratitudeProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIGratitudeProgressView.h; path = Gratutude/PDUIGratitudeProgressView.h; sourceTree = "<group>"; };
+		392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIGratitudeProgressView.m; path = Gratutude/PDUIGratitudeProgressView.m; sourceTree = "<group>"; };
 		39376BC0201F432000A02F94 /* PDHomeSegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDHomeSegueDelegate.h; path = Protocols/PDHomeSegueDelegate.h; sourceTree = "<group>"; };
 		393A8C401C591E30001F650C /* PDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessage.h; sourceTree = "<group>"; };
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
@@ -894,8 +901,13 @@
 		392D8F5620310AC400BDC764 /* Gratitude */ = {
 			isa = PBXGroup;
 			children = (
+				392D8F60203116A600BDC764 /* PDUIGratitudeViewController.h */,
+				392D8F5F203116A600BDC764 /* PDUIGratitudeViewController.m */,
+				392D8F61203116A600BDC764 /* PDUIGratitudeViewController.xib */,
 				392D8F5720310AF600BDC764 /* PDUIGratitudeView.h */,
 				392D8F5820310AF600BDC764 /* PDUIGratitudeView.m */,
+				392D8F632031F52300BDC764 /* PDUIGratitudeProgressView.h */,
+				392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */,
 			);
 			name = Gratitude;
 			sourceTree = "<group>";
@@ -2276,6 +2288,7 @@
 				3965AF3C1D410F050000EB16 /* PDUIBrandsListTableViewController.m in Sources */,
 				3978947F1D1C1E9D00BCE17E /* PDUIInstagramVerifyViewModel.m in Sources */,
 				39BF99521E8E99830025A3F2 /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */,
+				392D8F652031F52300BDC764 /* PDUIGratitudeProgressView.m in Sources */,
 				39BF99531E8E99830025A3F2 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
 				396443FF1D13F04E00BB67F9 /* PDUICardViewModel.m in Sources */,
 				39FDBA511F793E36001864A2 /* PDUICordovaHome.m in Sources */,
@@ -2292,6 +2305,7 @@
 				392787181C071BFA00F8DCD9 /* PD_SZTextView.m in Sources */,
 				39BF99381E8E99830025A3F2 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
 				390B4FCB1DF8607F00E692D4 /* PDBrandTheme.m in Sources */,
+				392D8F62203116A600BDC764 /* PDUIGratitudeViewController.m in Sources */,
 				39B42FAB1E8BF798006D3209 /* PDUISelectNetworkViewController.m in Sources */,
 				392423761C230F4E0038D953 /* PDUILazyLoader.m in Sources */,
 				39B42FB71E8D14F5006D3209 /* PDBackgroundScan.m in Sources */,

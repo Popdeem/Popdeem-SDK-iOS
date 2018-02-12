@@ -10,7 +10,14 @@
 
 @interface PDUIGratitudeView : UIView
 
+@property (nonatomic, assign) UIView *parent;
 @property (nonatomic, retain) UIView *backingView;
 @property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UILabel *bodyLabel;
+
+- (PDUIGratitudeView*) initForView:(UIView*)parent;
+- (void) showAnimated:(BOOL)animated;
+- (void) hideAnimated:(BOOL)animated;
 
 @end

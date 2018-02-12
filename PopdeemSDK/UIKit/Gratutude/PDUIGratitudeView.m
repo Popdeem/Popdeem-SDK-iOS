@@ -16,7 +16,8 @@
 
 - (PDUIGratitudeView*) initForView:(UIView*)parent {
   if (self = [super init]) {
-    self.frame = parent.frame;
+    self.frame = [[UIScreen mainScreen] bounds];
+    _parent = parent;
     self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.95];
     
     float viewHeight = self.frame.size.height;
@@ -27,6 +28,7 @@
     float imageHeight = viewHeight * 0.32;
     float topPadding = viewHeight * 0.07;
     
+    //Icon Image
     currentY = topPadding;
     float imagePadding = (viewWidth - imageHeight)/2;
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imagePadding, currentY, imageHeight, imageHeight)];
@@ -38,13 +40,46 @@
     }
     [_imageView setImage:image];
     [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+    currentY += imageHeight;
+    
+    currentY += viewHeight * 0.03;
+    float labelPadding = viewWidth * 0.1;
+    float titleLabelHeight = viewHeight*0.04;
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, currentY, viewWidth-(2* labelPadding), titleLabelHeight)];
+    [_titleLabel setFont:PopdeemFont(PDThemeFontBold, 22)];
+    [_titleLabel setTextColor:[UIColor blackColor]];
+    [_titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [_titleLabel setNumberOfLines:0];
+    [_titleLabel setText:translationForKey(@"popdeem.gratitude.titleText", @"Sweet Ribs and Burgers!")];
+    
+    currentY += titleLabelHeight;
+    float bodyPadding = viewHeight * 0.022;
+    currentY += bodyPadding;
+    
+    float bodyLabelHeight = viewHeight * 0.12;
+    _bodyLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, currentY, viewWidth-(2* labelPadding), bodyLabelHeight)];
+    [_bodyLabel setFont:PopdeemFont(PDThemeFontPrimary, 17)];
+    [_bodyLabel setTextColor:[UIColor blackColor]];
+    [_bodyLabel setTextAlignment:NSTextAlignmentCenter];
+    [_bodyLabel setNumberOfLines:3];
+    [_bodyLabel setText:translationForKey(@"popdeem.gratitude.bodyText", @"Thanks for sharing. You earned an additional 10 points to your account and moved up in status.")];
+    
+    currentY += bodyLabelHeight;
+    
+    
+    
     return self;
   }
   return nil;
 }
 
+- (void) viewWillAppear {
+}
+
 - (void) didMoveToSuperview {
   [self addSubview:_imageView];
+  [self addSubview:_titleLabel];
+  [self addSubview:_bodyLabel];
 }
 
 - (void) showAnimated:(BOOL)animated {
@@ -56,6 +91,8 @@
     [[self layer] addAnimation:loaderIn forKey:kCATransitionReveal];
   }
   [self setHidden:NO];
+  [_parent addSubview:self];
+  [_parent bringSubviewToFront:self];
 }
 
 - (void) hideAnimated:(BOOL)animated {

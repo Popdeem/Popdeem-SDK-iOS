@@ -18,6 +18,8 @@
 #import "PDUITwitterLoginViewController.h"
 #import "PDUserAPIService.h"
 #import "PDUIInstagramVerifyViewController.h"
+#import "PDUIGratitudeViewController.h"
+#import "PDUIKitUtils.h"
 
 @import Photos;
 
@@ -657,30 +659,32 @@
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
   if (!_willInstagram) {
-    [client claimReward:_reward.identifier
-               location:_location withMessage:message
-          taggedFriends:taggedFriends
-                  image:_image facebook:_willFacebook
-                twitter:_willTweet
-              instagram:_willInstagram
-                success:^(){
-                  
-                  [self didClaimRewardId:rewardId];
-                  
-                } failure:^(NSError *error){
-                  [self PDAPIClient:client didFailWithError:error];
-                }];
+//    [client claimReward:_reward.identifier
+//               location:_location withMessage:message
+//          taggedFriends:taggedFriends
+//                  image:_image facebook:_willFacebook
+//                twitter:_willTweet
+//              instagram:_willInstagram
+//                success:^(){
+//
+//                  [self didClaimRewardId:rewardId];
+//
+//                } failure:^(NSError *error){
+//                  [self PDAPIClient:client didFailWithError:error];
+//                }];
+    [self didClaimRewardId:rewardId];
   } else {
     if (_willInstagram) {
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
     }
   }
 	
-//  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
-//                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
-//                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
-//  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
+                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
+  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
 //  [_loadingView showAnimated:YES];
+
 }
 
 - (void) loginWithReadAndWritePerms {
@@ -769,9 +773,14 @@
 	
 	_viewController.homeController.didClaim = YES;
 	
-	UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[av setTag:9];
-	[av show];
+//  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//  [av setTag:9];
+//  [av show];
+  
+  PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] init];
+  [self.viewController presentViewController:gViewController animated:YES completion:^{
+    
+  }];
 	
 	AbraLogEvent(ABRA_EVENT_CLAIMED, (@{
 																			ABRA_PROPERTYNAME_SOCIAL_NETWORKS : [self readableNetworksChosen],

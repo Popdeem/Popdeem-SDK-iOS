@@ -6,7 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDUIGratitudeView.h"
 
 @interface PDUIGratitudeViewController : UIViewController
+
+@property (nonatomic, retain) PDUIGratitudeView *gratitudeView;
 
 @end
