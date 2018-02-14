@@ -18,9 +18,10 @@
 @implementation PDUIGratitudeProgressView
 
 
-- (id) initWithInitialValue:(float)value frame:(CGRect)frame {
+- (id) initWithInitialValue:(float)value frame:(CGRect)frame increment:(BOOL)increment {
   if (self = [super init]) {
     _initialValue = value;
+    _increment = increment;
     self.frame = frame;
     
     float barHeight = 25;
@@ -46,8 +47,16 @@
     float level3labelx = padding + (_barWidth*0.90) - (labelWidth/2);
   
     _level1Label = [[UILabel alloc] initWithFrame:CGRectMake(level1labelx, barY-labelHeight, labelWidth, labelHeight)];
+    _level1Transparency = [[UIView alloc] initWithFrame:_level1Label.frame];
+    [_level1Transparency setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.3]];
+    
     _level2Label = [[UILabel alloc] initWithFrame:CGRectMake(level2labelx, barY-labelHeight, labelWidth, labelHeight)];
+    _level2Transparency = [[UIView alloc] initWithFrame:_level2Label.frame];
+    [_level2Transparency setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.3]];
+    
     _level3Label = [[UILabel alloc] initWithFrame:CGRectMake(level3labelx, barY-labelHeight, labelWidth, labelHeight)];
+    _level3Transparency = [[UIView alloc] initWithFrame:_level3Label.frame];
+    [_level3Transparency setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.3]];
     
     [_level1Label setFont:PopdeemFont(PDThemeFontPrimary, 10)];
     [_level2Label setFont:PopdeemFont(PDThemeFontPrimary, 10)];
@@ -76,12 +85,32 @@
 }
 
 - (void) didMoveToSuperview {
+  NSLog(@"here");
   [self addSubview:_progressBackingView];
   [self addSubview:_progressCurrentView];
   [self addSubview:_level1Label];
   [self addSubview:_level2Label];
   [self addSubview:_level3Label];
-  [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:60] afterDelay:1.0];
+  
+  if (_initialValue < 30) {
+    [_level1Label.layer setOpacity:0.3];
+    [_level2Label.layer setOpacity:0.3];
+    [_level3Label.layer setOpacity:0.3];
+  }
+  if (_initialValue >= 30 && _initialValue <= 60) {
+    [_level1Label.layer setOpacity:1.0];
+    [_level2Label.layer setOpacity:0.3];
+    [_level3Label.layer setOpacity:0.3];
+  }
+
+  if (_initialValue >= 60 && _initialValue <= 90) {
+    [_level1Label.layer setOpacity:1.0];
+    [_level2Label.layer setOpacity:1.0];
+    [_level3Label.layer setOpacity:0.3];
+  }
+  if (_increment) {
+    [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:_initialValue+30] afterDelay:1.0];
+  }
 }
 
 - (void) animateToValue:(NSNumber*)value {
@@ -90,8 +119,30 @@
                      float newperc = value.floatValue/100;
                      
                      _progressCurrentView.frame = CGRectMake(_progressCurrentView.frame.origin.x, _progressCurrentView.frame.origin.y, _barWidth*newperc, _progressCurrentView.frame.size.height);
+                     
                    }
                    completion:^(BOOL finished) {
+                     if (value.integerValue <= 30) {
+                       [_level1Label.layer setOpacity:0.3];
+                       [_level2Label.layer setOpacity:0.3];
+                       [_level3Label.layer setOpacity:0.3];
+                     }
+                     if (value.integerValue >= 30 && value.integerValue < 60) {
+                       [_level1Label.layer setOpacity:1.0];
+                       [_level2Label.layer setOpacity:0.3];
+                       [_level3Label.layer setOpacity:0.3];
+                     }
+
+                     if (value.integerValue >= 60 && value.integerValue < 90) {
+                       [_level1Label.layer setOpacity:1.0];
+                       [_level2Label.layer setOpacity:1.0];
+                       [_level3Label.layer setOpacity:0.3];
+                     }
+                     if (value.integerValue >= 90) {
+                       [_level1Label.layer setOpacity:1.0];
+                       [_level2Label.layer setOpacity:1.0];
+                       [_level3Label.layer setOpacity:1.0];
+                     }
                    }
    ];
 }

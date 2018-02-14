@@ -51,7 +51,7 @@
     [_titleLabel setTextColor:[UIColor blackColor]];
     [_titleLabel setTextAlignment:NSTextAlignmentCenter];
     [_titleLabel setNumberOfLines:0];
-    [_titleLabel setText:translationForKey(@"popdeem.gratitude.titleText", @"Sweet Ribs and Burgers!")];
+    [_titleLabel setText:[self title]];
     
     currentY += titleLabelHeight;
     float bodyPadding = viewHeight * 0.022;
@@ -59,17 +59,19 @@
     
     float bodyLabelHeight = viewHeight * 0.12;
     _bodyLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, currentY, viewWidth-(2* labelPadding), bodyLabelHeight)];
-    [_bodyLabel setFont:PopdeemFont(PDThemeFontPrimary, 17)];
+    [_bodyLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
     [_bodyLabel setTextColor:[UIColor blackColor]];
     [_bodyLabel setTextAlignment:NSTextAlignmentCenter];
     [_bodyLabel setNumberOfLines:3];
-    [_bodyLabel setText:translationForKey(@"popdeem.gratitude.bodyText", @"Thanks for sharing. You earned an additional 10 points to your account and moved up in status.")];
+    [_bodyLabel setText:[self body]];
     
     currentY += bodyLabelHeight;
     float gratitudePadding = viewHeight * 0.04;
     currentY += gratitudePadding;
     float progressHeight = viewHeight * 0.12;
-    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:40 frame:CGRectMake(0, currentY, viewWidth, progressHeight)];
+    //TODO: User real value
+    float userValue = (_type == PDGratitudeTypeConnect) ? 0 : 30;
+    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:userValue frame:CGRectMake(0, currentY, viewWidth, progressHeight) increment:YES];
     
     float buttonHeight = 52;
     
@@ -98,6 +100,34 @@
     return self;
   }
   return nil;
+}
+
+- (NSString*) title {
+  switch (_type) {
+    case PDGratitudeTypeShare:
+      return translationForKey(@"popdeem.gratitude.share.titleText", @"Sweet Ribs and Burgers!");
+      break;
+    case PDGratitudeTypeConnect:
+      return translationForKey(@"popdeem.gratitude.connect.titleText", @"Thanks for Connecting!");
+      break;
+    default:
+      return translationForKey(@"popdeem.gratitude.share.titleText", @"Sweet Ribs and Burgers!");
+      break;
+  }
+}
+
+- (NSString*)body {
+  switch (_type) {
+    case PDGratitudeTypeShare:
+      return translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional 30 points to your account and moved up in status.");
+      break;
+    case PDGratitudeTypeConnect:
+      return translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned 10 points for connecting your Instagram account. Share photo’s with #RibsandBurgers to earn additional rewards!");
+      break;
+    default:
+      return translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional 30 points to your account and moved up in status.");
+      break;
+  }
 }
 
 - (void) viewWillAppear {

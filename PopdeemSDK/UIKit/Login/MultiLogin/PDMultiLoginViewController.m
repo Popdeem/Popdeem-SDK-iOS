@@ -198,6 +198,8 @@
   });
 	[self addUserToUserDefaults:[PDUser sharedInstance]];
 	AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
+  [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                      object:nil];
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
@@ -215,6 +217,8 @@
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
     dispatch_async(dispatch_get_main_queue(), ^{
       [_loadingView hideAnimated:YES];
+      [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                          object:nil];
       [self dismissViewControllerAnimated:YES completion:^{}];
     });
 	} failure:^(NSError* error){
@@ -270,7 +274,8 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
   });
-  
+  [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                      object:nil];
   AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
   [self dismissViewControllerAnimated:YES completion:^{}];
 }

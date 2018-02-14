@@ -41,10 +41,10 @@
   self.profileImageView.layer.masksToBounds = YES;
   
   if (!_progressView) {
-   _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:60 frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75)];
+   _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:60 frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75) increment:NO];
     [self addSubview:_progressView];
   } else {
-    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:60 frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75)];
+    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:60 frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75)  increment:NO];
   }
 
   [self getPicture];

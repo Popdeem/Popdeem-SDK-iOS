@@ -6,10 +6,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDUIGratitudeView.h"
+@class PDUIGratitudeView;
+
+typedef NS_ENUM(NSUInteger, PDGratitudeType) {
+  PDGratitudeTypeConnect = 0,
+  PDGratitudeTypeShare
+};
 
 @interface PDUIGratitudeViewController : UIViewController
 
 @property (nonatomic, retain) PDUIGratitudeView *gratitudeView;
+@property (nonatomic) PDGratitudeType type;
+
+- (id) initWithType:(PDGratitudeType)type;
 - (void) dismissAction;
 @end

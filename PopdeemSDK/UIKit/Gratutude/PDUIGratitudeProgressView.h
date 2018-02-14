@@ -17,9 +17,13 @@
 @property (nonatomic, retain) UILabel *level1Label;
 @property (nonatomic, retain) UILabel *level2Label;
 @property (nonatomic, retain) UILabel *level3Label;
+@property (nonatomic, retain) UIView *level1Transparency;
+@property (nonatomic, retain) UIView *level2Transparency;
+@property (nonatomic, retain) UIView *level3Transparency;
+@property (nonatomic) BOOL increment;
 
 
-- (id) initWithInitialValue:(float)value frame:(CGRect)frame;
+- (id) initWithInitialValue:(float)value frame:(CGRect)frame increment:(BOOL)increment;
 
 
 @end

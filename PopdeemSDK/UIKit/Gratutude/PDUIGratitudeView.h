@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PDUIGratitudeProgressView.h"
+#import "PDUIGratitudeViewController.h"
 
-@class PDUIGratitudeViewController;
 
 @interface PDUIGratitudeView : UIView
 
@@ -21,6 +21,7 @@
 @property (nonatomic, retain) PDUIGratitudeProgressView *progressView;
 @property (nonatomic, retain) UILabel *infoLabel;
 @property (nonatomic, retain) UIButton *profileButton;
+@property (nonatomic) PDGratitudeType type;
 
 - (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent;
 - (void) showAnimated:(BOOL)animated;

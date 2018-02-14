@@ -165,12 +165,13 @@
 
 - (void) setup {
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:FacebookLoginSuccess object:nil];
+//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:FacebookLoginSuccess object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postVerified) name:InstagramVerifySuccessFromWallet object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade:) name:InstagramPostMade object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:NotificationReceived object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:PDUserDidLogin object:nil];
   [self registerNibs];
   [super viewDidLoad];
   
@@ -335,7 +336,7 @@
     _model.rewards = [PDRewardStore orderedByDate];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
-    PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] init];
+    PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare];
     [self presentViewController:gViewController animated:YES completion:^{
       
     }];
@@ -836,15 +837,6 @@
       }
       break;
     case 1:
-      //Feed
-      if (_model.feed.count == 0) return;
-      if ([(PDRFeedItem*)_model.feed[indexPath.row] actionImageData]) {
-        [self.view setUserInteractionEnabled:NO];
-        PDUIFeedImageViewController *ivc = [[PDUIFeedImageViewController alloc] init];
-        ivc.parent = self;
-        ivc.item = _model.feed[indexPath.row];
-        [[self navigationController] pushViewController:ivc animated:YES];
-      }
       break;
     case 2:
       if (indexPath.section == 0) {
@@ -989,14 +981,7 @@
       if (validated) {
         [self.model claimNoAction:reward closestLocation:closestLocation];
       } else {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Not at Location"
-                                                     message:translationForKey(
-                                                                               @"popdeem.claim.verifyLocationFailed",
-                                                                               @"You must be at this location to claim this reward. Please try later.")
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-        [av show];
+        [self.model claimNoAction:reward closestLocation:closestLocation];
       }
     }];
   } else {
@@ -1066,7 +1051,6 @@
 
 - (void) userDidLogin {
   [self.model fetchRewards];
-//  [self.model fetchFeed];
   self.model.feed = [PDFeeds feed];
   [self.model fetchWallet];
   [_segmentedControl setSelectedSegmentIndex:2];
@@ -1074,6 +1058,14 @@
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"
                                                 }));
+  [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
+}
+
+- (void) showConnect {
+  PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
+  [self presentViewController:gViewController animated:YES completion:^{
+    
+  }];
 }
 
 - (void) dealloc {

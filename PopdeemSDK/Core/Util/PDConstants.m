@@ -23,6 +23,7 @@ NSString *const FEEDS_PATH = @"api/v2/feeds";
 NSString *const BRANDS_PATH = @"api/v2/brands";
 NSString *const MOMENTS_PATH = @"api/v2/moments";
 NSString *const INSTAGRAM_URL = @"https://api.instagram.com/v1";
+NSString *const CUSTOMER_PATH = @"api/v2/customer";
 /*
  End API URL Strings
  */
@@ -44,6 +45,7 @@ NSString *const PDBrandLogoImageDidDownload = @"BrandLogoImageDidDownload";
 NSString *const PDRewardCoverImageDidDownload = @"RewardCoverImageDidDownload";
 NSString *const PDFeedItemImageDidDownload = @"PDFeedItemImageDidDownload";
 NSString *const PDUserDidLogout = @"PDUserDidLogout";
+NSString *const PDUserDidLogin = @"PDUserDidLogin";
 NSString *const InstagramLoginSuccess = @"InstagramLoginSuccess";
 NSString *const InstagramLoginFailure = @"InstagramLoginFailure";
 NSString *const InstagramLoginuserDismissed = @"InstagramLoginuserDismissed";

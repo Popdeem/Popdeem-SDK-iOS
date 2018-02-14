@@ -7,6 +7,7 @@
 
 #import "PDUIGratitudeViewController.h"
 #import "PDUIKitUtils.h"
+#import "PDUIGratitudeView.h"
 
 @interface PDUIGratitudeViewController ()
 
@@ -14,11 +15,12 @@
 
 @implementation PDUIGratitudeViewController
 
-- (id) init {
+- (id) initWithType:(PDGratitudeType)type {
   if (self = [super init]) {
     self.view.backgroundColor = [UIColor clearColor];
     self.view.opaque = NO;
     self.modalPresentationStyle = UIModalPresentationFullScreen;
+    self.type = type;
     return self;
   }
   return nil;
@@ -32,6 +34,7 @@
   [self.view addSubview:imageView];
   
   _gratitudeView = [[PDUIGratitudeView alloc] initForParent:self];
+  _gratitudeView.type = _type;
   [self.view addSubview:_gratitudeView];
   
     // Do any additional setup after loading the view from its nib.

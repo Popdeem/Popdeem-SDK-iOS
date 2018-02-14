@@ -13,6 +13,7 @@
 #import "PDMessageAPIService.h"
 #import "UIButton+MessageButtonFactory.h"
 #import "PDRFeedItem.h"
+#import "PDUIGratitudeViewController.h"
 
 @implementation PDUIHomeViewModel
 
@@ -351,12 +352,10 @@
 																			if (weakSelf.controller.loadingView) {
 																				[weakSelf.controller.loadingView hideAnimated:YES];
 																			}
-																			UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Reward Claimed"
-																																												message:@"You have claimed your reward. It will be displayed in your wallet shortly"
-																																											 delegate:self.controller
-																																							cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-																			[success setTag:2];
-																			[success show];
+                                      PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] init];
+                                      [self.controller presentViewController:gViewController animated:YES completion:^{
+                                        [self.controller.segmentedControl setSelectedSegmentIndex:2];
+                                      }];
 																		} failure:^(NSError *error) {
 																			PDLog(@"An error occurred when Claiming No Action Reward;");
 																			[weakSelf.controller.loadingView hideAnimated:YES];

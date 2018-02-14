@@ -39,6 +39,7 @@ extern NSString *const FEEDS_PATH;
 extern NSString *const BRANDS_PATH;
 extern NSString *const MOMENTS_PATH;
 extern NSString *const INSTAGRAM_URL;
+extern NSString *const CUSTOMER_PATH;
 
 extern NSString *const FACEBOOK_NETWORK;
 extern NSString *const TWITTER_NETWORK;
@@ -54,6 +55,7 @@ extern NSString *const PDBrandLogoImageDidDownload;
 extern NSString *const PDRewardCoverImageDidDownload;
 extern NSString *const PDFeedItemImageDidDownload;
 extern NSString *const PDUserDidLogout;
+extern NSString *const PDUserDidLogin;
 extern NSString *const InstagramLoginSuccess;
 extern NSString *const InstagramLoginFailure;
 extern NSString *const InstagramLoginuserDismissed;

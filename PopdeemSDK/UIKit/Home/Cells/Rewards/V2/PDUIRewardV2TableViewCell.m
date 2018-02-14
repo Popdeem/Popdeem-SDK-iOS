@@ -151,7 +151,7 @@
   UIColor *bottomTextColor = _tertiaryFontColor ? _tertiaryFontColor : _primaryAppColor;
   NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
                                            initWithString:info attributes:@{
-                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
+                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontBold, 10),
                                                                             NSForegroundColorAttributeName : bottomTextColor
                                                                             }];
   
@@ -351,16 +351,16 @@
     
     if (intervalMonths > 0) {
       if (intervalMonths > 1) {
-        exp = [NSString stringWithFormat:@"🕐 %ld months left to claim.",intervalMonths];
+        exp = [NSString stringWithFormat:@"🕐 %ld MONTHS LEFT TO CLAIM.",intervalMonths];
       } else {
-       exp = [NSString stringWithFormat:@"🕐 %ld month left to claim.",intervalMonths];
+       exp = [NSString stringWithFormat:@"🕐 %ld MONTH LEFT TO CLAIM.",intervalMonths];
       }
     } else if (intervalDays > 6) {
-      exp = [NSString stringWithFormat:@"🕐 %ld weeks left to claim.",intervalWeeks];
+      exp = [NSString stringWithFormat:@"🕐 %ld WEEKS LEFT TO CLAIM.",intervalWeeks];
     } else if (intervalDays < 7 && intervalHours > 23) {
-      exp = [NSString stringWithFormat:@"🕐 %ld days left to claim.",(long)intervalDays];
+      exp = [NSString stringWithFormat:@"🕐 %ld DAYS LEFT TO CLAIM.",(long)intervalDays];
     } else {
-      exp = [NSString stringWithFormat:@"🕐 %ld hours left to claim.",(long)intervalHours];
+      exp = [NSString stringWithFormat:@"🕐 %ld HOURS LEFT TO CLAIM.",(long)intervalHours];
     }
   }
   
