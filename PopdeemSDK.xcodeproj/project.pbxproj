@@ -75,6 +75,8 @@
 		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
 		3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */; };
 		39A2167D200E5006007A516B /* PDRReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2167C200E5006007A516B /* PDRReward.m */; };
+		39A2176F203489FD00B109F4 /* PDCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2176E203489FD00B109F4 /* PDCustomer.m */; };
+		39A2177220348A2F00B109F4 /* PDCustomerAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2177020348A2F00B109F4 /* PDCustomerAPIService.m */; };
 		39A6703E1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */; };
 		39A7771E1C0756CD004A4E92 /* pduikit_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A7770F1C0756CD004A4E92 /* pduikit_camera.png */; };
 		39A7771F1C0756CD004A4E92 /* pduikit_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A777101C0756CD004A4E92 /* pduikit_camera@2x.png */; };
@@ -456,6 +458,10 @@
 		3993672A1E0BF023003B2991 /* UIButton+MessageButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MessageButtonFactory.m"; sourceTree = "<group>"; };
 		39A2167B200E5006007A516B /* PDRReward.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDRReward.h; sourceTree = "<group>"; };
 		39A2167C200E5006007A516B /* PDRReward.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDRReward.m; sourceTree = "<group>"; };
+		39A2176D203489FD00B109F4 /* PDCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDCustomer.h; path = PopdeemSDK/Core/Model/PDCustomer.h; sourceTree = SOURCE_ROOT; };
+		39A2176E203489FD00B109F4 /* PDCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDCustomer.m; path = PopdeemSDK/Core/Model/PDCustomer.m; sourceTree = SOURCE_ROOT; };
+		39A2177020348A2F00B109F4 /* PDCustomerAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCustomerAPIService.m; sourceTree = "<group>"; };
+		39A2177120348A2F00B109F4 /* PDCustomerAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCustomerAPIService.h; sourceTree = "<group>"; };
 		39A6703C1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIInstagramLoginViewModel.h; path = Instagram/Login/PDUIInstagramLoginViewModel.h; sourceTree = "<group>"; };
 		39A6703D1D2A6A08001BB6D0 /* PDUIInstagramLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIInstagramLoginViewModel.m; path = Instagram/Login/PDUIInstagramLoginViewModel.m; sourceTree = "<group>"; };
 		39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
@@ -1784,6 +1790,8 @@
 		BC67F9F9215A562BABAB2207 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				39A2177120348A2F00B109F4 /* PDCustomerAPIService.h */,
+				39A2177020348A2F00B109F4 /* PDCustomerAPIService.m */,
 				BC67F7DF66DB5FA8514BC364 /* PDAPIService.h */,
 				BC67FF7EEEC736A0EFFE0388 /* PDAPIService.m */,
 				BC67F4C01336D4CAE7FF60FB /* PDFeedAPIService.h */,
@@ -1841,6 +1849,8 @@
 		BC67FA5FB895CC0BDBDC7C1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				39A2176D203489FD00B109F4 /* PDCustomer.h */,
+				39A2176E203489FD00B109F4 /* PDCustomer.m */,
 				390D45ED20109FCD00307CB7 /* Realm */,
 				BC67FF81C6E0A9A231CE6FE4 /* PDUser.h */,
 				BC67F6177E3E2771EAEAA4AB /* PDUser.m */,
@@ -2257,6 +2267,7 @@
 				39BF994F1E8E99830025A3F2 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
 				391FAE7A1D476164005AFF72 /* PDUIFBLoginWithWritePermsViewController.m in Sources */,
 				398E4B791C03744B00A68529 /* PDUISocialLoginViewController.m in Sources */,
+				39A2177220348A2F00B109F4 /* PDCustomerAPIService.m in Sources */,
 				3975A91B2018D4780081517F /* ProfileTableViewCell.m in Sources */,
 				3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */,
 				39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */,
@@ -2296,6 +2307,7 @@
 				396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */,
 				3975A9262018EB280081517F /* PDUIProfileButtonTableViewCell.m in Sources */,
 				39BF99411E8E99830025A3F2 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
+				39A2176F203489FD00B109F4 /* PDCustomer.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				39BF993F1E8E99830025A3F2 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,

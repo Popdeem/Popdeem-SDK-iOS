@@ -147,15 +147,21 @@
   }
   
   NSString *info = [self expiryStringForReward:reward];
-  info = [@"\n" stringByAppendingString:info];
   UIColor *bottomTextColor = _tertiaryFontColor ? _tertiaryFontColor : _primaryAppColor;
+  NSMutableAttributedString *clockString = [[NSMutableAttributedString alloc]
+                                            initWithString:@"\n⌚︎ " attributes:@{
+                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14),
+                                                                             NSForegroundColorAttributeName : bottomTextColor
+                                                                             }];
   NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
                                            initWithString:info attributes:@{
-                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontBold, 10),
+                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 10),
                                                                             NSForegroundColorAttributeName : bottomTextColor
                                                                             }];
   
+  [labelAttString appendAttributedString:clockString];
   [labelAttString appendAttributedString:infoString];
+  
   
   [labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
   
@@ -179,6 +185,7 @@
                                            initWithString:exp attributes:@{
                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontLight, 12),
                                                                             NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSecondaryFont)
+               
                                                                             }];
   [_expiryLabel setAttributedText:expiryString];
   
@@ -351,16 +358,16 @@
     
     if (intervalMonths > 0) {
       if (intervalMonths > 1) {
-        exp = [NSString stringWithFormat:@"🕐 %ld MONTHS LEFT TO CLAIM.",intervalMonths];
+        exp = [NSString stringWithFormat:@"%ld months left to claim",intervalMonths];
       } else {
-       exp = [NSString stringWithFormat:@"🕐 %ld MONTH LEFT TO CLAIM.",intervalMonths];
+       exp = [NSString stringWithFormat:@"%ld month left to claim",intervalMonths];
       }
     } else if (intervalDays > 6) {
-      exp = [NSString stringWithFormat:@"🕐 %ld WEEKS LEFT TO CLAIM.",intervalWeeks];
+      exp = [NSString stringWithFormat:@"%ld weeks left to claim",intervalWeeks];
     } else if (intervalDays < 7 && intervalHours > 23) {
-      exp = [NSString stringWithFormat:@"🕐 %ld DAYS LEFT TO CLAIM.",(long)intervalDays];
+      exp = [NSString stringWithFormat:@"%ld days left to claim",(long)intervalDays];
     } else {
-      exp = [NSString stringWithFormat:@"🕐 %ld HOURS LEFT TO CLAIM.",(long)intervalHours];
+      exp = [NSString stringWithFormat:@"%ld hours left to claim",(long)intervalHours];
     }
   }
   

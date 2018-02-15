@@ -93,7 +93,9 @@ static PDUser *globalUser = nil;
   } else {
     user.suspended = NO;
   }
-  
+  if (params[@"advocacy_score"] != nil) {
+    user.advocacyScore = [params[@"advocacy_score"] floatValue];
+  }
   return user;
 }
 

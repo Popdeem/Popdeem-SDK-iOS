@@ -127,6 +127,7 @@ The users last name
 + (instancetype) sharedInstance;
 
 @property (nonatomic) BOOL suspended;
+@property (nonatomic) float advocacyScore;
 @property (nonatomic, strong) NSDate *suspendedUntil;
 
 /**

@@ -37,6 +37,7 @@
 #import "PDMessageStore.h"
 #import <UserNotifications/UserNotifications.h>
 #import "PDRealm.h"
+#import "PDCustomerAPIService.h"
 
 @interface PopdeemSDK()
   @property (nonatomic, strong)id uiKitCore;
@@ -54,6 +55,13 @@
 		}
   });
   return SDK;
+}
+
+- (id) init {
+  if (self = [super init]) {
+    return self;
+  }
+  return nil;
 }
 
 + (void) setEnv:(PDEnv)env {

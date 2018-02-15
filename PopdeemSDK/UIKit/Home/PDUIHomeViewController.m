@@ -965,7 +965,6 @@
     if (![[PDUser sharedInstance] isRegistered]) {
       PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
       [loginHandler presentLoginModal];
-      _didLogin = YES;
       return;
     }
     return;
@@ -973,7 +972,6 @@
     if (![[PDUser sharedInstance] isRegistered]) {
       PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
       [loginHandler presentLoginModal];
-      _didLogin = YES;
       return;
     }
     _locationValidator = [[PDLocationValidator alloc] init];
@@ -1059,6 +1057,7 @@
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"
                                                 }));
   [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
+  _didLogin = NO;
 }
 
 - (void) showConnect {

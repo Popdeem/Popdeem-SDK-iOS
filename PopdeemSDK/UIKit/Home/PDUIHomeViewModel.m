@@ -352,10 +352,6 @@
 																			if (weakSelf.controller.loadingView) {
 																				[weakSelf.controller.loadingView hideAnimated:YES];
 																			}
-                                      PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] init];
-                                      [self.controller presentViewController:gViewController animated:YES completion:^{
-                                        [self.controller.segmentedControl setSelectedSegmentIndex:2];
-                                      }];
 																		} failure:^(NSError *error) {
 																			PDLog(@"An error occurred when Claiming No Action Reward;");
 																			[weakSelf.controller.loadingView hideAnimated:YES];

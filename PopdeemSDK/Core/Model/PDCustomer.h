@@ -5,7 +5,7 @@
 //  Created by Niall Quinn on 14/02/2018.
 //
 
-#import <JSONModel/JSONModel.h>
+#import "JSONModel.h"
 
 @interface PDCustomer : JSONModel
 
@@ -24,3 +24,4 @@
 
 
 @end
+
