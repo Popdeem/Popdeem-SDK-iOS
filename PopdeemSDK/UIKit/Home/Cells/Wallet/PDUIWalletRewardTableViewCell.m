@@ -23,8 +23,8 @@
 	self.separatorInset = UIEdgeInsetsZero;
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	[_rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
-	[_mainLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
-	[_mainLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+	[_titleLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
+	[_titleLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
 	[self setBackgroundColor:[UIColor clearColor]];
 	if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
 		[self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
@@ -54,7 +54,7 @@
 		_secondaryFontColor = PopdeemColor(PDThemeColorSecondaryFont);
 	}
 	
-	[_mainLabel setTextColor:_primaryFontColor];
+	[_titleLabel setTextColor:_primaryFontColor];
 	
 	self.clipsToBounds = YES;
 	if (reward.coverImageUrl) {
@@ -97,7 +97,7 @@
 	NSMutableAttributedString *labelAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
 	
 	NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc]
-			initWithString:[NSString stringWithFormat:@"%@ \n",reward.rewardDescription]
+			initWithString:[NSString stringWithFormat:@"%@",reward.rewardDescription]
 				attributes:@{
 						NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
 						NSForegroundColorAttributeName : _primaryFontColor
@@ -105,6 +105,29 @@
 	
 	[labelAttString appendAttributedString:descriptionString];
 
+  float labelx = _rewardImageView.frame.size.width + 16;
+  float labelWidth = self.frame.size.width - labelx - _arrowImageView.frame.size.width - 24;
+  CGRect titleLabelRect = CGRectMake(labelx, 0,labelWidth , 50);
+  if (_titleLabel == nil) {
+    _titleLabel = [[UILabel alloc] initWithFrame:titleLabelRect];
+    [self addSubview:_titleLabel];
+  } else {
+    [_titleLabel setFrame:titleLabelRect];
+  }
+  [_titleLabel setNumberOfLines:3];
+  [_titleLabel setAttributedText:labelAttString];
+  [_titleLabel setContentMode:UIViewContentModeCenter];
+  [_titleLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
+  
+  CGSize size = [_titleLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
+  CGRect labelFrame = _titleLabel.frame;
+  labelFrame.size.height = size.height;
+  _titleLabel.frame = labelFrame;
+  _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+  float innerSpacing = 3;
+  
+  float currentY = _titleLabel.frame.size.height + innerSpacing;
+  
 	NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
 			initWithString:labelLineTwo
 				attributes:@{
@@ -112,20 +135,42 @@
 						NSForegroundColorAttributeName : _primaryAppColor
 				}];
 	
-	[labelAttString appendAttributedString:infoString];
 	NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
 	ps.lineSpacing = 2.0;
-	[labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
-	[_mainLabel setAttributedText:labelAttString];
+	[infoString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, infoString.length)];
+
+	CGRect infoLabelRect = CGRectMake(labelx, _titleLabel.frame.size.height ,labelWidth , 50);
+  if (_infoLabel == nil) {
+    _infoLabel = [[UILabel alloc] initWithFrame:infoLabelRect];
+    [self addSubview:_infoLabel];
+  } else {
+    [_infoLabel setFrame:infoLabelRect];
+  }
+  [_infoLabel setNumberOfLines:1];
+  [_infoLabel setAttributedText:infoString];
+  CGSize infoSize = [_infoLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
+  CGRect infoLabelFrame = _infoLabel.frame;
+  infoLabelFrame.size.height = infoSize.height;
+  _infoLabel.frame = infoLabelFrame;
+  currentY += _infoLabel.frame.size.height;
+  _infoLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	
-//	float centerY = self.frame.size.height/2;
+  currentY += innerSpacing;
+  
+  float combinedHeight = currentY;
+  float padding = 100 - combinedHeight;
+  float topPadding = padding/2;
 	
-	if (reward.type == PDRewardTypeCoupon) {
-		[_instructionsLabel setHidden:YES];
-		return;
-	}
-	
-	
+  currentY = topPadding;
+  [_titleLabel setFrame:CGRectMake(labelx, currentY, _titleLabel.frame.size.width, _titleLabel.frame.size.height)];
+  currentY += _titleLabel.frame.size.height + innerSpacing;
+  [_infoLabel setFrame:CGRectMake(labelx, currentY, _infoLabel.frame.size.width, _infoLabel.frame.size.height)];
+  
+  
+  if (reward.type == PDRewardTypeCoupon) {
+    [_instructionsLabel setHidden:YES];
+    return;
+  }
 	NSMutableAttributedString *instructionsAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
 	NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc]
 																									initWithString:@"Sweepstake Entry\n\n"

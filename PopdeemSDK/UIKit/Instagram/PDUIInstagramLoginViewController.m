@@ -101,17 +101,17 @@ CGFloat _cardX,_cardY;
 	
 	CGFloat labelPadding = cardWidth*0.10;
 	
-	self.label = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, 40, cardWidth-(2*labelPadding), 50)];
+	self.label = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, 20, cardWidth-(2*labelPadding), 50)];
 	[self.label setNumberOfLines:3];
 	[self.label setFont:_viewModel.labelFont];
 	[self.label setTextColor:_viewModel.labelColor];
 	[self.label setText:_viewModel.labelText];
 	[self.label setTextAlignment:NSTextAlignmentCenter];
 	CGSize labelSize = [_label sizeThatFits:_label.bounds.size];
-	[self.label setFrame:CGRectMake(_label.frame.origin.x, labelPadding , _label.frame.size.width, labelSize.height)];
+	[self.label setFrame:CGRectMake(_label.frame.origin.x, 20 , _label.frame.size.width, labelSize.height)];
 	[_cardView addSubview:_label];
 	
-	currentY += labelPadding + labelSize.height + 40;
+	currentY += labelSize.height + 40;
 	
 	self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cardCenterX-(imageWidth/2), currentY, imageWidth, imageWidth)];
 	[self.imageView setImage:_viewModel.logoImage];
@@ -139,7 +139,7 @@ CGFloat _cardX,_cardY;
 	[_actionButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[_cardView addSubview:_actionButton];
 	
-	currentY += buttonFrame.size.height + labelPadding;
+	currentY += buttonFrame.size.height + 20;
 	
 	_cardX = cardX;
 	_cardY = cardY;

@@ -13,6 +13,8 @@
 @interface PDUIWalletRewardTableViewCell : UITableViewCell
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *mainLabel;
+@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UILabel *infoLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *arrowImageView;
 @property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;
 @property (nonatomic, retain) PDBrandTheme *brandTheme;

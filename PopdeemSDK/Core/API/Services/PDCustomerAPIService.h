@@ -9,4 +9,6 @@
 
 @interface PDCustomerAPIService : PDAPIService
 
+- (void) getCustomerWithCompletion:(void (^)(NSError *error))completion;
+
 @end

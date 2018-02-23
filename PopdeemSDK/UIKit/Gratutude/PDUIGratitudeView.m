@@ -15,8 +15,9 @@
 
 @implementation PDUIGratitudeView
 
-- (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent {
+- (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent type:(PDGratitudeType)type {
   if (self = [super init]) {
+    self.type = type;
     self.frame = [[UIScreen mainScreen] bounds];
     _parent = parent;
     self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.95];
@@ -70,8 +71,9 @@
     currentY += gratitudePadding;
     float progressHeight = viewHeight * 0.12;
     //TODO: User real value
-    float userValue = (_type == PDGratitudeTypeConnect) ? 0 : 30;
-    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:userValue frame:CGRectMake(0, currentY, viewWidth, progressHeight) increment:YES];
+    float userValue = (_type == PDGratitudeTypeConnect) ? 0 : [[PDUser sharedInstance] advocacyScore];
+    BOOL increment = (userValue < 90) ? YES : NO;
+    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:userValue frame:CGRectMake(0, currentY, viewWidth, progressHeight) increment:increment];
     
     float buttonHeight = 52;
     
@@ -122,7 +124,7 @@
       return translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional 30 points to your account and moved up in status.");
       break;
     case PDGratitudeTypeConnect:
-      return translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned 10 points for connecting your Instagram account. Share photo’s with #RibsandBurgers to earn additional rewards!");
+      return translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned 10 points for connecting. Share photo’s with #RibsandBurgers to earn additional rewards!");
       break;
     default:
       return translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional 30 points to your account and moved up in status.");

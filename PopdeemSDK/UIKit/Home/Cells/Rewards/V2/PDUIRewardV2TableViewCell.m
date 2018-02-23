@@ -45,9 +45,6 @@
   [super awakeFromNib];
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   
-  [_label setFont:PopdeemFont(PDThemeFontPrimary, 14)];
-  [_label setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
-  
   [self setBackgroundColor:[UIColor clearColor]];
   if (PopdeemThemeHasValueForKey(PDThemeColorTableViewCellBackground)) {
     [self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
@@ -123,11 +120,10 @@
                                                                                      attributes:@{NSParagraphStyleAttributeName: ps}];
   
   NSMutableParagraphStyle *innerParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-  innerParagraphStyle.lineSpacing = 0;
   
   
   NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc]
-                                                  initWithString:[NSString stringWithFormat:@"%@ \n",description]
+                                                  initWithString:[NSString stringWithFormat:@"%@",description]
                                                   attributes:@{
                                                                NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
                                                                NSForegroundColorAttributeName : _primaryFontColor, NSParagraphStyleAttributeName: innerParagraphStyle
@@ -146,26 +142,119 @@
     [labelAttString appendAttributedString:rulesString];
   }
   
-  NSString *info = [self expiryStringForReward:reward];
-  UIColor *bottomTextColor = _tertiaryFontColor ? _tertiaryFontColor : _primaryAppColor;
-  NSMutableAttributedString *clockString = [[NSMutableAttributedString alloc]
-                                            initWithString:@"\n⌚︎ " attributes:@{
-                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14),
-                                                                             NSForegroundColorAttributeName : bottomTextColor
-                                                                             }];
-  NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
-                                           initWithString:info attributes:@{
-                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 10),
-                                                                            NSForegroundColorAttributeName : bottomTextColor
-                                                                            }];
-  
-  [labelAttString appendAttributedString:clockString];
-  [labelAttString appendAttributedString:infoString];
   
   
   [labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
   
-  [_label setAttributedText:labelAttString];
+  //Do the label spacing
+  //Title Label
+  float innerSpacing = 3;
+  float labelX = self.rewardImageView.frame.size.width + 30;
+  if (_titleLabel == nil) {
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0, _backingCard.frame.size.width - labelX - 15, 60)];
+    [_backingCard addSubview:_titleLabel];
+  } else {
+    [_titleLabel setFrame:CGRectMake(labelX, 0, _backingCard.frame.size.width - labelX - 15, 60)];
+  }
+  
+  
+  [_titleLabel setNumberOfLines:2];
+  [_titleLabel setAttributedText:descriptionString];
+  [_titleLabel setContentMode:UIViewContentModeCenter];
+  [_titleLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
+  
+  CGSize size = [_titleLabel sizeThatFits:CGSizeMake(_backingCard.frame.size.width - labelX - 15, MAXFLOAT)];
+  CGRect labelFrame = _titleLabel.frame;
+  labelFrame.size.height = size.height;
+  _titleLabel.frame = labelFrame;
+  _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+  
+  float currentY = _titleLabel.frame.size.height + innerSpacing;
+  
+  //Rules Label
+  if (rules.length > 0) {
+    NSMutableAttributedString *rulesString = [[NSMutableAttributedString alloc]
+                                              initWithString:[NSString stringWithFormat:@"%@",rules]
+                                              attributes:@{
+                                                           NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+                                                           NSForegroundColorAttributeName : _secondaryFontColor,
+                                                           NSParagraphStyleAttributeName: innerParagraphStyle
+                                                           }];
+    [labelAttString appendAttributedString:rulesString];
+    if (_infoLabel == nil) {
+      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, _backingCard.frame.size.width - labelX - 15, 60)];
+      [_backingCard addSubview:_infoLabel];
+    } else {
+      [_infoLabel setFrame:CGRectMake(labelX, currentY, _backingCard.frame.size.width - labelX - 15, 60)];
+    }
+    [_infoLabel setNumberOfLines:4];
+    [_infoLabel setAttributedText:rulesString];
+    CGSize infoSize = [_infoLabel sizeThatFits:CGSizeMake(_backingCard.frame.size.width - labelX - 15, MAXFLOAT)];
+    CGRect infoLabelFrame = _infoLabel.frame;
+    infoLabelFrame.size.height = infoSize.height;
+    _infoLabel.frame = infoLabelFrame;
+    currentY += _infoLabel.frame.size.height;
+    _infoLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+  } else {
+    [_infoLabel removeFromSuperview];
+    _infoLabel = nil;
+  }
+  
+  currentY += innerSpacing;
+  
+  
+  NSString *info = [self expiryStringForReward:reward];
+  if (info != nil) {
+    UIColor *bottomTextColor = _tertiaryFontColor ? _tertiaryFontColor : _primaryAppColor;
+    NSMutableAttributedString *clockString = [[NSMutableAttributedString alloc]
+                                              initWithString:@"⌚︎ " attributes:@{
+                                                                                 NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14),
+                                                                                 NSForegroundColorAttributeName : bottomTextColor
+                                                                                 }];
+    NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
+                                             initWithString:info attributes:@{
+                                                                              NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 10),
+                                                                              NSForegroundColorAttributeName : bottomTextColor
+                                                                              }];
+    
+  
+    NSMutableAttributedString *combinedString = [[NSMutableAttributedString alloc] init];
+    [combinedString appendAttributedString:clockString];
+    [combinedString appendAttributedString:infoString];
+    
+    if (_expiryLabel == nil) {
+      _expiryLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, _backingCard.frame.size.width - labelX - 15, 60)];
+      [_backingCard addSubview:_expiryLabel];
+    } else {
+      [_expiryLabel setFrame:CGRectMake(labelX, currentY, _backingCard.frame.size.width - labelX - 15, 60)];
+    }
+    [_expiryLabel setNumberOfLines:1];
+    [_expiryLabel setAttributedText:combinedString];
+    CGSize expirySize = [_expiryLabel sizeThatFits:CGSizeMake(_backingCard.frame.size.width - labelX - 15, MAXFLOAT)];
+    CGRect expiryLabelFrame = _expiryLabel.frame;
+    expiryLabelFrame.size.height = expirySize.height;
+    _expiryLabel.frame = expiryLabelFrame;
+    currentY += _expiryLabel.frame.size.height;
+  } else {
+    [_expiryLabel removeFromSuperview];
+    _expiryLabel = nil;
+  }
+  
+  float combinedHeight = currentY;
+  float padding = (_backingCard.frame.size.height - _infoArea.frame.size.height) - combinedHeight;
+  float topPadding = padding/2;
+  
+  currentY = topPadding;
+  [_titleLabel setFrame:CGRectMake(labelX, currentY, _titleLabel.frame.size.width, _titleLabel.frame.size.height)];
+  currentY += _titleLabel.frame.size.height + innerSpacing;
+  if (rules.length > 0) {
+    [_infoLabel setFrame:CGRectMake(labelX, currentY, _infoLabel.frame.size.width, _infoLabel.frame.size.height)];
+    currentY += _infoLabel.frame.size.height + innerSpacing;
+  }
+  if (info != nil) {
+    [_expiryLabel setFrame:CGRectMake(labelX, currentY, _expiryLabel.frame.size.width, _expiryLabel.frame.size.height)];
+  }
+  
   
   CALayer *topBorder = [CALayer layer];
   topBorder.frame = CGRectMake(0.0f, 0.0f, _backingCard.frame.size.width, 0.5f);
@@ -176,59 +265,56 @@
   NSMutableAttributedString *actionString = [[NSMutableAttributedString alloc]
                                            initWithString:action attributes:@{
                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontLight, 12),
-                                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSecondaryFont)
+                                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp)
                                                                             }];
   [_actionLabel setAttributedText:actionString];
-  
-  NSString *exp = [self expiryStringForReward:reward];
-  NSMutableAttributedString *expiryString = [[NSMutableAttributedString alloc]
-                                           initWithString:exp attributes:@{
-                                                                            NSFontAttributeName : PopdeemFont(PDThemeFontLight, 12),
-                                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorSecondaryFont)
-               
-                                                                            }];
-  [_expiryLabel setAttributedText:expiryString];
-  
-  if (reward.socialMediaTypes.count == 3) {
-    //Three Social Icons
-    [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
-    [_socialIconTwo setImage:PopdeemImage(@"pduirewardinstagramicon")];
-    [_socialIconThree setImage:PopdeemImage(@"pduirewardfacebookicon")];
-    [_socialIconOne setHidden:NO];
-    [_socialIconTwo setHidden:NO];
-    [_socialIconThree setHidden:NO];
-  } else if (reward.socialMediaTypes.count == 2) {
-    if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
-      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
-      [_socialIconOne setHidden:NO];
-    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+
+  if (reward.action != PDRewardActionNone) {
+    if (reward.socialMediaTypes.count == 3) {
+      //Three Social Icons
       [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
+      [_socialIconTwo setImage:PopdeemImage(@"pduirewardinstagramicon")];
+      [_socialIconThree setImage:PopdeemImage(@"pduirewardfacebookicon")];
       [_socialIconOne setHidden:NO];
-    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
-      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
-      [_socialIconOne setHidden:NO];
-    }
-    if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
-      [_socialIconTwo setImage:PopdeemImage(@"pduirewardfacebookicon")];
       [_socialIconTwo setHidden:NO];
-    } else if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
-      [_socialIconTwo setImage:PopdeemImage(@"pduirewardtwittericon")];
-      [_socialIconTwo setHidden:NO];
-    } else if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
-      [_socialIconTwo setImage:PopdeemImage(@"pduirewardfacebookicon")];
-      [_socialIconTwo setHidden:NO];
+      [_socialIconThree setHidden:NO];
+    } else if (reward.socialMediaTypes.count == 2) {
+      if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+        [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
+        [_socialIconOne setHidden:NO];
+      } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+        [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
+        [_socialIconOne setHidden:NO];
+      } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+        [_socialIconOne setImage:PopdeemImage(@"pduirewardinstagramicon")];
+        [_socialIconOne setHidden:NO];
+      }
+      if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+        [_socialIconTwo setImage:PopdeemImage(@"pduirewardfacebookicon")];
+        [_socialIconTwo setHidden:NO];
+      } else if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+        [_socialIconTwo setImage:PopdeemImage(@"pduirewardtwittericon")];
+        [_socialIconTwo setHidden:NO];
+      } else if ([reward.socialMediaTypes[1] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+        [_socialIconTwo setImage:PopdeemImage(@"pduirewardinstagramicon")];
+        [_socialIconTwo setHidden:NO];
+      }
+    } else if (reward.socialMediaTypes.count == 1) {
+      if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+        [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
+        [_socialIconOne setHidden:NO];
+      } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+        [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
+        [_socialIconOne setHidden:NO];
+      } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+        [_socialIconOne setImage:PopdeemImage(@"pduirewardinstagramicon")];
+        [_socialIconOne setHidden:NO];
+      }
     }
-  } else if (reward.socialMediaTypes.count == 1) {
-    if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
-      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
-      [_socialIconOne setHidden:NO];
-    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
-      [_socialIconOne setImage:PopdeemImage(@"pduirewardtwittericon")];
-      [_socialIconOne setHidden:NO];
-    } else if ([reward.socialMediaTypes[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
-      [_socialIconOne setImage:PopdeemImage(@"pduirewardfacebookicon")];
-      [_socialIconOne setHidden:NO];
-    }
+  } else {
+    [_socialIconOne setHidden:YES];
+    [_socialIconTwo setHidden:YES];
+    [_socialIconThree setHidden:YES];
   }
 }
 
@@ -248,6 +334,10 @@
           break;
         case PDRewardActionNone:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+          break;
+        case PDRewardActionSocialLogin:
+          action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+          break;
         default:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
           break;
@@ -259,10 +349,14 @@
           action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
           break;
         case PDRewardActionPhoto:
-          action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
+          action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
           break;
         case PDRewardActionNone:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+          break;
+        case PDRewardActionSocialLogin:
+          action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+          break;
         default:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
           break;
@@ -274,17 +368,21 @@
           action = translationForKey(@"popdeem.claim.action.tweet", @"Tweet Required");
           break;
         case PDRewardActionPhoto:
-          action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
+          action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
           break;
         case PDRewardActionNone:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+          break;
+        case PDRewardActionSocialLogin:
+          action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+          break;
         default:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
           break;
       }
     } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
       //Twitter Only
-      action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
+      action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
       
     }
   } else if (types.count == 0) {
@@ -293,37 +391,17 @@
         action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
         break;
       case PDRewardActionPhoto:
-        action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
+        action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
         break;
       case PDRewardActionNone:
         action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+        break;
+      case PDRewardActionSocialLogin:
+        action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+        break;
       default:
         action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
         break;
-    }
-  }
-  NSString *exp = nil;
-  if (reward.unlimitedAvailability == NO) {
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[NSDate date]
-                                                          toDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]
-                                                         options:0];
-    
-    NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]];
-    
-    NSInteger days = [components day];
-    
-    NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
-    int intervalHours = interval/60/60;
-    int intervalDays = interval/60/60/24;
-    
-    if (days>6) {
-      exp = [NSString stringWithFormat:@"Exp %ld %@",(long)untilComponents.day, [self monthforIndex:untilComponents.month]];
-    } else if (intervalDays < 7 && intervalHours > 23) {
-      exp = [NSString stringWithFormat:@"Exp %ld days",(long)intervalDays];
-    } else {
-      exp = [NSString stringWithFormat:@"Exp %ld hours",(long)intervalHours];
     }
   }
   
@@ -334,7 +412,7 @@
 - (NSString *) expiryStringForReward:(PDReward*)reward {
   
   if (reward.unlimitedAvailability) {
-    return @"";
+    return nil;
   }
   
   NSString *exp = nil;
@@ -347,27 +425,32 @@
     
     NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]];
     
-    NSInteger days = [components day];
-    
+
     NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
     int intervalHours = interval/60/60;
     int intervalDays = interval/60/60/24;
     int intervalWeeks = interval/60/60/24/7;
     int intervalMonths = interval/60/60/24/7;
     
+    if (intervalMonths >= 1) {
+      return nil;
+    }
+    if (intervalWeeks > 3) {
+      return nil;
+    }
     
     if (intervalMonths > 0) {
       if (intervalMonths > 1) {
-        exp = [NSString stringWithFormat:@"%ld months left to claim",intervalMonths];
+        exp = [NSString stringWithFormat:@"%li months left to claim",intervalMonths];
       } else {
-       exp = [NSString stringWithFormat:@"%ld month left to claim",intervalMonths];
+       exp = [NSString stringWithFormat:@"%li month left to claim",intervalMonths];
       }
     } else if (intervalDays > 6) {
-      exp = [NSString stringWithFormat:@"%ld weeks left to claim",intervalWeeks];
+      exp = [NSString stringWithFormat:@"%li weeks left to claim",intervalWeeks];
     } else if (intervalDays < 7 && intervalHours > 23) {
-      exp = [NSString stringWithFormat:@"%ld days left to claim",(long)intervalDays];
+      exp = [NSString stringWithFormat:@"%li days left to claim",(long)intervalDays];
     } else {
-      exp = [NSString stringWithFormat:@"%ld hours left to claim",(long)intervalHours];
+      exp = [NSString stringWithFormat:@"%li hours left to claim",(long)intervalHours];
     }
   }
   

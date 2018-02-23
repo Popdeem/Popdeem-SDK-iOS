@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender;
 - (void) redeemButtonPressed;
 - (void) setBrandVendorSearchTerm:(NSString *)brandVendorSearchTerm;
+- (void) moveToSection:(NSInteger)section;
 
 @end
 NS_ASSUME_NONNULL_END

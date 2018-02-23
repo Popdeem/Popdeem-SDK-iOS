@@ -57,6 +57,13 @@
   return SDK;
 }
 
+- (void) fetchCustomer {
+  PDCustomerAPIService *service = [[PDCustomerAPIService alloc] init];
+  [service getCustomerWithCompletion:^(NSError *error) {
+    PDLog(@"Fetched Customer");
+  }];
+}
+
 - (id) init {
   if (self = [super init]) {
     return self;
@@ -107,11 +114,20 @@
     }];
 }
 
-+ (void) withAPIKey:(NSString*)apiKey {
++ (void) withAPIKey:(NSString*)apiKey env:(PDEnv)env {
   PopdeemSDK *SDK = [[self class] sharedInstance];
+  [SDK setEnv:env];
   [SDK setApiKey:apiKey];
   [SDK nonSocialRegister];
   [PDRealm initRealmDB];
+  PDCustomerAPIService *service = [[PDCustomerAPIService alloc] init];
+  [service getCustomerWithCompletion:^(NSError *error) {
+    PDLog(@"Fetched Customer");
+  }];
+}
+
++ (void) withAPIKey:(NSString*)apiKey {
+  [PopdeemSDK withAPIKey:apiKey env:PDEnvProduction];
 }
 
 + (void) testingWithAPIKey:(NSString*)apiKey {

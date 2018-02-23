@@ -77,6 +77,7 @@ typedef NS_ENUM(NSUInteger, PDEnv) {
 + (BOOL) debugMode;
 
 + (void) withAPIKey:(NSString*)apiKey;
++ (void) withAPIKey:(NSString*)apiKey env:(PDEnv)env;
 + (void) testingWithAPIKey:(NSString*)apiKey;
 + (void) startupBrands;
 + (void) setTwitterOAuthToken:(NSString*)token verifier:(NSString*)verifier;

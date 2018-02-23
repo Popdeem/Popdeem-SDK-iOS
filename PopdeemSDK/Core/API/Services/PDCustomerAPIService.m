@@ -6,6 +6,7 @@
 //
 
 #import "PDCustomerAPIService.h"
+#import "PDCustomer.h"
 
 @implementation PDCustomerAPIService
 
@@ -16,10 +17,10 @@
   return nil;
 }
 
-- (void) getRewardsInWalletWithCompletion:(void (^)(NSError *error))completion {
+- (void) getCustomerWithCompletion:(void (^)(NSError *error))completion {
   
   NSURLSession *session = [NSURLSession createPopdeemSession];
-  NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,WALLET_PATH];
+  NSString *path = [NSString stringWithFormat:@"%@/%@",self.baseUrl,CUSTOMER_PATH];
   
   [session GET:path params:nil completion:^(NSData *data, NSURLResponse *response, NSError *error){
     if (error) {
@@ -40,6 +41,14 @@
           completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
         });
         return;
+      }
+      
+      if (jsonObject[@"customer"]) {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObject[@"customer"]
+                                                           options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                             error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        PDCustomer *customer = [PDCustomer initFromAPI:jsonString];
       }
       
       

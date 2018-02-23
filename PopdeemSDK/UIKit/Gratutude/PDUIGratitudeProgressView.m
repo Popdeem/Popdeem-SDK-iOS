@@ -10,6 +10,7 @@
 #import "PDTheme.h"
 #import "PDConstants.h"
 #import "PDUtils.h"
+#import "PDCustomer.h"
 
 @interface PDUIGratitudeProgressView()
 
@@ -109,7 +110,8 @@
     [_level3Label.layer setOpacity:0.3];
   }
   if (_increment) {
-    [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:_initialValue+30] afterDelay:1.0];
+    PDCustomer *customer = [PDCustomer sharedInstance];
+    [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:_initialValue+customer.incrementAdvocacyPoints] afterDelay:1.0];
   }
 }
 

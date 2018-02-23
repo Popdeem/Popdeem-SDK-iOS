@@ -11,6 +11,32 @@
 
 @implementation PDCustomer
 
+static PDCustomer *globalCustomer = nil;
+
++ (instancetype) sharedInstance {
+  @synchronized(self) {
+    if (globalCustomer == nil) {
+      globalCustomer = [[PDCustomer alloc] init];
+    }
+  }
+  return globalCustomer;
+}
+
++ (void) resetSharedInstance {
+  @synchronized(self) {
+    globalCustomer = nil;
+  }
+}
+
++ (PDCustomer*) initFromAPI:(NSString*)json {
+  PDCustomer *customer = [PDCustomer sharedInstance];
+  PDCustomer *fromJSON = [[PDCustomer alloc] initWithJSON:json];
+  if (fromJSON != nil) {
+    globalCustomer = fromJSON;
+  }
+  return globalCustomer;
+}
+
 - (id) initWithJSON:(NSString*)json {
   
   NSError *err;
@@ -22,7 +48,20 @@
 }
 
 + (JSONKeyMapper*)keyMapper {
-  return [JSONKeyMapper mapperForSnakeCase];
+  return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                     @"name": @"name",
+                                                     @"fb_app_id": @"facebookAppId",
+                                                     @"fb_app_access_token": @"facebookAccessToken",
+                                                     @"facebook_namespace": @"facebookNameSpace",
+                                                     @"twitter_consumer_key": @"twitterConsumerKey",
+                                                     @"twitter_consumer_secret": @"twitterConsumerSecret",
+                                                     @"twitter_handle": @"twitterHandle",
+                                                     @"instagram_client_id": @"instagramClientId",
+                                                     @"instagram_client_secret": @"instagramClientSecret",
+                                                     @"countdown_timer": @"countdownTimer",
+                                                     @"increment_advocacy_points": @"incrementAdvocacyPoints",
+                                                     @"decrement_advocacy_points": @"decrementAdvocacyPoints"
+                                                     }];
 }
 
 @end

@@ -15,9 +15,10 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *backingCard;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *infoArea;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *label;
+@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UILabel *infoLabel;
+@property (nonatomic, retain) UILabel *expiryLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *actionLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *expiryLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialIconOne;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialIconTwo;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialIconThree;

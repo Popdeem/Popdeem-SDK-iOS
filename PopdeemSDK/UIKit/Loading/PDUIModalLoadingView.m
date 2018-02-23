@@ -23,22 +23,23 @@
         
         // self.view is a backing view which has 0.5 opacity and will fill the parent
         self.frame = CGRectMake(0,0,parent.frame.size.width,parent.frame.size.height);
-        [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+//        [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
+      
+        float indent = 0;
+        float width = parent.frame.size.width;
+        float height = parent.frame.size.height;
         
-        float indent = 15;
-        float width = parent.frame.size.width - 30;
-        float y = (parent.frame.size.height/2) - 55;
-        
-        _contentView = [[UIView alloc] initWithFrame:CGRectMake(indent, y, width, 110)];
+        _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
 
         _contentView.layer.cornerRadius = 5.0;
-        [_contentView setBackgroundColor:[UIColor whiteColor]];
-        
-        CGRect spinnerRect = CGRectMake((_contentView.frame.size.width/2)-20, 15, 40, 40);
+        [_contentView setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.8]];
+      
+        float framecenter = height /2;
+        CGRect spinnerRect = CGRectMake((_contentView.frame.size.width/2)-20, framecenter-40, 40, 40);
         _spinner = [[UIActivityIndicatorView alloc] initWithFrame:spinnerRect];
         [_spinner setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
         
-        CGRect titleRect = CGRectMake(0, 55, _contentView.frame.size.width, 20);
+        CGRect titleRect = CGRectMake(0, framecenter, _contentView.frame.size.width, 20);
         _titleLabel = [[UILabel alloc] initWithFrame:titleRect];
         [self.titleLabel setText:titleText];
         [_titleLabel setNumberOfLines:2];
@@ -46,7 +47,7 @@
         [_titleLabel setTextColor:[UIColor colorWithRed:0.166 green:0.166 blue:0.166 alpha:1.000]];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         
-        CGRect descriptionRect = CGRectMake(0, 75, _contentView.frame.size.width, 20);
+        CGRect descriptionRect = CGRectMake(0, framecenter + 20, _contentView.frame.size.width, 20);
         _descriptionLabel = [[UILabel alloc] initWithFrame:descriptionRect];
         [self.descriptionLabel setText:descriptionText];
         [_descriptionLabel setNumberOfLines:1];

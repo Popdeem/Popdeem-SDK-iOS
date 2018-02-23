@@ -39,9 +39,6 @@
       self.actionText = @"shared a photo & redeemed";
     }
     
-//    NSString *rewardType = [[params objectForKey:@"reward"] objectForKey:@"type"];
-//    self.rewardTypeString = rewardType ? rewardType : @"";
-    
     NSDictionary *socialAccount = [params objectForKey:@"social_account"];
     if (socialAccount) {
       NSString *profilePic = [socialAccount objectForKey:@"profile_picture"];
@@ -108,6 +105,7 @@
     NSString *profileImagePath = [NSString stringWithFormat:@"%ld_profileImage.png",self.identifier];
     self.profileImagePath = profileImagePath;
   }
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"PDFeedItemImageDidDownload" object:nil];
 }
 
 + (NSArray *)ignoredProperties {

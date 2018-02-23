@@ -37,11 +37,6 @@
     _logoImageView.clipsToBounds = YES;
     [self addSubview:_logoImageView];
     
-    float labelX = imageSize + 2*leftIndent;
-    float labelWidth = frame.size.width - labelX - indent;
-		
-		_unifiedLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0, labelWidth, self.frame.size.height)];
-		[_unifiedLabel setNumberOfLines:5];
 		
 		_primaryAppColor = PopdeemColor(PDThemeColorPrimaryApp);
 		_primaryFontColor = PopdeemColor(PDThemeColorPrimaryFont);
@@ -61,9 +56,6 @@
 		
 		NSString *description = reward.rewardDescription;
 		NSString *rulesStr = reward.rewardRules;
-		if (rulesStr.length > 70) {
-			rulesStr = [NSString stringWithFormat:@"%@...",[rulesStr substringWithRange:NSMakeRange(0, 70)]];
-		}
 		NSString *info = [self infoStringForReward:reward];
 		
 		NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
@@ -83,29 +75,72 @@
 																																 NSForegroundColorAttributeName : _primaryFontColor
 																																 }];
 		
-		[labelAttString appendAttributedString:descriptionString];
+
 		
-		if (rulesStr.length > 0) {
-			NSMutableAttributedString *rulesString = [[NSMutableAttributedString alloc]
-																								initWithString:[NSString stringWithFormat:@"%@ \n",rulesStr]
-																								attributes:@{
-																														 NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-																														 NSForegroundColorAttributeName : _secondaryFontColor
-																														 }];
-			[labelAttString appendAttributedString:rulesString];
-		}
-		
-		NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
-																						 initWithString:info attributes:@{
-																																							NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-																																							NSForegroundColorAttributeName : _primaryAppColor
-																																							}];
-		
-		[labelAttString appendAttributedString:infoString];
-		[labelAttString addAttribute:NSParagraphStyleAttributeName value:ps range:NSMakeRange(0, labelAttString.length)];
-		[_unifiedLabel setAttributedText:labelAttString];
-		
-		[self addSubview:_unifiedLabel];
+    float labelX = imageSize + 2*leftIndent;
+    float labelWidth = frame.size.width - labelX - indent;
+    
+    CGRect titleLabelRect = CGRectMake(labelX, 0,labelWidth , 50);
+    if (_mainLabel == nil) {
+      _mainLabel = [[UILabel alloc] initWithFrame:titleLabelRect];
+      [self addSubview:_mainLabel];
+    } else {
+      [_mainLabel setFrame:titleLabelRect];
+    }
+    [_mainLabel setNumberOfLines:2];
+    [_mainLabel setAttributedText:descriptionString];
+    [_mainLabel setContentMode:UIViewContentModeCenter];
+    [_mainLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
+    
+    CGSize size = [_mainLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
+    CGRect labelFrame = _mainLabel.frame;
+    labelFrame.size.height = size.height;
+    _mainLabel.frame = labelFrame;
+    _mainLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    float innerSpacing = 3;
+    
+    float currentY = _mainLabel.frame.size.height + innerSpacing;
+    
+
+    if (rulesStr.length > 0) {
+      NSMutableAttributedString *rulesString = [[NSMutableAttributedString alloc]
+                                                initWithString:[NSString stringWithFormat:@"%@",rulesStr]
+                                                attributes:@{
+                                                             NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+                                                             NSForegroundColorAttributeName : _secondaryFontColor
+                                                             }];
+      [labelAttString appendAttributedString:rulesString];
+      
+      CGRect infoLabelRect = CGRectMake(labelX, _mainLabel.frame.size.height ,labelWidth , 50);
+      if (_infoLabel == nil) {
+        _infoLabel = [[UILabel alloc] initWithFrame:infoLabelRect];
+        [self addSubview:_infoLabel];
+      } else {
+        [_infoLabel setFrame:infoLabelRect];
+      }
+      [_infoLabel setNumberOfLines:3];
+      [_infoLabel setAttributedText:rulesString];
+      CGSize infoSize = [_infoLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
+      CGRect infoLabelFrame = _infoLabel.frame;
+      infoLabelFrame.size.height = infoSize.height;
+      _infoLabel.frame = infoLabelFrame;
+      currentY += _infoLabel.frame.size.height;
+      _infoLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+      currentY += innerSpacing;
+    }
+    
+    float combinedHeight = currentY;
+    float padding = 100 - combinedHeight;
+    float topPadding = padding/2;
+    
+    currentY = topPadding;
+    [_mainLabel setFrame:CGRectMake(labelX, currentY, _mainLabel.frame.size.width, _mainLabel.frame.size.height)];
+    currentY += _mainLabel.frame.size.height + innerSpacing;
+    if (rulesStr.length > 0) {
+      [_infoLabel setFrame:CGRectMake(labelX, currentY, _infoLabel.frame.size.width, _infoLabel.frame.size.height)];
+    }
+    
+    
 		return self;
   }
   return nil;

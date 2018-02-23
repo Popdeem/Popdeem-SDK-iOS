@@ -22,6 +22,8 @@
 @property (nonatomic) NSInteger incrementAdvocacyPoints;
 @property (nonatomic) NSInteger decrementAdvocacyPoints;
 
++ (PDCustomer*) initFromAPI:(NSString*)json;
++ (instancetype) sharedInstance;
 
 @end
 

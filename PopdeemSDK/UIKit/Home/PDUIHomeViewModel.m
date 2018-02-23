@@ -347,11 +347,12 @@
 																		success:^(){
 																			PDLog(@"No Action Reward Was Claimed");
 																			[PDRewardStore deleteReward:weakReward.identifier];
-																			weakSelf.rewards = [PDRewardStore allRewards];
+																			weakSelf.rewards = [PDRewardStore orderedByDate];
 																			[weakSelf.controller.tableView reloadData];
 																			if (weakSelf.controller.loadingView) {
 																				[weakSelf.controller.loadingView hideAnimated:YES];
 																			}
+                                      [weakSelf.controller moveToSection:2];
 																		} failure:^(NSError *error) {
 																			PDLog(@"An error occurred when Claiming No Action Reward;");
 																			[weakSelf.controller.loadingView hideAnimated:YES];

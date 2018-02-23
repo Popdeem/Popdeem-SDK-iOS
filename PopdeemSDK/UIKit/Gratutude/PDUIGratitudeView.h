@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDUIGratitudeProgressView.h"
 #import "PDUIGratitudeViewController.h"
+#import "PDUser.h"
 
 
 @interface PDUIGratitudeView : UIView
@@ -23,7 +24,7 @@
 @property (nonatomic, retain) UIButton *profileButton;
 @property (nonatomic) PDGratitudeType type;
 
-- (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent;
+- (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent type:(PDGratitudeType)type;
 - (void) showAnimated:(BOOL)animated;
 - (void) hideAnimated:(BOOL)animated;
 

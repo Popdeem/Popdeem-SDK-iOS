@@ -21,20 +21,19 @@
     self.view.opaque = NO;
     self.modalPresentationStyle = UIModalPresentationFullScreen;
     self.type = type;
+    NSLog(@"Type is: %li   type",type);
     return self;
   }
   return nil;
 }
 
-- (void)viewDidLoad {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewDidLoad];
   UIImage *snapshot = [PDUIKitUtils screenSnapshot];
   UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
   [imageView setImage:snapshot];
   [self.view addSubview:imageView];
-  
-  _gratitudeView = [[PDUIGratitudeView alloc] initForParent:self];
-  _gratitudeView.type = _type;
+  _gratitudeView = [[PDUIGratitudeView alloc] initForParent:self type:_type];
   [self.view addSubview:_gratitudeView];
   
     // Do any additional setup after loading the view from its nib.

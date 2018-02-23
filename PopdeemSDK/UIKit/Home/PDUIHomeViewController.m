@@ -34,6 +34,7 @@
 #import "ProfileTableViewCell.h"
 #import "PDUIProfileButtonTableViewCell.h"
 #import "PDUIGratitudeViewController.h"
+#import "PDUserAPIService.h"
 
 
 #define kPlaceholderCell @"PlaceholderCell"
@@ -117,8 +118,10 @@
 }
 
 - (void) viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
   [self.model updateSubViews];
   [self.view setNeedsDisplay];
+  self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 
@@ -153,6 +156,13 @@
   
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+  if (@available(iOS 11.0, *)) {
+    self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    self.navigationController.navigationBar.translucent = YES;
+  }
+}
+
 - (void)viewDidLoad {
   if (_brandVendorSearchTerm != nil) {
     _brand = [PDBrandStore findBrandBySearchTerm:_brandVendorSearchTerm];
@@ -161,6 +171,11 @@
   } else {
     [self setup];
   }
+  if (@available(iOS 11.0, *)) {
+    self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    self.navigationController.navigationBar.translucent = YES;
+  }
+  
 }
 
 - (void) setup {
@@ -235,7 +250,9 @@
   [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     [self.model fetchRewards];
-//    [self.model fetchFeed];
+//    if (self.model.feed.count == 0) {
+//      [self.model fetchFeed];
+//    }
     [self.model fetchWallet];
     [self.model fetchInbox];
   });
@@ -337,8 +354,16 @@
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
     PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare];
+    
     [self presentViewController:gViewController animated:YES completion:^{
       
+    }];
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    NSString *ident = [NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]];
+    [service getUserDetailsForId:ident authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
+      PDLog(@"Fetch User Details");
+      [self.tableView reloadData];
+      [self.tableView reloadInputViews];
     }];
   }
   if (_didLogin) {
@@ -360,6 +385,10 @@
                                                                                forState:UIControlStateNormal];
     if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
       [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+    }
+    if (@available(iOS 11.0, *)) {
+      self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+      self.navigationController.navigationBar.translucent = YES;
     }
   }
   
@@ -421,8 +450,6 @@
   //																																						 forState:UIControlStateNormal];
 }
 
-- (void) viewDidDisappear:(BOOL)animated {
-}
 
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender {
   [self.tableView reloadData];
@@ -587,7 +614,7 @@
         }
       } else {
         if (feedLoading) {
-          return nil;
+          return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
         }
         if (indexPath.row >= _model.feed.count) {
           return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
@@ -704,7 +731,7 @@
     default:
       break;
   }
-  return nil;
+  return [[UITableViewCell alloc] init];
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -834,9 +861,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
           [self processClaimForIndexPath:indexPath];
         });
+        return;
       }
       break;
     case 1:
+      return;
       break;
     case 2:
       if (indexPath.section == 0) {
@@ -844,19 +873,24 @@
           if (indexPath.row == 1) {
             //Settings
             [self settingsAction];
+            return;
           }
           if (indexPath.row == 2) {
             //Messages
             [self messagesTapped];
+            return;
           }
+          return;
         } else {
           if (indexPath.row == 0) {
             //Settings
             [self settingsAction];
+            return;
           }
           if (indexPath.row == 1) {
             //Messages
             [self messagesTapped];
+            return;
           }
         }
       } else {
@@ -892,8 +926,7 @@
             }
             [self.tableView beginUpdates];
             [self.tableView endUpdates];
-            [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
-            
+            [self performSelector:@selector(xToIndexPath:) withObject:indexPath afterDelay:0.5];
             return;
           }
           if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {
@@ -917,10 +950,10 @@
     default:
       break;
   }
-  [tableView beginUpdates];
-  [tableView deselectRowAtIndexPath:indexPath animated:NO];
-  //if you are doing any animation you have deselect the row here inside.
-  [tableView endUpdates];
+//  [tableView beginUpdates];
+//  [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//  //if you are doing any animation you have deselect the row here inside.
+//  [tableView endUpdates];
 }
 
 - (void) redeemSelectedReward {
@@ -1057,11 +1090,19 @@
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"
                                                 }));
   [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
+  PDUserAPIService *service = [[PDUserAPIService alloc] init];
+  NSString *ident = [NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]];
+  [service getUserDetailsForId:ident authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
+    PDLog(@"Fetch User Details");
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
+  }];
   _didLogin = NO;
 }
 
 - (void) showConnect {
   PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
+  
   [self presentViewController:gViewController animated:YES completion:^{
     
   }];
@@ -1138,6 +1179,20 @@
   if (!selectedWalletReward) return;
   
   
+}
+
+- (void)viewSafeAreaInsetsDidChange {
+  [super viewSafeAreaInsetsDidChange];
+  self.tableView.contentInset = self.view.safeAreaInsets;
+}
+
+- (void) moveToSection:(NSInteger)section {
+  if (section < 3) {
+    [self.segmentedControl setSelectedSegmentIndex:section];
+    [self scrollToIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
+  }
 }
 
 
