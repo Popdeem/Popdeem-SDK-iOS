@@ -35,6 +35,8 @@
 #import "PDUIProfileButtonTableViewCell.h"
 #import "PDUIGratitudeViewController.h"
 #import "PDUserAPIService.h"
+#import "PDUICustomBadge.h"
+#import "PDMessageStore.h"
 
 
 #define kPlaceholderCell @"PlaceholderCell"
@@ -265,6 +267,7 @@
 																																			translationForKey(@"popdeem.home.segmentedControl.activity", @"Activity"),
 																																			translationForKey(@"popdeem.home.segmentedControl.wallet", @"Profile")
 																																			]];
+    _segmentedControl.parentView = self.view;
     if (_brand.theme) {
       [_segmentedControl applyTheme:_brand.theme];
     }
@@ -409,6 +412,7 @@
                                                                                           NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
                                                                                forState:UIControlStateNormal];
   }
+  [self addInboxBadge];
 }
 
 - (void) reloadAction {
@@ -636,22 +640,26 @@
           if (indexPath.row == 1) {
             PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
             [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            socialAccountCell.shouldShowBadge = NO;
             return socialAccountCell;
           }
           if (indexPath.row == 2) {
             PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
             [messagesCell.label setText:@"Messages"];
+            messagesCell.shouldShowBadge = YES;
             return messagesCell;
           }
         } else {
           if (indexPath.row == 0) {
             PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
             [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            socialAccountCell.shouldShowBadge = NO;
             return socialAccountCell;
           }
           if (indexPath.row == 1) {
             PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
             [messagesCell.label setText:@"Messages"];
+            messagesCell.shouldShowBadge = YES;
             return messagesCell;
           }
         }
@@ -1195,5 +1203,30 @@
   }
 }
 
+- (void) addInboxBadge {
+////  if ([PDMessageStore unreadCount] > 0) {
+//  
+//    NSUInteger unread = 2;
+//    float width = self.view.frame.size.width;
+//    //    float height = self.frame.size.height;
+//  
+//    float
+//    CGRect topRight = CGRectMake(width-50, 140, 16, 16);
+//    UILabel *lbl_card_count = [[UILabel alloc] initWithFrame:topRight];
+//    lbl_card_count.textColor = [UIColor whiteColor];
+//    lbl_card_count.textAlignment = NSTextAlignmentCenter;
+//    lbl_card_count.text = [NSString stringWithFormat:@"%ld",(unsigned long)unread];
+//    lbl_card_count.layer.borderWidth = 1;
+//    lbl_card_count.layer.cornerRadius = 8;
+//    lbl_card_count.layer.masksToBounds = YES;
+//    lbl_card_count.layer.borderColor =[[UIColor clearColor] CGColor];
+//    lbl_card_count.layer.shadowColor = [[UIColor clearColor] CGColor];
+//    lbl_card_count.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+//    lbl_card_count.layer.shadowOpacity = 0.0;
+//    lbl_card_count.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:45.0/255.0 blue:143.0/255.0 alpha:1.0];
+//    lbl_card_count.font = [UIFont fontWithName:@"ArialMT" size:9];
+//    [self.tableView addSubview:lbl_card_count];
+////  }
+}
 
 @end

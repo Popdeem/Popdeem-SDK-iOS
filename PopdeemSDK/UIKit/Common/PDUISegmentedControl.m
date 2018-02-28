@@ -9,6 +9,7 @@
 #import "PDUISegmentedControl.h"
 #import "PDTheme.h"
 #import "PDConstants.h"
+#import "PDMessageStore.h"
 
 @implementation PDUISegmentedControl
 
@@ -34,6 +35,8 @@
     //Set Text Attributes
     
     [self setSelectedSegmentIndex:0];
+    
+    NSUInteger unread = 2;
     
     return self;
   }
@@ -78,97 +81,39 @@
   return image;
 }
 
-//Badges
-- (void)setBadgeNumber:(NSUInteger)badgeNumber forSegmentAtIndex:(NSUInteger)segmentIndex usingBlock:(void(^)(CustomBadge *))configureBadge
-{
-  // If this is the first time a badge number has been set, then initialise the badges
-  if (_segmentBadgeNumbers.count == 0)
-  {
-    //initialise the badge arrays
-    _segmentBadgeNumbers = [NSMutableArray arrayWithCapacity:self.numberOfSegments];
-    _segmentBadges = [NSMutableArray arrayWithCapacity:self.numberOfSegments];
-    for (int index = 0; index < self.numberOfSegments; index++)
-    {
-      [_segmentBadgeNumbers addObject:[NSNumber numberWithInt:0]];
-      [_segmentBadges addObject:[NSNull null]];
+- (void) didMoveToSuperview {
+
+    float center = self.frame.size.height/2;
+
+    NSString *segment3Text = [self titleForSegmentAtIndex:2];
+    UILabel *dummyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
+    [dummyLabel setText:segment3Text];
+    [dummyLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+    [dummyLabel sizeToFit];
+
+    float segment3Width = self.frame.size.width/3;
+    float segment3Center = self.frame.size.width - (segment3Width/2);
+    float segment3TitleEnd = segment3Center + (dummyLabel.frame.size.width/2);
+  
+  if ([PDMessageStore unreadCount] > 0) {
+    if (!_badge) {
+      _badge = [PDUICustomBadge customBadgeWithString:[NSString stringWithFormat:@"%ld",(unsigned long)[PDMessageStore unreadCount]]
+                                      withStringColor:[UIColor whiteColor]
+                                       withInsetColor:[UIColor colorWithRed:0.98 green:0.05 blue:0.11 alpha:1.00]
+                                       withBadgeFrame:YES
+                                  withBadgeFrameColor:[UIColor whiteColor]
+                                            withScale:0.70];
+      [_badge setFrame:CGRectMake(segment3TitleEnd + 5, center-8.5, _badge.frame.size.width, _badge.frame.size.height)];
+      [self addSubview:_badge];
+    } else {
+      [_badge autoBadgeSizeWithString:[NSString stringWithFormat:@"%ld",(unsigned long)[PDMessageStore unreadCount]]];
+      [_badge setFrame:CGRectMake(segment3TitleEnd + 5, center-8.5, _badge.frame.size.width, _badge.frame.size.height)];
     }
-    
-    // Create a transparent view to go on top of the segmented control and to hold the badges. (This transparent view is added to the superview to work around strange UISegmentedControl behaviour which causes its own subviews to be obscured when certain segments are selected. It's important then that the MESegmentedControl is placed on top of a suitable view and not directly onto a UINavigationItem.)
-    _badgeView = [[UIView alloc] initWithFrame:self.frame];
-    [_badgeView setBackgroundColor:[UIColor clearColor]];
-    _badgeView.userInteractionEnabled = NO;
-    [self.superview addSubview:_badgeView];
+  } else {
+    if (_badge) {
+      [_badge setHidden:YES];
+    }
   }
-  
-  // Recall the old badge number and store the new badge number
-  int oldBadgeNumber = ((NSNumber *)[_segmentBadgeNumbers objectAtIndex:segmentIndex]).intValue;
-  [_segmentBadgeNumbers replaceObjectAtIndex:segmentIndex withObject:[NSNumber numberWithUnsignedInteger:badgeNumber]];
-  
-  // Modify the badge view
-  if ((oldBadgeNumber == 0) && (badgeNumber > 0))
-  {
-    // Add a badge, positioned on the upper right side of the requested segment
-    // (Assumes that all segments are the same size - if segments are of different sizes, modify the below to use the widthForSegmentAtIndex method on UISegmentedControl)
-    CustomBadge *customBadge = [CustomBadge customBadgeWithString:[NSString stringWithFormat:@"%d", badgeNumber]];
-    [customBadge setFrame:CGRectMake(((self.frame.size.width/self.numberOfSegments) * (segmentIndex + 1))-customBadge.frame.size.width +5, -5, customBadge.frame.size.width, customBadge.frame.size.height)];
-    [_segmentBadges replaceObjectAtIndex:segmentIndex withObject:customBadge];
-    [_badgeView addSubview:customBadge];
-  }
-  else if ((oldBadgeNumber > 0) && (badgeNumber == 0))
-  {
-    // Remove the badge
-    [[_segmentBadges objectAtIndex:segmentIndex] removeFromSuperview];
-    [_segmentBadges replaceObjectAtIndex:segmentIndex withObject:[NSNull null]];
-  }
-  else if ((oldBadgeNumber != badgeNumber) && (badgeNumber > 0))
-  {
-    // Update the number on the existing badge
-    [[_segmentBadges objectAtIndex:segmentIndex] autoBadgeSizeWithString:[NSString stringWithFormat:@"%d", badgeNumber]];
-  }
-  
-  // Yield to the block for any custom setup to be done on the badge
-  if (badgeNumber > 0)
-  {
-    configureBadge([_segmentBadges objectAtIndex:segmentIndex]);
-  }
-}
-
-- (void)setBadgeNumber:(NSUInteger)badgeNumber forSegmentAtIndex:(NSUInteger)segmentIndex
-{
-  [self setBadgeNumber:badgeNumber forSegmentAtIndex:segmentIndex usingBlock:^(CustomBadge *badge){}];
-}
-
-- (NSUInteger)getBadgeNumberForSegmentAtIndex:(NSUInteger)segmentIndex
-{
-  if(_segmentBadgeNumbers==nil)
-  {
-    return 0;
-  }
-  NSNumber* number=[_segmentBadgeNumbers objectAtIndex:segmentIndex];
-  if(number==nil)
-  {
-    return 0;
-  }
-  else
-  {
-    return [number unsignedIntegerValue];
-  }
-}
-
-- (void)clearBadges
-{
-  // Remove the badge view
-  [_badgeView removeFromSuperview];
-  
-  // Clear the badge arrays
-  [_segmentBadges removeAllObjects];
-  [_segmentBadgeNumbers removeAllObjects];
-}
-
--(void)removeFromSuperview
-{
-  if (_badgeView) [_badgeView removeFromSuperview];
-  [super removeFromSuperview];
 }
 
 @end

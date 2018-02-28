@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDUICustomBadge.h"
 
 @interface PDUIProfileButtonTableViewCell : UITableViewCell
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *label;
+@property (nonatomic, retain) PDUICustomBadge *badge;
+@property (nonatomic) BOOL shouldShowBadge;
 
 
 
