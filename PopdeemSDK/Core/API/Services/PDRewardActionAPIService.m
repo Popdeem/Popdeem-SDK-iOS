@@ -84,7 +84,7 @@
                                   [NSString stringWithFormat:@"%ld", (long)location.id], @"id",
                                   nil];
   [params setObject:locationParams forKey:@"location"];
-  
+
   [session POST:path params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
     if (error) {
       [session invalidateAndCancel];

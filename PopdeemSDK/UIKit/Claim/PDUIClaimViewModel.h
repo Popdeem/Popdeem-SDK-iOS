@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic) BOOL mustFacebook;
 @property (nonatomic) BOOL willFacebook;
 @property (nonatomic) BOOL willInstagram;
+@property (nonatomic) BOOL didGoToInstagram;
 @property (nonatomic) BOOL willTweet;
 
 @property (nonatomic, strong) PDLocation *location;

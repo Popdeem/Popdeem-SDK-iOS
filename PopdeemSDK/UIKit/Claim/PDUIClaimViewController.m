@@ -693,7 +693,7 @@
 }
 
 - (void) backFromInstagram {
-  if (_viewModel.willInstagram) {
+  if (_viewModel.didGoToInstagram) {
     //We know user was at Instagram, and instagram post is being attempted
     NSLog(@"Back From Instagram");
     PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];

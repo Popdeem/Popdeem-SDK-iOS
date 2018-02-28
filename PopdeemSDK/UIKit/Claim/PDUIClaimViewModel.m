@@ -570,7 +570,7 @@
 	isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_viewController presentViewController:isv animated:YES completion:^(void){}];
-//	[self makeClaim];
+  _didGoToInstagram = YES;
 	return;
 }
 
