@@ -51,6 +51,7 @@
 		3965AF6E1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3965AF6C1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m */; };
 		3966F6A91C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3966F6A71C5B85DD00DFFF9B /* PDUIMsgCntrTblViewController.m */; };
 		396A9A651CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */; };
+		396E97F72046C7BC007D5CBD /* PDUICustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 396E97F52046C7BB007D5CBD /* PDUICustomBadge.m */; };
 		3971422A1D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */; };
 		397142331D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 397142311D3D0A580047F0E0 /* PDUIWalletRewardTableViewCell.m */; };
 		39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39730B281CE23D9A004B37A1 /* PDUIMessageCell.m */; };
@@ -386,6 +387,8 @@
 		396A9A631CEC9CA100C7EBDD /* PDUIMessageLogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIMessageLogoutCell.h; path = MessageCenter/PDUIMessageLogoutCell.h; sourceTree = "<group>"; };
 		396A9A641CEC9CA100C7EBDD /* PDUIMessageLogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIMessageLogoutCell.m; path = MessageCenter/PDUIMessageLogoutCell.m; sourceTree = "<group>"; };
 		396B2B401BFCC262003D9F25 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		396E97F52046C7BB007D5CBD /* PDUICustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUICustomBadge.m; sourceTree = "<group>"; };
+		396E97F62046C7BB007D5CBD /* PDUICustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUICustomBadge.h; sourceTree = "<group>"; };
 		397142271D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIRewardWithRulesTableViewCell.h; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.h; sourceTree = "<group>"; };
 		397142281D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIRewardWithRulesTableViewCell.m; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.m; sourceTree = "<group>"; };
 		397142291D38E3540047F0E0 /* PDUIRewardWithRulesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIRewardWithRulesTableViewCell.xib; path = Home/Cells/Rewards/PDUIRewardWithRulesTableViewCell.xib; sourceTree = "<group>"; };
@@ -1901,6 +1904,8 @@
 		BC67FA65603CD0B3A2DBADFF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				396E97F62046C7BB007D5CBD /* PDUICustomBadge.h */,
+				396E97F52046C7BB007D5CBD /* PDUICustomBadge.m */,
 				39A989831C3BD841002AF910 /* Segmented Control */,
 				BC67F2F27DD82B87CDC1C367 /* Loading */,
 				BC67F73254683A3E6D02541E /* Theme */,
@@ -2233,6 +2238,7 @@
 				394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */,
 				39F5F6DF1D895282008DE497 /* NSURLSession+Abra.m in Sources */,
 				39BF99361E8E99830025A3F2 /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
+				396E97F72046C7BC007D5CBD /* PDUICustomBadge.m in Sources */,
 				39BF99401E8E99830025A3F2 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				39BF993A1E8E99830025A3F2 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,

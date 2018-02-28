@@ -6,8 +6,6 @@
 //
 
 #import "PDUICustomBadge.h"
-#import "PDTheme.h"
-#import "PDUtils.h"
 
 @implementation PDUICustomBadge
 
