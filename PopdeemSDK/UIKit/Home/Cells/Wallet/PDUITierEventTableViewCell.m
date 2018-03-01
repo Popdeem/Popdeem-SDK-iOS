@@ -131,10 +131,10 @@
   [_infoLabel setFrame:CGRectMake(labelx, currentY, _infoLabel.frame.size.width, _infoLabel.frame.size.height)];
   
   if (event.read == NO) {
-    PDTierApiService *service = [[PDTierApiService alloc] init];
+    PDTierAPIService *service = [[PDTierAPIService alloc] init];
     [service reportTierAsRead:event completion:^(NSError *error) {
       
-    }]
+    }];
   }
 }
 
