@@ -69,7 +69,7 @@
 		
 		
 		NSMutableAttributedString *descriptionString = [[NSMutableAttributedString alloc]
-																										initWithString:[NSString stringWithFormat:@"%@ \n",description]
+																										initWithString:[NSString stringWithFormat:@"%@",description]
 																										attributes:@{
 																																 NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
 																																 NSForegroundColorAttributeName : _primaryFontColor
@@ -91,7 +91,6 @@
     [_mainLabel setAttributedText:descriptionString];
     [_mainLabel setContentMode:UIViewContentModeCenter];
     [_mainLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
-    
     CGSize size = [_mainLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
     CGRect labelFrame = _mainLabel.frame;
     labelFrame.size.height = size.height;

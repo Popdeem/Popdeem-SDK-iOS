@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void) add:(PDLocation*)loc;
 
++ (NSMutableDictionary *) store;
+
 /**
  @abstract Find a location by identifier.
  

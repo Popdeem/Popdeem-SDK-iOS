@@ -257,9 +257,9 @@
   [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     [self.model fetchRewards];
-//    if (self.model.feed.count == 0) {
-//      [self.model fetchFeed];
-//    }
+    if (self.model.feed.count == 0) {
+      [self.model fetchFeed];
+    }
     [self.model fetchWallet];
     [self.model fetchInbox];
   });
@@ -967,8 +967,8 @@
             return;
           }
           
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward"
-                                                       message:@"You are about to Redeem this Reward. Are you sure?"
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward Now?"
+                                                       message:@"You will be presented with a countdown timer you must show the merchant."
                                                       delegate:self
                                              cancelButtonTitle:@"Cancel"
                                              otherButtonTitles:@"Redeem", nil];
@@ -1038,14 +1038,7 @@
       [loginHandler presentLoginModal];
       return;
     }
-    _locationValidator = [[PDLocationValidator alloc] init];
-    [_locationValidator validateLocationForReward:reward completion:^(BOOL validated, PDLocation *closestLocation){
-      if (validated) {
-        [self.model claimNoAction:reward closestLocation:closestLocation];
-      } else {
-        [self.model claimNoAction:reward closestLocation:closestLocation];
-      }
-    }];
+    [self.model claimNoAction:reward closestLocation:nil];
   } else {
     PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
     if (_brand) {
@@ -1116,12 +1109,13 @@
   [self.model fetchInbox];
   self.model.feed = [PDFeeds feed];
   [self.model fetchWallet];
-  [_segmentedControl setSelectedSegmentIndex:2];
   AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"
                                                 }));
-  [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
+  if ([[PDUser sharedInstance] advocacyScore] <= 30) {
+    [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
+  }
   PDUserAPIService *service = [[PDUserAPIService alloc] init];
   NSString *ident = [NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]];
   [service getUserDetailsForId:ident authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
@@ -1130,6 +1124,7 @@
     [self.tableView reloadInputViews];
   }];
   _didLogin = NO;
+  [_segmentedControl setSelectedSegmentIndex:2];
 }
 
 - (void) showConnect {

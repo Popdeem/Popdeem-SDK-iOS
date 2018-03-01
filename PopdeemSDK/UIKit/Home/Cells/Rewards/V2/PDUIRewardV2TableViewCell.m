@@ -441,12 +441,12 @@
     
     if (intervalMonths > 0) {
       if (intervalMonths > 1) {
-        exp = [NSString stringWithFormat:@"%li months left to claim",intervalMonths];
+        exp = [NSString stringWithFormat:@"%li months left to claim",(long)intervalMonths];
       } else {
-       exp = [NSString stringWithFormat:@"%li month left to claim",intervalMonths];
+       exp = [NSString stringWithFormat:@"%li month left to claim",(long)intervalMonths];
       }
     } else if (intervalDays > 6) {
-      exp = [NSString stringWithFormat:@"%li weeks left to claim",intervalWeeks];
+      exp = [NSString stringWithFormat:@"%li weeks left to claim",(long)intervalWeeks];
     } else if (intervalDays < 7 && intervalHours > 24) {
       exp = [NSString stringWithFormat:@"%li days left to claim",(long)intervalDays];
     } else {

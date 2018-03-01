@@ -382,7 +382,7 @@
 		endString = [endString stringByAppendingString:[NSString stringWithFormat:@" %@",sampleMediaString]];
 	}
 	
-	int charsLeft = 140 - (int)endString.length;
+	int charsLeft = 240 - (int)endString.length;
 	
 	if (charsLeft < 1) {
 		[_viewController.twitterCharacterCountLabel setTextColor:[UIColor redColor]];
@@ -897,7 +897,7 @@
 	
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	picker.delegate = _viewController;
-	picker.allowsEditing = YES;
+	picker.allowsEditing = NO;
 	picker.sourceType = UIImagePickerControllerSourceTypeCamera;
 	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -909,7 +909,7 @@
 	
 	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 	picker.delegate = _viewController;
-	picker.allowsEditing = YES;
+	picker.allowsEditing = NO;
 	picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -950,7 +950,7 @@
 	img = [self normalizedImage:img];
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	
-	if (!CGRectEqualToRect(CGRectMake(0, 0, img.size.width, img.size.height), cropRect)) {
+	if (cropRect.size.width > 0 && !CGRectEqualToRect(CGRectMake(0, 0, img.size.width, img.size.height), cropRect)) {
 		CGImageRef imageRef = CGImageCreateWithImageInRect([img CGImage], cropRect);
 		img = [UIImage imageWithCGImage:imageRef];
 		CGImageRelease(imageRef);

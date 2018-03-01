@@ -14,7 +14,7 @@
 #import "UIButton+MessageButtonFactory.h"
 #import "PDRFeedItem.h"
 #import "PDUIGratitudeViewController.h"
-
+#import "PDLocationStore.h"
 @implementation PDUIHomeViewModel
 
 - (instancetype) init {
@@ -337,8 +337,11 @@
 														 descriptionText:@"Claiming your Reward"];
 	
 	[_controller.loadingView showAnimated:YES];
+  PDLocation *location = [[PDLocation alloc] init];
+  location.latitude = 0.0;
+  location.longitude = 0.0;
 	[[PDAPIClient sharedInstance] claimReward:reward.identifier
-																	 location:loc
+																	 location:location
 																withMessage:nil
 															taggedFriends:nil
 																			image:nil
