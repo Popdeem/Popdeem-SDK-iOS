@@ -37,7 +37,7 @@
 #import "PDUserAPIService.h"
 #import "PDUICustomBadge.h"
 #import "PDMessageStore.h"
-
+#import "PDTierEvent.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -692,58 +692,64 @@
             return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
           }
         } else {
-          reward = [_model.wallet objectAtIndex:indexPath.row];
-          
-          if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram && reward.instagramVerified == NO && reward.autoDiscovered == NO) {
-            PDUIInstagramUnverifiedWalletTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kInstaUnverifiedTableViewCell];
-            [walletCell setupForReward:reward];
-            if (autoVerify && verifyRewardId == reward.identifier) {
-              [walletCell beginVerifying];
-              autoVerify = NO;
-            }
-            if (walletCell.rewardImageView.image == nil) {
-              NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
-              NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                if (data) {
-                  UIImage *image = [UIImage imageWithData:data];
-                  if (image) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                      PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                      if (updateCell) {
-                        updateCell.rewardImageView.image = image;
-                      }
-                    });
-                  }
-                }
-              }];
-              [task2 resume];
-            }
-            return walletCell;
-          } else {
-            PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
-            if (_brand.theme != nil) {
-              [walletCell setupForReward:reward theme:_brand.theme];
-            } else {
+          id item = [_model.wallet objectAtIndex:indexPath.row];
+          if ([item isKindOfClass:[PDReward class]]) {
+            reward = (PDReward*)item;
+            if (reward.claimedSocialNetwork == PDSocialMediaTypeInstagram &&
+                reward.instagramVerified == NO &&
+                reward.autoDiscovered == NO) {
+              PDUIInstagramUnverifiedWalletTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kInstaUnverifiedTableViewCell];
               [walletCell setupForReward:reward];
-            }
-            if (walletCell.rewardImageView.image == nil) {
-              NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
-              NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                if (data) {
-                  UIImage *image = [UIImage imageWithData:data];
-                  if (image) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                      PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                      if (updateCell) {
-                        updateCell.rewardImageView.image = image;
-                      }
-                    });
+              if (autoVerify && verifyRewardId == reward.identifier) {
+                [walletCell beginVerifying];
+                autoVerify = NO;
+              }
+              if (walletCell.rewardImageView.image == nil) {
+                NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
+                NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                  if (data) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    if (image) {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                        PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                        if (updateCell) {
+                          updateCell.rewardImageView.image = image;
+                        }
+                      });
+                    }
                   }
-                }
-              }];
-              [task2 resume];
+                }];
+                [task2 resume];
+              }
+              return walletCell;
+            } else {
+              PDUIWalletRewardTableViewCell *walletCell = [self.tableView dequeueReusableCellWithIdentifier:kWalletTableViewCell];
+              if (_brand.theme != nil) {
+                [walletCell setupForReward:reward theme:_brand.theme];
+              } else {
+                [walletCell setupForReward:reward];
+              }
+              if (walletCell.rewardImageView.image == nil) {
+                NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
+                NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                  if (data) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    if (image) {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                        PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                        if (updateCell) {
+                          updateCell.rewardImageView.image = image;
+                        }
+                      });
+                    }
+                  }
+                }];
+                [task2 resume];
+              }
+              return walletCell;
             }
-            return walletCell;
+          } else if ([item isKindOfClass:[PDTierEvent class]]) {
+            
           }
         }
       }

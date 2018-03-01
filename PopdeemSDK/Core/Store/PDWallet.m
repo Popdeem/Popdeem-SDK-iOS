@@ -7,6 +7,7 @@
 //
 
 #import "PDWallet.h"
+#import "PDTierEvent.h"
 
 
 @implementation PDWallet
@@ -21,21 +22,27 @@
 }
 
 + (PDReward*) find:(NSInteger)identifier {
-    for (PDReward *r in [PDWallet wallet]) {
-        if (r.identifier == identifier){
-            return r;
+    for (id r in [PDWallet wallet]) {
+      if ([r isKindOfClass:[PDReward class]]) {
+        if ([(PDReward*)r identifier] == identifier){
+          return r;
         }
+      }
     }
     return nil;
 }
 
-+ (void) add:(PDReward*)reward {
++ (void) add:(id)object {
     //Returning only the wallet rewards in the future
+  if ([object isKindOfClass:[PDReward class]]) {
     NSDate *now = [NSDate date];
-    NSDate *until = [NSDate dateWithTimeIntervalSinceReferenceDate:reward.availableUntil];
-    if ([now compare:until] == NSOrderedAscending || reward.unlimitedAvailability == YES) {
-        [[PDWallet wallet] addObject:reward];
+    NSDate *until = [NSDate dateWithTimeIntervalSinceReferenceDate:[(PDReward*)object availableUntil]];
+    if ([now compare:until] == NSOrderedAscending || [(PDReward*)object unlimitedAvailability] == YES) {
+      [[PDWallet wallet] addObject:object];
     }
+  } else if ([object isKindOfClass:[PDTierEvent class]]) {
+    [[PDWallet wallet] addObject:object];
+  }
 }
 
 + (void) removeAllRewards {
@@ -44,11 +51,13 @@
 
 + (void) remove:(NSInteger)rewardId {
     NSUInteger index = -1;
-    for (PDReward *r in [PDWallet wallet]) {
-        if (r.identifier == rewardId) {
-            index = [[PDWallet wallet] indexOfObject:r];
-            break;
+    for (id r in [PDWallet wallet]) {
+      if ([r isKindOfClass:[PDReward class]]) {
+        if ([(PDReward*)r identifier] == rewardId) {
+          index = [[PDWallet wallet] indexOfObject:r];
+          break;
         }
+      }
     }
     if (index != -1) {
         [[PDWallet wallet] removeObjectAtIndex:index];
@@ -56,7 +65,29 @@
 }
 
 + (NSArray*) orderedByDate {
-	return [[PDWallet wallet] sortedArrayUsingSelector:@selector(compareDate:)];
+  NSArray *sortedArray;
+  sortedArray = [[PDWallet wallet] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+    float firstDate;
+    if ([a isKindOfClass:[PDReward class]]) {
+      firstDate = [(PDReward*)a claimedAt];
+    } else if ([a isKindOfClass:[PDTierEvent class]]) {
+      firstDate = [(PDTierEvent*)a date];
+    }
+    
+    float secondDate;
+    if ([b isKindOfClass:[PDReward class]]) {
+      secondDate = [(PDReward*)b claimedAt];
+    } else if ([b isKindOfClass:[PDTierEvent class]]) {
+      secondDate = [(PDTierEvent*)b date];
+    }
+    NSDate *first = [NSDate dateWithTimeIntervalSinceReferenceDate:firstDate];
+    NSDate *second = [NSDate dateWithTimeIntervalSinceReferenceDate:secondDate];
+    return [first compare:second];
+  }];
+  return sortedArray;
 }
+
+
+
 
 @end

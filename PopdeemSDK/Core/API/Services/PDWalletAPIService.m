@@ -10,6 +10,7 @@
 #import "PDWallet.h"
 #import "PDNetworkError.h"
 #import "PDLogger.h"
+#import "PDTierEvent.h"
 
 @implementation PDWalletAPIService
 
@@ -51,6 +52,10 @@
         if (reward.status == PDRewardStatusLive) {
           [PDWallet add:reward];
         }
+      }
+      for (NSDictionary *tier in jsonObject[@"tiers"]) {
+        PDTierEvent *event = [[PDTierEvent alloc] initWithDictionary:tier];
+        [PDWallet add:event];
       }
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{

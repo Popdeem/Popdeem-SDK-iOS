@@ -29,6 +29,7 @@
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
 		393EECE620480908003A5B9F /* PDTierEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECE520480908003A5B9F /* PDTierEvent.m */; };
+		393EECED2048116C003A5B9F /* PDUITierEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECEB2048116C003A5B9F /* PDUITierEventTableViewCell.m */; };
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
 		394495E31D9A807F003BA702 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DF1D9A807F003BA702 /* UIImage+Resize.m */; };
 		394495E41D9A807F003BA702 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495E11D9A807F003BA702 /* UIImage+RoundedCorner.m */; };
@@ -320,6 +321,9 @@
 		393A8C441C5923D0001F650C /* PDMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMessageStore.m; path = Core/Store/PDMessageStore.m; sourceTree = "<group>"; };
 		393EECE420480908003A5B9F /* PDTierEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDTierEvent.h; sourceTree = "<group>"; };
 		393EECE520480908003A5B9F /* PDTierEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDTierEvent.m; sourceTree = "<group>"; };
+		393EECEA2048116C003A5B9F /* PDUITierEventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUITierEventTableViewCell.h; path = Home/Cells/Wallet/PDUITierEventTableViewCell.h; sourceTree = "<group>"; };
+		393EECEB2048116C003A5B9F /* PDUITierEventTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUITierEventTableViewCell.m; path = Home/Cells/Wallet/PDUITierEventTableViewCell.m; sourceTree = "<group>"; };
+		393EECEC2048116C003A5B9F /* PDUITierEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUITierEventTableViewCell.xib; path = Home/Cells/Wallet/PDUITierEventTableViewCell.xib; sourceTree = "<group>"; };
 		394495DC1D9A807F003BA702 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		394495DD1D9A807F003BA702 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		394495DE1D9A807F003BA702 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -1048,6 +1052,9 @@
 				39DACEE01D5347BE00DBA1FC /* No Rewards */,
 				3971422F1D3D0A2F0047F0E0 /* Wallet */,
 				397142261D38E3270047F0E0 /* Rewards */,
+				393EECEA2048116C003A5B9F /* PDUITierEventTableViewCell.h */,
+				393EECEB2048116C003A5B9F /* PDUITierEventTableViewCell.m */,
+				393EECEC2048116C003A5B9F /* PDUITierEventTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2323,6 +2330,7 @@
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				39BF993F1E8E99830025A3F2 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
+				393EECED2048116C003A5B9F /* PDUITierEventTableViewCell.m in Sources */,
 				3993672B1E0BF023003B2991 /* UIButton+MessageButtonFactory.m in Sources */,
 				3980A7051D36465100D5F179 /* PlaceholderTableViewCell.m in Sources */,
 				392D8F55202F0A3700BDC764 /* PDUIInstagramScanViewController.m in Sources */,

@@ -10,4 +10,9 @@
 
 @interface PDTierEvent : JSONModel
 
+@property (nonatomic) long date;
+@property (nonatomic) NSInteger fromTier;
+@property (nonatomic) NSInteger toTier;
+@property (nonatomic) BOOL read;
+- (nullable instancetype) initWithDictionary:(NSDictionary *)dict;
 @end
