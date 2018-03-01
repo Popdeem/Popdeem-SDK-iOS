@@ -79,6 +79,13 @@
         }
       }
     }];
+  } else {
+    for (PDReward* reward in [PDRewardStore allRewards]){
+      if (reward.action == PDRewardActionSocialLogin) {
+        [self setupSocialLoginReward:reward];
+        break;
+      }
+    }
   }
   
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
