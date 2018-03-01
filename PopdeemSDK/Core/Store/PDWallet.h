@@ -17,5 +17,6 @@
 + (void) remove:(NSInteger)rewardId;
 + (void) removeAllRewards;
 + (NSArray*) orderedByDate;
++ (NSArray*) orderedByDateMulti;
 
 @end

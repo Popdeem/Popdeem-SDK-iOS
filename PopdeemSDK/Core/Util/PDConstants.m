@@ -24,6 +24,7 @@ NSString *const BRANDS_PATH = @"api/v2/brands";
 NSString *const MOMENTS_PATH = @"api/v2/moments";
 NSString *const INSTAGRAM_URL = @"https://api.instagram.com/v1";
 NSString *const CUSTOMER_PATH = @"api/v2/customer";
+NSString *const READ_TIER_PATH = @"readed_tier";
 /*
  End API URL Strings
  */

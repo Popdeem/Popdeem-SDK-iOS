@@ -15,7 +15,6 @@
 @property (nonatomic, retain) UIColor *primaryFontColor;
 @property (nonatomic, retain) UIColor *secondaryFontColor;
 @end
-@end
 
 @implementation PDUITierEventTableViewCell
 
@@ -93,7 +92,7 @@
   float currentY = _titleLabel.frame.size.height + innerSpacing;
   
   NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
-                                           initWithString:[NSString stringWithFormat:translationForKey(@"popdeem.tiers.bottomLabelString", @"Share your %@ experience to increase your status and unlock new rewards"), social]
+                                           initWithString:translationForKey(@"popdeem.tiers.bottomLabelString", @"Share your experience to increase your status and unlock new rewards")
                                            attributes:@{
                                                         NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
                                                         NSForegroundColorAttributeName : _primaryAppColor
@@ -110,7 +109,7 @@
   } else {
     [_infoLabel setFrame:infoLabelRect];
   }
-  [_infoLabel setNumberOfLines:1];
+  [_infoLabel setNumberOfLines:2];
   [_infoLabel setAttributedText:infoString];
   CGSize infoSize = [_infoLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
   CGRect infoLabelFrame = _infoLabel.frame;
@@ -154,13 +153,13 @@
   } else {
     switch (event.toTier) {
       case 1:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.tiers.levelDown", @"Too bad, you have moved to %@ ambassador status"), level1Name];
+        return [NSString stringWithFormat:translationForKey(@"popdeem.tiers.levelDown", @"You are now a %@ ambassador"), level1Name];
         break;
       case 2:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.tiers.levelDown", @"Too bad, you have moved to%@ ambassador status"), level2Name];
+        return [NSString stringWithFormat:translationForKey(@"popdeem.tiers.levelDown", @"You are now a %@ ambassador"), level2Name];
         break;
       default:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.tiers.levelDown", @"Too bad, you have moved to %@ ambassador status"), level1Name];
+        return [NSString stringWithFormat:translationForKey(@"popdeem.tiers.levelDown", @"You are now a %@ ambassador"), level1Name];
         break;
     }
   }

@@ -38,6 +38,7 @@
 #import "PDUICustomBadge.h"
 #import "PDMessageStore.h"
 #import "PDTierEvent.h"
+#import "PDUITierEventTableViewCell.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -47,6 +48,7 @@
 #define kNoRewardsCell @"NoRewardsCell"
 #define kNProfileCell @"ProfileCell"
 #define kProfileButtonCell @"PDUIProfileButtonTableViewCell"
+#define kTierCell @"PDUITierEventTableViewCell"
 
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
@@ -154,6 +156,8 @@
   UINib *profileButton = [UINib nibWithNibName:@"PDUIProfileButtonTableViewCell" bundle:podBundle];
   [[self tableView] registerNib:profileButton forCellReuseIdentifier:kProfileButtonCell];
   
+  UINib *tierCell = [UINib nibWithNibName:@"PDUITierEventTableViewCell" bundle:podBundle];
+  [[self tableView] registerNib:tierCell forCellReuseIdentifier:kTierCell];
   
   
 }
@@ -749,7 +753,9 @@
               return walletCell;
             }
           } else if ([item isKindOfClass:[PDTierEvent class]]) {
-            
+            PDUITierEventTableViewCell *tierEventCell = [[self tableView] dequeueReusableCellWithIdentifier:kTierCell];
+            [tierEventCell setupForTierEvent:(PDTierEvent*)item];
+            return tierEventCell;
           }
         }
       }

@@ -64,25 +64,24 @@
     }
 }
 
-+ (NSArray*) orderedByDate {
++ (NSArray*) orderedByDateMulti {
   NSArray *sortedArray;
   sortedArray = [[PDWallet wallet] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-    float firstDate;
+    long firstDate;
     if ([a isKindOfClass:[PDReward class]]) {
       firstDate = [(PDReward*)a claimedAt];
     } else if ([a isKindOfClass:[PDTierEvent class]]) {
       firstDate = [(PDTierEvent*)a date];
     }
     
-    float secondDate;
+    long secondDate;
     if ([b isKindOfClass:[PDReward class]]) {
       secondDate = [(PDReward*)b claimedAt];
     } else if ([b isKindOfClass:[PDTierEvent class]]) {
       secondDate = [(PDTierEvent*)b date];
     }
-    NSDate *first = [NSDate dateWithTimeIntervalSinceReferenceDate:firstDate];
-    NSDate *second = [NSDate dateWithTimeIntervalSinceReferenceDate:secondDate];
-    return [first compare:second];
+
+    return firstDate < secondDate;
   }];
   return sortedArray;
 }

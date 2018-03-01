@@ -73,6 +73,7 @@
 		398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 398E4B7B1C03766500A68529 /* PDUISocialLoginViewModel.m */; };
 		399005A12010E96D00C311F6 /* PDRFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 399005A02010E96D00C311F6 /* PDRFeedItem.m */; };
 		399005A42010EAB200C311F6 /* PDRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 399005A32010EAB200C311F6 /* PDRealm.m */; };
+		399179862048219D0063AE2E /* PDTierAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 399179852048219D0063AE2E /* PDTierAPIService.m */; };
 		3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */; };
 		3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3992A27A1E2535760058EA12 /* PDMultiLoginViewModel.m */; };
 		399367281E0BE587003B2991 /* PDUIInboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 399367271E0BE587003B2991 /* PDUIInboxButton.m */; };
@@ -457,6 +458,8 @@
 		399005A02010E96D00C311F6 /* PDRFeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDRFeedItem.m; sourceTree = "<group>"; };
 		399005A22010EAB200C311F6 /* PDRealm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDRealm.h; sourceTree = "<group>"; };
 		399005A32010EAB200C311F6 /* PDRealm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDRealm.m; sourceTree = "<group>"; };
+		399179842048219D0063AE2E /* PDTierAPIService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDTierAPIService.h; sourceTree = "<group>"; };
+		399179852048219D0063AE2E /* PDTierAPIService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDTierAPIService.m; sourceTree = "<group>"; };
 		3992A2751E25355A0058EA12 /* PDMultiLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMultiLoginViewController.h; path = Login/MultiLogin/PDMultiLoginViewController.h; sourceTree = "<group>"; };
 		3992A2761E25355A0058EA12 /* PDMultiLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMultiLoginViewController.m; path = Login/MultiLogin/PDMultiLoginViewController.m; sourceTree = "<group>"; };
 		3992A2771E25355A0058EA12 /* PDMultiLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDMultiLoginViewController.xib; path = Login/MultiLogin/PDMultiLoginViewController.xib; sourceTree = "<group>"; };
@@ -1829,6 +1832,8 @@
 				39BF5AE91C1EF55B000BF32E /* PDMessageAPIService.m */,
 				395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */,
 				395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */,
+				399179842048219D0063AE2E /* PDTierAPIService.h */,
+				399179852048219D0063AE2E /* PDTierAPIService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2214,6 +2219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				399179862048219D0063AE2E /* PDTierAPIService.m in Sources */,
 				39BF994E1E8E99830025A3F2 /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
 				3922FABB1DC0BF4900501E1D /* PDBrandsUIHandler.m in Sources */,
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,

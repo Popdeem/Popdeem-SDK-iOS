@@ -40,6 +40,7 @@ extern NSString *const BRANDS_PATH;
 extern NSString *const MOMENTS_PATH;
 extern NSString *const INSTAGRAM_URL;
 extern NSString *const CUSTOMER_PATH;
+extern NSString *const READ_TIER_PATH;
 
 extern NSString *const FACEBOOK_NETWORK;
 extern NSString *const TWITTER_NETWORK;

@@ -145,7 +145,7 @@
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
 		
 		NSMutableArray *arr = [NSMutableArray array];
-		for (PDReward *r in [PDWallet orderedByDate]) {
+		for (id r in [PDWallet orderedByDateMulti]) {
 //			if (r.brandId == _brand.identifier) {
 				[arr addObject:r];
 //			}
@@ -167,7 +167,7 @@
 - (void) fetchAllWallet {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
-		weakSelf.wallet = [PDWallet orderedByDate];
+		weakSelf.wallet = [PDWallet orderedByDateMulti];
 		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 		[weakSelf.controller.refreshControl endRefreshing];
 		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
