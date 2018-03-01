@@ -189,6 +189,7 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade:) name:InstagramPostMade object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:NotificationReceived object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:PDUserDidLogin object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateUser) name:PDUserDidUpdate object:nil];
   [self registerNibs];
   [super viewDidLoad];
   
@@ -647,6 +648,11 @@
             PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
             [messagesCell.label setText:@"Messages"];
             messagesCell.shouldShowBadge = YES;
+            if ([PDMessageStore unreadCount] > 0) {
+              [messagesCell showBadge:YES];
+            } else {
+              [messagesCell showBadge:NO];
+            }
             return messagesCell;
           }
         } else {
@@ -660,6 +666,11 @@
             PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
             [messagesCell.label setText:@"Messages"];
             messagesCell.shouldShowBadge = YES;
+            if ([PDMessageStore unreadCount] > 0) {
+              [messagesCell showBadge:YES];
+            } else {
+              [messagesCell showBadge:NO];
+            }
             return messagesCell;
           }
         }
@@ -1090,6 +1101,7 @@
 
 - (void) userDidLogin {
   [self.model fetchRewards];
+  [self.model fetchInbox];
   self.model.feed = [PDFeeds feed];
   [self.model fetchWallet];
   [_segmentedControl setSelectedSegmentIndex:2];
@@ -1227,6 +1239,11 @@
 //    lbl_card_count.font = [UIFont fontWithName:@"ArialMT" size:9];
 //    [self.tableView addSubview:lbl_card_count];
 ////  }
+}
+
+- (void) didUpdateUser {
+  [self.tableView reloadInputViews];
+  [self.tableView reloadData];
 }
 
 @end

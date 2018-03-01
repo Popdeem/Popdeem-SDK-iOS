@@ -106,6 +106,7 @@
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.controller.refreshControl endRefreshing];
+      [weakSelf.controller.tableView reloadInputViews];
 		});
 	}];
 }

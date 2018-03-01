@@ -11,6 +11,7 @@
 #import "PDConstants.h"
 #import "PDUtils.h"
 #import "PDCustomer.h"
+#import "PDUserApiService.h"
 
 @interface PDUIGratitudeProgressView()
 
@@ -78,15 +79,19 @@
     [_level3Label setText:translationForKey(@"popdeem.gratitude.level3Name", @"🥇\nGold\nAmbassador")];
     [_level3Label setTextAlignment:NSTextAlignmentCenter];
     [_level3Label setNumberOfLines:3];
-    
-    
     return self;
   }
   return nil;
 }
 
+- (void) updateUser {
+  PDUserAPIService *service = [[PDUserAPIService alloc] init];
+  [service getUserDetailsForId:[NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]]  authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidUpdate object:nil];
+  }];
+}
+
 - (void) didMoveToSuperview {
-  NSLog(@"here");
   [self addSubview:_progressBackingView];
   [self addSubview:_progressCurrentView];
   [self addSubview:_level1Label];
@@ -109,10 +114,18 @@
     [_level2Label.layer setOpacity:1.0];
     [_level3Label.layer setOpacity:0.3];
   }
+  
+  if (_initialValue >= 90) {
+    [_level1Label.layer setOpacity:1.0];
+    [_level2Label.layer setOpacity:1.0];
+    [_level3Label.layer setOpacity:1.0];
+  }
   if (_increment) {
     PDCustomer *customer = [PDCustomer sharedInstance];
     [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:_initialValue+customer.incrementAdvocacyPoints] afterDelay:1.0];
   }
+
+  [self updateUser];
 }
 
 - (void) animateToValue:(NSNumber*)value {

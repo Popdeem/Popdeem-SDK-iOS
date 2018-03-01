@@ -29,7 +29,6 @@ static PDCustomer *globalCustomer = nil;
 }
 
 + (PDCustomer*) initFromAPI:(NSString*)json {
-  PDCustomer *customer = [PDCustomer sharedInstance];
   PDCustomer *fromJSON = [[PDCustomer alloc] initWithJSON:json];
   if (fromJSON != nil) {
     globalCustomer = fromJSON;

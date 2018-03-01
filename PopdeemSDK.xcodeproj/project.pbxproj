@@ -28,6 +28,7 @@
 		392D8F652031F52300BDC764 /* PDUIGratitudeProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
+		393EECE620480908003A5B9F /* PDTierEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECE520480908003A5B9F /* PDTierEvent.m */; };
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
 		394495E31D9A807F003BA702 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DF1D9A807F003BA702 /* UIImage+Resize.m */; };
 		394495E41D9A807F003BA702 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495E11D9A807F003BA702 /* UIImage+RoundedCorner.m */; };
@@ -317,6 +318,8 @@
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
 		393A8C431C5923D0001F650C /* PDMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMessageStore.h; path = Core/Store/PDMessageStore.h; sourceTree = "<group>"; };
 		393A8C441C5923D0001F650C /* PDMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMessageStore.m; path = Core/Store/PDMessageStore.m; sourceTree = "<group>"; };
+		393EECE420480908003A5B9F /* PDTierEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDTierEvent.h; sourceTree = "<group>"; };
+		393EECE520480908003A5B9F /* PDTierEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDTierEvent.m; sourceTree = "<group>"; };
 		394495DC1D9A807F003BA702 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		394495DD1D9A807F003BA702 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		394495DE1D9A807F003BA702 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -1897,6 +1900,8 @@
 				BC67F5D78271CCCC0D41DF08 /* PDRewardCustomAvailability.m */,
 				39FDF1DE1E926106007AE076 /* PDBGScanResponseModel.h */,
 				39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */,
+				393EECE420480908003A5B9F /* PDTierEvent.h */,
+				393EECE520480908003A5B9F /* PDTierEvent.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2224,6 +2229,7 @@
 				A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */,
 				397478F11B8F16530015C661 /* PopdeemSDK.m in Sources */,
 				392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */,
+				393EECE620480908003A5B9F /* PDTierEvent.m in Sources */,
 				39BF99481E8E99830025A3F2 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
 				39ABA6511C47A1850057088E /* PDUIWalletTableViewCell.m in Sources */,
 				39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */,

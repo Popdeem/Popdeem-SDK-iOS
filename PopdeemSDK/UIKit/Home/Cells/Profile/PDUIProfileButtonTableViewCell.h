@@ -15,6 +15,7 @@
 @property (nonatomic, retain) PDUICustomBadge *badge;
 @property (nonatomic) BOOL shouldShowBadge;
 
+- (void) showBadge:(BOOL)show;
 
 
 @end

@@ -24,6 +24,7 @@
 
 
 - (id) initWithInitialValue:(float)value frame:(CGRect)frame increment:(BOOL)increment;
+- (void) animateToValue:(NSNumber*)value;
 
 
 @end

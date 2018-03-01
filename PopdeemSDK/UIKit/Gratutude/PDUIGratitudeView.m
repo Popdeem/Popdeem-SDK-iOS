@@ -12,6 +12,7 @@
 #import "PDUser.h"
 #import "PDTheme.h"
 #import "PDUIGratitudeViewController.h"
+#import "PDCustomer.h"
 
 @implementation PDUIGratitudeView
 
@@ -119,15 +120,16 @@
 }
 
 - (NSString*)body {
+  NSInteger incrementPoints = [[PDCustomer sharedInstance] incrementAdvocacyPoints];
   switch (_type) {
     case PDGratitudeTypeShare:
-      return translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional 30 points to your account and moved up in status.");
+      return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
       break;
     case PDGratitudeTypeConnect:
-      return translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned 10 points for connecting. Share photo’s with #RibsandBurgers to earn additional rewards!");
+      return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned %d points for connecting. Share photo’s with #RibsandBurgers to earn additional rewards!"), incrementPoints];
       break;
     default:
-      return translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional 30 points to your account and moved up in status.");
+      return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
       break;
   }
 }

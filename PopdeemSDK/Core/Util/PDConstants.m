@@ -46,6 +46,7 @@ NSString *const PDRewardCoverImageDidDownload = @"RewardCoverImageDidDownload";
 NSString *const PDFeedItemImageDidDownload = @"PDFeedItemImageDidDownload";
 NSString *const PDUserDidLogout = @"PDUserDidLogout";
 NSString *const PDUserDidLogin = @"PDUserDidLogin";
+NSString *const PDUserDidUpdate = @"PDUserDidUpdate";
 NSString *const InstagramLoginSuccess = @"InstagramLoginSuccess";
 NSString *const InstagramLoginFailure = @"InstagramLoginFailure";
 NSString *const InstagramLoginuserDismissed = @"InstagramLoginuserDismissed";

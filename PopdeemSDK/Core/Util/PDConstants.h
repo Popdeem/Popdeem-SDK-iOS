@@ -56,6 +56,7 @@ extern NSString *const PDRewardCoverImageDidDownload;
 extern NSString *const PDFeedItemImageDidDownload;
 extern NSString *const PDUserDidLogout;
 extern NSString *const PDUserDidLogin;
+extern NSString *const PDUserDidUpdate;
 extern NSString *const InstagramLoginSuccess;
 extern NSString *const InstagramLoginFailure;
 extern NSString *const InstagramLoginuserDismissed;

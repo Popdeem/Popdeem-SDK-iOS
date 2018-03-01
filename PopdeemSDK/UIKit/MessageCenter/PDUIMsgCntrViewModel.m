@@ -37,9 +37,11 @@
   PDMessageAPIService *service = [[PDMessageAPIService alloc] init];
   __weak typeof(self) weakSelf = self;
   [service fetchMessagesCompletion:^(NSArray *messages, NSError *error){
-    if ([weakSelf.controller.refreshControl isRefreshing]) {
-      [weakSelf.controller.refreshControl endRefreshing];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+      if ([weakSelf.controller.refreshControl isRefreshing]) {
+        [weakSelf.controller.refreshControl endRefreshing];
+      }
+    });
     if (error) {
       PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
     }

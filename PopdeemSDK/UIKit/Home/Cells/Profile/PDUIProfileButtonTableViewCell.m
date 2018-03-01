@@ -27,6 +27,15 @@
     // Configure the view for the selected state
 }
 
+- (void) showBadge:(BOOL)show {
+  [self.badge setHidden:!show];
+  if (show == YES) {
+    if (_badge) {
+      [_badge autoBadgeSizeWithString:[NSString stringWithFormat:@"%ld",(unsigned long)[PDMessageStore unreadCount]]];
+    }
+  }
+}
+
 - (void) didMoveToSuperview {
   if (_shouldShowBadge) {
     float y = self.frame.size.height/2 - 12.5;
