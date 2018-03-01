@@ -447,7 +447,7 @@
       }
     } else if (intervalDays > 6) {
       exp = [NSString stringWithFormat:@"%li weeks left to claim",intervalWeeks];
-    } else if (intervalDays < 7 && intervalHours > 23) {
+    } else if (intervalDays < 7 && intervalHours > 24) {
       exp = [NSString stringWithFormat:@"%li days left to claim",(long)intervalDays];
     } else {
       exp = [NSString stringWithFormat:@"%li hours left to claim",(long)intervalHours];
