@@ -15,6 +15,7 @@
   if (self = [super initWithDictionary:dict error:&err]) {
     return self;
   }
+  
   PDLogError(@"JSONModel Error on Tier Event Params: %@", err);
   return nil;
 }
@@ -24,7 +25,8 @@
                                                      @"from_tier": @"fromTier",
                                                      @"to_tier": @"toTier",
                                                      @"date": @"date",
-                                                     @"readed": @"read"
+                                                     @"readed": @"read",
+                                                     @"id": @"identifier"
                                                      }];
 }
 @end

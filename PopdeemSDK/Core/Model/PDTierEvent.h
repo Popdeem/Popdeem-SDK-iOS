@@ -10,6 +10,7 @@
 
 @interface PDTierEvent : JSONModel
 
+@property (nonatomic) NSInteger identifier;
 @property (nonatomic) long date;
 @property (nonatomic) NSInteger fromTier;
 @property (nonatomic) NSInteger toTier;

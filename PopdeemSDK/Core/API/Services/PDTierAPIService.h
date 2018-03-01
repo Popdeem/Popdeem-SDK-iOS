@@ -11,6 +11,6 @@
 
 @interface PDTierAPIService : PDAPIService
 
-- (void) reportTierAsRead:(PDTierEvent*)tier;
+- (void) reportTierAsRead:(PDTierEvent*)tier completion:(void (^)(NSError *error))completion;
 
 @end

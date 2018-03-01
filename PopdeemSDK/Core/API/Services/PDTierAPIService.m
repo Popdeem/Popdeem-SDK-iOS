@@ -13,12 +13,21 @@
 
 @implementation PDTierAPIService
 
-- (void) reportTierAsRead:(PDTierEvent*)tier {
-//  NSURLSession *session = [NSURLSession createPopdeemSession];
-//  NSString *path = [NSString stringWithFormat:@"%@/%@/%@/%@?tier_id=%d",self.baseUrl,USERS_PATH,[[PDUser sharedInstance] identifier], READ_TIER_PATH, tier.];
-//  
-}
+- (void) reportTierAsRead:(PDTierEvent*)tier completion:(void (^)(NSError *error))completion {
+  NSURLSession *session = [NSURLSession createPopdeemSession];
+  NSString *path = [NSString stringWithFormat:@"%@/%@/%ld/%@?tier_id=%ld",self.baseUrl,USERS_PATH,(long)[[PDUser sharedInstance] identifier], READ_TIER_PATH, (long)tier.identifier];
 
-@end
+  [session POST:path params:nil completion:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response, NSError * _Nonnull error) {
+    NSError *jsonError;
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+    if (!jsonObject) {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        completion([NSError errorWithDomain:@"PDAPIError" code:27200 userInfo:[NSDictionary dictionaryWithObject:@"Could not parse response" forKey:NSLocalizedDescriptionKey]]);
+      });
+      return;
+    }
+    completion(nil);
+  }];
+}
 
 @end

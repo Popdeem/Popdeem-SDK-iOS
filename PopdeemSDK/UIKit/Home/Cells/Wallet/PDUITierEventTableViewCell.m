@@ -9,6 +9,7 @@
 #import "PDUITierEventTableViewCell.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDTierAPIService.h"
 
 @interface PDUITierEventTableViewCell()
 @property (nonatomic, retain) UIColor *primaryAppColor;
@@ -129,6 +130,12 @@
   currentY += _titleLabel.frame.size.height + innerSpacing;
   [_infoLabel setFrame:CGRectMake(labelx, currentY, _infoLabel.frame.size.width, _infoLabel.frame.size.height)];
   
+  if (event.read == NO) {
+    PDTierApiService *service = [[PDTierApiService alloc] init];
+    [service reportTierAsRead:event completion:^(NSError *error) {
+      
+    }]
+  }
 }
 
 - (NSString*) topStringForEvent:(PDTierEvent*)event {
