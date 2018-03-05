@@ -213,6 +213,8 @@
 		[fbV show];
 		return;
 	}
+  
+  [self validateHashTag];
 	
 	_willFacebook = _viewController.facebookSwitch.isOn;
 	if ([_viewController.facebookSwitch isOn]) {
@@ -220,8 +222,6 @@
 		_willTweet = NO;
 		[_viewController.instagramSwitch setOn:NO animated:YES];
 		_willInstagram = NO;
-		[_viewController.twitterForcedTagLabel setHidden:YES];
-		[_viewController.addHashtagButton setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		if (![[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
 			[self loginWithReadAndWritePerms];
@@ -259,8 +259,6 @@
 	
 	if (_willTweet) {
 		_willTweet = NO;
-		[_viewController.twitterForcedTagLabel setHidden:YES];
-		[_viewController.addHashtagButton setHidden:YES];
 		[_viewController.twitterCharacterCountLabel setHidden:YES];
 		[_viewController.twitterButton setSelected:NO];
 //		if ([_viewController.textView.text rangeOfString:_twitterPrefilledTextString].location != NSNotFound) {
@@ -309,8 +307,6 @@
 	}
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
-		[_viewController.twitterForcedTagLabel setHidden:YES];
-		[_viewController.addHashtagButton setHidden:YES];
 //		if ([_viewController.textView.text rangeOfString:_instagramPrefilledTextString].location != NSNotFound) {
 //			NSMutableAttributedString *mstr = [_viewController.textView.attributedText mutableCopy];
 //			[mstr replaceCharactersInRange:[_viewController.textView.text rangeOfString:_instagramPrefilledTextString] withString:@""];
@@ -464,6 +460,16 @@
 		[self loginWithWritePerms];
 		return;
 	}
+  if (_reward.forcedTag && !_hashtagValidated) {
+    UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
+                                                     message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.instagramForcedTag]
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles: nil];
+    [hashAV show];
+    [_viewController.claimButtonView setUserInteractionEnabled:YES];
+    return;
+  }
 	[self makeClaim];
 }
 
@@ -576,10 +582,7 @@
 
 - (void) textViewDidChange:(UITextView *)textView {
 	[self calculateTwitterCharsLeft];
-	if (_willTweet && !_tvSurpress) {
-		[self validateHashTag];
-	}
-	if (_willInstagram && !_tvSurpress) {
+	if (!_tvSurpress) {
 		[self validateHashTag];
 	}
 	_tvSurpress = NO;
@@ -608,7 +611,9 @@
     } else {
       searchString = _reward.instagramForcedTag;
     }
-	}
+  } else {
+    searchString = _reward.forcedTag;
+  }
 	
 	if (!searchString) {
 		_hashtagValidated = YES;
@@ -617,7 +622,7 @@
 		return;
 	}
 	
-	if ([_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString].location != NSNotFound && (_willTweet || _willInstagram)) {
+	if ([_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString].location != NSNotFound) {
 		_hashtagValidated = YES;
 		_tvSurpress = YES;
 		NSRange hashRange = [_viewController.textView.text.lowercaseString rangeOfString:searchString.lowercaseString];
@@ -634,10 +639,8 @@
 		[string setAttributes:@{} range:NSMakeRange(0, string.length)];
 		[string addAttribute:NSFontAttributeName value:PopdeemFont(PDThemeFontPrimary, 14) range:NSMakeRange(0, string.length)];
 		[_viewController.textView setAttributedText:string];
-		if (_willTweet || _willInstagram) {
-			[_viewController.addHashtagButton setHidden:NO];
-			[_viewController.twitterForcedTagLabel setHidden:NO];
-		}
+		[_viewController.addHashtagButton setHidden:NO];
+    [_viewController.twitterForcedTagLabel setHidden:NO];
 	}
 }
 
@@ -839,9 +842,7 @@
     }
     [_loadingView hideAnimated:YES];
     [_viewController.twitterSwitch setOn:NO animated:NO];
-    [_viewController.twitterForcedTagLabel setHidden:YES];
     [_viewController.twitterCharacterCountLabel setHidden:YES];
-    [_viewController.addHashtagButton setHidden:YES];
   });
 }
 

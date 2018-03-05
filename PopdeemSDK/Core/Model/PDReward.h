@@ -121,11 +121,13 @@ static const NSInteger PDREWARD_NO_LIMIT = INT_MAX;
 @property (nonatomic) CGFloat distanceFromUser;
 @property (nonatomic) NSInteger countdownTimerDuration;
 @property (nonatomic, strong, nullable) NSString *creditString;
+@property (nonatomic, strong, nullable) NSString *coverImagePath;
 
 @property (nonatomic, strong) NSMutableArray *locations;
 
 - (id) initFromApi:(NSDictionary*)params;
 
+- (void) downloadCoverImage;
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion;
 
 - (NSString*) localizedDistanceToUserString;

@@ -10,6 +10,7 @@
 #import "PDUser.h"
 #import "PDLocation.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PDLogger.h"
 
 @interface PDReward () {
 	BOOL isDownloadingCover;
@@ -51,6 +52,9 @@
 		self.socialMediaTypes = socMediaTypes;
 		
 		self.coverImageUrl = params[@"cover_image"];
+    if ([self.coverImageUrl isKindOfClass:[NSString class]]) {
+      [self downloadCoverImage];
+    }
 		
 		self.createdAt = [params[@"created_at"] intValue];
 		
@@ -166,7 +170,6 @@
 			self.creditString = params[@"credit"];
 		}
 		
-		
 		if (params[@"claimed_at"] != nil) {
 			self.claimedAt = [params[@"claimed_at"] intValue];
 		}
@@ -216,6 +219,28 @@
 	return nil;
 }
 
+- (void) downloadCoverImage {
+  if (isDownloadingCover) {
+    return;
+  }
+  NSURL *url = [NSURL URLWithString:self.coverImageUrl];
+  isDownloadingCover = YES;
+  NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    if (data) {
+      UIImage *image = [UIImage imageWithData:data];
+      self.coverImage = image;
+      if (image) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:PDRewardCoverImageDidDownload object:nil];
+      }
+      isDownloadingCover = NO;
+    } else {
+      PDLog(@"NSURLDataTaskFailure");
+      isDownloadingCover = NO;
+    }
+  }];
+  [task2 resume];
+}
+
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion {
 	
 	if (isDownloadingCover) completion(NO);
@@ -229,6 +254,7 @@
 				
 				self.coverImage = coverImage;
 				isDownloadingCover = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:PDRewardCoverImageDidDownload object:nil];
 				completion(YES);
 			});
 		} else {

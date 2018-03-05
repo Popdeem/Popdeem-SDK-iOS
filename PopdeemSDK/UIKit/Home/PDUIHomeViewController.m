@@ -188,6 +188,7 @@
   
 //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:FacebookLoginSuccess object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coverImageDidDownload) name:@"PDRewardCoverImageDidDownload" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postVerified) name:InstagramVerifySuccessFromWallet object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade:) name:InstagramPostMade object:nil];
@@ -587,23 +588,11 @@
           [rwrcell setupForReward:reward];
         }
         if (rwrcell.rewardImageView.image == nil) {
-          NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
-          NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            if (data) {
-              UIImage *image = [UIImage imageWithData:data];
-              if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                  id updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                  if (updateCell != nil && [updateCell isKindOfClass:[PDUIRewardV2TableViewCell class]]) {
-                    PDUIRewardV2TableViewCell *updaterwrcell = (PDUIRewardV2TableViewCell*)updateCell;
-                    updaterwrcell.rewardImageView.image = image;
-                    reward.coverImage = image;
-                  }
-                });
-              }
-            }
-          }];
-          [task2 resume];
+          if (reward.coverImage == nil) {
+            [reward downloadCoverImage];
+          } else {
+            rwrcell.rewardImageView.image = reward.coverImage;
+          }
         }
         return rwrcell;
       }
@@ -1165,6 +1154,12 @@
 }
 
 - (void) feedItemDidDownload {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.tableView reloadData];
+  });
+}
+
+- (void) coverImageDidDownload {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self.tableView reloadData];
   });

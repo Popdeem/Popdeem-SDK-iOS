@@ -307,32 +307,22 @@
   [self.view bringSubviewToFront:_withLabel];
   
   if (_viewModel.willTweet) {
-    [self.twitterForcedTagLabel setHidden:NO];
-		if (_reward.twitterForcedTag.length > 0) {
-			[self.addHashtagButton setHidden:NO];
-		}
-    if (_viewModel.reward.forcedTag) {
-      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.forcedTag]];
-    } else if (_viewModel.reward.twitterForcedTag) {
-      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.twitterForcedTag]];
-    }
     [self.twitterCharacterCountLabel setHidden:NO];
     [_viewModel calculateTwitterCharsLeft];
+  }else {
+    [self.twitterCharacterCountLabel setHidden:YES];
   }
-	if (_viewModel.willInstagram) {
-		[self.twitterForcedTagLabel setHidden:NO];
-		if (_reward.forcedTag.length > 0) {
-			[self.addHashtagButton setHidden:NO];
-		}
-		[self.addHashtagButton setHidden:NO];
-    if (_viewModel.reward.forcedTag) {
-      [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.forcedTag]];
-    }else if (_viewModel.reward.instagramForcedTag) {
-			[self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required", _viewModel.reward.instagramForcedTag]];
-		}
-		[self.twitterCharacterCountLabel setHidden:YES];
-	}
-	
+  
+  [self.twitterForcedTagLabel setHidden:NO];
+  if (_reward.twitterForcedTag.length > 0) {
+    [self.addHashtagButton setHidden:NO];
+  }
+  if (_viewModel.reward.forcedTag) {
+    [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.forcedTag]];
+  } else if (_viewModel.reward.twitterForcedTag) {
+    [self.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_viewModel.reward.twitterForcedTag]];
+  }
+  
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, (@{
 																					ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_CLAIM,
 																					ABRA_PROPERTYNAME_REWARD_TYPE : AbraKeyForRewardType(_reward.type),
@@ -557,8 +547,6 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [_viewModel instagramLoginFailure];
     [_instagramSwitch setOn:NO animated:YES];
-    [self.twitterForcedTagLabel setHidden:YES];
-    [self.addHashtagButton setHidden:YES];
   });
 }
 
@@ -577,8 +565,6 @@
                                          otherButtonTitles:nil];
       [av show];
     }
-    [self.twitterForcedTagLabel setHidden:YES];
-    [self.addHashtagButton setHidden:YES];
   });
 }
 
@@ -610,15 +596,11 @@
 - (void) instagramVerifyFailure {
 	self.homeController.didClaim = NO;
 	[self.navigationController popViewControllerAnimated:YES];
-	[self.twitterForcedTagLabel setHidden:YES];
-	[self.addHashtagButton setHidden:YES];
 }
 
 - (void) instagramVerifyNoAttempt {
 	self.homeController.didClaim = NO;
 	[self.navigationController popViewControllerAnimated:YES];
-	[self.twitterForcedTagLabel setHidden:YES];
-	[self.addHashtagButton setHidden:YES];
 }
 
 - (void) facebookWritePermSuccess {
@@ -674,7 +656,7 @@
       hashtagString = _reward.instagramForcedTag;;
     }
 	} else {
-		return;
+		hashtagString = _reward.forcedTag;
 	}
 	
 	if (_textView.text.length > 0) {
