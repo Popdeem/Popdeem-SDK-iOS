@@ -122,7 +122,7 @@
   }
   if (_increment) {
     PDCustomer *customer = [PDCustomer sharedInstance];
-    [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:_initialValue+customer.incrementAdvocacyPoints] afterDelay:1.0];
+    [self performSelector:@selector(animateToValue:) withObject:[NSNumber numberWithInteger:_initialValue+[customer.incrementAdvocacyPoints integerValue]] afterDelay:1.0];
   }
 
   [self updateUser];

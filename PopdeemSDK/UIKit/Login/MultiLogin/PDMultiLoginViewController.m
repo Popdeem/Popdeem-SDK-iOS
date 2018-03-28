@@ -43,7 +43,11 @@
 }
 
 - (void) setupSocialLoginReward:(PDReward*)reward {
-  _rewardCell = [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100) reward:reward];
+  float width = self.view.frame.size.width;
+  if (width > 400) {
+    width = 375;
+  }
+  _rewardCell = [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, width, 100) reward:reward];
   if (_rewardCell.logoImageView.image == nil) {
     NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
     NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -67,26 +71,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-  NSArray *rewards = [PDRewardStore allRewards];
-  if (rewards.count == 0) {
-    PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
-    [service getAllRewardsWithCompletion:^(NSError *error) {
-      for (PDReward* reward in [PDRewardStore allRewards]){
-        if (reward.action == PDRewardActionSocialLogin) {
-          [self setupSocialLoginReward:reward];
-          break;
-        }
-      }
-    }];
-  } else {
-    for (PDReward* reward in [PDRewardStore allRewards]){
-      if (reward.action == PDRewardActionSocialLogin) {
-        [self setupSocialLoginReward:reward];
-        break;
-      }
-    }
-  }
   
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	//View Setup
@@ -142,6 +126,28 @@
   }
 	
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelButtonPressed:) name:InstagramLoginuserDismissed object:nil];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+  NSArray *rewards = [PDRewardStore allRewards];
+  if (rewards.count == 0) {
+    PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
+    [service getAllRewardsWithCompletion:^(NSError *error) {
+      for (PDReward* reward in [PDRewardStore allRewards]){
+        if (reward.action == PDRewardActionSocialLogin) {
+          [self setupSocialLoginReward:reward];
+          break;
+        }
+      }
+    }];
+  } else {
+    for (PDReward* reward in [PDRewardStore allRewards]){
+      if (reward.action == PDRewardActionSocialLogin) {
+        [self setupSocialLoginReward:reward];
+        break;
+      }
+    }
+  }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -19,8 +19,8 @@
 @property (nonatomic, retain) NSString *instagramClientId;
 @property (nonatomic, retain) NSString *instagramClientSecret;
 @property (nonatomic) NSInteger countdownTimer;
-@property (nonatomic) NSInteger incrementAdvocacyPoints;
-@property (nonatomic) NSInteger decrementAdvocacyPoints;
+@property (nonatomic, retain) NSNumber <Optional> *incrementAdvocacyPoints;
+@property (nonatomic, retain) NSNumber <Optional> *decrementAdvocacyPoints;
 
 + (PDCustomer*) initFromAPI:(NSString*)json;
 + (instancetype) sharedInstance;

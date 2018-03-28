@@ -588,11 +588,23 @@
           [rwrcell setupForReward:reward];
         }
         if (rwrcell.rewardImageView.image == nil) {
-          if (reward.coverImage == nil) {
-            [reward downloadCoverImage];
-          } else {
-            rwrcell.rewardImageView.image = reward.coverImage;
-          }
+          NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
+          NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (data) {
+              UIImage *image = [UIImage imageWithData:data];
+              if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                  id updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                  if (updateCell != nil && [updateCell isKindOfClass:[PDUIRewardV2TableViewCell class]]) {
+                    PDUIRewardV2TableViewCell *updaterwrcell = (PDUIRewardV2TableViewCell*)updateCell;
+                    updaterwrcell.rewardImageView.image = image;
+                    reward.coverImage = image;
+                  }
+                });
+              }
+            }
+          }];
+          [task2 resume];
         }
         return rwrcell;
       }
@@ -814,6 +826,9 @@
   switch (_segmentedControl.selectedSegmentIndex) {
     case 0:
       //Rewards
+      if (_model.rewards.count == 0) {
+        return 100;
+      }
       return 200;
       break;
     case 1:
