@@ -24,6 +24,7 @@
 
 + (PDCustomer*) initFromAPI:(NSString*)json;
 + (instancetype) sharedInstance;
+- (BOOL) usesAmbassadorFeatures;
 
 @end
 

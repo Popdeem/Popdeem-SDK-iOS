@@ -28,8 +28,8 @@
     
     float currentY = 0;
     
-    float imageHeight = viewHeight * 0.32;
-    float topPadding = viewHeight * 0.07;
+    float imageHeight = 120;
+    float topPadding = viewHeight * 0.15;
     
     //Icon Image
     currentY = topPadding;
@@ -72,34 +72,38 @@
     currentY += gratitudePadding;
     float progressHeight = viewHeight * 0.12;
     //TODO: User real value
-    float userValue = (_type == PDGratitudeTypeConnect) ? 0 : [[PDUser sharedInstance] advocacyScore];
-    BOOL increment = (userValue < 90) ? YES : NO;
-    _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:userValue frame:CGRectMake(0, currentY, viewWidth, progressHeight) increment:increment];
+    if ([[PDCustomer sharedInstance] usesAmbassadorFeatures]) {
+      float userValue = (_type == PDGratitudeTypeConnect) ? 0 : [[PDUser sharedInstance] advocacyScore];
+      BOOL increment = (userValue < 90) ? YES : NO;
+      _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:userValue frame:CGRectMake(0, currentY, viewWidth, progressHeight) increment:increment];
+    }
+    
     
     float buttonHeight = 52;
     
     _profileButton = [[UIButton alloc] initWithFrame:CGRectMake(labelPadding, viewHeight - 30 - buttonHeight, viewWidth - (2* labelPadding), buttonHeight)];
     [_profileButton setBackgroundColor:[UIColor whiteColor]];
     _profileButton.layer.cornerRadius = 8.0;
-    _profileButton.layer.borderWidth = 1.0;
-    _profileButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
-    _profileButton.titleLabel.textColor = PopdeemColor(PDThemeColorPrimaryApp);
+    _profileButton.layer.borderWidth = 2.0;
+    _profileButton.layer.borderColor = PopdeemColor(PDThemeColorSecondaryApp).CGColor;
+    _profileButton.titleLabel.textColor = PopdeemColor(PDThemeColorSecondaryApp);
     _profileButton.titleLabel.font = PopdeemFont(PDThemeFontBold, 17);
     [_profileButton setTitle:translationForKey(@"popdeem.gratitude.buttonTitle", @"Go to Profile") forState:UIControlStateNormal];
-    [_profileButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
+    [_profileButton setTitleColor:PopdeemColor(PDThemeColorSecondaryApp) forState:UIControlStateNormal];
     [_profileButton addTarget:self action:@selector(dismissAction) forControlEvents:UIControlEventTouchUpInside];
     
     float infoTop = currentY + progressHeight + 15;
     float infoBottom = viewHeight - 30 - buttonHeight - 15;
     float infoHeight = infoBottom - infoTop;
     
-    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, infoTop, viewWidth - (2*labelPadding), infoHeight)];
-    [_infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
-    [_infoLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
-    [_infoLabel setText:translationForKey(@"popdeem.gratitude.infoText", @"Unlock new rewards and VIP offers as you move up in status.")];
-    [_infoLabel setTextAlignment:NSTextAlignmentCenter];
-    [_infoLabel setNumberOfLines:0];
-    
+    if ([[PDCustomer sharedInstance] usesAmbassadorFeatures]) {
+      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, infoTop, viewWidth - (2*labelPadding), infoHeight)];
+      [_infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
+      [_infoLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
+      [_infoLabel setText:translationForKey(@"popdeem.gratitude.infoText", @"Unlock new rewards and VIP offers as you move up in status.")];
+      [_infoLabel setTextAlignment:NSTextAlignmentCenter];
+      [_infoLabel setNumberOfLines:0];
+    }
     return self;
   }
   return nil;
@@ -108,29 +112,43 @@
 - (NSString*) title {
   switch (_type) {
     case PDGratitudeTypeShare:
-      return translationForKey(@"popdeem.gratitude.share.titleText", @"Sweet Ribs and Burgers!");
+      return translationForKey(@"popdeem.gratitude.share.noAmbassador.titleText", @"You’re Brilliant!");
       break;
     case PDGratitudeTypeConnect:
-      return translationForKey(@"popdeem.gratitude.connect.titleText", @"Thanks for Connecting!");
+      return translationForKey(@"popdeem.gratitude.connect.titleText", @"Welcome!");
       break;
     default:
-      return translationForKey(@"popdeem.gratitude.share.titleText", @"Sweet Ribs and Burgers!");
+      return translationForKey(@"popdeem.gratitude.share.titleText", @"You’re Brilliant!");
       break;
   }
 }
 
 - (NSString*)body {
-  NSInteger incrementPoints = [[PDCustomer sharedInstance] incrementAdvocacyPoints];
-  switch (_type) {
-    case PDGratitudeTypeShare:
-      return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
-      break;
-    case PDGratitudeTypeConnect:
-      return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned %d points for connecting. Share photo’s with #RibsandBurgers to earn additional rewards!"), incrementPoints];
-      break;
-    default:
-      return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
-      break;
+  if ([[PDCustomer sharedInstance] usesAmbassadorFeatures]) {
+    NSInteger incrementPoints = [[PDCustomer sharedInstance] incrementAdvocacyPoints];
+    switch (_type) {
+      case PDGratitudeTypeShare:
+        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
+        break;
+      case PDGratitudeTypeConnect:
+        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned %d points for connecting. Share photo’s with #RibsandBurgers to earn additional rewards!"), incrementPoints];
+        break;
+      default:
+        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
+        break;
+    }
+  } else {
+    switch (_type) {
+      case PDGratitudeTypeShare:
+        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
+        break;
+      case PDGratitudeTypeConnect:
+        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"Thanks for connecting, start sharing to earn more rewards and enter amazing competitions.")];
+        break;
+      default:
+        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
+        break;
+    }
   }
 }
 

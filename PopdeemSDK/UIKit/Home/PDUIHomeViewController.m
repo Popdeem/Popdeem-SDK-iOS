@@ -39,6 +39,7 @@
 #import "PDMessageStore.h"
 #import "PDTierEvent.h"
 #import "PDUITierEventTableViewCell.h"
+#import "PDCustomer.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -849,7 +850,12 @@
       if (indexPath.section == 0) {
         if ([[PDUser sharedInstance] isRegistered]) {
           if (indexPath.row == 0) {
-            return 125;
+            //Only show the profile ambassador bar if Customer uses ambassador
+            if ([[PDCustomer sharedInstance] incrementAdvocacyPoints] != nil) {
+              return 125;
+            } else {
+              return 50;
+            }
           } else {
             return 50;
           }

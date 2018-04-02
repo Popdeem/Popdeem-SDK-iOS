@@ -11,6 +11,7 @@
 #import "PDTheme.h"
 #import "PDUtils.h"
 #import "PDUIGratitudeProgressView.h"
+#import "PDCustomer.h"
 
 @implementation ProfileTableViewCell
 
@@ -40,11 +41,13 @@
   self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
   self.profileImageView.layer.masksToBounds = YES;
   
-  if (!_progressView) {
-   _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:[[PDUser sharedInstance] advocacyScore] frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75) increment:NO];
-    [self addSubview:_progressView];
-  } else {
-    [_progressView animateToValue:@([[PDUser sharedInstance] advocacyScore])];
+  if ([[PDCustomer sharedInstance] incrementAdvocacyPoints] != nil) {
+    if (!_progressView) {
+      _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:[[PDUser sharedInstance] advocacyScore] frame:CGRectMake(0, self.frame.size.height - 75, [[UIScreen mainScreen] bounds].size.width, 75) increment:NO];
+      [self addSubview:_progressView];
+    } else {
+      [_progressView animateToValue:@([[PDUser sharedInstance] advocacyScore])];
+    }
   }
 
   [self getPicture];

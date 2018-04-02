@@ -63,4 +63,11 @@ static PDCustomer *globalCustomer = nil;
                                                      }];
 }
 
+- (BOOL) usesAmbassadorFeatures {
+    if (self.incrementAdvocacyPoints != nil) {
+        return YES;
+    }
+    return NO;
+}
+
 @end
