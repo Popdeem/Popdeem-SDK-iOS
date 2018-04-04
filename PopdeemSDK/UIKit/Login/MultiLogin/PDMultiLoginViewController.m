@@ -22,6 +22,7 @@
 #import "PDRewardAPIService.h"
 #import "PDUIHomeViewController.h"
 #import "PDUIRewardTableViewCell.h"
+#import "PDUIDirectToSocialHomeHandler.h"
 
 @interface PDMultiLoginViewController ()
 @property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
@@ -213,7 +214,9 @@
 	AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
   [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                       object:nil];
-	[self dismissViewControllerAnimated:YES completion:^{}];
+	[self dismissViewControllerAnimated:YES completion:^{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+  }];
 }
 
 - (void) addUserToUserDefaults:(PDUser*)user {
@@ -232,7 +235,9 @@
       [_loadingView hideAnimated:YES];
       [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                           object:nil];
-      [self dismissViewControllerAnimated:YES completion:^{}];
+      [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+      }];
     });
 	} failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -290,7 +295,9 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                       object:nil];
   AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-  [self dismissViewControllerAnimated:YES completion:^{}];
+  [self dismissViewControllerAnimated:YES completion:^{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+  }];
 }
 
 - (void) facebookLoginFailure {

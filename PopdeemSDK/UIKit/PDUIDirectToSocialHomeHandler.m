@@ -15,12 +15,11 @@
 
 -(void) handleHomeFlow {
   [self presentHomeFlow];
-  UIViewController *topController = [PDUIKitUtils topViewController];
-  [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
 }
 
 - (void) presentHomeFlow {
   UIViewController *topController = [PDUIKitUtils topViewController];
+  [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
   PDUIHomeViewController *homeVc = [[PDUIHomeViewController alloc] initFromNib];
   homeVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
@@ -28,15 +27,11 @@
   homeVc.navigationItem.hidesBackButton = NO;
   [homeVc.navigationItem.backBarButtonItem setTarget:self];
   [homeVc.navigationItem.backBarButtonItem setAction:@selector(dismiss)];
+  [homeVc setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
   _navController = [[PDUINavigationController alloc] initWithRootViewController:homeVc];
   _navController.view.frame = topController.view.frame;
-  
-//  CATransition *transition = [[CATransition alloc] init];
-//  transition.duration = 0.3;
-//  transition.type = kCATransitionPush;
-//  transition.subtype = kCATransitionFromRight;
-//  [topController.view.window.layer addAnimation:transition forKey:kCATransition];
+  [_navController setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
   [topController presentViewController:_navController animated:YES completion:^{
   }];

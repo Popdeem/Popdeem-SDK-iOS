@@ -87,6 +87,7 @@ typedef NS_ENUM(NSUInteger, PDEnv) {
 + (void) setUpThemeFile:(NSString*)themeName;
 
 + (void) presentRewardFlow;
++ (void) directToSocialHome;
 + (void) presentRewardsForBrand:(PDBrand*)b inNavigationController:(UINavigationController*)navController;
 + (void) presentHomeFlowInNavigationController:(UINavigationController*)navController;
 + (void) presentBrandFlowInNavigationController:(UINavigationController*)navController;

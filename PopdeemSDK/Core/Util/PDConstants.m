@@ -68,6 +68,7 @@ NSString *const InstagramAppReturn = @"InstagramAppReturn";
 NSString *const InstagramPostMade = @"InstagramPostMade";
 NSString *const NotificationReceived = @"NotificationReceived";
 NSString *const DidFetchBrands = @"DidFetchBrands";
+NSString *const DirectToSocialHome = @"DirectToSocialHome";
 /*
  End NSNotificationCenter Strings
  */

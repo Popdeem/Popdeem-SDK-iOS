@@ -10,6 +10,8 @@
 #import "PDUIRewardTableViewController.h"
 #import "PDUIHomeViewController.h"
 #import "PDUIBrandsListTableViewController.h"
+#import "PDUIDirectToSocialHomeHandler.h"
+
 @interface PopdeemUIKItCore ()
 @property(nonatomic, strong) PDUISocialLoginHandler *socialLoginHandler;
 @property(nonatomic, strong) PDRewardHandler *rewardHandler;
@@ -23,7 +25,7 @@
     self.socialLoginHandler = [PDUISocialLoginHandler new];
     self.rewardHandler = [PDRewardHandler new];
   }
-  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(directToSocialHome) name:DirectToSocialHome object:nil];
   return self;
 }
 
@@ -53,6 +55,13 @@
 
 - (void) presentRewardsForBrand:(PDBrand*)brand inNavigationController:(UINavigationController*)navController {
     [navController pushViewController:[[PDUIHomeViewController alloc] initWithBrand:brand] animated:YES];
+}
+
+- (void) directToSocialHome {
+  PDUIDirectToSocialHomeHandler *handler = [[PDUIDirectToSocialHomeHandler alloc] init];
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    [handler handleHomeFlow];
+  });
 }
 
 

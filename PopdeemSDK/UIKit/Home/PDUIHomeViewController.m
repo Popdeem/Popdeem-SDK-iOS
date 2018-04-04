@@ -1126,6 +1126,7 @@
   if ([[PDUser sharedInstance] advocacyScore] <= 30) {
     [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
   }
+  
   PDUserAPIService *service = [[PDUserAPIService alloc] init];
   NSString *ident = [NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]];
   [service getUserDetailsForId:ident authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {

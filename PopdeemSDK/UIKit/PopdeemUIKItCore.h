@@ -12,6 +12,7 @@
 - (void) enableSocialLoginWithNumberOfPrompts:(NSNumber*) noOfPrompts;
 
 - (void) presentRewardFlow;
+- (void) directToSocialHome;
 
 - (void) setThemeFile:(NSString*)fileName;
 
