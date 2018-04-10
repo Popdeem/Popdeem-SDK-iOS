@@ -115,9 +115,9 @@
 	}
 	
   if (_reward.forcedTag) {
-    _twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.forcedTag];
+    _twitterForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.forcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
   } else if (_reward.twitterForcedTag) {
-		_twitterForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.twitterForcedTag];
+		_twitterForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.twitterForcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
 	}
 	
 	if (_reward.instagramPrefilledMessage) {
@@ -125,97 +125,18 @@
 	}
 	
   if (_reward.forcedTag) {
-    _instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.forcedTag];
+    _instagramForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.forcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
   } else if (_reward.instagramForcedTag) {
-		_instagramForcedTagString = [NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag];
+		_instagramForcedTagString = [NSString stringWithFormat:@"%@ %@",_reward.instagramForcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")];
 	}
 	
 	[_viewController.twitterForcedTagLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
 }
 
-- (NSString*) actionText {
-	NSString *action;
-	NSArray *types = _reward.socialMediaTypes;
-	if (types.count > 0) {
-		if (types.count > 1) {
-			//Both Networks
-			switch (_reward.action) {
-				case PDRewardActionCheckin:
-					action = translationForKey(@"popdeem.claim.action.tweet.checkin", @"Check-in or Tweet Required");
-					break;
-				case PDRewardActionPhoto:
-					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
-					break;
-				case PDRewardActionNone:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-				default:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-			}
-		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
-			//Facebook Only
-			switch (_reward.action) {
-				case PDRewardActionCheckin:
-					action = translationForKey(@"popdeem.claim.action.checkin", @"Check-In required");
-					break;
-				case PDRewardActionPhoto:
-					action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
-					break;
-				case PDRewardActionNone:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-				default:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-			}
-		} else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
-			//Twitter Only
-			switch (_reward.action) {
-				case PDRewardActionCheckin:
-					action = translationForKey(@"popdeem.claim.action.tweet", @"Tweet Required");
-					break;
-				case PDRewardActionPhoto:
-					action = translationForKey(@"popdeem.claim.action.tweet.photo", @"Tweet with Photo Required");
-					break;
-				case PDRewardActionNone:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-				default:
-					action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-					break;
-			}
-		}
-	} else if (types.count == 0) {
-		switch (_reward.action) {
-			case PDRewardActionCheckin:
-				action = translationForKey(@"popdeem.claim.action.checkin", @"Check-In required");
-				break;
-			case PDRewardActionPhoto:
-				action = translationForKey(@"popdeem.claim.action.photo", @"Photo Required");
-				break;
-			case PDRewardActionNone:
-				action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-				break;
-			default:
-				action = translationForKey(@"popdeem.claim.action.none", @"No Action Required");
-				break;
-		}
-	}
-	return action;
-}
 
 - (void) toggleFacebook {
-	if (_mustFacebook) {
-		[_viewController.facebookSwitch setOn:YES animated:NO];
-		_willFacebook = YES;
-		UIAlertView *fbV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.reward.facebookRequired", @"This reward must be claimed with a Facebook post. You can also post to Twitter if you wish") delegate:self cancelButtonTitle:translationForKey(@"common.ok", @"OK") otherButtonTitles:nil];
-		[fbV show];
-		return;
-	}
-  
   [self validateHashTag];
-	
+
 	_willFacebook = _viewController.facebookSwitch.isOn;
 	if ([_viewController.facebookSwitch isOn]) {
 		[_viewController.twitterSwitch setOn:NO animated:YES];
@@ -240,14 +161,6 @@
 }
 
 - (void) toggleTwitter {
-	if (_mustTweet) {
-		_willTweet = YES;
-		[_viewController.twitterSwitch setOn:YES animated:NO];
-		UIAlertView *twitterV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.cant.deselect", @"Cannot deselect") message:translationForKey(@"popdeem.claim.connect.tweetRequired", @"This reward must be claimed with a tweet. You can also post to Facebook if you wish") delegate:self cancelButtonTitle:translationForKey(@"popdeem.common.ok", @"OK") otherButtonTitles:nil];
-		[twitterV show];
-		[self validateHashTag];
-		return;
-	}
 	
 	if ([_viewController.twitterSwitch isOn]) {
 		[_viewController.facebookSwitch setOn:NO animated:YES];
@@ -307,14 +220,6 @@
 	}
 	if (!instagramSwitch.isOn) {
 		_willInstagram = NO;
-//		if ([_viewController.textView.text rangeOfString:_instagramPrefilledTextString].location != NSNotFound) {
-//			NSMutableAttributedString *mstr = [_viewController.textView.attributedText mutableCopy];
-//			[mstr replaceCharactersInRange:[_viewController.textView.text rangeOfString:_instagramPrefilledTextString] withString:@""];
-//			if ([mstr.string rangeOfString:_instagramForcedTagString].location != NSNotFound) {
-//				[mstr replaceCharactersInRange:[mstr.string rangeOfString:_instagramForcedTagString] withString:@""];
-//			}
-//			[_viewController.textView setAttributedText:mstr];
-//		}
 		[self validateHashTag];
 		return;
 	}
@@ -353,7 +258,7 @@
 	}
 	if (_reward.instagramForcedTag) {
 		_instagramForcedTagString = _reward.instagramForcedTag;
-		[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ Required",_reward.instagramForcedTag]];
+		[_viewController.twitterForcedTagLabel setText:[NSString stringWithFormat:@"%@ %@",_reward.instagramForcedTag, translationForKey(@"popdeem.claim.hashtagRequired", @"Required")]];
 		[self validateHashTag];
 	}
 }
@@ -421,10 +326,10 @@
 	}
 	
 	if (_reward.action == PDRewardActionPhoto && _image == nil) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
-																										message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.alert.photoRequired.title", @"Photo Required")
+																										message:translationForKey(@"popdeem.claim.alert.photoRequired.body", @"A photo is required for this action. Please add a photo.")
 																									 delegate:self
-																					cancelButtonTitle:@"OK"
+																					cancelButtonTitle:translationForKey(@"popdeem.claim.alert.cancelButton.title", @"OK")
 																					otherButtonTitles:nil];
 		[alert setTag:1];
 		[alert show];
@@ -836,10 +741,8 @@
 - (void) twitterLoginFailure {
   dispatch_async(dispatch_get_main_queue(), ^{
     PDLogError(@"Twitter didnt log in");
-    if (!_mustTweet) {
-      _willTweet = NO;
-      [_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
-    }
+    _willTweet = NO;
+    [_viewController.twitterButton setImage:[UIImage imageNamed:@"twitterDeselected"] forState:UIControlStateNormal];
     [_loadingView hideAnimated:YES];
     [_viewController.twitterSwitch setOn:NO animated:NO];
     [_viewController.twitterCharacterCountLabel setHidden:YES];

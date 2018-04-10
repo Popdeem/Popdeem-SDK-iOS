@@ -60,25 +60,19 @@
           return;
         }
         PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
-        if ([[PDAPIClient sharedInstance] thirdPartyToken] != nil) {
-          PDUserAPIService *service = [[PDUserAPIService alloc] init];
-          [service updateUserWithCompletion:^(PDUser *user, NSError *error){
-            if (error) {
-              PDLogError(@"Error updating User: %@", error.localizedDescription);
-              dispatch_async(dispatch_get_main_queue(), ^{
-                completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
-              });
-            } else {
-              dispatch_async(dispatch_get_main_queue(), ^{
-                completion(user, nil);
-              });
-            }
-          }];
-        } else {
-          dispatch_async(dispatch_get_main_queue(), ^{
-            completion(user, nil);
-          });
-        }
+        PDUserAPIService *service = [[PDUserAPIService alloc] init];
+        [service updateUserWithCompletion:^(PDUser *user, NSError *error){
+          if (error) {
+            PDLogError(@"Error updating User: %@", error.localizedDescription);
+            dispatch_async(dispatch_get_main_queue(), ^{
+              completion(nil, [PDNetworkError errorForStatusCode:responseStatusCode]);
+            });
+          } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+              completion(user, nil);
+            });
+          }
+        }];
         [session invalidateAndCancel];
       } else {
         [session invalidateAndCancel];

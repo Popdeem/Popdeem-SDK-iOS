@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,12 +29,12 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wF-oE-hL7">
                     <rect key="frame" x="16" y="602" width="343" height="45"/>
-                    <color key="backgroundColor" red="0.070588235294117646" green="0.33725490196078434" blue="0.53333333333333333" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.32156862745098042" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="BkN-nj-HRa"/>
                     </constraints>
                     <color key="tintColor" red="0.97418036429999999" green="0.99528425929999997" blue="0.97958502560000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Log in with Instagram" backgroundImage="PDUI_IGBG.png"/>
+                    <state key="normal" title="Log in with Instagram"/>
                     <connections>
                         <action selector="instagramLoginButtonPressed:" destination="-1" eventType="touchUpInside" id="H96-hH-I6w"/>
                     </connections>
@@ -136,7 +136,6 @@
         </view>
     </objects>
     <resources>
-        <image name="PDUI_IGBG.png" width="350" height="50"/>
         <image name="pduikit_cancelbutton.png" width="49" height="49"/>
         <image name="pduikit_default_login.png" width="495" height="528"/>
     </resources>

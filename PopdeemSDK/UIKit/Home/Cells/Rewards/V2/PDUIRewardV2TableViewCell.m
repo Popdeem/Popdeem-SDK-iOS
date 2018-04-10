@@ -206,21 +206,13 @@
   NSString *info = [self expiryStringForReward:reward];
   if (info != nil) {
     UIColor *bottomTextColor = _tertiaryFontColor ? _tertiaryFontColor : _primaryAppColor;
-    NSMutableAttributedString *clockString = [[NSMutableAttributedString alloc]
-                                              initWithString:@"⌚︎ " attributes:@{
-                                                                                 NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 14),
-                                                                                 NSForegroundColorAttributeName : bottomTextColor
-                                                                                 }];
     NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
                                              initWithString:info attributes:@{
                                                                               NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 10),
                                                                               NSForegroundColorAttributeName : bottomTextColor
                                                                               }];
     
-  
-    NSMutableAttributedString *combinedString = [[NSMutableAttributedString alloc] init];
-    [combinedString appendAttributedString:clockString];
-    [combinedString appendAttributedString:infoString];
+
     
     if (_expiryLabel == nil) {
       _expiryLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, _backingCard.frame.size.width - labelX - 15, 60)];
@@ -229,7 +221,7 @@
       [_expiryLabel setFrame:CGRectMake(labelX, currentY, _backingCard.frame.size.width - labelX - 15, 60)];
     }
     [_expiryLabel setNumberOfLines:1];
-    [_expiryLabel setAttributedText:combinedString];
+    [_expiryLabel setAttributedText:infoString];
     CGSize expirySize = [_expiryLabel sizeThatFits:CGSizeMake(_backingCard.frame.size.width - labelX - 15, MAXFLOAT)];
     CGRect expiryLabelFrame = _expiryLabel.frame;
     expiryLabelFrame.size.height = expirySize.height;
@@ -441,16 +433,24 @@
     
     if (intervalMonths > 0) {
       if (intervalMonths > 1) {
-        exp = [NSString stringWithFormat:@"%li months left to claim",(long)intervalMonths];
+        exp = [NSString stringWithFormat:translationForKey(@"popdeem.reward.expiry.months", @"⌚︎ %li months left to claim"),(long)intervalMonths];
       } else {
-       exp = [NSString stringWithFormat:@"%li month left to claim",(long)intervalMonths];
+       exp = translationForKey(@"popdeem.reward.expiry.month", @"⌚︎ 1 month left to claim");
       }
     } else if (intervalDays > 6) {
-      exp = [NSString stringWithFormat:@"%li weeks left to claim",(long)intervalWeeks];
+      if (intervalWeeks == 1) {
+        exp = translationForKey(@"popdeem.reward.expiry.week", @"⌚︎ 1 week left to claim");
+      } else {
+        exp = [NSString stringWithFormat:translationForKey(@"popdeem.reward.expiry.weeks", @"⌚︎ %li weeks left to claim"),(long)intervalWeeks];
+      }
     } else if (intervalDays < 7 && intervalHours > 24) {
-      exp = [NSString stringWithFormat:@"%li days left to claim",(long)intervalDays];
+      if (intervalDays == 1) {
+        exp = [NSString stringWithFormat:translationForKey(@"popdeem.reward.expiry.days", @"⌚︎ %li days left to claim"),(long)intervalDays];
+      } else {
+        exp = translationForKey(@"popdeem.reward.expiry.day", @"⌚︎ 1 day left to claim");
+      }
     } else {
-      exp = [NSString stringWithFormat:@"%li hours left to claim",(long)intervalHours];
+      exp = [NSString stringWithFormat:translationForKey(@"popdeem.reward.expiry.hours", @"⌚︎ %li hours left to claim"),(long)intervalHours];
     }
   }
   

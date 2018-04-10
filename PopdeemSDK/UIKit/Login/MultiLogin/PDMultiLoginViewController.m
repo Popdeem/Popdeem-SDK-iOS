@@ -96,20 +96,14 @@
 	[_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _instagramLoginButton.layer.cornerRadius = 5.0;
   _instagramLoginButton.clipsToBounds = YES;
-  UIImage *image = [UIImage imageNamed:@"PDUI_IGBG"];
-  if (image == nil) {
-    NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
-    NSString *imagePath = [podBundle pathForResource:@"PDUI_IGBG" ofType:@"png"];
-    image = [UIImage imageWithContentsOfFile:imagePath];
-  }
   [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
-  [_instagramLoginButton setBackgroundImage:image forState:UIControlStateNormal];
+  [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
 	
 	//Facebook setup
   _facebookLoginButton.layer.cornerRadius = 5.0;
   _facebookLoginButton.clipsToBounds = YES;
-  [_facebookLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
-  [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
+  [self.facebookLoginButton.titleLabel setFont:_viewModel.facebookButtonFont];
   
   if (_viewModel.image) {
     [self.imageView setImage:_viewModel.image];
@@ -273,9 +267,7 @@
                                                                      @"public_profile",
                                                                      @"email",
                                                                      @"user_birthday",
-                                                                     @"user_posts",
-                                                                     @"user_friends",
-                                                                     @"user_education_history"]
+                                                                     @"user_posts"]
                                                registerWithPopdeem:YES
                                                            success:^(void) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{

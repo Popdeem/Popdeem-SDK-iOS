@@ -30,6 +30,10 @@
 @property (nonatomic, retain) UIFont *instagramButtonFont;
 @property (nonatomic, retain) NSString *instagramButtonText;
 
+@property (nonatomic, retain) UIColor *facebookButtonColor;
+@property (nonatomic, retain) UIFont *facebookButtonFont;
+@property (nonatomic, retain) NSString *facebookButtonText;
+
 @property (nonatomic, retain) UIImage *image;
 
 - (instancetype) initForViewController:(PDMultiLoginViewController*)controller;

@@ -23,9 +23,15 @@
 - (void) setup {
   _image = PopdeemImage(@"popdeem.images.loginImage");
 	_twitterButtonColor = [UIColor colorWithRed:0.33 green:0.67 blue:0.93 alpha:1.0];
-	_instagramButtonColor = [UIColor colorWithRed:0.07 green:0.34 blue:0.53 alpha:1.0];
+	_instagramButtonColor = [UIColor colorWithRed:1.00 green:0.24 blue:0.17 alpha:1.00];
+  
 	_twitterButtonFont = PopdeemFont(PDThemeFontPrimary, 15.0);
-	_twitterButtonText = @"Log in with Twitter";
+  _instagramButtonFont = PopdeemFont(PDThemeFontPrimary, 15.0);
+  _facebookButtonFont = PopdeemFont(PDThemeFontPrimary, 15.0);
+  
+	_twitterButtonText = translationForKey(@"popdeem.sociallogin.twitterButtonText", @"Log in with Twitter");
+  _instagramButtonText = translationForKey(@"popdeem.sociallogin.instagramButtonText", @"Log in with Instagram");
+  _facebookButtonText = translationForKey(@"popdeem.sociallogin.facebookButtonText", @"Log in with Facebook");
 	
 	_titleColor = PopdeemColor(PDThemeColorPrimaryFont);
 	_titleFont = PopdeemFont(PDThemeFontBold, 18.0);

@@ -26,6 +26,7 @@
 		392D8F5920310AF600BDC764 /* PDUIGratitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5820310AF600BDC764 /* PDUIGratitudeView.m */; };
 		392D8F62203116A600BDC764 /* PDUIGratitudeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5F203116A600BDC764 /* PDUIGratitudeViewController.m */; };
 		392D8F652031F52300BDC764 /* PDUIGratitudeProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */; };
+		3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3938E4C6207D0E500077AC20 /* PDStringsHelper.m */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
 		393EECE620480908003A5B9F /* PDTierEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECE520480908003A5B9F /* PDTierEvent.m */; };
@@ -316,6 +317,8 @@
 		392D8F632031F52300BDC764 /* PDUIGratitudeProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIGratitudeProgressView.h; path = Gratutude/PDUIGratitudeProgressView.h; sourceTree = "<group>"; };
 		392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIGratitudeProgressView.m; path = Gratutude/PDUIGratitudeProgressView.m; sourceTree = "<group>"; };
 		39376BC0201F432000A02F94 /* PDHomeSegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDHomeSegueDelegate.h; path = Protocols/PDHomeSegueDelegate.h; sourceTree = "<group>"; };
+		3938E4C5207D0E500077AC20 /* PDStringsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDStringsHelper.h; sourceTree = "<group>"; };
+		3938E4C6207D0E500077AC20 /* PDStringsHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDStringsHelper.m; sourceTree = "<group>"; };
 		393A8C401C591E30001F650C /* PDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMessage.h; sourceTree = "<group>"; };
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
 		393A8C431C5923D0001F650C /* PDMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMessageStore.h; path = Core/Store/PDMessageStore.h; sourceTree = "<group>"; };
@@ -1704,6 +1707,8 @@
 				39FA7B651D6DAF2E00031D5B /* PDLogger.m */,
 				399005A22010EAB200C311F6 /* PDRealm.h */,
 				399005A32010EAB200C311F6 /* PDRealm.m */,
+				3938E4C5207D0E500077AC20 /* PDStringsHelper.h */,
+				3938E4C6207D0E500077AC20 /* PDStringsHelper.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -2311,6 +2316,7 @@
 				398E4B7C1C03766500A68529 /* PDUISocialLoginViewModel.m in Sources */,
 				39BF98F01E8E64C10025A3F2 /* PDUIScanViewController.m in Sources */,
 				397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */,
+				3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDUIModalLoadingView.m in Sources */,
 				39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */,
 				391FAE7D1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m in Sources */,
