@@ -10,6 +10,7 @@
 #import "PDUIGratitudeProgressView.h"
 #import "PDUIGratitudeViewController.h"
 #import "PDUser.h"
+#import "PDReward.h"
 
 
 @interface PDUIGratitudeView : UIView
@@ -23,8 +24,10 @@
 @property (nonatomic, retain) UILabel *infoLabel;
 @property (nonatomic, retain) UIButton *profileButton;
 @property (nonatomic) PDGratitudeType type;
+@property (nonatomic, assign) PDReward *reward;
 
 - (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent type:(PDGratitudeType)type;
+- (PDUIGratitudeView*) initForParent:(PDUIGratitudeViewController*)parent type:(PDGratitudeType)type reward:(PDReward*)reward;
 - (void) showAnimated:(BOOL)animated;
 - (void) hideAnimated:(BOOL)animated;
 

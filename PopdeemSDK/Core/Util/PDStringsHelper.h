@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface PDStringsHelper : NSObject
-- (int) countGratitudeVariations;
+- (void) countGratitudeVariations;
 @end

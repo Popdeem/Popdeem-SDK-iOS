@@ -38,6 +38,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import "PDRealm.h"
 #import "PDCustomerAPIService.h"
+#import "PDStringsHelper.h"
 
 @interface PopdeemSDK()
   @property (nonatomic, strong)id uiKitCore;
@@ -158,6 +159,8 @@
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
   [uiKitCore performSelector:selector withObject:themeName];
 #pragma clang diagnostic pop
+  PDStringsHelper *helper = [[PDStringsHelper alloc] init];
+  [helper countGratitudeVariations];
 }
 
 + (void) presentRewardFlow {

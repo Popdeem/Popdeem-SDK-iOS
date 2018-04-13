@@ -27,13 +27,24 @@
   return nil;
 }
 
+- (id) initWithType:(PDGratitudeType)type reward:(PDReward*)reward {
+  self.reward = reward;
+  return [self initWithType:type];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidLoad];
   UIImage *snapshot = [PDUIKitUtils screenSnapshot];
   UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
   [imageView setImage:snapshot];
   [self.view addSubview:imageView];
-  _gratitudeView = [[PDUIGratitudeView alloc] initForParent:self type:_type];
+  
+  if (self.reward != nil) {
+    _gratitudeView = [[PDUIGratitudeView alloc] initForParent:self type:_type reward:self.reward];
+  } else {
+    _gratitudeView = [[PDUIGratitudeView alloc] initForParent:self type:_type];
+  }
+  
   [self.view addSubview:_gratitudeView];
   
     // Do any additional setup after loading the view from its nib.

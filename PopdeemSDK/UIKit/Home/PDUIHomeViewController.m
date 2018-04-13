@@ -363,7 +363,7 @@
     _model.rewards = [PDRewardStore orderedByDate];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
-    PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare];
+    PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare reward:self.willClaimReward];
     
     [self presentViewController:gViewController animated:YES completion:^{
       
@@ -1051,6 +1051,7 @@
     [self.model claimNoAction:reward closestLocation:nil];
   } else {
     PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+    self.willClaimReward = reward;
     if (_brand) {
       claimController.brand = _brand;
     }

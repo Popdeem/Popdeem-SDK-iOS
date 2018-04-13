@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 @class PDUIGratitudeView;
+#import "PDReward.h"
 
 typedef NS_ENUM(NSUInteger, PDGratitudeType) {
   PDGratitudeTypeConnect = 0,
@@ -17,7 +18,9 @@ typedef NS_ENUM(NSUInteger, PDGratitudeType) {
 
 @property (nonatomic, retain) PDUIGratitudeView *gratitudeView;
 @property (nonatomic) PDGratitudeType type;
+@property (nonatomic, retain) PDReward *reward;
 
 - (id) initWithType:(PDGratitudeType)type;
+- (id) initWithType:(PDGratitudeType)type reward:(PDReward*)reward;
 - (void) dismissAction;
 @end

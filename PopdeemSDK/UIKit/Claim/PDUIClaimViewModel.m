@@ -367,7 +367,7 @@
 	}
   if (_reward.forcedTag && !_hashtagValidated) {
     UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
-                                                     message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.instagramForcedTag]
+                                                     message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Facebook"),_reward.instagramForcedTag]
                                                     delegate:self
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles: nil];
@@ -466,7 +466,7 @@
 	}
 	if (_instagramForcedTagString && !_hashtagValidated) {
 		UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
-																										 message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Twitter"),_reward.instagramForcedTag]
+																										 message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Instagram"),_reward.instagramForcedTag]
 																										delegate:self
 																					 cancelButtonTitle:@"OK"
 																					 otherButtonTitles: nil];
