@@ -120,4 +120,15 @@ NSString *const kEncodeKeyPDUserProfileImage = @"PDProfilePicString";
  End NSCoding Keys
  */
 
+//Gratitude
+NSString *const PDGratitudeLastCreditCouponUsed = @"PDGratLastCreditCoupon";
+NSString *const PDGratitudeLastCouponUsed = @"PDGratLastCoupon";
+NSString *const PDGratitudeLastSweepstakeUsed = @"PDGratLastSweepstake";
+NSString *const PDGratitudeLastConnectUsed = @"PDGratLastConnect";
+NSString *const PDGratitudeLastLoginUsed = @"PDGratLastLogin";
+NSString *const PDGratCouponVariations = @"PDGratCouponVariations";
+NSString *const PDGratSweepstakeVariations = @"PDGratSweepstakeVariations";
+NSString *const PDGratCreditCouponVariations = @"PDGratCreditCouponVariations";
+NSString *const PDGratConnectVariations = @"PDGratConnectVariations";
+NSString *const PDGratLoginVariations = @"PDGratLoginVariations";
 

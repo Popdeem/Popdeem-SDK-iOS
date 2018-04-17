@@ -39,12 +39,10 @@
     currentY = topPadding;
     float imagePadding = (viewWidth - imageHeight)/2;
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imagePadding, currentY, imageHeight, imageHeight)];
-    UIImage *image = [self image];
-    [_imageView setImage:image];
     [_imageView setContentMode:UIViewContentModeScaleAspectFill];
     currentY += imageHeight;
     
-    currentY += viewHeight * 0.03;
+    currentY += viewHeight * 0.05;
     float labelPadding = viewWidth * 0.1;
     float titleLabelHeight = viewHeight*0.04;
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, currentY, viewWidth-(2* labelPadding), titleLabelHeight)];
@@ -59,7 +57,7 @@
     
     float bodyLabelHeight = viewHeight * 0.12;
     _bodyLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelPadding, currentY, viewWidth-(2* labelPadding), bodyLabelHeight)];
-    [_bodyLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+    [_bodyLabel setFont:PopdeemFont(PDThemeFontPrimary, 17)];
     [_bodyLabel setTextColor:[UIColor blackColor]];
     [_bodyLabel setTextAlignment:NSTextAlignmentCenter];
     [_bodyLabel setNumberOfLines:3];
@@ -76,7 +74,6 @@
       BOOL increment = (userValue < 90) ? YES : NO;
       _progressView = [[PDUIGratitudeProgressView alloc] initWithInitialValue:userValue frame:CGRectMake(0, currentY, viewWidth, progressHeight) increment:increment];
     }
-    
     
     float buttonHeight = 52;
     
@@ -110,25 +107,35 @@
 
 - (void) setTitleAndBody {
   NSString *stringKey;
+  NSString *imageKey;
   NSInteger numVariations = 0;
+  NSInteger variationNumber = 0;
   switch (_type) {
     case PDGratitudeTypeShare:
       if (self.reward.type == PDRewardTypeCoupon) {
         if (self.reward.creditString != nil) {
           stringKey = @"popdeem.gratitude.creditCoupon";
-          numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCreditCouponVariations"];
+          imageKey = @"popdeem.images.gratitudeCreditCoupon%i";
+          numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:PDGratCreditCouponVariations];
+          variationNumber = [self getAndIncrementLastVariationForKey:PDGratitudeLastCreditCouponUsed limitKey:PDGratCreditCouponVariations];
         } else {
           stringKey = @"popdeem.gratitude.coupon";
-          numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCouponVariations"];
+          imageKey = @"popdeem.images.gratitudeCoupon%i";
+          numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:PDGratCouponVariations];
+          variationNumber = [self getAndIncrementLastVariationForKey:PDGratitudeLastCouponUsed limitKey:PDGratCouponVariations];
         }
       } else {
         stringKey = @"popdeem.gratitude.sweepstake";
-        numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratSweepstakeVariations"];
+        imageKey = @"popdeem.images.gratitudeSweepstake%i";
+        numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:PDGratSweepstakeVariations];
+        variationNumber = [self getAndIncrementLastVariationForKey:PDGratitudeLastSweepstakeUsed limitKey:PDGratSweepstakeVariations];
       }
       break;
     case PDGratitudeTypeConnect:
       stringKey = @"popdeem.gratitude.connect";
-      numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratConnectVariations"];
+      imageKey = @"popdeem.images.gratitudeConnect%i";
+      numVariations = [[NSUserDefaults standardUserDefaults] integerForKey:PDGratConnectVariations];
+      variationNumber = [self getAndIncrementLastVariationForKey:PDGratitudeLastConnectUsed limitKey:PDGratConnectVariations];
       break;
     default:
       stringKey = @"popdeem.gratitude.share.titleText";
@@ -136,26 +143,52 @@
   }
   NSString *title = @"";
   NSString *body = @"";
+  UIImage *image;
+  
   if (numVariations == 0) {
     //Return a default
+    title = @"You're Brilliant!";
+    body = @"Unlock new rewards and VIP offers as you move up in status.";
+    image = PopdeemImage(@"popdeem.images.loginImage");
   } else if (numVariations == 1) {
     //Return 1
     NSString *titleKey = [NSString stringWithFormat:@"%@.title.%i",stringKey, 1];
     NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%i",stringKey, 1];
     title = translationForKey(titleKey, @"You're Brilliant!");
     body = translationForKey(bodyKey, @"Unlock new rewards and VIP offers as you move up in status.");
+    NSString *imageString = [NSString stringWithFormat:imageKey, 1];
+    image = PopdeemImage(imageString);
   } else {
-    //Return a random
-    int rndValue = 1 + arc4random() % (numVariations - 1);
-    NSString *titleKey = [NSString stringWithFormat:@"%@.title.%i",stringKey, rndValue];
-    NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%i",stringKey, rndValue];
-    title = translationForKey(titleKey, @"You're Brilliant!");
-    body = translationForKey(bodyKey, @"Unlock new rewards and VIP offers as you move up in status.");
+    //Return next item in cycle
+    NSString *titleKey = [NSString stringWithFormat:@"%@.title.%ld",stringKey, variationNumber];
+    NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%ld",stringKey, variationNumber];
+    if (self.reward.creditString != nil) {
+      title = translationForKey(titleKey, @"You're Brilliant!");
+      body = [NSString stringWithFormat:translationForKey(bodyKey, @"%@ was added to your account."), self.reward.creditString];
+    } else {
+      title = translationForKey(titleKey, @"You're Brilliant!");
+      body = translationForKey(bodyKey, @"Unlock new rewards and VIP offers as you move up in status.");
+    }
+    NSString *imageString = [NSString stringWithFormat:imageKey, variationNumber];
+    image = PopdeemImage(imageString);
   }
   
   [_titleLabel setText:title];
   [_bodyLabel setText:body];
+  [_imageView setImage:image];
   
+}
+
+- (NSInteger) getAndIncrementLastVariationForKey:(NSString*)key limitKey:(NSString*)limitKey {
+  NSInteger lastVariation = [[NSUserDefaults standardUserDefaults] integerForKey:key];
+  NSInteger limit = [[NSUserDefaults standardUserDefaults] integerForKey:limitKey];
+  if (limit == 0) return 0;
+  lastVariation += 1;
+  if (lastVariation > limit) {
+    lastVariation = 1;
+  }
+  [[NSUserDefaults standardUserDefaults] setInteger:lastVariation forKey:key];
+  return lastVariation;
 }
 
 - (NSString*) randomDefaultTitle {
@@ -249,7 +282,7 @@
     case PDGratitudeTypeShare:
       if (self.reward.type == PDRewardTypeCoupon) {
         if (self.reward.creditString != nil) {
-          if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCreditCouponVariations"] != nil) {
+          if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCreditCouponVariations"]) {
             variations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCreditCouponVariations"];
             imageKey = @"popdeem.images.gratitudeCreditCoupon%i";
             break;
@@ -258,17 +291,17 @@
             break;
           }
         } else {
-          if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCouponVariations"] != nil) {
+          if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCouponVariations"]) {
             variations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratCouponVariations"];
             imageKey = @"popdeem.images.gratitudeCoupon%i";
             break;
           } else {
-            imageKey = @"popdeem.images.gratitudeCouponDefault%i";
+            imageKey = @"popdeem.images.gratitudeCouponDefault";
             break;
           }
         }
       } else if (self.reward.type == PDRewardTypeSweepstake) {
-        if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratSweepstakeVariations"] != nil) {
+        if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratSweepstakeVariations"]) {
           variations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratSweepstakeVariations"];
           imageKey = @"popdeem.images.gratitudeSweepstake%i";
           break;
@@ -279,7 +312,7 @@
       }
       break;
     case PDGratitudeTypeConnect:
-      if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratConnectVariations"] != nil) {
+      if ([[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratConnectVariations"]) {
         variations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratConnectVariations"];
         imageKey = @"popdeem.images.gratitudeConnect%i";
         break;
@@ -295,19 +328,19 @@
     //Must get the SDK defaults
     //There will be 3 defaults for each in the SDK
     int rndValue = 1 + arc4random() % (3 - 1);
-    NSString *imageKey = [NSString stringWithFormat:imageKey, rndValue];
-    UIImage *image = PopdeemImage(imageKey);
+    NSString *imageString = [NSString stringWithFormat:imageKey, rndValue];
+    UIImage *image = PopdeemImage(imageString);
     return image;
   }
   if (variations == 1) {
-    NSString *imageKey = [NSString stringWithFormat:imageKey, 1];
-    UIImage *image = PopdeemImage(imageKey);
+    NSString *imageString = [NSString stringWithFormat:imageKey, 1];
+    UIImage *image = PopdeemImage(imageString);
     return image;
   }
   else {
     int rndValue = 1 + arc4random() % (variations - 1);
-    NSString *imageKey = [NSString stringWithFormat:imageKey, rndValue];
-    UIImage *image = PopdeemImage(imageKey);
+    NSString *imageString = [NSString stringWithFormat:imageKey, rndValue];
+    UIImage *image = PopdeemImage(imageString);
     return image;
   }
   

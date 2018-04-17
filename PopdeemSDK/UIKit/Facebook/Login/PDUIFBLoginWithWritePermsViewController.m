@@ -146,9 +146,7 @@
 	[manager loginWithFacebookReadPermissions:@[@"public_profile",
 																																		 @"email",
 																																		 @"user_birthday",
-																																		 @"user_posts",
-																																		 @"user_friends",
-																																		 @"user_education_history"]
+																																		 @"user_posts"]
 																							 registerWithPopdeem:YES
 																													 success:^{
 		[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){

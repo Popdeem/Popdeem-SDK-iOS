@@ -132,6 +132,16 @@ extern NSString *const kEncodeKeyPDCaptionString;
 // End NSCoding Keys
 //
 
+extern NSString *const PDGratitudeLastCreditCouponUsed;
+extern NSString *const PDGratitudeLastCouponUsed;
+extern NSString *const PDGratitudeLastSweepstakeUsed;
+extern NSString *const PDGratitudeLastConnectUsed;
+extern NSString *const PDGratitudeLastLoginUsed;
+extern NSString *const PDGratCouponVariations;
+extern NSString *const PDGratSweepstakeVariations;
+extern NSString *const PDGratCreditCouponVariations;
+extern NSString *const PDGratConnectVariations;
+extern NSString *const PDGratLoginVariations;
 
 //Errors
 //Error codes

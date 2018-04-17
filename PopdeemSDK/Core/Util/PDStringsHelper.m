@@ -13,10 +13,11 @@
 @implementation PDStringsHelper
 
 - (void) countGratitudeVariations {
-  int numCreditCoupon = 0;
-  int numCoupon = 0;
-  int numSweepstake = 0;
-  int numConnect = 0;
+  NSInteger numCreditCoupon = 0;
+  NSInteger numCoupon = 0;
+  NSInteger numSweepstake = 0;
+  NSInteger numConnect = 0;
+  NSInteger numLogin = 0;
   
   //Count credit coupon
   for (int i = 1; i <= 100; i++ ) {
@@ -74,12 +75,26 @@
       break;
     }
   }
+  // Count Login
+  for (int i = 1; i <= 100; i++ ) {
+    NSString *locT = [NSString stringWithFormat:@"popdeem.sociallogin.title.%i", i];
+    NSString *locB = [NSString stringWithFormat:@"popdeem.sociallogin.body.%i", i];
+    NSString *image = [NSString stringWithFormat:@"popdeem.images.socialLogin%i", i];
+    NSString *title = translationForKey(locT, @"def_title");
+    NSString *body = translationForKey(locB, @"def_body");
+    BOOL hasImage = [[PDTheme sharedInstance] hasValueForKey:image];
+    if (![@"def_title" isEqualToString:title] && ![@"def_body" isEqualToString:body] && hasImage) {
+      numLogin = i;
+    } else {
+      break;
+    }
+  }
   //Set these values in user defaults
-  [[NSUserDefaults standardUserDefaults] setInteger:numCoupon forKey:@"PDGratCouponVariations"];
-  [[NSUserDefaults standardUserDefaults] setInteger:numSweepstake forKey:@"PDGratSweepstakeVariations"];
-  [[NSUserDefaults standardUserDefaults] setInteger:numCreditCoupon forKey:@"PDGratCreditCouponVariations"];
-  [[NSUserDefaults standardUserDefaults] setInteger:numConnect forKey:@"PDGratConnectVariations"];
-  
+  [[NSUserDefaults standardUserDefaults] setInteger:numCoupon forKey:PDGratCouponVariations];
+  [[NSUserDefaults standardUserDefaults] setInteger:numSweepstake forKey:PDGratSweepstakeVariations];
+  [[NSUserDefaults standardUserDefaults] setInteger:numCreditCoupon forKey:PDGratCreditCouponVariations];
+  [[NSUserDefaults standardUserDefaults] setInteger:numConnect forKey:PDGratConnectVariations];
+  [[NSUserDefaults standardUserDefaults] setInteger:numLogin forKey:PDGratLoginVariations];
 }
 
 @end

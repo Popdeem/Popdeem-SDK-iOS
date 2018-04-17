@@ -44,30 +44,10 @@
 }
 
 - (void) setupSocialLoginReward:(PDReward*)reward {
-  float width = self.view.frame.size.width;
-  if (width > 400) {
-    width = 375;
-  }
-  _rewardCell = [[PDUIRewardTableViewCell alloc] initWithFrame:CGRectMake(0, 0, width, 100) reward:reward];
-  if (_rewardCell.logoImageView.image == nil) {
-    NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
-    NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-      if (data) {
-        UIImage *image = [UIImage imageWithData:data];
-        if (image) {
-          dispatch_async(dispatch_get_main_queue(), ^{
-            _rewardCell.logoImageView.image = image;
-            reward.coverImage = image;
-          });
-        }
-      }
-    }];
-    [task2 resume];
-  }
-  [_rewardView addSubview:_rewardCell];
-  [_rewardView setHidden:NO];
-  [_titleLabel setHidden:YES];
-  [_bodyLabel setHidden:YES];
+  [_titleLabel setNumberOfLines:2];
+  [_titleLabel setFont:PopdeemFont(PDThemeFontBold, 16)];
+  [_titleLabel setText:reward.rewardDescription];
+  [_bodyLabel setText:reward.rewardRules];
 }
 
 - (void)viewDidLoad {
@@ -121,6 +101,8 @@
   }
 	
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelButtonPressed:) name:InstagramLoginuserDismissed object:nil];
+  
+  [_titleLabel setNumberOfLines:0];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
