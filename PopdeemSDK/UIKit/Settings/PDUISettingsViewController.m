@@ -154,14 +154,17 @@
         if (image) {
           dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *profileImage = [UIImage imageWithData:data];
-            [_profileImageView setImage:profileImage];
-            [_profileImageView setHidden:NO];
+            [self.profileImageView setImage:profileImage];
+            [self.profileImageView setHidden:NO];
             [self.view setNeedsDisplay];
           });
         }
       }
     }];
     [task resume];
+  } else {
+    //Default
+    [self.profileImageView setImage:PopdeemImage(@"pdui_default_user_image")];
   }
 }
 

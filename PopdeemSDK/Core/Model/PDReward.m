@@ -223,6 +223,9 @@
   if (isDownloadingCover) {
     return;
   }
+  if ([self.coverImageUrl rangeOfString:@"reward_default"].location != NSNotFound) {
+    return;
+  }
   NSURL *url = [NSURL URLWithString:self.coverImageUrl];
   isDownloadingCover = YES;
   NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -232,6 +235,7 @@
       if (image) {
         [[NSNotificationCenter defaultCenter] postNotificationName:PDRewardCoverImageDidDownload object:nil];
       }
+      [task2 cancel];
       isDownloadingCover = NO;
     } else {
       PDLog(@"NSURLDataTaskFailure");

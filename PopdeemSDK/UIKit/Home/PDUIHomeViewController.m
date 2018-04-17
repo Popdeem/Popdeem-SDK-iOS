@@ -697,7 +697,7 @@
           } else {
             return [self.tableView dequeueReusableCellWithIdentifier:kPlaceholderCell];
           }
-        } else {
+        } else if (_model.wallet.count > indexPath.row) {
           id item = [_model.wallet objectAtIndex:indexPath.row];
           if ([item isKindOfClass:[PDReward class]]) {
             reward = (PDReward*)item;
@@ -738,6 +738,10 @@
               if (walletCell.rewardImageView.image == nil) {
                 NSURL *url = [NSURL URLWithString:reward.coverImageUrl];
                 NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                  NSLog(@"Response: %@",response);
+                  if (task2) {
+                    [task2 cancel];
+                  }
                   if (data) {
                     UIImage *image = [UIImage imageWithData:data];
                     if (image) {
@@ -745,9 +749,12 @@
                         PDUIRewardWithRulesTableViewCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
                         if (updateCell) {
                           updateCell.rewardImageView.image = image;
+                          reward.coverImage = image;
                         }
                       });
                     }
+                  } else if (error) {
+                    PDLog(@"Error: %@", error.localizedDescription);
                   }
                 }];
                 [task2 resume];
@@ -937,6 +944,9 @@
       } else {
         if (_model.wallet.count == 0) return;
         selectedWalletReward = [_model.wallet objectAtIndex:indexPath.row];
+        if ([selectedWalletReward isKindOfClass:[PDTierEvent class]]) {
+          return;
+        }
         if (selectedWalletReward) {
           if (selectedWalletReward.revoked) {
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked"
@@ -967,7 +977,7 @@
             }
             [self.tableView beginUpdates];
             [self.tableView endUpdates];
-            [self performSelector:@selector(xToIndexPath:) withObject:indexPath afterDelay:0.5];
+            [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
             return;
           }
           if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {

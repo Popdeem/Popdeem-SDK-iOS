@@ -57,6 +57,7 @@
 	[_titleLabel setTextColor:_primaryFontColor];
 	
 	self.clipsToBounds = YES;
+
 	if (reward.coverImageUrl) {
 		if ([reward.coverImageUrl rangeOfString:@"reward_default"].location != NSNotFound) {
 			[self.rewardImageView setImage:PopdeemImage(PDThemeImageDefaultItem)];
@@ -198,7 +199,6 @@
 	[self.instructionsLabel setNumberOfLines:0];
 	[self.instructionsLabel setAttributedText:instructionsAttString];
 	[self.instructionsLabel setHidden:NO];
-	
 }
 
 - (NSString*) drawString:(PDReward*)reward {
