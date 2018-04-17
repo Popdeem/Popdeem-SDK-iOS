@@ -34,28 +34,22 @@
 
 @implementation PDMultiLoginViewController
 
-- (instancetype) initFromNib {
+- (instancetype) initFromNibWithReward:(PDReward*)reward {
   NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDMultiLoginViewController" bundle:podBundle]) {
     self.view.backgroundColor = [UIColor whiteColor];
+    self.reward = reward;
     return self;
   }
   return nil;
 }
 
-- (void) setupSocialLoginReward:(PDReward*)reward {
-  [_titleLabel setNumberOfLines:2];
-  [_titleLabel setFont:PopdeemFont(PDThemeFontBold, 16)];
-  [_titleLabel setText:reward.rewardDescription];
-  [_bodyLabel setText:reward.rewardRules];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	//View Setup
-	_viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self];
+	_viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self reward:_reward];
 	[_viewModel setup];
 	
 	[_titleLabel setText:_viewModel.titleString];
@@ -103,28 +97,6 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelButtonPressed:) name:InstagramLoginuserDismissed object:nil];
   
   [_titleLabel setNumberOfLines:0];
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-  NSArray *rewards = [PDRewardStore allRewards];
-  if (rewards.count == 0) {
-    PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
-    [service getAllRewardsWithCompletion:^(NSError *error) {
-      for (PDReward* reward in [PDRewardStore allRewards]){
-        if (reward.action == PDRewardActionSocialLogin) {
-          [self setupSocialLoginReward:reward];
-          break;
-        }
-      }
-    }];
-  } else {
-    for (PDReward* reward in [PDRewardStore allRewards]){
-      if (reward.action == PDRewardActionSocialLogin) {
-        [self setupSocialLoginReward:reward];
-        break;
-      }
-    }
-  }
 }
 
 - (void)didReceiveMemoryWarning {

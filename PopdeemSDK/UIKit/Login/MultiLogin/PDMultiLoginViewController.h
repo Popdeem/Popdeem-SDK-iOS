@@ -16,8 +16,6 @@
 
 @interface PDMultiLoginViewController : UIViewController <InstagramLoginDelegate>
 
-@property (unsafe_unretained, nonatomic) IBOutlet UIView *rewardView;
-
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *bodyLabel;
@@ -25,8 +23,10 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *twitterLoginButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *instagramLoginButton;
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
+@property (nonatomic, assign) PDReward *reward;
 
-- (instancetype) initFromNib;
+- (instancetype) initFromNibWithReward:(PDReward*)reward;
+- (void) setReward:(PDReward*)reward;
 - (void) registerWithModel:(InstagramResponseModel*)model;
 
 @end

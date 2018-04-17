@@ -15,7 +15,6 @@
                 <outlet property="facebookLoginButton" destination="whg-BB-TEr" id="Kgp-8V-fFA"/>
                 <outlet property="imageView" destination="CSN-dF-pXj" id="gFu-jZ-A6h"/>
                 <outlet property="instagramLoginButton" destination="1wF-oE-hL7" id="mKC-jM-pSF"/>
-                <outlet property="rewardView" destination="WDI-t6-pTD" id="LVj-iD-AOo"/>
                 <outlet property="titleLabel" destination="09q-IF-jId" id="7pf-ib-OJQ"/>
                 <outlet property="twitterLoginButton" destination="25a-7f-Yar" id="EtK-ex-hU7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -61,9 +60,9 @@
                     </connections>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New: Social Rewards" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09q-IF-jId">
-                    <rect key="frame" x="16" y="379" width="343" height="46"/>
+                    <rect key="frame" x="20" y="365" width="335" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="46" id="u0f-Ae-JPG"/>
+                        <constraint firstAttribute="height" constant="60" id="u0f-Ae-JPG"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
@@ -73,7 +72,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="371"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKg-C5-Rw2">
-                    <rect key="frame" x="16" y="414" width="343" height="72"/>
+                    <rect key="frame" x="20" y="414" width="335" height="72"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="72" id="GBh-HE-Qp9"/>
                     </constraints>
@@ -96,40 +95,30 @@
                         <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="mRU-nw-E5C"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDI-t6-pTD" userLabel="RewardView">
-                    <rect key="frame" x="0.0" y="388" width="375" height="100"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="pbR-jc-a2a"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="PO4-6d-yeQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="0Ah-6l-hgL"/>
                 <constraint firstAttribute="trailing" secondItem="CSN-dF-pXj" secondAttribute="trailing" id="1lq-Pv-yTw"/>
+                <constraint firstItem="09q-IF-jId" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="2gP-OL-Kx7"/>
                 <constraint firstItem="25a-7f-Yar" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="8ic-XO-JgD"/>
                 <constraint firstItem="1wF-oE-hL7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="A12-ab-5wJ"/>
                 <constraint firstItem="whg-BB-TEr" firstAttribute="top" secondItem="fKg-C5-Rw2" secondAttribute="bottom" constant="10" id="EKw-yK-caz"/>
                 <constraint firstItem="25a-7f-Yar" firstAttribute="top" secondItem="whg-BB-TEr" secondAttribute="bottom" constant="8" id="Efb-NA-C4N"/>
                 <constraint firstItem="CSN-dF-pXj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OdP-0n-ddc"/>
-                <constraint firstItem="fKg-C5-Rw2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PbC-Hy-snU"/>
-                <constraint firstItem="09q-IF-jId" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PgN-aY-7Jv"/>
-                <constraint firstItem="whg-BB-TEr" firstAttribute="top" secondItem="WDI-t6-pTD" secondAttribute="bottom" constant="8" id="R9L-oi-FLT"/>
-                <constraint firstItem="09q-IF-jId" firstAttribute="top" secondItem="CSN-dF-pXj" secondAttribute="bottom" constant="8" id="Tc7-n9-FJG"/>
+                <constraint firstAttribute="trailing" secondItem="09q-IF-jId" secondAttribute="trailing" constant="20" id="PYM-Ac-ph3"/>
+                <constraint firstItem="09q-IF-jId" firstAttribute="top" secondItem="CSN-dF-pXj" secondAttribute="bottom" constant="-6" id="Tc7-n9-FJG"/>
                 <constraint firstItem="fKg-C5-Rw2" firstAttribute="top" secondItem="09q-IF-jId" secondAttribute="bottom" constant="-11" id="Vd0-cq-JSb"/>
                 <constraint firstItem="CSN-dF-pXj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WS7-jY-c21"/>
                 <constraint firstAttribute="bottom" secondItem="1wF-oE-hL7" secondAttribute="bottom" constant="20" id="ZpZ-1B-uoc"/>
-                <constraint firstItem="WDI-t6-pTD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zzf-Np-gEa"/>
                 <constraint firstAttribute="trailing" secondItem="whg-BB-TEr" secondAttribute="trailing" constant="16" id="bxV-eb-YQI"/>
                 <constraint firstItem="whg-BB-TEr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="eBa-xC-EYZ"/>
                 <constraint firstItem="1wF-oE-hL7" firstAttribute="top" secondItem="25a-7f-Yar" secondAttribute="bottom" constant="8" id="fJ4-o1-kF3"/>
-                <constraint firstAttribute="trailing" secondItem="WDI-t6-pTD" secondAttribute="trailing" id="jvl-Do-bBb"/>
-                <constraint firstAttribute="trailing" secondItem="09q-IF-jId" secondAttribute="trailing" constant="16" id="nrS-l8-QiN"/>
+                <constraint firstItem="fKg-C5-Rw2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="gc0-rH-Dub"/>
+                <constraint firstAttribute="trailing" secondItem="fKg-C5-Rw2" secondAttribute="trailing" constant="20" id="gd6-49-XGj"/>
                 <constraint firstAttribute="trailing" secondItem="25a-7f-Yar" secondAttribute="trailing" constant="16" id="pIy-KY-ApT"/>
                 <constraint firstItem="PO4-6d-yeQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="pXQ-pj-jr7"/>
                 <constraint firstAttribute="trailing" secondItem="1wF-oE-hL7" secondAttribute="trailing" constant="16" id="py2-a7-YQK"/>
-                <constraint firstAttribute="trailing" secondItem="fKg-C5-Rw2" secondAttribute="trailing" constant="16" id="qP6-pc-1Yo"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>

@@ -36,7 +36,9 @@
 
 @property (nonatomic, retain) UIImage *image;
 
-- (instancetype) initForViewController:(PDMultiLoginViewController*)controller;
+@property (nonatomic, retain) PDReward *reward;
+
+- (instancetype) initForViewController:(PDMultiLoginViewController*)controller reward:(PDReward*)reward;
 - (void) setup;
 
 @end

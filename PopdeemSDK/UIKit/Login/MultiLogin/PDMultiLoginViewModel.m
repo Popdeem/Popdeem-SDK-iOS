@@ -13,8 +13,9 @@
 
 @implementation PDMultiLoginViewModel
 
-- (instancetype) initForViewController:(PDMultiLoginViewController*)controller {
+- (instancetype) initForViewController:(PDMultiLoginViewController*)controller reward:(PDReward*)reward {
 	if (self = [super init]) {
+    _reward = reward;
 		return self;
 	}
 	return nil;
@@ -34,15 +35,23 @@
   _facebookButtonText = translationForKey(@"popdeem.sociallogin.facebookButtonText", @"Log in with Facebook");
 	
 	_titleColor = PopdeemColor(PDThemeColorPrimaryFont);
-	_titleFont = PopdeemFont(PDThemeFontBold, 18.0);
+	_titleFont = PopdeemFont(PDThemeFontBold, 17.0);
 	
 	
 	_bodyColor = PopdeemColor(PDThemeColorPrimaryFont);
 	_bodyFont = PopdeemFont(PDThemeFontPrimary, 14.0);
 	
   
-  NSInteger variations = [[NSUserDefaults standardUserDefaults] integerForKey:@"PDGratLoginVariations"];
+  NSInteger variations = [[NSUserDefaults standardUserDefaults] integerForKey:PDGratLoginVariations];
+  NSInteger lastVariation = [[NSUserDefaults standardUserDefaults] integerForKey:PDGratitudeLastLoginUsed];
+  
+  
   if (variations > 0) {
+    lastVariation += 1;
+    if (lastVariation > variations) {
+      lastVariation = 1;
+    }
+    [[NSUserDefaults standardUserDefaults] setInteger:lastVariation forKey:PDGratitudeLastLoginUsed];
     if (variations == 1) {
       NSString *titleKey = [NSString stringWithFormat:@"popdeem.sociallogin.title.%i", 1];
       NSString *bodyKey = [NSString stringWithFormat:@"popdeem.sociallogin.body.%i", 1];
@@ -51,19 +60,22 @@
       NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%i",1];
       _image = PopdeemImage(imageKey);
     } else {
-      NSUInteger random = arc4random_uniform(variations) + 1;
-      int rndValue = (int)random;
-      NSString *titleKey = [NSString stringWithFormat:@"popdeem.sociallogin.title.%i", rndValue];
-      NSString *bodyKey = [NSString stringWithFormat:@"popdeem.sociallogin.body.%i", rndValue];
+      NSString *titleKey = [NSString stringWithFormat:@"popdeem.sociallogin.title.%ld", lastVariation];
+      NSString *bodyKey = [NSString stringWithFormat:@"popdeem.sociallogin.body.%ld", lastVariation];
       _titleString = translationForKey(titleKey, @"New: Social Rewards");
       _bodyString = translationForKey(bodyKey, @"Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards.");
-      NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%i",rndValue];
+      NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%ld",lastVariation];
       _image = PopdeemImage(imageKey);
     }
   } else {
     _titleString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards");
     _bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards.");
     _image = PopdeemImage(@"popdeem.images.socialLogin");
+  }
+  
+  if (_reward) {
+    _titleString = [_reward rewardDescription];
+    _bodyString = [_reward rewardRules];
   }
   
 	
