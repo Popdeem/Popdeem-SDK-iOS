@@ -24,6 +24,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *instagramLoginButton;
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @property (nonatomic, assign) PDReward *reward;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonBottomGapLayoutConstraint;
 
 - (instancetype) initFromNibWithReward:(PDReward*)reward;
 - (void) setReward:(PDReward*)reward;

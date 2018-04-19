@@ -23,6 +23,7 @@
 #import "PDUIHomeViewController.h"
 #import "PDUIRewardTableViewCell.h"
 #import "PDUIDirectToSocialHomeHandler.h"
+#import "PDCustomer.h"
 
 @interface PDMultiLoginViewController ()
 @property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
@@ -61,11 +62,18 @@
 	[_bodyLabel setTextColor:_viewModel.bodyColor];
 	[_bodyLabel setFont:_viewModel.bodyFont];
 	
-	[_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
-	[_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
-  _twitterLoginButton.layer.cornerRadius = 5.0;
-  _twitterLoginButton.clipsToBounds = YES;
+  if (![[PDCustomer sharedInstance] usesTwitter]) {
+    [_twitterLoginButton setHidden:YES];
+    [_twitterLoginButton setEnabled:NO];
+    _twitterButtonHeightConstraint.constant = 0;
+    _twitterButtonBottomGapLayoutConstraint.constant = 0;
+  } else {
+    [_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
+    [_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+    _twitterLoginButton.layer.cornerRadius = 5.0;
+    _twitterLoginButton.clipsToBounds = YES;
+  }
 	
 	[_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _instagramLoginButton.layer.cornerRadius = 5.0;
