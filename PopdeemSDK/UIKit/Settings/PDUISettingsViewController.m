@@ -21,6 +21,7 @@
 #import "PDUIModalLoadingView.h"
 #import "PDUILogoutTableViewCell.h"
 #import "PDUserAPIService.h"
+#import "PDCustomer.h"
 
 #define kSocialNib @"SocialNib"
 #define kLogoutNib @"LogoutNib"
@@ -227,7 +228,11 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
   case 0:
-			return 3;
+      if ([[PDCustomer sharedInstance] usesTwitter]) {
+        return 3;
+      } else {
+        return 2;
+      }
 			break;
 	case 1:
 			return 1;
@@ -278,7 +283,11 @@
 					[socialCell setSocialNetwork:PDSocialMediaTypeFacebook];
 					break;
 				case 1:
-					[socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
+          if ([[PDCustomer sharedInstance] usesTwitter]) {
+            [socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
+          } else {
+            [socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
+          }
 					break;
 				case 2:
 					[socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
