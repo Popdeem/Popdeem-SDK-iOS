@@ -206,41 +206,7 @@
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
 //  }
 		
-  if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
-    [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-                                                                      NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-                                                                      }];
-    
-    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-                                                                                          NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-                                                                               forState:UIControlStateNormal];
-    if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
-      [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
-    }
-  }
-  
-  //Brand Specific Theme
-  if (_brand.theme != nil) {
-    _startingNavColor = self.navigationController.navigationBar.barTintColor;
-    _startingNavTextColor = self.navigationController.navigationBar.tintColor;
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-    [self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{
-                                                                      NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
-                                                                      NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-                                                                      }];
-    
-    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-                                                                                          NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
-                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-                                                                               forState:UIControlStateNormal];
-  }
+  [self styleNavbar];
   
   if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
     UIImageView *tvbg = [[UIImageView alloc] initWithFrame:self.tableView.frame];
@@ -380,18 +346,31 @@
     [self userDidLogin];
   }
   AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME});
+  [self styleNavbar];
+  [self addInboxBadge];
+}
+
+- (void) styleNavbar {
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
     [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 22.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-                                                                      NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+                                                                      NSFontAttributeName : headerFont
                                                                       }];
     
     [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
                                                                                           NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontNavbar, 17.0f)}
                                                                                forState:UIControlStateNormal];
     if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
       [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
@@ -409,9 +388,17 @@
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
     [self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 17.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
-                                                                      NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
+                                                                      NSFontAttributeName : headerFont
                                                                       }];
     
     [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
@@ -419,7 +406,6 @@
                                                                                           NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
                                                                                forState:UIControlStateNormal];
   }
-  [self addInboxBadge];
 }
 
 - (void) reloadAction {
@@ -447,18 +433,6 @@
   if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
   }
-  //	self.navigationController.navigationBar.translucent = NO;
-  //	[self.navigationController.navigationBar setBarTintColor:_startingNavColor];
-  //	[self.navigationController.navigationBar setTintColor:_startingNavTextColor];
-  //	[self.navigationController.navigationBar setTitleTextAttributes:@{
-  //																																		NSForegroundColorAttributeName : _startingNavTextColor,
-  //																																		NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-  //																																		}];
-  //
-  //	[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-  //																																												NSForegroundColorAttributeName : _startingNavTextColor,
-  //																																												NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-  //																																						 forState:UIControlStateNormal];
 }
 
 

@@ -46,6 +46,7 @@
 - (void) viewDidAppear:(BOOL)animated {
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
+  [self styleNavbar];
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INBOX});
 }
 
@@ -142,6 +143,37 @@
     PDUISingleMessageViewController *svc = [[PDUISingleMessageViewController alloc] initFromNib];
     [svc setMessage:_model.messages[indexPath.row]];
     [self.navigationController pushViewController:svc animated:YES];
+  }
+}
+
+- (void) styleNavbar {
+  if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 22.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                      NSFontAttributeName : headerFont
+                                                                      }];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+                                                                                          NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontNavbar, 17.0f)}
+                                                                               forState:UIControlStateNormal];
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+      [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+    }
+    if (@available(iOS 11.0, *)) {
+      self.navigationController.navigationBar.translucent = YES;
+    }
   }
 }
 

@@ -250,7 +250,7 @@
 		_tableHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 27.5, _controller.tableView.tableHeaderView.frame.size.width-40, 100)];
 		[_tableHeaderLabel setTextAlignment:NSTextAlignmentCenter];
 		[_tableHeaderLabel setNumberOfLines:3];
-		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontPrimary,14)];
+		[_tableHeaderLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
 		[_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
 		if (_brand) {
 			[_tableHeaderLabel setText:[NSString stringWithFormat:@"Share your %@ experience on social networks to earn more rewards.", _brand.name]];

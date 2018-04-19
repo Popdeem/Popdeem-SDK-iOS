@@ -36,8 +36,6 @@
     
     [self setSelectedSegmentIndex:0];
     
-    NSUInteger unread = 2;
-    
     return self;
   }
   return nil;
@@ -63,7 +61,7 @@
   
   // Use existing opacity as is
   [fullImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-  [selectedImage drawInRect:CGRectMake(0, 74, 2, 6)];
+  [selectedImage drawInRect:CGRectMake(0, 71, 2, 6)];
   
   UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
   
@@ -94,6 +92,12 @@
     float segment3Width = self.frame.size.width/3;
     float segment3Center = self.frame.size.width - (segment3Width/2);
     float segment3TitleEnd = segment3Center + (dummyLabel.frame.size.width/2);
+  
+  CALayer *border = [CALayer layer];
+  border.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+  
+  border.frame = CGRectMake(0, self.frame.size.height - 2.0f, self.frame.size.width, 1.0f);
+  [self.layer addSublayer:border];
   
   if ([PDMessageStore unreadCount] > 0) {
     if (!_badge) {

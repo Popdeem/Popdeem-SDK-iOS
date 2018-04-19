@@ -103,6 +103,7 @@ extern NSString *const PDThemeImageDefaultItem;
 extern NSString *const PDThemeImageDefaultBrand;
 extern NSString *const PDThemeFontPrimary;
 extern NSString *const PDThemeFontBold;
+extern NSString *const PDThemeFontNavbar;
 extern NSString *const PDThemeFontLight;
 extern NSString *const PDThemeNavUseTheme;
 extern NSString *const PDThemeColorHomeHeaderText;

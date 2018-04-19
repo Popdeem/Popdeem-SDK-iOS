@@ -88,6 +88,7 @@
   [_textView setDelegate:_viewModel];
 	[_textView setScrollEnabled:YES];
   [_textView setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+  [self styleNavbar];
 }
 
 - (void) verifyLocation {
@@ -189,7 +190,7 @@
   }
   [self.alreadySharedButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15.0)];
   [self.shareButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15.0)];
-  
+  [self styleNavbar];
 }
 
 - (void) setupView {
@@ -217,43 +218,7 @@
 - (void) viewWillAppear:(BOOL)animated {
   [self renderView];
   [self drawBorders];
-	if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
-		self.navigationController.navigationBar.translucent = NO;
-		[self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
-		[self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
-		[self.navigationController.navigationBar setTitleTextAttributes:@{
-																																			NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-																																			}];
-		
-		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-																																													NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
-																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-																																							 forState:UIControlStateNormal];
-		if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
-			[self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
-		}
-	}
-	
-	//Brand Specific Theme
-	if (_brand.theme != nil) {
-		self.navigationController.navigationBar.translucent = NO;
-		[self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-		[self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
-		[self.navigationController.navigationBar setTitleTextAttributes:@{
-																																			NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
-																																			NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)
-																																			}];
-		
-		[self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
-																																													NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
-																																													NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
-																																							 forState:UIControlStateNormal];
-    
-    [self.shareButton setBackgroundColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
-    [self.shareButton setTitleColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor) forState:UIControlStateNormal];
-    
-	}
+  [self styleNavbar];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
   [[NSNotificationCenter defaultCenter] addObserver:_viewModel
@@ -680,6 +645,58 @@
     NSLog(@"Back From Instagram");
     PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
     [self.navigationController pushViewController:scan animated:YES];
+  }
+}
+
+- (void) styleNavbar {
+  if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 22.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                      NSFontAttributeName : headerFont
+                                                                      }];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+                                                                                          NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontNavbar, 17.0f)}
+                                                                               forState:UIControlStateNormal];
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+      [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+    }
+  }
+  
+  //Brand Specific Theme
+  if (_brand.theme != nil) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColorFromHex(_brand.theme.primaryAppColor)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColorFromHex(_brand.theme.primaryInverseColor)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 17.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+                                                                      NSFontAttributeName : headerFont
+                                                                      }];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+                                                                                          NSForegroundColorAttributeName : PopdeemColorFromHex(_brand.theme.primaryInverseColor),
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 16.0f)}
+                                                                               forState:UIControlStateNormal];
   }
 }
 

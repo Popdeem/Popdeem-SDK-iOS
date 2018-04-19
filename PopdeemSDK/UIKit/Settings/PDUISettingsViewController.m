@@ -37,7 +37,7 @@
 - (instancetype) initFromNib {
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	if (self = [self initWithNibName:@"PDUISettingsViewController" bundle:podBundle]) {
-		self.view.backgroundColor = [UIColor clearColor];
+//    self.view.backgroundColor = [UIColor clearColor];
 		return self;
 	}
 	return nil;
@@ -71,8 +71,39 @@
 	[self.tableHeaderImageView.layer setCornerRadius:self.tableHeaderImageView.frame.size.width/2];
 	[self.tableHeaderImageView setClipsToBounds:YES];
 	[self.tableView reloadData];
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	// Do any additional setup after loading the view from its nib.
+  [self styleNavbar];
+}
+
+- (void) styleNavbar {
+  if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [self.navigationController.navigationBar setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    
+    UIFont *headerFont;
+    if (PopdeemThemeHasValueForKey(PDThemeFontNavbar)) {
+      headerFont = PopdeemFont(PDThemeFontNavbar, 22.0f);
+    } else {
+      headerFont = PopdeemFont(PDThemeFontBold, 17.0f);
+    }
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                      NSFontAttributeName : headerFont
+                                                                      }];
+    
+    [self.navigationController.navigationItem.rightBarButtonItem setTitleTextAttributes:@{
+                                                                                          NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryInverse),
+                                                                                          NSFontAttributeName : PopdeemFont(PDThemeFontNavbar, 17.0f)}
+                                                                               forState:UIControlStateNormal];
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.navigationBar")){
+      [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
+    }
+    if (@available(iOS 11.0, *)) {
+      self.navigationController.navigationBar.translucent = YES;
+    }
+  }
 }
 
 - (void) viewDidLayoutSubviews {

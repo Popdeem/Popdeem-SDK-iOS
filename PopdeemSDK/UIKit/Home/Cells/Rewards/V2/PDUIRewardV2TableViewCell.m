@@ -250,7 +250,7 @@
   
   CALayer *topBorder = [CALayer layer];
   topBorder.frame = CGRectMake(0.0f, 0.0f, _backingCard.frame.size.width, 0.5f);
-  topBorder.backgroundColor = [UIColor grayColor].CGColor;
+  topBorder.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1.00].CGColor;
   [_infoArea.layer addSublayer:topBorder];
   
   NSString *action = [self infoStringForReward:reward];

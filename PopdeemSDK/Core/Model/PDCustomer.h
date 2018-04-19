@@ -25,6 +25,6 @@
 + (PDCustomer*) initFromAPI:(NSString*)json;
 + (instancetype) sharedInstance;
 - (BOOL) usesAmbassadorFeatures;
-
+- (BOOL) usesTwitter;
 @end
 

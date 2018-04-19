@@ -70,4 +70,11 @@ static PDCustomer *globalCustomer = nil;
     return NO;
 }
 
+- (BOOL) usesTwitter {
+  if (self.twitterConsumerSecret != nil && self.twitterConsumerKey != nil) {
+    return YES;
+  }
+  return NO;
+}
+
 @end
