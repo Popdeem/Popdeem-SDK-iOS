@@ -85,7 +85,7 @@
   [_topLabel setFont:PopdeemFont(PDThemeFontLight, 14)];
   [_topLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   
-  [_bottomLabel setText:@"This usually takes a few moments. Please wait.."];
+  [_bottomLabel setText:@"This usually takes a few moments. Please wait."];
   [_bottomLabel setFont:PopdeemFont(PDThemeFontLight, 14)];
   [_bottomLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   

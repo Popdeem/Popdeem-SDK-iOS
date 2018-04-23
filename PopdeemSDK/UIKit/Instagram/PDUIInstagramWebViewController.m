@@ -49,7 +49,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait..." descriptionText:@"Preparing Instagram Login"];
+	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Preparing Instagram Login"];
 	[_loadingView showAnimated:YES];
 }
 

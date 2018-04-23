@@ -51,7 +51,7 @@
 	self.buttonColor = [UIColor colorWithRed:0.33 green:0.67 blue:0.93 alpha:1.0];
 	self.buttonTextColor = [UIColor whiteColor];
 	self.buttonLabelFont = PopdeemFont(PDThemeFontBold, 16);
-	self.buttonText = translationForKey(@"popdeem.twitter.loading.actionButtonTitle", @"Connecting...");
+	self.buttonText = translationForKey(@"popdeem.twitter.loading.actionButtonTitle", @"Connecting");
 	self.buttonBorderColor = PopdeemColor(PDThemeColorPrimaryApp);
 }
 

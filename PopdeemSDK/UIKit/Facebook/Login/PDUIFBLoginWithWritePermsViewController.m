@@ -139,8 +139,8 @@
 	[_actionButton setUserInteractionEnabled:NO];
 	__block UIAlertView *av;
 	__block PDUIModalLoadingView *loadingView = [[PDUIModalLoadingView alloc] initForView:self.view
-																																							titleText:@"Logging in.."
-																																				descriptionText:@"Please wait while we log you in."];
+																																							titleText:@"Logging in"
+																																				descriptionText:@"Please wait while we log you in"];
 	[loadingView showAnimated:YES];
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
 	[manager loginWithFacebookReadPermissions:@[@"public_profile",
@@ -157,8 +157,8 @@
 																														 }];
 	} failure:^(NSError *err) {
 		if ([err.domain isEqualToString:@"Popdeem.Facebook.Cancelled"]) {
-			av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled.")
-																			message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards.")
+			av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.facebookLoginCancelledTitle",@"Login Cancelled")
+																			message:translationForKey(@"popdeem.common.facebookLoginCancelledBody",@"You must log in with Facebook to avail of social rewards")
 																		 delegate:self
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];

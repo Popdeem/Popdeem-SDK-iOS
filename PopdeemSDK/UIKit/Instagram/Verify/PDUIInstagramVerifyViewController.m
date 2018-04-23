@@ -136,7 +136,7 @@
 }
 
 - (void) verifyReward {
-	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Verifying your post..."];
+	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Verifying your post"];
 	[_loadingView showAnimated:YES];
 	PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
 	[service verifyInstagramPostForReward:_reward completion:^(BOOL verified, NSError *error){

@@ -12,7 +12,7 @@
 @implementation PDUIModalLoadingView
 
 - (PDUIModalLoadingView*) initWithDefaultsForView:(UIView*)parent {
-    return [self initForView:parent titleText:translationForKey(@"popdeem.common.loading", @"Loading") descriptionText:translationForKey(@"popdeem.common.wait", @"Please wait...")];
+    return [self initForView:parent titleText:translationForKey(@"popdeem.common.loading", @"Loading") descriptionText:translationForKey(@"popdeem.common.wait", @"Please wait")];
 }
 
 - (PDUIModalLoadingView*) initForView:(UIView*)parent
