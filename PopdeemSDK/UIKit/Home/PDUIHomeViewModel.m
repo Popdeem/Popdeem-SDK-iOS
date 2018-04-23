@@ -188,16 +188,15 @@
     weakSelf.feed = [PDFeeds feed];
     [weakSelf.controller.refreshControl endRefreshing];
     [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    [weakSelf.controller.tableView reloadData];
     _feedLoading = NO;
 	} failure:^(NSError *error){
 		//TODO: Handle Error
-		_feedLoading = NO;
-    [weakSelf.controller.refreshControl endRefreshing];
-    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
 			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      _feedLoading = NO;
 		});
 	}];
 }

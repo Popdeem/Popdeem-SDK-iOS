@@ -260,7 +260,9 @@
                                                                             NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp)
                                                                             }];
   [_actionLabel setAttributedText:actionString];
-
+  [_socialIconOne setHidden:YES];
+  [_socialIconTwo setHidden:YES];
+  [_socialIconThree setHidden:YES];
   if (reward.action != PDRewardActionNone) {
     if (reward.socialMediaTypes.count == 3) {
       //Three Social Icons

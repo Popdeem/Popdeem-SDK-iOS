@@ -146,9 +146,32 @@
   UIImage *image;
   
   if (numVariations == 0) {
-    //Return a default
-    title = @"You're Brilliant!";
-    body = @"Unlock new rewards and VIP offers as you move up in status.";
+    //No variations in the Strings file, return the defaults.
+    //No need for translationForKey here - if there were any strings, variations would be >=1
+    switch (_type) {
+      case PDGratitudeTypeShare:
+        if (self.reward.type == PDRewardTypeCoupon) {
+          if (self.reward.creditString != nil) {
+            title = @"You're Brilliant!";
+            body = [NSString stringWithFormat:@"Thanks for sharing. %@ has been added to your account. Enjoy!", self.reward.creditString];
+          } else {
+            title = @"Great Job!";
+            body = @"Thanks for sharing, your reward has been added to your profile. Enjoy!";
+          }
+        } else {
+          title = @"Awesome!";
+          body = @"Thanks for sharing, you’ve been entered into the competition.";
+        }
+        break;
+      case PDGratitudeTypeConnect:
+        title = @"Welcome!";
+        body = @"Thanks for connecting, start sharing to earn more rewards and enter amazing competitions.";
+        break;
+      default:
+        title = @"Great Job!";
+        body = @"Thanks for sharing, your reward has been added to your profile. Enjoy!";
+        break;
+    }
     image = PopdeemImage(@"popdeem.images.loginImage");
   } else if (numVariations == 1) {
     //Return 1
