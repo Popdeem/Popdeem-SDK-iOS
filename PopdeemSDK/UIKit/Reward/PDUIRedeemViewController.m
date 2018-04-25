@@ -77,11 +77,13 @@
       break;
   }
   
-  [self.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 18)];
+  [self.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+  [self.titleLabel setNumberOfLines:3];
   [self.titleLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   [self.titleLabel setText:_reward.rewardDescription];
 	
-  [self.rulesLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  [self.rulesLabel setFont:PopdeemFont(PDThemeFontPrimary, 13)];
+  [self.rulesLabel setNumberOfLines:3];
   [self.rulesLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.rulesLabel setText:_reward.rewardRules];
 	
