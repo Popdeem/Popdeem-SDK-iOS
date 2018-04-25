@@ -32,7 +32,7 @@
   self.bodyBodyString = _message.body;
   
   if (_message.imageUrl) {
-//    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];
+    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];
   } else {
     self.image = PopdeemImage(@"popdeem.images.defaultItemImage");
   }

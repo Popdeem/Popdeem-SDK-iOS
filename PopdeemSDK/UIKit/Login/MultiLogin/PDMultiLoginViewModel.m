@@ -70,7 +70,9 @@
   } else {
     _titleString = translationForKey(@"popdeem.sociallogin.tagline", @"New: Social Rewards");
     _bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards.");
-    _image = PopdeemImage(@"popdeem.images.socialLogin");
+    if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
+      _image = PopdeemImage(@"popdeem.images.loginImage");
+    }
   }
   
   if (_reward) {

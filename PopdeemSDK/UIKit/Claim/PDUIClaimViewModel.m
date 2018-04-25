@@ -821,21 +821,35 @@
 	
 }
 
+- (void) addPhotoToLibrary:(NSDictionary*)info {
+  __block PHObjectPlaceholder *placeholder;
+  [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+    PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
+    placeholder = request.placeholderForCreatedAsset;
+    _imageURLString = placeholder.localIdentifier;
+  } completionHandler:^(BOOL success, NSError *error){
+    if (success) {
+      PDLog(@"Saved Image");
+    }
+  }];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 	[[NSNotificationCenter defaultCenter] addObserver:self
 																					 selector:@selector(keyboardWillShow:)
 																							 name:UIKeyboardWillShowNotification object:nil];
 
-	__block PHObjectPlaceholder *placeholder;
-  [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-				PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
-				placeholder = request.placeholderForCreatedAsset;
-    _imageURLString = placeholder.localIdentifier;
-  } completionHandler:^(BOOL success, NSError *error){
-				if (success) {
-          PDLog(@"Saved Image");
-        }
-  }];
+  if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+      if (status == PHAuthorizationStatusAuthorized) {
+        [self addPhotoToLibrary:info];
+      } else {
+        PDLog(@"Error saving photo to Library");
+      }
+    }];
+  } else {
+    [self addPhotoToLibrary:info];
+  }
 	
 	if (!_imageView) {
 		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
