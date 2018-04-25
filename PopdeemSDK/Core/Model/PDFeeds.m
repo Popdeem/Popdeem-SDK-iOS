@@ -12,15 +12,8 @@
 
 @implementation PDFeeds
 
-+(NSMutableArray*)feed {
-//    static dispatch_once_t pred;
-//    static NSMutableArray *sharedInstance = nil;
-//    dispatch_once(&pred, ^{
-//        sharedInstance = [[NSMutableArray alloc] init];
-//    });
-//
-//    return sharedInstance;
-  RLMResults<PDRFeedItem *> *feed = [PDRFeedItem allObjects];
++ (NSMutableArray*)feed {
+  RLMResults<PDRFeedItem *> *feed = [[PDRFeedItem allObjects] sortedResultsUsingKeyPath:@"identifier" ascending:NO];
   NSMutableArray *result = [NSMutableArray array];
   for (PDRFeedItem *item in feed) {
     [result addObject:item];
