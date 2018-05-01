@@ -4,15 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUIGratitudeViewController">
             <connections>
-                <outlet property="imageView" destination="4Jn-oG-0O0" id="uYC-Og-8aP"/>
-                <outlet property="profileButton" destination="npJ-7l-4BO" id="kEE-ac-UKY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,17 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npJ-7l-4BO">
-                    <rect key="frame" x="16" y="595.5" width="343" height="51.5"/>
-                    <state key="normal" title="Go to Profile"/>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sweet Ribs and Burgers! Thanks for sharing. You earned an additional 10 points to your account and moved up in status." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kc-52-ldG">
-                    <rect key="frame" x="16" y="282" width="343" height="113.5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KtO-o8-pEi">
                     <rect key="frame" x="16" y="416" width="343" height="73.5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -42,27 +29,8 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jn-oG-0O0">
-                    <rect key="frame" x="81" y="48" width="213" height="213.5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock new rewards and VIP offers as you move up in status." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMR-dm-1Nk">
-                    <rect key="frame" x="34" y="548.5" width="307" height="29"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="npJ-7l-4BO" secondAttribute="bottom" constant="20" id="559-Qk-OSj"/>
-                <constraint firstItem="npJ-7l-4BO" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.077" id="5nH-s4-qqQ"/>
-                <constraint firstAttribute="trailing" secondItem="npJ-7l-4BO" secondAttribute="trailing" constant="16" id="AF2-qC-gNS"/>
-                <constraint firstItem="npJ-7l-4BO" firstAttribute="top" secondItem="yMR-dm-1Nk" secondAttribute="bottom" constant="18.5" id="Asq-Nn-LQD"/>
-                <constraint firstAttribute="trailing" secondItem="yMR-dm-1Nk" secondAttribute="trailing" constant="34" id="DeO-6F-xfB"/>
-                <constraint firstItem="yMR-dm-1Nk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="34" id="daL-FY-k68"/>
-                <constraint firstItem="npJ-7l-4BO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="nLb-Rf-XO0"/>
-            </constraints>
             <point key="canvasLocation" x="183.5" y="-89.5"/>
         </view>
     </objects>
