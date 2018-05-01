@@ -58,6 +58,7 @@
   BOOL claimAction;
   BOOL autoVerify;
   NSInteger verifyRewardId;
+  BOOL firstLaunch;
 }
 @property (nonatomic, strong) PDUIHomeViewModel *model;
 @property (nonatomic) PDUIClaimViewController *claimVC;
@@ -171,6 +172,7 @@
 }
 
 - (void)viewDidLoad {
+  firstLaunch = YES;
   if (_brandVendorSearchTerm != nil) {
     _brand = [PDBrandStore findBrandBySearchTerm:_brandVendorSearchTerm];
     _model.brand = _brand;
@@ -218,8 +220,8 @@
   [self.refreshControl setTintColor:[UIColor darkGrayColor]];
   [self.refreshControl setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
-  self.refreshControl.layer.zPosition = self.tableView.backgroundView.layer.zPosition + 1;
-  
+    
+    
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
@@ -287,7 +289,7 @@
         break;
       default:
         [_segmentedControl setSelectedSegmentIndex:selected-1];
-        [self.tableView reloadData];
+//        [self.tableView reloadData];
         break;
     }
   }
@@ -299,7 +301,7 @@
         break;
       default:
         [_segmentedControl setSelectedSegmentIndex:selected+1];
-        [self.tableView reloadData];
+//        [self.tableView reloadData];
         break;
     }
   }
@@ -317,8 +319,11 @@
 
 - (void) viewDidAppear:(BOOL)animated {
   [self.view setUserInteractionEnabled:YES];
-  [_model fetchRewards];
-  [_model fetchWallet];
+    if (!firstLaunch) {
+        [_model fetchRewards];
+        [_model fetchWallet];
+    }
+    firstLaunch = NO;
   if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
   }
@@ -327,7 +332,6 @@
   }
   AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME});
   [self styleNavbar];
-  [self addInboxBadge];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -411,21 +415,27 @@
   }
 }
 
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    if ([self.refreshControl isRefreshing]) {
+//        [self reloadAction];
+//    }
+}
+
 - (void) reloadAction {
-  [self.tableView setUserInteractionEnabled:NO];
-  switch (_segmentedControl.selectedSegmentIndex) {
-    case 0:
-      [self.model fetchRewards];
-      break;
-    case 1:
-      [_model fetchFeed];
-      break;
-    case 2:
-      [_model fetchWallet];
-      break;
-    default:
-      break;
-  }
+    switch (self.segmentedControl.selectedSegmentIndex) {
+        case 0:
+            [self.model fetchRewards];
+            break;
+        case 1:
+            [self.model fetchFeed];
+            break;
+        case 2:
+            [self.model fetchWallet];
+            break;
+        default:
+            break;
+    }
+    [self.refreshControl endRefreshing];
 }
 
 - (void) viewWillLayoutSubviews {
@@ -1227,35 +1237,22 @@
   }
 }
 
-- (void) addInboxBadge {
-////  if ([PDMessageStore unreadCount] > 0) {
-//  
-//    NSUInteger unread = 2;
-//    float width = self.view.frame.size.width;
-//    //    float height = self.frame.size.height;
-//  
-//    float
-//    CGRect topRight = CGRectMake(width-50, 140, 16, 16);
-//    UILabel *lbl_card_count = [[UILabel alloc] initWithFrame:topRight];
-//    lbl_card_count.textColor = [UIColor whiteColor];
-//    lbl_card_count.textAlignment = NSTextAlignmentCenter;
-//    lbl_card_count.text = [NSString stringWithFormat:@"%ld",(unsigned long)unread];
-//    lbl_card_count.layer.borderWidth = 1;
-//    lbl_card_count.layer.cornerRadius = 8;
-//    lbl_card_count.layer.masksToBounds = YES;
-//    lbl_card_count.layer.borderColor =[[UIColor clearColor] CGColor];
-//    lbl_card_count.layer.shadowColor = [[UIColor clearColor] CGColor];
-//    lbl_card_count.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-//    lbl_card_count.layer.shadowOpacity = 0.0;
-//    lbl_card_count.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:45.0/255.0 blue:143.0/255.0 alpha:1.0];
-//    lbl_card_count.font = [UIFont fontWithName:@"ArialMT" size:9];
-//    [self.tableView addSubview:lbl_card_count];
-////  }
-}
-
 - (void) didUpdateUser {
   [self.tableView reloadInputViews];
   [self.tableView reloadData];
+}
+
+- (void) updateRewardData {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView beginUpdates];
+        if (self.model.rewardRemoveIndexSets.count > 0) {
+            [self.tableView deleteRowsAtIndexPaths:self.model.rewardRemoveIndexSets withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        if (self.model.rewardAddIndexSets.count > 0) {
+            [self.tableView insertRowsAtIndexPaths:self.model.rewardAddIndexSets withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        [self.tableView endUpdates];
+    });
 }
 
 @end

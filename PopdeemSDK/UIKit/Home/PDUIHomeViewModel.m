@@ -15,6 +15,12 @@
 #import "PDRFeedItem.h"
 #import "PDUIGratitudeViewController.h"
 #import "PDLocationStore.h"
+
+@interface PDUIHomeViewModel(){
+    NSArray *oldRewards;
+}
+@end
+
 @implementation PDUIHomeViewModel
 
 - (instancetype) init {
@@ -64,14 +70,12 @@
 		_rewardsLoading = NO;
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	} failure:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			_rewardsLoading = NO;
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -80,18 +84,16 @@
 - (void) fetchAllRewards {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
+        oldRewards = weakSelf.rewards;
 		weakSelf.rewards =  [PDRewardStore orderedByDate];
 		_rewardsLoading = NO;
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	} failure:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			_rewardsLoading = NO;
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -105,7 +107,6 @@
 			PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.controller.refreshControl endRefreshing];
       [weakSelf.controller.tableView reloadInputViews];
 		});
 	}];
@@ -152,13 +153,11 @@
 		}
 		weakSelf.wallet = [arr copy];
 		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-		[weakSelf.controller.refreshControl endRefreshing];
 		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -169,13 +168,11 @@
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
 		weakSelf.wallet = [PDWallet orderedByDateMulti];
 		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-		[weakSelf.controller.refreshControl endRefreshing];
 		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		});
 	}];
@@ -186,15 +183,15 @@
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getFeedsSuccess:^{
     weakSelf.feed = [PDFeeds feed];
-    [weakSelf.controller.refreshControl endRefreshing];
     [weakSelf.controller.tableView setUserInteractionEnabled:YES];
     [weakSelf.controller.tableView reloadData];
     _feedLoading = NO;
 	} failure:^(NSError *error){
 		//TODO: Handle Error
+		_feedLoading = NO;
+    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.refreshControl endRefreshing];
 			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
       _feedLoading = NO;
 		});

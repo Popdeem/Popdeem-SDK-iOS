@@ -38,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) redeemButtonPressed;
 - (void) setBrandVendorSearchTerm:(NSString *)brandVendorSearchTerm;
 - (void) moveToSection:(NSInteger)section;
+- (void) updateRewardData;
 
 @end
 NS_ASSUME_NONNULL_END
