@@ -289,7 +289,7 @@
         break;
       default:
         [_segmentedControl setSelectedSegmentIndex:selected-1];
-//        [self.tableView reloadData];
+        [self.tableView reloadData];
         break;
     }
   }
@@ -301,7 +301,7 @@
         break;
       default:
         [_segmentedControl setSelectedSegmentIndex:selected+1];
-//        [self.tableView reloadData];
+        [self.tableView reloadData];
         break;
     }
   }
