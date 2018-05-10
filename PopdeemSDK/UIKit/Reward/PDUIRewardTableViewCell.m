@@ -56,7 +56,6 @@
 		
 		NSString *description = reward.rewardDescription;
 		NSString *rulesStr = reward.rewardRules;
-		NSString *info = [self infoStringForReward:reward];
 		
 		NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
 		ps.paragraphSpacing = 2.0;

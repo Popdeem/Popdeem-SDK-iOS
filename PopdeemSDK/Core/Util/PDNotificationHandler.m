@@ -67,8 +67,6 @@
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion {
   _completionBlock = completion;
   
-  NSString *imageUrl = [userInfo objectForKey:@"image_url"];
-  UIImage *image;
   UIImage *fbImage = PopdeemImage(@"pduikit_fb_hi");
   UIImage *twImage = PopdeemImage(@"Twitter_Logo_Blue");
   UIImage *instaImage = PopdeemImage(@"pduikit_instagram_hi");

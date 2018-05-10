@@ -59,7 +59,6 @@
           });
           return;
         }
-        PDUser *user = [PDUser initFromAPI:jsonObject[@"user"] preferredSocialMediaType:PDSocialMediaTypeFacebook];
         PDUserAPIService *service = [[PDUserAPIService alloc] init];
         [service updateUserWithCompletion:^(PDUser *user, NSError *error){
           if (error) {

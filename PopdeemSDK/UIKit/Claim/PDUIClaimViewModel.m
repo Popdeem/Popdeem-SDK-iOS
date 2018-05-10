@@ -361,10 +361,10 @@
 }
 
 - (void) validateFacebookOptionsAndClaim {
-	if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-		[self loginWithWritePerms];
-		return;
-	}
+//    if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+//        [self loginWithWritePerms];
+//        return;
+//    }
   if (_reward.forcedTag && !_hashtagValidated) {
     UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
                                                      message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Facebook"),_reward.instagramForcedTag]
@@ -566,13 +566,13 @@
 	
 	__block NSInteger rewardId = _reward.identifier;
 	//location?
-  if (!_willInstagram) {
+  if (_willTweet) {
     [client claimReward:_reward.identifier
                location:_location withMessage:message
           taggedFriends:taggedFriends
-                  image:_image facebook:_willFacebook
+                  image:_image facebook:NO
                 twitter:_willTweet
-              instagram:_willInstagram
+              instagram:NO
                 success:^(){
 
                   [self didClaimRewardId:rewardId];
@@ -580,17 +580,34 @@
                 } failure:^(NSError *error){
                   [self PDAPIClient:client didFailWithError:error];
                 }];
+  } else if (_willFacebook) {
+      //Use Facebook Share Dialog
+      if (_image) {
+          //Photo Share
+          FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+          photo.image = _image;
+          photo.userGenerated = YES;
+          FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+//          content.photos = @[photo];
+          content.hashtag = [FBSDKHashtag hashtagWithString:_reward.forcedTag];
+          FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+          dialog.fromViewController = self.viewController;
+          dialog.shareContent = content;
+          dialog.mode = FBSDKShareDialogModeShareSheet;
+          dialog.delegate = self;
+          [dialog show];
+      }
   } else {
     if (_willInstagram) {
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramPostMade object:self userInfo:@{@"rewardId" : @(_reward.identifier)}];
     }
   }
 	
-  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
-                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
-                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
-  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-  [_loadingView showAnimated:YES];
+//  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.viewController.view
+//                                                 titleText:translationForKey(@"popdeem.claim.reward.claiming", @"Claiming Reward")
+//                                           descriptionText:translationForKey(@"popdeem.claim.reward.claiming.message", @"This could take up to 30 seconds")];
+//  [_loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+//  [_loadingView showAnimated:YES];
 
 }
 
@@ -974,4 +991,17 @@
 	}
 	return chosen;
 }
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    PDLog(@"FB Error: %@", error.localizedDescription);
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+    PDLog(@"FB Complete: %@", results);
+}
+
+- (void) sharerDidCancel:(id<FBSDKSharing>)sharer {
+    PDLog(@"FB Cancelled");
+}
+
 @end

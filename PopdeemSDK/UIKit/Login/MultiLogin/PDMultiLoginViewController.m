@@ -138,14 +138,15 @@
   _loadingView.titleLabel.text = @"Logging in.";
   [_loadingView showAnimated:YES];
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
+    __weak __typeof(self) weakSelf = self;
 	[manager registerWithTwitter:^{
 		//Continue to next stage of app, login has happened.
 		[self proceedWithTwitterLoggedInUser];
-    _twitterValid = YES;
+    weakSelf.twitterValid = YES;
 	} failure:^(NSError *error) {
-    _twitterValid = NO;
+    weakSelf.twitterValid = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_loadingView hideAnimated:YES];
+      [weakSelf.loadingView hideAnimated:YES];
     });
 		//Show some error, something went wrong
 	}];

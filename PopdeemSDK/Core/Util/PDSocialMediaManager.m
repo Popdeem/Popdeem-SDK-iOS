@@ -269,7 +269,6 @@
   NSError *secretError = nil;
   NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
   NSString *twConsumerSecret = [PDUtils getTwitterConsumerSecret:&secretError];
-  
   _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerName:nil
                                                   consumerKey:twConsumerKey
                                                consumerSecret:twConsumerSecret];

@@ -94,14 +94,12 @@
   
   if (self.actionImageData != nil) {
     UIImage *actionImage = [UIImage imageWithData:_actionImageData];
-    NSData *binaryImageData = UIImagePNGRepresentation(actionImage);
     NSString *actionImagePath = [NSString stringWithFormat:@"%ld_actionimage.png",self.identifier];
     self.actionImagePath = actionImagePath;
   }
   
   if (self.profileImageData != nil) {
     UIImage *profileImage = [UIImage imageWithData:_profileImageData];
-    NSData *binaryImageData = UIImagePNGRepresentation(profileImage);
     NSString *profileImagePath = [NSString stringWithFormat:@"%ld_profileImage.png",self.identifier];
     self.profileImagePath = profileImagePath;
   }

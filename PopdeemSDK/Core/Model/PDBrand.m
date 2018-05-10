@@ -130,11 +130,12 @@
   if ([self.coverUrlString isKindOfClass:[NSString class]]) {
     if ([self.coverUrlString.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
       isDownloadingCover = YES;
+        __weak __typeof(self) weakSelf = self;
       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *coverData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.coverUrlString]];
         UIImage *coverImage = [UIImage imageWithData:coverData];
         
-        self.coverImage = coverImage;
+        weakSelf.coverImage = coverImage;
         isDownloadingCover = NO;
         completion(YES);
       });

@@ -26,6 +26,8 @@
 		392D8F5920310AF600BDC764 /* PDUIGratitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5820310AF600BDC764 /* PDUIGratitudeView.m */; };
 		392D8F62203116A600BDC764 /* PDUIGratitudeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5F203116A600BDC764 /* PDUIGratitudeViewController.m */; };
 		392D8F652031F52300BDC764 /* PDUIGratitudeProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */; };
+		392EB4EB20A4520A00960109 /* PDUIClaimV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4E920A4520A00960109 /* PDUIClaimV2ViewController.m */; };
+		392EB4EF20A453CE00960109 /* PDUIClaimRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */; };
 		3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3938E4C6207D0E500077AC20 /* PDStringsHelper.m */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
@@ -316,6 +318,12 @@
 		392D8F61203116A600BDC764 /* PDUIGratitudeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIGratitudeViewController.xib; path = Gratutude/PDUIGratitudeViewController.xib; sourceTree = "<group>"; };
 		392D8F632031F52300BDC764 /* PDUIGratitudeProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIGratitudeProgressView.h; path = Gratutude/PDUIGratitudeProgressView.h; sourceTree = "<group>"; };
 		392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIGratitudeProgressView.m; path = Gratutude/PDUIGratitudeProgressView.m; sourceTree = "<group>"; };
+		392EB4E820A4520A00960109 /* PDUIClaimV2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIClaimV2ViewController.h; path = ClaimV2/PDUIClaimV2ViewController.h; sourceTree = "<group>"; };
+		392EB4E920A4520A00960109 /* PDUIClaimV2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimV2ViewController.m; path = ClaimV2/PDUIClaimV2ViewController.m; sourceTree = "<group>"; };
+		392EB4EA20A4520A00960109 /* PDUIClaimV2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIClaimV2ViewController.xib; path = ClaimV2/PDUIClaimV2ViewController.xib; sourceTree = "<group>"; };
+		392EB4EC20A453CE00960109 /* PDUIClaimRewardTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIClaimRewardTableViewCell.h; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.h; sourceTree = "<group>"; };
+		392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimRewardTableViewCell.m; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.m; sourceTree = "<group>"; };
+		392EB4EE20A453CE00960109 /* PDUIClaimRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIClaimRewardTableViewCell.xib; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.xib; sourceTree = "<group>"; };
 		39376BC0201F432000A02F94 /* PDHomeSegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDHomeSegueDelegate.h; path = Protocols/PDHomeSegueDelegate.h; sourceTree = "<group>"; };
 		3938E4C5207D0E500077AC20 /* PDStringsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDStringsHelper.h; sourceTree = "<group>"; };
 		3938E4C6207D0E500077AC20 /* PDStringsHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDStringsHelper.m; sourceTree = "<group>"; };
@@ -940,6 +948,16 @@
 			name = Gratitude;
 			sourceTree = "<group>";
 		};
+		392EB4F020A453D200960109 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				392EB4EC20A453CE00960109 /* PDUIClaimRewardTableViewCell.h */,
+				392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */,
+				392EB4EE20A453CE00960109 /* PDUIClaimRewardTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		394863C71D54CDD70000ABDE /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1181,6 +1199,17 @@
 				BC67FF08261302BD08EC80D6 /* PDUISocialLoginHandler.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		3990593720A451B100EB62ED /* ClaimV2 */ = {
+			isa = PBXGroup;
+			children = (
+				392EB4F020A453D200960109 /* Cells */,
+				392EB4E820A4520A00960109 /* PDUIClaimV2ViewController.h */,
+				392EB4E920A4520A00960109 /* PDUIClaimV2ViewController.m */,
+				392EB4EA20A4520A00960109 /* PDUIClaimV2ViewController.xib */,
+			);
+			name = ClaimV2;
 			sourceTree = "<group>";
 		};
 		3992A2741E25352D0058EA12 /* MultiLogin */ = {
@@ -1997,6 +2026,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3990593720A451B100EB62ED /* ClaimV2 */,
 				392D8F5620310AC400BDC764 /* Gratitude */,
 				39FDBA461F793800001864A2 /* Cordova */,
 				39AF13EE1D5487300097B0F7 /* Settings */,
@@ -2035,7 +2065,6 @@
 				39D7D0611B8F0DCF00E45D0B /* Sources */,
 				39D7D0621B8F0DCF00E45D0B /* Frameworks */,
 				39D7D0631B8F0DCF00E45D0B /* CopyFiles */,
-				C21332DE9B8DEF59E86A93BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2054,7 +2083,6 @@
 				39D7D06C1B8F0DCF00E45D0B /* Sources */,
 				39D7D06D1B8F0DCF00E45D0B /* Frameworks */,
 				39D7D06E1B8F0DCF00E45D0B /* Resources */,
-				F0CE59034B9740732A56D287 /* [CP] Embed Pods Frameworks */,
 				85412172AB2BA3FA899B41EC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -2199,36 +2227,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C21332DE9B8DEF59E86A93BD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F0CE59034B9740732A56D287 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2287,6 +2285,7 @@
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,
 				39BF99541E8E99830025A3F2 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
+				392EB4EB20A4520A00960109 /* PDUIClaimV2ViewController.m in Sources */,
 				A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */,
 				39FDF1E51E9263EB007AE076 /* PDUIPostScanViewController.m in Sources */,
 				39FA7B661D6DAF2E00031D5B /* PDLogger.m in Sources */,
@@ -2304,6 +2303,7 @@
 				3921E3141C71E1BB000120D4 /* PDUISingleMessageViewModel.m in Sources */,
 				394BEFEC1D17E7150045F5F3 /* PDUserInstagramParams.m in Sources */,
 				39FDF1EA1E95061F007AE076 /* PDUIScanFailViewController.m in Sources */,
+				392EB4EF20A453CE00960109 /* PDUIClaimRewardTableViewCell.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDUIModalTransitionHandler.m in Sources */,
 				396443FB1D13EC5A00BB67F9 /* PDUICardViewController.m in Sources */,
 				39BF994F1E8E99830025A3F2 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,

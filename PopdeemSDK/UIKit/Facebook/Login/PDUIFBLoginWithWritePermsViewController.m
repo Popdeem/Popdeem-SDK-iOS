@@ -137,6 +137,7 @@
 
 - (void) connectRead {
 	[_actionButton setUserInteractionEnabled:NO];
+    __weak __typeof(self) weakSelf = self;
 	__block UIAlertView *av;
 	__block PDUIModalLoadingView *loadingView = [[PDUIModalLoadingView alloc] initForView:self.view
 																																							titleText:@"Logging in"
@@ -162,7 +163,7 @@
 																		 delegate:self
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];
-      _success = NO;
+      weakSelf.success = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
         [av show];
       });
@@ -170,7 +171,7 @@
     } else if ([[err.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
       dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        _success = NO;
+        weakSelf.success = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
           [av show];
         });
@@ -181,7 +182,7 @@
 																		 delegate:self
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];
-      _success = NO;
+      weakSelf.success = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
         [av show];
       });

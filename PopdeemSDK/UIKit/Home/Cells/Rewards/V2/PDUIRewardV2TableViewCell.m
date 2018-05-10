@@ -85,8 +85,6 @@
   [self setBackgroundColor:[UIColor clearColor]];
   [self.contentView setBackgroundColor:[UIColor clearColor]];
   
-  float sideIndent = 20;
-  float topIndent = 10;
   _backingCard.backgroundColor = [UIColor whiteColor];
   _backingCard.layer.cornerRadius = 5.0;
   _backingCard.clipsToBounds = YES;
@@ -412,14 +410,6 @@
   NSString *exp = nil;
   if (reward.unlimitedAvailability == NO) {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[NSDate date]
-                                                          toDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]
-                                                         options:0];
-    
-    NSDateComponents *untilComponents = [gregorianCalendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate dateWithTimeIntervalSince1970:reward.availableUntil]];
-    
-
     NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
     int intervalHours = interval/60/60;
     int intervalDays = interval/60/60/24;

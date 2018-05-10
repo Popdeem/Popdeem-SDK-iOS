@@ -48,6 +48,7 @@ Pod::Spec.new do |s|
     core.dependency "STTwitter"
 		core.dependency "FBSDKLoginKit"
 		core.dependency "FBSDKCoreKit"
+        core.dependency "FBSDKShareKit"
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"

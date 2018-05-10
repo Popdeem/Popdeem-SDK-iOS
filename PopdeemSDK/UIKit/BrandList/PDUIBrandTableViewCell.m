@@ -83,16 +83,17 @@
 
 - (void) fetchCoverImage {
 	NSURL *url = [NSURL URLWithString:self.brand.coverUrlString];
+    __weak __typeof(self) weakSelf = self;
 	NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		if (data) {
 			UIImage *image = [UIImage imageWithData:data];
 			if (image) {
 				dispatch_async(dispatch_get_main_queue(), ^{
-					[self.headerImageView setHidden:NO];
-					self.headerImageView.image = image;
-					self.brand.coverImage = image;
-					_shimmeringView.shimmering = NO;
-					[_shimmeringView removeFromSuperview];
+					[weakSelf.headerImageView setHidden:NO];
+					weakSelf.headerImageView.image = image;
+					weakSelf.brand.coverImage = image;
+					weakSelf.shimmeringView.shimmering = NO;
+					[weakSelf.shimmeringView removeFromSuperview];
 				});
 			}
 		} else {

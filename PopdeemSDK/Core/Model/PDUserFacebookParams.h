@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Creates an instance of the PDUserFacebookParams from the given API paramaters
  
- @param params the API params
+
  @return The newly-initialized PDUserFacebookParams Object
  */
 - (instancetype) initWithDictionary:(NSDictionary *)dict;

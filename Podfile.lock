@@ -34,6 +34,20 @@ DEPENDENCIES:
   - Shimmer
   - STTwitter
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Bolts
+    - Expecta
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - JSONModel
+    - Nocilla
+    - OCMock
+    - Realm
+    - Shimmer
+    - STTwitter
+
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
@@ -49,4 +63,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6f9168f83b8a2f8e7603bbbe0aa3243f77da6b2a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

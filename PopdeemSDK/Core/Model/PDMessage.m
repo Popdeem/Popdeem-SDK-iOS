@@ -58,11 +58,12 @@
   if ([self.imageUrl isKindOfClass:[NSString class]]) {
     if ([self.imageUrl.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
       _isDownloadingLogo = YES;
+    __weak __typeof(self) weakSelf = self;
       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrl]];
         UIImage *logoImage = [UIImage imageWithData:imageData];
         
-        self.image = logoImage;
+        weakSelf.image = logoImage;
         _isDownloadingLogo = NO;
         completion(YES);
       });

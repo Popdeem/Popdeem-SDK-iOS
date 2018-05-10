@@ -107,12 +107,12 @@ CGFloat buttonSpacerHeight = 0;
     [self setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [[[[UIApplication sharedApplication] windows] firstObject] addSubview:self];
   }
-  
+  __weak __typeof(self) weakSelf = self;
   [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
                    animations:^{
-                     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
-                     dialogView.layer.opacity = 1.0f;
-                     dialogView.layer.transform = CATransform3DMakeScale(1, 1, 1);
+                     weakSelf.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
+                     weakSelf.dialogView.layer.opacity = 1.0f;
+                     weakSelf.dialogView.layer.transform = CATransform3DMakeScale(1, 1, 1);
                    }
                    completion:NULL
    ];
@@ -147,12 +147,12 @@ CGFloat buttonSpacerHeight = 0;
   
   dialogView.layer.transform = CATransform3DConcat(rotation, CATransform3DMakeScale(1, 1, 1));
   dialogView.layer.opacity = 1.0f;
-  
+  __weak __typeof(self) weakSelf = self;
   [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
                    animations:^{
-                     self.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.0f];
-                     dialogView.layer.transform = CATransform3DConcat(currentTransform, CATransform3DMakeScale(0.6f, 0.6f, 1.0));
-                     dialogView.layer.opacity = 0.0f;
+                     weakSelf.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.0f];
+                     weakSelf.dialogView.layer.transform = CATransform3DConcat(currentTransform, CATransform3DMakeScale(0.6f, 0.6f, 1.0));
+                     weakSelf.dialogView.layer.opacity = 0.0f;
                    }
                    completion:^(BOOL finished) {
                      for (UIView *v in [self subviews]) {
@@ -343,10 +343,10 @@ CGFloat buttonSpacerHeight = 0;
       rotation = CGAffineTransformMakeRotation(-startRotation + 0.0);
       break;
   }
-  
+  __weak __typeof(self) weakSelf = self;
   [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
                    animations:^{
-                     dialogView.transform = rotation;
+                     weakSelf.dialogView.transform = rotation;
                    }
                    completion:^(BOOL finished){
                      // fix errors caused by being rotated one too many times
@@ -374,10 +374,10 @@ CGFloat buttonSpacerHeight = 0;
     keyboardSize.height = keyboardSize.width;
     keyboardSize.width = tmp;
   }
-  
+  __weak __typeof(self) weakSelf = self;
   [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
                    animations:^{
-                     dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - keyboardSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
+                     weakSelf.dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - keyboardSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
                    }
                    completion:nil
    ];
@@ -387,10 +387,10 @@ CGFloat buttonSpacerHeight = 0;
 {
   CGSize screenSize = [self countScreenSize];
   CGSize dialogSize = [self countDialogSize];
-  
+  __weak __typeof(self) weakSelf = self;
   [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
                    animations:^{
-                     dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
+                     weakSelf.dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
                    }
                    completion:nil
    ];
