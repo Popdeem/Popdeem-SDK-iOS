@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDReward.h"
 
-@interface PDUIClaimV2ViewController : UITableViewController
-
-@property (nonatomic, assign) PDReward *reward;
+@interface PDUIClaimV2ViewController : UIViewController
 
 @end

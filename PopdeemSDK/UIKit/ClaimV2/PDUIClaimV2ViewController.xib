@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,15 +14,44 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edA-44-bu0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="125" id="4lU-cx-unN"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypp-OO-OC9">
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <color key="backgroundColor" red="0.022638805500000001" green="0.9110355215" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="kh7-Ro-bXY"/>
+                    </constraints>
+                    <state key="normal" title="Continue"/>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kKw-7m-GGS">
+                    <rect key="frame" x="0.0" y="125" width="375" height="482"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <viewLayoutGuide key="safeArea" id="NQg-xp-Ubj"/>
-            <connections>
-                <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>
-                <outlet property="delegate" destination="-1" id="9aC-8N-iBw"/>
-            </connections>
-        </tableView>
+            <constraints>
+                <constraint firstItem="edA-44-bu0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="B30-U0-u6f"/>
+                <constraint firstAttribute="trailing" secondItem="kKw-7m-GGS" secondAttribute="trailing" id="Dgl-tZ-PCT"/>
+                <constraint firstItem="edA-44-bu0" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="EdI-Dw-1Br"/>
+                <constraint firstItem="Ypp-OO-OC9" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="I6E-MK-Kd3"/>
+                <constraint firstItem="kKw-7m-GGS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MvW-Kz-kUu"/>
+                <constraint firstItem="Ypp-OO-OC9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bQO-jz-hVF"/>
+                <constraint firstItem="Ypp-OO-OC9" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="hlD-j0-gvG"/>
+                <constraint firstItem="edA-44-bu0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oKi-fa-IIM"/>
+                <constraint firstItem="kKw-7m-GGS" firstAttribute="top" secondItem="edA-44-bu0" secondAttribute="bottom" id="v52-QG-teE"/>
+                <constraint firstItem="Ypp-OO-OC9" firstAttribute="top" secondItem="kKw-7m-GGS" secondAttribute="bottom" id="wrX-8K-YOg"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
     </objects>
 </document>
