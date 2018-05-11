@@ -370,6 +370,7 @@
 }
 
 + (void) setThirdPartyUserToken:(NSString*)userToken {
+    if (userToken.length == 0) {return ;}
   [[PDAPIClient sharedInstance] setThirdPartyToken:userToken];
   if (![[PDUser sharedInstance] identifier]) {
     return;
