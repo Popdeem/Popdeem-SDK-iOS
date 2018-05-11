@@ -158,6 +158,9 @@
 		39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDUIRedeemViewController.m */; };
 		39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDUIClaimViewModel.m */; };
 		39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* PDUINoRewardsTableViewCell.m */; };
+		39EE456220A4826400121408 /* PDUIScanNowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EE456020A4826400121408 /* PDUIScanNowTableViewCell.m */; };
+		39EE456620A4839E00121408 /* PDUISocialClaimTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EE456420A4839E00121408 /* PDUISocialClaimTableViewCell.m */; };
+		39EE456A20A4848400121408 /* PDUIAddPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EE456820A4848400121408 /* PDUIAddPhotoTableViewCell.m */; };
 		39F5F6DF1D895282008DE497 /* NSURLSession+Abra.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6DE1D895282008DE497 /* NSURLSession+Abra.m */; };
 		39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E11D89532A008DE497 /* PDAbraClient.m */; };
 		39F5F6E91D89536C008DE497 /* PDAbraAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */; };
@@ -680,6 +683,15 @@
 		39EDADC11C07333F001102B3 /* PDUINoRewardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUINoRewardsTableViewCell.m; sourceTree = "<group>"; };
 		39EDADC41C07333F001102B3 /* PDUIRewardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIRewardTableViewController.h; sourceTree = "<group>"; };
 		39EDADC51C07333F001102B3 /* PDUIRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIRewardTableViewController.m; sourceTree = "<group>"; };
+		39EE455F20A4826400121408 /* PDUIScanNowTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIScanNowTableViewCell.h; path = ClaimV2/Cells/PDUIScanNowTableViewCell.h; sourceTree = "<group>"; };
+		39EE456020A4826400121408 /* PDUIScanNowTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIScanNowTableViewCell.m; path = ClaimV2/Cells/PDUIScanNowTableViewCell.m; sourceTree = "<group>"; };
+		39EE456120A4826400121408 /* PDUIScanNowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIScanNowTableViewCell.xib; path = ClaimV2/Cells/PDUIScanNowTableViewCell.xib; sourceTree = "<group>"; };
+		39EE456320A4839E00121408 /* PDUISocialClaimTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUISocialClaimTableViewCell.h; path = ClaimV2/Cells/PDUISocialClaimTableViewCell.h; sourceTree = "<group>"; };
+		39EE456420A4839E00121408 /* PDUISocialClaimTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUISocialClaimTableViewCell.m; path = ClaimV2/Cells/PDUISocialClaimTableViewCell.m; sourceTree = "<group>"; };
+		39EE456520A4839E00121408 /* PDUISocialClaimTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUISocialClaimTableViewCell.xib; path = ClaimV2/Cells/PDUISocialClaimTableViewCell.xib; sourceTree = "<group>"; };
+		39EE456720A4848400121408 /* PDUIAddPhotoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIAddPhotoTableViewCell.h; path = ClaimV2/Cells/PDUIAddPhotoTableViewCell.h; sourceTree = "<group>"; };
+		39EE456820A4848400121408 /* PDUIAddPhotoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIAddPhotoTableViewCell.m; path = ClaimV2/Cells/PDUIAddPhotoTableViewCell.m; sourceTree = "<group>"; };
+		39EE456920A4848400121408 /* PDUIAddPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIAddPhotoTableViewCell.xib; path = ClaimV2/Cells/PDUIAddPhotoTableViewCell.xib; sourceTree = "<group>"; };
 		39F5F6DD1D895282008DE497 /* NSURLSession+Abra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+Abra.h"; path = "Abra/NSURLSession+Abra.h"; sourceTree = "<group>"; };
 		39F5F6DE1D895282008DE497 /* NSURLSession+Abra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+Abra.m"; path = "Abra/NSURLSession+Abra.m"; sourceTree = "<group>"; };
 		39F5F6E01D89532A008DE497 /* PDAbraClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDAbraClient.h; path = Abra/PDAbraClient.h; sourceTree = "<group>"; };
@@ -957,6 +969,15 @@
 				392EB4EC20A453CE00960109 /* PDUIClaimRewardTableViewCell.h */,
 				392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */,
 				392EB4EE20A453CE00960109 /* PDUIClaimRewardTableViewCell.xib */,
+				39EE455F20A4826400121408 /* PDUIScanNowTableViewCell.h */,
+				39EE456020A4826400121408 /* PDUIScanNowTableViewCell.m */,
+				39EE456120A4826400121408 /* PDUIScanNowTableViewCell.xib */,
+				39EE456320A4839E00121408 /* PDUISocialClaimTableViewCell.h */,
+				39EE456420A4839E00121408 /* PDUISocialClaimTableViewCell.m */,
+				39EE456520A4839E00121408 /* PDUISocialClaimTableViewCell.xib */,
+				39EE456720A4848400121408 /* PDUIAddPhotoTableViewCell.h */,
+				39EE456820A4848400121408 /* PDUIAddPhotoTableViewCell.m */,
+				39EE456920A4848400121408 /* PDUIAddPhotoTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2281,6 +2302,7 @@
 				39BF99401E8E99830025A3F2 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				39BF993A1E8E99830025A3F2 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
+				39EE456A20A4848400121408 /* PDUIAddPhotoTableViewCell.m in Sources */,
 				39BF99451E8E99830025A3F2 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
 				3965AF6E1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m in Sources */,
 				397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */,
@@ -2335,6 +2357,7 @@
 				397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */,
 				3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDUIModalLoadingView.m in Sources */,
+				39EE456220A4826400121408 /* PDUIScanNowTableViewCell.m in Sources */,
 				39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */,
 				392EB4F420A47DBC00960109 /* PDUIClaimV2ViewController.m in Sources */,
 				391FAE7D1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m in Sources */,
@@ -2357,6 +2380,7 @@
 				3975A9262018EB280081517F /* PDUIProfileButtonTableViewCell.m in Sources */,
 				39BF99411E8E99830025A3F2 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
 				39A2176F203489FD00B109F4 /* PDCustomer.m in Sources */,
+				39EE456620A4839E00121408 /* PDUISocialClaimTableViewCell.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				39BF993F1E8E99830025A3F2 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,

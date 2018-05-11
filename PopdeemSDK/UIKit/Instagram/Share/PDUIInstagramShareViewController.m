@@ -246,7 +246,7 @@ CGFloat _cardWidth;
   if (_scrollView.contentOffset.x == 0) {
     [_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
   }
-  if (_scrollView.contentOffset.x == _cardWidth) {
+  if (_scrollView.contentOffset.x > 0 && _scrollView.contentOffset.x <  2*_cardWidth) {
     [_scrollView setContentOffset:CGPointMake(2*_cardWidth, 0) animated:YES];
   }
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INSTA_TUTORIAL_MODULE_TWO});

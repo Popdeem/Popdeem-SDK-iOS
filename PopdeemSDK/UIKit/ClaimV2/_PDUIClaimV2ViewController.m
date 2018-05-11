@@ -18,9 +18,6 @@
 //
 //@interface _PDUIClaimV2ViewController ()
 //
-//@property (nonatomic, retain) UIView *scanSectionView;
-//@property (nonatomic, retain) UIView *shareSectionView;
-//@property (nonatomic, retain) UIButton *continueButton;
 //
 //@end
 //

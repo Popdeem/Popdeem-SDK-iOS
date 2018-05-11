@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUIClaimV2ViewController">
             <connections>
+                <outlet property="continueButton" destination="Ypp-OO-OC9" id="Jab-hZ-e2e"/>
+                <outlet property="rewardImageView" destination="kGC-Ro-4Yq" id="wzr-Hs-ZxH"/>
+                <outlet property="rewardView" destination="edA-44-bu0" id="B8W-qv-2i3"/>
+                <outlet property="tableView" destination="kKw-7m-GGS" id="s30-h7-Pnb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,9 +24,20 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edA-44-bu0">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kGC-Ro-4Yq">
+                            <rect key="frame" x="20" y="25" width="75" height="75"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="BAG-ow-D4q"/>
+                                <constraint firstAttribute="height" constant="75" id="TSE-0w-Y7b"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="125" id="4lU-cx-unN"/>
+                        <constraint firstItem="kGC-Ro-4Yq" firstAttribute="centerY" secondItem="edA-44-bu0" secondAttribute="centerY" id="Eiq-Wn-Dv5"/>
+                        <constraint firstItem="kGC-Ro-4Yq" firstAttribute="leading" secondItem="edA-44-bu0" secondAttribute="leading" constant="20" id="orb-TH-1fl"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypp-OO-OC9">
