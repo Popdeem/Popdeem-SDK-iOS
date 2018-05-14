@@ -26,7 +26,6 @@
 		392D8F5920310AF600BDC764 /* PDUIGratitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5820310AF600BDC764 /* PDUIGratitudeView.m */; };
 		392D8F62203116A600BDC764 /* PDUIGratitudeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5F203116A600BDC764 /* PDUIGratitudeViewController.m */; };
 		392D8F652031F52300BDC764 /* PDUIGratitudeProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */; };
-		392EB4EB20A4520A00960109 /* _PDUIClaimV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4E920A4520A00960109 /* _PDUIClaimV2ViewController.m */; };
 		392EB4EF20A453CE00960109 /* PDUIClaimRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */; };
 		392EB4F420A47DBC00960109 /* PDUIClaimV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4F220A47DBC00960109 /* PDUIClaimV2ViewController.m */; };
 		3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3938E4C6207D0E500077AC20 /* PDStringsHelper.m */; };
@@ -322,8 +321,6 @@
 		392D8F61203116A600BDC764 /* PDUIGratitudeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIGratitudeViewController.xib; path = Gratutude/PDUIGratitudeViewController.xib; sourceTree = "<group>"; };
 		392D8F632031F52300BDC764 /* PDUIGratitudeProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIGratitudeProgressView.h; path = Gratutude/PDUIGratitudeProgressView.h; sourceTree = "<group>"; };
 		392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIGratitudeProgressView.m; path = Gratutude/PDUIGratitudeProgressView.m; sourceTree = "<group>"; };
-		392EB4E820A4520A00960109 /* _PDUIClaimV2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = _PDUIClaimV2ViewController.h; path = ClaimV2/_PDUIClaimV2ViewController.h; sourceTree = "<group>"; };
-		392EB4E920A4520A00960109 /* _PDUIClaimV2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = _PDUIClaimV2ViewController.m; path = ClaimV2/_PDUIClaimV2ViewController.m; sourceTree = "<group>"; };
 		392EB4EC20A453CE00960109 /* PDUIClaimRewardTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIClaimRewardTableViewCell.h; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.h; sourceTree = "<group>"; };
 		392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimRewardTableViewCell.m; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.m; sourceTree = "<group>"; };
 		392EB4EE20A453CE00960109 /* PDUIClaimRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIClaimRewardTableViewCell.xib; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.xib; sourceTree = "<group>"; };
@@ -1229,8 +1226,6 @@
 			isa = PBXGroup;
 			children = (
 				392EB4F020A453D200960109 /* Cells */,
-				392EB4E820A4520A00960109 /* _PDUIClaimV2ViewController.h */,
-				392EB4E920A4520A00960109 /* _PDUIClaimV2ViewController.m */,
 				392EB4F120A47DBC00960109 /* PDUIClaimV2ViewController.h */,
 				392EB4F220A47DBC00960109 /* PDUIClaimV2ViewController.m */,
 				392EB4F320A47DBC00960109 /* PDUIClaimV2ViewController.xib */,
@@ -2312,7 +2307,6 @@
 				39BF5AE11C1ED29E000BF32E /* PDNotificationHandler.m in Sources */,
 				396443F81D12B6DE00BB67F9 /* PDUIInstagramLoginViewController.m in Sources */,
 				39BF99541E8E99830025A3F2 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
-				392EB4EB20A4520A00960109 /* _PDUIClaimV2ViewController.m in Sources */,
 				A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */,
 				39FDF1E51E9263EB007AE076 /* PDUIPostScanViewController.m in Sources */,
 				39FA7B661D6DAF2E00031D5B /* PDLogger.m in Sources */,
