@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,27 +19,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cHw-k4-rIE">
-                        <rect key="frame" x="20" y="9" width="30" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="HBV-sX-pbD"/>
-                            <constraint firstAttribute="height" constant="30" id="dif-5b-i9F"/>
-                        </constraints>
-                    </imageView>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nyt-24-zPu">
                         <rect key="frame" x="306" y="8" width="51" height="31"/>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QX-lt-Jzk">
-                        <rect key="frame" x="62" y="14" width="236" height="21"/>
+                        <rect key="frame" x="60" y="14" width="246" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cHw-k4-rIE">
+                        <rect key="frame" x="20" y="15" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="HBV-sX-pbD"/>
+                            <constraint firstAttribute="height" constant="20" id="dif-5b-i9F"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="6QX-lt-Jzk" firstAttribute="leading" secondItem="cHw-k4-rIE" secondAttribute="trailing" constant="12" id="7C4-i6-ngP"/>
+                    <constraint firstItem="6QX-lt-Jzk" firstAttribute="leading" secondItem="cHw-k4-rIE" secondAttribute="trailing" constant="20" id="7C4-i6-ngP"/>
                     <constraint firstItem="6QX-lt-Jzk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PtM-Xb-4NO"/>
-                    <constraint firstItem="Nyt-24-zPu" firstAttribute="leading" secondItem="6QX-lt-Jzk" secondAttribute="trailing" constant="8" id="TbC-Gu-eM5"/>
+                    <constraint firstItem="Nyt-24-zPu" firstAttribute="leading" secondItem="6QX-lt-Jzk" secondAttribute="trailing" id="TbC-Gu-eM5"/>
                     <constraint firstItem="cHw-k4-rIE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XAP-pN-EwM"/>
                     <constraint firstItem="cHw-k4-rIE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dge-No-GE4"/>
                     <constraint firstItem="Nyt-24-zPu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-1.25" id="fya-el-9uw"/>
@@ -46,6 +47,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="socialImageView" destination="cHw-k4-rIE" id="fwm-bN-6Ca"/>
+                <outlet property="socialLabel" destination="6QX-lt-Jzk" id="twa-Qu-pIe"/>
+                <outlet property="socialSwitch" destination="Nyt-24-zPu" id="1WK-md-3Ow"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="54"/>
         </tableViewCell>
     </objects>

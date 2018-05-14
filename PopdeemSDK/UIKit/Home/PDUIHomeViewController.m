@@ -40,6 +40,7 @@
 #import "PDTierEvent.h"
 #import "PDUITierEventTableViewCell.h"
 #import "PDCustomer.h"
+#import "PDUIClaimV2ViewController.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -1047,12 +1048,14 @@
     }
     [self.model claimNoAction:reward closestLocation:nil];
   } else {
-    PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+//    PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+      PDUIClaimV2ViewController *claimController = [[PDUIClaimV2ViewController alloc] initFromNib];
+      [claimController setupWithReward:reward];
     self.willClaimReward = reward;
-    if (_brand) {
-      claimController.brand = _brand;
-    }
-    [claimController setHomeController:self];
+//    if (_brand) {
+//      claimController.brand = _brand;
+//    }
+//    [claimController setHomeController:self];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationController] pushViewController:claimController animated:YES];
   }

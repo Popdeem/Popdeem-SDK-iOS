@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDReward.h"
+
+@class PDUIClaimV2ViewController;
 
 @interface PDUISocialClaimTableViewCell : UITableViewCell
+
+@property (nonatomic,assign) PDUIClaimV2ViewController *parent;
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialImageView;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *socialLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UISwitch *socialSwitch;
+
+- (void) setSocialNetwork:(PDSocialMediaType)mediaType;
+- (void) startAnimatingSpinner;
+- (void) stopAnimatingSpinner;
+- (void) setEnabled:(BOOL)enabled;
 
 @end

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,10 +27,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kGC-Ro-4Yq">
-                            <rect key="frame" x="20" y="25" width="75" height="75"/>
+                            <rect key="frame" x="20" y="37" width="50" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="75" id="BAG-ow-D4q"/>
-                                <constraint firstAttribute="height" constant="75" id="TSE-0w-Y7b"/>
+                                <constraint firstAttribute="width" constant="50" id="BAG-ow-D4q"/>
+                                <constraint firstAttribute="height" constant="50" id="TSE-0w-Y7b"/>
                             </constraints>
                         </imageView>
                     </subviews>

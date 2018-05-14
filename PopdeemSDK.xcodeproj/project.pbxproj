@@ -42,6 +42,7 @@
 		394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */; };
 		394BEFEC1D17E7150045F5F3 /* PDUserInstagramParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFEB1D17E7150045F5F3 /* PDUserInstagramParams.m */; };
 		394BEFF21D1839C90045F5F3 /* PDUIInstagramShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFF01D1839C90045F5F3 /* PDUIInstagramShareViewController.m */; };
+		395AC58020A995820012220C /* PDUIClaimInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 395AC57E20A995820012220C /* PDUIClaimInfoTableViewCell.m */; };
 		395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
 		395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
 		39602FBF1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39602FBE1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m */; };
@@ -365,6 +366,9 @@
 		395017A81CDA54A600849DF8 /* default_theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default_theme.json; path = Resources/default_theme.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
+		395AC57D20A995820012220C /* PDUIClaimInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIClaimInfoTableViewCell.h; path = ClaimV2/Cells/PDUIClaimInfoTableViewCell.h; sourceTree = "<group>"; };
+		395AC57E20A995820012220C /* PDUIClaimInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimInfoTableViewCell.m; path = ClaimV2/Cells/PDUIClaimInfoTableViewCell.m; sourceTree = "<group>"; };
+		395AC57F20A995820012220C /* PDUIClaimInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIClaimInfoTableViewCell.xib; path = ClaimV2/Cells/PDUIClaimInfoTableViewCell.xib; sourceTree = "<group>"; };
 		395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentsManager.h; sourceTree = "<group>"; };
 		395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMomentsManager.m; sourceTree = "<group>"; };
 		395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentAPIService.h; sourceTree = "<group>"; };
@@ -975,6 +979,9 @@
 				39EE456720A4848400121408 /* PDUIAddPhotoTableViewCell.h */,
 				39EE456820A4848400121408 /* PDUIAddPhotoTableViewCell.m */,
 				39EE456920A4848400121408 /* PDUIAddPhotoTableViewCell.xib */,
+				395AC57D20A995820012220C /* PDUIClaimInfoTableViewCell.h */,
+				395AC57E20A995820012220C /* PDUIClaimInfoTableViewCell.m */,
+				395AC57F20A995820012220C /* PDUIClaimInfoTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2258,6 +2265,7 @@
 				399179862048219D0063AE2E /* PDTierAPIService.m in Sources */,
 				39BF994E1E8E99830025A3F2 /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
 				3922FABB1DC0BF4900501E1D /* PDBrandsUIHandler.m in Sources */,
+				395AC58020A995820012220C /* PDUIClaimInfoTableViewCell.m in Sources */,
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
 				3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */,
 				3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */,

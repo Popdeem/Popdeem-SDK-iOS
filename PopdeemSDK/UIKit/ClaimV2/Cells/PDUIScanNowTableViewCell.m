@@ -7,18 +7,22 @@
 //
 
 #import "PDUIScanNowTableViewCell.h"
+#import "PDUtils.h"
+#import "PDTheme.h"
 
 @implementation PDUIScanNowTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    [self.label setText:translationForKey(@"popdeem.claim.scanNow.title", @"Scan for already shared activity")];
+    [self.label setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end
