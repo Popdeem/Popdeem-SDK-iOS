@@ -161,7 +161,7 @@
 	}
 	
 	[self.twitterForcedTagLabel setTextColor:[UIColor lightGrayColor]];
-	[self.addHashtagButton setHidden:YES];
+	[self.addHashtagButton setHidden:NO];
     UIColor *tertiaryFontColor = [UIColor blackColor];
     if ([PDTheme.sharedInstance hasValueForKey:PDThemeColorTertiaryFont]) {
         tertiaryFontColor = PopdeemColor(PDThemeColorTertiaryFont);
