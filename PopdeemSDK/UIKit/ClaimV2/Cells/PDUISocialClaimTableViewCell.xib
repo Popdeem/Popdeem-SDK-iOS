@@ -21,6 +21,9 @@
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nyt-24-zPu">
                         <rect key="frame" x="306" y="8" width="51" height="31"/>
+                        <connections>
+                            <action selector="switchToggled:" destination="KGk-i7-Jjw" eventType="valueChanged" id="oPw-X6-AWW"/>
+                        </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QX-lt-Jzk">
                         <rect key="frame" x="60" y="14" width="246" height="21"/>

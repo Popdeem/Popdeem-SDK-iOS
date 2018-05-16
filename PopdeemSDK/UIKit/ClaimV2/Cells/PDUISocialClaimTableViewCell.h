@@ -14,6 +14,7 @@
 @interface PDUISocialClaimTableViewCell : UITableViewCell
 
 @property (nonatomic,assign) PDUIClaimV2ViewController *parent;
+@property (nonatomic) PDSocialMediaType socialMediaType;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *socialImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *socialLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UISwitch *socialSwitch;

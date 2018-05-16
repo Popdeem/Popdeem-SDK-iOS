@@ -46,9 +46,9 @@ Pod::Spec.new do |s|
     core.source_files = "PopdeemSDK/*.m", "PopdeemSDK/*.h", "PopdeemSDK/Core/*.{h,m}","PopdeemSDK/**/*.{h,m}" , "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
     core.dependency "STTwitter"
-		core.dependency "FBSDKLoginKit"
-		core.dependency "FBSDKCoreKit"
-        core.dependency "FBSDKShareKit"
+		core.dependency "FBSDKLoginKit", '~> 4.32.0'
+		core.dependency "FBSDKCoreKit", '~> 4.32.0'
+        core.dependency "FBSDKShareKit", '~> 4.32.0'
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"

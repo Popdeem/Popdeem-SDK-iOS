@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
 
-@interface PDUIClaimV2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface PDUIClaimV2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (nonatomic, retain) UILabel *titleLabel;
@@ -20,25 +20,23 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *continueButton;
 
+@property (nonatomic, retain) UIImage *userImage;
+@property (nonatomic) BOOL didAddPhoto;
+@property (nonatomic, strong) UIWindow *alertWindow;
+@property (nonatomic, strong) NSString *imageURLString;
+
 @property (nonatomic, retain) UIImage *addedPhoto;
+
+@property (nonatomic) BOOL willFacebook;
+@property (nonatomic) BOOL willTweet;
+@property (nonatomic) BOOL willInstagram;
 
 - (instancetype) initFromNib;
 //- (instancetype) initWithReward:(PDReward*)reward;
 - (void) setupWithReward:(PDReward*)reward;
-
-- (void) connectFacebookAccount;
-- (void) disconnectFacebookAccount;
-- (void) connectTwitterAccount;
-- (void) disconnectTwitterAccount;
-- (void) connectInstagramAccount;
-- (void) facebookLoginSuccess;
-- (void) facebookLoginFailure;
-- (void) instagramLoginSuccess;
-- (void) instagramLoginFailure;
-- (void) instagramLoginUserDismissed;
-- (void) twitterLoginSuccess;
-- (void) twitterLoginFailure;
-- (void) disconnectInstagramAccount;
+- (void) facebookToggled:(BOOL)on;
+- (void) twitterToggled:(BOOL)on;
+- (void) instagramToggled:(BOOL)on;
 
 
 @end

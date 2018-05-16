@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
-
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *addedPhotoImageView;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *changePhotoLabel;
+- (void) setPhoto:(UIImage*)photo;
 @end

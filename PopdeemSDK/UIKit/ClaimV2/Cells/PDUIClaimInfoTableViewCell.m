@@ -14,9 +14,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+    [self.infoLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
     [self.infoLabel setNumberOfLines:2];
-    self.separatorInset = UIEdgeInsetsMake(0, 20, 0, 0);
+    self.separatorInset = UIEdgeInsetsMake(0, 0, 0, CGFLOAT_MAX);
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setBackgroundColor:[UIColor whiteColor]];
 }

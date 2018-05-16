@@ -24,16 +24,24 @@
 #import "PDUILogoutTableViewCell.h"
 #import "PDUserAPIService.h"
 #import "PDCustomer.h"
+#import "PDUIClaimInfoTableViewCell.h"
+
+@import Photos;
 
 #define kPDUIClaimRewardTableViewCell @"PDUIClaimRewardTableViewCell"
 #define kPDUIScanNowTableViewCell @"PDUIScanNowTableViewCell"
 #define kPDUIAddPhotoTableViewCell @"PDUIAddPhotoTableViewCell"
 #define kPDUISocialClaimTableViewCell @"PDUISocialClaimTableViewCell"
+#define kPDUIClaimInfoTableViewCell @"PDUIClaimInfoTableViewCell"
+#define FacebookCellIndexPath [NSIndexPath indexPathForRow:1 inSection:1]
+#define TwitterCellIndexPath [NSIndexPath indexPathForRow:2 inSection:1]
+#define InstagramCellIndexPath [NSIndexPath indexPathForRow:3 inSection:1]
 
 @interface PDUIClaimV2ViewController ()
 
 @property (nonatomic, retain) UIView *scanSectionView;
 @property (nonatomic, retain) UIView *shareSectionView;
+@property (nonatomic, strong) PDUIModalLoadingView *loadingView;
 
 
 @end
@@ -55,8 +63,15 @@
 }
 
 - (void)viewDidLoad {
-    //Section Labels
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismiss) name:InstagramLoginuserDismissed object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
     
+    //Section Labels
     [self registerNibs];
     
     self.tableView.tableFooterView = [UIView new];
@@ -67,7 +82,14 @@
     if (self.reward) {
         [self setupRewardView];
     }
-    
+    [self.tableView setScrollEnabled:NO];
+    [self.continueButton.titleLabel setText:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue")];
+    [self.continueButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+    [self.continueButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    CALayer *continueTopBorder = [CALayer layer];
+    continueTopBorder.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 1.0f);
+    continueTopBorder.backgroundColor = [UIColor colorWithRed:0.90 green:0.90 blue:0.90 alpha:1.00].CGColor;
+    [_continueButton.layer addSublayer:continueTopBorder];
     [super viewDidLoad];
     
 }
@@ -105,11 +127,7 @@
 }
 
 - (void) viewDidLayoutSubviews {
-    if (self.tableView.frame.size.height >= self.tableView.contentSize.height) {
-        [self.tableView setScrollEnabled:NO];
-    } else {
-        [self.tableView setScrollEnabled:YES];
-    }
+
 }
 
 - (void) registerNibs {
@@ -125,6 +143,9 @@
     
     UINib *socialnib = [UINib nibWithNibName:@"PDUISocialClaimTableViewCell" bundle:podBundle];
     [[self tableView] registerNib:socialnib forCellReuseIdentifier:kPDUISocialClaimTableViewCell];
+    
+    UINib *infoNib = [UINib nibWithNibName:@"PDUIClaimInfoTableViewCell" bundle:podBundle];
+    [[self tableView] registerNib:infoNib forCellReuseIdentifier:kPDUIClaimInfoTableViewCell];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -144,7 +165,12 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    float tableHeight = self.tableView.frame.size.height - 60;
+    float singleHeight = tableHeight/6.5;
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        return singleHeight * 1.5;
+    }
+    return singleHeight;
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -180,11 +206,7 @@
             return 1;
             break;
         case 1:
-            if (_reward) {
-                return 2 + _reward.socialMediaTypes.count;
-            } else {
-                return 2;
-            }
+            return 5;
             break;
         default:
             return 0;
@@ -204,11 +226,15 @@
         }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            if (_addedPhoto == nil) {
+            if (_userImage == nil) {
                 PDUIAddPhotoTableViewCell *addPhotoCell = [[self tableView] dequeueReusableCellWithIdentifier:kPDUIAddPhotoTableViewCell];
+                [addPhotoCell setPhoto:nil];
                 return addPhotoCell;
             } else {
                 //Cell for added photo
+                PDUIAddPhotoTableViewCell *addPhotoCell = [[self tableView] dequeueReusableCellWithIdentifier:kPDUIAddPhotoTableViewCell];
+                [addPhotoCell setPhoto:_userImage];
+                return addPhotoCell;
             }
         } else if (indexPath.row == 1) {
             PDUISocialClaimTableViewCell *facebook = [[self tableView] dequeueReusableCellWithIdentifier:kPDUISocialClaimTableViewCell];
@@ -234,12 +260,24 @@
                  [instagram setEnabled:NO];
              }
              return instagram;
+        } else if (indexPath.row == 4) {
+            PDUIClaimInfoTableViewCell *info = [[self tableView] dequeueReusableCellWithIdentifier:kPDUIClaimInfoTableViewCell];
+            [info.infoLabel setText:[NSString stringWithFormat:@"Your check-in or photo must contain %@ in the caption to redeem this reward.", _reward.forcedTag]];
+            return info;
         }
     }
     
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     [cell setFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            [self showPhotoActionSheet];
+        }
+    }
 }
 
 - (void) styleNavbar {
@@ -386,7 +424,65 @@
 
 # pragma mark - Socials
 
-- (void) connectFacebookAccount {
+- (void) facebookToggled:(BOOL)on {
+    if (!on) {return;}
+    NSLog(@"Toggled Facebook: %@", on ? @"ON" : @"OFF");
+    PDUISocialClaimTableViewCell *twitterCell = [self twitterCell];
+    if (twitterCell) {
+        [twitterCell.socialSwitch setOn:NO];
+    }
+    PDUISocialClaimTableViewCell *instagramCell = [self instagramCell];
+    if (instagramCell) {
+        [instagramCell.socialSwitch setOn:NO];
+    }
+    if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
+        _willFacebook = YES;
+    } else {
+        [self loginWithFacebook];
+    }
+}
+
+- (void) twitterToggled:(BOOL)on {
+    NSLog(@"Toggled Twitter: %@", on ? @"ON" : @"OFF");
+    if (!on) {return;}
+    PDUISocialClaimTableViewCell *instagramCell = [self instagramCell];
+    if (instagramCell) {
+        [instagramCell.socialSwitch setOn:NO];
+    }
+    PDUISocialClaimTableViewCell *facebookCell = [self facebookCell];
+    if (facebookCell) {
+        [facebookCell.socialSwitch setOn:NO];
+    }
+    [self validateTwitter];
+}
+
+- (void) instagramToggled:(BOOL)on {
+    NSLog(@"Toggled Instagram: %@", on ? @"ON" : @"OFF");
+    if (!on) {return;}
+    
+    PDSocialMediaManager *manager = [PDSocialMediaManager manager];
+    [manager isLoggedInWithInstagram:^(BOOL isLoggedIn){
+        if (!isLoggedIn) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self.navigationController delegate:self connectMode:YES];
+                if (!instaVC) {
+                    return;
+                }
+                self.definesPresentationContext = YES;
+                instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+                instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+                [self presentViewController:instaVC animated:YES completion:^(void){}];
+            });
+        }
+    }];
+    _willInstagram = on;
+    _willFacebook = NO;
+    _willTweet = NO;
+}
+
+- (void) loginWithFacebook {
+    
     PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController
                                                                                                          loginType:PDFacebookLoginTypeRead];
     if (!fbVC) {
@@ -401,247 +497,324 @@
     }];
 }
 
-- (void) disconnectFacebookAccount {
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        PDSocialMediaManager *man = [PDSocialMediaManager manager];
-        [man logoutFacebook];
-        PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
-        [socialService disconnectFacebookAccountWithCompletion:^(NSError *err){
-            
-        }];
-        PDUISocialClaimTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-        [cell.socialSwitch setOn:NO animated:NO];
-        AbraLogEvent(ABRA_EVENT_LOGOUT, (@{
-                                           ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
-                                           ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-                                           }));  }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        PDUISocialClaimTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [cell.socialSwitch setOn:YES];
-            [self.tableView reloadData];
-        });
-    }];
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Disconnect Facebook Account" message:@"This action will disconnect your Facebook account. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
-    [ac addAction:ok];
-    [ac addAction:cancel];
-    [self presentViewController:ac animated:YES completion:^{
-    }];
-}
-
-//- (void) connectTwitterAccount {
-//    _twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:self.navigationController];
-//    if (!_twitterVC) {
-//        return;
-//    }
-//    self.definesPresentationContext = YES;
-//    _twitterVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//    _twitterVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginSuccess) name:TwitterLoginSuccess object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginFailure) name:TwitterLoginFailure object:nil];
-//    [self presentViewController:_twitterVC animated:YES completion:^(void){
-//    }];
-//}
-
-//- (void) disconnectTwitterAccount {
-//
-//    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
-//        [socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
-//
-//        }];
-//        AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
-//                                                              ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
-//                                                              ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-//                                                              }));
-//    }];
-//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//        PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [cell.socialSwitch setOn:NO];
-//            [_tableView reloadData];
-//        });
-//    }];
-//    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Disconnect Twitter Account" message:@"This action will disconnect your Twitter account. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
-//    [ac addAction:ok];
-//    [ac addAction:cancel];
-//    [self presentViewController:ac animated:YES completion:^{
-//    }];
-//}
-
-//- (void) connectInstagramAccount {
-//    //    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-//
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self.navigationController delegate:self connectMode:YES];
-//        if (!instaVC) {
-//            return;
-//        }
-//        self.definesPresentationContext = YES;
-//        instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//        instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure) name:InstagramLoginFailure object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismissed) name:InstagramLoginuserDismissed object:nil];
-//        [self.navigationController presentViewController:instaVC animated:YES completion:^(void){
-//        }];
-//    });
-//}
-
-//- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
-//    PDAPIClient *client = [PDAPIClient sharedInstance];
-//    _loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Connecting Instagram"];
-//    [_loadingView showAnimated:YES];
-//    if ([[PDUser sharedInstance] isRegistered]) {
-//        [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-//                [cell.socialSwitch setOn:YES animated:YES];
-//                [self setProfile];
-//                [self.tableView reloadData];
-//                [self.tableView reloadInputViews];
-//                [self.view setNeedsDisplay];
-//                [_loadingView hideAnimated:YES];
-//            });
-//        } failure:^(NSError* error){
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [_loadingView hideAnimated:YES];
-//            });
-//            if ([[error.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//                    [av show];
-//                });
-//            }
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-//                [cell.socialSwitch setOn:NO animated:YES];
-//                [_loadingView hideAnimated:YES];
-//                [self.view setNeedsDisplay];
-//            });
-//        }];
-//    } else {
-//        PDUserAPIService *service = [[PDUserAPIService alloc] init];
-//        [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-//                [cell.socialSwitch setOn:YES animated:YES];
-//                [_loadingView hideAnimated:YES];
-//                [self.tableView reloadData];
-//                [self.tableView reloadInputViews];
-//                [self setProfile];
-//                [self.view setNeedsDisplay];
-//            });
-//        } failure:^(NSError *error) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [_loadingView hideAnimated:YES];
-//                PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-//                [cell.socialSwitch setOn:NO animated:NO];
-//                [self.view setNeedsDisplay];
-//            });
-//        }];
-//    }
-//}
-
 - (void) facebookLoginSuccess {
-    PDUISocialClaimTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [cell.socialSwitch setOn:YES];
-        [_tableView reloadInputViews];
-    });
+    
     AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
                                                   ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
-                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
+                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
                                                   }));
-    
-    [self.tableView reloadData];
 }
 
 - (void) facebookLoginFailure {
-    PDUISocialClaimTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [cell.socialSwitch setOn:NO];
-    });
-    [self.tableView reloadData];
+    //Toggle Facebook Off
+    PDUISocialClaimTableViewCell *facebookCell = [self facebookCell];
+    if (facebookCell) {
+        [facebookCell.socialSwitch setOn:NO];
+    }
 }
 
-//- (void) instagramLoginSuccess {
-//    //    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [_tableView reloadInputViews];
-//        [self.tableView reloadData];
-//        [self setProfile];
-//    });
-//    AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
-//                                                  ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
-//                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-//                                                  }));
-//}
-//
-//- (void) instagramLoginFailure {
-//    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [cell.socialSwitch setOn:NO];
-//        [_tableView reloadData];
-//    });
-//    [self.tableView reloadData];
-//}
-//
-//- (void) instagramLoginUserDismissed {
-//    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [cell.socialSwitch setOn:NO];
-//        [_tableView reloadData];
-//    });
-//}
-//
-//- (void) twitterLoginSuccess {
-//    //    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [_tableView reloadData];
-//        [self setupHeaderView];
-//    });
-//    AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
-//                                                  ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
-//                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-//                                                  }));
-//
-//    [_twitterVC removeFromParentViewController];
-//    _twitterVC = nil;
-//}
-//
-//- (void) twitterLoginFailure {
-//    PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [cell.socialSwitch setOn:NO];
-//        [_tableView reloadData];
-//    });
-//    [_twitterVC removeFromParentViewController];
-//}
-//
-//- (void) disconnectInstagramAccount {
-//    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
-//        [socialService disconnectInstagramAccountWithCompletion:^(NSError *err){
-//
-//        }];
-//        AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
-//                                                              ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
-//                                                              ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
-//                                                              }));
-//    }];
-//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//        PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [cell.socialSwitch setOn:NO];
-//            [_tableView reloadData];
-//        });
-//    }];
-//    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Disconnect Instagram Account" message:@"This action will disconnect your Instagram account. Are you sure you wish to proceed?" preferredStyle:UIAlertControllerStyleAlert];
-//    [ac addAction:ok];
-//    [ac addAction:cancel];
-//    [self presentViewController:ac animated:YES completion:^{
-//    }];
-//}
+- (void) loginWithWritePerms {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PDUIFBLoginWithWritePermsViewController *fbVC = [[PDUIFBLoginWithWritePermsViewController alloc] initForParent:self.navigationController loginType:PDFacebookLoginTypePublish];
+        if (!fbVC) {
+            return;
+        }
+        self.definesPresentationContext = YES;
+        fbVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        fbVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:fbVC animated:YES completion:^(void){}];
+    });
+}
 
+- (void) validateTwitter {
+    [[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
+        if (!connected) {
+            [self connectTwitter:^(){
+                [self.continueButton setUserInteractionEnabled:YES];
+            } failure:^(NSError *error) {
+                UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
+                                                             message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter")
+                                                            delegate:self
+                                                   cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
+                                                   otherButtonTitles: nil];
+                [av show];
+            }];
+            [self.continueButton setUserInteractionEnabled:YES];
+            return;
+        }
+        [self.continueButton setUserInteractionEnabled:YES];
+    }];
+}
+
+- (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
+    PDUITwitterLoginViewController *twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:self.navigationController];
+    if (!twitterVC) {
+        return;
+    }
+    self.definesPresentationContext = YES;
+    twitterVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    twitterVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginSuccess) name:TwitterLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterLoginFailure) name:TwitterLoginFailure object:nil];
+    [self.navigationController presentViewController:twitterVC animated:YES completion:^(void){
+    }];
+}
+
+- (void) twitterLoginSuccess {
+    _willTweet = YES;
+    [_loadingView hideAnimated:YES];
+    PDUISocialClaimTableViewCell *twitterCell = [self twitterCell];
+    if (twitterCell) {
+        [twitterCell.socialSwitch setOn:YES];
+    }
+    AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+                                                  ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+                                                  }));
+}
+
+- (void) twitterLoginFailure {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PDLogError(@"Twitter didnt log in");
+        _willTweet = NO;
+        [_loadingView hideAnimated:YES];
+        PDUISocialClaimTableViewCell *twitterCell = [self twitterCell];
+        if (twitterCell) {
+            [twitterCell.socialSwitch setOn:NO];
+        }
+    });
+}
+
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+    PDAPIClient *client = [PDAPIClient sharedInstance];
+    if ([[PDUser sharedInstance] isRegistered]) {
+        [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
+            [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+        } failure:^(NSError* error){
+            [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:self userInfo:error.userInfo];
+        }];
+    } else {
+        PDUserAPIService *service = [[PDUserAPIService alloc] init];
+        [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
+        } failure:^(NSError *error) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];
+        }];
+    }
+}
+
+- (void) instagramLoginSuccess {
+    self.willInstagram = YES;
+    PDUISocialClaimTableViewCell *instagramCell = [self instagramCell];
+    if (instagramCell) {
+        [instagramCell.socialSwitch setOn:YES];
+    }
+    PDLog(@"Instagram Connected");
+    AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+                                                  ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
+                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+                                                  }));
+}
+
+- (void) instagramLoginUserDismiss {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PDUISocialClaimTableViewCell *instagramCell = [self instagramCell];
+        if (instagramCell) {
+            [instagramCell.socialSwitch setOn:NO];
+        }
+    });
+}
+
+- (void) instagramLoginFailure:(NSNotification*)notification {
+    self.willInstagram = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PDUISocialClaimTableViewCell *instagramCell = [self instagramCell];
+        if (instagramCell) {
+            [instagramCell.socialSwitch setOn:NO];
+        }
+   
+        if ([[notification.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+        } else {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:@"There was a problem connecting your Instagram Account. Please try again later."
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+            [av show];
+        }
+    });
+}
+
+- (PDUISocialClaimTableViewCell*) facebookCell {
+    PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:FacebookCellIndexPath];
+    if ([cell isKindOfClass:[PDUISocialClaimTableViewCell class]] && cell.socialMediaType == PDSocialMediaTypeFacebook) {
+        return cell;
+    }
+    return nil;
+}
+
+- (PDUISocialClaimTableViewCell*) twitterCell {
+    PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:TwitterCellIndexPath];
+    if ([cell isKindOfClass:[PDUISocialClaimTableViewCell class]] && cell.socialMediaType == PDSocialMediaTypeTwitter) {
+        return cell;
+    }
+    return nil;
+}
+
+- (PDUISocialClaimTableViewCell*) instagramCell {
+    PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:InstagramCellIndexPath];
+    if ([cell isKindOfClass:[PDUISocialClaimTableViewCell class]] && cell.socialMediaType == PDSocialMediaTypeInstagram) {
+        return cell;
+    }
+    return nil;
+}
+
+
+#pragma mark - Camera Delegate
+
+- (void)takePhoto {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+- (void)selectPhoto {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+- (void) addPhotoToLibrary:(NSDictionary*)info {
+    __block PHObjectPlaceholder *placeholder;
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
+        placeholder = request.placeholderForCreatedAsset;
+        _imageURLString = placeholder.localIdentifier;
+    } completionHandler:^(BOOL success, NSError *error){
+        if (success) {
+            PDLog(@"Saved Image");
+        }
+    }];
+}
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self addPhotoToLibrary:info];
+            } else {
+                PDLog(@"Error saving photo to Library");
+            }
+        }];
+    } else {
+        [self addPhotoToLibrary:info];
+    }
+    
+    UIImage *img = info[UIImagePickerControllerOriginalImage];
+    //    UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
+    img = [self normalizedImage:img];
+    CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
+    
+    if (cropRect.size.width > 0 && !CGRectEqualToRect(CGRectMake(0, 0, img.size.width, img.size.height), cropRect)) {
+        CGImageRef imageRef = CGImageCreateWithImageInRect([img CGImage], cropRect);
+        img = [UIImage imageWithCGImage:imageRef];
+        CGImageRelease(imageRef);
+    }
+    
+    _userImage = [self resizeImage:img withMinDimension:480];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    _didAddPhoto = YES;
+    [_tableView reloadData];
+
+    NSString *source = (picker.sourceType == UIImagePickerControllerSourceTypeCamera) ? @"Camera" : @"Photo Library";
+    AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_PHOTO : @"Yes", @"Source" : source}));
+}
+
+- (void) showPhotoActionSheet {
+    _alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _alertWindow.rootViewController = [UIViewController new];
+    _alertWindow.windowLevel = 10000001;
+    _alertWindow.hidden = NO;
+    
+    __weak __typeof(self) weakSelf = self;
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose Source" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.alertWindow.hidden = YES;
+        weakSelf.alertWindow = nil;
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.alertWindow.hidden = YES;
+        weakSelf.alertWindow = nil;
+        [weakSelf takePhoto];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Camera Roll" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weakSelf.alertWindow.hidden = YES;
+        weakSelf.alertWindow = nil;
+        [weakSelf selectPhoto];
+    }]];
+    if (self.userImage != nil) {
+        [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            weakSelf.alertWindow.hidden = YES;
+            weakSelf.alertWindow = nil;
+            weakSelf.userImage = nil;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.tableView reloadData];
+            });
+        }]];
+    }
+    
+    [_alertWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (UIImage *)normalizedImage:(UIImage*)image {
+    if (image.imageOrientation == UIImageOrientationUp) return image;
+    
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+    [image drawInRect:(CGRect){0, 0, image.size}];
+    UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return normalizedImage;
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
+    _userImage = [self resizeImage:image withMinDimension:460];
+}
+
+- (UIImage *)resizeImage:(UIImage *)inImage
+        withMinDimension:(CGFloat)minDimension {
+    
+    CGFloat aspect = inImage.size.width / inImage.size.height;
+    CGSize newSize;
+    
+    if (inImage.size.width > inImage.size.height) {
+        newSize = CGSizeMake(minDimension*aspect, minDimension);
+    } else {
+        newSize = CGSizeMake(minDimension, minDimension/aspect);
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
+    CGRect newImageRect = CGRectMake(0.0, 0.0, newSize.width, newSize.height);
+    [inImage drawInRect:newImageRect];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 @end

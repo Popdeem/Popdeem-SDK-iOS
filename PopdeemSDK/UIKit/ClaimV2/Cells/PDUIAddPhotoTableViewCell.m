@@ -21,7 +21,30 @@
     self.separatorInset = UIEdgeInsetsMake(0, 20, 0, 0);
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setBackgroundColor:[UIColor whiteColor]];
+    [self.label setHidden:NO];
+    [self.iconView setHidden:NO];
+    
+    [self.changePhotoLabel setText:translationForKey(@"popdeem.claim.changePhoto.title", @"Change Photo")];
+    [self.changePhotoLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+    [self.changePhotoLabel setHidden:YES];
+    [self.addedPhotoImageView setHidden:YES];
     // Initialization code
+}
+
+- (void) setPhoto:(UIImage*)photo {
+    if (photo == nil) {
+        [_addedPhotoImageView setHidden:YES];
+        [_changePhotoLabel setHidden:YES];
+        [_iconView setHidden:NO];
+        [_label setHidden:NO];
+    } else {
+        [_addedPhotoImageView setImage:photo];
+        [_addedPhotoImageView setHidden:NO];
+        [_addedPhotoImageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_changePhotoLabel setHidden:NO];
+        [_iconView setHidden:YES];
+        [_label setHidden:YES];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
