@@ -51,6 +51,7 @@ Pod::Spec.new do |s|
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"
+        core.dependency "TOCropViewController"
     core.dependency "Realm"
   end
 

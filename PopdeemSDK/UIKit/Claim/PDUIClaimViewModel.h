@@ -11,8 +11,9 @@
 #import "PDLocation.h"
 #import "InstagramLoginDelegate.h"
 @class PDUIClaimViewController;
+#import "TOCropViewController/TOCropViewController.h"
 
-@interface PDUIClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate, InstagramLoginDelegate>
+@interface PDUIClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate, InstagramLoginDelegate, TOCropViewControllerDelegate>
 
 typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 	FacebookOnly = 0,

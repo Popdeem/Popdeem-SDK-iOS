@@ -454,10 +454,6 @@
   [_viewModel imagePickerController:picker didFinishPickingMediaWithInfo:info];
 }
 
-- (IBAction)addFriendsButtonTapped:(id)sender {
-  goingToTag = YES;
-  [self.navigationController pushViewController:_friendPicker animated:YES];
-}
 
 - (void) viewWillDisappear:(BOOL)animated {
   if (!goingToTag) {
