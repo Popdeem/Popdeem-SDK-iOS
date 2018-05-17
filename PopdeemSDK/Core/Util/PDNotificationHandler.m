@@ -186,9 +186,11 @@
       if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:_url]]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_url]];
         _completionBlock(YES);
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
       } else {
         [alertView removeFromSuperview];
         _completionBlock(NO);
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
       }
     } else if (_shouldGoToDeepLink && _deeplink) {
       if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:_deeplink]]) {
@@ -197,11 +199,13 @@
       } else {
         [alertView removeFromSuperview];
         _completionBlock(NO);
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
       }
     } else {
       PDLog(@"Could not open attachment");
       [alertView removeFromSuperview];
       _completionBlock(NO);
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
     }
   }
 }

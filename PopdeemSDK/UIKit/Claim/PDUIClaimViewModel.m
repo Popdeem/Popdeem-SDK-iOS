@@ -806,8 +806,13 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
     picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_viewController presentViewController:picker animated:YES completion:NULL];
-	//Present Crop View
+    _didGoToImagePicker = YES;
+    __weak typeof(_viewController) weakController = _viewController;
+    [_viewController presentViewController:picker animated:YES completion:^{
+        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
+        weakController.spoofView.backgroundColor = [UIColor blackColor];
+        [weakController.navigationController.view addSubview:weakController.spoofView];
+    }];
 }
 
 - (void)selectPhoto {
@@ -817,17 +822,23 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
     picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [_viewController presentViewController:picker animated:YES completion:NULL];
-	//Present Crop View
+    _didGoToImagePicker = YES;
+    __weak typeof(_viewController) weakController = _viewController;
+    [_viewController presentViewController:picker animated:YES completion:^{
+        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
+        weakController.spoofView.backgroundColor = [UIColor blackColor];
+        [weakController.navigationController.view addSubview:weakController.spoofView];
+    }];
     
 }
 
 - (void) addPhotoToLibrary:(NSDictionary*)info {
   __block PHObjectPlaceholder *placeholder;
+    __weak typeof(self) weakSelf = self;
   [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
     PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
     placeholder = request.placeholderForCreatedAsset;
-    _imageURLString = placeholder.localIdentifier;
+    weakSelf.imageURLString = placeholder.localIdentifier;
   } completionHandler:^(BOOL success, NSError *error){
     if (success) {
       PDLog(@"Saved Image");
@@ -901,6 +912,7 @@
 - (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle
 {
     _imageView.image = image;
+    [_viewController.spoofView removeFromSuperview];
     if (_cropViewController) {
         [_cropViewController dismissViewControllerAnimated:YES completion:nil];
     }

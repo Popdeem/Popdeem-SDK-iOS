@@ -13,9 +13,9 @@
 @property (nonatomic, retain) NSString *facebookAppId;
 @property (nonatomic, retain) NSString *facebookAccessToken;
 @property (nonatomic, retain) NSString *facebookNameSpace;
-@property (nonatomic, retain) NSString *twitterConsumerKey;
-@property (nonatomic, retain) NSString *twitterConsumerSecret;
-@property (nonatomic, retain) NSString *twitterHandle;
+@property (nonatomic, retain) NSString <Optional> *twitterConsumerKey;
+@property (nonatomic, retain) NSString <Optional> *twitterConsumerSecret;
+@property (nonatomic, retain) NSString <Optional> *twitterHandle;
 @property (nonatomic, retain) NSString *instagramClientId;
 @property (nonatomic, retain) NSString *instagramClientSecret;
 @property (nonatomic) NSInteger countdownTimer;

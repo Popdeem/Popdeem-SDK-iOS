@@ -141,13 +141,12 @@
 	[manager registerWithTwitter:^{
 		//Continue to next stage of app, login has happened.
 		[self proceedWithTwitterLoggedInUser];
-    _twitterValid = YES;
+        _twitterValid = YES;
 	} failure:^(NSError *error) {
-    _twitterValid = NO;
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [_loadingView hideAnimated:YES];
-    });
-		//Show some error, something went wrong
+        _twitterValid = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [_loadingView hideAnimated:YES];
+        });
 	}];
 }
 
@@ -163,16 +162,9 @@
 }
 
 - (void) proceedWithTwitterLoggedInUser {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
-  });
 	[self addUserToUserDefaults:[PDUser sharedInstance]];
 	AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-  [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
-                                                      object:nil];
-	[self dismissViewControllerAnimated:YES completion:^{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
-  }];
+    [self proceedWithLocationCheck];
 }
 
 - (void) addUserToUserDefaults:(PDUser*)user {
@@ -187,14 +179,9 @@
 	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
 		[self addUserToUserDefaults:user];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [_loadingView hideAnimated:YES];
-      [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
-                                                          object:nil];
-      [self dismissViewControllerAnimated:YES completion:^{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
-      }];
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self proceedWithLocationCheck];
+        });
 	} failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
       [_loadingView hideAnimated:YES];
@@ -243,21 +230,58 @@
 }
 
 - (void) facebookLoginSuccess {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
-  });
-  [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
-                                                      object:nil];
   AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
-  [self dismissViewControllerAnimated:YES completion:^{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
-  }];
+  [self proceedWithLocationCheck];
 }
 
 - (void) facebookLoginFailure {
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
   });
+}
+
+- (void) proceedWithLocationCheck {
+    NSString *model = [[UIDevice currentDevice] model];
+    if ([model isEqualToString:@"iPhone Simulator"]) {
+        NSLog(@"SIMULATOR");
+    }
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager requestWhenInUseAuthorization];
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
+    [_locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"Location Denied");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_loadingView hideAnimated:YES];
+    });
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                            object:nil];
+    }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    NSLog(@"Location Updated");
+    CLLocation *location = [locations lastObject];
+    PDGeoLocation pdLoc = PDGeoLocationMake(location.coordinate.latitude, location.coordinate.longitude);
+    [[PDUser sharedInstance] setLastLocation:pdLoc];
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service updateUserWithCompletion:^(PDUser *user, NSError *error) {
+        PDLog(@"User Location Updated from Login");
+    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_loadingView hideAnimated:YES];
+    });
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                            object:nil];
+    }];
 }
 
 @end
