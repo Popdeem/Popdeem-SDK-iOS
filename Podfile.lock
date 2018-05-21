@@ -51,20 +51,6 @@ SPEC REPOS:
     - STTwitter
     - TOCropViewController
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Bolts
-    - Expecta
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FBSDKShareKit
-    - JSONModel
-    - Nocilla
-    - OCMock
-    - Realm
-    - Shimmer
-    - STTwitter
-
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5

@@ -42,6 +42,7 @@
 @property (nonatomic, retain) UIView *scanSectionView;
 @property (nonatomic, retain) UIView *shareSectionView;
 @property (nonatomic, strong) PDUIModalLoadingView *loadingView;
+@property (nonatomic, retain) TOCropViewController *cropViewController;
 
 
 @end
@@ -678,7 +679,7 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
-    picker.allowsEditing = YES;
+    picker.allowsEditing = NO;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
     picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -690,7 +691,7 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
-    picker.allowsEditing = YES;
+    picker.allowsEditing = NO;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
     picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -711,22 +712,14 @@
     }];
 }
 
-- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:NO completion:NULL];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
     
-    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
-        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-            if (status == PHAuthorizationStatusAuthorized) {
-                [self addPhotoToLibrary:info];
-            } else {
-                PDLog(@"Error saving photo to Library");
-            }
-        }];
-    } else {
-        [self addPhotoToLibrary:info];
-    }
     
     UIImage *img = info[UIImagePickerControllerOriginalImage];
-    //    UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
     img = [self normalizedImage:img];
     CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
     
@@ -737,13 +730,41 @@
     }
     
     _userImage = [self resizeImage:img withMinDimension:480];
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
+    _cropViewController = [[TOCropViewController alloc] initWithImage:_userImage];
+    _cropViewController.delegate = self;
+    [self presentViewController:_cropViewController animated:NO completion:nil];
     _didAddPhoto = YES;
-    [_tableView reloadData];
-
+    
     NSString *source = (picker.sourceType == UIImagePickerControllerSourceTypeCamera) ? @"Camera" : @"Photo Library";
     AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_PHOTO : @"Yes", @"Source" : source}));
+}
+
+- (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle
+{
+    [_spoofView removeFromSuperview];
+    if (_cropViewController) {
+        [_cropViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self addPhotoToLibrary:@{UIImagePickerControllerOriginalImage: image}];
+            } else {
+                PDLog(@"Error saving photo to Library");
+            }
+        }];
+    } else {
+        [self addPhotoToLibrary:@{UIImagePickerControllerOriginalImage: image}];
+    }
+    _userImage = image;
+    [self.tableView reloadData];
+}
+
+- (void)cropViewController:(nonnull TOCropViewController *)cropViewController didFinishCancelled:(BOOL)cancelled {
+    [self.spoofView removeFromSuperview];
+    if (_cropViewController) {
+        [_cropViewController dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 - (void) showPhotoActionSheet {

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
+#import "TOCropViewController/TOCropViewController.h"
 
-@interface PDUIClaimV2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate>
+
+@interface PDUIClaimV2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, TOCropViewControllerDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (nonatomic, retain) UILabel *titleLabel;
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) NSString *imageURLString;
 
 @property (nonatomic, retain) UIImage *addedPhoto;
+@property (nonatomic, retain) UIView *spoofView;
 
 @property (nonatomic) BOOL willFacebook;
 @property (nonatomic) BOOL willTweet;

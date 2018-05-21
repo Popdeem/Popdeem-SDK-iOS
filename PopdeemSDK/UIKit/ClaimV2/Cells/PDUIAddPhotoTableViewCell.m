@@ -40,7 +40,9 @@
     } else {
         [_addedPhotoImageView setImage:photo];
         [_addedPhotoImageView setHidden:NO];
-        [_addedPhotoImageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_addedPhotoImageView setClipsToBounds:YES];
+        [_addedPhotoImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [_addedPhotoImageView setBackgroundColor:[UIColor blackColor]];
         [_changePhotoLabel setHidden:NO];
         [_iconView setHidden:YES];
         [_label setHidden:YES];
