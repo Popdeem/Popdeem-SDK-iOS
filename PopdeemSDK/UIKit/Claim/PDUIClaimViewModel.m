@@ -35,6 +35,8 @@
 @property (nonatomic) BOOL hashtagValidated;
 @property (nonatomic) BOOL tvSurpress;
 @property (nonatomic) BOOL didAddPhoto;
+
+@property (nonatomic, retain) TOCropViewController *cropViewController;
 @end
 
 @implementation PDUIClaimViewModel
@@ -815,35 +817,45 @@
 }
 
 - (void)takePhoto {
-	
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-	picker.delegate = _viewController;
-	picker.allowsEditing = NO;
-	picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[_viewController presentViewController:picker animated:YES completion:NULL];
-	
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = _viewController;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    _didGoToImagePicker = YES;
+    __weak typeof(_viewController) weakController = _viewController;
+    [_viewController presentViewController:picker animated:YES completion:^{
+        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
+        weakController.spoofView.backgroundColor = [UIColor colorWithRed:0.10 green:0.10 blue:0.10 alpha:1.00];
+        [weakController.navigationController.view addSubview:weakController.spoofView];
+    }];
 }
 
 - (void)selectPhoto {
-	
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-	picker.delegate = _viewController;
-	picker.allowsEditing = NO;
-	picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-	picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	[_viewController presentViewController:picker animated:YES completion:NULL];
-	
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = _viewController;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    _didGoToImagePicker = YES;
+    __weak typeof(_viewController) weakController = _viewController;
+    [_viewController presentViewController:picker animated:YES completion:^{
+        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
+        weakController.spoofView.backgroundColor = [UIColor blackColor];
+        [weakController.navigationController.view addSubview:weakController.spoofView];
+    }];
+    
 }
 
 - (void) addPhotoToLibrary:(NSDictionary*)info {
   __block PHObjectPlaceholder *placeholder;
+    __weak typeof(self) weakSelf = self;
   [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
     PHAssetChangeRequest *request = [PHAssetChangeRequest creationRequestForAssetFromImage:info[UIImagePickerControllerOriginalImage]];
     placeholder = request.placeholderForCreatedAsset;
-    _imageURLString = placeholder.localIdentifier;
+    weakSelf.imageURLString = placeholder.localIdentifier;
   } completionHandler:^(BOOL success, NSError *error){
     if (success) {
       PDLog(@"Saved Image");
@@ -852,36 +864,13 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:NO completion:NULL];
 	[[NSNotificationCenter defaultCenter] addObserver:self
 																					 selector:@selector(keyboardWillShow:)
 																							 name:UIKeyboardWillShowNotification object:nil];
-
-  if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
-    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-      if (status == PHAuthorizationStatusAuthorized) {
-        [self addPhotoToLibrary:info];
-      } else {
-        PDLog(@"Error saving photo to Library");
-      }
-    }];
-  } else {
-    [self addPhotoToLibrary:info];
-  }
-	
-	if (!_imageView) {
-		_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
-		[_viewController.textView addSubview:_imageView];
-		[_imageView setClipsToBounds:YES];
-		[_imageView setContentMode:UIViewContentModeScaleAspectFill];
-		[_imageView setHidden:YES];
-		UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhotoActionSheet)];
-		[_imageView addGestureRecognizer:imageTap];
-		[_imageView setUserInteractionEnabled:YES];
-	}
-	[self.imageView setHidden:NO];
-	
+    
+    
 	UIImage *img = info[UIImagePickerControllerOriginalImage];
-//	UIImage *resized = [img resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(480, 480) interpolationQuality:kCGInterpolationHigh];
 	img = [self normalizedImage:img];
 	CGRect cropRect = [info[@"UIImagePickerControllerCropRect"] CGRectValue];
 	
@@ -892,26 +881,17 @@
 	}
 	
 	_image = [self resizeImage:img withMinDimension:480];
-	_imageView.image = _image;
-	_imageView.contentMode = UIViewContentModeScaleAspectFit;
-	_imageView.backgroundColor = [UIColor blackColor];
-	_imageView.layer.masksToBounds = YES;
-	_imageView.layer.shadowColor = [UIColor colorWithRed:0.831 green:0.831 blue:0.831 alpha:1.000].CGColor;
-	_imageView.layer.shadowOpacity = 0.9;
-	_imageView.layer.shadowRadius = 1.0;
-	_imageView.clipsToBounds = YES;
-	_imageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-	_imageView.layer.borderWidth = 2.0f;
-	[_imageView setHidden:NO];
-	[picker dismissViewControllerAnimated:YES completion:NULL];
-	
+    _cropViewController = [[TOCropViewController alloc] initWithImage:_image];
+    _cropViewController.delegate = self;
+    [_viewController presentViewController:_cropViewController animated:NO completion:nil];
 	_didAddPhoto = YES;
-	
+    
+    __weak typeof(self) weakSelf = self;
 	[UIView animateWithDuration:0.5
 												delay:1.0
 											options: UIViewAnimationOptionCurveEaseInOut
 									 animations:^{
-										 [_viewController.textView setTextContainerInset:UIEdgeInsetsMake(10, 8, 10, 70)];
+										 [weakSelf.viewController.textView setTextContainerInset:UIEdgeInsetsMake(10, 8, 10, 70)];
 									 }
 									 completion:^(BOOL finished){
 									 }];
@@ -919,6 +899,53 @@
 	[self calculateTwitterCharsLeft];
 	NSString *source = (picker.sourceType == UIImagePickerControllerSourceTypeCamera) ? @"Camera" : @"Photo Library";
 	AbraLogEvent(ABRA_EVENT_ADDED_CLAIM_CONTENT, (@{ABRA_PROPERTYNAME_PHOTO : @"Yes", @"Source" : source}));
+}
+
+- (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle
+{
+    [_viewController.spoofView removeFromSuperview];
+    if (_cropViewController) {
+        [_cropViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                [self addPhotoToLibrary:@{UIImagePickerControllerOriginalImage: image}];
+            } else {
+                PDLog(@"Error saving photo to Library");
+            }
+        }];
+    } else {
+        [self addPhotoToLibrary:@{UIImagePickerControllerOriginalImage: image}];
+    }
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_viewController.textView.frame.size.width-70, 10, 60, 60)];
+        [_viewController.textView addSubview:_imageView];
+        [_imageView setClipsToBounds:YES];
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_imageView setHidden:YES];
+        UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhotoActionSheet)];
+        [_imageView addGestureRecognizer:imageTap];
+        [_imageView setUserInteractionEnabled:YES];
+    }
+    _imageView.image = image;
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _imageView.backgroundColor = [UIColor blackColor];
+    _imageView.layer.masksToBounds = YES;
+    _imageView.layer.shadowColor = [UIColor colorWithRed:0.831 green:0.831 blue:0.831 alpha:1.000].CGColor;
+    _imageView.layer.shadowOpacity = 0.9;
+    _imageView.layer.shadowRadius = 1.0;
+    _imageView.clipsToBounds = YES;
+    _imageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    _imageView.layer.borderWidth = 2.0f;
+    [_imageView setHidden:NO];
+}
+
+- (void)cropViewController:(nonnull TOCropViewController *)cropViewController didFinishCancelled:(BOOL)cancelled {
+    [_viewController.spoofView removeFromSuperview];
+    if (_cropViewController) {
+        [_cropViewController dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 - (UIImage *)normalizedImage:(UIImage*)image {

@@ -12,6 +12,7 @@
 #import "InstagramLoginDelegate.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
 @class PDUIClaimViewController;
+#import "TOCropViewController/TOCropViewController.h"
 
 @interface PDUIClaimViewModel : NSObject <UITextViewDelegate, UIAlertViewDelegate, InstagramLoginDelegate, FBSDKSharingDelegate>
 
@@ -45,6 +46,7 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 @property (nonatomic) BOOL willInstagram;
 @property (nonatomic) BOOL didGoToInstagram;
 @property (nonatomic) BOOL willTweet;
+@property (nonatomic) BOOL didGoToImagePicker;
 
 @property (nonatomic, strong) PDLocation *location;
 

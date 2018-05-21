@@ -52,16 +52,6 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.title = translationForKey(@"popdeem.claims.title", @"Claim");
     self.friendPicker = [[PDUIFriendPickerViewController alloc] initFromNib];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismiss) name:InstagramLoginuserDismissed object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermSuccess) name:FacebookPublishSuccess object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermFailure) name:FacebookPublishFailure object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
     return self;
   }
   return nil;
@@ -161,7 +151,7 @@
 	}
 	
 	[self.twitterForcedTagLabel setTextColor:[UIColor lightGrayColor]];
-	[self.addHashtagButton setHidden:YES];
+	[self.addHashtagButton setHidden:NO];
     UIColor *tertiaryFontColor = [UIColor blackColor];
     if ([PDTheme.sharedInstance hasValueForKey:PDThemeColorTertiaryFont]) {
         tertiaryFontColor = PopdeemColor(PDThemeColorTertiaryFont);
@@ -224,6 +214,16 @@
   [[NSNotificationCenter defaultCenter] addObserver:_viewModel
                                            selector:@selector(keyboardWillShow:)
                                                name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismiss) name:InstagramLoginuserDismissed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifySuccess) name:InstagramVerifySuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyFailure) name:InstagramVerifyFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramVerifyNoAttempt) name:InstagramVerifyNoAttempt object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermSuccess) name:FacebookPublishSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookWritePermFailure) name:FacebookPublishFailure object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
 #pragma clang diagnostic pop
 }
 
@@ -454,10 +454,6 @@
   [_viewModel imagePickerController:picker didFinishPickingMediaWithInfo:info];
 }
 
-- (IBAction)addFriendsButtonTapped:(id)sender {
-  goingToTag = YES;
-  [self.navigationController pushViewController:_friendPicker animated:YES];
-}
 
 - (void) viewWillDisappear:(BOOL)animated {
   if (!goingToTag) {
@@ -469,7 +465,7 @@
   }
 	[_textView resignFirstResponder];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-	[[NSNotificationCenter defaultCenter] removeObserver:_viewModel];
+    [[NSNotificationCenter defaultCenter] removeObserver:_viewModel];
 }
 
 

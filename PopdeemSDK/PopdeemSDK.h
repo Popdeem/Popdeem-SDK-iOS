@@ -54,6 +54,7 @@
 #import "PDTheme.h"
 #import "PDBrand.h"
 #import "PDHomeSegueDelegate.h"
+#import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,12 +63,13 @@ typedef NS_ENUM(NSUInteger, PDEnv) {
   PDEnvStaging
 };
 
-@interface PopdeemSDK : NSObject
+@interface PopdeemSDK : NSObject <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSString *apiKey;
 @property (nonatomic) BOOL debug;
 @property (nonatomic) PDEnv env;
 @property (nonatomic) id<PDHomeSegueDelegate> segueDelegate;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 + (id) sharedInstance;
 - (NSString*) apiURL;

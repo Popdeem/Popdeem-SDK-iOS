@@ -1,25 +1,26 @@
 PODS:
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
-  - Expecta (1.0.5)
-  - FBSDKCoreKit (4.22.0):
+  - Bolts/Tasks (1.9.0)
+  - Expecta (1.0.6)
+  - FBSDKCoreKit (4.33.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.22.0):
+  - FBSDKLoginKit (4.33.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.22.0):
-    - FBSDKCoreKit
+  - FBSDKShareKit (4.33.0):
+    - FBSDKCoreKit (~> 4.33.0)
   - JSONModel (1.7.0)
   - Nocilla (0.11.0)
-  - OCMock (3.4)
-  - Realm (3.4.0):
-    - Realm/Headers (= 3.4.0)
-  - Realm/Headers (3.4.0)
+  - OCMock (3.4.1)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
   - Shimmer (1.0.2)
   - STTwitter (0.2.6)
+  - TOCropViewController (2.3.6)
 
 DEPENDENCIES:
   - Bolts
@@ -33,6 +34,22 @@ DEPENDENCIES:
   - Realm
   - Shimmer
   - STTwitter
+  - TOCropViewController
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Bolts
+    - Expecta
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - JSONModel
+    - Nocilla
+    - OCMock
+    - Realm
+    - Shimmer
+    - STTwitter
+    - TOCropViewController
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -49,18 +66,19 @@ SPEC REPOS:
     - STTwitter
 
 SPEC CHECKSUMS:
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
-  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
-  FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
-  FBSDKShareKit: 21ab3c8d173f4fa20c47c1061f3a9fac5950b5fa
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
+  FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
+  FBSDKShareKit: b7b5002833a4104fbecad75e8e4e082e91c7a08a
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
-  OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
-  Realm: 9527c7baa2260f3a3aad6823d2d71cafff9b046b
+  OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   STTwitter: 30ee2f79eff78c3d633a1edc869e97db9c9ead59
+  TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
 
-PODFILE CHECKSUM: 6f9168f83b8a2f8e7603bbbe0aa3243f77da6b2a
+PODFILE CHECKSUM: 3decaa43f9d14744918d9a10ed5a0a0ddf435eb7
 
 COCOAPODS: 1.5.0

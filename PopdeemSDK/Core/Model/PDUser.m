@@ -96,6 +96,7 @@ static PDUser *globalUser = nil;
   if (params[@"advocacy_score"] != nil) {
     user.advocacyScore = [params[@"advocacy_score"] floatValue];
   }
+  [[NSUserDefaults standardUserDefaults] setObject:[user dictionaryRepresentation] forKey:@"popdeemUser"];
   return user;
 }
 

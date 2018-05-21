@@ -19,4 +19,5 @@ target 'PopdeemSDKTests' do
 	pod 'FBSDKShareKit'
 	pod 'STTwitter'
 	pod 'JSONModel'
+    pod 'TOCropViewController'
 end

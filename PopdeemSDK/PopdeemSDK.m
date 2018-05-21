@@ -42,6 +42,7 @@
 
 @interface PopdeemSDK()
   @property (nonatomic, strong)id uiKitCore;
+@property (nonatomic) BOOL locationFetched;
 @end
 @implementation PopdeemSDK
 
@@ -362,6 +363,17 @@
         PDLogError(@"Error registering non-social user: %@",error.localizedDescription);
       }
     }];
+  } else {
+      [PDUser initFromUserDefaults:[[NSUserDefaults standardUserDefaults] objectForKey:@"popdeemUser"]];
+      if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
+          [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+          _locationManager = [[CLLocationManager alloc] init];
+          _locationManager.delegate = self;
+          [_locationManager requestWhenInUseAuthorization];
+          _locationManager.distanceFilter = kCLDistanceFilterNone;
+          _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+          [_locationManager startUpdatingLocation];
+      }
   }
 }
 
@@ -370,6 +382,7 @@
 }
 
 + (void) setThirdPartyUserToken:(NSString*)userToken {
+    if (userToken.length == 0) {return ;}
   [[PDAPIClient sharedInstance] setThirdPartyToken:userToken];
   if (![[PDUser sharedInstance] identifier]) {
     return;
@@ -416,6 +429,24 @@
 		[NSException raise:@"No Instagram Callback. Please add your Instagram Client ID in info.plist under the key 'InstagramCallback'" format:@""];
 	}
 	return instagramCallback;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    if (_locationFetched) { return; }
+    _locationFetched = YES;
+    [_locationManager stopUpdatingLocation];
+    CLLocation *loc = [locations lastObject];
+    PDGeoLocation pdLoc = PDGeoLocationMake(loc.coordinate.latitude, loc.coordinate.longitude);
+    PDUserAPIService *userService = [[PDUserAPIService alloc] init];
+    [[PDUser sharedInstance] setLastLocation:pdLoc];
+    [userService updateUserWithCompletion:^(PDUser *user, NSError *error) {
+        PDLog(@"User Updated Location after app launch to: %.2f, %.2f", pdLoc.latitude, pdLoc.longitude);
+    }];
+}
+
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    PDLog(@"Cannot Fetch Location On App Launch");
+    [_locationManager stopUpdatingLocation];
 }
 
 @end

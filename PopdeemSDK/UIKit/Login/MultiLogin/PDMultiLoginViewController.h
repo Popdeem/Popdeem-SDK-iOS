@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PDUIModalLoadingView.h"
@@ -14,7 +15,7 @@
 #import "InstagramLoginDelegate.h"
 #import "PDUIRewardV2TableViewCell.h"
 
-@interface PDMultiLoginViewController : UIViewController <InstagramLoginDelegate>
+@interface PDMultiLoginViewController : UIViewController <InstagramLoginDelegate, CLLocationManagerDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleLabel;
@@ -26,6 +27,7 @@
 @property (nonatomic, assign) PDReward *reward;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonBottomGapLayoutConstraint;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 - (instancetype) initFromNibWithReward:(PDReward*)reward;
 - (void) setReward:(PDReward*)reward;

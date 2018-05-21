@@ -27,6 +27,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *claimButtonView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *facebookButtonView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *twitterButtonView;
+@property (nonatomic, retain) UIView *spoofView;
 @property (unsafe_unretained, nonatomic) IBOutlet PD_SZTextView *textView;
 
 
