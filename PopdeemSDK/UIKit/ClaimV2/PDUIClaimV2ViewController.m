@@ -25,6 +25,7 @@
 #import "PDUserAPIService.h"
 #import "PDCustomer.h"
 #import "PDUIClaimInfoTableViewCell.h"
+#import "PDUIInstagramShareViewController.h"
 
 @import Photos;
 
@@ -87,6 +88,7 @@
     [self.continueButton.titleLabel setText:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue")];
     [self.continueButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
     [self.continueButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    
     CALayer *continueTopBorder = [CALayer layer];
     continueTopBorder.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 1.0f);
     continueTopBorder.backgroundColor = [UIColor colorWithRed:0.90 green:0.90 blue:0.90 alpha:1.00].CGColor;
@@ -472,7 +474,6 @@
                 self.definesPresentationContext = YES;
                 instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
                 instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
                 [self presentViewController:instaVC animated:YES completion:^(void){}];
             });
         }
@@ -714,10 +715,6 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:NO completion:NULL];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification object:nil];
-    
     
     UIImage *img = info[UIImagePickerControllerOriginalImage];
     img = [self normalizedImage:img];
@@ -838,4 +835,115 @@
     
     return newImage;
 }
+
+#pragma mark - Continue Button Pressed -
+
+- (IBAction)continueButtonPressed:(id)sender {
+    //Next steps depending on the network selected
+    [self.continueButton setUserInteractionEnabled:NO];
+    if (_willFacebook) {
+        [self shareOnFacebook];
+    } else if (_willTweet) {
+        
+    } else if (_willInstagram) {
+        [self validateInstagramOptionsAndClaim];
+        [self.continueButton setUserInteractionEnabled:YES];
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.chooseNetwork", @"Choose Network")
+                                                                       message:translationForKey(@"popdeem.claim.networkerror",  @"No Network Selected, you must select at least one social network in order to complete this action.")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:translationForKey(@"popdeem.common.ok", @"OK") style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        [self.continueButton setUserInteractionEnabled:YES];
+        return;
+    }
+}
+
+# pragma mark - Instagram -
+
+- (void) validateInstagramOptionsAndClaim {
+    if (!_userImage) {
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
+                                                                       message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:translationForKey(@"popdeem.common.ok", @"OK") style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        [self.continueButton setUserInteractionEnabled:YES];
+        AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
+                                                           ABRA_PROPERTYNAME_ERROR : ABRA_PROPERTYVALUE_ERROR_NOPHOTO
+                                                           });
+        return;
+    }
+    
+    PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:self.navigationController withMessage:@"" image:_userImage imageUrlString:_imageURLString];
+    self.definesPresentationContext = YES;
+    isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self presentViewController:isv animated:YES completion:^(void){}];
+    _didGoToInstagram = YES;
+    return;
+}
+
+# pragma mark - Facebook Sharing -
+
+- (void) shareOnFacebook {
+    
+    if (_reward.action == PDRewardActionPhoto && _userImage == nil) {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
+                                                                       message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:translationForKey(@"popdeem.common.ok", @"OK") style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        [self.continueButton setUserInteractionEnabled:YES];
+        return;
+    }
+    
+    FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+    dialog.fromViewController = self;
+    if (_userImage != nil) {
+        FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+        photo.image = _userImage;
+        photo.userGenerated = YES;
+        FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+        content.photos = @[photo];
+        if (_reward.forcedTag) {
+            content.hashtag = _reward.forcedTag;
+        }
+        dialog.shareContent = content;
+    }
+    dialog.mode = FBSDKShareDialogModeShareSheet;
+    dialog.delegate = self;
+    [dialog show];
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+    NSLog(@"Facebook Sharing Complete");
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    NSLog(@"Facebook Sharing Failed");
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
+    NSLog(@"Facebook Sharing User Cancelled");
+}
+
+
+
 @end

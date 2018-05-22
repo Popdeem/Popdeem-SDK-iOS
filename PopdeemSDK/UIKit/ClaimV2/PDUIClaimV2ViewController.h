@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
 #import "TOCropViewController/TOCropViewController.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
-@interface PDUIClaimV2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, TOCropViewControllerDelegate>
+@interface PDUIClaimV2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, TOCropViewControllerDelegate, FBSDKSharingDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (nonatomic, retain) UILabel *titleLabel;
@@ -33,6 +34,7 @@
 @property (nonatomic) BOOL willFacebook;
 @property (nonatomic) BOOL willTweet;
 @property (nonatomic) BOOL willInstagram;
+@property (nonatomic) BOOL didGoToInstagram;
 
 - (instancetype) initFromNib;
 //- (instancetype) initWithReward:(PDReward*)reward;
