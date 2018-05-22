@@ -20,17 +20,17 @@
 }
 
 - (void) setup {
-    self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1", @"Step One Label 1.");
-    self.viewOneLabelTwoText = translationForKey(@"popdeem.instagram.share.stepOne.label2", @"You will now be directed to Instagram where you can paste the message. Tap and hold to paste your message.");
-    self.viewOneActionButtonText = translationForKey(@"popdeem.instagram.share.stepOne.buttonText", @"Next");
+    self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1", @"Check-in.");
+    self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Be sure to add a check-in to your post.");
+    self.viewOneActionButtonText = translationForKey(@"popdeem.facebook.share.stepOne.buttonText", @"Next");
     
-    self.viewTwoLabelOneText = translationForKey(@"popdeem.instagram.share.stepTwo.label1", @"Make sure you are logged into the correct account on Instagram.");
-    self.viewTwoLabelTwoText = translationForKey(@"popdeem.instagram.share.stepTwo.label2", @"Your post will publish to whichever account you are currently logged into on the Instagram app.");
-    self.viewTwoActionButtonText = translationForKey(@"popdeem.instagram.share.stepTwo.buttonText", @"Next");
+    self.viewTwoLabelOneText = translationForKey(@"popdeem.facebook.share.stepTwo.label1", @"Step Two Label 1");
+    self.viewTwoLabelTwoText = translationForKey(@"popdeem.facebook.share.stepTwo.label2", @"Step Two Label 2");
+    self.viewTwoActionButtonText = translationForKey(@"popdeem.facebook.share.stepTwo.buttonText", @"Next");
     
-    self.viewThreeLabelOneText = translationForKey(@"popdeem.instagram.share.stepThree.label1", @"Be sure to select 'Feed' in the Instagram App.");
-    self.viewThreeLabelTwoText = translationForKey(@"popdeem.instagram.share.stepThree.label2", @"If you publish to your story, we will be unable to detect your post, and you will be unable to claim your reward.");
-    self.viewThreeActionButtonText = translationForKey(@"popdeem.instagram.share.stepThree.buttonText", @"Okay, Gotcha");
+    self.viewThreeLabelOneText = translationForKey(@"popdeem.facebook.share.stepThree.label1", @"Step 3 Label 1");
+    self.viewThreeLabelTwoText = translationForKey(@"popdeem.facebook.share.stepThree.label2", @"Step 3 Label 2");
+    self.viewThreeActionButtonText = translationForKey(@"popdeem.facebook.share.stepThree.buttonText", @"Okay, Gotcha");
     
     self.viewOneLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
     self.viewOneLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);
@@ -57,6 +57,7 @@
     self.viewThreeActionButtonColor = PopdeemColor(PDThemeColorPrimaryApp);
     self.viewThreeActionButtonTextColor = [UIColor whiteColor];
     
+    //TODO: Change Images
     self.viewOneImage = PopdeemImage(@"pduikit_instagramstep1");
     self.viewTwoImage = PopdeemImage(@"pduikit_instagramstep2");
     self.viewThreeImage = PopdeemImage(@"pduikit_instagramstep3");

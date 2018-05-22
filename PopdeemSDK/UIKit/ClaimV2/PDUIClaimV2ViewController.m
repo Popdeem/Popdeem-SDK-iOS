@@ -26,6 +26,7 @@
 #import "PDCustomer.h"
 #import "PDUIClaimInfoTableViewCell.h"
 #import "PDUIInstagramShareViewController.h"
+#import "PDUIFacebookShareViewController.h"
 
 @import Photos;
 
@@ -914,36 +915,15 @@
         return;
     }
     
-    FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
-    dialog.fromViewController = self;
-    if (_userImage != nil) {
-        FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
-        photo.image = _userImage;
-        photo.userGenerated = YES;
-        FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
-        content.photos = @[photo];
-        if (_reward.forcedTag) {
-            content.hashtag = _reward.forcedTag;
-        }
-        dialog.shareContent = content;
-    }
-    dialog.mode = FBSDKShareDialogModeShareSheet;
-    dialog.delegate = self;
-    [dialog show];
+    PDUIFacebookShareViewController *isv = [[PDUIFacebookShareViewController alloc] initForParent:self.navigationController withMessage:@"" image:_userImage imageUrlString:_imageURLString];
+    self.definesPresentationContext = YES;
+    isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    isv.reward = _reward;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self presentViewController:isv animated:YES completion:^(void){}];
+    [_continueButton setUserInteractionEnabled:YES];
+    return;
 }
-
-- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
-    NSLog(@"Facebook Sharing Complete");
-}
-
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
-    NSLog(@"Facebook Sharing Failed");
-}
-
-- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
-    NSLog(@"Facebook Sharing User Cancelled");
-}
-
-
 
 @end

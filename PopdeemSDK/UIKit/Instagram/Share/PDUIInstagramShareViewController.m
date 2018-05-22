@@ -13,8 +13,6 @@
 #import "PDUser.h"
 #import "PopdeemSDK.h"
 
-CGFloat _cardWidth;
-
 @implementation NSString (NSString_Extended)
 
 - (NSString *)urlencode {
@@ -38,7 +36,9 @@ CGFloat _cardWidth;
 }
 @end
 
-@interface PDUIInstagramShareViewController ()
+@interface PDUIInstagramShareViewController () {
+    CGFloat _cardWidth;
+}
 @property (nonatomic) BOOL leavingToInstagram;
 @end
 
