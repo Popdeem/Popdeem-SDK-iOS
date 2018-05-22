@@ -8,6 +8,7 @@
 #import "PDUIFacebookShareViewModel.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDCustomer.h"
 
 @implementation PDUIFacebookShareViewModel
 
@@ -21,7 +22,7 @@
 
 - (void) setup {
     self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1", @"Check-in.");
-    self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Be sure to add a check-in to your post.");
+    self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Be sure to add a check-in to your post. We will verify that you have checked in before granting your reward.");
     self.viewOneActionButtonText = translationForKey(@"popdeem.facebook.share.stepOne.buttonText", @"Next");
     
     self.viewTwoLabelOneText = translationForKey(@"popdeem.facebook.share.stepTwo.label1", @"Step Two Label 1");
@@ -58,7 +59,7 @@
     self.viewThreeActionButtonTextColor = [UIColor whiteColor];
     
     //TODO: Change Images
-    self.viewOneImage = PopdeemImage(@"pduikit_instagramstep1");
+    self.viewOneImage = PopdeemImage(@"pduikit_facebook_step1");
     self.viewTwoImage = PopdeemImage(@"pduikit_instagramstep2");
     self.viewThreeImage = PopdeemImage(@"pduikit_instagramstep3");
 }

@@ -153,13 +153,17 @@
     _firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
     [_scrollView addSubview:_firstView];
     
-    _viewOneLabelOne = [[UILabel alloc] initWithFrame:_viewTwoLabelOne.frame];
+    currentY = 0;
+    _viewOneLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
     [_viewOneLabelOne setText:_viewModel.viewOneLabelOneText];
     [_viewOneLabelOne setFont:_viewModel.viewOneLabelOneFont];
     [_viewOneLabelOne setTextColor:_viewModel.viewOneLabelOneColor];
     [_viewOneLabelOne setNumberOfLines:4];
     [_viewOneLabelOne setTextAlignment:NSTextAlignmentCenter];
+    labelSize = [_viewTwoLabelOne sizeThatFits:_viewTwoLabelOne.bounds.size];
+    [_viewOneLabelOne setFrame:CGRectMake(_viewOneLabelOne.frame.origin.x, currentY+30 , _viewOneLabelOne.frame.size.width, labelSize.height)];
     [_firstView addSubview:_viewOneLabelOne];
+    currentY = 30 + labelSize.height;
     
     _viewOneLabelTwo = [[UILabel alloc] initWithFrame:_viewTwoLabelTwo.frame];
     [_viewOneLabelTwo setText:_viewModel.viewOneLabelTwoText];
@@ -167,14 +171,18 @@
     [_viewOneLabelTwo setTextColor:_viewModel.viewOneLabelTwoColor];
     [_viewOneLabelTwo setNumberOfLines:4];
     [_viewOneLabelTwo setTextAlignment:NSTextAlignmentCenter];
+    labelSize = [_viewOneLabelTwo sizeThatFits:_viewOneLabelTwo.bounds.size];
+    [_viewOneLabelTwo setFrame:CGRectMake(_viewOneLabelTwo.frame.origin.x, currentY+30 , _viewOneLabelTwo.frame.size.width, labelSize.height)];
     [_firstView addSubview:_viewOneLabelTwo];
+    currentY += 30 + labelSize.height + 30;
     
-    _viewOneImageView = [[UIImageView alloc] initWithFrame:_viewTwoImageView.frame];
+    _viewOneImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(15, currentY, cardWidth-30, cardHeight*0.25)];
     [_viewOneImageView setImage:_viewModel.viewOneImage];
     [_viewOneImageView setContentMode:UIViewContentModeScaleAspectFit];
     _viewOneImageView.backgroundColor = [UIColor clearColor];
     _viewOneImageView.clipsToBounds = YES;
     [_firstView addSubview:_viewOneImageView];
+    currentY += _viewTwoImageView.frame.size.height;
     
     _viewOneActionButton = [[UIButton alloc] initWithFrame:_viewTwoActionButton.frame];
     [_viewOneActionButton setBackgroundColor:[UIColor whiteColor]];
