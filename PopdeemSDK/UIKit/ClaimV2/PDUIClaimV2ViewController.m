@@ -969,14 +969,15 @@
   if (_userImage) {
     [composer setImage:_userImage];
   }
+  __block typeof(self) weakSelf = self;
   [composer showFromViewController:self completion:^(TWTRComposerResult result) {
     if (result == TWTRComposerResultCancelled) {
       NSLog(@"Tweet composition cancelled");
     }
     else {
       NSLog(@"Sending Tweet!");
-      PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:TWITTER_NETWORK];
-      [self.navigationController pushViewController:scan animated:NO];
+      PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:weakSelf.reward network:TWITTER_NETWORK];
+      [weakSelf.navigationController pushViewController:scan animated:NO];
     }
   }];
   [self.continueButton setUserInteractionEnabled:YES];
