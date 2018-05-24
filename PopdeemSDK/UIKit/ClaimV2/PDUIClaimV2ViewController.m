@@ -31,6 +31,7 @@
 #import "PDUIHomeViewController.h"
 #import "PDUIPostScanViewController.h"
 #import "PDLocationValidator.h"
+#import <TwitterKit/TWTRKit.h>
 
 @import Photos;
 
@@ -563,8 +564,10 @@
                 [av show];
             }];
             [self.continueButton setUserInteractionEnabled:YES];
+          _willTweet = NO;
             return;
         }
+        _willTweet = YES;
         [self.continueButton setUserInteractionEnabled:YES];
     }];
 }
@@ -866,7 +869,7 @@
     if (_willFacebook) {
         [self shareOnFacebook];
     } else if (_willTweet) {
-        
+      [self shareOnTwitter];
     } else if (_willInstagram) {
         [self validateInstagramOptionsAndClaim];
         [self.continueButton setUserInteractionEnabled:YES];
@@ -891,20 +894,7 @@
 - (void) validateInstagramOptionsAndClaim {
     if (!_userImage) {
         
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
-                                                                       message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:translationForKey(@"popdeem.common.ok", @"OK") style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        [self.continueButton setUserInteractionEnabled:YES];
-        AbraLogEvent(ABRA_EVENT_RECEIVED_ERROR_ON_CLAIM, @{
-                                                           ABRA_PROPERTYNAME_ERROR : ABRA_PROPERTYVALUE_ERROR_NOPHOTO
-                                                           });
+      [self noPhotoAlert];
         return;
     }
     
@@ -938,16 +928,7 @@
 - (void) shareOnFacebook {
     
     if (_reward.action == PDRewardActionPhoto && _userImage == nil) {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
-                                                                       message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:translationForKey(@"popdeem.common.ok", @"OK") style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        [self.continueButton setUserInteractionEnabled:YES];
+      [self noPhotoAlert];
         return;
     }
     
@@ -973,6 +954,45 @@
 
 - (void) facebookCancelled {
     PDLog(@"Facebook Sharing Cancelled");
+}
+
+# pragma mark - Twitter Sharing -
+- (void) shareOnTwitter {
+  if (_reward.action == PDRewardActionPhoto && _userImage == nil) {
+    [self noPhotoAlert];
+    return;
+  }
+  TWTRComposer *composer = [[TWTRComposer alloc] init];
+  if (_reward.forcedTag) {
+    [composer setText:_reward.forcedTag];
+  }
+  if (_userImage) {
+    [composer setImage:_userImage];
+  }
+  [composer showFromViewController:self completion:^(TWTRComposerResult result) {
+    if (result == TWTRComposerResultCancelled) {
+      NSLog(@"Tweet composition cancelled");
+    }
+    else {
+      NSLog(@"Sending Tweet!");
+      PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:TWITTER_NETWORK];
+      [self.navigationController pushViewController:scan animated:NO];
+    }
+  }];
+  [self.continueButton setUserInteractionEnabled:YES];
+}
+
+- (void) noPhotoAlert {
+  UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
+                                                                 message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+  
+  UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:translationForKey(@"popdeem.common.ok", @"OK") style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {}];
+  
+  [alert addAction:defaultAction];
+  [self presentViewController:alert animated:YES completion:nil];
+  [self.continueButton setUserInteractionEnabled:YES];
 }
 
 @end

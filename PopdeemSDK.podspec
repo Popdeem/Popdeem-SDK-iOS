@@ -45,15 +45,15 @@ Pod::Spec.new do |s|
 	s.subspec 'Core' do |core|
     core.source_files = "PopdeemSDK/*.m", "PopdeemSDK/*.h", "PopdeemSDK/Core/*.{h,m}","PopdeemSDK/**/*.{h,m}" , "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
-    core.dependency "STTwitter"
 		core.dependency "FBSDKLoginKit"
 		core.dependency "FBSDKCoreKit"
-        core.dependency "FBSDKShareKit"
+    core.dependency "FBSDKShareKit"
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"
-        core.dependency "TOCropViewController"
+    core.dependency "TOCropViewController"
     core.dependency "Realm"
+    core.dependency "TwitterKit"
   end
 
   s.subspec 'UIKit' do |uikit|

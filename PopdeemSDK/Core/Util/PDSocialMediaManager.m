@@ -12,9 +12,10 @@
 #import "PDUtils.h"
 #import "PDAPIClient.h"
 #import <Accounts/Accounts.h>
-#import <STTwitter/STTwitter.h>
 #import "PDInstagramAPIClient.h"
 #import "PDSocialAPIService.h"
+#import <TwitterKit/TWTRKit.h>
+#import "PDCustomer.h"
 
 @interface PDSocialMediaManager() {
   ACAccount *singleAccount;
@@ -23,7 +24,6 @@
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) NSArray *iOSAccounts;
-@property (nonatomic, strong) STTwitterAPI *twitterAPI;
 
 @property (nonatomic, copy) void (^endSuccess)(void);
 @property (nonatomic, copy) void (^endError)(NSError *error);
@@ -67,6 +67,7 @@
                                   success:(void (^)(void))success
                                   failure:(void (^)(NSError *err))failure {
   FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
+  [lm logOut]; // Clean the tokens
   [lm logInWithReadPermissions:permissions fromViewController:_holderViewController  handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
     if (error) {
       failure(error);
@@ -206,185 +207,42 @@
 
 #pragma mark - Twitter -
 
+- (void) twitterKitLogin:(void (^)(void))success
+                 failure:(void (^)(NSError *error))failure {
+  
+  if ([[PDCustomer sharedInstance] twitterConsumerKey] && [[PDCustomer sharedInstance] twitterConsumerSecret]) {
+    [[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
+      if (session) {
+        if (twitterRegister) {
+          [self twitterRegisterWithPopdeem:session.authToken
+                                    secret:session.authTokenSecret
+                                    userId:session.userID
+                                screenName:session.userName
+                                   success:success
+                                   failure:failure];
+        } else {
+          [self twitterConnectWithPopdeem:session.authToken secret:session.authTokenSecret userID:session.userID screenName:session.userName success:success failure:failure];
+        }
+      } else {
+        failure(error);
+      }
+    }];
+  } else {
+    PDLog(@"No Twitter Credentials on Customer");
+    failure(nil);
+  }
+}
+
 - (void) registerWithTwitter:(void (^)(void))success
-										 failure:(void (^)(NSError *error))failure {
-	twitterRegister = YES;
-	[self nextStepTwitter:success failure:failure];
+                     failure:(void (^)(NSError *error))failure {
+  twitterRegister = YES;
+  [self twitterKitLogin:success failure:failure];
 }
 
 - (void) loginWithTwitter:(void (^)(void))success
                   failure:(void (^)(NSError *error))failure {
-  
-  
-  //Attempt to discover if user is signed in to Twitter on iOS
 	twitterRegister = NO;
-	[self nextStepTwitter:success failure:failure];
-}
-
-- (void) nextStepTwitter:(void (^)(void))success
-								 failure:(void (^)(NSError *error))failure{
-  //Login with safari
-  self.endSuccess = success;
-  self.endError = failure;
-  [self loginOnTheWeb];
-}
-
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-  switch (alertView.tag) {
-    case 0:
-      //OK button of selecter view
-      
-      break;
-      
-    default:
-      return;
-      break;
-  }
-}
-
-- (void) twitterLoginWithAccount:(ACAccount*)account success:(void (^)(void))success failure:(void (^)(NSError *error))failure {
-  
-  NSError *keyError = nil;
-  NSError *secretError = nil;
-  NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
-  NSString *twConsumerSecret = [PDUtils getTwitterConsumerSecret:&secretError];
-  _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerName:nil
-                                                  consumerKey:twConsumerKey
-                                               consumerSecret:twConsumerSecret];
-  
-  
-  [_twitterAPI postReverseOAuthTokenRequest:^(NSString *authenticationHeader) {
-    
-    STTwitterAPI *twitterAPIOS = [STTwitterAPI twitterAPIOSWithAccount:account delegate:nil];
-    
-    [twitterAPIOS verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID){
-      [twitterAPIOS postReverseAuthAccessTokenWithAuthenticationHeader:authenticationHeader
-                                                          successBlock:^(NSString *oAuthToken,
-                                                                         NSString *oAuthTokenSecret,
-                                                                         NSString *userID,
-                                                                         NSString *screenName) {
-																														
-																														if (twitterRegister) {
-																															[self twitterRegisterWithPopdeem:oAuthToken
-																																												secret:oAuthTokenSecret
-																																												userId:userID
-																																										screenName:screenName
-																																											 success:success
-																																											 failure:failure];
-																														} else {
-																																[self twitterConnectWithPopdeem:oAuthToken secret:oAuthTokenSecret userID:userID screenName:username success:success failure:failure];
-																														}
-                                                          } errorBlock:^(NSError *error) {
-                                                            failure(error);
-                                                          }];
-    } errorBlock:^(NSError *error) {
-      failure(error);
-    }];
-  } errorBlock:^(NSError *error) {
-    failure(error);
-  }];
-  
-}
-
-- (void) chooseAccount:(void (^)(ACAccount *account))success failure:(void (^)(NSError *error))failure {
-  
-  ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-  __weak typeof(self) weakSelf = self;
-  ACAccountStoreRequestAccessCompletionHandler accountStoreRequestCompletionHandler = ^(BOOL granted, NSError *error) {
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-      
-      if (granted == NO) {
-        NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        @"User denied access to twitter accounts", NSLocalizedDescriptionKey,
-                                        error, NSUnderlyingErrorKey,
-                                        nil];
-        NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
-                                                       code:PDErrorCodeTWPermissions
-                                                   userInfo:userDictionary];
-        failure(endError);
-        return;
-      }
-      
-      weakSelf.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
-      
-      //            if([_iOSAccounts count] == 1) {
-      //                ACAccount *account = [_iOSAccounts lastObject];
-      //                success(account);
-      //            } else {
-      UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Select an account:" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-      [ac addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        failure(nil);
-      }]];
-      ac.view.tintColor = [UIColor blueColor];
-      for (ACAccount *account in weakSelf.iOSAccounts) {
-        [ac addAction:[UIAlertAction actionWithTitle:account.username style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-          success(account);
-        }]];
-      }
-      [weakSelf.holderViewController presentViewController:ac animated:YES completion:nil];
-      ac.view.tintColor = [UIColor blackColor];
-      //            }
-    }];
-  };
-  
-  [self.accountStore requestAccessToAccountsWithType:accountType
-                                             options:NULL
-                                          completion:accountStoreRequestCompletionHandler];
-  
-}
-
-- (void) selectedIOSTwitterAccount:(ACAccount*)account success:(void (^)(void))success failure:(void (^)(NSError *error))failure {
-  PDLog(@"Chose Twitter Account: %@",account.username);
-  [self twitterLoginWithAccount:account success:^(void){
-    success();
-  } failure:^(NSError *error) {
-    failure(error);
-  }];
-}
-
-- (void) loginOnTheWeb {
-  NSError *keyError = nil;
-  NSError *secretError = nil;
-  NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
-  NSString *twConsumerSecret = [PDUtils getTwitterConsumerSecret:&secretError];
-  
-  _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:twConsumerKey
-                                              consumerSecret:twConsumerSecret];
-  
-  NSString *callback = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterCallbackScheme"];
-  NSString *fullCallback = [NSString stringWithFormat:@"%@://twitter_access_tokens/",callback];
-  [_twitterAPI postTokenRequest:^(NSURL *url, NSString *oauthToken) {
-    [[UIApplication sharedApplication] openURL:url];
-  } authenticateInsteadOfAuthorize:NO
-                     forceLogin:@(YES)
-                     screenName:nil
-                  oauthCallback:fullCallback
-                     errorBlock:^(NSError *error) {
-                       PDLogError(@"-- error: %@", error);
-                     }];
-}
-
-- (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier {
-  
-  [_twitterAPI postAccessTokenRequestWithPIN:verifier successBlock:^(NSString *oauthToken, NSString *oauthTokenSecret, NSString *userID, NSString *screenName) {
-    if (twitterRegister) {
-      [self twitterRegisterWithPopdeem:oauthToken secret:oauthTokenSecret userId:userID screenName:screenName success:^{
-        self.endSuccess();
-      } failure:^(NSError *error) {
-        self.endError(error);
-      }];
-    } else {
-      [self twitterConnectWithPopdeem:oauthToken secret:oauthTokenSecret userID:userID screenName:screenName success:^(void){
-        self.endSuccess();
-      } failure:^(NSError *error){
-        //Something went wrong
-        self.endError(error);
-      }];
-    }
-    //Now connect social account
-  } errorBlock:^(NSError *error) {
-    PDLogError(@"Twitter Error: %@", [error localizedDescription]);
-  }];
+	[self twitterKitLogin:success failure:failure];
 }
 
 - (void) twitterConnectWithPopdeem:(NSString*)oAuthToken
@@ -397,60 +255,42 @@
 }
 
 - (void) twitterRegisterWithPopdeem:(NSString*)oAuthToken
-														 secret:(NSString*)oAuthSecret
-														 userId:(NSString*)userId screenName:(NSString*)screenName
-														success:(void (^)(void))success
-														failure:(void (^)(NSError*))failure {
-	[[PDAPIClient sharedInstance] registerUserWithTwitterAccessToken:oAuthToken
-																											accessSecret:oAuthSecret
-																														userId:userId
-																												screenName:screenName
-																													 success:^(PDUser *user){
-																														 success();
-	}
-																													 failure:failure];
+                             secret:(NSString*)oAuthSecret
+                             userId:(NSString*)userId screenName:(NSString*)screenName
+                            success:(void (^)(void))success
+                            failure:(void (^)(NSError*))failure {
+  [[PDAPIClient sharedInstance] registerUserWithTwitterAccessToken:oAuthToken
+                                                      accessSecret:oAuthSecret
+                                                            userId:userId
+                                                        screenName:screenName
+                                                           success:^(PDUser *user){
+                                                             success();
+  }
+                                                           failure:failure];
 }
 
 - (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion {
-  NSError *keyError = nil;
-  NSError *secretError = nil;
-  NSString *twConsumerKey = [PDUtils getTwitterConsumerKey:&keyError];
-  NSString *twConsumerSecret = [PDUtils getTwitterConsumerSecret:&secretError];
   
-  NSString *userTwitterToken = [[[PDUser sharedInstance] twitterParams] accessToken];
-  NSString *userTwitterSecret = [[[PDUser sharedInstance] twitterParams] accessSecret];
-  
-  if (userTwitterToken == nil || userTwitterSecret == nil) {
+  TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+  TWTRSession *lastSession = store.session;
+  if (store == nil || lastSession == nil) {
+    if ([[[PDUser sharedInstance] twitterParams] accessToken] != nil && [[[PDUser sharedInstance] twitterParams] accessSecret] != nil) {
+      NSString *authToken = [[[PDUser sharedInstance] twitterParams] accessToken];
+      NSString *authSecret = [[[PDUser sharedInstance] twitterParams] accessSecret];
+      if (authToken.length > 0 && authSecret.length > 0) {
+        [store saveSessionWithAuthToken:authToken authTokenSecret:authSecret completion:^(id<TWTRAuthSession>  _Nullable session, NSError * _Nullable error) {
+          PDLog(@"Saved Session");
+          completion(YES,nil);
+        }];
+      } else {
+        completion(NO, nil);
+      }
+    }
+  } else if (lastSession.authToken && lastSession.authTokenSecret) {
+    completion(YES, nil);
+  } else {
     completion(NO, nil);
-    return;
   }
-  
-  _twitterAPI = [STTwitterAPI twitterAPIWithOAuthConsumerKey:twConsumerKey
-                                              consumerSecret:twConsumerSecret
-                                                  oauthToken:userTwitterToken
-                                            oauthTokenSecret:userTwitterSecret];
-  if (!_twitterAPI) {
-    completion(NO,nil);
-    return;
-  }
-  [_twitterAPI verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
-    completion(YES,nil);
-  } errorBlock:^(NSError *error) {
-    completion(NO,error);
-  }];
-}
-
-- (void) userCancelledTwitterLogin {
-  NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  @"User Cancelled Login", NSLocalizedDescriptionKey,
-                                  nil];
-  NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
-                                                 code:PDErrorCodeFBPermissions
-                                             userInfo:userDictionary];
-  self.endError(endError);
-}
-- (void) twitterLoginSuccessfulToken:(NSString *)token oauthVerifier:(NSString *)verifier {
-  [self setOAuthToken:token oauthVerifier:verifier];
 }
 
 #pragma mark - Instagram -

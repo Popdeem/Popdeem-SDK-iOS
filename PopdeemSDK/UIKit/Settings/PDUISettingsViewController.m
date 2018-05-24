@@ -22,6 +22,7 @@
 #import "PDUILogoutTableViewCell.h"
 #import "PDUserAPIService.h"
 #import "PDCustomer.h"
+#import <TwitterKit/TWTRKit.h>
 
 #define kSocialNib @"SocialNib"
 #define kLogoutNib @"LogoutNib"
@@ -376,7 +377,11 @@
 	UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		PDSocialAPIService *socialService = [[PDSocialAPIService alloc] init];
 		[socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
-			
+      if (!err) {
+        TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+        NSString *userID = store.session.userID;
+        [store logOutUserID:userID];
+      }
 		}];
 		AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
 																													ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
@@ -657,6 +662,11 @@
   if ([account isEqualToString:@"twitter"]) {
     PDSocialAPIService *twService = [[PDSocialAPIService alloc] init];
     [twService disconnectTwitterAccountWithCompletion:^(NSError *err){
+      if (!err) {
+        TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
+        NSString *userID = store.session.userID;
+        [store logOutUserID:userID];
+      }
       PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
       dispatch_async(dispatch_get_main_queue(), ^{
         [cell.socialSwitch setOn:NO];
