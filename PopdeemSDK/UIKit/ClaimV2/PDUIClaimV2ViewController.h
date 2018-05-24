@@ -11,12 +11,14 @@
 #import "TOCropViewController/TOCropViewController.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
+@class PDUIHomeViewController;
 
 @interface PDUIClaimV2ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, TOCropViewControllerDelegate, FBSDKSharingDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) UILabel *infoLabel;
+@property (nonatomic, retain) PDUIHomeViewController *homeController;
 
 @property (nonatomic, assign) PDReward *reward;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *rewardView;
@@ -42,6 +44,9 @@
 - (void) facebookToggled:(BOOL)on;
 - (void) twitterToggled:(BOOL)on;
 - (void) instagramToggled:(BOOL)on;
+- (void) facebookShared;
+- (void) facebookFailed;
+- (void) facebookCancelled;
 
 
 @end

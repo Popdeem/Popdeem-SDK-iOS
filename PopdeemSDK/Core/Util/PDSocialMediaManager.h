@@ -60,9 +60,6 @@
 
 - (void) checkFacebookTokenIsValid:(void (^)(BOOL valid))completion;
 
-- (void) facebookRequestPublishPermissions:(void (^)(void))success
-                                   failure:(void (^)(NSError *err))failure;
-
 - (void) loginWithTwitter:(void (^)(void))success
                   failure:(void (^)(NSError *error))failure;
 

@@ -9,13 +9,14 @@
 #import "PDUIFacebookShareViewModel.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "PDReward.h"
+#import "PDUIClaimV2ViewController.h"
 
 @interface PDUIFacebookShareViewController : UIViewController <UIScrollViewDelegate, UIAlertViewDelegate, FBSDKSharingDelegate>
 
 @property (nonatomic,retain) UIView *backingView;
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) PDUIFacebookShareViewModel *viewModel;
-@property (nonatomic, assign) UIViewController *parent;
+@property (nonatomic, assign) PDUIClaimV2ViewController *parent;
 @property (nonatomic, retain) UIView *cardView;
 @property (nonatomic, retain) UIPageViewController *pageViewController;
 @property (nonatomic,retain) UIView *firstView;
@@ -44,6 +45,6 @@
 
 @property (nonatomic, assign) PDReward *reward;
 
-- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;
+- (instancetype) initForParent:(PDUIClaimV2ViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;
 
 @end

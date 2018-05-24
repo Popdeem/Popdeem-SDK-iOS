@@ -127,7 +127,7 @@
 			[self connectRead];
     break;
 		case PDFacebookLoginTypePublish:
-			[self connectPublish];
+			[self connectRead];
 		break;
 		default:
     break;
@@ -191,56 +191,9 @@
 	}];
 }
 
-- (void) connectPublish {
-	FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-	[loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-		if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			connected = YES;
-			[[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-			[self dismissViewControllerAnimated:YES completion:^{
-				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
-			}];
-		} else {
-			UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions"
-																											 message:@"You must grant publish permissions in order to make this action"
-																											delegate:self
-																						 cancelButtonTitle:@"OK"
-																						 otherButtonTitles:nil];
-      _success = NO;
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [noperm show];
-      });
-			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
-		}
-	}];
-}
-
-- (void) connect {
-	FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-	[loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-		if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			connected = YES;
-			[[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-			[self dismissViewControllerAnimated:YES completion:^{
-				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
-			}];
-		} else {
-			UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions"
-																											 message:@"You must grant publish permissions in order to make this action"
-																											delegate:self
-																						 cancelButtonTitle:@"OK"
-																						 otherButtonTitles:nil];
-      _success = NO;
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [noperm show];
-      });
-			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
-		}
-	}];
-}
-
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	[self dismissViewControllerAnimated:YES completion:^{
+	__weak typeof(self) weakSelf = self;
+  [self dismissViewControllerAnimated:YES completion:^{
     if (self.viewModel.loginType == PDFacebookLoginTypeRead) {
       if (_success) {
         [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];

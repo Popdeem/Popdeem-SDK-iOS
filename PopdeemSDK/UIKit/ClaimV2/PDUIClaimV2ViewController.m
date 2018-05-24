@@ -27,6 +27,10 @@
 #import "PDUIClaimInfoTableViewCell.h"
 #import "PDUIInstagramShareViewController.h"
 #import "PDUIFacebookShareViewController.h"
+#import "PDUISelectNetworkViewController.h"
+#import "PDUIHomeViewController.h"
+#import "PDUIPostScanViewController.h"
+#import "PDLocationValidator.h"
 
 @import Photos;
 
@@ -39,13 +43,15 @@
 #define TwitterCellIndexPath [NSIndexPath indexPathForRow:2 inSection:1]
 #define InstagramCellIndexPath [NSIndexPath indexPathForRow:3 inSection:1]
 
-@interface PDUIClaimV2ViewController ()
+@interface PDUIClaimV2ViewController () {
+    PDLocation *_location;
+}
 
 @property (nonatomic, retain) UIView *scanSectionView;
 @property (nonatomic, retain) UIView *shareSectionView;
 @property (nonatomic, strong) PDUIModalLoadingView *loadingView;
 @property (nonatomic, retain) TOCropViewController *cropViewController;
-
+@property (nonatomic, strong) PDLocationValidator *locationValidator;
 
 @end
 
@@ -99,6 +105,9 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade) name:PDUserLinkedToInstagram object:nil];
+    
     _scanSectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     UILabel *scanTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width- 40, 30)];
     [scanTitleLabel setText:translationForKey(@"popdeem.claim.scanTitle", @"SCAN")];
@@ -116,7 +125,7 @@
     
     _shareSectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     UILabel *shareTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 30)];
-    [shareTitleLabel setText:translationForKey(@"popdeem.claim.shareTitle", @"OR, SHARE NOW")];
+    [shareTitleLabel setText:translationForKey(@"popdeem.claim.shareTitle", @"OR, CHECK-IN NOW")];
     [shareTitleLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
     [shareTitleLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
     [shareTitleLabel sizeToFit];
@@ -277,11 +286,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            [self scanForAlreadyShared];
+        }
+    }
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             [self showPhotoActionSheet];
         }
     }
+}
+
+- (void) scanForAlreadyShared {
+    PDUISelectNetworkViewController *selNet = [[PDUISelectNetworkViewController alloc] initWithMediaTypes:_reward.socialMediaTypes andReward:_reward brand:nil];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationController pushViewController:selNet animated:YES];
 }
 
 - (void) styleNavbar {
@@ -577,10 +597,11 @@
 }
 
 - (void) twitterLoginFailure {
+  __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         PDLogError(@"Twitter didnt log in");
-        _willTweet = NO;
-        [_loadingView hideAnimated:YES];
+        weakSelf.willTweet = NO;
+        [weakSelf.loadingView hideAnimated:YES];
         PDUISocialClaimTableViewCell *twitterCell = [self twitterCell];
         if (twitterCell) {
             [twitterCell.socialSwitch setOn:NO];
@@ -897,6 +918,21 @@
     return;
 }
 
+- (void) instagramVerifySuccess {
+    self.homeController.didClaim = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) instagramVerifyFailure {
+    self.homeController.didClaim = NO;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) instagramVerifyNoAttempt {
+    self.homeController.didClaim = NO;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 # pragma mark - Facebook Sharing -
 
 - (void) shareOnFacebook {
@@ -915,7 +951,7 @@
         return;
     }
     
-    PDUIFacebookShareViewController *isv = [[PDUIFacebookShareViewController alloc] initForParent:self.navigationController withMessage:@"" image:_userImage imageUrlString:_imageURLString];
+    PDUIFacebookShareViewController *isv = [[PDUIFacebookShareViewController alloc] initForParent:self withMessage:@"" image:_userImage imageUrlString:_imageURLString];
     self.definesPresentationContext = YES;
     isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
     isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -924,6 +960,19 @@
     [self presentViewController:isv animated:YES completion:^(void){}];
     [_continueButton setUserInteractionEnabled:YES];
     return;
+}
+
+- (void) facebookShared {
+    PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:FACEBOOK_NETWORK];
+    [self.navigationController pushViewController:scan animated:NO];
+}
+
+- (void) facebookFailed; {
+    PDLog(@"Facebook Sharing Failed");
+}
+
+- (void) facebookCancelled {
+    PDLog(@"Facebook Sharing Cancelled");
 }
 
 @end

@@ -131,27 +131,6 @@
 	[PDUser resetSharedInstance];
 }
 
-- (void) facebookRequestPublishPermissions:(void (^)(void))success
-                                   failure:(void (^)(NSError *err))failure {
-  FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
-  
-  [lm logInWithPublishPermissions:@[@"publish_actions"] fromViewController:_holderViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-    if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-      [[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-      success();
-    } else {
-      NSDictionary *userDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      @"Necessary permissions were not granted", NSLocalizedDescriptionKey,
-                                      error, NSUnderlyingErrorKey,
-                                      nil];
-      NSError *endError = [[NSError alloc] initWithDomain:kPopdeemErrorDomain
-                                                     code:PDErrorCodeFBPermissions
-                                                 userInfo:userDictionary];
-      failure(endError);
-    }
-  }];
-}
-
 - (BOOL) isLoggedInWithFacebook {
   return [FBSDKAccessToken currentAccessToken] != nil;
 }
@@ -310,7 +289,7 @@
 - (void) chooseAccount:(void (^)(ACAccount *account))success failure:(void (^)(NSError *error))failure {
   
   ACAccountType *accountType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-  
+  __weak typeof(self) weakSelf = self;
   ACAccountStoreRequestAccessCompletionHandler accountStoreRequestCompletionHandler = ^(BOOL granted, NSError *error) {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
       
@@ -326,7 +305,7 @@
         return;
       }
       
-      self.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
+      weakSelf.iOSAccounts = [_accountStore accountsWithAccountType:accountType];
       
       //            if([_iOSAccounts count] == 1) {
       //                ACAccount *account = [_iOSAccounts lastObject];
@@ -337,12 +316,12 @@
         failure(nil);
       }]];
       ac.view.tintColor = [UIColor blueColor];
-      for (ACAccount *account in _iOSAccounts) {
+      for (ACAccount *account in weakSelf.iOSAccounts) {
         [ac addAction:[UIAlertAction actionWithTitle:account.username style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
           success(account);
         }]];
       }
-      [_holderViewController presentViewController:ac animated:YES completion:nil];
+      [weakSelf.holderViewController presentViewController:ac animated:YES completion:nil];
       ac.view.tintColor = [UIColor blackColor];
       //            }
     }];

@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "PDSDKCustomIOS7AlertView.h"
+#import <UserNotifications/UserNotifications.h>
 
-@interface PDNotificationHandler : NSObject <PDSDKCustomIOS7AlertViewDelegate>
+@interface PDNotificationHandler : NSObject <PDSDKCustomIOS7AlertViewDelegate, UNUserNotificationCenterDelegate>
 + (instancetype) sharedInstance;
 - (void) registerForPushNotificationsApplication:(UIApplication *)application;
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;

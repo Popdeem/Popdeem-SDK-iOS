@@ -223,22 +223,24 @@ CGFloat _cardX,_cardY;
 	callback = [PopdeemSDK instagramCallback];
 	
 	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
-	
-	
+  
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];
 	self.definesPresentationContext = YES;
 	_webViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	
-	NSHTTPCookie *cookie;
-	NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-	for (cookie in [storage cookies])
-	{
-		NSString* domainName = [cookie domain];
-		NSRange domainRange = [domainName rangeOfString:@"instagram.com"];
-		if(domainRange.length > 0) {
-			[storage deleteCookie:cookie];
-		}
-	}
+  NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+  [storage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+  
+//  NSHTTPCookie *cookie;
+//  NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//  for (cookie in [storage cookies])
+//  {
+//    NSString* domainName = [cookie domain];
+//    NSRange domainRange = [domainName rangeOfString:@"instagram.com"];
+//    if(domainRange.length > 0) {
+//      [storage deleteCookie:cookie];
+//    }
+//  }
 	
 	[self presentViewController:_webViewController animated:YES completion:^(void){
 		_webViewController.webView.delegate = self;
@@ -293,7 +295,6 @@ CGFloat _cardX,_cardY;
 	}
 	return YES;
 }
-
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
 	// [indicator stopAnimating];

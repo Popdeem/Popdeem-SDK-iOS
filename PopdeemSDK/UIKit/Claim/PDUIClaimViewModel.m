@@ -226,18 +226,19 @@
 		return;
 	}
 	PDSocialMediaManager *manager = [PDSocialMediaManager manager];
+  __weak typeof(self) weakSelf = self;
 	[manager isLoggedInWithInstagram:^(BOOL isLoggedIn){
 		if (!isLoggedIn) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController delegate:self connectMode:YES];
+				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:weakSelf.viewController.navigationController delegate:weakSelf connectMode:YES];
 				if (!instaVC) {
 					return;
 				}
-				_viewController.definesPresentationContext = YES;
+				weakSelf.viewController.definesPresentationContext = YES;
 				instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
 				instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 				[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-				[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
+				[weakSelf.viewController presentViewController:instaVC animated:YES completion:^(void){}];
 			});
 		}
 	}];
@@ -363,10 +364,6 @@
 }
 
 - (void) validateFacebookOptionsAndClaim {
-//    if (![[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-//        [self loginWithWritePerms];
-//        return;
-//    }
   if (_reward.forcedTag && !_hashtagValidated) {
     UIAlertView *hashAV = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.hashtagMissing.title", @"Oops!")
                                                      message:[NSString stringWithFormat:translationForKey(@"popdeem.claim.hashtagMissing.message", @"Looks like you have forgotten to add the required hashtag %@, please add this to your message before posting to Facebook"),_reward.instagramForcedTag]

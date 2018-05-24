@@ -43,7 +43,7 @@
     CGFloat _cardWidth;
 }
 
-- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString *)urlString{
+- (instancetype) initForParent:(PDUIClaimV2ViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString *)urlString{
     if (self = [super init]) {
         _parent = parent;
         _message = message;
@@ -97,10 +97,10 @@
     [_cardView addSubview:_scrollView];
     
     _secondView = [[UIView alloc] initWithFrame:CGRectMake(cardWidth, 0, cardWidth, cardHeight)];
-    [_scrollView addSubview:_secondView];
+//    [_scrollView addSubview:_secondView];
     
     _thirdView = [[UIView alloc] initWithFrame:CGRectMake(2*cardWidth, 0, cardWidth, cardHeight)];
-    [_scrollView addSubview:_thirdView];
+//    [_scrollView addSubview:_thirdView];
     
     _viewTwoLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
     [_viewTwoLabelOne setText:_viewModel.viewTwoLabelOneText];
@@ -186,16 +186,15 @@
     
     _viewOneActionButton = [[UIButton alloc] initWithFrame:_viewTwoActionButton.frame];
     [_viewOneActionButton setBackgroundColor:[UIColor whiteColor]];
-    [_viewOneActionButton.titleLabel setFont:_viewModel.viewOneActionButtonFont];
-    [_viewOneActionButton setTitleColor:_viewModel.viewOneActionButtonTextColor forState:UIControlStateNormal];
+    [_viewOneActionButton.titleLabel setFont:_viewModel.viewThreeActionButtonFont];
+    [_viewOneActionButton setTitleColor:_viewModel.viewThreeActionButtonTextColor forState:UIControlStateNormal];
     [_viewOneActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [_viewOneActionButton setTitle:_viewModel.viewOneActionButtonText forState:UIControlStateNormal];
+    [_viewOneActionButton setTitle:_viewModel.viewThreeActionButtonText forState:UIControlStateNormal];
     [_viewOneActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [_viewOneActionButton setTag:1];
-    [_viewOneActionButton addTarget:self action:@selector(scroll) forControlEvents:UIControlEventTouchUpInside];
+    [_viewOneActionButton addTarget:self action:@selector(shareOnFacebook) forControlEvents:UIControlEventTouchUpInside];
     [_firstView addSubview:_viewOneActionButton];
-    _viewOneActionButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
-    _viewOneActionButton.layer.borderWidth = 1.0;
+    [_viewOneActionButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
     
     
     currentY = 0;
@@ -351,14 +350,33 @@
 
 - (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
     NSLog(@"Facebook Sharing Complete");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:NO completion:^(void){
+            [weakSelf.parent facebookShared];
+        }];
+    });
 }
 
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+- (void) sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
     NSLog(@"Facebook Sharing Failed");
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES completion:^(void){
+            [weakSelf.parent facebookFailed];
+        }];
+    });
 }
 
 - (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
     NSLog(@"Facebook Sharing User Cancelled");
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES completion:^(void){
+            [weakSelf.parent facebookCancelled];
+        }];
+    });
 }
 
 @end

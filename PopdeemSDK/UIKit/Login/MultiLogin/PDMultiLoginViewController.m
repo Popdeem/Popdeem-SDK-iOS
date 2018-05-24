@@ -177,7 +177,7 @@
 
 - (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
 	PDUserAPIService *service = [[PDUserAPIService alloc] init];
-	
+    __weak typeof(self) weakSelf = self;
 	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
 		[self addUserToUserDefaults:user];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
@@ -186,16 +186,17 @@
         });
 	} failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_loadingView hideAnimated:YES];
+      [weakSelf.loadingView hideAnimated:YES];
     });
 	}];
 
 }
 - (IBAction)cancelButtonPressed:(id)sender {
+  __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
 		});
-	[self dismissAction:sender];
+	[weakSelf dismissAction:sender];
 }
 
 - (IBAction) dismissAction:(id)sender {
@@ -261,7 +262,7 @@
         [_loadingView hideAnimated:YES];
     });
     [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                             object:nil];
     }];
@@ -280,7 +281,7 @@
         [_loadingView hideAnimated:YES];
     });
     [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                             object:nil];
     }];

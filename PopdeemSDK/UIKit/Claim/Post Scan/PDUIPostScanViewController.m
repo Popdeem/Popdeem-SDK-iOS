@@ -17,6 +17,7 @@
 #import "DGActivityIndicatorView.h"
 #import "PDBackgroundScan.h"
 #import "PDUIClaimViewController.h"
+#import "PDUIClaimV2ViewController.h"
 
 @interface PDUIPostScanViewController () {
   CFAbsoluteTime scanStartTime;
@@ -366,7 +367,7 @@
 
 - (IBAction)backToRewardButtonPressed:(id)sender {
   for (UIViewController *controller in self.navigationController.viewControllers) {
-    if ([controller isKindOfClass:[PDUIClaimViewController class]]) {
+    if ([controller isKindOfClass:[PDUIClaimV2ViewController class]] || [controller isKindOfClass:[PDUIClaimViewController class]]) {
       [self.navigationController popToViewController:controller
                                             animated:YES];
       break;

@@ -98,25 +98,26 @@
     }];
     return;
   }
+  __weak typeof(self) weakSelf = self;
   [_locationValidator validateLocationForReward:_reward completion:^(BOOL validated, PDLocation *closestLocation){
     _location = closestLocation;
-    _viewModel.location = closestLocation;
-    if (_loadingView) {
-      [_loadingView hideAnimated:YES];
+    weakSelf.viewModel.location = closestLocation;
+    if (weakSelf.loadingView) {
+      [weakSelf.loadingView hideAnimated:YES];
     }
     if (validated) {
-      _viewModel.locationVerified = YES;
-      [_locationFailedView setHidden:YES];
+      weakSelf.viewModel.locationVerified = YES;
+      [weakSelf.locationFailedView setHidden:YES];
       [UIView animateWithDuration:1.0 animations:^{
-        self.locationVerificationViewHeightConstraint.constant = 0;
-				[self.locationVerificationView setHidden:YES];
+        weakSelf.locationVerificationViewHeightConstraint.constant = 0;
+				[weakSelf.locationVerificationView setHidden:YES];
       }];
     } else {
-      _viewModel.locationVerified = NO;
-      [_locationFailedView setHidden:NO];
-      [self.view bringSubviewToFront:_locationFailedView];
+      weakSelf.viewModel.locationVerified = NO;
+      [weakSelf.locationFailedView setHidden:NO];
+      [weakSelf.view bringSubviewToFront:weakSelf.locationFailedView];
       [UIView animateWithDuration:1.0 animations:^{
-        self.locationVerificationViewHeightConstraint.constant = 50;
+        weakSelf.locationVerificationViewHeightConstraint.constant = 50;
       }];
     }
   }];
@@ -533,7 +534,6 @@
 	[self beginBackgroundUpdateTask];
 	[self.viewModel makeClaim];
 	PDLog(@"Background Task Started");
-	
 }
 
 - (void) beginBackgroundUpdateTask {

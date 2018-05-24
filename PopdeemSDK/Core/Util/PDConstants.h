@@ -79,6 +79,7 @@ extern NSString *const InstagramPostMade;
 extern NSString *const NotificationReceived;
 extern NSString *const DidFetchBrands;
 extern NSString *const DirectToSocialHome;
+extern NSString *const PDUserLinkedToFacebook;
     //
 //End NSNotificationCenter Strings
 //

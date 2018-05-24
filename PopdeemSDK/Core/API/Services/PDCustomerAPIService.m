@@ -48,13 +48,17 @@
                                                            options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
                                                              error:&error];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [PDCustomer initFromAPI:jsonString];
+          [session invalidateAndCancel];
+          dispatch_async(dispatch_get_main_queue(), ^{
+              completion(nil);
+          });
+      } else {
+          [session invalidateAndCancel];
+          dispatch_async(dispatch_get_main_queue(), ^{
+              completion(nil);
+          });
       }
-      
-      
-      [session invalidateAndCancel];
-      dispatch_async(dispatch_get_main_queue(), ^{
-        completion(nil);
-      });
     } else {
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{

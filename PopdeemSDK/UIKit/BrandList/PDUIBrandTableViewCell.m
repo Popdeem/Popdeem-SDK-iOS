@@ -98,10 +98,10 @@
 			}
 		} else {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[self.headerImageView setHidden:NO];
-				self.headerImageView.image = PopdeemImage(PDThemeImageDefaultBrand);
-				_shimmeringView.shimmering = NO;
-				[_shimmeringView removeFromSuperview];
+				[weakSelf.headerImageView setHidden:NO];
+				weakSelf.headerImageView.image = PopdeemImage(PDThemeImageDefaultBrand);
+				weakSelf.shimmeringView.shimmering = NO;
+				[weakSelf.shimmeringView removeFromSuperview];
 			});
 		}
 	}];
