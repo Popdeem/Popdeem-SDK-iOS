@@ -446,7 +446,7 @@
         exp = [NSString stringWithFormat:translationForKey(@"popdeem.reward.expiry.weeks", @"⌚︎ %li weeks left to claim"),(long)intervalWeeks];
       }
     } else if (intervalDays < 7 && intervalHours > 24) {
-      if (intervalDays == 1) {
+      if (intervalDays > 1) {
         exp = [NSString stringWithFormat:translationForKey(@"popdeem.reward.expiry.days", @"⌚︎ %li days left to claim"),(long)intervalDays];
       } else {
         exp = translationForKey(@"popdeem.reward.expiry.day", @"⌚︎ 1 day left to claim");
