@@ -376,11 +376,15 @@
 }
 
 - (void) didClaimRewardId:(NSInteger)rewardId {
-  
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.claim.reward.claimed", @"Reward Claimed!") message:translationForKey(@"popdeem.claim.reward.success", @"You can view your reward in your wallet") delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-  [av setTag:9];
-  [av show];
-  
+  for (UIViewController *controller in self.navigationController.viewControllers) {
+    if ([controller isKindOfClass:[PDUIHomeViewController class]]) {
+      PDUIHomeViewController *cont = (PDUIHomeViewController*)controller;
+      [cont setDidClaim:YES];
+      [self.navigationController popToViewController:controller
+                                            animated:YES];
+      break;
+    }
+  }
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

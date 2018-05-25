@@ -126,8 +126,6 @@
 }
 
 - (void) pullModel {
-	[_actionButton.layer setBorderColor:_viewModel.buttonBorderColor.CGColor];
-	_actionButton.layer.borderWidth = 1.0;
 	[_actionButton setBackgroundColor:_viewModel.buttonColor];
 	[_actionButton.titleLabel setFont:_viewModel.buttonLabelFont];
 	[_actionButton setTitle:_viewModel.buttonText forState:UIControlStateNormal];
@@ -146,10 +144,11 @@
 	[_viewModel setIsLoading:YES];
 	[self pullModel];
 	[self.view setUserInteractionEnabled:NO];
+  __weak typeof(self) weakSelf = self;
   if ([[PDUser sharedInstance] isRegistered]) {
     [manager loginWithTwitter:^(void){
       //Twitter Connected Successfully
-      _valid = YES;
+      weakSelf.valid = YES;
       PDLog(@"Twitter Logged in");
       connected = YES;
       [self dismiss];

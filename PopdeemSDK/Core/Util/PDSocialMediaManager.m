@@ -133,7 +133,7 @@
 }
 
 - (BOOL) isLoggedInWithFacebook {
-  return [FBSDKAccessToken currentAccessToken] != nil;
+  return [FBSDKAccessToken currentAccessToken] != nil && [[[PDUser sharedInstance] facebookParams] accessToken].length > 0;
 }
 
 - (BOOL) facebookTokenIsValid {
@@ -281,16 +281,18 @@
         [store saveSessionWithAuthToken:authToken authTokenSecret:authSecret completion:^(id<TWTRAuthSession>  _Nullable session, NSError * _Nullable error) {
           PDLog(@"Saved Session");
           completion(YES,nil);
+          return;
         }];
       } else {
         completion(NO, nil);
+        return;
       }
     }
   } else if (lastSession.authToken && lastSession.authTokenSecret) {
     completion(YES, nil);
-  } else {
-    completion(NO, nil);
+    return;
   }
+  completion(NO, nil);
 }
 
 #pragma mark - Instagram -

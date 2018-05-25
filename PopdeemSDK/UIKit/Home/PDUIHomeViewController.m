@@ -345,7 +345,7 @@
     [self.tableView reloadInputViews];
     PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare reward:self.willClaimReward];
     
-    [self presentViewController:gViewController animated:YES completion:^{
+    [self presentViewController:gViewController animated:NO completion:^{
       
     }];
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
@@ -1142,7 +1142,7 @@
 - (void) showConnect {
   PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
   
-  [self presentViewController:gViewController animated:YES completion:^{
+  [self presentViewController:gViewController animated:NO completion:^{
     
   }];
 }

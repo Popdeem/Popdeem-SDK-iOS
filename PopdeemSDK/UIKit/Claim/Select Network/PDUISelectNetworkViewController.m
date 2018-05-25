@@ -18,7 +18,7 @@
 #import "PDUserAPIService.h"
 #import "PDBackgroundScan.h"
 #import "PDUIPostScanViewController.h"
-
+#import "PDUIModalLoadingView.h"
 
 @interface PDUISelectNetworkViewController ()
 
@@ -28,6 +28,8 @@
 
 @property (nonatomic) BOOL instagramLoggedIn;
 @property (nonatomic) BOOL twitterLoggedIn;
+@property (nonatomic) BOOL goneToScan;
+@property (nonatomic) PDUIModalLoadingView* loadingView;
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonHC;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonHC;
@@ -209,6 +211,8 @@
       [self connectTwitter];
       return;
     }
+    if (_goneToScan) return;
+    _goneToScan = YES;
     [self pushScanForNetwork:TWITTER_NETWORK];
   }];
 }
@@ -312,7 +316,6 @@
     [manager registerWithTwitter:^{
       //Twitter Connected Successfully
       PDLog(@"Twitter Logged in");
-      PDLog(@"Twitter Logged in");
       [self twitterLoginSuccess];
     } failure:^(NSError *error) {
       PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
@@ -324,6 +327,8 @@
 
 - (void) twitterLoginSuccess {
   [self.twitterButton setTitle:@"Scan Twitter" forState:UIControlStateNormal];
+  if (_goneToScan) return;
+  _goneToScan = YES;
   [self pushScanForNetwork:TWITTER_NETWORK];
 }
 
@@ -339,6 +344,9 @@
 
 #pragma mark - Facebook Login -
 - (void) connectFacebook {
+  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Logging in."];
+  [_loadingView showAnimated:YES];
+  __weak typeof(self) weakSelf = self;
   [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
                                                                      @"public_profile",
                                                                      @"email",
@@ -347,12 +355,14 @@
                                                registerWithPopdeem:YES
                                                            success:^(void) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [self facebookLoginSuccess];
+                                                               [weakSelf.loadingView hideAnimated:YES];
+                                                               [weakSelf facebookLoginSuccess];
                                                              });
                                                              
                                                            } failure:^(NSError *error) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [self facebookLoginFailure];
+                                                               [weakSelf.loadingView hideAnimated:YES];
+                                                               [weakSelf facebookLoginFailure];
                                                              });
                                                            }];
 }
