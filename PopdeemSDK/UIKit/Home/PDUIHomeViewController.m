@@ -451,6 +451,9 @@
 
 
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender {
+  if (self.tableView.contentOffset.y > self.tableView.tableHeaderView.frame.size.height) {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+  }
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
   [self.tableView reloadSectionIndexTitles];

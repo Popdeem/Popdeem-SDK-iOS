@@ -107,6 +107,13 @@
   [_titleLabel setNumberOfLines:0];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+//  //TESTING
+//  _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+//  _loadingView.titleLabel.text = @"Logging in.";
+//  [_loadingView showAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
