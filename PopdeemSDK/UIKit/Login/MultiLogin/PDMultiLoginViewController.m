@@ -222,11 +222,7 @@
   _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
   _loadingView.titleLabel.text = @"Logging in.";
   [_loadingView showAnimated:YES];
-  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
-                                                                     @"public_profile",
-                                                                     @"email",
-                                                                     @"user_birthday",
-                                                                     @"user_posts"]
+  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:FACEBOOK_PERMISSIONS
                                                registerWithPopdeem:YES
                                                            success:^(void) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{

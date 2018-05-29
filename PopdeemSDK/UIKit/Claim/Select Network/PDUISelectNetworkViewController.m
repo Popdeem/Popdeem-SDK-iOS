@@ -347,11 +347,7 @@
   _loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Logging in."];
   [_loadingView showAnimated:YES];
   __weak typeof(self) weakSelf = self;
-  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
-                                                                     @"public_profile",
-                                                                     @"email",
-                                                                     @"user_birthday",
-                                                                     @"user_posts"]
+  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:FACEBOOK_PERMISSIONS
                                                registerWithPopdeem:YES
                                                            success:^(void) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{

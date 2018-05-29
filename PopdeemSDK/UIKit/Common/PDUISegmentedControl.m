@@ -35,7 +35,7 @@
     //Set Text Attributes
     
     [self setSelectedSegmentIndex:0];
-    
+        
     return self;
   }
   return nil;
@@ -61,7 +61,7 @@
   
   // Use existing opacity as is
   [fullImage drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-  [selectedImage drawInRect:CGRectMake(0, 71, 2, 6)];
+  [selectedImage drawInRect:CGRectMake(0, 73, 2, 6)];
   
   UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
   
@@ -96,7 +96,7 @@
   CALayer *border = [CALayer layer];
   border.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
   
-  border.frame = CGRectMake(0, self.frame.size.height - 2.0f, self.frame.size.width, 1.0f);
+  border.frame = CGRectMake(0, self.frame.size.height-1.0f, self.frame.size.width, 1.0f);
   [self.layer addSublayer:border];
   
   if ([PDMessageStore unreadCount] > 0) {

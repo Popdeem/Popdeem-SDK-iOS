@@ -451,9 +451,7 @@
 
 
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender {
-  if (self.tableView.contentOffset.y > self.tableView.tableHeaderView.frame.size.height) {
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-  }
+  BOOL shouldNav = self.tableView.contentOffset.y > self.tableView.tableHeaderView.frame.size.height;
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
   [self.tableView reloadSectionIndexTitles];
@@ -469,6 +467,9 @@
       break;
     default:
       break;
+  }
+  if (shouldNav) {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
   }
 }
 
@@ -966,9 +967,7 @@
               walletSelectedIndex = indexPath;
               [wcell rotateArrowDown];
             }
-            [self.tableView beginUpdates];
-            [self.tableView endUpdates];
-            [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
+            [self.tableView reloadData];
             return;
           }
           if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {
