@@ -27,17 +27,17 @@
                                     <constraint firstAttribute="height" constant="60" id="gJX-Ub-RCt"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_popdeemArrowB.png" translatesAutoresizingMaskIntoConstraints="NO" id="XmF-Zz-AHg">
-                                <rect key="frame" x="337" y="35" width="30" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_arrow_g.png" translatesAutoresizingMaskIntoConstraints="NO" id="XmF-Zz-AHg">
+                                <rect key="frame" x="351" y="44" width="8" height="13"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="cys-7H-VAH"/>
-                                    <constraint firstAttribute="width" constant="30" id="vFF-Bv-XEB"/>
+                                    <constraint firstAttribute="height" constant="13" id="cys-7H-VAH"/>
+                                    <constraint firstAttribute="width" constant="8" id="vFF-Bv-XEB"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XmF-Zz-AHg" secondAttribute="trailing" constant="8" id="9E5-be-p8a"/>
+                            <constraint firstAttribute="trailing" secondItem="XmF-Zz-AHg" secondAttribute="trailing" constant="16" id="9E5-be-p8a"/>
                             <constraint firstAttribute="height" constant="100" id="Wa9-8a-7In"/>
                             <constraint firstItem="QPn-IU-qJh" firstAttribute="centerY" secondItem="ckg-06-iGZ" secondAttribute="centerY" id="c4L-ow-EBk"/>
                             <constraint firstItem="XmF-Zz-AHg" firstAttribute="centerY" secondItem="ckg-06-iGZ" secondAttribute="centerY" id="ksl-fP-wib"/>
@@ -81,6 +81,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="pduikit_popdeemArrowB.png" width="40" height="40"/>
+        <image name="pduikit_arrow_g.png" width="16" height="16"/>
     </resources>
 </document>

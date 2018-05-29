@@ -29,9 +29,14 @@
     float centerlineY = frame.size.height/2;
     _logoView = [[UIImageView alloc] init];
     [_logoView setFrame:CGRectMake(10, centerlineY-25, 50, 50)];
-    _logoView.layer.cornerRadius = 25;
     _logoView.clipsToBounds = YES;
-    [_logoView setContentMode:UIViewContentModeScaleAspectFill];
+    [_logoView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    if (message.imageUrl) {
+      message.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:message.imageUrl]]];
+    } else {
+      [_logoView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
+    }
     if (message.image) {
       [_logoView setImage:message.image];
     } else {

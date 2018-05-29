@@ -12,14 +12,9 @@
 @interface PDUISingleMessageViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *senderTagLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *senderLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *dateTagLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *dateLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleTagLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *titleLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *bodyTaglabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *bodyLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *topLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *bottomLabel;
+
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *headerView;
 
 - (instancetype) initFromNib;

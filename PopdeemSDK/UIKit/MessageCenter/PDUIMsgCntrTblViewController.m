@@ -142,6 +142,7 @@
   if ([_model.messages objectAtIndex:indexPath.row]) {
     PDUISingleMessageViewController *svc = [[PDUISingleMessageViewController alloc] initFromNib];
     [svc setMessage:_model.messages[indexPath.row]];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController pushViewController:svc animated:YES];
   }
 }

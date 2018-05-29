@@ -30,6 +30,7 @@
 		[self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
 		self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
 	}
+  [self.arrowImageView setImage:PopdeemImage(@"pduikit_arrow_g")];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -44,6 +45,7 @@
 }
 
 - (void) setupForReward:(PDReward*)reward {
+  [self.arrowImageView setImage:PopdeemImage(@"pduikit_arrow_g")];
 	if (_brandTheme) {
 		_primaryAppColor = PopdeemColorFromHex(_brandTheme.primaryAppColor);
 		_primaryFontColor = PopdeemColorFromHex(_brandTheme.primaryTextColor);

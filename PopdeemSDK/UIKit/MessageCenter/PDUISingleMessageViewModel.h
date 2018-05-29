@@ -23,6 +23,9 @@
 @property (nonatomic, strong) NSString *titleBodyString;
 @property (nonatomic, strong) NSString *bodyTagString;
 @property (nonatomic, strong) NSString *bodyBodyString;
+
+@property (nonatomic, strong) NSMutableAttributedString *topAttributedString;
+
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, strong) UIImage *image;
 

@@ -319,6 +319,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+  self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   [self.view setUserInteractionEnabled:YES];
     if (!firstLaunch) {
         [_model fetchRewards];
@@ -1114,6 +1115,7 @@
   if (!_messageCenter) {
     _messageCenter = [[PDUIMsgCntrTblViewController alloc] initFromNib];
   }
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   [self.navigationController pushViewController:_messageCenter animated:YES];
 }
 

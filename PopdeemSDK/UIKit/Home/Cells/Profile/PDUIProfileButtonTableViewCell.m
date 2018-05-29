@@ -19,6 +19,7 @@
   [self.label setFont:PopdeemFont(PDThemeFontPrimary, 16)];
   [self setSelectionStyle:UITableViewCellSelectionStyleNone];
   self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+  self.accessoryView = [[UIImageView alloc] initWithImage:PopdeemImage(@"pduikit_arrow_g")];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
