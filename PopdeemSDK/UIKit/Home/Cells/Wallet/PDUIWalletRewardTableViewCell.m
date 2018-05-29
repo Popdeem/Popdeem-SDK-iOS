@@ -86,7 +86,7 @@
         formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"d MMM"];
         stringDate = [formatter stringFromDate:creditDate];
-        labelLineTwo = [NSString stringWithFormat:@"%@ was added to your account on %@",reward.creditString, stringDate];
+        labelLineTwo = [NSString stringWithFormat:translationForKey(@"popdeem.wallet.creditString", @"%@ was added to your account on %@"),reward.creditString, stringDate];
         [self.arrowImageView setHidden:YES];
       } else {
         [self.arrowImageView setHidden:NO ];
@@ -147,7 +147,7 @@
   } else {
     [_infoLabel setFrame:infoLabelRect];
   }
-  [_infoLabel setNumberOfLines:1];
+  [_infoLabel setNumberOfLines:2];
   [_infoLabel setAttributedText:infoString];
   CGSize infoSize = [_infoLabel sizeThatFits:CGSizeMake(labelWidth, MAXFLOAT)];
   CGRect infoLabelFrame = _infoLabel.frame;
