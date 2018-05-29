@@ -177,8 +177,13 @@
     //Return 1
     NSString *titleKey = [NSString stringWithFormat:@"%@.title.%i",stringKey, 1];
     NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%i",stringKey, 1];
-    title = translationForKey(titleKey, @"You're Brilliant!");
-    body = translationForKey(bodyKey, @"Unlock new rewards and VIP offers as you move up in status.");
+    if (self.reward.creditString != nil) {
+      title = translationForKey(titleKey, @"You're Brilliant!");
+      body = [NSString stringWithFormat:translationForKey(bodyKey, @"%@ was added to your account."), self.reward.creditString];
+    } else {
+      title = translationForKey(titleKey, @"You're Brilliant!");
+      body = translationForKey(bodyKey, @"Unlock new rewards and VIP offers as you move up in status.");
+    }
     NSString *imageString = [NSString stringWithFormat:imageKey, 1];
     image = PopdeemImage(imageString);
   } else {
