@@ -33,10 +33,17 @@
 @property (nonatomic, retain) UIImage *addedPhoto;
 @property (nonatomic, retain) UIView *spoofView;
 
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationVerificationViewHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *verifyLocationLabel;
+
 @property (nonatomic) BOOL willFacebook;
 @property (nonatomic) BOOL willTweet;
 @property (nonatomic) BOOL willInstagram;
 @property (nonatomic) BOOL didGoToInstagram;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *locationFailedView;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationFailedViewHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *refreshLocationButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *locationVerificationView;
 
 - (instancetype) initFromNib;
 //- (instancetype) initWithReward:(PDReward*)reward;
