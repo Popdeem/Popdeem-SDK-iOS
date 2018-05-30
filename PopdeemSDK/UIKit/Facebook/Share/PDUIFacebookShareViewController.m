@@ -259,6 +259,12 @@
 }
 
 - (void) shareOnFacebook {
+  BOOL isInstalled = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]];
+  
+//  if (!isInstalled) {
+//    //What to do?
+//    return;
+//  }
     FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
     dialog.fromViewController = self;
     if (_image != nil) {
@@ -272,13 +278,7 @@
         }
         dialog.shareContent = content;
     }
-    dialog.mode = FBSDKShareDialogModeShareSheet;
-    if (![dialog canShow]) {
-        dialog.mode = FBSDKShareDialogModeNative;
-    }
-    if (![dialog canShow]) {
-        dialog.mode = FBSDKShareDialogModeBrowser;
-    }
+    dialog.mode = FBSDKShareDialogModeWeb;
     dialog.delegate = self;
     [dialog show];
 }
