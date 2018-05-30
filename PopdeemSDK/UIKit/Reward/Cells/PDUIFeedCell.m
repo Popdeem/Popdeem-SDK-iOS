@@ -38,7 +38,7 @@
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, frame.size.width-(left + 20), 20)];
     NSString *userName;
-    if (![feedItem.userFirstName isKindOfClass:[NSNull class]] && ![feedItem.userLastName isKindOfClass:[NSNull class]]) {
+    if (feedItem.userFirstName != nil && feedItem.userLastName != nil) {
       userName = [NSString stringWithFormat:@"%@ %@",feedItem.userFirstName,feedItem.userLastName];
     } else if (![feedItem.userFirstName isKindOfClass:[NSNull class]]) {
       userName = [NSString stringWithFormat:@"%@",feedItem.userFirstName];
