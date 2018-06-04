@@ -76,7 +76,11 @@
   //TODO use new global hashtag when JD is done.
   NSString *topLabelText = @"";
   if (_mediaTypes.count > 1) {
-    topLabelText = [NSString stringWithFormat:@"Choose what network you shared your experience with %@ to claim your reward:", _reward.forcedTag];
+    if (_reward.action == PDRewardActionPhoto) {
+      topLabelText = [NSString stringWithFormat:@"Choose which network you shared your photo with %@ to claim your reward:", _reward.forcedTag];
+    } else {
+      topLabelText = [NSString stringWithFormat:@"Choose which network you shared your experience with %@ to claim your reward:", _reward.forcedTag];
+    }
   } else {
     if ([_mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
       topLabelText = [NSString stringWithFormat:@"Scan Facebook for a story with %@ to claim your reward:", _reward.forcedTag];

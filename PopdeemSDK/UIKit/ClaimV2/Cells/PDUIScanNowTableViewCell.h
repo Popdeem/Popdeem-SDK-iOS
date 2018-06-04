@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class PDReward;
+
 @interface PDUIScanNowTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (nonatomic, assign) PDReward *reward;
 
 @end

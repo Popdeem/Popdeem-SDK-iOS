@@ -265,8 +265,8 @@
     if (indexPath.row == 0) {
       //Scan Now Table View Cell
       PDUIScanNowTableViewCell *scanCell = [[self tableView] dequeueReusableCellWithIdentifier:kPDUIScanNowTableViewCell];
+      [scanCell setReward:self.reward];
       return scanCell;
-      
     }
   } else if (indexPath.section == 1) {
     if (indexPath.row == 0) {
@@ -306,7 +306,11 @@
       return instagram;
     } else if (indexPath.row == 4) {
       PDUIClaimInfoTableViewCell *info = [[self tableView] dequeueReusableCellWithIdentifier:kPDUIClaimInfoTableViewCell];
-      [info.infoLabel setText:[NSString stringWithFormat:@"Your check-in or photo must contain %@ in the caption to redeem this reward.", _reward.forcedTag]];
+      if (_reward.action == PDRewardActionPhoto) {
+        [info.infoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.photo", @"Your photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
+      } else {
+        [info.infoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.checkin", @"Your check-in or photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
+      }
       return info;
     }
   }
