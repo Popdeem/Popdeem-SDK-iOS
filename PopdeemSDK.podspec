@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.frameworks = "CoreLocation", "UIKit", "Security", "Social", "SystemConfiguration"
+  s.frameworks = "CoreLocation", "UIKit", "Security", "SystemConfiguration"
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.requires_arc = true
@@ -51,7 +51,7 @@ Pod::Spec.new do |s|
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"
-        core.dependency "TOCropViewController"
+    core.dependency "TOCropViewController"
     core.dependency "Realm"
   end
 
