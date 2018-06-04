@@ -44,6 +44,7 @@
 @property (nonatomic, retain) NSString *imageURLString;
 
 @property (nonatomic, assign) PDReward *reward;
+@property (nonatomic) BOOL facebookInstalled;
 
 - (instancetype) initForParent:(PDUIClaimV2ViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;
 

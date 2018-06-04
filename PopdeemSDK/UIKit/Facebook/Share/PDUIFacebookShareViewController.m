@@ -49,6 +49,7 @@
     _message = message;
     _image = image;
     _imageURLString = urlString;
+    _facebookInstalled = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]];
     _viewModel = [[PDUIFacebookShareViewModel alloc] initWithController:self];
     return self;
   }
@@ -85,7 +86,7 @@
   [self.view addSubview:_cardView];
   
   _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
-  [_scrollView setContentSize:CGSizeMake(3*cardWidth, cardHeight)];
+  [_scrollView setContentSize:CGSizeMake(cardWidth, cardHeight)];
   [_scrollView setBounces:NO];
   [_scrollView setDelegate:self];
   [_scrollView setShowsVerticalScrollIndicator:NO];
@@ -95,80 +96,25 @@
   [_scrollView setUserInteractionEnabled:YES];
   [_cardView addSubview:_scrollView];
   
-  _secondView = [[UIView alloc] initWithFrame:CGRectMake(cardWidth, 0, cardWidth, cardHeight)];
-  //    [_scrollView addSubview:_secondView];
-  
-  _thirdView = [[UIView alloc] initWithFrame:CGRectMake(2*cardWidth, 0, cardWidth, cardHeight)];
-  //    [_scrollView addSubview:_thirdView];
-  
-  _viewTwoLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
-  [_viewTwoLabelOne setText:_viewModel.viewTwoLabelOneText];
-  [_viewTwoLabelOne setFont:_viewModel.viewTwoLabelOneFont];
-  [_viewTwoLabelOne setTextColor:_viewModel.viewTwoLabelOneColor];
-  [_viewTwoLabelOne setNumberOfLines:4];
-  [_viewTwoLabelOne setTextAlignment:NSTextAlignmentCenter];
-  CGSize labelSize = [_viewTwoLabelOne sizeThatFits:_viewTwoLabelOne.bounds.size];
-  [_viewTwoLabelOne setFrame:CGRectMake(_viewTwoLabelOne.frame.origin.x, 40 , _viewTwoLabelOne.frame.size.width, labelSize.height)];
-  [_secondView addSubview:_viewTwoLabelOne];
-  currentY = 30 + labelSize.height;
-  
-  _viewTwoLabelTwo = [[UILabel alloc] initWithFrame:CGRectMake(20, currentY+30, _viewTwoLabelOne.frame.size.width, 70)];
-  [_viewTwoLabelTwo setText:_viewModel.viewTwoLabelTwoText];
-  [_viewTwoLabelTwo setFont:_viewModel.viewTwoLabelTwoFont];
-  [_viewTwoLabelTwo setTextColor:_viewModel.viewTwoLabelTwoColor];
-  [_viewTwoLabelTwo setNumberOfLines:4];
-  [_viewTwoLabelTwo setTextAlignment:NSTextAlignmentCenter];
-  labelSize = [_viewTwoLabelTwo sizeThatFits:_viewTwoLabelTwo.bounds.size];
-  [_viewTwoLabelTwo setFrame:CGRectMake(_viewTwoLabelTwo.frame.origin.x, currentY+30 , _viewTwoLabelTwo.frame.size.width, labelSize.height)];
-  [_secondView addSubview:_viewTwoLabelTwo];
-  
-  currentY += 30 + labelSize.height + 30;
-  
-  _viewTwoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, currentY, cardWidth-30, cardHeight*0.25)];
-  [_viewTwoImageView setImage:_viewModel.viewTwoImage];
-  [_viewTwoImageView setContentMode:UIViewContentModeScaleAspectFit];
-  _viewTwoImageView.backgroundColor = [UIColor clearColor];
-  _viewTwoImageView.clipsToBounds = YES;
-  [_secondView addSubview:_viewTwoImageView];
-  
-  currentY += _viewTwoImageView.frame.size.height;
-  
-  _viewTwoActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
-  [_viewTwoActionButton setBackgroundColor:[UIColor whiteColor]];
-  [_viewTwoActionButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
-  [_viewTwoActionButton.titleLabel setFont:_viewModel.viewTwoActionButtonFont];
-  [_viewTwoActionButton setTitle:_viewModel.viewTwoActionButtonText forState:UIControlStateNormal];
-  [_viewTwoActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-  [_viewTwoActionButton setTag:1];
-  [_viewTwoActionButton addTarget:self action:@selector(scroll) forControlEvents:UIControlEventTouchUpInside];
-  [_secondView addSubview:_viewTwoActionButton];
-  _viewTwoActionButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
-  _viewTwoActionButton.layer.borderWidth = 1.0;
-  
-  cardHeight = currentY + 30 + 40 + 20;
-  [_secondView setFrame:CGRectMake(cardWidth, 0, cardWidth, cardHeight)];
-  
-  CGFloat midY = cardHeight/2;
   _firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
   [_scrollView addSubview:_firstView];
   
-  currentY = 0;
   _viewOneLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
   [_viewOneLabelOne setText:_viewModel.viewOneLabelOneText];
   [_viewOneLabelOne setFont:_viewModel.viewOneLabelOneFont];
   [_viewOneLabelOne setTextColor:_viewModel.viewOneLabelOneColor];
-  [_viewOneLabelOne setNumberOfLines:4];
+  [_viewOneLabelOne setNumberOfLines:0];
   [_viewOneLabelOne setTextAlignment:NSTextAlignmentCenter];
-  labelSize = [_viewTwoLabelOne sizeThatFits:_viewTwoLabelOne.bounds.size];
+  CGSize labelSize = [_viewOneLabelOne sizeThatFits:_viewTwoLabelOne.bounds.size];
   [_viewOneLabelOne setFrame:CGRectMake(_viewOneLabelOne.frame.origin.x, currentY+30 , _viewOneLabelOne.frame.size.width, labelSize.height)];
   [_firstView addSubview:_viewOneLabelOne];
   currentY = 30 + labelSize.height;
-  
-  _viewOneLabelTwo = [[UILabel alloc] initWithFrame:_viewTwoLabelTwo.frame];
+
+  _viewOneLabelTwo = [[UILabel alloc] initWithFrame:CGRectMake(20, currentY, cardWidth-40, 70)];
   [_viewOneLabelTwo setText:_viewModel.viewOneLabelTwoText];
   [_viewOneLabelTwo setFont:_viewModel.viewOneLabelTwoFont];
   [_viewOneLabelTwo setTextColor:_viewModel.viewOneLabelTwoColor];
-  [_viewOneLabelTwo setNumberOfLines:4];
+  [_viewOneLabelTwo setNumberOfLines:0];
   [_viewOneLabelTwo setTextAlignment:NSTextAlignmentCenter];
   labelSize = [_viewOneLabelTwo sizeThatFits:_viewOneLabelTwo.bounds.size];
   [_viewOneLabelTwo setFrame:CGRectMake(_viewOneLabelTwo.frame.origin.x, currentY+30 , _viewOneLabelTwo.frame.size.width, labelSize.height)];
@@ -181,82 +127,42 @@
   _viewOneImageView.backgroundColor = [UIColor clearColor];
   _viewOneImageView.clipsToBounds = YES;
   [_firstView addSubview:_viewOneImageView];
-  currentY += _viewTwoImageView.frame.size.height;
+  currentY += _viewOneImageView.frame.size.height;
   
-  NSString *forcedTagString = (self.parent.reward.forcedTag) ? self.parent.reward.forcedTag : @"hashtag";
-  NSDictionary *attributes = @{
-                              NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12),
-                              NSForegroundColorAttributeName: [UIColor blackColor],
-                              NSBackgroundColorAttributeName: [UIColor colorWithRed:0.87 green:0.90 blue:0.96 alpha:1.00]
-                              };
-  NSMutableAttributedString *hashtagString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@ ",forcedTagString] attributes:attributes];
-  UILabel *hashLabel = [[UILabel alloc] init];
-  [hashLabel setAttributedText:hashtagString];
-  [hashLabel sizeToFit];
-  [hashLabel setFrame:CGRectMake(18, 22, hashLabel.frame.size.width, hashLabel.frame.size.height)];
-  hashLabel.layer.cornerRadius = 3.0f;
-  hashLabel.clipsToBounds = YES;
-  [_viewOneImageView addSubview:hashLabel];
+  if (_facebookInstalled) {
+    NSString *forcedTagString = (self.parent.reward.forcedTag) ? self.parent.reward.forcedTag : @"hashtag";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12),
+                                 NSForegroundColorAttributeName: [UIColor blackColor],
+                                 NSBackgroundColorAttributeName: [UIColor colorWithRed:0.87 green:0.90 blue:0.96 alpha:1.00]
+                                 };
+    NSMutableAttributedString *hashtagString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@ ",forcedTagString] attributes:attributes];
+    UILabel *hashLabel = [[UILabel alloc] init];
+    [hashLabel setAttributedText:hashtagString];
+    [hashLabel sizeToFit];
+    [hashLabel setFrame:CGRectMake(18, 38, hashLabel.frame.size.width, hashLabel.frame.size.height)];
+    hashLabel.layer.cornerRadius = 3.0f;
+    hashLabel.clipsToBounds = YES;
+    [_viewOneImageView addSubview:hashLabel];
+  }
   
-  _viewOneActionButton = [[UIButton alloc] initWithFrame:_viewTwoActionButton.frame];
+  _viewOneActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
   [_viewOneActionButton setBackgroundColor:[UIColor whiteColor]];
-  [_viewOneActionButton.titleLabel setFont:_viewModel.viewThreeActionButtonFont];
-  [_viewOneActionButton setTitleColor:_viewModel.viewThreeActionButtonTextColor forState:UIControlStateNormal];
+  [_viewOneActionButton.titleLabel setFont:_viewModel.viewOneActionButtonFont];
+  [_viewOneActionButton setTitleColor:_viewModel.viewOneActionButtonTextColor forState:UIControlStateNormal];
   [_viewOneActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-  [_viewOneActionButton setTitle:_viewModel.viewThreeActionButtonText forState:UIControlStateNormal];
+  [_viewOneActionButton setTitle:_viewModel.viewOneActionButtonText forState:UIControlStateNormal];
   [_viewOneActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
   [_viewOneActionButton setTag:1];
   [_viewOneActionButton addTarget:self action:@selector(shareOnFacebook) forControlEvents:UIControlEventTouchUpInside];
   [_firstView addSubview:_viewOneActionButton];
   [_viewOneActionButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
   
-  
-  currentY = 0;
-  
-  _viewThreeLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
-  [_viewThreeLabelOne setText:_viewModel.viewThreeLabelOneText];
-  [_viewThreeLabelOne setFont:_viewModel.viewThreeLabelOneFont];
-  [_viewThreeLabelOne setTextColor:_viewModel.viewThreeLabelOneColor];
-  [_viewThreeLabelOne setNumberOfLines:4];
-  [_viewThreeLabelOne setTextAlignment:NSTextAlignmentCenter];
-  labelSize = [_viewThreeLabelOne sizeThatFits:_viewThreeLabelOne.bounds.size];
-  [_viewThreeLabelOne setFrame:CGRectMake(_viewThreeLabelOne.frame.origin.x, 40 , _viewThreeLabelOne.frame.size.width, labelSize.height)];
-  [_thirdView addSubview:_viewThreeLabelOne];
-  currentY = 30 + labelSize.height;
-  
-  _viewThreeLabelTwo = [[UILabel alloc] initWithFrame:CGRectMake(20, currentY+30, _viewThreeLabelOne.frame.size.width, 70)];
-  [_viewThreeLabelTwo setText:_viewModel.viewThreeLabelTwoText];
-  [_viewThreeLabelTwo setFont:_viewModel.viewThreeLabelTwoFont];
-  [_viewThreeLabelTwo setTextColor:_viewModel.viewThreeLabelTwoColor];
-  [_viewThreeLabelTwo setNumberOfLines:4];
-  [_viewThreeLabelTwo setTextAlignment:NSTextAlignmentCenter];
-  labelSize = [_viewThreeLabelTwo sizeThatFits:_viewThreeLabelTwo.bounds.size];
-  [_viewThreeLabelTwo setFrame:CGRectMake(_viewThreeLabelTwo.frame.origin.x, currentY+30 , _viewThreeLabelTwo.frame.size.width, labelSize.height)];
-  [_thirdView addSubview:_viewThreeLabelTwo];
-  
-  currentY += 30 + labelSize.height + 30;
-  
-  _viewThreeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, currentY, cardWidth-20, cardHeight*0.30)];
-  [_viewThreeImageView setImage:_viewModel.viewThreeImage];
-  [_viewThreeImageView setContentMode:UIViewContentModeScaleAspectFit];
-  _viewThreeImageView.backgroundColor = [UIColor clearColor];
-  _viewThreeImageView.clipsToBounds = YES;
-  [_thirdView addSubview:_viewThreeImageView];
-  
-  currentY += _viewTwoImageView.frame.size.height;
-  
-  _viewThreeActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
-  [_viewThreeActionButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
-  [_viewThreeActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  [_viewThreeActionButton.titleLabel setFont:_viewModel.viewThreeActionButtonFont];
-  [_viewThreeActionButton setTitle:_viewModel.viewThreeActionButtonText forState:UIControlStateNormal];
-  [_viewThreeActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-  [_viewThreeActionButton setTag:1];
-  [_viewThreeActionButton addTarget:self action:@selector(shareOnFacebook) forControlEvents:UIControlEventTouchUpInside];
-  [_thirdView addSubview:_viewThreeActionButton];
+  cardHeight = currentY + 30 + 40 + 20;
+  [_firstView setFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
   
   _cardWidth = cardWidth;
-  midY = self.view.frame.size.height/2;
+  float midY = self.view.frame.size.height/2;
   cardY = midY - (cardHeight/2);
   [_cardView setFrame:CGRectMake(cardX, cardY, cardWidth, cardHeight)];
   
@@ -273,6 +179,7 @@
 }
 
 - (void) shareOnFacebook {
+  if (!_facebookInstalled) return;
   FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
   dialog.fromViewController = self;
   if (_image != nil) {

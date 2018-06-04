@@ -24,58 +24,43 @@
 
 - (void) setup {
   
-  
-  if (_controller.image) {
-    self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.image", @"Share your photo");
+  if (!_controller.facebookInstalled) {
+    self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.noapp", @"Facebook not installed");
+    self.viewOneImage = PopdeemImage(@"pduikit_facebook_noapp");
+    if (_controller.parent.reward.forcedTag) {
+      self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2.noapp", @"Make your post on Facebook, making sure to include the hashtag %@. Then use the scan feature on the previous screen to claim your reward."), _controller.parent.reward.forcedTag];
+    } else {
+      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to include the required hashtag. Then use the scan feature on the previous screen to claim your reward.");
+    }
   } else {
-    self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.checkin", @"Check-in");
+    self.viewOneImage = PopdeemImage(@"pduikit_facebook_step1");
+    if (_controller.image) {
+      self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.image", @"Share your photo");
+    } else {
+      self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.checkin", @"Check-in");
+    }
+    if (_controller.parent.reward.forcedTag) {
+      self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the hashtag %@, or you will be unable to claim your reward."), _controller.parent.reward.forcedTag];
+    } else {
+      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the specified hashtag, or you will be unable to claim your reward.");
+    }
   }
   
-  if (_controller.parent.reward.forcedTag) {
-     self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the hashtag %@, or you will be unable to claim your reward."), _controller.parent.reward.forcedTag];
-  } else {
-    self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the specified hashtag, or you will be unable to claim your reward.");
-  }
-                              
-  self.viewOneActionButtonText = translationForKey(@"popdeem.facebook.share.stepOne.buttonText", @"Next");
   
-  self.viewTwoLabelOneText = translationForKey(@"popdeem.facebook.share.stepTwo.label1", @"Step Two Label 1");
-  self.viewTwoLabelTwoText = translationForKey(@"popdeem.facebook.share.stepTwo.label2", @"Step Two Label 2");
-  self.viewTwoActionButtonText = translationForKey(@"popdeem.facebook.share.stepTwo.buttonText", @"Next");
+  self.viewOneActionButtonText = translationForKey(@"popdeem.facebook.share.stepThree.buttonText", @"Okay, Gotcha");
   
-  self.viewThreeLabelOneText = translationForKey(@"popdeem.facebook.share.stepThree.label1", @"Step 3 Label 1");
-  self.viewThreeLabelTwoText = translationForKey(@"popdeem.facebook.share.stepThree.label2", @"Step 3 Label 2");
-  self.viewThreeActionButtonText = translationForKey(@"popdeem.facebook.share.stepThree.buttonText", @"Okay, Gotcha");
+ 
   
   self.viewOneLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
   self.viewOneLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);
-  self.viewTwoLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
-  self.viewTwoLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);
-  self.viewThreeLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
-  self.viewThreeLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);
   self.viewOneActionButtonFont = PopdeemFont(PDThemeFontBold, 14);
-  self.viewTwoActionButtonFont = PopdeemFont(PDThemeFontBold, 14);
-  self.viewThreeActionButtonFont = PopdeemFont(PDThemeFontBold, 14);
   
   self.viewOneLabelOneColor = PopdeemColor(PDThemeColorPrimaryFont);
   self.viewOneLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
-  self.viewTwoLabelOneColor = PopdeemColor(PDThemeColorPrimaryFont);
-  self.viewTwoLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
-  self.viewThreeLabelOneColor = PopdeemColor(PDThemeColorPrimaryFont);
-  self.viewThreeLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
   
-  self.viewOneActionButtonColor = [UIColor whiteColor];
-  self.viewOneActionButtonBorderColor = PopdeemColor(PDThemeColorPrimaryApp);
-  self.viewTwoActionButtonColor = [UIColor whiteColor];
-  self.viewOneActionButtonTextColor= PopdeemColor(PDThemeColorPrimaryApp);
-  self.viewTwoActionButtonTextColor= PopdeemColor(PDThemeColorPrimaryApp);
-  self.viewThreeActionButtonColor = PopdeemColor(PDThemeColorPrimaryApp);
-  self.viewThreeActionButtonTextColor = [UIColor whiteColor];
-  
-  //TODO: Change Images
-  self.viewOneImage = PopdeemImage(@"pduikit_facebook_step1");
-  self.viewTwoImage = PopdeemImage(@"pduikit_instagramstep2");
-  self.viewThreeImage = PopdeemImage(@"pduikit_instagramstep3");
+  self.viewOneActionButtonColor = PopdeemColor(PDThemeColorPrimaryApp);
+  self.viewOneActionButtonBorderColor = [UIColor whiteColor];
+
 }
 
 @end

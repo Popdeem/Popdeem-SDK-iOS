@@ -52,6 +52,8 @@
 @property (nonatomic, retain) UIImage *viewTwoImage;
 @property (nonatomic, retain) UIImage *viewThreeImage;
 
+@property (nonatomic) BOOL facebookInstalled;
+
 - (instancetype) initWithController:(PDUIFacebookShareViewController*)controller;
 - (void) setup;
 
