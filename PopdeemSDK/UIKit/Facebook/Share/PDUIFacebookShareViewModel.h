@@ -7,8 +7,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class PDUIFacebookShareViewController;
+
 @interface PDUIFacebookShareViewModel : NSObject
 
+
+@property (nonatomic, assign) PDUIFacebookShareViewController *controller;
 @property (nonatomic, retain) NSString *viewOneLabelOneText;
 @property (nonatomic, retain) NSString *viewOneLabelTwoText;
 @property (nonatomic, retain) NSString *viewThreeLabelOneText;
@@ -48,6 +52,7 @@
 @property (nonatomic, retain) UIImage *viewTwoImage;
 @property (nonatomic, retain) UIImage *viewThreeImage;
 
+- (instancetype) initWithController:(PDUIFacebookShareViewController*)controller;
 - (void) setup;
 
 @end

@@ -47,7 +47,7 @@ static PDCustomer *globalCustomer = nil;
 }
 
 + (JSONKeyMapper*)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+  return [[JSONKeyMapper alloc] initWithDictionary:@{
                                                      @"name": @"name",
                                                      @"fb_app_id": @"facebookAppId",
                                                      @"fb_app_access_token": @"facebookAccessToken",

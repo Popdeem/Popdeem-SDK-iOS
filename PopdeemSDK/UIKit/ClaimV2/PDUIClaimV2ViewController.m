@@ -552,7 +552,7 @@
 }
 
 - (void) facebookLoginSuccess {
-  
+  _willFacebook = YES;
   AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
@@ -561,6 +561,7 @@
 
 - (void) facebookLoginFailure {
   //Toggle Facebook Off
+  _willFacebook = NO;
   PDUISocialClaimTableViewCell *facebookCell = [self facebookCell];
   if (facebookCell) {
     [facebookCell.socialSwitch setOn:NO];
@@ -581,18 +582,13 @@
 }
 
 - (void) validateTwitter {
+  if (![[PDUser sharedInstance] twitterParams]) {
+    [self connectTwitter];
+    return;
+  }
   [[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
     if (!connected) {
-      [self connectTwitter:^(){
-        [self.continueButton setUserInteractionEnabled:YES];
-      } failure:^(NSError *error) {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
-                                                     message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter")
-                                                    delegate:self
-                                           cancelButtonTitle:translationForKey(@"popdeem.common.back", @"Back")
-                                           otherButtonTitles: nil];
-        [av show];
-      }];
+      [self connectTwitter];
       [self.continueButton setUserInteractionEnabled:YES];
       _willTweet = NO;
       return;
@@ -602,7 +598,7 @@
   }];
 }
 
-- (void) connectTwitter:(void (^)(void))success failure:(void (^)(NSError *failure))failure {
+- (void) connectTwitter {
   PDUITwitterLoginViewController *twitterVC = [[PDUITwitterLoginViewController alloc] initForParent:self.navigationController];
   if (!twitterVC) {
     return;
@@ -679,6 +675,7 @@
     if (instagramCell) {
       [instagramCell.socialSwitch setOn:NO];
     }
+    _willInstagram = NO;
   });
 }
 
