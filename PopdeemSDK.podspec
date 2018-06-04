@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.author             = { "Niall Quinn" => "niall@popdeem.com" }
+  s.author             = { "Niall Quinn" => "niall@popdeem.com", "Daniel Farrell" => "daniel@popdeem.com", "Daniel Farrell" => "danfar93@gmail.com" }
   s.social_media_url   = "http://twitter.com/niall_quinn1"
 
 
