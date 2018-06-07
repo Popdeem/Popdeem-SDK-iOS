@@ -30,6 +30,7 @@
 		[self setBackgroundColor:PopdeemColor(PDThemeColorTableViewCellBackground)];
 		self.contentView.backgroundColor = PopdeemColor(PDThemeColorTableViewCellBackground);
 	}
+  [self.arrowImageView setImage:PopdeemImage(@"pduikit_arrow_g")];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
