@@ -1034,6 +1034,11 @@
 }
 
 - (void) processClaimForIndexPath:(NSIndexPath*)indexPath {
+  if (![[PDUser sharedInstance] isRegistered]) {
+    PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
+    [loginHandler presentLoginModal];
+    return;
+  }
   PDReward *reward = [_model.rewards objectAtIndex:indexPath.row];
   if (reward.action == PDRewardActionSocialLogin) {
     if (![[PDUser sharedInstance] isRegistered]) {
