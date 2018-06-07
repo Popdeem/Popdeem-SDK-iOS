@@ -55,7 +55,7 @@
 	}
 	
 	[_titleLabel setTextColor:_primaryFontColor];
-	
+	[self.arrowImageView setHidden:NO];
 	self.clipsToBounds = YES;
 
 	if (reward.coverImageUrl) {
@@ -77,6 +77,7 @@
 	switch (reward.type) {
 		case PDRewardTypeSweepstake:
 			labelLineTwo = translationForKey(@"popdeem.wallet.sweepstake.redeemText", @"You have been entered in this competition.");
+      [self.arrowImageView setHidden:NO];
 			break;
     case PDRewardTypeCredit:
 		case PDRewardTypeCoupon:
@@ -89,7 +90,7 @@
         labelLineTwo = [NSString stringWithFormat:translationForKey(@"popdeem.wallet.creditString", @"%@ was added to your account on %@"),reward.creditString, stringDate];
         [self.arrowImageView setHidden:YES];
       } else {
-        [self.arrowImageView setHidden:NO ];
+        [self.arrowImageView setHidden:NO];
         labelLineTwo = translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.");
       }
 			break;

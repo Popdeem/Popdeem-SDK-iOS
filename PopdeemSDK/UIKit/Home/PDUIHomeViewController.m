@@ -189,7 +189,7 @@
 
 - (void) setup {
   
-//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:FacebookLoginSuccess object:nil];
+  //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:FacebookLoginSuccess object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedItemDidDownload) name:@"PDFeedItemImageDidDownload" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coverImageDidDownload) name:@"PDRewardCoverImageDidDownload" object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
@@ -202,12 +202,12 @@
   [super viewDidLoad];
   
   [self.tableView setUserInteractionEnabled:YES];
-//  if (_brand) {
-//    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 190)];
-//  } else {
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
-//  }
-		
+  //  if (_brand) {
+  //    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 190)];
+  //  } else {
+  self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
+  //  }
+  
   [self styleNavbar];
   
   if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {
@@ -220,8 +220,8 @@
   [self.refreshControl setTintColor:[UIColor darkGrayColor]];
   [self.refreshControl setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
-    
-    
+  
+  
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
@@ -238,10 +238,10 @@
   
   if (!_segmentedControl) {
     _segmentedControl = [[PDUISegmentedControl alloc] initWithItems:@[
-																																			translationForKey(@"popdeem.home.segmentedControl.rewards", @"Rewards"),
-																																			translationForKey(@"popdeem.home.segmentedControl.activity", @"Activity"),
-																																			translationForKey(@"popdeem.home.segmentedControl.wallet", @"Profile")
-																																			]];
+                                                                      translationForKey(@"popdeem.home.segmentedControl.rewards", @"Rewards"),
+                                                                      translationForKey(@"popdeem.home.segmentedControl.activity", @"Activity"),
+                                                                      translationForKey(@"popdeem.home.segmentedControl.wallet", @"Profile")
+                                                                      ]];
     _segmentedControl.parentView = self.view;
     if (_brand.theme) {
       [_segmentedControl applyTheme:_brand.theme];
@@ -249,11 +249,11 @@
     _segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
     _segmentedControl.clipsToBounds = YES;
     
-//    CALayer *topBottomBorders = [CALayer layer];
-//    topBottomBorders.borderColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1.0].CGColor;
-//    topBottomBorders.borderWidth = 0.5;
-//    topBottomBorders.frame = CGRectMake(-1, 0, _segmentedControl.frame.size.width+2, _segmentedControl.frame.size.height);
-//    [_segmentedControl.layer addSublayer:topBottomBorders];
+    //    CALayer *topBottomBorders = [CALayer layer];
+    //    topBottomBorders.borderColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1.0].CGColor;
+    //    topBottomBorders.borderWidth = 0.5;
+    //    topBottomBorders.frame = CGRectMake(-1, 0, _segmentedControl.frame.size.width+2, _segmentedControl.frame.size.height);
+    //    [_segmentedControl.layer addSublayer:topBottomBorders];
     [_segmentedControl addTarget:self action:@selector(segmentedControlDidChangeValue:) forControlEvents:UIControlEventValueChanged];
   }
   
@@ -284,7 +284,7 @@
   NSInteger selected = _segmentedControl.selectedSegmentIndex;
   if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
     switch (selected) {
-      case 0:
+        case 0:
         return;
         break;
       default:
@@ -296,7 +296,7 @@
   
   if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
     switch (selected) {
-      case 2:
+        case 2:
         return;
         break;
       default:
@@ -318,12 +318,13 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+  self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   [self.view setUserInteractionEnabled:YES];
-    if (!firstLaunch) {
-        [_model fetchRewards];
-        [_model fetchWallet];
-    }
-    firstLaunch = NO;
+  if (!firstLaunch) {
+    [_model fetchRewards];
+    [_model fetchWallet];
+  }
+  firstLaunch = NO;
   if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
   }
@@ -416,26 +417,26 @@
 }
 
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    if ([self.refreshControl isRefreshing]) {
-//        [self reloadAction];
-//    }
+  //    if ([self.refreshControl isRefreshing]) {
+  //        [self reloadAction];
+  //    }
 }
 
 - (void) reloadAction {
-    switch (self.segmentedControl.selectedSegmentIndex) {
-        case 0:
-            [self.model fetchRewards];
-            break;
-        case 1:
-            [self.model fetchFeed];
-            break;
-        case 2:
-            [self.model fetchWallet];
-            break;
-        default:
-            break;
-    }
-    [self.refreshControl endRefreshing];
+  switch (self.segmentedControl.selectedSegmentIndex) {
+      case 0:
+      [self.model fetchRewards];
+      break;
+      case 1:
+      [self.model fetchFeed];
+      break;
+      case 2:
+      [self.model fetchWallet];
+      break;
+    default:
+      break;
+  }
+  [self.refreshControl endRefreshing];
 }
 
 - (void) viewWillLayoutSubviews {
@@ -450,21 +451,25 @@
 
 
 - (void) segmentedControlDidChangeValue:(PDUISegmentedControl*)sender {
+  BOOL shouldNav = self.tableView.contentOffset.y > self.tableView.tableHeaderView.frame.size.height;
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
   [self.tableView reloadSectionIndexTitles];
   switch(sender.selectedSegmentIndex) {
-    case 0:
+      case 0:
       AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_REWARDS_HOME});
       break;
-    case 1:
+      case 1:
       AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_ACTIVITY_FEED});
       break;
-    case 2:
+      case 2:
       AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_WALLET});
       break;
     default:
       break;
+  }
+  if (shouldNav) {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
   }
 }
 
@@ -478,16 +483,16 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   switch (_segmentedControl.selectedSegmentIndex) {
       case 0:
-        return 1;
+      return 1;
       break;
       case 1:
-        return 1;
+      return 1;
       break;
       case 2:
-        return 2;
+      return 2;
       break;
-      default:
-        return 1;
+    default:
+      return 1;
       break;
   }
 }
@@ -528,13 +533,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   switch (_segmentedControl.selectedSegmentIndex) {
-    case 0:
+      case 0:
       return _model.rewards.count > 0 ? _model.rewards.count : 1;
       break;
-    case 1:
+      case 1:
       return _model.feed.count > 0 ? _model.feed.count : 1;
       break;
-    case 2:
+      case 2:
       if (section == 0) {
         if ([[PDUser sharedInstance] isRegistered]) {
           return 3;
@@ -555,7 +560,7 @@
   PDReward *reward;
   PDRFeedItem *feedItem;
   switch (_segmentedControl.selectedSegmentIndex) {
-    case 0:
+      case 0:
       if (_model.rewards.count == 0) {
         if (!_model.rewardsLoading) {
           PDUINoRewardTableViewCell *norw = [[self tableView] dequeueReusableCellWithIdentifier:kNoRewardsCell];
@@ -597,7 +602,7 @@
         return rwrcell;
       }
       break;
-    case 1:
+      case 1:
       //Feeds
       if (_model.feed.count == 0) {
         if (!_model.feedLoading) {
@@ -623,7 +628,7 @@
         return [[PDUIFeedCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, feedHeight) forFeedItem:feedItem];
       }
       break;
-    case 2:
+      case 2:
       if (indexPath.section == 0) {
         if ([[PDUser sharedInstance] isRegistered]) {
           if (indexPath.row == 0) {
@@ -769,13 +774,13 @@
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
   switch (_segmentedControl.selectedSegmentIndex) {
-    case 0:
+      case 0:
       return NO;
       break;
-    case 1:
+      case 1:
       return NO;
       break;
-    case 2:
+      case 2:
       return NO;
       break;
     default:
@@ -819,14 +824,14 @@
 - (float) cellHeightForIndex:(NSIndexPath*)indexPath {
   NSInteger index = indexPath.row;
   switch (_segmentedControl.selectedSegmentIndex) {
-    case 0:
+      case 0:
       //Rewards
       if (_model.rewards.count == 0) {
         return 100;
       }
       return 200;
       break;
-    case 1:
+      case 1:
       //Feed
       if (_model.feed.count == 0) {
         return 100;
@@ -839,7 +844,7 @@
         return 75;
       }
       break;
-    case 2:
+      case 2:
       //Wallet
       if (indexPath.section == 0) {
         if ([[PDUser sharedInstance] isRegistered]) {
@@ -861,11 +866,11 @@
           if (indexPath.row < _model.wallet.count) {
             PDReward *r = _model.wallet[indexPath.row];
             switch (r.type) {
-              case PDRewardTypeInstant:
-              case PDRewardTypeCoupon:
+                case PDRewardTypeInstant:
+                case PDRewardTypeCoupon:
                 return 285;
                 break;
-              case PDRewardTypeSweepstake:
+                case PDRewardTypeSweepstake:
                 return 205;
                 break;
               default:
@@ -886,10 +891,10 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   PDUIWalletRewardTableViewCell *wcell;
   PDUIWalletRewardTableViewCell *lastCell;
-  //	  PDReward *walletReward;
+  //    PDReward *walletReward;
   //  __block UIAlertView *av;
   switch (_segmentedControl.selectedSegmentIndex) {
-    case 0:
+      case 0:
       //Rewards
       if (_model.rewards.count == 0) return;
       if ([_model.rewards objectAtIndex:indexPath.row]) {
@@ -899,10 +904,10 @@
         return;
       }
       break;
-    case 1:
+      case 1:
       return;
       break;
-    case 2:
+      case 2:
       if (indexPath.section == 0) {
         if ([[PDUser sharedInstance] isRegistered]) {
           if (indexPath.row == 1) {
@@ -962,9 +967,7 @@
               walletSelectedIndex = indexPath;
               [wcell rotateArrowDown];
             }
-            [self.tableView beginUpdates];
-            [self.tableView endUpdates];
-            [self performSelector:@selector(scrollToIndexPath:) withObject:indexPath afterDelay:0.5];
+            [self.tableView reloadData];
             return;
           }
           if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {
@@ -988,10 +991,10 @@
     default:
       break;
   }
-//  [tableView beginUpdates];
-//  [tableView deselectRowAtIndexPath:indexPath animated:NO];
-//  //if you are doing any animation you have deselect the row here inside.
-//  [tableView endUpdates];
+  //  [tableView beginUpdates];
+  //  [tableView deselectRowAtIndexPath:indexPath animated:NO];
+  //  //if you are doing any animation you have deselect the row here inside.
+  //  [tableView endUpdates];
 }
 
 - (void) redeemSelectedReward {
@@ -1109,6 +1112,7 @@
   if (!_messageCenter) {
     _messageCenter = [[PDUIMsgCntrTblViewController alloc] initFromNib];
   }
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   [self.navigationController pushViewController:_messageCenter animated:YES];
 }
 
@@ -1151,12 +1155,12 @@
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (alertView.tag == 400) {
     switch (buttonIndex) {
-      case 0:
+        case 0:
         PDLog(@"Cancel Redeem");
         walletSelectedIndex = nil;
         selectedWalletReward = nil;
         break;
-      case 1:
+        case 1:
         PDLog(@"Redeem");
         [self redeemSelectedReward];
         break;
@@ -1188,15 +1192,15 @@
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
   [self.view setNeedsLayout];
   [self.view setNeedsDisplay];
-//  if (_brand) {
-//    [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 190)];
-//  } else {
-    [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 140)];
-//  }
+  //  if (_brand) {
+  //    [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 190)];
+  //  } else {
+  [self.tableView.tableHeaderView setFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 140)];
+  //  }
 }
 
 - (void) loggedOut {
-//Remove the refreshing which is not necessary
+  //Remove the refreshing which is not necessary
 }
 
 - (void) postVerified {
@@ -1243,16 +1247,16 @@
 }
 
 - (void) updateRewardData {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView beginUpdates];
-        if (self.model.rewardRemoveIndexSets.count > 0) {
-            [self.tableView deleteRowsAtIndexPaths:self.model.rewardRemoveIndexSets withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-        if (self.model.rewardAddIndexSets.count > 0) {
-            [self.tableView insertRowsAtIndexPaths:self.model.rewardAddIndexSets withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-        [self.tableView endUpdates];
-    });
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.tableView beginUpdates];
+    if (self.model.rewardRemoveIndexSets.count > 0) {
+      [self.tableView deleteRowsAtIndexPaths:self.model.rewardRemoveIndexSets withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    if (self.model.rewardAddIndexSets.count > 0) {
+      [self.tableView insertRowsAtIndexPaths:self.model.rewardAddIndexSets withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    [self.tableView endUpdates];
+  });
 }
 
 @end
