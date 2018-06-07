@@ -21,6 +21,10 @@
   UIViewController *topController = [PDUIKitUtils topViewController];
   [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
   
+  if ([topController isKindOfClass:[PDUIHomeViewController class]]) {
+    return;
+  }
+  
   PDUIHomeViewController *homeVc = [[PDUIHomeViewController alloc] initFromNib];
   homeVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
   

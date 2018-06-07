@@ -22,14 +22,26 @@
 }
 
 - (void) setup {
-  self.senderTagLabelString = translationForKey(@"popdeem.message.detail.senderTag", @"Sender:");
-  self.senderBodyString = _message.senderName;
-  self.dateTagString = translationForKey(@"popdeem.message.detail.dateTag", @"Date:");
-  self.dateBodyString = [self formattedSentTime:_message.createdAt];
-  self.titleTagString = translationForKey(@"popdeem.message.detail.titleTag", @"Title:");
-  self.titleBodyString = _message.title ? _message.title : @"";
-  self.bodyTagString = translationForKey(@"popdeem.message.detail.bodyTag", @"Body:");
   self.bodyBodyString = _message.body;
+  
+  NSMutableAttributedString *topAttribString = [[NSMutableAttributedString alloc] init];
+  
+  NSString *subString = translationForKey(@"popdeem.message.detail.subject", @"Subject:");
+  NSMutableAttributedString *subAttribString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", subString] attributes:@{NSFontAttributeName: PopdeemFont(PDThemeFontBold, 12), NSStrokeColorAttributeName: PopdeemColor(PDThemeColorPrimaryFont)}];
+  
+  [topAttribString appendAttributedString:subAttribString];
+  
+  NSString *titleString = _message.title ? _message.title : @"";
+  
+  NSMutableAttributedString *titleAttribString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", titleString] attributes:@{NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 13), NSStrokeColorAttributeName: PopdeemColor(PDThemeColorPrimaryFont)}];
+  
+  [topAttribString appendAttributedString:titleAttribString];
+  
+  NSMutableAttributedString *dateAttribString = [[NSMutableAttributedString alloc] initWithString:[self formattedSentTime:_message.createdAt] attributes:@{NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 10), NSStrokeColorAttributeName: PopdeemColor(PDThemeColorSecondaryFont)}];
+  
+  [topAttribString appendAttributedString:dateAttribString];
+  
+  _topAttributedString = topAttribString;
   
   if (_message.imageUrl) {
     self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_message.imageUrl]]];

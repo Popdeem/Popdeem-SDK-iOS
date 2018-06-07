@@ -29,9 +29,14 @@
     float centerlineY = frame.size.height/2;
     _logoView = [[UIImageView alloc] init];
     [_logoView setFrame:CGRectMake(10, centerlineY-25, 50, 50)];
-    _logoView.layer.cornerRadius = 25;
     _logoView.clipsToBounds = YES;
-    [_logoView setContentMode:UIViewContentModeScaleAspectFill];
+    [_logoView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    if (message.imageUrl) {
+      message.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:message.imageUrl]]];
+    } else {
+      [_logoView setImage:PopdeemImage(@"popdeem.images.defaultItemImage")];
+    }
     if (message.image) {
       [_logoView setImage:message.image];
     } else {
@@ -74,7 +79,7 @@
     } else {
       [self.indicatorView setHidden:YES];
     }
-
+    
     _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, frame.size.width-20, 20)];
     [_timeLabel setTextAlignment:NSTextAlignmentRight];
     [_timeLabel setText:[self formattedSentTime:message.createdAt]];
@@ -92,7 +97,7 @@
   if (message.image) {
     [_logoView setImage:message.image];
   } else {
-		[_logoView setImage:PopdeemImage(PDThemeImageDefaultItem)];
+    [_logoView setImage:PopdeemImage(PDThemeImageDefaultItem)];
   }
   [self.bodyLabel setText:message.body];
   [self.timeLabel setText:[self formattedSentTime:message.createdAt]];
@@ -119,9 +124,9 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+  [super setSelected:selected animated:animated];
+  
+  // Configure the view for the selected state
 }
 
 @end

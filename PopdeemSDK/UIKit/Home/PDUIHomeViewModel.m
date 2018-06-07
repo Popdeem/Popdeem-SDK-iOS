@@ -167,8 +167,10 @@
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
 		weakSelf.wallet = [PDWallet orderedByDateMulti];
-		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    if (weakSelf.controller.tableView) {
+      [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    }
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		dispatch_async(dispatch_get_main_queue(), ^{

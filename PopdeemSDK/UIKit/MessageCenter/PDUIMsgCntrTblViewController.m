@@ -47,7 +47,7 @@
   [self.tableView reloadData];
   [self.tableView reloadInputViews];
   [self styleNavbar];
-	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INBOX});
+  AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INBOX});
 }
 
 - (void) reloadAction {
@@ -56,11 +56,11 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
-	PDLog(@"Memory Warning Recieved");
+  PDLog(@"Memory Warning Recieved");
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-	
+  
 }
 
 #pragma mark - Table view data source
@@ -70,78 +70,79 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	switch (section) {
-  case 0:
-			return (_model.messages.count > 0) ? _model.messages.count : 1;
-			break;
-	case 1:
-		return [[PDSocialMediaManager manager] isLoggedInWithFacebook] ? 1 : 0;
-			break;
-  default:
-			return 0;
-			break;
-	}
+  switch (section) {
+      case 0:
+      return (_model.messages.count > 0) ? _model.messages.count : 1;
+      break;
+      case 1:
+      return [[PDSocialMediaManager manager] isLoggedInWithFacebook] ? 1 : 0;
+      break;
+    default:
+      return 0;
+      break;
+  }
 }
 
 - (id)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	switch (indexPath.section) {
-  case 0:
-			if (_model.messages.count > 0) {
-				if ([_model.messages objectAtIndex:indexPath.row]) {
-					PDUIMessageCell *cell = [[PDUIMessageCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) message:[_model.messages objectAtIndex:indexPath.row]];
-					return cell;
-				} else {
-					return nil;
-				}
-			} else if (_model.messagesLoading) {
-				return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"Fetching messages..."];
-			} else {
-				return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"You have no messages."];
-			}
-			break;
-		case 1:
-			return [[PDUIMessageLogoutCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-			break;
-  default:
-			return nil;
-			break;
-	}
+  switch (indexPath.section) {
+      case 0:
+      if (_model.messages.count > 0) {
+        if ([_model.messages objectAtIndex:indexPath.row]) {
+          PDUIMessageCell *cell = [[PDUIMessageCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) message:[_model.messages objectAtIndex:indexPath.row]];
+          return cell;
+        } else {
+          return nil;
+        }
+      } else if (_model.messagesLoading) {
+        return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"Fetching messages..."];
+      } else {
+        return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"You have no messages."];
+      }
+      break;
+      case 1:
+      return [[PDUIMessageLogoutCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+      break;
+    default:
+      return nil;
+      break;
+  }
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-	return 0.5;
+  return 0.5;
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
-	[footerView setBackgroundColor:PopdeemColor(PDThemeColorTableViewSeperator)];
-	return footerView;
+  UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
+  [footerView setBackgroundColor:PopdeemColor(PDThemeColorTableViewSeperator)];
+  return footerView;
 }
 
- #pragma mark - Table view delegate
+#pragma mark - Table view delegate
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	switch (indexPath.section) {
-  case 0:
-		return 85;
-		break;
-		case 1:
-		return 50;
-		break;
-  default:
-		return 85;
-		break;
-	}
+  switch (indexPath.section) {
+      case 0:
+      return 85;
+      break;
+      case 1:
+      return 50;
+      break;
+    default:
+      return 85;
+      break;
+  }
 }
 
- // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (_model.messages == nil || _model.messages.count == 0) {
-		return;
-	}
+  if (_model.messages == nil || _model.messages.count == 0) {
+    return;
+  }
   if ([_model.messages objectAtIndex:indexPath.row]) {
     PDUISingleMessageViewController *svc = [[PDUISingleMessageViewController alloc] initFromNib];
     [svc setMessage:_model.messages[indexPath.row]];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController pushViewController:svc animated:YES];
   }
 }
