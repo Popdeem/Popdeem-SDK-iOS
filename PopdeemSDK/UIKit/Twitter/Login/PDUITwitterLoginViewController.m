@@ -159,6 +159,9 @@
           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
           [av show];
         });
+      } else {
+        connected = NO;
+        [self dismiss];
       }
     }];
   } else {
@@ -171,6 +174,8 @@
     } failure:^(NSError *error) {
       _valid = NO;
       PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
+      connected = NO;
+      [self dismiss];
     }];
   }
 }

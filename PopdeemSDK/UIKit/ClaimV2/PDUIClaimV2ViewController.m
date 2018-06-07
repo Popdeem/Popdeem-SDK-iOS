@@ -621,16 +621,18 @@
 }
 
 - (void) twitterLoginSuccess {
-  _willTweet = YES;
-  [_loadingView hideAnimated:YES];
-  PDUISocialClaimTableViewCell *twitterCell = [self twitterCell];
-  if (twitterCell) {
-    [twitterCell.socialSwitch setOn:YES];
-  }
-  AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
-                                                ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
-                                                ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
-                                                }));
+  dispatch_async(dispatch_get_main_queue(), ^{
+    _willTweet = YES;
+    [_loadingView hideAnimated:YES];
+    PDUISocialClaimTableViewCell *twitterCell = [self twitterCell];
+    if (twitterCell) {
+      [twitterCell.socialSwitch setOn:YES];
+    }
+    AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
+                                                  ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_TWITTER,
+                                                  ABRA_PROPERTYNAME_SOURCE_PAGE : @"Claim Screen"
+                                                  }));
+  });
 }
 
 - (void) twitterLoginFailure {
