@@ -57,7 +57,7 @@
 	}
 	
 	[_titleLabel setTextColor:_primaryFontColor];
-	
+  [self.arrowImageView setHidden:NO];
 	self.clipsToBounds = YES;
 
 	if (reward.coverImageUrl) {
