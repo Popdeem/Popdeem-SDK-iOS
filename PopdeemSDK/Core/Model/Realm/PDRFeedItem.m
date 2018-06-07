@@ -94,13 +94,13 @@
   
   if (self.actionImageData != nil) {
     UIImage *actionImage = [UIImage imageWithData:_actionImageData];
-    NSString *actionImagePath = [NSString stringWithFormat:@"%ld_actionimage.png",self.identifier];
+    NSString *actionImagePath = [NSString stringWithFormat:@"%ld_actionimage.png",(long)self.identifier];
     self.actionImagePath = actionImagePath;
   }
   
   if (self.profileImageData != nil) {
     UIImage *profileImage = [UIImage imageWithData:_profileImageData];
-    NSString *profileImagePath = [NSString stringWithFormat:@"%ld_profileImage.png",self.identifier];
+    NSString *profileImagePath = [NSString stringWithFormat:@"%ld_profileImage.png",(long)self.identifier];
     self.profileImagePath = profileImagePath;
   }
   [[NSNotificationCenter defaultCenter] postNotificationName:@"PDFeedItemImageDidDownload" object:nil];

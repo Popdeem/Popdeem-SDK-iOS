@@ -179,7 +179,10 @@
 }
 
 - (void) shareOnFacebook {
-  if (!_facebookInstalled) return;
+  if (!_facebookInstalled) {
+    [self dismiss];
+    return;
+  }
   FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
   dialog.fromViewController = self;
   if (_image != nil) {

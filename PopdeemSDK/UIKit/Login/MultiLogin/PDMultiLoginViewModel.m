@@ -60,11 +60,11 @@
       NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%i",1];
       _image = PopdeemImage(imageKey);
     } else {
-      NSString *titleKey = [NSString stringWithFormat:@"popdeem.sociallogin.title.%ld", lastVariation];
-      NSString *bodyKey = [NSString stringWithFormat:@"popdeem.sociallogin.body.%ld", lastVariation];
+      NSString *titleKey = [NSString stringWithFormat:@"popdeem.sociallogin.title.%ld", (long)lastVariation];
+      NSString *bodyKey = [NSString stringWithFormat:@"popdeem.sociallogin.body.%ld", (long)lastVariation];
       _titleString = translationForKey(titleKey, @"New: Social Rewards");
       _bodyString = translationForKey(bodyKey, @"Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards.");
-      NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%ld",lastVariation];
+      NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%ld",(long)lastVariation];
       _image = PopdeemImage(imageKey);
     }
   } else {

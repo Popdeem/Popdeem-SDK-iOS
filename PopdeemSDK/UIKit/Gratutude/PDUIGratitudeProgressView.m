@@ -86,7 +86,7 @@
 
 - (void) updateUser {
   PDUserAPIService *service = [[PDUserAPIService alloc] init];
-  [service getUserDetailsForId:[NSString stringWithFormat:@"%ld",[[PDUser sharedInstance] identifier]]  authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
+  [service getUserDetailsForId:[NSString stringWithFormat:@"%ld",(long)[[PDUser sharedInstance] identifier]]  authenticationToken:[[PDUser sharedInstance] userToken] completion:^(PDUser *user, NSError *error) {
     [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidUpdate object:nil];
   }];
 }

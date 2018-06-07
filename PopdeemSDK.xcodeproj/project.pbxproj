@@ -31,6 +31,8 @@
 		3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3938E4C6207D0E500077AC20 /* PDStringsHelper.m */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
+		393CE43D20C690F30030000D /* PDUIFacebookShareViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CE43920C690F30030000D /* PDUIFacebookShareViewModel.m */; };
+		393CE43E20C690F30030000D /* PDUIFacebookShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CE43C20C690F30030000D /* PDUIFacebookShareViewController.m */; };
 		393EECE620480908003A5B9F /* PDTierEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECE520480908003A5B9F /* PDTierEvent.m */; };
 		393EECED2048116C003A5B9F /* PDUITierEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECEB2048116C003A5B9F /* PDUITierEventTableViewCell.m */; };
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
@@ -335,6 +337,10 @@
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
 		393A8C431C5923D0001F650C /* PDMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMessageStore.h; path = Core/Store/PDMessageStore.h; sourceTree = "<group>"; };
 		393A8C441C5923D0001F650C /* PDMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMessageStore.m; path = Core/Store/PDMessageStore.m; sourceTree = "<group>"; };
+		393CE43920C690F30030000D /* PDUIFacebookShareViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIFacebookShareViewModel.m; sourceTree = "<group>"; };
+		393CE43A20C690F30030000D /* PDUIFacebookShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIFacebookShareViewController.h; sourceTree = "<group>"; };
+		393CE43B20C690F30030000D /* PDUIFacebookShareViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIFacebookShareViewModel.h; sourceTree = "<group>"; };
+		393CE43C20C690F30030000D /* PDUIFacebookShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIFacebookShareViewController.m; sourceTree = "<group>"; };
 		393EECE420480908003A5B9F /* PDTierEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDTierEvent.h; sourceTree = "<group>"; };
 		393EECE520480908003A5B9F /* PDTierEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDTierEvent.m; sourceTree = "<group>"; };
 		393EECEA2048116C003A5B9F /* PDUITierEventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUITierEventTableViewCell.h; path = Home/Cells/Wallet/PDUITierEventTableViewCell.h; sourceTree = "<group>"; };
@@ -894,6 +900,7 @@
 		391FAE741D476124005AFF72 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
+				393CE43820C690F30030000D /* Share */,
 				391FAE761D47613A005AFF72 /* Login */,
 			);
 			name = Facebook;
@@ -984,6 +991,18 @@
 				395AC57F20A995820012220C /* PDUIClaimInfoTableViewCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		393CE43820C690F30030000D /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				393CE43920C690F30030000D /* PDUIFacebookShareViewModel.m */,
+				393CE43A20C690F30030000D /* PDUIFacebookShareViewController.h */,
+				393CE43B20C690F30030000D /* PDUIFacebookShareViewModel.h */,
+				393CE43C20C690F30030000D /* PDUIFacebookShareViewController.m */,
+			);
+			name = Share;
+			path = Facebook/Share;
 			sourceTree = "<group>";
 		};
 		394863C71D54CDD70000ABDE /* Twitter */ = {
@@ -2315,6 +2334,7 @@
 				392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */,
 				393EECE620480908003A5B9F /* PDTierEvent.m in Sources */,
 				39BF99481E8E99830025A3F2 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
+				393CE43D20C690F30030000D /* PDUIFacebookShareViewModel.m in Sources */,
 				39ABA6511C47A1850057088E /* PDUIWalletTableViewCell.m in Sources */,
 				39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */,
 				394863CF1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m in Sources */,
@@ -2440,6 +2460,7 @@
 				39BF994D1E8E99830025A3F2 /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
 				398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */,
 				39F5F6EB1D895387008DE497 /* PDAbraConstants.m in Sources */,
+				393CE43E20C690F30030000D /* PDUIFacebookShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2556,7 +2577,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2595,7 +2616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
