@@ -5,7 +5,7 @@
 //  Created by Niall Quinn on 14/02/2018.
 //
 
-#import "JSONModel.h"
+#import <JSONModel/JSONModel.h>
 
 @interface PDCustomer : JSONModel
 
