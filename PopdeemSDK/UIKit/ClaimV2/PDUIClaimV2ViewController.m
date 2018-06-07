@@ -156,7 +156,11 @@
   
   _shareSectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
   UILabel *shareTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 30)];
-  [shareTitleLabel setText:translationForKey(@"popdeem.claim.shareTitle", @"OR, CHECK-IN NOW")];
+  if (_reward.action == PDRewardActionPhoto) {
+    [shareTitleLabel setText:translationForKey(@"popdeem.claim.shareTitle.photo", @"OR, SHARE PHOTO NOW")];
+  } else {
+    [shareTitleLabel setText:translationForKey(@"popdeem.claim.shareTitle.checkin", @"OR, CHECK-IN NOW")];
+  }
   [shareTitleLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
   [shareTitleLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [shareTitleLabel sizeToFit];
