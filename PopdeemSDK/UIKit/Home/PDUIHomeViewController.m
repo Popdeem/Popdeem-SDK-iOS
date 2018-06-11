@@ -321,10 +321,10 @@
 - (void) viewDidAppear:(BOOL)animated {
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   [self.view setUserInteractionEnabled:YES];
-    if (!firstLaunch) {
-        [_model fetchRewards];
-        [_model fetchWallet];
-    }
+//    if (!firstLaunch) {
+//        [_model fetchRewards];
+//        [_model fetchWallet];
+//    }
     firstLaunch = NO;
   if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
