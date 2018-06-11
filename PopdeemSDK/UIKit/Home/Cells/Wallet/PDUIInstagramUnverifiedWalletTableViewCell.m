@@ -45,7 +45,7 @@
 }
 
 - (void) wake {
-	if (verifying) {
+	if (_verifying) {
 		[self.activityIndicator startAnimating];
 	}
 }
@@ -55,10 +55,10 @@
 }
 
 - (void) verifyTapped:(UIButton*)sender {
-	[self beginVerifying];
+	[self begin_verifying];
 }
 
-- (void) beginVerifying {
+- (void) begin_verifying {
 //	CGPoint startingPoint = self.verifyButton.center;
 	dispatch_async(dispatch_get_main_queue(), ^{
 		self.activityIndicator.alpha = 0;
@@ -75,30 +75,31 @@
 }
 
 - (void) verifyReward {
-	verifying = YES;
+	_verifying = YES;
 	PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
+  __weak typeof(self) weakSelf = self;
 	[service verifyInstagramPostForReward:_reward completion:^(BOOL verified, NSError *error){
-		verifying = NO;
+		weakSelf.verifying = NO;
 		if (error) {
-			[_activityIndicator stopAnimating];
-			PDLogError(@"Something went wrong while verifying Reward, Error: %@",error.localizedDescription);
+			[weakSelf.activityIndicator stopAnimating];
+			PDLogError(@"Something went wrong while _verifying Reward, Error: %@",error.localizedDescription);
 		}
 		if (verified) {
-			PDLog(@"Verifying Reward: Post Found");
+			PDLog(@"_verifying Reward: Post Found");
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[_activityIndicator stopAnimating];
+				[weakSelf.activityIndicator stopAnimating];
 				[[NSNotificationCenter defaultCenter] postNotificationName:InstagramVerifySuccessFromWallet object:nil];
 			});
 		} else {
-			PDLog(@"Verifying Reward: Post Found");
+			PDLog(@"_verifying Reward: Post Found");
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[_activityIndicator stopAnimating];
-				[_activityIndicator setHidden:YES];
-				self.verifyButton.titleLabel.hidden = NO;
-				[self alertNotVerified];
+				[weakSelf.activityIndicator stopAnimating];
+				[weakSelf.activityIndicator setHidden:YES];
+				weakSelf.verifyButton.titleLabel.hidden = NO;
+				[weakSelf alertNotVerified];
 				[UIView animateWithDuration:0.5 animations:^{
-					self.verifyButton.titleLabel.alpha = 1.0;
-					self.activityIndicator.alpha = 0;
+					weakSelf.verifyButton.titleLabel.alpha = 1.0;
+					weakSelf.activityIndicator.alpha = 0;
 				} completion:^(BOOL finished){
 
 				}];

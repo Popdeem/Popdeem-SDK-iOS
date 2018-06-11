@@ -18,6 +18,9 @@
 #import "PDBackgroundScan.h"
 #import "PDUIClaimViewController.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+
 @interface PDUIPostScanViewController () {
   CFAbsoluteTime scanStartTime;
 }
@@ -62,7 +65,6 @@
 }
 
 - (void) scan {
-  
   PDBackgroundScan *scan = [[PDBackgroundScan alloc] init];
   [scan scanNetwork:_network reward:_reward success:^(BOOL validated, PDBGScanResponseModel *response){
     if (validated == YES) {
@@ -442,3 +444,4 @@
 */
 
 @end
+#pragma clang diagnostic pop

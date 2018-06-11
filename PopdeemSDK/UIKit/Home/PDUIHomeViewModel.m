@@ -17,7 +17,6 @@
 #import "PDLocationStore.h"
 
 @interface PDUIHomeViewModel(){
-  NSArray *oldRewards;
 }
 @end
 
@@ -66,8 +65,8 @@
 - (void) fetchRewardsForBrand {
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getRewardsForBrandId:_brand.identifier success:^{
-    weakSelf.rewards =  [PDRewardStore allRewardsForBrandId:_brand.identifier];
-    _rewardsLoading = NO;
+    weakSelf.rewards =  [PDRewardStore allRewardsForBrandId:weakSelf.brand.identifier];
+    weakSelf.rewardsLoading = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
       if (weakSelf.controller != nil) {
         [weakSelf.controller.tableView reloadData];
@@ -76,7 +75,7 @@
     });
   } failure:^(NSError * _Nonnull error) {
     dispatch_async(dispatch_get_main_queue(), ^{
-      _rewardsLoading = NO;
+      weakSelf.rewardsLoading = NO;
       if (weakSelf.controller != nil) {
         [weakSelf.controller.tableView reloadData];
         [weakSelf.controller.tableView setUserInteractionEnabled:YES];
@@ -88,9 +87,9 @@
 - (void) fetchAllRewards {
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
-    oldRewards = weakSelf.rewards;
+    weakSelf.oldRewards = weakSelf.rewards;
     weakSelf.rewards =  [PDRewardStore orderedByDate];
-    _rewardsLoading = NO;
+    weakSelf.rewardsLoading = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
       if (weakSelf.controller != nil) {
         [weakSelf.controller.tableView reloadData];
@@ -99,7 +98,7 @@
     });
   } failure:^(NSError * _Nonnull error) {
     dispatch_async(dispatch_get_main_queue(), ^{
-      _rewardsLoading = NO;
+      weakSelf.rewardsLoading = NO;
       if (weakSelf.controller != nil) {
         [weakSelf.controller.tableView setUserInteractionEnabled:YES];
       }

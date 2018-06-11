@@ -54,7 +54,7 @@
 @interface PDUIHomeViewController () {
   BOOL rewardsLoading, feedLoading, walletLoading;
   NSIndexPath *walletSelectedIndex;
-  PDReward *selectedWalletReward;
+  
   BOOL claimAction;
   BOOL autoVerify;
   NSInteger verifyRewardId;
@@ -935,12 +935,12 @@
         }
       } else {
         if (_model.wallet.count == 0) return;
-        selectedWalletReward = [_model.wallet objectAtIndex:indexPath.row];
-        if ([selectedWalletReward isKindOfClass:[PDTierEvent class]]) {
+        _selectedWalletReward = [_model.wallet objectAtIndex:indexPath.row];
+        if ([_selectedWalletReward isKindOfClass:[PDTierEvent class]]) {
           return;
         }
-        if (selectedWalletReward) {
-          if (selectedWalletReward.revoked) {
+        if (_selectedWalletReward) {
+          if (_selectedWalletReward.revoked) {
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked"
                                                          message:@"This reward has been revoked"
                                                         delegate:self
@@ -950,7 +950,7 @@
             return;
           }
           //For sweepstakes we dont show the alert
-          if (selectedWalletReward.type == PDRewardTypeSweepstake) {
+          if (_selectedWalletReward.type == PDRewardTypeSweepstake) {
             wcell = (PDUIWalletRewardTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             [wcell setSelectionStyle:UITableViewCellSelectionStyleNone];
             if (walletSelectedIndex && [walletSelectedIndex isEqual:indexPath]) {
@@ -970,10 +970,10 @@
             [self.tableView reloadData];
             return;
           }
-          if (selectedWalletReward.creditString != nil && selectedWalletReward.creditString.length > 0) {
+          if (_selectedWalletReward.creditString != nil && _selectedWalletReward.creditString.length > 0) {
             return;
           }
-          if (selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && selectedWalletReward.instagramVerified == NO) {
+          if (_selectedWalletReward.claimedSocialNetwork == PDSocialMediaTypeInstagram && _selectedWalletReward.instagramVerified == NO) {
             return;
           }
           
@@ -999,33 +999,33 @@
 
 - (void) redeemSelectedReward {
   walletSelectedIndex = [self.tableView indexPathForSelectedRow];
-  if (!selectedWalletReward) {
+  if (!_selectedWalletReward) {
     return;
   }
-  if (selectedWalletReward.type != PDRewardTypeSweepstake) {
+  if (_selectedWalletReward.type != PDRewardTypeSweepstake) {
     PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
     _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view titleText:@"Please Wait" descriptionText:@"Redeeming your Reward"];
     [_loadingView showAnimated:YES];
-    
-    [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
-      [_loadingView hideAnimated:YES];
+    __weak typeof(self) weakSelf = self;
+    [service redeemReward:_selectedWalletReward.identifier completion:^(NSError *error){
+      [weakSelf.loadingView hideAnimated:YES];
       if (error) {
         PDLogError(@"Something went wrong: %@",error);
       } else {
         
         PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
-        [rvc setReward:selectedWalletReward];
+        [rvc setReward:_selectedWalletReward];
         [self.navigationController pushViewController:rvc animated:YES];
-        [PDWallet remove:selectedWalletReward.identifier];
-        selectedWalletReward = nil;
+        [PDWallet remove:_selectedWalletReward.identifier];
+        _selectedWalletReward = nil;
         walletSelectedIndex = nil;
         _model.wallet = [PDWallet wallet];
         [self.tableView reloadData];
-        if (selectedWalletReward) {
+        if (_selectedWalletReward) {
           AbraLogEvent(ABRA_EVENT_REDEEMED_REWARD, (@{
-                                                      ABRA_PROPERTYNAME_REWARD_NAME : selectedWalletReward.rewardDescription,
+                                                      ABRA_PROPERTYNAME_REWARD_NAME : _selectedWalletReward.rewardDescription,
                                                       ABRA_PROPERTYNAME_REWARD_ID : [NSString stringWithFormat:@
-                                                                                     "%li",(long)selectedWalletReward.identifier]
+                                                                                     "%li",(long)_selectedWalletReward.identifier]
                                                       }));
         }
       }
@@ -1071,8 +1071,8 @@
 }
 
 - (void) redeemButtonPressed {
-  selectedWalletReward = [_model.wallet objectAtIndex:walletSelectedIndex.row];
-  if (selectedWalletReward.revoked) {
+  _selectedWalletReward = [_model.wallet objectAtIndex:walletSelectedIndex.row];
+  if (_selectedWalletReward.revoked) {
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reward Revoked"
                                                  message:@"This reward has been revoked"
                                                 delegate:self
@@ -1082,29 +1082,29 @@
     return;
   }
   //For sweepstakes we dont show the alert
-  if (selectedWalletReward.type == PDRewardTypeSweepstake) {
+  if (_selectedWalletReward.type == PDRewardTypeSweepstake) {
     return;
   }
   
   walletSelectedIndex = [self.tableView indexPathForSelectedRow];
   
-  if (selectedWalletReward.type != PDRewardTypeSweepstake) {
+  if (_selectedWalletReward.type != PDRewardTypeSweepstake) {
     PDRewardActionAPIService *service = [[PDRewardActionAPIService alloc] init];
     _loadingView = [[PDUIModalLoadingView alloc] initForView:self.navigationController.view
                                                    titleText:@"Please Wait"
                                              descriptionText:@"Redeeming your Reward"];
     [_loadingView showAnimated:YES];
     
-    [service redeemReward:selectedWalletReward.identifier completion:^(NSError *error){
+    [service redeemReward:_selectedWalletReward.identifier completion:^(NSError *error){
       [_loadingView hideAnimated:YES];
       if (error) {
         PDLogError(@"Something went wrong: %@",error);
       } else {
         PDUIRedeemViewController *rvc = [[PDUIRedeemViewController alloc] initFromNib];
-        [rvc setReward:selectedWalletReward];
+        [rvc setReward:_selectedWalletReward];
         [self.navigationController pushViewController:rvc animated:YES];
-        [PDWallet remove:selectedWalletReward.identifier];
-        selectedWalletReward = nil;
+        [PDWallet remove:_selectedWalletReward.identifier];
+        _selectedWalletReward = nil;
         walletSelectedIndex = nil;
         _model.wallet = [PDWallet wallet];
         [self.tableView reloadData];
@@ -1163,7 +1163,7 @@
         case 0:
         PDLog(@"Cancel Redeem");
         walletSelectedIndex = nil;
-        selectedWalletReward = nil;
+        _selectedWalletReward = nil;
         break;
         case 1:
         PDLog(@"Redeem");
@@ -1227,7 +1227,7 @@
 }
 
 - (void) sweepstakeAlert {
-  if (!selectedWalletReward) return;
+  if (!_selectedWalletReward) return;
   
   
 }

@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *settingsButton;
 @property (nonnull, strong) NSString *brandVendorSearchTerm;
 @property (nonatomic, retain) PDReward *willClaimReward;
+@property (nonatomic, retain) PDReward *selectedWalletReward;
 
 - (_Nullable instancetype) initFromNib;
 - (_Nullable instancetype) initWithBrand:(PDBrand*)b;

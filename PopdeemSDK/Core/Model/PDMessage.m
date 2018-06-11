@@ -54,7 +54,8 @@
 
 - (void) downloadLogoImageCompletion:(void (^)(BOOL Success))completion {
   if (_isDownloadingLogo) completion(NO);
-  
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
   if ([self.imageUrl isKindOfClass:[NSString class]]) {
     if ([self.imageUrl.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
       _isDownloadingLogo = YES;
@@ -70,6 +71,7 @@
       completion(NO);
     }
   }
+#pragma clang diagnostic pop
 }
 
 @end

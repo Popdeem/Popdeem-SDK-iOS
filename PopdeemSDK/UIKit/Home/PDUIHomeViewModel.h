@@ -41,6 +41,7 @@
 
 @property (nonatomic, strong) NSArray *feed;
 @property (nonatomic, strong) NSArray *wallet;
+@property (nonatomic, strong) NSArray *oldRewards;
 
 @property (nonatomic) BOOL feedLoading;
 @property (nonatomic) BOOL rewardsLoading;

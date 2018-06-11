@@ -16,6 +16,9 @@
 #import "PDInstagramAPIClient.h"
 #import "PDSocialAPIService.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+
 @interface PDSocialMediaManager() {
   ACAccount *singleAccount;
 	BOOL twitterRegister;
@@ -508,3 +511,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop

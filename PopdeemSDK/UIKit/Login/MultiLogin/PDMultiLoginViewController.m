@@ -30,7 +30,6 @@
 @property (nonatomic) BOOL facebookLoginOccurring;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) PDUIRewardTableViewCell *rewardCell;
-@property (nonatomic) BOOL twitterValid;
 @end
 
 @implementation PDMultiLoginViewController
@@ -138,14 +137,15 @@
   _loadingView.titleLabel.text = @"Logging in.";
   [_loadingView showAnimated:YES];
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
+  __weak typeof(self) weakSelf = self;
 	[manager registerWithTwitter:^{
 		//Continue to next stage of app, login has happened.
 		[self proceedWithTwitterLoggedInUser];
-        _twitterValid = YES;
+        weakSelf.twitterValid = YES;
 	} failure:^(NSError *error) {
-        _twitterValid = NO;
+        weakSelf.twitterValid = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
-          [_loadingView hideAnimated:YES];
+          [weakSelf.loadingView hideAnimated:YES];
         });
 	}];
 }
@@ -175,30 +175,32 @@
 
 - (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
 	PDUserAPIService *service = [[PDUserAPIService alloc] init];
-	
+  __weak typeof(self) weakSelf = self;
 	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
 		[self addUserToUserDefaults:user];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self proceedWithLocationCheck];
+            [weakSelf proceedWithLocationCheck];
         });
 	} failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
-      [_loadingView hideAnimated:YES];
+      [weakSelf.loadingView hideAnimated:YES];
     });
 	}];
 
 }
 - (IBAction)cancelButtonPressed:(id)sender {
+  __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
+    [weakSelf.loadingView hideAnimated:YES];
 		});
 	[self dismissAction:sender];
 }
 
 - (IBAction) dismissAction:(id)sender {
+  __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
+    [weakSelf.loadingView hideAnimated:YES];
   });
 	[self dismissViewControllerAnimated:YES completion:^{
 		//Any cleanup to do?
@@ -235,8 +237,9 @@
 }
 
 - (void) facebookLoginFailure {
+  __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
+    [weakSelf.loadingView hideAnimated:YES];
   });
 }
 
@@ -255,8 +258,9 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Location Denied");
+  __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_loadingView hideAnimated:YES];
+        [weakSelf.loadingView hideAnimated:YES];
     });
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
@@ -274,8 +278,9 @@
     [service updateUserWithCompletion:^(PDUser *user, NSError *error) {
         PDLog(@"User Location Updated from Login");
     }];
+  __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_loadingView hideAnimated:YES];
+        [weakSelf.loadingView hideAnimated:YES];
     });
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];

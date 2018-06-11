@@ -12,7 +12,6 @@
 
 @interface PDUIFBLoginWithWritePermsViewController : UIViewController <UIAlertViewDelegate> {
 	CGFloat _cardX,_cardY;
-	BOOL connected;
 }
 
 @property (nonatomic, retain) PDUIFBLoginWithWritePermsViewModel *viewModel;
@@ -22,6 +21,8 @@
 @property (nonatomic, retain) UILabel *label;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UIButton *actionButton;
+@property (nonatomic) BOOL success;
+@property (nonatomic) BOOL connected;
 
 - (instancetype) initForParent:(UIViewController*)parent loginType:(PDFacebookLoginType)loginType;
 

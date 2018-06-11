@@ -57,8 +57,10 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *shareButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *alreadySharedButton;
+@property (nonatomic, assign) PDLocation *location;
 
 @property (nonatomic, assign) PDBrand *brand;
+@property (nonatomic) BOOL keyboardIsUp;
 
 @property (nonatomic) UIBackgroundTaskIdentifier claimTask;
 

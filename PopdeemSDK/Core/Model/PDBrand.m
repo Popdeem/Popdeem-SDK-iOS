@@ -124,17 +124,20 @@
 }
 
 - (void) downloadCoverImageCompletion:(void (^)(BOOL))completion {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
   if (isDownloadingCover) {
     completion(NO);
   };
   if ([self.coverUrlString isKindOfClass:[NSString class]]) {
     if ([self.coverUrlString.lowercaseString rangeOfString:@"default"].location == NSNotFound) {
       isDownloadingCover = YES;
+      __weak typeof(self) weakSelf = self;
       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *coverData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.coverUrlString]];
         UIImage *coverImage = [UIImage imageWithData:coverData];
         
-        self.coverImage = coverImage;
+        weakSelf.coverImage = coverImage;
         isDownloadingCover = NO;
         completion(YES);
       });
@@ -142,6 +145,7 @@
       completion(NO);
     }
   }
+#pragma clang diagnostic pop
 }
 
 - (void) downloadLogoImageCompletion:(void (^)(BOOL))completion {

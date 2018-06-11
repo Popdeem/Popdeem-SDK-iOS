@@ -139,6 +139,7 @@
 	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Verifying your post"];
 	[_loadingView showAnimated:YES];
 	PDRewardAPIService *service = [[PDRewardAPIService alloc] init];
+  __weak typeof(self) weakSelf = self;
 	[service verifyInstagramPostForReward:_reward completion:^(BOOL verified, NSError *error){
 		if (error) {
 			PDLogError(@"Something went wrong while verifying reward. Error: %@",error.localizedDescription);
@@ -146,14 +147,14 @@
 		if (verified) {
 			PDLog(@"Post found for reward");
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[_viewModel setViewModelState:PDInstagramVerifyViewStateVerifySuccess];
-				[_loadingView hideAnimated:YES];
+				[weakSelf.viewModel setViewModelState:PDInstagramVerifyViewStateVerifySuccess];
+				[weakSelf.loadingView hideAnimated:YES];
 			});
 		} else {
 			PDLog(@"Post not found");
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[_viewModel setViewModelState:PDInstagramVerifyViewStateVerifyFailure];
-				[_loadingView hideAnimated:YES];
+				[weakSelf.viewModel setViewModelState:PDInstagramVerifyViewStateVerifyFailure];
+				[weakSelf.loadingView hideAnimated:YES];
 			});
 		}
 	}];

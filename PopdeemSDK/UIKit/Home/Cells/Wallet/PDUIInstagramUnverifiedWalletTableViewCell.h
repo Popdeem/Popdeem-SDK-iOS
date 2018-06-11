@@ -13,13 +13,13 @@
 @end
 
 @interface PDUIInstagramUnverifiedWalletTableViewCell : UITableViewCell <WakeableCell> {
-	BOOL verifying;
 }
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *rewardImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *mainLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *verifyButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic) BOOL verifying;
 
 
 @property (nonatomic, assign) PDReward *reward;

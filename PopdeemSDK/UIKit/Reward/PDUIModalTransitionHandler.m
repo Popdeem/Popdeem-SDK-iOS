@@ -8,6 +8,9 @@
 
 #import "PDUIModalTransitionHandler.h"
 #import "PDUINavigationController.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+
 
 @implementation PDUIModalTransitionHandler
 
@@ -103,3 +106,4 @@
 }
 
 @end
+#pragma clang diagnostic pop

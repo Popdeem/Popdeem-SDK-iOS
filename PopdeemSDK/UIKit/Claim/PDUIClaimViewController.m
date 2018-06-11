@@ -20,7 +20,6 @@
 @interface PDUIClaimViewController () {
   NSArray *_mediaTypes;
   PDReward *_reward;
-  PDLocation *_location;
   BOOL goingToTag;
 }
 
@@ -41,7 +40,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *rewardInfoViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationVerificationViewHeightConstraint;
 
-@property (nonatomic) BOOL keyboardIsUp;
 @end
 
 @implementation PDUIClaimViewController
@@ -98,25 +96,26 @@
     }];
     return;
   }
+  __weak typeof(self) weakSelf = self;
   [_locationValidator validateLocationForReward:_reward completion:^(BOOL validated, PDLocation *closestLocation){
-    _location = closestLocation;
-    _viewModel.location = closestLocation;
-    if (_loadingView) {
-      [_loadingView hideAnimated:YES];
+    weakSelf.location = closestLocation;
+    weakSelf.viewModel.location = closestLocation;
+    if (weakSelf.loadingView) {
+      [weakSelf.loadingView hideAnimated:YES];
     }
     if (validated) {
-      _viewModel.locationVerified = YES;
-      [_locationFailedView setHidden:YES];
+      weakSelf.viewModel.locationVerified = YES;
+      [weakSelf.locationFailedView setHidden:YES];
       [UIView animateWithDuration:1.0 animations:^{
-        self.locationVerificationViewHeightConstraint.constant = 0;
-				[self.locationVerificationView setHidden:YES];
+        weakSelf.locationVerificationViewHeightConstraint.constant = 0;
+				[weakSelf.locationVerificationView setHidden:YES];
       }];
     } else {
-      _viewModel.locationVerified = NO;
-      [_locationFailedView setHidden:NO];
-      [self.view bringSubviewToFront:_locationFailedView];
+      weakSelf.viewModel.locationVerified = NO;
+      [weakSelf.locationFailedView setHidden:NO];
+      [weakSelf.view bringSubviewToFront:weakSelf.locationFailedView];
       [UIView animateWithDuration:1.0 animations:^{
-        self.locationVerificationViewHeightConstraint.constant = 50;
+        weakSelf.locationVerificationViewHeightConstraint.constant = 50;
       }];
     }
   }];
@@ -252,7 +251,7 @@
   
   NSMutableString *withString = [[NSMutableString alloc] init];
   if (friendsTagged.count > 2) {
-    withString = [NSMutableString stringWithFormat:@"%@ and %u others.",[[friendsTagged objectAtIndex:0] name], [friendsTagged count]-1];
+    withString = [NSMutableString stringWithFormat:@"%@ and %lu others.",[[friendsTagged objectAtIndex:0] name], [friendsTagged count]-1];
   } else if (friendsTagged.count == 2) {
     withString = [NSMutableString stringWithFormat:@"%@ and %@",[[friendsTagged objectAtIndex:0] name], [[friendsTagged objectAtIndex:1] name]];
   } else if (friendsTagged.count == 1) {
@@ -425,19 +424,20 @@
 }
 
 - (void) hiderTap {
+  __weak typeof(self) weakSelf = self;
   [UIView animateWithDuration:0.5
                         delay:0.0
                       options: UIViewAnimationOptionCurveEaseInOut
                    animations:^{
                      
-                     [_keyboardHiderView setHidden:YES];
+                     [weakSelf.keyboardHiderView setHidden:YES];
                      if (!IS_IPHONE_4_OR_LESS) {
-                       _rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 100;
+                       weakSelf.rewardInfoViewHeightConstraint.constant = (IS_IPHONE_4_OR_LESS) ? 0 : 100;
                      }
-                     self.locationVerificationViewHeightConstraint.constant = _viewModel.locationVerified ? 0 : 50;
-                     [_textView resignFirstResponder];
-										 _keyboardIsUp = NO;
-                     [_rewardInfoView setHidden:NO];
+                     weakSelf.locationVerificationViewHeightConstraint.constant = weakSelf.viewModel.locationVerified ? 0 : 50;
+                     [weakSelf.textView resignFirstResponder];
+										 weakSelf.keyboardIsUp = NO;
+                     [weakSelf.rewardInfoView setHidden:NO];
                      self.navigationItem.rightBarButtonItem = nil;
                      self.navigationItem.hidesBackButton = NO;
                      [self setTitle:translationForKey(@"popdeem.claim.getreward", @"Claim Reward")];

@@ -19,6 +19,8 @@
 #import "PDBackgroundScan.h"
 #import "PDUIPostScanViewController.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
 
 @interface PDUISelectNetworkViewController ()
 
@@ -385,3 +387,4 @@
 }
 
 @end
+#pragma clang diagnostic pop

@@ -226,18 +226,19 @@
 		return;
 	}
 	PDSocialMediaManager *manager = [PDSocialMediaManager manager];
+  __weak typeof(self) weakSelf = self;
 	[manager isLoggedInWithInstagram:^(BOOL isLoggedIn){
 		if (!isLoggedIn) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:_viewController.navigationController delegate:self connectMode:YES];
+				PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:weakSelf.viewController.navigationController delegate:weakSelf connectMode:YES];
 				if (!instaVC) {
 					return;
 				}
-				_viewController.definesPresentationContext = YES;
+				weakSelf.viewController.definesPresentationContext = YES;
 				instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
 				instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 				[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-				[_viewController presentViewController:instaVC animated:YES completion:^(void){}];
+				[weakSelf.viewController presentViewController:instaVC animated:YES completion:^(void){}];
 			});
 		}
 	}];
@@ -297,20 +298,21 @@
 }
 
 - (void) keyboardWillShow:(NSNotification*)notification {
+  __weak typeof(self) weakSelf = self;
 	[UIView animateWithDuration:1.0
 												delay:0.0
 											options: UIViewAnimationOptionCurveEaseInOut
 									 animations:^{
-										 [_viewController keyboardUp];
+										 [weakSelf.viewController keyboardUp];
 									 } completion:^(BOOL finished){
                    
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-                     UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:_viewController action:@selector(hiderTap)];
+                     UIBarButtonItem *typingDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:weakSelf.viewController action:@selector(hiderTap)];
 #pragma clang diagnostic pop
                      //
-                     self.viewController.navigationItem.rightBarButtonItem = typingDone;
-                     self.viewController.navigationItem.hidesBackButton = YES;
+                     weakSelf.viewController.navigationItem.rightBarButtonItem = typingDone;
+                     weakSelf.viewController.navigationItem.hidesBackButton = YES;
 
                    }];
   [self.viewController.view setNeedsLayout];
@@ -432,10 +434,11 @@
 }
 
 - (void) validateTwitter {
+  __weak typeof(self) weakSelf = self;
 	[[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
 		if (!connected) {
 			[self connectTwitter:^(){
-				[_viewController.claimButtonView setUserInteractionEnabled:YES];
+				[weakSelf.viewController.claimButtonView setUserInteractionEnabled:YES];
 			} failure:^(NSError *error) {
 				UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.error", @"Error")
 																										 message:translationForKey(@"popdeem.claim.twitter.notconnected", @"Twitter not connected, you must connect your twitter account in order to post to Twitter")
@@ -444,10 +447,10 @@
 																					 otherButtonTitles: nil];
 				[av show];
 			}];
-			[_viewController.claimButtonView setUserInteractionEnabled:YES];
+			[weakSelf.viewController.claimButtonView setUserInteractionEnabled:YES];
 			return;
 		}
-		[_viewController.claimButtonView setUserInteractionEnabled:YES];
+		[weakSelf.viewController.claimButtonView setUserInteractionEnabled:YES];
 	}];
 }
 

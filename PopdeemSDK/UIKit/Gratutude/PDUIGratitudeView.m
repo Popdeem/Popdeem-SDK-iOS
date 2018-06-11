@@ -235,7 +235,7 @@
 
 - (NSString*)body {
   if ([[PDCustomer sharedInstance] usesAmbassadorFeatures]) {
-    NSInteger incrementPoints = [[PDCustomer sharedInstance] incrementAdvocacyPoints];
+    NSInteger incrementPoints = [[[PDCustomer sharedInstance] incrementAdvocacyPoints] integerValue];
     switch (_type) {
       case PDGratitudeTypeShare:
         return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
@@ -304,7 +304,7 @@
 }
 
 - (UIImage*) image {
-  int variations = 0;
+  NSInteger variations = 0;
   NSString *imageKey;
   switch (self.type) {
     case PDGratitudeTypeShare:

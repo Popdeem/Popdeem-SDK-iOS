@@ -28,9 +28,9 @@
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonBottomGapLayoutConstraint;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic) BOOL twitterValid;
 
 - (instancetype) initFromNibWithReward:(PDReward*)reward;
 - (void) setReward:(PDReward*)reward;
-- (void) registerWithModel:(InstagramResponseModel*)model;
 
 @end

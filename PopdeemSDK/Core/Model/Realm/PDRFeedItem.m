@@ -94,7 +94,6 @@
   
   if (self.actionImageData != nil) {
     UIImage *actionImage = [UIImage imageWithData:_actionImageData];
-    NSData *binaryImageData = UIImagePNGRepresentation(actionImage);
     NSString *actionImagePath = [NSString stringWithFormat:@"%ld_actionimage.png",self.identifier];
     self.actionImagePath = actionImagePath;
   }

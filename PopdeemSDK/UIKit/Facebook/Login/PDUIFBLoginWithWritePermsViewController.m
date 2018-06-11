@@ -17,13 +17,13 @@
 #import "PDUser.h"
 
 @interface PDUIFBLoginWithWritePermsViewController ()
-@property (nonatomic) BOOL success;
+
 @end
 
 @implementation PDUIFBLoginWithWritePermsViewController
 
 - (instancetype) initForParent:(UIViewController*)parent loginType:(PDFacebookLoginType)loginType {
-	connected = NO;
+	_connected = NO;
   _success = NO;
 	if (self = [super init]) {
 		_parent = parent;
@@ -121,7 +121,7 @@
 }
 
 - (void) buttonPressed:(UIButton*)button {
-	if (!connected) {
+	if (!_connected) {
 		switch (_viewModel.loginType) {
 			case PDFacebookLoginTypeRead:
 			[self connectRead];
@@ -143,6 +143,7 @@
 																																				descriptionText:@"Please wait while we log you in"];
 	[loadingView showAnimated:YES];
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
+  __weak typeof(self) weakSelf = self;
 	[manager loginWithFacebookReadPermissions:@[@"public_profile",
 																																		 @"email",
 																																		 @"user_birthday",
@@ -162,15 +163,15 @@
 																		 delegate:self
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];
-      _success = NO;
+      weakSelf.success = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
         [av show];
       });
 			AbraLogEvent(ABRA_EVENT_CANCELLED_FACEBOOK_LOGIN, nil);
-    } else if ([[err.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
+    } else if ([[err.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already _connected"].location != NSNotFound) {
       dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        _success = NO;
+        weakSelf.success = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
           [av show];
         });
@@ -181,7 +182,7 @@
 																		 delegate:self
 														cancelButtonTitle:@"OK"
 														otherButtonTitles: nil];
-      _success = NO;
+      weakSelf.success = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
         [av show];
       });
@@ -192,11 +193,12 @@
 
 - (void) connectPublish {
 	FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+  __weak typeof(self) weakSelf = self;
 	[loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
 		if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			connected = YES;
+			weakSelf.connected = YES;
 			[[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-			[self dismissViewControllerAnimated:YES completion:^{
+			[weakSelf dismissViewControllerAnimated:YES completion:^{
 				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
 			}];
 		} else {
@@ -205,7 +207,7 @@
 																											delegate:self
 																						 cancelButtonTitle:@"OK"
 																						 otherButtonTitles:nil];
-      _success = NO;
+      weakSelf.success = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
         [noperm show];
       });
@@ -216,11 +218,12 @@
 
 - (void) connect {
 	FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+  __weak typeof(self) weakSelf = self;
 	[loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
 		if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			connected = YES;
+			weakSelf.connected = YES;
 			[[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-			[self dismissViewControllerAnimated:YES completion:^{
+			[weakSelf dismissViewControllerAnimated:YES completion:^{
 				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
 			}];
 		} else {
@@ -229,7 +232,7 @@
 																											delegate:self
 																						 cancelButtonTitle:@"OK"
 																						 otherButtonTitles:nil];
-      _success = NO;
+      weakSelf.success = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
         [noperm show];
       });
@@ -239,15 +242,16 @@
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  __weak typeof(self) weakSelf = self;
 	[self dismissViewControllerAnimated:YES completion:^{
-    if (self.viewModel.loginType == PDFacebookLoginTypeRead) {
-      if (_success) {
+    if (weakSelf.viewModel.loginType == PDFacebookLoginTypeRead) {
+      if (weakSelf.success) {
         [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];
       } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginFailure object:nil];
       }
     } else {
-      if (_success) {
+      if (weakSelf.success) {
         [[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
       } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishFailure object:nil];
@@ -259,14 +263,14 @@
 - (void) dismiss {
 	switch (_viewModel.loginType) {
 			case PDFacebookLoginTypeRead:
-			if (connected) {
+			if (_connected) {
 				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];
 			} else {
 				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginFailure object:nil];
 			}
 			break;
 		case PDFacebookLoginTypePublish:
-			if (connected) {
+			if (_connected) {
 				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
 			} else {
 				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishFailure object:nil];

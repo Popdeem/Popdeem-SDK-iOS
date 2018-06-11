@@ -51,7 +51,6 @@
         PDCustomer *customer = [PDCustomer initFromAPI:jsonString];
       }
       
-      
       [session invalidateAndCancel];
       dispatch_async(dispatch_get_main_queue(), ^{
         completion(nil);

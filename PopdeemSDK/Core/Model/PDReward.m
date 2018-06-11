@@ -220,6 +220,8 @@
 }
 
 - (void) downloadCoverImage {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
   if (isDownloadingCover) {
     return;
   }
@@ -243,6 +245,7 @@
     }
   }];
   [task2 resume];
+  #pragma clang diagnostic pop
 }
 
 - (void) downloadCoverImageCompletion:(void (^)(BOOL success))completion {

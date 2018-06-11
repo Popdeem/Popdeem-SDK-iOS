@@ -279,6 +279,53 @@
   return NO;
 }
 
++ (BOOL) application:(UIApplication*)application canOpenUrl:(NSURL *)url options:(NSDictionary*)options {
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
+    return YES;
+  }
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
+    return YES;
+  }
+//  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
+//    return YES;
+//  }
+  for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:scheme
+                                                        options:0
+                                                          range:NSMakeRange(0, [scheme length])];
+    if (numberOfMatches > 0) {
+      return YES;
+    }
+  }
+  return NO;
+}
+
++ (BOOL) application:(UIApplication*)application openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options {
+//  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
+//    return [[Twitter sharedInstance] application:application openURL:url options:options];
+//  }
+  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
+    return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
+  }
+  for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:scheme
+                                                        options:0
+                                                          range:NSMakeRange(0, [scheme length])];
+    if (numberOfMatches > 0) {
+      return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
+    }
+  }
+  return YES;
+}
+
 + (BOOL) application:(UIApplication *)application
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication

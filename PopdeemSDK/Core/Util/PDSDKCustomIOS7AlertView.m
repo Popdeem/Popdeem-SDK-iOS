@@ -8,6 +8,8 @@
 //  Lincesed under The MIT License (MIT)
 //  http://opensource.org/licenses/MIT
 //
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
 
 #import "PDSDKCustomIOS7AlertView.h"
 #import <QuartzCore/QuartzCore.h>
@@ -374,10 +376,10 @@ CGFloat buttonSpacerHeight = 0;
     keyboardSize.height = keyboardSize.width;
     keyboardSize.width = tmp;
   }
-  
+  __weak typeof(self) weakSelf = self;
   [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
                    animations:^{
-                     dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - keyboardSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
+                    weakSelf.dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - keyboardSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
                    }
                    completion:nil
    ];
@@ -397,3 +399,4 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 @end
+#pragma clang diagnostic pop

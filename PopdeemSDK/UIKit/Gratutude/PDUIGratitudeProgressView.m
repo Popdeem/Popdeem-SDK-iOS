@@ -130,34 +130,35 @@
 }
 
 - (void) animateToValue:(NSNumber*)value {
+  __weak typeof(self) weakSelf = self;
   [UIView animateWithDuration:1.0f delay:0.0 options:UIViewAnimationOptionTransitionNone
                    animations:^{
                      float newperc = value.floatValue/100;
                      
-                     _progressCurrentView.frame = CGRectMake(_progressCurrentView.frame.origin.x, _progressCurrentView.frame.origin.y, _barWidth*newperc, _progressCurrentView.frame.size.height);
+                     weakSelf.progressCurrentView.frame = CGRectMake(weakSelf.progressCurrentView.frame.origin.x, weakSelf.progressCurrentView.frame.origin.y, weakSelf.barWidth*newperc, weakSelf.progressCurrentView.frame.size.height);
                      
                    }
                    completion:^(BOOL finished) {
                      if (value.integerValue <= 30) {
-                       [_level1Label.layer setOpacity:0.3];
-                       [_level2Label.layer setOpacity:0.3];
-                       [_level3Label.layer setOpacity:0.3];
+                       [weakSelf.level1Label.layer setOpacity:0.3];
+                       [weakSelf.level2Label.layer setOpacity:0.3];
+                       [weakSelf.level3Label.layer setOpacity:0.3];
                      }
                      if (value.integerValue >= 30 && value.integerValue < 60) {
-                       [_level1Label.layer setOpacity:1.0];
-                       [_level2Label.layer setOpacity:0.3];
-                       [_level3Label.layer setOpacity:0.3];
+                       [weakSelf.level1Label.layer setOpacity:1.0];
+                       [weakSelf.level2Label.layer setOpacity:0.3];
+                       [weakSelf.level3Label.layer setOpacity:0.3];
                      }
 
                      if (value.integerValue >= 60 && value.integerValue < 90) {
-                       [_level1Label.layer setOpacity:1.0];
-                       [_level2Label.layer setOpacity:1.0];
-                       [_level3Label.layer setOpacity:0.3];
+                       [weakSelf.level1Label.layer setOpacity:1.0];
+                       [weakSelf.level2Label.layer setOpacity:1.0];
+                       [weakSelf.level3Label.layer setOpacity:0.3];
                      }
                      if (value.integerValue >= 90) {
-                       [_level1Label.layer setOpacity:1.0];
-                       [_level2Label.layer setOpacity:1.0];
-                       [_level3Label.layer setOpacity:1.0];
+                       [weakSelf.level1Label.layer setOpacity:1.0];
+                       [weakSelf.level2Label.layer setOpacity:1.0];
+                       [weakSelf.level3Label.layer setOpacity:1.0];
                      }
                    }
    ];

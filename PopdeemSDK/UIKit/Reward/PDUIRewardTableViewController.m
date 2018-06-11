@@ -18,6 +18,9 @@
 #import "PDTheme.h"
 #import "PDLocationValidator.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-retain-self"
+
 @interface PDUIRewardTableViewController ()
 @property (nonatomic, strong)NSArray *rewards;
 @property (nonatomic, strong)PDUIModalLoadingView *loadingView;
@@ -111,3 +114,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop

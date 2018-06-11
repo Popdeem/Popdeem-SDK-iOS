@@ -59,9 +59,10 @@
 }
 - (IBAction)closeButtonTapped:(id)sender {
   [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginCancelPressed object:nil];
+  __weak typeof(self) weakSelf = self;
 	[self dismissViewControllerAnimated:YES completion:^(void){
-		if (_webView && [_webView isLoading]) {
-				[_webView stopLoading];
+		if (weakSelf.webView && [weakSelf.webView isLoading]) {
+				[weakSelf.webView stopLoading];
 		}
 	}];
 }
