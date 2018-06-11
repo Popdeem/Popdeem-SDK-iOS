@@ -157,6 +157,7 @@
       if ([[error.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
         dispatch_async(dispatch_get_main_queue(), ^{
           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+          connected = NO;
           [av show];
         });
       } else {
@@ -186,8 +187,7 @@
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	[self dismissViewControllerAnimated:YES completion:^{
-	}];
+  [self dismiss];
 }
 
 - (void) dismiss {

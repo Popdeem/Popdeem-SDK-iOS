@@ -207,8 +207,9 @@
 }
 
 - (IBAction) dismissAction:(id)sender {
+  __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
-    [_loadingView hideAnimated:YES];
+    [weakSelf.loadingView hideAnimated:YES];
   });
 	[self dismissViewControllerAnimated:YES completion:^{
 		//Any cleanup to do?
@@ -261,11 +262,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Location Denied");
+  __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_loadingView hideAnimated:YES];
+        [weakSelf.loadingView hideAnimated:YES];
     });
     [self dismissViewControllerAnimated:YES completion:^{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                             object:nil];
     }];
@@ -284,7 +286,7 @@
         [_loadingView hideAnimated:YES];
     });
     [self dismissViewControllerAnimated:YES completion:^{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                             object:nil];
     }];

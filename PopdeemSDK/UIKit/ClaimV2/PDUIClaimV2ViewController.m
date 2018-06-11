@@ -598,19 +598,20 @@
 }
 
 - (void) validateTwitter {
-  if (![[PDUser sharedInstance] twitterParams]) {
+  if ([[[PDUser sharedInstance] twitterParams] accessToken].length < 1) {
     [self connectTwitter];
     return;
   }
+  __weak typeof(self) weakSelf = self;
   [[PDSocialMediaManager manager] verifyTwitterCredentialsCompletion:^(BOOL connected, NSError *error) {
     if (!connected) {
-      [self connectTwitter];
-      [self.continueButton setUserInteractionEnabled:YES];
-      _willTweet = NO;
+      [weakSelf connectTwitter];
+      [weakSelf.continueButton setUserInteractionEnabled:YES];
+      weakSelf.willTweet = NO;
       return;
     }
-    _willTweet = YES;
-    [self.continueButton setUserInteractionEnabled:YES];
+    weakSelf.willTweet = YES;
+    [weakSelf.continueButton setUserInteractionEnabled:YES];
   }];
 }
 

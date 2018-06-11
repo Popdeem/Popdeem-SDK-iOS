@@ -379,8 +379,10 @@
 		[socialService disconnectTwitterAccountWithCompletion:^(NSError *err){
       if (!err) {
         TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
-        NSString *userID = store.session.userID;
-        [store logOutUserID:userID];
+        for (TWTRSession *session in store.existingUserSessions) {
+          NSString *userID = session.userID;
+          [store logOutUserID:userID];
+        }
       }
 		}];
 		AbraLogEvent(ABRA_EVENT_DISCONNECT_SOCIAL_ACCOUNT, (@{
@@ -664,8 +666,10 @@
     [twService disconnectTwitterAccountWithCompletion:^(NSError *err){
       if (!err) {
         TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
-        NSString *userID = store.session.userID;
-        [store logOutUserID:userID];
+        for (TWTRSession *session in store.existingUserSessions) {
+          NSString *userID = session.userID;
+          [store logOutUserID:userID];
+        }
       }
       PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
       dispatch_async(dispatch_get_main_queue(), ^{
