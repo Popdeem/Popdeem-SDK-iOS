@@ -44,6 +44,9 @@
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationFailedViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *refreshLocationButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *locationVerificationView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *bottomInfoView;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *bottomInfoLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *infoViewHeightContstraint;
 
 - (instancetype) initFromNib;
 //- (instancetype) initWithReward:(PDReward*)reward;

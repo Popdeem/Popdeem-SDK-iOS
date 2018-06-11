@@ -69,14 +69,18 @@
 		weakSelf.rewards =  [PDRewardStore allRewardsForBrandId:_brand.identifier];
 		_rewardsLoading = NO;
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      }
 		});
 	} failure:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			_rewardsLoading = NO;
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      }
 		});
 	}];
 }
@@ -88,13 +92,17 @@
 		weakSelf.rewards =  [PDRewardStore orderedByDate];
 		_rewardsLoading = NO;
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      }
 		});
 	} failure:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			_rewardsLoading = NO;
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      }
 		});
 	}];
 }
@@ -107,7 +115,9 @@
 			PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
 		}
 		dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.controller.tableView reloadInputViews];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadInputViews];
+      }
 		});
 	}];
 }
@@ -123,12 +133,16 @@
 		weakSelf.controller.closestLocation = [locations firstObject];
 		weakSelf.closestLocation = [locations firstObject];
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+      }
 		});
 	} failure:^(NSError *error){
 		PDLogError(@"Locations Fail: %@",error);
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+      }
 		});
 	}];
 }
@@ -151,14 +165,18 @@
 				[arr addObject:r];
 //			}
 		}
-		weakSelf.wallet = [arr copy];
-		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    if (weakSelf.controller != nil) {
+      weakSelf.wallet = [arr copy];
+      [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil   waitUntilDone:NO];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    }
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      }
 		});
 	}];
 }
@@ -166,14 +184,18 @@
 - (void) fetchAllWallet {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
+    if (weakSelf.controller != nil) {
 		weakSelf.wallet = [PDWallet orderedByDateMulti];
-		[weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-		[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+    }
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      }
 		});
 	}];
 }
@@ -182,18 +204,22 @@
 	_feedLoading = YES;
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getFeedsSuccess:^{
-    weakSelf.feed = [PDFeeds feed];
-    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-    [weakSelf.controller.tableView reloadData];
+    if (weakSelf.controller != nil) {
+      weakSelf.feed = [PDFeeds feed];
+      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+      [weakSelf.controller.tableView reloadData];
     _feedLoading = NO;
+    }
 	} failure:^(NSError *error){
 		//TODO: Handle Error
 		_feedLoading = NO;
     [weakSelf.controller.tableView setUserInteractionEnabled:YES];
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[weakSelf.controller.tableView reloadData];
-			[weakSelf.controller.tableView setUserInteractionEnabled:YES];
-      _feedLoading = NO;
+      if (weakSelf.controller != nil) {
+        [weakSelf.controller.tableView reloadData];
+        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+        _feedLoading = NO;
+      }
 		});
 	}];
 }

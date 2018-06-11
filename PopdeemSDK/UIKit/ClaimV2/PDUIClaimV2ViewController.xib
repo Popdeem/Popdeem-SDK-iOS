@@ -10,7 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUIClaimV2ViewController">
             <connections>
+                <outlet property="bottomInfoLabel" destination="KPS-eX-3l4" id="Mk9-zW-sAD"/>
+                <outlet property="bottomInfoView" destination="bmg-Kw-8eU" id="Rg9-aw-kwt"/>
                 <outlet property="continueButton" destination="Ypp-OO-OC9" id="Jab-hZ-e2e"/>
+                <outlet property="infoViewHeightContstraint" destination="0Bn-4N-UaV" id="v6b-g6-52Z"/>
                 <outlet property="locationFailedView" destination="n3C-Zo-fq8" id="Tby-KY-hbn"/>
                 <outlet property="locationFailedViewHeightConstraint" destination="uuS-ic-zX9" id="OTV-eh-H1t"/>
                 <outlet property="locationVerificationView" destination="1aJ-nQ-DK8" id="4Vd-Cv-IIJ"/>
@@ -46,10 +49,10 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypp-OO-OC9">
-                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="kh7-Ro-bXY"/>
+                        <constraint firstAttribute="height" constant="50" id="kh7-Ro-bXY"/>
                     </constraints>
                     <state key="normal" title="Continue"/>
                     <connections>
@@ -87,9 +90,27 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kKw-7m-GGS">
-                    <rect key="frame" x="0.0" y="175" width="375" height="432"/>
+                    <rect key="frame" x="0.0" y="175" width="375" height="402"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmg-Kw-8eU">
+                    <rect key="frame" x="0.0" y="577" width="375" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPS-eX-3l4">
+                            <rect key="frame" x="20" y="9.5" width="335" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="0Bn-4N-UaV"/>
+                        <constraint firstAttribute="trailing" secondItem="KPS-eX-3l4" secondAttribute="trailing" constant="20" id="KxV-44-Frh"/>
+                        <constraint firstItem="KPS-eX-3l4" firstAttribute="centerY" secondItem="bmg-Kw-8eU" secondAttribute="centerY" id="ig4-Vf-dkQ"/>
+                        <constraint firstItem="KPS-eX-3l4" firstAttribute="leading" secondItem="bmg-Kw-8eU" secondAttribute="leading" constant="20" id="pZY-6P-qJg"/>
+                    </constraints>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3C-Zo-fq8">
                     <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -97,17 +118,20 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="bmg-Kw-8eU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4o7-Vr-IgE"/>
                 <constraint firstItem="kKw-7m-GGS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8EA-u3-7sh"/>
                 <constraint firstItem="kKw-7m-GGS" firstAttribute="top" secondItem="edA-44-bu0" secondAttribute="bottom" id="8pi-TU-9K7"/>
+                <constraint firstItem="Ypp-OO-OC9" firstAttribute="top" secondItem="bmg-Kw-8eU" secondAttribute="bottom" id="9iQ-aX-nQa"/>
                 <constraint firstItem="Ypp-OO-OC9" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="I6E-MK-Kd3"/>
                 <constraint firstItem="edA-44-bu0" firstAttribute="top" secondItem="1aJ-nQ-DK8" secondAttribute="bottom" id="J7u-jT-QqI"/>
                 <constraint firstAttribute="trailing" secondItem="edA-44-bu0" secondAttribute="trailing" id="PlT-IO-v1u"/>
-                <constraint firstItem="Ypp-OO-OC9" firstAttribute="top" secondItem="kKw-7m-GGS" secondAttribute="bottom" id="XhF-0u-6DP"/>
+                <constraint firstItem="bmg-Kw-8eU" firstAttribute="top" secondItem="kKw-7m-GGS" secondAttribute="bottom" id="Xgs-a0-3zT"/>
                 <constraint firstItem="Ypp-OO-OC9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bQO-jz-hVF"/>
                 <constraint firstItem="1aJ-nQ-DK8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bmG-IY-bZl"/>
                 <constraint firstItem="n3C-Zo-fq8" firstAttribute="top" secondItem="1aJ-nQ-DK8" secondAttribute="bottom" id="g3b-0n-90h"/>
                 <constraint firstItem="1aJ-nQ-DK8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gkb-dd-bBI"/>
                 <constraint firstItem="Ypp-OO-OC9" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="hlD-j0-gvG"/>
+                <constraint firstAttribute="trailing" secondItem="bmg-Kw-8eU" secondAttribute="trailing" id="jfr-qx-GL5"/>
                 <constraint firstItem="n3C-Zo-fq8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mlR-En-uao"/>
                 <constraint firstAttribute="trailing" secondItem="1aJ-nQ-DK8" secondAttribute="trailing" id="s9Q-wH-a13"/>
                 <constraint firstAttribute="trailing" secondItem="n3C-Zo-fq8" secondAttribute="trailing" id="sxX-fF-iw3"/>

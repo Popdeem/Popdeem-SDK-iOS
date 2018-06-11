@@ -40,9 +40,6 @@
 #define kPDUIAddPhotoTableViewCell @"PDUIAddPhotoTableViewCell"
 #define kPDUISocialClaimTableViewCell @"PDUISocialClaimTableViewCell"
 #define kPDUIClaimInfoTableViewCell @"PDUIClaimInfoTableViewCell"
-#define FacebookCellIndexPath [NSIndexPath indexPathForRow:1 inSection:1]
-#define TwitterCellIndexPath [NSIndexPath indexPathForRow:2 inSection:1]
-#define InstagramCellIndexPath [NSIndexPath indexPathForRow:3 inSection:1]
 
 @interface PDUIClaimV2ViewController () {
   PDLocation *_location;
@@ -175,7 +172,18 @@
 }
 
 - (void) viewDidLayoutSubviews {
-  
+  [self.bottomInfoLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
+  [self.bottomInfoLabel setNumberOfLines:2];
+  [self.bottomInfoView setBackgroundColor:[UIColor whiteColor]];
+  CALayer *topBorder = [CALayer layer];
+  topBorder.frame = CGRectMake(0.0f, -1.0f, self.bottomInfoView.frame.size.width, 1.0f);
+  topBorder.backgroundColor = [UIColor colorWithRed:0.90 green:0.90 blue:0.90 alpha:1.00].CGColor;
+  [self.bottomInfoView.layer addSublayer:topBorder];
+  if (_reward.action == PDRewardActionPhoto) {
+    [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.photo", @"Your photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
+  } else {
+    [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.checkin", @"Your check-in or photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
+  }
 }
 
 - (void) registerNibs {
@@ -214,7 +222,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   float tableHeight = self.tableView.frame.size.height - 60;
-  float singleHeight = tableHeight/6.5;
+  float singleHeight = tableHeight/5.5;
   if (indexPath.section == 1 && indexPath.row == 0) {
     return singleHeight * 1.5;
   }
@@ -236,7 +244,7 @@
 }
 
 - (UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-  if (section == 2) {
+  if (section == 1) {
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1.0f)];
     [footerView setBackgroundColor:PopdeemColor(PDThemeColorTableViewSeperator)];
     return footerView;
@@ -254,7 +262,7 @@
       return 1;
       break;
       case 1:
-      return 5;
+      return [_reward.socialMediaTypes count] + 1;
       break;
     default:
       return 0;
@@ -285,37 +293,29 @@
         return addPhotoCell;
       }
     } else if (indexPath.row == 1) {
-      PDUISocialClaimTableViewCell *facebook = [[self tableView] dequeueReusableCellWithIdentifier:kPDUISocialClaimTableViewCell];
-      facebook.parent = self;
-      [facebook setSocialNetwork:PDSocialMediaTypeFacebook];
-      if (![_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
-        [facebook setEnabled:NO];
+      PDUISocialClaimTableViewCell *first = [[self tableView] dequeueReusableCellWithIdentifier:kPDUISocialClaimTableViewCell];
+      first.parent = self;
+      if (_reward.socialMediaTypes.count >= 1) {
+        PDSocialMediaType type = [[_reward.socialMediaTypes objectAtIndex:0] integerValue];
+        [first setSocialNetwork:type];
       }
-      return facebook;
+      return first;
     } else if (indexPath.row == 2) {
-      PDUISocialClaimTableViewCell *twitter = [[self tableView] dequeueReusableCellWithIdentifier:kPDUISocialClaimTableViewCell];
-      twitter.parent = self;
-      [twitter setSocialNetwork:PDSocialMediaTypeTwitter];
-      if (![_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
-        [twitter setEnabled:NO];
+      PDUISocialClaimTableViewCell *second = [[self tableView] dequeueReusableCellWithIdentifier:kPDUISocialClaimTableViewCell];
+      second.parent = self;
+      if (_reward.socialMediaTypes.count >= 2) {
+        PDSocialMediaType type = [[_reward.socialMediaTypes objectAtIndex:1] integerValue];
+        [second setSocialNetwork:type];
       }
-      return twitter;
+      return second;
     } else if (indexPath.row == 3) {
-      PDUISocialClaimTableViewCell *instagram = [[self tableView] dequeueReusableCellWithIdentifier:kPDUISocialClaimTableViewCell];
-      instagram.parent = self;
-      [instagram setSocialNetwork:PDSocialMediaTypeInstagram];
-      if (![_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
-        [instagram setEnabled:NO];
+      PDUISocialClaimTableViewCell *third = [[self tableView] dequeueReusableCellWithIdentifier:kPDUISocialClaimTableViewCell];
+      third.parent = self;
+      if (_reward.socialMediaTypes.count >= 3) {
+        PDSocialMediaType type = [[_reward.socialMediaTypes objectAtIndex:2] integerValue];
+        [third setSocialNetwork:type];
       }
-      return instagram;
-    } else if (indexPath.row == 4) {
-      PDUIClaimInfoTableViewCell *info = [[self tableView] dequeueReusableCellWithIdentifier:kPDUIClaimInfoTableViewCell];
-      if (_reward.action == PDRewardActionPhoto) {
-        [info.infoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.photo", @"Your photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
-      } else {
-        [info.infoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.checkin", @"Your check-in or photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
-      }
-      return info;
+      return third;
     }
   }
   
@@ -541,6 +541,14 @@
   _willInstagram = on;
   _willFacebook = NO;
   _willTweet = NO;
+  PDUISocialClaimTableViewCell *twitterCell = [self twitterCell];
+  if (twitterCell) {
+    [twitterCell.socialSwitch setOn:NO];
+  }
+  PDUISocialClaimTableViewCell *facebookCell = [self facebookCell];
+  if (facebookCell) {
+    [facebookCell.socialSwitch setOn:NO];
+  }
 }
 
 - (void) loginWithFacebook {
@@ -712,7 +720,16 @@
 }
 
 - (PDUISocialClaimTableViewCell*) facebookCell {
-  PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:FacebookCellIndexPath];
+  
+  NSUInteger index = -1;
+  if ([_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
+    index = [_reward.socialMediaTypes indexOfObject:@(PDSocialMediaTypeFacebook)];
+  }
+  if (index == -1) {
+    return nil;
+  }
+  NSIndexPath *facebookPath = [NSIndexPath indexPathForRow:index+1 inSection:1];
+  PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:facebookPath];
   if ([cell isKindOfClass:[PDUISocialClaimTableViewCell class]] && cell.socialMediaType == PDSocialMediaTypeFacebook) {
     return cell;
   }
@@ -720,7 +737,15 @@
 }
 
 - (PDUISocialClaimTableViewCell*) twitterCell {
-  PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:TwitterCellIndexPath];
+  NSUInteger index = -1;
+  if ([_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
+    index = [_reward.socialMediaTypes indexOfObject:@(PDSocialMediaTypeTwitter)];
+  }
+  if (index == -1) {
+    return nil;
+  }
+  NSIndexPath *twitterPath = [NSIndexPath indexPathForRow:index+1 inSection:1];
+  PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:twitterPath];
   if ([cell isKindOfClass:[PDUISocialClaimTableViewCell class]] && cell.socialMediaType == PDSocialMediaTypeTwitter) {
     return cell;
   }
@@ -728,7 +753,15 @@
 }
 
 - (PDUISocialClaimTableViewCell*) instagramCell {
-  PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:InstagramCellIndexPath];
+  NSUInteger index = -1;
+  if ([_reward.socialMediaTypes containsObject:@(PDSocialMediaTypeInstagram)]) {
+    index = [_reward.socialMediaTypes indexOfObject:@(PDSocialMediaTypeInstagram)];
+  }
+  if (index == -1) {
+    return nil;
+  }
+  NSIndexPath *instagramPath = [NSIndexPath indexPathForRow:index+1 inSection:1];
+  PDUISocialClaimTableViewCell *cell = (PDUISocialClaimTableViewCell*)[self.tableView cellForRowAtIndexPath:instagramPath];
   if ([cell isKindOfClass:[PDUISocialClaimTableViewCell class]] && cell.socialMediaType == PDSocialMediaTypeInstagram) {
     return cell;
   }
@@ -1045,6 +1078,9 @@
     [_locationFailedView setHidden:YES];
     [_verifyLocationLabel setHidden:YES];
     [_refreshLocationButton setHidden:YES];
+//    if (self.infoViewHeightContstraint.constant == 0) {
+//      self.infoViewHeightContstraint.constant = [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+//    }
   }];
   //
   if (_reward.verifyLocation == NO) {
@@ -1055,6 +1091,9 @@
       [_locationFailedView setHidden:YES];
       [_verifyLocationLabel setHidden:YES];
       [_refreshLocationButton setHidden:YES];
+//      if (self.infoViewHeightContstraint.constant != 0) {
+//        self.infoViewHeightContstraint.constant = 0;
+//      }
     }];
     return;
   }

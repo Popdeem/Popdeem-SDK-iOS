@@ -11,4 +11,6 @@
 @interface PDUIClaimInfoTableViewCell : UITableViewCell
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *infoLabel;
+
+- (id) initWithFrame:(CGRect)frame text:(NSString*)text;
 @end
