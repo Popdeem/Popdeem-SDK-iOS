@@ -61,7 +61,7 @@
   NSInteger verifyRewardId;
   BOOL firstLaunch;
 }
-@property (nonatomic, strong) PDUIHomeViewModel *model;
+@property (nonatomic, retain) PDUIHomeViewModel *model;
 @property (nonatomic) PDUIClaimViewController *claimVC;
 @property (nonatomic) BOOL *loggingIn;
 @property (nonatomic, strong) PDLocationValidator *locationValidator;
@@ -199,6 +199,7 @@
   [[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:NotificationReceived object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:PDUserDidLogin object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateUser) name:PDUserDidUpdate object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldUpdateTableView) name:ShouldUpdateTableView object:nil];
   [self registerNibs];
   [super viewDidLoad];
   
@@ -342,6 +343,7 @@
     _didClaim = NO;
     [_segmentedControl setSelectedSegmentIndex:2];
     _model.rewards = [PDRewardStore orderedByDate];
+    [_model fetchWallet];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
     PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare reward:self.willClaimReward];
@@ -1056,8 +1058,8 @@
     }
     [self.model claimNoAction:reward closestLocation:nil];
   } else {
-//    PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
       PDUIClaimV2ViewController *claimController = [[PDUIClaimV2ViewController alloc] initFromNib];
+    claimController.closestLocation = _closestLocation;
       [claimController setupWithReward:reward];
     self.willClaimReward = reward;
 //    if (_brand) {
@@ -1265,6 +1267,11 @@
         }
         [self.tableView endUpdates];
     });
+}
+
+- (void) shouldUpdateTableView {
+  [self.tableView reloadData];
+  [self.tableView setUserInteractionEnabled:YES];
 }
 
 @end

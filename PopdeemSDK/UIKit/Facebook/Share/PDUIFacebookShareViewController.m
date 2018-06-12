@@ -11,6 +11,7 @@
 #import "PDConstants.h"
 #import "PDUser.h"
 #import "PopdeemSDK.h"
+#import "PDCustomer.h"
 
 @implementation NSString (NSString_Extended)
 

@@ -10,6 +10,7 @@
 #import "PDReward.h"
 #import "TOCropViewController/TOCropViewController.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import "PDLocation.h"
 
 @class PDUIHomeViewController;
 
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) PDUIHomeViewController *homeController;
 
 @property (nonatomic, assign) PDReward *reward;
+@property (nonatomic, assign) PDLocation *closestLocation;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *rewardView;
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *continueButton;

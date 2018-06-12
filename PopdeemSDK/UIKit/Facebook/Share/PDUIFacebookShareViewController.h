@@ -10,6 +10,7 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "PDReward.h"
 #import "PDUIClaimV2ViewController.h"
+#import "PDLocation.h"
 
 @interface PDUIFacebookShareViewController : UIViewController <UIScrollViewDelegate, UIAlertViewDelegate, FBSDKSharingDelegate>
 
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) NSString *imageURLString;
 
 @property (nonatomic, assign) PDReward *reward;
+@property (nonatomic, assign) PDLocation *closestLocation;
 @property (nonatomic) BOOL facebookInstalled;
 
 - (instancetype) initForParent:(PDUIClaimV2ViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;

@@ -1004,6 +1004,9 @@
   }
   
   PDUIFacebookShareViewController *isv = [[PDUIFacebookShareViewController alloc] initForParent:self withMessage:@"" image:_userImage imageUrlString:_imageURLString];
+  if (_location != nil){
+    isv.closestLocation = _location;
+  }
   self.definesPresentationContext = YES;
   isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
   isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
