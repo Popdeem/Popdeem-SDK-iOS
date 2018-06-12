@@ -96,7 +96,7 @@
   CALayer *border = [CALayer layer];
   border.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
   
-  border.frame = CGRectMake(0, self.frame.size.height - 2.0f, self.frame.size.width, 1.0f);
+  border.frame = CGRectMake(0, self.frame.size.height-1.0f, self.frame.size.width, 1.0f);
   [self.layer addSublayer:border];
   
   if ([PDMessageStore unreadCount] > 0) {

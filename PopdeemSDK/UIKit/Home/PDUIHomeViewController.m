@@ -321,8 +321,8 @@
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   [self.view setUserInteractionEnabled:YES];
   if (!firstLaunch) {
-    [_model fetchRewards];
-    [_model fetchWallet];
+//    [_model fetchRewards];
+//    [_model fetchWallet];
   }
   firstLaunch = NO;
   if (_loadingView && !_loggingIn) {
