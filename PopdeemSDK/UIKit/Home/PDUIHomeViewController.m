@@ -340,6 +340,7 @@
     claimAction = NO;
     _didClaim = NO;
     [_segmentedControl setSelectedSegmentIndex:2];
+    [_model fetchWallet];
     _model.rewards = [PDRewardStore orderedByDate];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];

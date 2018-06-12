@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -105,9 +106,9 @@
             </subviews>
             <color key="backgroundColor" red="0.92144894599914551" green="0.9206315279006958" blue="0.9457707405090332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="LUy-Ia-9vF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Lko-kb-Dbd"/>
                 <constraint firstItem="LUy-Ia-9vF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hBg-xC-8Ht"/>
                 <constraint firstAttribute="trailing" secondItem="LUy-Ia-9vF" secondAttribute="trailing" id="oSv-QD-74r"/>
+                <constraint firstItem="LUy-Ia-9vF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="yeg-NK-t9m"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <point key="canvasLocation" x="401.5" y="299.5"/>

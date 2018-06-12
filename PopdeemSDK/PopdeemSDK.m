@@ -289,6 +289,7 @@
 //  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
 //    return YES;
 //  }
+  
   for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
     NSError *error = NULL;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
