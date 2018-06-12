@@ -30,6 +30,8 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
+#define FACEBOOK_PERMISSIONS @[@"public_profile",@"email",@"user_birthday",@"user_posts"]
+
 @interface PDSocialMediaManager : NSObject <UIAlertViewDelegate>
 
 @property (nonatomic, assign) UIViewController *holderViewController;

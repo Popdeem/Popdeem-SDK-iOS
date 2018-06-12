@@ -119,7 +119,7 @@
 }
 
 - (void) appWillEnterForeground:(id)sender {
-  [self performSelector:@selector(dismissIfWaiting) withObject:nil afterDelay:1.0];
+  [self performSelector:@selector(dismissIfWaiting) withObject:nil afterDelay:5.0];
 }
 
 - (void) dismissIfWaiting {
