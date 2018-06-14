@@ -786,13 +786,19 @@
 
 - (void)selectPhoto {
   
-  UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-  picker.delegate = self;
-  picker.allowsEditing = NO;
-  picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-  picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
-  picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  [self presentViewController:picker animated:YES completion:NULL];
+  - (void)selectPhoto {
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+      [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:picker animated:YES completion:NULL];
+      }];
+    }
+  }
   
 }
 
