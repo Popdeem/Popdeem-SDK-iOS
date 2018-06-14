@@ -231,10 +231,10 @@
 
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   switch (section) {
-      case 0:
+    case 0:
       return _scanSectionView;
       break;
-      case 1:
+    case 1:
       return _shareSectionView;
       break;
     default:
@@ -258,10 +258,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   switch (section) {
-      case 0:
+    case 0:
       return 1;
       break;
-      case 1:
+    case 1:
       return [_reward.socialMediaTypes count] + 1;
       break;
     default:
@@ -786,18 +786,17 @@
 
 - (void)selectPhoto {
   
-  - (void)selectPhoto {
-    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
-      [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = NO;
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:picker animated:YES completion:NULL];
-      }];
-    }
+  
+  if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+      UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+      picker.delegate = self;
+      picker.allowsEditing = NO;
+      picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+      picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+      [self presentViewController:picker animated:YES completion:NULL];
+    }];
   }
   
 }
@@ -1088,9 +1087,9 @@
     [_locationFailedView setHidden:YES];
     [_verifyLocationLabel setHidden:YES];
     [_refreshLocationButton setHidden:YES];
-//    if (self.infoViewHeightContstraint.constant == 0) {
-//      self.infoViewHeightContstraint.constant = [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-//    }
+    //    if (self.infoViewHeightContstraint.constant == 0) {
+    //      self.infoViewHeightContstraint.constant = [self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    //    }
   }];
   //
   if (_reward.verifyLocation == NO) {
@@ -1101,9 +1100,9 @@
       [_locationFailedView setHidden:YES];
       [_verifyLocationLabel setHidden:YES];
       [_refreshLocationButton setHidden:YES];
-//      if (self.infoViewHeightContstraint.constant != 0) {
-//        self.infoViewHeightContstraint.constant = 0;
-//      }
+      //      if (self.infoViewHeightContstraint.constant != 0) {
+      //        self.infoViewHeightContstraint.constant = 0;
+      //      }
     }];
     return;
   }

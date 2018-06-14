@@ -1270,8 +1270,10 @@
 }
 
 - (void) shouldUpdateTableView {
-  [self.tableView reloadData];
-  [self.tableView setUserInteractionEnabled:YES];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.tableView reloadData];
+    [self.tableView setUserInteractionEnabled:YES];
+  });
 }
 
 @end

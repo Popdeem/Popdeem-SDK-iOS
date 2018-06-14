@@ -231,16 +231,16 @@ CGFloat _cardX,_cardY;
   NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
   [storage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
   
-//  NSHTTPCookie *cookie;
-//  NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//  for (cookie in [storage cookies])
-//  {
-//    NSString* domainName = [cookie domain];
-//    NSRange domainRange = [domainName rangeOfString:@"instagram.com"];
-//    if(domainRange.length > 0) {
-//      [storage deleteCookie:cookie];
-//    }
-//  }
+  NSHTTPCookie *cookie;
+
+  for (cookie in [storage cookies])
+  {
+    NSString* domainName = [cookie domain];
+    NSRange domainRange = [domainName rangeOfString:@"instagram.com"];
+    if(domainRange.length > 0) {
+      [storage deleteCookie:cookie];
+    }
+  }
 	
 	[self presentViewController:_webViewController animated:YES completion:^(void){
 		_webViewController.webView.delegate = self;
