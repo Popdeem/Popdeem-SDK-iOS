@@ -454,6 +454,11 @@
   [_viewModel imagePickerController:picker didFinishPickingMediaWithInfo:info];
 }
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+  [picker dismissViewControllerAnimated:NO completion:NULL];
+  [self.spoofView removeFromSuperview];
+}
+
 
 - (void) viewWillDisappear:(BOOL)animated {
   if (!goingToTag) {

@@ -73,10 +73,11 @@
 	[self.tableHeaderImageView setClipsToBounds:YES];
 	[self.tableView reloadData];
 	// Do any additional setup after loading the view from its nib.
-  [self styleNavbar];
+  
 }
 
 - (void) styleNavbar {
+  [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
   if (PopdeemThemeHasValueForKey(@"popdeem.nav")) {
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
@@ -102,6 +103,7 @@
       [self.navigationController.navigationBar setBackgroundImage:PopdeemImage(@"popdeem.images.navigationBar") forBarMetrics:UIBarMetricsDefault];
     }
     if (@available(iOS 11.0, *)) {
+      self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
       self.navigationController.navigationBar.translucent = YES;
     }
   }
@@ -112,6 +114,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+  [self styleNavbar];
 	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_SETTINGS});
 }
 
