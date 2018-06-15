@@ -377,7 +377,7 @@
                                               consumerSecret:twConsumerSecret];
   
   NSString *callback = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterCallbackScheme"];
-  NSString *fullCallback = [NSString stringWithFormat:@"%@/twitter_access_tokens/",callback];
+  NSString *fullCallback = [NSString stringWithFormat:@"%@://",callback];
   [_twitterAPI postTokenRequest:^(NSURL *url, NSString *oauthToken) {
     [[UIApplication sharedApplication] openURL:url];
   } authenticateInsteadOfAuthorize:NO
