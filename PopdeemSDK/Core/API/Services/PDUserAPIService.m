@@ -123,8 +123,10 @@
 			NSError *jsonError;
 			NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
 			if (jsonError) {
-				PDLogAlert(@"%@", [jsonError localizedDescription]);
-				failure(jsonError);
+        dispatch_async(dispatch_get_main_queue(), ^{
+          PDLogAlert(@"%@", [jsonError localizedDescription]);
+          failure(jsonError);
+        });
 				return ;
 			}
 			if (!jsonObject[@"user"]) {
