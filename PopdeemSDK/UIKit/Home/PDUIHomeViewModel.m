@@ -87,7 +87,6 @@
 - (void) fetchAllRewards {
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
-    weakSelf.oldRewards = weakSelf.rewards;
     weakSelf.rewards =  [PDRewardStore orderedByDate];
     weakSelf.rewardsLoading = NO;
     dispatch_async(dispatch_get_main_queue(), ^{

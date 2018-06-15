@@ -59,7 +59,6 @@
 	[_titleLabel setTextColor:_primaryFontColor];
 
   [self.arrowImageView setHidden:NO];
->>>>>>> Facebook_Share_dialog_prototype
 	self.clipsToBounds = YES;
 
 	if (reward.coverImageUrl) {

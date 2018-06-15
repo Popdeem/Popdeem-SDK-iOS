@@ -288,36 +288,10 @@
   return NO;
 }
 
-+ (BOOL) application:(UIApplication*)application canOpenUrl:(NSURL *)url options:(NSDictionary*)options {
-  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
-    return YES;
-  }
-  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
-    return YES;
-  }
-//  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
-//    return YES;
-//  }
-  
-  for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
-    NSError *error = NULL;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:&error];
-    NSUInteger numberOfMatches = [regex numberOfMatchesInString:scheme
-                                                        options:0
-                                                          range:NSMakeRange(0, [scheme length])];
-    if (numberOfMatches > 0) {
-      return YES;
-    }
-  }
-  return NO;
-}
-
 + (BOOL) application:(UIApplication*)application openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options {
-//  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
-//    return [[Twitter sharedInstance] application:application openURL:url options:options];
-//  }
+  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
+    return [[Twitter sharedInstance] application:application openURL:url options:options];
+  }
   //Twitter Login Callback
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
     return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
@@ -342,12 +316,6 @@
              openURL:(NSURL *)url
    sourceApplication:(NSString *)sourceApplication
           annotation:(nullable id)annotation {
-  //Twitter Login Callback
-  if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"TwitterCallbackScheme"]]) {
-    return [PopdeemSDK handleTwitterCallback:url sourceApplication:sourceApplication annotation:annotation];
-  }
-  BOOL twitterHandled = [[Twitter sharedInstance] application:application openURL:url options:options];
-  if (twitterHandled) return twitterHandled;
   
   //Facebook Deep Linking Handling
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
@@ -368,13 +336,6 @@
   return YES;
 }
 
-+ (BOOL) application:(UIApplication *)application
-             openURL:(NSURL *)url
-   sourceApplication:(NSString *)sourceApplication
-          annotation:(nullable id)annotation {
-//  return [self openURL:url options:@{}];
-  return NO;
-}
 
 + (BOOL) processReferral:(UIApplication *)application
                      url:(NSURL *)url

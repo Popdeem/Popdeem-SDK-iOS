@@ -191,10 +191,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.loadingView hideAnimated:YES];
     });
-  } failure:^(NSError* error){
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.loadingView hideAnimated:YES];
-    });
   }];
   
 }
@@ -261,7 +257,6 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-<<<<<<< HEAD
   NSLog(@"Location Denied");
   __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -272,18 +267,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                         object:nil];
   }];
-=======
-    NSLog(@"Location Denied");
-  __weak typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.loadingView hideAnimated:YES];
-    });
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
-                                                            object:nil];
-    }];
->>>>>>> Facebook_Share_dialog_prototype
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
