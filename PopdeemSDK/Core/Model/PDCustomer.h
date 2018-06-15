@@ -18,7 +18,6 @@
 @property (nonatomic, retain) NSString <Optional> *twitterHandle;
 @property (nonatomic, retain) NSString <Optional> *instagramClientId;
 @property (nonatomic, retain) NSString <Optional> *instagramClientSecret;
-@property (nonatomic) NSInteger countdownTimer;
 @property (nonatomic, retain) NSNumber <Optional> *incrementAdvocacyPoints;
 @property (nonatomic, retain) NSNumber <Optional> *decrementAdvocacyPoints;
 
