@@ -822,19 +822,23 @@
   if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
       UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-      picker.delegate = self.viewController;
+      picker.delegate = self;
       picker.allowsEditing = NO;
       picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
       picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
       picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-      _didGoToImagePicker = YES;
-      __weak typeof(_viewController) weakController = _viewController;
-      [_viewController presentViewController:picker animated:YES completion:^{
-        weakController.spoofView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, weakController.navigationController.view.frame.size.width, weakController.navigationController.view.frame.size.height)];
-        weakController.spoofView.backgroundColor = [UIColor blackColor];
-        [weakController.navigationController.view addSubview:weakController.spoofView];
-      }];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [self.viewController presentViewController:picker animated:YES completion:NULL];
+      });
     }];
+  } else {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.viewController presentViewController:picker animated:YES completion:NULL];
   }
 }
 

@@ -309,9 +309,11 @@
 //  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
 //    return [[Twitter sharedInstance] application:application openURL:url options:options];
 //  }
+  //Twitter Login Callback
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
     return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
   }
+
   for (NSString *scheme in [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] firstObject] objectForKey:@"CFBundleURLSchemes"]) {
     NSError *error = NULL;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^fb"
