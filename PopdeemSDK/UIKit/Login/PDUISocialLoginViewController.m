@@ -43,7 +43,7 @@
   [super viewDidLoad];
   self.viewModel = [[PDUISocialLoginViewModel alloc] init];
   [self.viewModel setViewController:self];
-  self.loginButton.readPermissions= @[@"public_profile", @"email", @"user_birthday", @"user_posts"];
+  self.loginButton.readPermissions= FACEBOOK_PERMISSIONS;
   [self.loginButton setDelegate:self.viewModel];
   [self renderViewModelState];
   

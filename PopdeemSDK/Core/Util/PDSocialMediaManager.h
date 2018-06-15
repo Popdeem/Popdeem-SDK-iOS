@@ -62,15 +62,10 @@
 
 - (void) checkFacebookTokenIsValid:(void (^)(BOOL valid))completion;
 
-- (void) facebookRequestPublishPermissions:(void (^)(void))success
-                                   failure:(void (^)(NSError *err))failure;
-
 - (void) loginWithTwitter:(void (^)(void))success
                   failure:(void (^)(NSError *error))failure;
-
-- (void)setOAuthToken:(NSString *)token oauthVerifier:(NSString *)verifier;
-
 - (void) verifyTwitterCredentialsCompletion:(void (^)(BOOL connected, NSError *error))completion;
+
 - (BOOL) isLoggedInWithTwitter;
 
 - (void) userCancelledTwitterLogin;

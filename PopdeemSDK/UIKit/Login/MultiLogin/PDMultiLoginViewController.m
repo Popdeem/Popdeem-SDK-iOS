@@ -107,10 +107,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-  //  //TESTING
-  //  _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
-  //  _loadingView.titleLabel.text = @"Logging in.";
-  //  [_loadingView showAnimated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,13 +179,17 @@
 #pragma mark - Instagram Login Delegate Methods
 
 - (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
-  PDUserAPIService *service = [[PDUserAPIService alloc] init];
-  __weak typeof(self) weakSelf = self;
-  [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
-    [self addUserToUserDefaults:user];
-    AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
+	PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    __weak typeof(self) weakSelf = self;
+	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
+		[self addUserToUserDefaults:user];
+		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self proceedWithLocationCheck];
+        });
+	} failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
-      [self proceedWithLocationCheck];
+      [weakSelf.loadingView hideAnimated:YES];
     });
   } failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -201,8 +202,8 @@
   __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
     [_loadingView hideAnimated:YES];
-  });
-  [weakSelf dismissAction:sender];
+		});
+	[weakSelf dismissAction:sender];
 }
 
 - (IBAction) dismissAction:(id)sender {
@@ -260,6 +261,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+<<<<<<< HEAD
   NSLog(@"Location Denied");
   __weak typeof(self) weakSelf = self;
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -270,6 +272,18 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                         object:nil];
   }];
+=======
+    NSLog(@"Location Denied");
+  __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.loadingView hideAnimated:YES];
+    });
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
+                                                            object:nil];
+    }];
+>>>>>>> Facebook_Share_dialog_prototype
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {

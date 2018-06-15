@@ -111,14 +111,10 @@
   __weak typeof(self) weakSelf = self;
   [service fetchMessagesCompletion:^(NSArray *messages, NSError *error){
     if (error) {
-      PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (weakSelf.controller != nil) {
-        [weakSelf.controller.tableView reloadInputViews];
-      }
-    });
-  }];
+			PDLogError(@"Error while fetching messages. Error: %@", error.localizedDescription);
+		}
+    [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+	}];
 }
 
 - (void) brandImageDidDownload {
@@ -126,24 +122,20 @@
 }
 
 - (void) fetchLocations {
-  __weak typeof(self) weakSelf = self;
-  [[PDAPIClient sharedInstance] getAllLocationsSuccess:^{
-    NSArray *locations = [PDLocationStore locationsOrderedByDistanceToUser];
-    weakSelf.controller.closestLocation = [locations firstObject];
-    weakSelf.closestLocation = [locations firstObject];
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (weakSelf.controller != nil) {
-        [weakSelf.controller.tableView reloadData];
-      }
-    });
-  } failure:^(NSError *error){
-    PDLogError(@"Locations Fail: %@",error);
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (weakSelf.controller != nil) {
-        [weakSelf.controller.tableView reloadData];
-      }
-    });
-  }];
+	__weak typeof(self) weakSelf = self;
+	[[PDAPIClient sharedInstance] getAllLocationsSuccess:^{
+		NSArray *locations = [PDLocationStore locationsOrderedByDistanceToUser];
+		weakSelf.controller.closestLocation = [locations firstObject];
+		weakSelf.closestLocation = [locations firstObject];
+		dispatch_async(dispatch_get_main_queue(), ^{
+      [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+		});
+	} failure:^(NSError *error){
+		PDLogError(@"Locations Fail: %@",error);
+		dispatch_async(dispatch_get_main_queue(), ^{
+      [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+		});
+	}];
 }
 
 - (void) fetchWallet {
@@ -155,72 +147,45 @@
 }
 
 - (void) fetchWalletForBrand {
-  __weak typeof(self) weakSelf = self;
-  [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
-    
-    NSMutableArray *arr = [NSMutableArray array];
-    for (id r in [PDWallet orderedByDateMulti]) {
-      //      if (r.brandId == _brand.identifier) {
-      [arr addObject:r];
-      //      }
-    }
-    if (weakSelf.controller != nil) {
-      weakSelf.wallet = [arr copy];
-      [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil   waitUntilDone:NO];
-      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-    }
-  } failure:^(NSError *error) {
-    //TODO: Handle Error
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (weakSelf.controller != nil) {
-        [weakSelf.controller.tableView reloadData];
-        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-      }
-    });
-  }];
+	__weak typeof(self) weakSelf = self;
+	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
+		
+		NSMutableArray *arr = [NSMutableArray array];
+		for (id r in [PDWallet orderedByDateMulti]) {
+//			if (r.brandId == _brand.identifier) {
+				[arr addObject:r];
+//			}
+		}
+    weakSelf.wallet = [arr copy];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+	} failure:^(NSError *error) {
+		//TODO: Handle Error
+		[[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+	}];
 }
 
 - (void) fetchAllWallet {
-  __weak typeof(self) weakSelf = self;
-  [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
-    if (weakSelf.controller != nil) {
-      weakSelf.wallet = [PDWallet orderedByDateMulti];
-      [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-    }
-  } failure:^(NSError *error) {
-    //TODO: Handle Error
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (weakSelf.controller != nil) {
-        [weakSelf.controller.tableView reloadData];
-        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-      }
-    });
-  }];
+	__weak typeof(self) weakSelf = self;
+	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
+    [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+	} failure:^(NSError *error) {
+		//TODO: Handle Error
+		[[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+	}];
 }
 
 - (void) fetchFeed {
-  _feedLoading = YES;
-  __weak typeof(self) weakSelf = self;
-  [[PDAPIClient sharedInstance] getFeedsSuccess:^{
-    if (weakSelf.controller != nil) {
-      weakSelf.feed = [PDFeeds feed];
-      [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-      [weakSelf.controller.tableView reloadData];
-      _feedLoading = NO;
-    }
-  } failure:^(NSError *error){
-    //TODO: Handle Error
+	_feedLoading = YES;
+	__weak typeof(self) weakSelf = self;
+	[[PDAPIClient sharedInstance] getFeedsSuccess:^{
+    weakSelf.feed = [PDFeeds feed];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
     _feedLoading = NO;
-    [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (weakSelf.controller != nil) {
-        [weakSelf.controller.tableView reloadData];
-        [weakSelf.controller.tableView setUserInteractionEnabled:YES];
-        _feedLoading = NO;
-      }
-    });
-  }];
+	} failure:^(NSError *error){
+		//TODO: Handle Error
+		_feedLoading = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
+	}];
 }
 
 - (void) setupView {

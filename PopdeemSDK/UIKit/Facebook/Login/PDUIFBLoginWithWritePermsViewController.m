@@ -127,7 +127,7 @@
 			[self connectRead];
     break;
 		case PDFacebookLoginTypePublish:
-			[self connectPublish];
+			[self connectRead];
 		break;
 		default:
     break;
@@ -137,17 +137,15 @@
 
 - (void) connectRead {
 	[_actionButton setUserInteractionEnabled:NO];
+    __weak __typeof(self) weakSelf = self;
 	__block UIAlertView *av;
 	__block PDUIModalLoadingView *loadingView = [[PDUIModalLoadingView alloc] initForView:self.view
 																																							titleText:@"Logging in"
 																																				descriptionText:@"Please wait while we log you in"];
 	[loadingView showAnimated:YES];
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
-  __weak typeof(self) weakSelf = self;
-	[manager loginWithFacebookReadPermissions:@[@"public_profile",
-																																		 @"email",
-																																		 @"user_birthday",
-																																		 @"user_posts"]
+	[manager loginWithFacebookReadPermissions:FACEBOOK_PERMISSIONS
+
 																							 registerWithPopdeem:YES
 																													 success:^{
 		[[PDUser sharedInstance] refreshFacebookFriendsCallback:^(BOOL response){
@@ -191,61 +189,12 @@
 	}];
 }
 
-- (void) connectPublish {
-	FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-  __weak typeof(self) weakSelf = self;
-	[loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-		if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			weakSelf.connected = YES;
-			[[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-			[weakSelf dismissViewControllerAnimated:YES completion:^{
-				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
-			}];
-		} else {
-			UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions"
-																											 message:@"You must grant publish permissions in order to make this action"
-																											delegate:self
-																						 cancelButtonTitle:@"OK"
-																						 otherButtonTitles:nil];
-      weakSelf.success = NO;
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [noperm show];
-      });
-			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
-		}
-	}];
-}
-
-- (void) connect {
-	FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-  __weak typeof(self) weakSelf = self;
-	[loginManager logInWithPublishPermissions:@[@"publish_actions"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-		if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
-			weakSelf.connected = YES;
-			[[[PDUser sharedInstance] facebookParams] setAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-			[weakSelf dismissViewControllerAnimated:YES completion:^{
-				[[NSNotificationCenter defaultCenter] postNotificationName:FacebookPublishSuccess object:nil];
-			}];
-		} else {
-			UIAlertView *noperm = [[UIAlertView alloc] initWithTitle:@"Invalid Permissions"
-																											 message:@"You must grant publish permissions in order to make this action"
-																											delegate:self
-																						 cancelButtonTitle:@"OK"
-																						 otherButtonTitles:nil];
-      weakSelf.success = NO;
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [noperm show];
-      });
-			AbraLogEvent(ABRA_EVENT_FACEBOOK_DENIED_PUBLISH_PERMISSIONS, nil);
-		}
-	}];
-}
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-  __weak typeof(self) weakSelf = self;
-	[self dismissViewControllerAnimated:YES completion:^{
-    if (weakSelf.viewModel.loginType == PDFacebookLoginTypeRead) {
-      if (weakSelf.success) {
+	__weak typeof(self) weakSelf = self;
+  [self dismissViewControllerAnimated:YES completion:^{
+    if (self.viewModel.loginType == PDFacebookLoginTypeRead) {
+      if (_success) {
         [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginSuccess object:nil];
       } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:FacebookLoginFailure object:nil];

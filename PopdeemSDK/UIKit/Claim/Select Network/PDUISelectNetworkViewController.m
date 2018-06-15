@@ -19,8 +19,11 @@
 #import "PDBackgroundScan.h"
 #import "PDUIPostScanViewController.h"
 
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wimplicit-retain-self"
+#import "PDUIModalLoadingView.h"
+
 
 @interface PDUISelectNetworkViewController ()
 
@@ -30,6 +33,8 @@
 
 @property (nonatomic) BOOL instagramLoggedIn;
 @property (nonatomic) BOOL twitterLoggedIn;
+@property (nonatomic) BOOL goneToScan;
+@property (nonatomic) PDUIModalLoadingView* loadingView;
 
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonHC;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonHC;
@@ -76,7 +81,11 @@
   //TODO use new global hashtag when JD is done.
   NSString *topLabelText = @"";
   if (_mediaTypes.count > 1) {
-    topLabelText = [NSString stringWithFormat:@"Choose what network you shared your experience with %@ to claim your reward:", _reward.forcedTag];
+    if (_reward.action == PDRewardActionPhoto) {
+      topLabelText = [NSString stringWithFormat:@"Choose which network you shared your photo with %@ to claim your reward:", _reward.forcedTag];
+    } else {
+      topLabelText = [NSString stringWithFormat:@"Choose which network you shared your experience with %@ to claim your reward:", _reward.forcedTag];
+    }
   } else {
     if ([_mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
       topLabelText = [NSString stringWithFormat:@"Scan Facebook for a story with %@ to claim your reward:", _reward.forcedTag];
@@ -211,6 +220,8 @@
       [self connectTwitter];
       return;
     }
+    if (_goneToScan) return;
+    _goneToScan = YES;
     [self pushScanForNetwork:TWITTER_NETWORK];
   }];
 }
@@ -314,7 +325,6 @@
     [manager registerWithTwitter:^{
       //Twitter Connected Successfully
       PDLog(@"Twitter Logged in");
-      PDLog(@"Twitter Logged in");
       [self twitterLoginSuccess];
     } failure:^(NSError *error) {
       PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
@@ -326,6 +336,8 @@
 
 - (void) twitterLoginSuccess {
   [self.twitterButton setTitle:@"Scan Twitter" forState:UIControlStateNormal];
+  if (_goneToScan) return;
+  _goneToScan = YES;
   [self pushScanForNetwork:TWITTER_NETWORK];
 }
 
@@ -341,20 +353,21 @@
 
 #pragma mark - Facebook Login -
 - (void) connectFacebook {
-  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:@[
-                                                                     @"public_profile",
-                                                                     @"email",
-                                                                     @"user_birthday",
-                                                                     @"user_posts"]
+  _loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Logging in."];
+  [_loadingView showAnimated:YES];
+  __weak typeof(self) weakSelf = self;
+  [[PDSocialMediaManager manager] loginWithFacebookReadPermissions:FACEBOOK_PERMISSIONS
                                                registerWithPopdeem:YES
                                                            success:^(void) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [self facebookLoginSuccess];
+                                                               [weakSelf.loadingView hideAnimated:YES];
+                                                               [weakSelf facebookLoginSuccess];
                                                              });
                                                              
                                                            } failure:^(NSError *error) {
                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [self facebookLoginFailure];
+                                                               [weakSelf.loadingView hideAnimated:YES];
+                                                               [weakSelf facebookLoginFailure];
                                                              });
                                                            }];
 }

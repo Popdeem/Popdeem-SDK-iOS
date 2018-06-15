@@ -19,8 +19,10 @@ PODS:
     - Realm/Headers (= 3.5.0)
   - Realm/Headers (3.5.0)
   - Shimmer (1.0.2)
-  - STTwitter (0.2.6)
   - TOCropViewController (2.3.6)
+  - TwitterCore (3.1.0)
+  - TwitterKit (3.3.0):
+    - TwitterCore (>= 3.1.0)
 
 DEPENDENCIES:
   - Bolts
@@ -33,8 +35,8 @@ DEPENDENCIES:
   - OCMock
   - Realm
   - Shimmer
-  - STTwitter
   - TOCropViewController
+  - TwitterKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -48,8 +50,9 @@ SPEC REPOS:
     - OCMock
     - Realm
     - Shimmer
-    - STTwitter
     - TOCropViewController
+    - TwitterCore
+    - TwitterKit
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -62,9 +65,10 @@ SPEC CHECKSUMS:
   OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  STTwitter: 30ee2f79eff78c3d633a1edc869e97db9c9ead59
   TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
+  TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
+  TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 3decaa43f9d14744918d9a10ed5a0a0ddf435eb7
+PODFILE CHECKSUM: ca343f0ec87502a1cf92b59754191f62bab9afbc
 
 COCOAPODS: 1.5.0

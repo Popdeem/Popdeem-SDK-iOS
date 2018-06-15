@@ -61,6 +61,7 @@ NSString *const FacebookPublishFailure = @"FacebookPublishFailure";
 NSString *const FacebookLoginSuccess = @"FacebookLoginSuccess";
 NSString *const FacebookLoginFailure = @"FacebookLoginFailure";
 NSString *const PDUserLinkedToInstagram = @"PDUserLinkedToInstagram";
+NSString *const PDUserLinkedToFacebook = @"PDUserLinkedToFacebook";
 NSString *const InstagramVerifySuccess = @"InstagramVerifySuccess";
 NSString *const InstagramVerifyFailure = @"InstagramVerifyFailure";
 NSString *const InstagramVerifyNoAttempt = @"InstagramVerifyNoAttempt";
@@ -69,6 +70,7 @@ NSString *const InstagramPostMade = @"InstagramPostMade";
 NSString *const NotificationReceived = @"NotificationReceived";
 NSString *const DidFetchBrands = @"DidFetchBrands";
 NSString *const DirectToSocialHome = @"DirectToSocialHome";
+NSString *const ShouldUpdateTableView = @"ShoudUpdateTableView";
 /*
  End NSNotificationCenter Strings
  */

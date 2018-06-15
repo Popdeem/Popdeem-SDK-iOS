@@ -538,7 +538,6 @@
 	[self beginBackgroundUpdateTask];
 	[self.viewModel makeClaim];
 	PDLog(@"Background Task Started");
-	
 }
 
 - (void) beginBackgroundUpdateTask {

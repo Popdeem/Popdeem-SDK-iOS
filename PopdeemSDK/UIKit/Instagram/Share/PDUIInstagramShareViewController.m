@@ -13,8 +13,6 @@
 #import "PDUser.h"
 #import "PopdeemSDK.h"
 
-CGFloat _cardWidth;
-
 @implementation NSString (NSString_Extended)
 
 - (NSString *)urlencode {
@@ -38,7 +36,9 @@ CGFloat _cardWidth;
 }
 @end
 
-@interface PDUIInstagramShareViewController ()
+@interface PDUIInstagramShareViewController () {
+    CGFloat _cardWidth;
+}
 @property (nonatomic) BOOL leavingToInstagram;
 @end
 
@@ -243,13 +243,13 @@ CGFloat _cardWidth;
 }
 
 - (void) scroll {
-    if (_scrollView.contentOffset.x == 0) {
-        [_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
-    }
-    if (_scrollView.contentOffset.x > 0 && _scrollView.contentOffset.x <  2*_cardWidth) {
-        [_scrollView setContentOffset:CGPointMake(2*_cardWidth, 0) animated:YES];
-    }
-    AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INSTA_TUTORIAL_MODULE_TWO});
+  if (_scrollView.contentOffset.x == 0) {
+    [_scrollView setContentOffset:CGPointMake(_cardWidth, 0) animated:YES];
+  }
+  if (_scrollView.contentOffset.x > 0 && _scrollView.contentOffset.x <  2*_cardWidth) {
+    [_scrollView setContentOffset:CGPointMake(2*_cardWidth, 0) animated:YES];
+  }
+	AbraLogEvent(ABRA_EVENT_PAGE_VIEWED, @{ABRA_PROPERTYNAME_SOURCE_PAGE : ABRA_PROPERTYVALUE_PAGE_INSTA_TUTORIAL_MODULE_TWO});
 }
 
 - (void) shareOnInstagram {

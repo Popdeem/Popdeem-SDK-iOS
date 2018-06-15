@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<<<<<<< HEAD
   <device id="retina4_7" orientation="portrait">
     <adaptation id="fullscreen"/>
   </device>
@@ -48,6 +49,74 @@
             <constraint firstItem="4nr-Oc-zrl" firstAttribute="leading" secondItem="XyA-ae-PCa" secondAttribute="trailing" constant="17" id="XCD-tE-8vd"/>
             <constraint firstItem="XyA-ae-PCa" firstAttribute="leading" secondItem="UCy-Vo-iuC" secondAttribute="leading" constant="16" id="YOh-Vt-Svz"/>
           </constraints>
+=======
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDUISingleMessageViewController">
+            <connections>
+                <outlet property="bottomLabel" destination="PAE-YR-P4Y" id="vOy-6D-OPm"/>
+                <outlet property="headerView" destination="UCy-Vo-iuC" id="NdR-wk-y23"/>
+                <outlet property="imageView" destination="XyA-ae-PCa" id="lYN-5r-Hcb"/>
+                <outlet property="topLabel" destination="4nr-Oc-zrl" id="gj0-uO-kfA"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-Vo-iuC">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nr-Oc-zrl">
+                            <rect key="frame" x="83" y="34" width="284" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_starG.png" translatesAutoresizingMaskIntoConstraints="NO" id="XyA-ae-PCa">
+                            <rect key="frame" x="16" y="17" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="17W-h2-Au0"/>
+                                <constraint firstAttribute="height" constant="50" id="ada-8d-h5U"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="4nr-Oc-zrl" secondAttribute="trailing" constant="8" id="C1r-xM-s4k"/>
+                        <constraint firstItem="4nr-Oc-zrl" firstAttribute="centerY" secondItem="UCy-Vo-iuC" secondAttribute="centerY" id="Do9-cg-jC7"/>
+                        <constraint firstAttribute="height" constant="85" id="HTB-Q4-3Uj"/>
+                        <constraint firstItem="XyA-ae-PCa" firstAttribute="centerY" secondItem="UCy-Vo-iuC" secondAttribute="centerY" id="HTE-fF-XIn"/>
+                        <constraint firstItem="4nr-Oc-zrl" firstAttribute="leading" secondItem="XyA-ae-PCa" secondAttribute="trailing" constant="17" id="XCD-tE-8vd"/>
+                        <constraint firstItem="XyA-ae-PCa" firstAttribute="leading" secondItem="UCy-Vo-iuC" secondAttribute="leading" constant="16" id="YOh-Vt-Svz"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAE-YR-P4Y">
+                    <rect key="frame" x="30" y="102" width="315" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PAE-YR-P4Y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Buz-K5-zL5"/>
+                <constraint firstAttribute="trailing" secondItem="UCy-Vo-iuC" secondAttribute="trailing" id="CR7-UN-JI9"/>
+                <constraint firstItem="UCy-Vo-iuC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Pf8-i5-a0G"/>
+                <constraint firstItem="PAE-YR-P4Y" firstAttribute="top" secondItem="UCy-Vo-iuC" secondAttribute="bottom" constant="17" id="gC3-Rf-0PU"/>
+                <constraint firstAttribute="trailing" secondItem="PAE-YR-P4Y" secondAttribute="trailing" constant="30" id="gvO-9k-6e0"/>
+                <constraint firstItem="UCy-Vo-iuC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iSu-XR-leb"/>
+            </constraints>
+            <point key="canvasLocation" x="201.5" y="373.5"/>
+>>>>>>> Facebook_Share_dialog_prototype
         </view>
         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAE-YR-P4Y">
           <rect key="frame" x="30" y="102" width="315" height="17"/>

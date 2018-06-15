@@ -26,9 +26,13 @@
 		392D8F5920310AF600BDC764 /* PDUIGratitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5820310AF600BDC764 /* PDUIGratitudeView.m */; };
 		392D8F62203116A600BDC764 /* PDUIGratitudeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F5F203116A600BDC764 /* PDUIGratitudeViewController.m */; };
 		392D8F652031F52300BDC764 /* PDUIGratitudeProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */; };
+		392EB4EF20A453CE00960109 /* PDUIClaimRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */; };
+		392EB4F420A47DBC00960109 /* PDUIClaimV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4F220A47DBC00960109 /* PDUIClaimV2ViewController.m */; };
 		3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3938E4C6207D0E500077AC20 /* PDStringsHelper.m */; };
 		393A8C421C591E30001F650C /* PDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C411C591E30001F650C /* PDMessage.m */; };
 		393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 393A8C441C5923D0001F650C /* PDMessageStore.m */; };
+		393CE43D20C690F30030000D /* PDUIFacebookShareViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CE43920C690F30030000D /* PDUIFacebookShareViewModel.m */; };
+		393CE43E20C690F30030000D /* PDUIFacebookShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393CE43C20C690F30030000D /* PDUIFacebookShareViewController.m */; };
 		393EECE620480908003A5B9F /* PDTierEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECE520480908003A5B9F /* PDTierEvent.m */; };
 		393EECED2048116C003A5B9F /* PDUITierEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 393EECEB2048116C003A5B9F /* PDUITierEventTableViewCell.m */; };
 		394495E21D9A807F003BA702 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 394495DD1D9A807F003BA702 /* UIImage+Alpha.m */; };
@@ -40,6 +44,7 @@
 		394BEFE91D1442340045F5F3 /* InstagramResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFE81D1442340045F5F3 /* InstagramResponseModel.m */; };
 		394BEFEC1D17E7150045F5F3 /* PDUserInstagramParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFEB1D17E7150045F5F3 /* PDUserInstagramParams.m */; };
 		394BEFF21D1839C90045F5F3 /* PDUIInstagramShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394BEFF01D1839C90045F5F3 /* PDUIInstagramShareViewController.m */; };
+		395AC58020A995820012220C /* PDUIClaimInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 395AC57E20A995820012220C /* PDUIClaimInfoTableViewCell.m */; };
 		395DD71C1C9825B1007DAFE2 /* PDMomentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */; };
 		395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 395DD71E1C9825F6007DAFE2 /* PDMomentAPIService.m */; };
 		39602FBF1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39602FBE1D2AA5F900AFAF29 /* PDUIInstagramShareViewModel.m */; };
@@ -155,6 +160,9 @@
 		39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB99091C85DA4600BB0DD8 /* PDUIRedeemViewController.m */; };
 		39EDADBF1C072851001102B3 /* PDUIClaimViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADBE1C072851001102B3 /* PDUIClaimViewModel.m */; };
 		39EDADC81C07333F001102B3 /* PDUINoRewardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EDADC11C07333F001102B3 /* PDUINoRewardsTableViewCell.m */; };
+		39EE456220A4826400121408 /* PDUIScanNowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EE456020A4826400121408 /* PDUIScanNowTableViewCell.m */; };
+		39EE456620A4839E00121408 /* PDUISocialClaimTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EE456420A4839E00121408 /* PDUISocialClaimTableViewCell.m */; };
+		39EE456A20A4848400121408 /* PDUIAddPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EE456820A4848400121408 /* PDUIAddPhotoTableViewCell.m */; };
 		39F5F6DF1D895282008DE497 /* NSURLSession+Abra.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6DE1D895282008DE497 /* NSURLSession+Abra.m */; };
 		39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E11D89532A008DE497 /* PDAbraClient.m */; };
 		39F5F6E91D89536C008DE497 /* PDAbraAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F6E81D89536C008DE497 /* PDAbraAPIService.m */; };
@@ -316,6 +324,12 @@
 		392D8F61203116A600BDC764 /* PDUIGratitudeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIGratitudeViewController.xib; path = Gratutude/PDUIGratitudeViewController.xib; sourceTree = "<group>"; };
 		392D8F632031F52300BDC764 /* PDUIGratitudeProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIGratitudeProgressView.h; path = Gratutude/PDUIGratitudeProgressView.h; sourceTree = "<group>"; };
 		392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIGratitudeProgressView.m; path = Gratutude/PDUIGratitudeProgressView.m; sourceTree = "<group>"; };
+		392EB4EC20A453CE00960109 /* PDUIClaimRewardTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIClaimRewardTableViewCell.h; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.h; sourceTree = "<group>"; };
+		392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimRewardTableViewCell.m; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.m; sourceTree = "<group>"; };
+		392EB4EE20A453CE00960109 /* PDUIClaimRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIClaimRewardTableViewCell.xib; path = ClaimV2/Cells/PDUIClaimRewardTableViewCell.xib; sourceTree = "<group>"; };
+		392EB4F120A47DBC00960109 /* PDUIClaimV2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIClaimV2ViewController.h; path = ClaimV2/PDUIClaimV2ViewController.h; sourceTree = "<group>"; };
+		392EB4F220A47DBC00960109 /* PDUIClaimV2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimV2ViewController.m; path = ClaimV2/PDUIClaimV2ViewController.m; sourceTree = "<group>"; };
+		392EB4F320A47DBC00960109 /* PDUIClaimV2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIClaimV2ViewController.xib; path = ClaimV2/PDUIClaimV2ViewController.xib; sourceTree = "<group>"; };
 		39376BC0201F432000A02F94 /* PDHomeSegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDHomeSegueDelegate.h; path = Protocols/PDHomeSegueDelegate.h; sourceTree = "<group>"; };
 		3938E4C5207D0E500077AC20 /* PDStringsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDStringsHelper.h; sourceTree = "<group>"; };
 		3938E4C6207D0E500077AC20 /* PDStringsHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDStringsHelper.m; sourceTree = "<group>"; };
@@ -323,6 +337,10 @@
 		393A8C411C591E30001F650C /* PDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMessage.m; sourceTree = "<group>"; };
 		393A8C431C5923D0001F650C /* PDMessageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDMessageStore.h; path = Core/Store/PDMessageStore.h; sourceTree = "<group>"; };
 		393A8C441C5923D0001F650C /* PDMessageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDMessageStore.m; path = Core/Store/PDMessageStore.m; sourceTree = "<group>"; };
+		393CE43920C690F30030000D /* PDUIFacebookShareViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIFacebookShareViewModel.m; sourceTree = "<group>"; };
+		393CE43A20C690F30030000D /* PDUIFacebookShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIFacebookShareViewController.h; sourceTree = "<group>"; };
+		393CE43B20C690F30030000D /* PDUIFacebookShareViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIFacebookShareViewModel.h; sourceTree = "<group>"; };
+		393CE43C20C690F30030000D /* PDUIFacebookShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIFacebookShareViewController.m; sourceTree = "<group>"; };
 		393EECE420480908003A5B9F /* PDTierEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDTierEvent.h; sourceTree = "<group>"; };
 		393EECE520480908003A5B9F /* PDTierEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDTierEvent.m; sourceTree = "<group>"; };
 		393EECEA2048116C003A5B9F /* PDUITierEventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUITierEventTableViewCell.h; path = Home/Cells/Wallet/PDUITierEventTableViewCell.h; sourceTree = "<group>"; };
@@ -354,6 +372,9 @@
 		395017A81CDA54A600849DF8 /* default_theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default_theme.json; path = Resources/default_theme.json; sourceTree = "<group>"; };
 		3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
 		3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-PopdeemSDK.a"; path = "Pods/../build/Debug-iphoneos/libPods-PopdeemSDK.a"; sourceTree = "<group>"; };
+		395AC57D20A995820012220C /* PDUIClaimInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIClaimInfoTableViewCell.h; path = ClaimV2/Cells/PDUIClaimInfoTableViewCell.h; sourceTree = "<group>"; };
+		395AC57E20A995820012220C /* PDUIClaimInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIClaimInfoTableViewCell.m; path = ClaimV2/Cells/PDUIClaimInfoTableViewCell.m; sourceTree = "<group>"; };
+		395AC57F20A995820012220C /* PDUIClaimInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIClaimInfoTableViewCell.xib; path = ClaimV2/Cells/PDUIClaimInfoTableViewCell.xib; sourceTree = "<group>"; };
 		395DD71A1C9825B1007DAFE2 /* PDMomentsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentsManager.h; sourceTree = "<group>"; };
 		395DD71B1C9825B1007DAFE2 /* PDMomentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDMomentsManager.m; sourceTree = "<group>"; };
 		395DD71D1C9825F6007DAFE2 /* PDMomentAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDMomentAPIService.h; sourceTree = "<group>"; };
@@ -669,6 +690,15 @@
 		39EDADC11C07333F001102B3 /* PDUINoRewardsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUINoRewardsTableViewCell.m; sourceTree = "<group>"; };
 		39EDADC41C07333F001102B3 /* PDUIRewardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUIRewardTableViewController.h; sourceTree = "<group>"; };
 		39EDADC51C07333F001102B3 /* PDUIRewardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIRewardTableViewController.m; sourceTree = "<group>"; };
+		39EE455F20A4826400121408 /* PDUIScanNowTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIScanNowTableViewCell.h; path = ClaimV2/Cells/PDUIScanNowTableViewCell.h; sourceTree = "<group>"; };
+		39EE456020A4826400121408 /* PDUIScanNowTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIScanNowTableViewCell.m; path = ClaimV2/Cells/PDUIScanNowTableViewCell.m; sourceTree = "<group>"; };
+		39EE456120A4826400121408 /* PDUIScanNowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIScanNowTableViewCell.xib; path = ClaimV2/Cells/PDUIScanNowTableViewCell.xib; sourceTree = "<group>"; };
+		39EE456320A4839E00121408 /* PDUISocialClaimTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUISocialClaimTableViewCell.h; path = ClaimV2/Cells/PDUISocialClaimTableViewCell.h; sourceTree = "<group>"; };
+		39EE456420A4839E00121408 /* PDUISocialClaimTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUISocialClaimTableViewCell.m; path = ClaimV2/Cells/PDUISocialClaimTableViewCell.m; sourceTree = "<group>"; };
+		39EE456520A4839E00121408 /* PDUISocialClaimTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUISocialClaimTableViewCell.xib; path = ClaimV2/Cells/PDUISocialClaimTableViewCell.xib; sourceTree = "<group>"; };
+		39EE456720A4848400121408 /* PDUIAddPhotoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PDUIAddPhotoTableViewCell.h; path = ClaimV2/Cells/PDUIAddPhotoTableViewCell.h; sourceTree = "<group>"; };
+		39EE456820A4848400121408 /* PDUIAddPhotoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PDUIAddPhotoTableViewCell.m; path = ClaimV2/Cells/PDUIAddPhotoTableViewCell.m; sourceTree = "<group>"; };
+		39EE456920A4848400121408 /* PDUIAddPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PDUIAddPhotoTableViewCell.xib; path = ClaimV2/Cells/PDUIAddPhotoTableViewCell.xib; sourceTree = "<group>"; };
 		39F5F6DD1D895282008DE497 /* NSURLSession+Abra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+Abra.h"; path = "Abra/NSURLSession+Abra.h"; sourceTree = "<group>"; };
 		39F5F6DE1D895282008DE497 /* NSURLSession+Abra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+Abra.m"; path = "Abra/NSURLSession+Abra.m"; sourceTree = "<group>"; };
 		39F5F6E01D89532A008DE497 /* PDAbraClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDAbraClient.h; path = Abra/PDAbraClient.h; sourceTree = "<group>"; };
@@ -870,6 +900,7 @@
 		391FAE741D476124005AFF72 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
+				393CE43820C690F30030000D /* Share */,
 				391FAE761D47613A005AFF72 /* Login */,
 			);
 			name = Facebook;
@@ -938,6 +969,40 @@
 				392D8F642031F52300BDC764 /* PDUIGratitudeProgressView.m */,
 			);
 			name = Gratitude;
+			sourceTree = "<group>";
+		};
+		392EB4F020A453D200960109 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				392EB4EC20A453CE00960109 /* PDUIClaimRewardTableViewCell.h */,
+				392EB4ED20A453CE00960109 /* PDUIClaimRewardTableViewCell.m */,
+				392EB4EE20A453CE00960109 /* PDUIClaimRewardTableViewCell.xib */,
+				39EE455F20A4826400121408 /* PDUIScanNowTableViewCell.h */,
+				39EE456020A4826400121408 /* PDUIScanNowTableViewCell.m */,
+				39EE456120A4826400121408 /* PDUIScanNowTableViewCell.xib */,
+				39EE456320A4839E00121408 /* PDUISocialClaimTableViewCell.h */,
+				39EE456420A4839E00121408 /* PDUISocialClaimTableViewCell.m */,
+				39EE456520A4839E00121408 /* PDUISocialClaimTableViewCell.xib */,
+				39EE456720A4848400121408 /* PDUIAddPhotoTableViewCell.h */,
+				39EE456820A4848400121408 /* PDUIAddPhotoTableViewCell.m */,
+				39EE456920A4848400121408 /* PDUIAddPhotoTableViewCell.xib */,
+				395AC57D20A995820012220C /* PDUIClaimInfoTableViewCell.h */,
+				395AC57E20A995820012220C /* PDUIClaimInfoTableViewCell.m */,
+				395AC57F20A995820012220C /* PDUIClaimInfoTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		393CE43820C690F30030000D /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				393CE43920C690F30030000D /* PDUIFacebookShareViewModel.m */,
+				393CE43A20C690F30030000D /* PDUIFacebookShareViewController.h */,
+				393CE43B20C690F30030000D /* PDUIFacebookShareViewModel.h */,
+				393CE43C20C690F30030000D /* PDUIFacebookShareViewController.m */,
+			);
+			name = Share;
+			path = Facebook/Share;
 			sourceTree = "<group>";
 		};
 		394863C71D54CDD70000ABDE /* Twitter */ = {
@@ -1181,6 +1246,17 @@
 				BC67FF08261302BD08EC80D6 /* PDUISocialLoginHandler.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		3990593720A451B100EB62ED /* ClaimV2 */ = {
+			isa = PBXGroup;
+			children = (
+				392EB4F020A453D200960109 /* Cells */,
+				392EB4F120A47DBC00960109 /* PDUIClaimV2ViewController.h */,
+				392EB4F220A47DBC00960109 /* PDUIClaimV2ViewController.m */,
+				392EB4F320A47DBC00960109 /* PDUIClaimV2ViewController.xib */,
+			);
+			name = ClaimV2;
 			sourceTree = "<group>";
 		};
 		3992A2741E25352D0058EA12 /* MultiLogin */ = {
@@ -1997,6 +2073,7 @@
 		BC67FF8AD4BE9E8C0144F233 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3990593720A451B100EB62ED /* ClaimV2 */,
 				392D8F5620310AC400BDC764 /* Gratitude */,
 				39FDBA461F793800001864A2 /* Cordova */,
 				39AF13EE1D5487300097B0F7 /* Settings */,
@@ -2054,6 +2131,7 @@
 				39D7D06D1B8F0DCF00E45D0B /* Frameworks */,
 				39D7D06E1B8F0DCF00E45D0B /* Resources */,
 				85412172AB2BA3FA899B41EC /* [CP] Copy Pods Resources */,
+				3B85A2C3B935C1F8173C21A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2161,6 +2239,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3B85A2C3B935C1F8173C21A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		85412172AB2BA3FA899B41EC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2170,11 +2268,15 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2209,6 +2311,7 @@
 				399179862048219D0063AE2E /* PDTierAPIService.m in Sources */,
 				39BF994E1E8E99830025A3F2 /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
 				3922FABB1DC0BF4900501E1D /* PDBrandsUIHandler.m in Sources */,
+				395AC58020A995820012220C /* PDUIClaimInfoTableViewCell.m in Sources */,
 				39BF5AE41C1ED3B0000BF32E /* PDSDKCustomIOS7AlertView.m in Sources */,
 				3992A27B1E2535760058EA12 /* PDMultiLoginViewModel.m in Sources */,
 				3992A2781E25355A0058EA12 /* PDMultiLoginViewController.m in Sources */,
@@ -2231,6 +2334,7 @@
 				392787151C0716F600F8DCD9 /* PDUIClaimViewController.m in Sources */,
 				393EECE620480908003A5B9F /* PDTierEvent.m in Sources */,
 				39BF99481E8E99830025A3F2 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
+				393CE43D20C690F30030000D /* PDUIFacebookShareViewModel.m in Sources */,
 				39ABA6511C47A1850057088E /* PDUIWalletTableViewCell.m in Sources */,
 				39730B291CE23D9A004B37A1 /* PDUIMessageCell.m in Sources */,
 				394863CF1D54CE2E0000ABDE /* PDUITwitterLoginViewModel.m in Sources */,
@@ -2248,6 +2352,7 @@
 				39BF99401E8E99830025A3F2 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				395DD71F1C9825F6007DAFE2 /* PDMomentAPIService.m in Sources */,
 				39BF993A1E8E99830025A3F2 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
+				39EE456A20A4848400121408 /* PDUIAddPhotoTableViewCell.m in Sources */,
 				39BF99451E8E99830025A3F2 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
 				3965AF6E1D421A210000EB16 /* PDUIInstagramUnverifiedWalletTableViewCell.m in Sources */,
 				397894871D1D622D00BCE17E /* UIColor+ColorOperations.m in Sources */,
@@ -2274,6 +2379,7 @@
 				3921E3141C71E1BB000120D4 /* PDUISingleMessageViewModel.m in Sources */,
 				394BEFEC1D17E7150045F5F3 /* PDUserInstagramParams.m in Sources */,
 				39FDF1EA1E95061F007AE076 /* PDUIScanFailViewController.m in Sources */,
+				392EB4EF20A453CE00960109 /* PDUIClaimRewardTableViewCell.m in Sources */,
 				A92281F41C074C2D00A43320 /* PDUIModalTransitionHandler.m in Sources */,
 				396443FB1D13EC5A00BB67F9 /* PDUICardViewController.m in Sources */,
 				39BF994F1E8E99830025A3F2 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
@@ -2300,7 +2406,9 @@
 				397894841D1D406C00BCE17E /* NSURL+OAuthAdditions.m in Sources */,
 				3938E4C7207D0E500077AC20 /* PDStringsHelper.m in Sources */,
 				BC67FA1D98852C3D1CE13D66 /* PDUIModalLoadingView.m in Sources */,
+				39EE456220A4826400121408 /* PDUIScanNowTableViewCell.m in Sources */,
 				39F5F6E21D89532A008DE497 /* PDAbraClient.m in Sources */,
+				392EB4F420A47DBC00960109 /* PDUIClaimV2ViewController.m in Sources */,
 				391FAE7D1D476220005AFF72 /* PDUIFBLoginWithWritePermsViewModel.m in Sources */,
 				39FDF1E01E926106007AE076 /* PDBGScanResponseModel.m in Sources */,
 				3921E3081C6DEA51000120D4 /* PDLocationValidator.m in Sources */,
@@ -2321,6 +2429,7 @@
 				3975A9262018EB280081517F /* PDUIProfileButtonTableViewCell.m in Sources */,
 				39BF99411E8E99830025A3F2 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
 				39A2176F203489FD00B109F4 /* PDCustomer.m in Sources */,
+				39EE456620A4839E00121408 /* PDUISocialClaimTableViewCell.m in Sources */,
 				39EB990A1C85DA4600BB0DD8 /* PDUIRedeemViewController.m in Sources */,
 				39BF993F1E8E99830025A3F2 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				393A8C451C5923D0001F650C /* PDMessageStore.m in Sources */,
@@ -2351,6 +2460,7 @@
 				39BF994D1E8E99830025A3F2 /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
 				398A11DE1C60BD09002CB4B6 /* PDUIMsgCntrViewModel.m in Sources */,
 				39F5F6EB1D895387008DE497 /* PDAbraConstants.m in Sources */,
+				393CE43E20C690F30030000D /* PDUIFacebookShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2467,7 +2577,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2506,7 +2616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;

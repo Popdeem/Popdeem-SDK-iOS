@@ -35,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain, nullable) UIImage *profileImage;
 
 - (PDRFeedItem*)initFromAPI:(NSMutableDictionary*)params;
-- (void) downloadActionImage;
 
 NS_ASSUME_NONNULL_END
 @end

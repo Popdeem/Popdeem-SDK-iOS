@@ -21,7 +21,6 @@
     self.view.opaque = NO;
     self.modalPresentationStyle = UIModalPresentationFullScreen;
     self.type = type;
-    NSLog(@"Type is: %li   type",type);
     return self;
   }
   return nil;

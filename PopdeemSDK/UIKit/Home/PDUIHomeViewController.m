@@ -40,6 +40,7 @@
 #import "PDTierEvent.h"
 #import "PDUITierEventTableViewCell.h"
 #import "PDCustomer.h"
+#import "PDUIClaimV2ViewController.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -60,7 +61,7 @@
   NSInteger verifyRewardId;
   BOOL firstLaunch;
 }
-@property (nonatomic, strong) PDUIHomeViewModel *model;
+@property (nonatomic, retain) PDUIHomeViewModel *model;
 @property (nonatomic) PDUIClaimViewController *claimVC;
 @property (nonatomic) BOOL *loggingIn;
 @property (nonatomic, strong) PDLocationValidator *locationValidator;
@@ -198,6 +199,7 @@
   [[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:NotificationReceived object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:PDUserDidLogin object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateUser) name:PDUserDidUpdate object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldUpdateTableView) name:ShouldUpdateTableView object:nil];
   [self registerNibs];
   [super viewDidLoad];
   
@@ -320,11 +322,12 @@
 - (void) viewDidAppear:(BOOL)animated {
   self.title = translationForKey(@"popdeem.home.title", @"Rewards");
   [self.view setUserInteractionEnabled:YES];
-  if (!firstLaunch) {
-//    [_model fetchRewards];
-//    [_model fetchWallet];
-  }
-  firstLaunch = NO;
+
+//    if (!firstLaunch) {
+//        [_model fetchRewards];
+//        [_model fetchWallet];
+//    }
+    firstLaunch = NO;
   if (_loadingView && !_loggingIn) {
     [_loadingView hideAnimated:YES];
   }
@@ -342,11 +345,12 @@
     [_segmentedControl setSelectedSegmentIndex:2];
     [_model fetchWallet];
     _model.rewards = [PDRewardStore orderedByDate];
+    [_model fetchWallet];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
     PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeShare reward:self.willClaimReward];
     
-    [self presentViewController:gViewController animated:YES completion:^{
+    [self presentViewController:gViewController animated:NO completion:^{
       
     }];
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
@@ -1056,12 +1060,14 @@
     }
     [self.model claimNoAction:reward closestLocation:nil];
   } else {
-    PDUIClaimViewController *claimController = [[PDUIClaimViewController alloc] initWithMediaTypes:reward.socialMediaTypes andReward:reward location:_closestLocation];
+      PDUIClaimV2ViewController *claimController = [[PDUIClaimV2ViewController alloc] initFromNib];
+    claimController.closestLocation = _closestLocation;
+      [claimController setupWithReward:reward];
     self.willClaimReward = reward;
-    if (_brand) {
-      claimController.brand = _brand;
-    }
-    [claimController setHomeController:self];
+//    if (_brand) {
+//      claimController.brand = _brand;
+//    }
+//    [claimController setHomeController:self];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [[self navigationController] pushViewController:claimController animated:YES];
   }
@@ -1149,7 +1155,7 @@
 - (void) showConnect {
   PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
   
-  [self presentViewController:gViewController animated:YES completion:^{
+  [self presentViewController:gViewController animated:NO completion:^{
     
   }];
 }
@@ -1262,6 +1268,13 @@
       [self.tableView insertRowsAtIndexPaths:self.model.rewardAddIndexSets withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     [self.tableView endUpdates];
+  });
+}
+
+- (void) shouldUpdateTableView {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.tableView reloadData];
+    [self.tableView setUserInteractionEnabled:YES];
   });
 }
 

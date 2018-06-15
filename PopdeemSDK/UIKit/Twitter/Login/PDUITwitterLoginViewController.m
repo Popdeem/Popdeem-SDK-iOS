@@ -126,8 +126,6 @@
 }
 
 - (void) pullModel {
-	[_actionButton.layer setBorderColor:_viewModel.buttonBorderColor.CGColor];
-	_actionButton.layer.borderWidth = 1.0;
 	[_actionButton setBackgroundColor:_viewModel.buttonColor];
 	[_actionButton.titleLabel setFont:_viewModel.buttonLabelFont];
 	[_actionButton setTitle:_viewModel.buttonText forState:UIControlStateNormal];
@@ -146,10 +144,11 @@
 	[_viewModel setIsLoading:YES];
 	[self pullModel];
 	[self.view setUserInteractionEnabled:NO];
+  __weak typeof(self) weakSelf = self;
   if ([[PDUser sharedInstance] isRegistered]) {
     [manager loginWithTwitter:^(void){
       //Twitter Connected Successfully
-      _valid = YES;
+      weakSelf.valid = YES;
       PDLog(@"Twitter Logged in");
       connected = YES;
       [self dismiss];
@@ -158,8 +157,12 @@
       if ([[error.userInfo objectForKey:@"NSLocalizedDescription"] rangeOfString:@"already connected"].location != NSNotFound) {
         dispatch_async(dispatch_get_main_queue(), ^{
           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry - Wrong Account" message:@"This social account has been linked to another user." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+          connected = NO;
           [av show];
         });
+      } else {
+        connected = NO;
+        [self dismiss];
       }
     }];
   } else {
@@ -172,6 +175,8 @@
     } failure:^(NSError *error) {
       _valid = NO;
       PDLogError(@"Twitter Not Logged in: %@",error.localizedDescription);
+      connected = NO;
+      [self dismiss];
     }];
   }
 }
@@ -182,8 +187,7 @@
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	[self dismissViewControllerAnimated:YES completion:^{
-	}];
+  [self dismiss];
 }
 
 - (void) dismiss {

@@ -8,6 +8,7 @@
 
 #import "PDUIModalLoadingView.h"
 #import "PDUtils.h"
+#import "PDTheme.h"
 
 @implementation PDUIModalLoadingView
 
@@ -41,7 +42,7 @@
         _titleLabel = [[UILabel alloc] initWithFrame:titleRect];
         [self.titleLabel setText:titleText];
         [_titleLabel setNumberOfLines:2];
-        [_titleLabel setFont:[UIFont boldSystemFontOfSize:12]];
+        [_titleLabel setFont:PopdeemFont(PDThemeFontBold, 12)];
         [_titleLabel setTextColor:[UIColor colorWithRed:0.166 green:0.166 blue:0.166 alpha:1.000]];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
         
@@ -49,7 +50,7 @@
         _descriptionLabel = [[UILabel alloc] initWithFrame:descriptionRect];
         [self.descriptionLabel setText:descriptionText];
         [_descriptionLabel setNumberOfLines:1];
-        [_descriptionLabel setFont:[UIFont systemFontOfSize:12]];
+        [_descriptionLabel setFont:PopdeemFont(PDThemeFontPrimary, 12)];
         [_descriptionLabel setTextColor:[UIColor colorWithRed:0.274 green:0.274 blue:0.274 alpha:1.000]];
         [_descriptionLabel setTextAlignment:NSTextAlignmentCenter];
         

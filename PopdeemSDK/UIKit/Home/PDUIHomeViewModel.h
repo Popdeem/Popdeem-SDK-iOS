@@ -35,13 +35,12 @@
 @property (nonatomic) UIColor *headerBackgroundColor;
 
 //Data
-@property (nonatomic, strong) NSArray *rewards;
-@property (nonatomic, strong) NSMutableArray *rewardAddIndexSets;
-@property (nonatomic, strong) NSMutableArray *rewardRemoveIndexSets;
+@property (nonatomic, retain) NSArray *rewards;
+@property (nonatomic, retain) NSMutableArray *rewardAddIndexSets;
+@property (nonatomic, retain) NSMutableArray *rewardRemoveIndexSets;
 
-@property (nonatomic, strong) NSArray *feed;
-@property (nonatomic, strong) NSArray *wallet;
-@property (nonatomic, strong) NSArray *oldRewards;
+@property (nonatomic, retain) NSArray *feed;
+@property (nonatomic, retain) NSArray *wallet;
 
 @property (nonatomic) BOOL feedLoading;
 @property (nonatomic) BOOL rewardsLoading;

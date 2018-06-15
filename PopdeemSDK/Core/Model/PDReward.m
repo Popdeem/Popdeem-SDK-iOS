@@ -230,10 +230,11 @@
   }
   NSURL *url = [NSURL URLWithString:self.coverImageUrl];
   isDownloadingCover = YES;
+    __weak __typeof(self) weakSelf = self;
   NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
     if (data) {
       UIImage *image = [UIImage imageWithData:data];
-      self.coverImage = image;
+      weakSelf.coverImage = image;
       if (image) {
         [[NSNotificationCenter defaultCenter] postNotificationName:PDRewardCoverImageDidDownload object:nil];
       }

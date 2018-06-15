@@ -45,6 +45,7 @@
 }
 
 - (void) setupForReward:(PDReward*)reward {
+  [self.arrowImageView setImage:PopdeemImage(@"pduikit_arrow_g")];
 	if (_brandTheme) {
 		_primaryAppColor = PopdeemColorFromHex(_brandTheme.primaryAppColor);
 		_primaryFontColor = PopdeemColorFromHex(_brandTheme.primaryTextColor);
@@ -56,7 +57,9 @@
 	}
 	
 	[_titleLabel setTextColor:_primaryFontColor];
-	[self.arrowImageView setHidden:NO];
+
+  [self.arrowImageView setHidden:NO];
+>>>>>>> Facebook_Share_dialog_prototype
 	self.clipsToBounds = YES;
 
 	if (reward.coverImageUrl) {

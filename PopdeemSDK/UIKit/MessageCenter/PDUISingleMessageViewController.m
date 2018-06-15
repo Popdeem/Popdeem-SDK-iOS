@@ -58,7 +58,6 @@
   [self.bottomLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
   [self.bottomLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   [self.bottomLabel sizeToFit];
-  
   [self.view setNeedsDisplay];
   
 }

@@ -14,6 +14,8 @@
 #import "PDConstants.h"
 #import "PDMessageAPIService.h"
 
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 @interface PDNotificationHandler()
 @property (nonatomic) BOOL shouldGoToUrl;
 @property (nonatomic, retain) NSString *url;
@@ -42,8 +44,28 @@
 }
 
 - (void) registerForPushNotificationsApplication:(UIApplication *)application {
-	[[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-	[[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+      if (@available(iOS 10.0, *)) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = (id<UIApplicationDelegate, UNUserNotificationCenterDelegate>)application.delegate;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+          if(!error){
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+          }
+        }];
+      } else {
+        // Fallback on earlier versions
+      }if (@available(iOS 10.0, *)) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+      } else {
+        // Fallback on earlier versions
+      }
+    }
+    else {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
 }
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -66,8 +88,7 @@
 
 - (void) showRemoteNotification:(NSDictionary*)userInfo completion:(void (^)(BOOL success))completion {
   _completionBlock = completion;
-  
-  UIImage *image;
+
   UIImage *fbImage = PopdeemImage(@"pduikit_fb_hi");
   UIImage *twImage = PopdeemImage(@"Twitter_Logo_Blue");
   UIImage *instaImage = PopdeemImage(@"pduikit_instagram_hi");

@@ -57,7 +57,6 @@ static PDCustomer *globalCustomer = nil;
                                                      @"twitter_handle": @"twitterHandle",
                                                      @"instagram_client_id": @"instagramClientId",
                                                      @"instagram_client_secret": @"instagramClientSecret",
-                                                     @"countdown_timer": @"countdownTimer",
                                                      @"increment_advocacy_points": @"incrementAdvocacyPoints",
                                                      @"decrement_advocacy_points": @"decrementAdvocacyPoints"
                                                      }];

@@ -15,6 +15,7 @@
 @property (nonatomic,retain) UIActivityIndicatorView *spinner;
 @property (nonatomic,assign) UIView *parent;
 @property (nonatomic, retain) UIView *contentView;
+@property (nonatomic, retain) UIView *backingView;
 
 - (PDUIModalLoadingView*) initWithDefaultsForView:(UIView*)parent;
 - (PDUIModalLoadingView*) initForView:(UIView*)parent

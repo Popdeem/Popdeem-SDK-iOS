@@ -188,8 +188,8 @@
     image = PopdeemImage(imageString);
   } else {
     //Return next item in cycle
-    NSString *titleKey = [NSString stringWithFormat:@"%@.title.%ld",stringKey, variationNumber];
-    NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%ld",stringKey, variationNumber];
+    NSString *titleKey = [NSString stringWithFormat:@"%@.title.%ld",stringKey, (long)variationNumber];
+    NSString *bodyKey = [NSString stringWithFormat:@"%@.body.%ld",stringKey, (long)variationNumber];
     if (self.reward.creditString != nil) {
       title = translationForKey(titleKey, @"You're Brilliant!");
       body = [NSString stringWithFormat:translationForKey(bodyKey, @"%@ was added to your account."), self.reward.creditString];
@@ -250,13 +250,13 @@
   } else {
     switch (_type) {
       case PDGratitudeTypeShare:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
+        return [NSString stringWithFormat:@"%@", translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
         break;
       case PDGratitudeTypeConnect:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"Thanks for connecting, start sharing to earn more rewards and enter amazing competitions.")];
+        return [NSString stringWithFormat:@"%@", translationForKey(@"popdeem.gratitude.connect.bodyText", @"Thanks for connecting, start sharing to earn more rewards and enter amazing competitions.")];
         break;
       default:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
+        return [NSString stringWithFormat:@"%@", translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing, your reward has been added to your profile. Enjoy!")];
         break;
     }
   }
