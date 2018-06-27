@@ -158,7 +158,7 @@
   } else {
     [shareTitleLabel setText:translationForKey(@"popdeem.claim.shareTitle.checkin", @"OR, CHECK-IN NOW")];
   }
-  [shareTitleLabel setText:@"OR, CHECK-IN NOW"];
+    [shareTitleLabel setText:@"OR, CHECK-IN NOW"];
   [shareTitleLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
   [shareTitleLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [shareTitleLabel sizeToFit];
