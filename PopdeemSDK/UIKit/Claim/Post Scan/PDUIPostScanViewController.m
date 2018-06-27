@@ -233,10 +233,10 @@
   _profilePicture.layer.cornerRadius = _profilePicture.frame.size.width/2;
   _profilePicture.clipsToBounds = YES;
   
-  NSString *uptohash = [NSString stringWithFormat:@"Hey %@, we found your post with ", [[PDUser sharedInstance] firstName]];
+  NSString *uptohash = [NSString stringWithFormat:@"Hey %@, thanks for checking-in!", [[PDUser sharedInstance] firstName]];
   NSString *hash = _reward.forcedTag;
   
-  NSString *afterHash = @". Thanks for sharing! You have unlocked your reward!";
+  NSString *afterHash = @". Here's your reward!";
   
   NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
   ps.paragraphSpacing = 2.0;

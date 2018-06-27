@@ -52,12 +52,12 @@
   _viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self reward:_reward];
   [_viewModel setup];
   
-  [_titleLabel setText:_viewModel.titleString];
+  [_titleLabel setText:@"Welcome to Kung Fu Tea"];
   [_titleLabel setFont:_viewModel.titleFont];
   [_titleLabel setTextColor:_viewModel.titleColor];
   [_titleLabel sizeToFit];
   
-  [_bodyLabel setText:_viewModel.bodyString];
+  [_bodyLabel setText: @"Connect your social account to turn social features on. This will give you access to exclusive content and new rewards."];
   [_bodyLabel setTextColor:_viewModel.bodyColor];
   [_bodyLabel setFont:_viewModel.bodyFont];
   

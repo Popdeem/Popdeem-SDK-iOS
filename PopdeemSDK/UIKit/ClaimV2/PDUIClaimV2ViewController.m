@@ -179,11 +179,12 @@
   topBorder.frame = CGRectMake(0.0f, -1.0f, self.bottomInfoView.frame.size.width, 1.0f);
   topBorder.backgroundColor = [UIColor colorWithRed:0.90 green:0.90 blue:0.90 alpha:1.00].CGColor;
   [self.bottomInfoView.layer addSublayer:topBorder];
-  if (_reward.action == PDRewardActionPhoto) {
-    [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.photo", @"Your photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
-  } else {
-    [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.checkin", @"Your check-in or photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
-  }
+//  if (_reward.action == PDRewardActionPhoto) {
+//    [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.photo", @"Your photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
+//  } else {
+//    [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.checkin", @"Your check-in or photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
+//  }
+    [self.bottomInfoLabel setText:@"You must check-in at a venue to claim this reward."];
 }
 
 - (void) registerNibs {

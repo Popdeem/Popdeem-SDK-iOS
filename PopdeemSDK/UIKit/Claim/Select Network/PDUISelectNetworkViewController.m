@@ -97,8 +97,9 @@
       topLabelText = [NSString stringWithFormat:@"Scan Instagram for a story with %@ to claim your reward:", _reward.forcedTag];
     }
   }
-  
-  [self.topLabel setText:topLabelText];
+    
+    //HARDCODED CHANGE WITH BRANDING
+    [self.topLabel setText:@"Scan Facebook for any check-in at Kung Fu Tea to claim your reward:"];
   [self.topLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   [self.topLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
   
@@ -162,6 +163,7 @@
   }];
   
   [self.bottomLabel setText:[NSString stringWithFormat:@"Note: You must have shared your experience with %@ in the last 48 hours to be eligible for a reward.", _reward.forcedTag]];
+    [self.bottomLabel setText:@"Note: You must have checked in during the last 48 hours to be eligible for a reward."];
   [self.bottomLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.bottomLabel setFont:PopdeemFont(PDThemeFontLight, 12)];
   

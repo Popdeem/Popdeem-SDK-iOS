@@ -32,6 +32,8 @@
     } else {
       self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to include the required hashtag. Then use the scan feature on the previous screen to claim your reward.");
     }
+      //HARDCODED CHANGE WITH BRANDING
+      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to check-in at a Kung Fu Tea Location. Then use the scan feature on the previous screen to claim your reward.");
   } else {
     self.viewOneImage = PopdeemImage(@"pduikit_facebook_step1");
     if (_controller.image) {
@@ -39,11 +41,14 @@
     } else {
       self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.checkin", @"Check-in");
     }
+      self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.checkin", @"Check-in");
     if (_controller.parent.reward.forcedTag) {
       self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the hashtag %@, or you will be unable to claim your reward."), _controller.parent.reward.forcedTag];
     } else {
       self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the specified hashtag, or you will be unable to claim your reward.");
     }
+      //HARDCODED CHANGE WITH BRANDING
+      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"You must check-in at a Kung Fu Tea Location, or you will be unable to claim your reward.");
   }
   
   
