@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class PDUIInstagramShareViewController;
+
 @interface PDUIInstagramShareViewModel : NSObject
 
+@property (nonatomic, assign) PDUIInstagramShareViewController *controller;
 @property (nonatomic, retain) NSString *viewOneLabelOneText;
 @property (nonatomic, retain) NSString *viewOneLabelTwoText;
 @property (nonatomic, retain) NSString *viewThreeLabelOneText;
@@ -50,6 +53,7 @@
 @property (nonatomic, retain) UIImage *viewTwoImage;
 @property (nonatomic, retain) UIImage *viewThreeImage;
 
+- (instancetype) initWithController:(PDUIInstagramShareViewController*)controller;
 - (void) setup;
 
 @end

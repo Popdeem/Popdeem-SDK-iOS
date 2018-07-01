@@ -44,14 +44,14 @@
 
 @implementation PDUIInstagramShareViewController
 
-- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString *)urlString{
+- (instancetype) initForParent:(PDUIClaimV2ViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString *)urlString{
 	if (self = [super init]) {
 		_parent = parent;
 		_message = message;
 		_image = image;
 		_imageURLString = urlString;
-		_viewModel = [[PDUIInstagramShareViewModel alloc] init];
-		[_viewModel setup];
+		_viewModel = [[PDUIInstagramShareViewModel alloc] initWithController:self];
+		//[_viewModel setup];
 		return self;
 	}
 	return nil;
@@ -189,9 +189,25 @@
 	[_firstView addSubview:_viewOneActionButton];
   _viewOneActionButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
   _viewOneActionButton.layer.borderWidth = 1.0;
-  
-  
+
   currentY = 0;
+    
+        NSString *forcedTagString = (self.parent.reward.forcedTag) ? self.parent.reward.forcedTag : @"hashtag";
+        NSDictionary *attributes = @{
+                                     NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12),
+                                     NSForegroundColorAttributeName: [UIColor blackColor],
+                                     NSBackgroundColorAttributeName: [UIColor colorWithRed:0.87 green:0.90 blue:0.96 alpha:1.00]
+                                     };
+        NSMutableAttributedString *hashtagString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@ ",forcedTagString] attributes:attributes];
+        UILabel *hashLabel = [[UILabel alloc] init];
+        [hashLabel setAttributedText:hashtagString];
+        [hashLabel sizeToFit];
+        [hashLabel setFrame:CGRectMake(70, 58, hashLabel.frame.size.width, hashLabel.frame.size.height)];
+        hashLabel.layer.cornerRadius = 3.0f;
+        hashLabel.clipsToBounds = YES;
+        [_viewOneImageView addSubview:hashLabel];
+    
+    
   
   _viewThreeLabelOne = [[UILabel alloc] initWithFrame:CGRectMake(20, 30, cardWidth-40, 70)];
   [_viewThreeLabelOne setText:_viewModel.viewThreeLabelOneText];

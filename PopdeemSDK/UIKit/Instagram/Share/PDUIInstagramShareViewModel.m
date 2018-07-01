@@ -9,11 +9,13 @@
 #import "PDUIInstagramShareViewModel.h"
 #import "PDTheme.h"
 #import "PDUtils.h"
+#import "PDUIInstagramShareViewController.h"
 
 @implementation PDUIInstagramShareViewModel
 
-- (instancetype) init {
+- (instancetype) initWithController:(PDUIInstagramShareViewController*)controller {
 	if (self = [super init]) {
+        self.controller = controller;
 		[self setup];
 		return self;
 	}
@@ -21,8 +23,15 @@
 }
 
 - (void) setup {
-	self.viewOneLabelOneText = translationForKey(@"popdeem.instagram.share.stepOne.label1", @"Your message has been copied to the clipboard.");
-	self.viewOneLabelTwoText = translationForKey(@"popdeem.instagram.share.stepOne.label2", @"You will now be directed to Instagram where you can paste the message. Tap and hold to paste your message.");
+    
+    if (_controller.parent.reward.forcedTag) {
+        self.viewOneLabelOneText = [NSString stringWithFormat:translationForKey(@"popdeem.instagram.share.stepOne.label1", @"%@ has been copied to the clipboard."), _controller.parent.reward.forcedTag];
+        self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.instagram.share.stepOne.label2", @"You will now be directed to Instagram where you can paste %@. Tap and hold to paste."), _controller.parent.reward.forcedTag];
+    } else {
+        self.viewOneLabelOneText = translationForKey(@"popdeem.instagram.share.stepOne.label1", @"The hashtag has been copied to the clipboard.");
+        self.viewOneLabelTwoText = translationForKey(@"popdeem.instagram.share.stepOne.label2", @"You will now be directed to Instagram where you can paste the hashtag. Tap and hold to paste.");
+    }
+
 	self.viewOneActionButtonText = translationForKey(@"popdeem.instagram.share.stepOne.buttonText", @"Next");
 	
 	self.viewTwoLabelOneText = translationForKey(@"popdeem.instagram.share.stepTwo.label1", @"Make sure you are logged into the correct account on Instagram.");

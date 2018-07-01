@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "PDUIInstagramShareViewModel.h"
+#import "PDUIClaimV2ViewController.h"
+#import "PDReward.h"
 
 @interface PDUIInstagramShareViewController : UIViewController <UIScrollViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic,retain) UIView *backingView;
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) PDUIInstagramShareViewModel *viewModel;
-@property (nonatomic, assign) UIViewController *parent;
+@property (nonatomic, assign) PDUIClaimV2ViewController *parent;
+//@property (nonatomic, assign) UIViewController *parent;
 @property (nonatomic, retain) UIView *cardView;
 @property (nonatomic, retain) UIPageViewController *pageViewController;
 @property (nonatomic,retain) UIView *firstView;
@@ -41,6 +44,8 @@
 @property (nonatomic,retain) UIImage *image;
 @property (nonatomic, retain) NSString *imageURLString;
 
-- (instancetype) initForParent:(UIViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;
+@property (nonatomic, assign) PDReward *reward;
+
+- (instancetype) initForParent:(PDUIClaimV2ViewController*)parent withMessage:(NSString*)message image:(UIImage*)image imageUrlString:(NSString*)urlString;
 
 @end
