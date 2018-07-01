@@ -130,6 +130,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
   [self verifyLocation];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -983,7 +984,6 @@
   self.definesPresentationContext = YES;
   isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
   isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
   [self presentViewController:isv animated:YES completion:^(void){}];
   _didGoToInstagram = YES;
   return;
@@ -1002,6 +1002,15 @@
 - (void) instagramVerifyNoAttempt {
   self.homeController.didClaim = NO;
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) backFromInstagram {
+  if (_didGoToInstagram) {
+    //We know user was at Instagram, and instagram post is being attempted
+    NSLog(@"Back From Instagram");
+    PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
+    [self.navigationController pushViewController:scan animated:YES];
+  }
 }
 
 # pragma mark - Facebook Sharing -
