@@ -192,6 +192,8 @@
 
   currentY = 0;
     
+    /*
+    
         NSString *forcedTagString = (self.parent.reward.forcedTag) ? self.parent.reward.forcedTag : @"hashtag";
         NSDictionary *attributes = @{
                                      NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12),
@@ -206,6 +208,8 @@
         hashLabel.layer.cornerRadius = 3.0f;
         hashLabel.clipsToBounds = YES;
         [_viewOneImageView addSubview:hashLabel];
+     
+     */
     
     
   
