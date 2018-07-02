@@ -290,10 +290,11 @@
 }
 
 + (BOOL) application:(UIApplication*)application openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options {
-  if ([[Twitter sharedInstance] application:application openURL:url options:options]) {
-    return [[Twitter sharedInstance] application:application openURL:url options:options];
+  BOOL twitterHandled = [[Twitter sharedInstance] application:application openURL:url options:options];
+  if (twitterHandled) {
+    return twitterHandled;
   }
-  //Twitter Login Callback
+  
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
     return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
   }
