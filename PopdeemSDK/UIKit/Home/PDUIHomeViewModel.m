@@ -163,15 +163,52 @@
 	}];
 }
 
+
+/*
+
+- (void) fetchAllWallet {
+    __weak typeof(self) weakSelf = self;
+    [[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
+        if (weakSelf.controller != nil) {
+            weakSelf.wallet = [PDWallet orderedByDateMulti];
+            [weakSelf.controller.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+            [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+        }
+    } failure:^(NSError *error) {
+        //TODO: Handle Error
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.controller != nil) {
+                [weakSelf.controller.tableView reloadData];
+                [weakSelf.controller.tableView setUserInteractionEnabled:YES];
+            }
+        });
+    }];
+}
+
+*/
+
+
+ 
 - (void) fetchAllWallet {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
+        weakSelf.wallet = [PDWallet orderedByDateMulti];
     [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
 		[[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
 	}];
 }
+
+
+
+
+
+
+
+
+
+
 
 - (void) fetchFeed {
 	_feedLoading = YES;
