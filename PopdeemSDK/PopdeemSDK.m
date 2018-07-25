@@ -237,6 +237,7 @@
   return self.uiKitCore;
 }
 
+
 + (void) registerForPushNotificationsApplication:(UIApplication *)application {
   [[PDNotificationHandler sharedInstance] registerForPushNotificationsApplication:application];
 }
