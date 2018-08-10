@@ -379,6 +379,7 @@
                                         [weakSelf.controller.loadingView hideAnimated:YES];
                                       }
                                       [weakSelf.controller moveToSection:2];
+                                      [self fetchWallet];
                                     } failure:^(NSError *error) {
                                       PDLog(@"An error occurred when Claiming No Action Reward;");
                                       [weakSelf.controller.loadingView hideAnimated:YES];
