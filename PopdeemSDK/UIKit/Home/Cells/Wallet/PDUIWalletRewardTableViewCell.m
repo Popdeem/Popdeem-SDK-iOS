@@ -94,7 +94,7 @@
         [self.arrowImageView setHidden:YES];
       } else {
         [self.arrowImageView setHidden:NO];
-        labelLineTwo = translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.");
+        labelLineTwo = translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem this reward now by tapping here.");
       }
 			break;
 	}

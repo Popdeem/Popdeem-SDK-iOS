@@ -84,7 +84,7 @@
         break;
       case PDRewardTypeCoupon:
       case PDRewardTypeInstant:
-        [self.subtitleLabel setText:translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem at the point of sale.")];
+        [self.subtitleLabel setText:translationForKey(@"popdeem.wallet.coupon.redeemText", @"Redeem this reward now by tapping here.")];
         break;
     }
 		

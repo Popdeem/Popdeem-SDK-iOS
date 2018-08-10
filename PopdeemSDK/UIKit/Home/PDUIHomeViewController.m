@@ -983,7 +983,7 @@
           }
           
           UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward Now?"
-                                                       message:@"You will be presented with a countdown timer you must show the merchant."
+                                                       message:@"Are you sure you want to redeem this now?"
                                                       delegate:self
                                              cancelButtonTitle:@"Cancel"
                                              otherButtonTitles:@"Redeem", nil];
