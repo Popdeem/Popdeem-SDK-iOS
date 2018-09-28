@@ -14,8 +14,8 @@
 
 @interface PDUIHomeViewModel : NSObject
 
-@property (nonatomic, assign) PDBrand *brand;
-@property (nonatomic, assign) PDUIHomeViewController *controller;
+@property (nonatomic, weak) PDBrand *brand;
+@property (nonatomic, weak) PDUIHomeViewController *controller;
 @property (nonatomic) PDLocation *closestLocation;
 
 @property (nonatomic) NSString *headerTitleString;
