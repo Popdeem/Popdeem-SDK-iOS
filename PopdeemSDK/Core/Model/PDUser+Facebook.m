@@ -42,7 +42,41 @@
   return globalArray;
 }
 
-
+- (void) refreshFacebookFriendsCallback:(void(^)(BOOL response))callback {
+    
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me/taggable_friends?limit=5000"
+                                       parameters:@{@"fields": @"id, name"}
+                                       HTTPMethod:@"GET"]
+     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+         if (!error) {
+             [[PDUser taggableFriends] removeAllObjects];
+             NSArray* friends = [result objectForKey:@"data"];
+             for (NSDictionary *item in friends) {
+                 
+                 NSString *facebookID = [item objectForKey:@"id"];
+                 NSString *name = [item objectForKey:@"name"];
+                 NSString *picUrl = [[[item objectForKey:@"picture"] objectForKey:@"data"] objectForKey:@"url"];
+                 PDSocialMediaFriend *f = [[PDSocialMediaFriend alloc] initWithName:name tagIdentifier:facebookID profilePictureUrl:picUrl];
+                 
+                 [[PDUser taggableFriends] addObject:f];
+             }
+             
+             NSArray *sortedArray = [[PDUser taggableFriends] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                 NSString *first = [(PDSocialMediaFriend*)a name];
+                 NSString *second = [(PDSocialMediaFriend*)b name];
+                 return [first compare:second];
+             }];
+             
+             [[PDUser taggableFriends] removeAllObjects];
+             [[PDUser taggableFriends] addObjectsFromArray:sortedArray];
+             callback(YES);
+         } else {
+             PDLogError(@"Error fetching facebook friends %@",error.localizedDescription);
+             callback(NO);
+         }
+         
+     }];
+}
 
 - (void) gatherUserLikesCallback:(void(^)(BOOL response))callback {
     [self gatherUserLikesWithPath:@"/me/likes?limit=100"];
