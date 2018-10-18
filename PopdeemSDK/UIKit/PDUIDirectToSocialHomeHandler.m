@@ -18,9 +18,10 @@
 }
 
 - (void) presentHomeFlow {
+    
   UIViewController *topController = [PDUIKitUtils topViewController];
   [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-  
+
   if ([topController isKindOfClass:[PDUIHomeViewController class]]) {
     return;
   }

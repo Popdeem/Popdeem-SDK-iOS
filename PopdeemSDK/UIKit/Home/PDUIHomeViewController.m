@@ -162,7 +162,7 @@
   UINib *tierCell = [UINib nibWithNibName:@"PDUITierEventTableViewCell" bundle:podBundle];
   [[self tableView] registerNib:tierCell forCellReuseIdentifier:kTierCell];
   
-  
+    
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -217,6 +217,11 @@
     [tvbg setImage:PopdeemImage(@"popdeem.images.tableViewBackgroundImage")];
     [self.tableView setBackgroundView:tvbg];
   }
+    
+    // fix for scroll glitch iOS 11
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
   
   self.refreshControl = [[UIRefreshControl alloc]init];
   [self.refreshControl setTintColor:[UIColor darkGrayColor]];
