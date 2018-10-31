@@ -83,7 +83,7 @@
   [self.titleLabel setText:_reward.rewardDescription];
 	
   [self.rulesLabel setFont:PopdeemFont(PDThemeFontPrimary, 13)];
-  [self.rulesLabel setNumberOfLines:3];
+  [self.rulesLabel setNumberOfLines:4];
   [self.rulesLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.rulesLabel setText:_reward.rewardRules];
 	

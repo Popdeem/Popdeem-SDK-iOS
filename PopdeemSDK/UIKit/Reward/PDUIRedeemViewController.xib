@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,10 +51,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzd-mo-k6Z">
-                            <rect key="frame" x="8" y="165" width="359" height="75"/>
+                            <rect key="frame" x="8" y="175" width="359" height="65"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="75" id="dln-Wc-mZa"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="jcS-ft-oAr"/>
+                                <constraint firstAttribute="height" constant="65" id="dln-Wc-mZa"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="jcS-ft-oAr"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="55"/>
                             <color key="textColor" red="0.83340859413146973" green="0.13544055819511414" blue="0.23423464596271515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,9 +76,9 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsi-CQ-baB">
-                            <rect key="frame" x="8" y="105" width="359" height="52"/>
+                            <rect key="frame" x="8" y="105" width="359" height="62"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="52" id="pdY-NA-Q4k"/>
+                                <constraint firstAttribute="height" constant="62" id="pdY-NA-Q4k"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
