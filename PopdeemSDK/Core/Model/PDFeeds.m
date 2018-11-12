@@ -31,18 +31,22 @@
 }
 
 + (void) populateFromAPI:(NSArray*)items {
-    [PDFeeds clearFeed];
-    for (NSMutableDictionary *itemDict in items) {
-//        PDFeedItem *item = [[PDFeedItem alloc] initFromAPI:itemDict];
-//        [PDFeeds add:item];
-      PDRFeedItem *item = [[PDRFeedItem alloc] initFromAPI:itemDict];
-      dispatch_async(dispatch_get_main_queue(), ^{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [PDFeeds clearFeed];
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
-        [realm addOrUpdateObject:item];
+        [realm deleteAllObjects];
         [realm commitWriteTransaction];
-      });
-    }
+        
+        for (NSMutableDictionary *itemDict in items) {
+            PDRFeedItem *item = [[PDRFeedItem alloc] initFromAPI:itemDict];
+            [realm beginWriteTransaction];
+            [realm addOrUpdateObject:item];
+            [realm commitWriteTransaction];
+            
+        }
+    });
 }
 
 + (void) initWithContentsOfArray:(NSMutableArray*)array {
