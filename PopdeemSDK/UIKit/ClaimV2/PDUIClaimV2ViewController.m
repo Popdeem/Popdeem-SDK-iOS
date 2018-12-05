@@ -32,6 +32,7 @@
 #import "PDUIPostScanViewController.h"
 #import "PDLocationValidator.h"
 #import <TwitterKit/TWTRKit.h>
+#import "PDUIRewardV2TableViewCell.h"
 
 @import Photos;
 
@@ -71,6 +72,14 @@
 }
 
 - (void)viewDidLoad {
+    
+    _detailRewardView.hidden = YES;
+    _blurViewForDetailRewardView.hidden = YES;
+    _detailRewardView.layer.cornerRadius = 5;
+    _detailRewardView.clipsToBounds = YES;
+    
+
+    
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginUserDismiss) name:InstagramLoginuserDismissed object:nil];
@@ -427,15 +436,14 @@
   //Do the label spacing
   //Title Label
   float innerSpacing = 3;
-  float labelX = self.rewardImageView.frame.size.width + 40;
+  float labelX = self.rewardImageView.frame.size.width + 25;
   if (_titleLabel == nil) {
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0, _rewardView.frame.size.width - labelX - 15, 60)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0, _rewardView.frame.size.width - labelX - 30, 60)];
     [_rewardView addSubview:_titleLabel];
   } else {
     [_titleLabel setFrame:CGRectMake(labelX, 0, _rewardView.frame.size.width - labelX - 15, 60)];
   }
-  
-  
+
   [_titleLabel setNumberOfLines:2];
   [_titleLabel setAttributedText:descriptionString];
   [_titleLabel setContentMode:UIViewContentModeCenter];
@@ -460,7 +468,7 @@
                                                            }];
     [labelAttString appendAttributedString:rulesString];
     if (_infoLabel == nil) {
-      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, _rewardView.frame.size.width - labelX - 15, 60)];
+      _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, currentY, _rewardView.frame.size.width - labelX - 30, 60)];
       [_rewardView addSubview:_infoLabel];
     } else {
       [_infoLabel setFrame:CGRectMake(labelX, currentY, _rewardView.frame.size.width - labelX - 15, 60)];
@@ -1150,10 +1158,153 @@
   }];
 }
 
+
+
 - (void) refreshLocationTapped {
   _loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Checking Location" descriptionText:@"Please wait a moment while we verify your location"];
   [_loadingView showAnimated:YES];
   [self performSelector:@selector(verifyLocation) withObject:nil afterDelay:1.0];
 }
+
+
+
+
+- (NSString*) infoStringForReward:(PDReward*)reward {
+    NSString *action;
+    
+    NSArray *types = reward.socialMediaTypes;
+    if (types.count > 0) {
+        if (types.count > 1) {
+            //Both Networks
+            switch (reward.action) {
+                case PDRewardActionCheckin:
+                    action = translationForKey(@"popdeem.claim.action.checkinOrTweet", @"Check-in or Tweet Required");
+                    break;
+                case PDRewardActionPhoto:
+                    action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+                    break;
+                case PDRewardActionNone:
+                    action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                    break;
+                case PDRewardActionSocialLogin:
+                    action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+                    break;
+                default:
+                    action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                    break;
+            }
+        } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeFacebook)]) {
+            //Facebook Only
+            switch (reward.action) {
+                case PDRewardActionCheckin:
+                    action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
+                    break;
+                case PDRewardActionPhoto:
+                    action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+                    break;
+                case PDRewardActionNone:
+                    action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                    break;
+                case PDRewardActionSocialLogin:
+                    action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+                    break;
+                default:
+                    action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                    break;
+            }
+        } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeTwitter)]) {
+            //Twitter Only
+            switch (reward.action) {
+                case PDRewardActionCheckin:
+                    action = translationForKey(@"popdeem.claim.action.tweet", @"Tweet Required");
+                    break;
+                case PDRewardActionPhoto:
+                    action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+                    break;
+                case PDRewardActionNone:
+                    action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                    break;
+                case PDRewardActionSocialLogin:
+                    action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+                    break;
+                default:
+                    action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                    break;
+            }
+        } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
+            //Twitter Only
+            action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+            
+        }
+    } else if (types.count == 0) {
+        switch (reward.action) {
+            case PDRewardActionCheckin:
+                action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
+                break;
+            case PDRewardActionPhoto:
+                action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+                break;
+            case PDRewardActionNone:
+                action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                break;
+            case PDRewardActionSocialLogin:
+                action = translationForKey(@"popdeem.claim.action.socialLogin", @"Social Login");
+                break;
+            default:
+                action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
+                break;
+        }
+    }
+    
+    return [NSString stringWithFormat:@"%@",action];
+    
+}
+
+
+
+
+
+
+
+
+
+- (IBAction)showDetailRewardViewPressed:(id)sender {
+    
+    UIImage *rewardImage = _reward.coverImage;
+    if (rewardImage == nil) {
+        [_detailViewRewardImage setImage:PopdeemImage(PDThemeImageDefaultItem)];
+    } else {
+        [_detailViewRewardImage setImage:rewardImage];
+    }
+    
+    [_detailViewRewardTitle setFont:PopdeemFont(PDThemeFontPrimary, 14)];
+    [_detailViewRewardTitle setNumberOfLines:3];
+    _detailViewRewardTitle.text = _reward.rewardDescription;
+    
+    [_detailViewRewardDescription setFont:PopdeemFont(PDThemeFontLight, 14)];
+    [_detailViewRewardDescription setNumberOfLines:6];
+    _detailViewRewardDescription.text = _reward.rewardRules;
+
+    NSString *shareInfo = [self infoStringForReward:_reward];
+    _detailViewRewardActionRequired.text = shareInfo;
+
+    
+    [_closeDetailRewardView setFont:PopdeemFont(PDThemeFontLight, 16)];
+    [_closeDetailRewardView setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    
+    _blurViewForDetailRewardView.hidden = NO;
+    _detailRewardView.hidden = NO;
+}
+
+
+
+- (IBAction)closeDetailRewardViewPressed:(id)sender {
+    _detailRewardView.hidden = YES;
+    _blurViewForDetailRewardView.hidden = YES;
+}
+
+
+
+
 
 @end

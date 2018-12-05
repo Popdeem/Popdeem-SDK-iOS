@@ -12,8 +12,11 @@
 #import "PDUIMsgCntrTblViewController.h"
 #import "PDLocation.h"
 #import "PDUIModalLoadingView.h"
+#import "PDUINoActionRewardView.h"
 #import "PDBrand.h"
 #import "PDReward.h"
+//#import "PDUIHomeViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 @interface PDUIHomeViewController : UITableViewController <UIAlertViewDelegate>
 
@@ -27,11 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSInteger claimedRewardId;
 @property (nonatomic) PDLocation *closestLocation;
 @property (nonatomic) PDUIModalLoadingView *loadingView;
+@property (nonatomic) PDUINoActionRewardView *noActionView;
 @property (nonatomic, strong) UIButton *inboxButton;
 @property (nonatomic, strong) UIButton *settingsButton;
 @property (nonnull, strong) NSString *brandVendorSearchTerm;
 @property (nonatomic, retain) PDReward *willClaimReward;
 @property (nonatomic, retain) PDReward *selectedWalletReward;
+
 
 - (_Nullable instancetype) initFromNib;
 - (_Nullable instancetype) initWithBrand:(PDBrand*)b;
@@ -40,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setBrandVendorSearchTerm:(NSString *)brandVendorSearchTerm;
 - (void) moveToSection:(NSInteger)section;
 - (void) updateRewardData;
+- (void) claimNoActionReward:(PDReward*)reward;
 
 @end
 NS_ASSUME_NONNULL_END

@@ -50,6 +50,17 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *bottomInfoLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *infoViewHeightContstraint;
 
+@property (strong, nonatomic) IBOutlet UIButton *showDetailRewardView;
+@property (strong, nonatomic) IBOutlet UIButton *closeDetailRewardView;
+@property (strong, nonatomic) IBOutlet UIView *detailRewardView;
+@property (strong, nonatomic) IBOutlet UIView *blurViewForDetailRewardView;
+
+@property (strong, nonatomic) IBOutlet UILabel *detailViewRewardTitle;
+@property (strong, nonatomic) IBOutlet UILabel *detailViewRewardDescription;
+@property (strong, nonatomic) IBOutlet UIImageView *detailViewRewardImage;
+@property (strong, nonatomic) IBOutlet UILabel *detailViewRewardActionRequired;
+
+
 - (instancetype) initFromNib;
 //- (instancetype) initWithReward:(PDReward*)reward;
 - (void) setupWithReward:(PDReward*)reward;

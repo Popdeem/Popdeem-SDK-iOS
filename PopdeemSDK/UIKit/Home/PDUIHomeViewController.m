@@ -41,6 +41,7 @@
 #import "PDUITierEventTableViewCell.h"
 #import "PDCustomer.h"
 #import "PDUIClaimV2ViewController.h"
+//#import "PDUINoActionRewardView.h"
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -68,9 +69,16 @@
 @property (nonatomic, retain) UIColor *startingNavColor;
 @property (nonatomic, retain) UIColor *startingNavTextColor;
 @property (nonatomic, retain) UIView *historySectionView;
+
+
+
+
+
 @end
 
 @implementation PDUIHomeViewController
+
+
 
 - (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
@@ -173,6 +181,11 @@
 }
 
 - (void)viewDidLoad {
+    
+    //UIView *noActionPopup = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 600)];
+    //noActionPopup.backgroundColor = UIColor.blueColor;
+    //[self.tableView addSubview:noActionPopup];
+    
   firstLaunch = YES;
   if (_brandVendorSearchTerm != nil) {
     _brand = [PDBrandStore findBrandBySearchTerm:_brandVendorSearchTerm];
@@ -349,7 +362,7 @@
     _didClaim = NO;
     [_segmentedControl setSelectedSegmentIndex:2];
     [_model fetchWallet];
-    _model.rewards = [PDRewardStore orderedByDate];
+    _model.rewards = [PDRewardStore orderedByDistanceFromUser];
     [_model fetchWallet];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
@@ -1043,6 +1056,8 @@
   }
 }
 
+
+
 - (void) processClaimForIndexPath:(NSIndexPath*)indexPath {
   if (![[PDUser sharedInstance] isRegistered]) {
     PDUISocialLoginHandler *loginHandler = [[PDUISocialLoginHandler alloc] init];
@@ -1063,7 +1078,13 @@
       [loginHandler presentLoginModal];
       return;
     }
-    [self.model claimNoAction:reward closestLocation:nil];
+      
+      _noActionView = [[PDUINoActionRewardView alloc] initForView:self.navigationController.view                                                                      
+                                                      reward:reward                                 ];
+      [_noActionView showAnimated:YES];
+      
+      
+
   } else {
       PDUIClaimV2ViewController *claimController = [[PDUIClaimV2ViewController alloc] initFromNib];
     claimController.closestLocation = _closestLocation;
@@ -1077,6 +1098,12 @@
     [[self navigationController] pushViewController:claimController animated:YES];
   }
 }
+
+
+- (void) claimNoActionReward:(PDReward*)reward {
+    [self.model claimNoAction:reward closestLocation:nil];
+}
+
 
 - (void) scrollToIndexPath:(NSIndexPath*)path {
   [self.tableView scrollRectToVisible:[self.tableView rectForRowAtIndexPath:path] animated:YES];
@@ -1159,7 +1186,7 @@
 
 - (void) showConnect {
   PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
-  
+
   [self presentViewController:gViewController animated:NO completion:^{
     
   }];
