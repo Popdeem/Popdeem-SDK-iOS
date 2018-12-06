@@ -41,7 +41,7 @@
 #import "PDUITierEventTableViewCell.h"
 #import "PDCustomer.h"
 #import "PDUIClaimV2ViewController.h"
-//#import "PDUINoActionRewardView.h"
+
 
 #define kPlaceholderCell @"PlaceholderCell"
 #define kRewardWithRulesTableViewCell @"RewardWithRulesCell"
@@ -69,10 +69,6 @@
 @property (nonatomic, retain) UIColor *startingNavColor;
 @property (nonatomic, retain) UIColor *startingNavTextColor;
 @property (nonatomic, retain) UIView *historySectionView;
-
-
-
-
 
 @end
 
@@ -1078,11 +1074,9 @@
       [loginHandler presentLoginModal];
       return;
     }
-      
-      _noActionView = [[PDUINoActionRewardView alloc] initForView:self.navigationController.view                                                                      
-                                                      reward:reward                                 ];
+    
+      _noActionView = [[PDUINoActionRewardView alloc] initForView:self.navigationController.view reward:reward homeVC:self];
       [_noActionView showAnimated:YES];
-      
       
 
   } else {

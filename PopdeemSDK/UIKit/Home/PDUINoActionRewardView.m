@@ -10,20 +10,16 @@
 #import "PDUtils.h"
 #import "PDTheme.h"
 #import "PDReward.h"
-//#import "PDUIHomeViewModel.h"
-
 
 @implementation PDUINoActionRewardView
 
 
 
-- (PDUINoActionRewardView*) initForView:(UIView*)parent
-                            reward:(PDReward*)reward
+- (PDUINoActionRewardView*) initForView:(UIView *)parent reward:(PDReward *)reward homeVC:(PDUIHomeViewController *)homeVC
                            {
     if (self = [super init]) {
-    
-        //_homeViewController = [[PDUIHomeViewController alloc] initFromNib];
-        
+
+        self.homeViewController = homeVC;
         self.parent = parent;
         
         // self.view is a backing view which has 0.5 opacity and will fill the parent
@@ -43,22 +39,17 @@
         [_contentView setBackgroundColor:UIColor.whiteColor];
 
         float framecenter = _contentView.center.x;
-
         float bottom = _contentView.frame.size.height;
-
-        // CGRect x, y width, height
         
-        
-        // Pull in reward image & default if nil
         UIImage *rewardImage;
-        
         if(reward.coverImage == nil) {
             rewardImage = PopdeemImage(@"pduikit_starG");
         } else {
             rewardImage = reward.coverImage;
         }
         
-        CGRect rewardImageRect = CGRectMake(framecenter -50, framecenter -150, 50, 50);
+        // Center Image View
+        CGRect rewardImageRect = CGRectMake(framecenter -60, framecenter -150, 60, 60);
         _rewardImageView = [[UIImageView alloc] initWithFrame:rewardImageRect];
         _rewardImageView.contentMode = UIViewContentModeScaleAspectFit;
         _rewardImageView.layer.masksToBounds = YES;
@@ -81,35 +72,41 @@
         [_descriptionLabel setTextAlignment:NSTextAlignmentCenter];
         
     
-        CGRect cancelButtonRect = CGRectMake(0, bottom-40, _contentView.frame.size.width/2, 40);
+        CGRect cancelButtonRect = CGRectMake(0, bottom-50, _contentView.frame.size.width/2, 50);
         _cancelButton = [[UIButton alloc] initWithFrame:cancelButtonRect];
         [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
         [self.cancelButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
         [_cancelButton setBackgroundColor:[UIColor colorWithRed:0.93 green:0.92 blue:0.92 alpha:1.0]];
         [_cancelButton setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-        _cancelButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-        _cancelButton.layer.borderWidth =1.0f;
-        _cancelButton.layer.masksToBounds = YES;
-        
-    
 
-        CGRect claimButtonRect = CGRectMake(_contentView.frame.size.width/2, bottom-40, _contentView.frame.size.width/2, 40);
+        
+        [_cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        _cancelButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+        _cancelButton.layer.borderWidth = 1.0f;
+        _cancelButton.layer.cornerRadius = 5.0f;
+        _cancelButton.layer.masksToBounds = YES;
+
+        
+        CGRect claimButtonRect = CGRectMake(_contentView.frame.size.width/2, bottom-50, _contentView.frame.size.width/2, 50);
         _claimButton = [[UIButton alloc] initWithFrame:claimButtonRect];
         [self.claimButton setTitle:@"Claim" forState:UIControlStateNormal];
         [self.claimButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
         [_claimButton setBackgroundColor:[UIColor colorWithRed:0.93 green:0.92 blue:0.92 alpha:1.0]];
         [_claimButton setFont:PopdeemFont(PDThemeFontPrimary, 16)];
+        
+        
+        [_claimButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         _claimButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-        _claimButton.layer.borderWidth =1.0f;
+        _claimButton.layer.borderWidth = 1.0f;
+        _claimButton.layer.cornerRadius = 5.0f;
         _claimButton.layer.masksToBounds = YES;
         
-        PDReward *rewardToPass = reward;//can be anything, doesn't have to be NSString
+        
+        PDReward *rewardToPass = reward;
         [_claimButton.layer setValue:rewardToPass forKey:@"rewardKey"];
-        
+    
         //IBAction for Dismiss & Claim No Action
-        [_cancelButton addTarget:self action:@selector(dismissAction)forControlEvents:UIControlEventTouchDown];
-        
-        // claimButtonClicked needs a reward to be passed..
+        [_cancelButton addTarget:self action:@selector(dismissAction)forControlEvents:UIControlEventTouchUpInside];
         [_claimButton addTarget:self action:@selector(claimButtonClicked:)forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -129,33 +126,17 @@
 }
 
 
-
 -(void)claimButtonClicked:(UIButton*)sender{
     
     PDReward *rewardThatWasPassed = (PDReward *)[sender.layer valueForKey:@"rewardKey"];
-    
-    PDUIHomeViewController *homeViewController = [[PDUIHomeViewController alloc]init];
-    [homeViewController claimNoActionReward:rewardThatWasPassed];
-    
     [self dismissAction];
+    [_homeViewController claimNoActionReward:rewardThatWasPassed];
+
 }
-
-
-/*
-- (void) claimButtonClicked:(PDReward*)reward {
-    PDUIHomeViewController *homeViewController = [[PDUIHomeViewController alloc]init];
-    [homeViewController claimNoActionReward:reward];
-    printf("Reward Desc: ", reward.rewardRules);
-}*/
-
-
 
 - (void) dismissAction {
     [self hideAnimated:YES];
 }
-
-
-
 
 - (void) hideAnimated:(BOOL)animated {
     if (animated) {
@@ -183,4 +164,7 @@
 }
 
 
+
 @end
+
+

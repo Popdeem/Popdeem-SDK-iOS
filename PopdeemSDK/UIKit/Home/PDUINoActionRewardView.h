@@ -7,9 +7,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PDReward.h"
-//#import "PDUIHomeViewModel.h"
-//#import "PDUIHomeViewController.h"
 
+@class PDUIHomeViewController;
 
 @interface PDUINoActionRewardView : UIView
 
@@ -22,15 +21,17 @@
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) IBOutlet UIButton *claimButton;
 
-//@property (nonatomic, retain) PDUIHomeViewModel *model;
-//@property (nonatomic, retain) PDUIHomeViewController *homeViewController;
+@property (nonatomic, retain) PDUIHomeViewController *homeViewController;
 
 @property (nonatomic, assign) PDReward *reward;
 
 - (PDUINoActionRewardView*) initForView:(UIView*)parent
-                            reward:(PDReward*)reward;
+                            reward:(PDReward*)reward
+                            homeVC:(PDUIHomeViewController*)homeVC;
+
 
 - (void) showAnimated:(BOOL)animated;
 - (void) hideAnimated:(BOOL)animated;
+- (void) setHighlighted:(BOOL)highlighted;
 
 @end
