@@ -194,7 +194,7 @@
 - (void) fetchAllWallet {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
-        weakSelf.wallet = [PDWallet orderedByDateMulti];
+    weakSelf.wallet = [PDWallet orderedByDateMulti];
     [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error

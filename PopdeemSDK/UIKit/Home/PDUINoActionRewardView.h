@@ -20,6 +20,8 @@
 @property (nonatomic, retain) UIView *backingView;
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) IBOutlet UIButton *claimButton;
+@property (nonatomic, retain) UIView *topBorder;
+@property (nonatomic, retain) UIView *middleBorder;
 
 @property (nonatomic, retain) PDUIHomeViewController *homeViewController;
 

@@ -1273,7 +1273,7 @@
 - (void) moveToSection:(NSInteger)section {
   if (section < 3) {
     [self.segmentedControl setSelectedSegmentIndex:section];
-    [self scrollToIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    //[self scrollToIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
   }
