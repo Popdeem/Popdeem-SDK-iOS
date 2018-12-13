@@ -94,9 +94,9 @@
           return nil;
         }
       } else if (_model.messagesLoading) {
-        return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"Fetching messages..."];
+        return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.messages.fetchMessagesText", @"Fetching messages...")];
       } else {
-        return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:@"You have no messages."];
+        return [[PDUINoRewardsTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 85) text:translationForKey(@"popdeem.messages.noMessagesText", @"You have no messages")];
       }
       break;
       case 1:

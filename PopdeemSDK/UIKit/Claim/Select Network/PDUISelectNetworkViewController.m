@@ -82,7 +82,7 @@
   NSString *topLabelText = @"";
   if (_mediaTypes.count > 1) {
     if (_reward.action == PDRewardActionPhoto) {
-      topLabelText = [NSString stringWithFormat:@"Choose which network you shared your photo with %@ to claim your reward:", _reward.forcedTag];
+      topLabelText = [NSString stringWithFormat:translationForKey(@"popdeem.scan.chooseNetworkToScanText", @"Choose which network you shared your photo with %@ to claim your reward:"), _reward.forcedTag];
     } else {
       topLabelText = [NSString stringWithFormat:@"Choose which network you shared your experience with %@ to claim your reward:", _reward.forcedTag];
     }
@@ -107,9 +107,9 @@
   [self.facebookButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   
   if ([[PDSocialMediaManager manager] isLoggedInWithFacebook]) {
-    [self.facebookButton setTitle:@"Scan Facebook" forState:UIControlStateNormal];
+    [self.facebookButton setTitle:translationForKey(@"popdeem.scan.scanFacebookText", @"Scan Facebook") forState:UIControlStateNormal];
   } else {
-    [self.facebookButton setTitle:@"Connect to Facebook" forState:UIControlStateNormal];
+    [self.facebookButton setTitle:translationForKey(@"popdeem.connect.connectFacebookText", @"Connect to Facebook") forState:UIControlStateNormal];
   }
   
   [self.twitterButton.layer setCornerRadius:10.0];
@@ -118,10 +118,10 @@
   
   if ([[PDSocialMediaManager manager] isLoggedInWithTwitter]) {
     _twitterLoggedIn = YES;
-    [self.twitterButton setTitle:@"Scan Twitter" forState:UIControlStateNormal];
+    [self.twitterButton setTitle:translationForKey(@"popdeem.scan.scanTwitterText", @"Scan Twitter") forState:UIControlStateNormal];
   } else {
     _twitterLoggedIn = NO;
-    [self.twitterButton setTitle:@"Connect to Twitter" forState:UIControlStateNormal];
+    [self.twitterButton setTitle:translationForKey(@"popdeem.connect.connectTwitterText", @"Connect to Twitter") forState:UIControlStateNormal];
   }
   
   [self.instagramButton.layer setCornerRadius:10.0];
@@ -140,10 +140,10 @@
   //Just a dirty way to determine if a user is "logged in" with instagram. We verify the token later.
   if ([[[[PDUser sharedInstance] instagramParams] accessToken] length] > 0) {
     _instagramLoggedIn = YES;
-    [self.instagramButton setTitle:@"Scan Instagram" forState:UIControlStateNormal];
+    [self.instagramButton setTitle:translationForKey(@"popdeem.scan.scanInstagramText", @"Scan Instagram") forState:UIControlStateNormal];
   } else {
     _instagramLoggedIn = NO;
-    [self.instagramButton setTitle:@"Connect to Instagram" forState:UIControlStateNormal];
+    [self.instagramButton setTitle:translationForKey(@"popdeem.connect.connectInstagramText", @"Connect to Instagram") forState:UIControlStateNormal];
   }
 
   //Verify the token for real. This takes a moment - above is to avoid the text on the button changing before the users eyes.
@@ -151,17 +151,18 @@
     if (isLoggedIn) {
       _instagramLoggedIn = YES;
       dispatch_async(dispatch_get_main_queue(), ^{
-        [self.instagramButton setTitle:@"Scan Instagram" forState:UIControlStateNormal];
+        [self.instagramButton setTitle:translationForKey(@"popdeem.scan.scanInstagramText", @"Scan Instagram") forState:UIControlStateNormal];
       });
     } else {
       _instagramLoggedIn = NO;
       dispatch_async(dispatch_get_main_queue(), ^{
-        [self.instagramButton setTitle:@"Connect to Instagram" forState:UIControlStateNormal];
+        [self.instagramButton setTitle:translationForKey(@"popdeem.connect.connectInstagramText", @"Connect to Instagram") forState:UIControlStateNormal];
       });
     }
   }];
   
-  [self.bottomLabel setText:[NSString stringWithFormat:@"Note: You must have shared your experience with %@ in the last 48 hours to be eligible for a reward.", _reward.forcedTag]];
+  [self.bottomLabel setText:[NSString stringWithFormat: translationForKey(@"popdeem.scan.noteEligibilityText", @"Note: You must have shared your experience with %@ in the last 48 hours to be eligible for a reward"), _reward.forcedTag]];
+    
   [self.bottomLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.bottomLabel setFont:PopdeemFont(PDThemeFontLight, 12)];
   
@@ -251,7 +252,7 @@
 }
 
 - (void) instagramLoginSuccess {
-  [self.instagramButton setTitle:@"Scan Instagram" forState:UIControlStateNormal];
+  [self.instagramButton setTitle:translationForKey(@"popdeem.scan.scanInstagramText", @"Scan Instagram") forState:UIControlStateNormal];
   PDLog(@"Instagram Connected");
   AbraLogEvent(ABRA_EVENT_CONNECTED_ACCOUNT, (@{
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
@@ -335,7 +336,7 @@
 }
 
 - (void) twitterLoginSuccess {
-  [self.twitterButton setTitle:@"Scan Twitter" forState:UIControlStateNormal];
+  [self.twitterButton setTitle:translationForKey(@"popdeem.scan.scanTwitterText", @"Scan Twitter") forState:UIControlStateNormal];
   if (_goneToScan) return;
   _goneToScan = YES;
   [self pushScanForNetwork:TWITTER_NETWORK];
@@ -374,11 +375,11 @@
 
 - (void) facebookLoginSuccess {
   [self pushScanForNetwork:FACEBOOK_NETWORK];
-  [self.facebookButton setTitle:@"Scan Facebook" forState:UIControlStateNormal];
+  [self.facebookButton setTitle:translationForKey(@"popdeem.scan.scanFacebookText", @"Scan Facebook") forState:UIControlStateNormal];
 }
 
 - (void) facebookLoginFailure {
-  [self.facebookButton setTitle:@"Connect to Facebook" forState:UIControlStateNormal];
+  [self.facebookButton setTitle:translationForKey(@"popdeem.connect.connectFacebookText", @"Connect to Facebook") forState:UIControlStateNormal];
   UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.common.sorry", @"Sorry")
                                                message:translationForKey(@"popdeem.common.cantConnectFacebook", @"We couldnt connect you to Facebook")
                                               delegate:nil

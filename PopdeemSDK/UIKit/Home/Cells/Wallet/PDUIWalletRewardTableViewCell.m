@@ -178,25 +178,25 @@
   }
 	NSMutableAttributedString *instructionsAttString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{}];
 	NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc]
-																									initWithString:@"Sweepstake Entry\n\n"
-																									attributes:@{
-																															 NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
-																															 NSForegroundColorAttributeName : _primaryFontColor
-																															 }];
+    initWithString: translationForKey(@"popdeem.sweepstake.sweepstakeEntryText", @"Sweepstake Entry\n\n")
+    attributes:@{
+	NSFontAttributeName : PopdeemFont(PDThemeFontBold, 14),
+	NSForegroundColorAttributeName : _primaryFontColor }];
 	[instructionsAttString appendAttributedString:titleString];
 	
 	NSString *instStr;
 	if ([[self drawString:reward] length] > 1) {
-			instStr = [NSString stringWithFormat:@"- You are now in the draw.\n- You will be notified if you are the winner.\n- %@",[self drawString:reward]];
+			instStr = [NSString stringWithFormat: translationForKey(@"popdeem.sweepstake.inTheDrawRewardText", @"- You are now in the draw.\n- You will be notified if you are the winner.\n- %@"), [self drawString:reward]];
+        
 	} else {
-		instStr = @"- You are now in the draw.\n- You will be notified if you are the winner.";
+		instStr = translationForKey(@"popdeem.sweepstake.inTheDrawText", @"- You are now in the draw.\n- You will be notified if you are the winner.");
 	}
 	
 	NSMutableAttributedString *instructionsInfoString = [[NSMutableAttributedString alloc]
 																					 initWithString:instStr
 																					 attributes:@{
-																												NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-																												NSForegroundColorAttributeName : _primaryFontColor
+                                                                                     NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+																					 NSForegroundColorAttributeName : _primaryFontColor
 																												}];
 	[instructionsAttString appendAttributedString:instructionsInfoString];
 	
@@ -209,10 +209,10 @@
 	NSString *expiresString;
   if (reward.recurrence) {
     if ([reward.recurrence isEqualToString:@"Monthly"]) {
-      return @"Draw takes place monthly.";
+      return translationForKey(@"popdeem.sweepstake.monthlyDrawText", @"Draw takes place monthly");
     } else {
       NSString *cap = [reward.recurrence capitalizedString];
-      return [NSString stringWithFormat:@"Draw takes place on %@", cap];
+      return [NSString stringWithFormat:translationForKey(@"popdeem.sweepstake.drawTakesPlaceOnText", @"Draw takes place on %@"), cap];
     }
   } else if (reward.availableUntil) {
 		NSTimeInterval interval = [[NSDate dateWithTimeIntervalSince1970:reward.availableUntil] timeIntervalSinceDate:[NSDate date]];
@@ -222,17 +222,18 @@
 		
 		
 		if (intervalDays > 1) {
-			expiresString = [NSString stringWithFormat:@"Draw takes place in %ld days.",(long)intervalDays];
+			expiresString = [NSString stringWithFormat:translationForKey(@"popdeem.sweepstake.drawInDaysText", @"Draw takes place in %ld days."),(long)intervalDays];
 		}
 		if (intervalDays == 1) {
-			expiresString = @"Draw takes place in 1 day.";
+			expiresString = translationForKey(@"popdeem.sweepstake.drawInOneDayText", @"Draw takes place in 1 day.");
+    
 		}
 		if (intervalDays == 0) {
 			
 			if (intervalHours == 0) {
-				expiresString = @"Draw has happened. You will be notified if you are the winner.";
+				expiresString = translationForKey(@"popdeem.sweepstake.drawHasHappenedText", @"Draw has happened. You will be notified if you are the winner.");
 			} else {
-				expiresString = [NSString stringWithFormat:@"Draw takes place in %ld hours",(long)intervalHours];
+				expiresString = [NSString stringWithFormat:translationForKey(@"popdeem.sweepstake.drawInHoursText", @"Draw takes place in %ld hours"),(long)intervalHours];
 			}
 		}
 		return expiresString;

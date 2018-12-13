@@ -30,7 +30,7 @@
 	self.buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
 	self.buttonTextColor = PopdeemColor(PDThemeColorPrimaryInverse);
 	self.buttonLabelFont = PopdeemFont(PDThemeFontBold, 16);
-	self.buttonText = translationForKey(@"popdeem.instagram.connect.actionButtonTitle", @"Continue");
+	self.buttonText = translationForKey(@"popdeem.claim.continuebutton.text", @"Continue");
 }
 
 @end

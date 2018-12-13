@@ -116,7 +116,7 @@
   
   
   NSMutableAttributedString *mainString = [[NSMutableAttributedString alloc]
-                                           initWithString:[NSString stringWithFormat:@"Whoops! Sorry %@, we could not find a post from the last 48 hours with ",[[PDUser sharedInstance] firstName]]
+                                           initWithString:[NSString stringWithFormat:translationForKey(@"popdeem.scan.couldNotFindPostText", @"Whoops! Sorry %@, we could not find a post from the last 48 hours with "), [[PDUser sharedInstance] firstName]]
                                            attributes:@{
                                                         NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
                                                         NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
@@ -133,7 +133,7 @@
   [failedLabelAttributedString appendAttributedString:hashTagString];
   
   NSMutableAttributedString *restString = [[NSMutableAttributedString alloc]
-                                           initWithString:@"\n\nPlease ensure you've shared from the correct social media account and try again."
+                                           initWithString: translationForKey(@"popdeem.scan.ensureCorrectAccountText", @"\n\nPlease ensure you've shared from the correct social media account and try again.")
                                            attributes:@{
                                                         NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
                                                         NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
@@ -233,11 +233,11 @@
   _profilePicture.layer.cornerRadius = _profilePicture.frame.size.width/2;
   _profilePicture.clipsToBounds = YES;
   
-  NSString *uptohash = [NSString stringWithFormat:@"Hey %@, we found your post with ", [[PDUser sharedInstance] firstName]];
+  NSString *uptohash = [NSString stringWithFormat: translationForKey(@"popdeem.scan.foundPostWithText", @"Hey %@, we found your post with "), [[PDUser sharedInstance] firstName]];
   NSString *hash = _reward.forcedTag;
   
-  NSString *afterHash = @". Thanks for sharing! You have unlocked your reward!";
-  
+  NSString *afterHash = translationForKey(@"popdeem.scan.thanksForSharingText", @". Thanks for sharing! You have unlocked your reward!");
+    
   NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
   ps.paragraphSpacing = 2.0;
   ps.lineSpacing = 0;

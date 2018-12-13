@@ -38,7 +38,7 @@
 	self.buttonColor = [UIColor colorWithRed:0.33 green:0.67 blue:0.93 alpha:1.0];
 	self.buttonTextColor = [UIColor whiteColor];
 	self.buttonLabelFont = PopdeemFont(PDThemeFontBold, 16);
-	self.buttonText = translationForKey(@"popdeem.twitter.connect.read.actionButtonTitle", @"Continue");
+	self.buttonText = translationForKey(@"popdeem.claim.continuebutton.text", @"Continue");
 }
 
 - (void) setupLoading {

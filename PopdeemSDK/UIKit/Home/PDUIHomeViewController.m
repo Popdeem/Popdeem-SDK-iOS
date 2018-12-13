@@ -286,7 +286,7 @@
   
   _historySectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
   UILabel *historyTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 40)];
-  [historyTitleLabel setText:@"MY HISTORY"];
+  [historyTitleLabel setText:translationForKey(@"popdeem.profile.myHistoryText", @"MY HISTORY")];
   [historyTitleLabel setFont:PopdeemFont(PDThemeFontBold, 12)];
   [historyTitleLabel setTextColor:[UIColor blackColor]];
   [_historySectionView addSubview:historyTitleLabel];
@@ -675,13 +675,13 @@
         } else {
           if (indexPath.row == 0) {
             PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-            [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            [socialAccountCell.label setText:translationForKey(@"popdeem.profile.connectSocialAccountsText", @"Connect Social Media Accounts")];
             socialAccountCell.shouldShowBadge = NO;
             return socialAccountCell;
           }
           if (indexPath.row == 1) {
             PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-            [messagesCell.label setText:@"Messages"];
+            [messagesCell.label setText:translationForKey(@"popdeem.profile.messagesTitleText", @"Messages")];
             messagesCell.shouldShowBadge = YES;
             if ([PDMessageStore unreadCount] > 0) {
               [messagesCell showBadge:YES];
@@ -996,11 +996,11 @@
             return;
           }
           
-          UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Redeem Reward Now?"
-                                                       message:@"Are you sure you want to redeem this now?"
+          UIAlertView *av = [[UIAlertView alloc] initWithTitle:translationForKey(@"popdeem.redeem.redeemNowText", @"Redeem Reward Now?")
+                                                       message:translationForKey(@"popdeem.redeem.redeemSureText", @"Are you sure you want to redeem this now?")
                                                       delegate:self
-                                             cancelButtonTitle:@"Cancel"
-                                             otherButtonTitles:@"Redeem", nil];
+                                             cancelButtonTitle:translationForKey(@"popdeem.redeem.cancelText", @"Cancel")
+                                             otherButtonTitles:translationForKey(@"popdeem.redeem.redeemText", @"Redeem"), nil];
           [av setTag:400];
           [av show];
           

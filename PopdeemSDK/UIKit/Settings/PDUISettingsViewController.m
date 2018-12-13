@@ -260,7 +260,7 @@
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
   case 0:
-			return @"Social Networks";
+            return translationForKey(@"popdeem.settings.socialNetworksText", @"Social Networks");
 			break;
 	case 1:
 			return @"";
@@ -308,7 +308,7 @@
 			PDSocialMediaManager *man = [PDSocialMediaManager manager];
 			if ([man isLoggedInWithAnyNetwork]) {
 				[logoutCell.logoutButton setHidden:NO];
-				[logoutCell.logoutButton setTitle:@"Log Out" forState:UIControlStateNormal];
+				[logoutCell.logoutButton setTitle:translationForKey(@"popdeem.settings.logOutText", @"Log Out") forState:UIControlStateNormal];
 			} else {
 				[logoutCell.logoutButton setHidden:YES];
 			}

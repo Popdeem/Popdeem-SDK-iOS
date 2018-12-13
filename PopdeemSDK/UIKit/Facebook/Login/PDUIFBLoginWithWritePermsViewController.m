@@ -140,8 +140,8 @@
     __weak __typeof(self) weakSelf = self;
 	__block UIAlertView *av;
 	__block PDUIModalLoadingView *loadingView = [[PDUIModalLoadingView alloc] initForView:self.view
-																																							titleText:@"Logging in"
-																																				descriptionText:@"Please wait while we log you in"];
+    titleText: translationForKey(@"popdeem.loading.loggingInText", @"Logging in")
+    descriptionText: translationForKey(@"popdeem.loading.pleaseWaitText", @"Please wait while we log you in")];
 	[loadingView showAnimated:YES];
 	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
 	[manager loginWithFacebookReadPermissions:FACEBOOK_PERMISSIONS
