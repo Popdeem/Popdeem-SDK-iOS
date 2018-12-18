@@ -1208,7 +1208,7 @@
   } else if (alertView.tag == 2) {
     [_model fetchWallet];
     [_segmentedControl setSelectedSegmentIndex:2];
-    _model.rewards = [PDRewardStore orderedByDate];
+    _model.rewards = [PDRewardStore orderedByDistanceFromUser];
     [self.tableView reloadData];
     [self.tableView reloadInputViews];
     

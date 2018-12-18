@@ -89,7 +89,7 @@
 - (void) fetchAllRewards {
   __weak typeof(self) weakSelf = self;
   [[PDAPIClient sharedInstance] getAllRewardsSuccess:^{
-    weakSelf.rewards =  [PDRewardStore orderedByDate];
+    weakSelf.rewards =  [PDRewardStore orderedByDistanceFromUser];
     weakSelf.rewardsLoading = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
       if (weakSelf.controller != nil) {
@@ -375,7 +375,7 @@
                                     success:^(){
                                       PDLog(@"No Action Reward Was Claimed");
                                       [PDRewardStore deleteReward:weakReward.identifier];
-                                      weakSelf.rewards = [PDRewardStore orderedByDate];
+                                      weakSelf.rewards = [PDRewardStore orderedByDistanceFromUser];
                                       [weakSelf.controller.tableView reloadData];
                                       if (weakSelf.controller.loadingView) {
                                         [weakSelf.controller.loadingView hideAnimated:YES];
