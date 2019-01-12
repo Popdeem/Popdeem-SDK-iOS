@@ -105,7 +105,7 @@ typedef NS_ENUM(NSUInteger, PDEnv) {
   sourceApplication:(NSString *)sourceApplication
          annotation:(nullable id)annotation;
 
-+ (BOOL) application:(UIApplication*)application canOpenUrl:(NSURL *)url options:(NSDictionary*)options;
++ (BOOL) application:(UIApplication*)application canOpenUrl:(NSURL*)url sourceApplication:(NSString *)sourceApplication annotation:(nullable id)annotation;
 
 + (BOOL) application:(UIApplication *)application
              openURL:(NSURL *)url
