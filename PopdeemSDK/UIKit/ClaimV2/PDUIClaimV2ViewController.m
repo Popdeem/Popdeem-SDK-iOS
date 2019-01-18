@@ -981,7 +981,7 @@
     return;
   }
   
-  PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:self.navigationController withMessage:@"" image:_userImage imageUrlString:_imageURLString];
+  PDUIInstagramShareViewController *isv = [[PDUIInstagramShareViewController alloc] initForParent:self.navigationController withMessage:_reward.forcedTag image:_userImage imageUrlString:_imageURLString];
   self.definesPresentationContext = YES;
   isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
   isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

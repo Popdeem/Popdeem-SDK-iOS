@@ -233,7 +233,7 @@
   _profilePicture.layer.cornerRadius = _profilePicture.frame.size.width/2;
   _profilePicture.clipsToBounds = YES;
   
-  NSString *uptohash = [NSString stringWithFormat:@"Hey %@, thanks for checking-in!", [[PDUser sharedInstance] firstName]];
+  NSString *uptohash = [NSString stringWithFormat:@"Hey %@, thanks for checking-in! ", [[PDUser sharedInstance] firstName]];
   NSString *hash = _reward.forcedTag;
   
   NSString *afterHash = @". Here's your reward!";

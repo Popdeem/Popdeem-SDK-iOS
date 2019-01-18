@@ -99,7 +99,7 @@
   }
     
     //HARDCODED CHANGE WITH BRANDING
-    [self.topLabel setText:@"Scan Facebook for any check-in at Kung Fu Tea to claim your reward:"];
+    [self.topLabel setText:@"Scan Facebook for any check-in to claim your reward:"];
   [self.topLabel setTextColor:PopdeemColor(PDThemeColorPrimaryFont)];
   [self.topLabel setFont:PopdeemFont(PDThemeFontPrimary, 14)];
   

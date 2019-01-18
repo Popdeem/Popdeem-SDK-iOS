@@ -241,7 +241,7 @@
         return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];
         break;
       case PDGratitudeTypeConnect:
-        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned %d points for connecting. Share photo’s with #RibsandBurgers to earn additional rewards!"), incrementPoints];
+        return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.connect.bodyText", @"You earned %d points for connecting. Share photo’s with #TheCasualPint to earn additional rewards!"), incrementPoints];
         break;
       default:
         return [NSString stringWithFormat:translationForKey(@"popdeem.gratitude.share.bodyText", @"Thanks for sharing. You earned an additional %d points to your account and moved up in status."), incrementPoints];

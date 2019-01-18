@@ -55,20 +55,20 @@
     if (variations == 1) {
       NSString *titleKey = [NSString stringWithFormat:@"popdeem.sociallogin.title.%i", 1];
       NSString *bodyKey = [NSString stringWithFormat:@"popdeem.sociallogin.body.%i", 1];
-      _titleString = translationForKey(titleKey, @"Welcome to Kung Fu Tea");
+      _titleString = translationForKey(titleKey, @"Welcome to Popdeem");
       _bodyString = translationForKey(bodyKey, @"Connect your social account to turn social features on. This will give you access to exclusive content and new rewards.");
       NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%i",1];
       _image = PopdeemImage(imageKey);
     } else {
       NSString *titleKey = [NSString stringWithFormat:@"popdeem.sociallogin.title.%ld", (long)lastVariation];
       NSString *bodyKey = [NSString stringWithFormat:@"popdeem.sociallogin.body.%ld", (long)lastVariation];
-      _titleString = translationForKey(titleKey, @"Welcome to Kung Fu Tea");
+      _titleString = translationForKey(titleKey, @"Welcome to Popdeem");
       _bodyString = translationForKey(bodyKey, @"Connect your social account to turn social features on. This will give you access to exclusive content and new rewards.");
       NSString *imageKey = [NSString stringWithFormat:@"popdeem.images.socialLogin%ld",(long)lastVariation];
       _image = PopdeemImage(imageKey);
     }
   } else {
-    _titleString = translationForKey(@"popdeem.sociallogin.tagline", @"Welcome to Kung Fu Tea");
+    _titleString = translationForKey(@"popdeem.sociallogin.tagline", @"Welcome to Popdeem");
     _bodyString = translationForKey(@"popdeem.sociallogin.body", @"Connect your social account to turn social features on. This will give you access to exclusive content and new rewards.");
     if (PopdeemThemeHasValueForKey(@"popdeem.images.loginImage")) {
       _image = PopdeemImage(@"popdeem.images.loginImage");
@@ -76,7 +76,7 @@
   }
     
     //HARDCODED CHANGE WITH BRANDING
-     _titleString = @"Welcome to Kung Fu Tea";
+     _titleString = @"Welcome to Popdeem";
     _bodyString = @"Connect your social account to turn social features on. This will give you access to exclusive content and new rewards.";
   
   if (_reward) {

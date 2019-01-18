@@ -93,7 +93,7 @@
   float currentY = _titleLabel.frame.size.height + innerSpacing;
   
   NSMutableAttributedString *infoString = [[NSMutableAttributedString alloc]
-                                           initWithString:translationForKey(@"popdeem.tiers.bottomLabelString", @"Share your experience to increase your status and unlock new rewards")
+                                           initWithString:translationForKey(@"popdeem.tiers.bottomLabelString", @"Check in to increase your status and unlock new rewards")
                                            attributes:@{
                                                         NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
                                                         NSForegroundColorAttributeName : _primaryAppColor

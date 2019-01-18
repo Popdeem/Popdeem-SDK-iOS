@@ -33,7 +33,7 @@
       self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to include the required hashtag. Then use the scan feature on the previous screen to claim your reward.");
     }
       //HARDCODED CHANGE WITH BRANDING
-      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to check-in at a Kung Fu Tea Location. Then use the scan feature on the previous screen to claim your reward.");
+      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to check-in at a Location. Then use the scan feature on the previous screen to claim your reward.");
   } else {
     self.viewOneImage = PopdeemImage(@"pduikit_facebook_step1");
     if (_controller.image) {
@@ -48,7 +48,7 @@
       self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the specified hashtag, or you will be unable to claim your reward.");
     }
       //HARDCODED CHANGE WITH BRANDING
-      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"You must check-in at a Kung Fu Tea Location, or you will be unable to claim your reward.");
+      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"You must check-in at a Location, or you will be unable to claim your reward.");
   }
   
   

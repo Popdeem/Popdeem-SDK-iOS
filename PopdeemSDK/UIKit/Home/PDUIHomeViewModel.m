@@ -166,6 +166,7 @@
 - (void) fetchAllWallet {
 	__weak typeof(self) weakSelf = self;
 	[[PDAPIClient sharedInstance] getRewardsInWalletSuccess:^() {
+    weakSelf.wallet = [PDWallet orderedByDateMulti];
     [[NSNotificationCenter defaultCenter] postNotificationName:ShouldUpdateTableView object:nil];
 	} failure:^(NSError *error) {
 		//TODO: Handle Error
@@ -238,9 +239,9 @@
     [_tableHeaderLabel setFont:PopdeemFont(PDThemeFontBold, 14)];
     [_tableHeaderLabel setTextColor:PopdeemColor(PDThemeColorHomeHeaderText)];
     if (_brand) {
-      [_tableHeaderLabel setText:[NSString stringWithFormat:@"Share your %@ experience on social networks to earn more rewards.", _brand.name]];
+      [_tableHeaderLabel setText:[NSString stringWithFormat:@"Check in at %@ to earn more rewards.", _brand.name]];
     } else {
-      [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Share your experience on social networks to earn more rewards.")];
+      [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Check in to earn more rewards.")];
     }
     [_tableHeaderLabel sizeToFit];
     [_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];
