@@ -223,7 +223,7 @@
       break;
   }
     
-    self.taglineString = @"Welcome to Popdeem";
+    self.taglineString = @"Welcome to our Rewards App";
     self.bodyString = @"Connect your social account to turn social features on. This will give you access to exclusive content and new rewards.";
 }
 

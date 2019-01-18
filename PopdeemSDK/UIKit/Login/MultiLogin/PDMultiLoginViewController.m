@@ -52,7 +52,7 @@
   _viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self reward:_reward];
   [_viewModel setup];
   
-  [_titleLabel setText:@"Welcome to Popdeem"];
+  [_titleLabel setText:@"Welcome to our Rewards App"];
   [_titleLabel setFont:_viewModel.titleFont];
   [_titleLabel setTextColor:_viewModel.titleColor];
   [_titleLabel sizeToFit];

@@ -241,7 +241,7 @@
     if (_brand) {
       [_tableHeaderLabel setText:[NSString stringWithFormat:@"Check in at %@ to earn more rewards.", _brand.name]];
     } else {
-      [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Check in to earn more rewards.")];
+      [_tableHeaderLabel setText:translationForKey(@"popdeem.home.header.titleText", @"Check in at one of our locations to earn more rewards.")];
     }
     [_tableHeaderLabel sizeToFit];
     [_tableHeaderLabel setFrame:CGRectMake((_controller.tableView.tableHeaderView.frame.size.width-_tableHeaderLabel.frame.size.width)/2, (_controller.tableView.tableHeaderView.frame.size.height-_tableHeaderLabel.frame.size.height)/2, _tableHeaderLabel.frame.size.width, _tableHeaderLabel.frame.size.height)];
