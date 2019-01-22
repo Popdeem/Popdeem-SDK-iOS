@@ -24,7 +24,7 @@
 
 - (void) setReward:(PDReward *)reward {
   if (reward.action == PDRewardActionPhoto) {
-     [self.label setText:translationForKey(@"popdeem.claim.scanNow.title.photo", @"Scan for already shared photo")];
+     [self.label setText:translationForKey(@"popdeem.claim.scanNow.title.photo", @"Scan for already shared activity")];
   } else {
      [self.label setText:translationForKey(@"popdeem.claim.scanNow.title.checkin", @"Scan for already shared activity")];
   }

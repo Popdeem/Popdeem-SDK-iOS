@@ -234,7 +234,7 @@
   _profilePicture.clipsToBounds = YES;
   
   NSString *uptohash = [NSString stringWithFormat:@"Hey %@, thanks for checking-in! ", [[PDUser sharedInstance] firstName]];
-  NSString *hash = _reward.forcedTag;
+    NSString *hash = @"";
   
   NSString *afterHash = @". Here's your reward!";
   

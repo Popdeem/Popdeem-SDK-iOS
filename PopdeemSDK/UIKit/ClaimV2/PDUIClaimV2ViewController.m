@@ -1070,7 +1070,7 @@
 }
 
 - (void) noPhotoAlert {
-  UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Photo Required")
+  UIAlertController* alert = [UIAlertController alertControllerWithTitle:translationForKey(@"popdeem.claim.action.photo", @"Check-in Required")
                                                                  message:translationForKey(@"popdeem.claim.action.photoMessage", @"A photo is required for this action. Please add a photo.")
                                                           preferredStyle:UIAlertControllerStyleAlert];
   

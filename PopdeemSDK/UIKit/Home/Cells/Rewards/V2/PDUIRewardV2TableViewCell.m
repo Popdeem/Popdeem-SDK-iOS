@@ -322,7 +322,7 @@
           action = translationForKey(@"popdeem.claim.action.checkinOrTweet", @"Check-in or Tweet Required");
           break;
         case PDRewardActionPhoto:
-          action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+          action = translationForKey(@"popdeem.claim.action.photo", @"📍 Check-in Required");
           break;
         case PDRewardActionNone:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
@@ -341,7 +341,7 @@
           action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
           break;
         case PDRewardActionPhoto:
-          action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+          action = translationForKey(@"popdeem.claim.action.photo", @"📍 Check-in Required");
           break;
         case PDRewardActionNone:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
@@ -360,7 +360,7 @@
           action = translationForKey(@"popdeem.claim.action.tweet", @"Tweet Required");
           break;
         case PDRewardActionPhoto:
-          action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+          action = translationForKey(@"popdeem.claim.action.photo", @"📍 Check-in Required");
           break;
         case PDRewardActionNone:
           action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");
@@ -374,7 +374,7 @@
       }
     } else if ([types[0] isEqualToNumber:@(PDSocialMediaTypeInstagram)]) {
       //Twitter Only
-      action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+      action = translationForKey(@"popdeem.claim.action.photo", @"📍 Check-in Required");
       
     }
   } else if (types.count == 0) {
@@ -383,7 +383,7 @@
         action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
         break;
       case PDRewardActionPhoto:
-        action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
+        action = translationForKey(@"popdeem.claim.action.photo", @"📍 Check-in Required");
         break;
       case PDRewardActionNone:
         action = translationForKey(@"popdeem.claim.action.noAction", @"No Action Required");

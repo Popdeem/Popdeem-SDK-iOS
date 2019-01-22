@@ -153,14 +153,14 @@
         if (self.reward.type == PDRewardTypeCoupon) {
           if (self.reward.creditString != nil) {
             title = @"You're Brilliant!";
-            body = [NSString stringWithFormat:@"Thanks for sharing. %@ has been added to your account. Enjoy!", self.reward.creditString];
+            body = [NSString stringWithFormat:@"Thanks for checking-in. %@ has been added to your account. Enjoy!", self.reward.creditString];
           } else {
             title = @"Great Job!";
-            body = @"Thanks for sharing, your reward has been added to your profile. Enjoy!";
+            body = @"Thanks for checking-in, your reward has been added to your profile. Enjoy!";
           }
         } else {
           title = @"Awesome!";
-          body = @"Thanks for sharing, you’ve been entered into the competition.";
+          body = @"Thanks for checking-in, you’ve been entered into the competition.";
         }
         break;
       case PDGratitudeTypeConnect:
@@ -169,7 +169,7 @@
         break;
       default:
         title = @"Great Job!";
-        body = @"Thanks for sharing, your reward has been added to your profile. Enjoy!";
+        body = @"Thanks for checking-in, your reward has been added to your profile. Enjoy!";
         break;
     }
     image = PopdeemImage(@"popdeem.images.loginImage");
