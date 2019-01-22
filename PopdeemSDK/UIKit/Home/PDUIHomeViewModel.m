@@ -241,7 +241,8 @@
   
   if (!_tableHeaderImageView) {
     if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage") || _brand.coverImage != nil) {
-      _tableHeaderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
+      //_tableHeaderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _controller.tableView.frame.size.width, 140)];
+      _tableHeaderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 140)];
       if (_brand.coverImage) {
         [_tableHeaderImageView setImage:_brand.coverImage];
       } else if (_brand && [_brand.coverUrlString rangeOfString:@"default"].location == NSNotFound){
