@@ -78,7 +78,7 @@
     _detailRewardView.layer.cornerRadius = 5;
     _detailRewardView.clipsToBounds = YES;
     
-
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
     
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
@@ -145,7 +145,7 @@
 - (void) viewWillAppear:(BOOL)animated {
   
   //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:PDUserLinkedToInstagram object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
+  //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
   
   _scanSectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
   UILabel *scanTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width- 40, 30)];
@@ -995,6 +995,10 @@
   isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   [self presentViewController:isv animated:YES completion:^(void){}];
   _didGoToInstagram = YES;
+    
+  // Check if user stayed for more then 5 seconds..
+  _didTimeStayLongEnoughToPost = NO;
+    
   return;
 }
 
@@ -1013,10 +1017,18 @@
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+
+
+
 - (void) backFromInstagram {
-  if (_didGoToInstagram) {
-    //We know user was at Instagram, and instagram post is being attempted
+    
     NSLog(@"Back From Instagram");
+
+  // Check if user went to Instagram and was there long enough to post a photo.
+    if (_didGoToInstagram ) { //&& _didTimeStayLongEnoughToPost
+      
+    //We know user was at Instagram, and instagram post is being attempted
     PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
     [self.navigationController pushViewController:scan animated:YES];
   }

@@ -42,6 +42,7 @@
 @property (nonatomic) BOOL willTweet;
 @property (nonatomic) BOOL willInstagram;
 @property (nonatomic) BOOL didGoToInstagram;
+@property (nonatomic) BOOL didTimeStayLongEnoughToPost;
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *locationFailedView;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *locationFailedViewHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *refreshLocationButton;
