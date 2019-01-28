@@ -663,7 +663,7 @@
           }
           if (indexPath.row == 2) {
             PDUIProfileButtonTableViewCell *messagesCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-            [messagesCell.label setText:@"Messages"];
+            [messagesCell.label setText:translationForKey(@"popdeem.profile.messagesTitleText", @"Messages")];
             messagesCell.shouldShowBadge = YES;
             if ([PDMessageStore unreadCount] > 0) {
               [messagesCell showBadge:YES];
