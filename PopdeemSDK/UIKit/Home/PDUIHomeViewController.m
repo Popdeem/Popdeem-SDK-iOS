@@ -657,7 +657,7 @@
           }
           if (indexPath.row == 1) {
             PDUIProfileButtonTableViewCell *socialAccountCell = [[self tableView] dequeueReusableCellWithIdentifier:kProfileButtonCell];
-            [socialAccountCell.label setText:@"Connect Social Media Accounts"];
+            [socialAccountCell.label setText:translationForKey(@"popdeem.profile.connectSocialAccountsText", @"Connect Social Media Accounts")];
             socialAccountCell.shouldShowBadge = NO;
             return socialAccountCell;
           }

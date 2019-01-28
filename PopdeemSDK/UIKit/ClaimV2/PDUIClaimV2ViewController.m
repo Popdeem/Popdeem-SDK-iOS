@@ -78,7 +78,7 @@
     _detailRewardView.layer.cornerRadius = 5;
     _detailRewardView.clipsToBounds = YES;
     
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
     
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginFailure:) name:InstagramLoginFailure object:nil];
