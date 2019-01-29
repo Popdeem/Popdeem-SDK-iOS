@@ -5,9 +5,7 @@
 
 Full documentation in the [iOS Docs](http://popdeem-ios-docs.gitlab.io/#introduction)
 
-Any questions can be directed to me at niall@popdeem.com
+Any questions can be directed to me at daniel.f@popdeem.com
 
 Sample projects can be built using this XCode project. Feel free to contact me for login details to our Sandbox backend if you wish to play around with these samples.
 
-
-*Updated by Fastlane on 27/Jun/2016 at 16:48:36*
