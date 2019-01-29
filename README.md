@@ -3,7 +3,7 @@
 ![Fastlane_Build_Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)  
 ![Pod Version](https://img.shields.io/cocoapods/v/PopdeemSDK.svg)
 
-Full documentation in the [Docs](https://github.com/Popdeem/Popdeem-SDK-iOS/tree/master/Docs "iOS Docs") section.
+Full documentation in the [iOS Docs](http://popdeem-ios-docs.gitlab.io/#introduction)
 
 Any questions can be directed to me at niall@popdeem.com
 
