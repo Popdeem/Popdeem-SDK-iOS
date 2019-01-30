@@ -70,7 +70,10 @@
 
         CGRect cancelButtonRect = CGRectMake(0, bottom-50, _contentView.frame.size.width/2, 50);
         _cancelButton = [[UIButton alloc] initWithFrame:cancelButtonRect];
-        [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        
+        NSString *cancelButtonTitle = translationForKey(@"popdeem.noaction.cancelText", @"Cancel");
+        [self.cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
+        
         [self.cancelButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
         [_cancelButton setBackgroundColor: [UIColor whiteColor]];
         [_cancelButton setFont:PopdeemFont(PDThemeFontPrimary, 18)];
@@ -80,7 +83,10 @@
         
         CGRect claimButtonRect = CGRectMake(_contentView.frame.size.width/2, bottom-50, _contentView.frame.size.width/2, 50);
         _claimButton = [[UIButton alloc] initWithFrame:claimButtonRect];
-        [self.claimButton setTitle:@"Claim" forState:UIControlStateNormal];
+       
+        NSString *claimButtonTitle = translationForKey(@"popdeem.noaction.claimText", @"Claim");
+        [self.claimButton setTitle:claimButtonTitle forState:UIControlStateNormal];
+        
         [self.claimButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
         [_claimButton setBackgroundColor: [UIColor whiteColor]];
         [_claimButton setFont:PopdeemFont(PDThemeFontBold, 18)];
