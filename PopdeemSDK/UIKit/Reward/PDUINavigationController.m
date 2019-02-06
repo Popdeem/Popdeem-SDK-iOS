@@ -10,6 +10,7 @@
 #import "PDUIModalTransitionHandler.h"
 #import "PDTheme.h"
 #import "PDConstants.h"
+#import "PDUtils.h"
 
 @interface PDUINavigationController()<UIViewControllerTransitioningDelegate>
 @end
@@ -25,8 +26,10 @@
   self.transitioningDelegate = self;
   self.modalPresentationStyle = UIModalPresentationCustom;
   [self defaults];
-	
-	UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
+    
+
+	UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithTitle: translationForKey(@"popdeem.redeem.doneButton.title", @"Done")
+                                                               style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
 	self.navigationItem.rightBarButtonItem = bbItem;
 	
   [[self navigationBar]setBarTintColor:PopdeemColor(PDThemeColorPrimaryApp)];//[UIColor colorWithRed:0.184 green:0.553 blue:0.000 alpha:1.000]];

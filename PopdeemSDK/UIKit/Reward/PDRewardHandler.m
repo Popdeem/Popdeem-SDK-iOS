@@ -43,7 +43,7 @@
   UIViewController *topController = [PDUIKitUtils topViewController];
 	
 	PDUIHomeViewController *homeVc = [[PDUIHomeViewController alloc] initFromNib];
-	homeVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
+	homeVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: translationForKey(@"popdeem.redeem.doneButton.title", @"Done") style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
 //	homeVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:PopdeemImage(@"PDUI_Back") style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
 	
 	homeVc.navigationItem.hidesBackButton = NO;
