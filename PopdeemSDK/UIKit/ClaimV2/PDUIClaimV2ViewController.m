@@ -67,6 +67,8 @@
   return nil;
 }
 
+  NSDate *startTimer;
+
 - (void) setupWithReward:(PDReward*)reward {
   _reward = reward;
 }
@@ -994,10 +996,11 @@
   isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
   isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   [self presentViewController:isv animated:YES completion:^(void){}];
-  _didGoToInstagram = YES;
+  
+  NSLog(@"Starting Timer Now");
+  startTimer = [NSDate date];
     
-  // Check if user stayed for more then 5 seconds..
-  _didTimeStayLongEnoughToPost = NO;
+  _didGoToInstagram = YES;
     
   return;
 }
@@ -1018,20 +1021,25 @@
 }
 
 
-
-
-
 - (void) backFromInstagram {
     
     NSLog(@"Back From Instagram");
-
-  // Check if user went to Instagram and was there long enough to post a photo.
-    if (_didGoToInstagram ) { //&& _didTimeStayLongEnoughToPost
-      
-    //We know user was at Instagram, and instagram post is being attempted
-    PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
-    [self.navigationController pushViewController:scan animated:YES];
-  }
+    
+    NSTimeInterval seconds = [startTimer timeIntervalSinceNow] * -1;
+    NSString *secondsString = [NSString stringWithFormat:@"%f", seconds];
+    NSLog(@"Number of Seconds Elapsed: %@", secondsString.description);
+    
+    if (seconds < 10.00) {
+        _didStayLongEnoughToPost = NO;
+    } else {
+        _didStayLongEnoughToPost = YES;
+    }
+    
+    if (_didGoToInstagram && _didStayLongEnoughToPost) {
+        //We know user was at Instagram, and instagram post is being attempted
+        PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
+        [self.navigationController pushViewController:scan animated:YES];
+    }
 }
 
 # pragma mark - Facebook Sharing -
