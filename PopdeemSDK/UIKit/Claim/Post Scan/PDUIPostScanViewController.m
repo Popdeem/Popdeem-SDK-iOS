@@ -306,6 +306,7 @@
   [_postTextLabel setAttributedText:postLabelAttributedString];
   
   [_claimButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_claimButton setTitle:translationForKey(@"popdeem.claim.claimRewardsText", @"Claim Reward") forState:UIControlStateNormal];
   _claimButton.layer.cornerRadius = 5.0;
   _claimButton.clipsToBounds = YES;
   

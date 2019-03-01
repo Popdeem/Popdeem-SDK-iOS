@@ -102,7 +102,8 @@
     [self setupRewardView];
   }
   [self.tableView setScrollEnabled:NO];
-  [self.continueButton.titleLabel setText:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue")];
+  //[self.continueButton.titleLabel setTitle:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue")];
+  [_continueButton setTitle:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue") forState:UIControlStateNormal];
   [self.continueButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
   [self.continueButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
   
@@ -1340,6 +1341,7 @@
 
     
     [_closeDetailRewardView setFont:PopdeemFont(PDThemeFontLight, 16)];
+    [_closeDetailRewardView setTitle:translationForKey(@"popdeem.claim.closeButtonText", @"Close") forState:UIControlStateNormal];
     [_closeDetailRewardView setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
     
     _blurViewForDetailRewardView.hidden = NO;
