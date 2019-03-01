@@ -799,13 +799,42 @@
 - (void)selectPhoto {
   if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-      UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-      picker.delegate = self;
-      picker.allowsEditing = NO;
-      picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-      picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
-      picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-      [self presentViewController:picker animated:YES completion:NULL];
+      
+        if (status == PHAuthorizationStatusDenied) {
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Enable Photos Permission"
+                                                                    message:@"Go to Settings and enable the photos permission"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+                                                                  handler:^(UIAlertAction * action) {
+                                                                      NSLog(@"Cancel Photo Permission");
+                                                                  }];
+            
+            UIAlertAction* settingsAction = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                      NSLog(@"Go to Settings");
+                                                                      NSString *settings = UIApplicationOpenSettingsURLString;
+                                                                      NSURL *settingsURL = [NSURL URLWithString:settings];
+                                                                      [[UIApplication sharedApplication]openURL:settingsURL];
+                                                                  }];
+            
+            [alert addAction:cancelAction];
+            [alert addAction:settingsAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else if (status == PHAuthorizationStatusAuthorized) {
+            
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = NO;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.modalPresentationStyle = UIModalPresentationOverFullScreen;
+            picker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:picker animated:YES completion:NULL];
+    
+        }
+        
     }];
   } else {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -817,6 +846,7 @@
     [self presentViewController:picker animated:YES completion:NULL];
   }
 }
+
 
 - (void) addPhotoToLibrary:(NSDictionary*)info {
   __block PHObjectPlaceholder *placeholder;

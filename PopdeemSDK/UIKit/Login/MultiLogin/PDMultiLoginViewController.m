@@ -70,6 +70,7 @@
     [_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
     [_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+    [_twitterLoginButton setTitle:_viewModel.twitterButtonText forState:UIControlStateNormal];
     _twitterLoginButton.layer.cornerRadius = 5.0;
     _twitterLoginButton.clipsToBounds = YES;
   }
@@ -77,6 +78,7 @@
   [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _instagramLoginButton.layer.cornerRadius = 5.0;
   _instagramLoginButton.clipsToBounds = YES;
+  [_instagramLoginButton setTitle:_viewModel.instagramButtonText forState:UIControlStateNormal];
   [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
   [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
   
