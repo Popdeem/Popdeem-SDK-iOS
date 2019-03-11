@@ -22,6 +22,7 @@
 #import "PDUILogoutTableViewCell.h"
 #import "PDUserAPIService.h"
 #import "PDCustomer.h"
+#import "PDUIHomeVIewController.h"
 #import <TwitterKit/TWTRKit.h>
 
 #define kSocialNib @"SocialNib"
@@ -493,6 +494,7 @@
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
 																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
 																								}));
+    [self refreshProfile];
   
   [self.tableView reloadData];
 }
@@ -517,6 +519,7 @@
 																								ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_INSTAGRAM,
 																								ABRA_PROPERTYNAME_SOURCE_PAGE : @"Settings"
 																								}));
+    [self refreshProfile];
 }
 
 - (void) instagramLoginFailure {
@@ -549,6 +552,9 @@
 	
 	[_twitterVC removeFromParentViewController];
 	_twitterVC = nil;
+    
+    [self refreshProfile];
+    
 }
 
 - (void) twitterLoginFailure {
@@ -682,6 +688,13 @@
       });
     }];
   }
+}
+
+- (void) refreshProfile {
+    
+    PDUIHomeViewController *homeVC = [[PDUIHomeViewController alloc] init];
+    [homeVC.tableView reloadData];
+    [homeVC.tableView reloadInputViews];
 }
 
 @end

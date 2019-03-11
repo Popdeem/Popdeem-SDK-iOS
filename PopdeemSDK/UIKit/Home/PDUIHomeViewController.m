@@ -1238,7 +1238,14 @@
 }
 
 - (void) loggedOut {
-  //Remove the refreshing which is not necessary
+    
+    NSMutableArray *newArray = _model.wallet.mutableCopy;
+    [newArray removeAllObjects];
+    _model.wallet = newArray.copy;
+    
+    [self.tableView reloadData];
+    [self.tableView reloadInputViews];
+
 }
 
 - (void) postVerified {
