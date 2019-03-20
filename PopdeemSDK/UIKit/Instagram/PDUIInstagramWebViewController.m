@@ -19,6 +19,9 @@
 @implementation PDUIInstagramWebViewController
 
 - (instancetype) initFromNib {
+    
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[PDUIInstagramWebViewController class]]] setTintColor:[UIColor blackColor]];
+    
 	NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
 	if (self = [self initWithNibName:@"PDUIInstagramWebViewController" bundle:podBundle]) {
 		self.navigationController.navigationBar.translucent = YES;

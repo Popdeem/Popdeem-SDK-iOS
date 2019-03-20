@@ -74,6 +74,7 @@
 }
 
 - (void)viewDidLoad {
+
     
     _detailRewardView.hidden = YES;
     _blurViewForDetailRewardView.hidden = YES;
@@ -1116,6 +1117,13 @@
     return;
   }
   TWTRComposer *composer = [[TWTRComposer alloc] init];
+    
+
+  // Set NavBar Item to Twitter Colour
+  [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]] setTintColor:[UIColor colorWithRed:29/255.0 green:161/255.0 blue:243/255.0 alpha:1.0]];
+    
+   
+    
   if (_reward.forcedTag) {
     [composer setText:_reward.forcedTag];
   }
@@ -1126,14 +1134,23 @@
   [composer showFromViewController:self completion:^(TWTRComposerResult result) {
     if (result == TWTRComposerResultCancelled) {
       NSLog(@"Tweet composition cancelled");
+        
+        // Set Back to SDK Colours
+        [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]] setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+        
     }
     else {
       NSLog(@"Sending Tweet!");
       PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:weakSelf.reward network:TWITTER_NETWORK];
       [weakSelf.navigationController pushViewController:scan animated:NO];
+
+        // Set Back to SDK Colours
+        [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]] setTintColor:PopdeemColor(PDThemeColorPrimaryInverse)];
+    
     }
   }];
   [self.continueButton setUserInteractionEnabled:YES];
+    
 }
 
 - (void) noPhotoAlert {
