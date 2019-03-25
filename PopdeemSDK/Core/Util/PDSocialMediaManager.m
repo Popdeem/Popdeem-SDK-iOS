@@ -71,6 +71,11 @@
                                   failure:(void (^)(NSError *err))failure {
   FBSDKLoginManager *lm = [[FBSDKLoginManager alloc] init];
   [lm logOut]; // Clean the tokens
+
+    if ([_holderViewController isKindOfClass:[UIViewController class]]) {
+        _holderViewController = nil;
+    }
+    
   [lm logInWithReadPermissions:permissions fromViewController:_holderViewController  handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
     if (error) {
       failure(error);
