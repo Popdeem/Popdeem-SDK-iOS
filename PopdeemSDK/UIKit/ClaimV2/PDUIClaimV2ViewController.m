@@ -76,9 +76,6 @@
 - (void)viewDidLoad {
 
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.36 green:0.68 blue:0.91 alpha:1.0], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
-    
-    
     _detailRewardView.hidden = YES;
     _blurViewForDetailRewardView.hidden = YES;
     _detailRewardView.layer.cornerRadius = 5;
