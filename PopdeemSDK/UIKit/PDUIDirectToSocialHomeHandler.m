@@ -25,6 +25,13 @@
   if ([topController isKindOfClass:[PDUIHomeViewController class]]) {
     return;
   }
+    
+  for (UIViewController *childcontroller in topController.childViewControllers) {
+     if ([childcontroller isKindOfClass:[PDUIHomeViewController class]]) {
+        return;
+     }
+  }
+    
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
   PDUIHomeViewController *homeVc = [[PDUIHomeViewController alloc] initFromNib];

@@ -114,30 +114,71 @@
   NSMutableAttributedString *failedLabelAttributedString = [[NSMutableAttributedString alloc] initWithString:@""
                                                                                                attributes:@{}];
   
-  
-  NSMutableAttributedString *mainString = [[NSMutableAttributedString alloc]
+    NSString *mainString = @"";
+    NSString *hashTagString = @"";
+
+    
+    if(_reward.action == PDRewardActionPhoto) {
+    
+        mainString = [[NSMutableAttributedString alloc]
                                            initWithString:[NSString stringWithFormat:translationForKey(@"popdeem.scan.couldNotFindPostText", @"Whoops! Sorry %@, we could not find a post from the last 48 hours with "), [[PDUser sharedInstance] firstName]]
                                            attributes:@{
                                                         NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
                                                         NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
                                                         }];
   
-  NSMutableAttributedString *hashTagString = [[NSMutableAttributedString alloc]
+        hashTagString = [[NSMutableAttributedString alloc]
                                               initWithString:_reward.forcedTag
                                               attributes:@{
                                                            NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
                                                            }];
-  
+        
+    }  else if (_reward.action == PDRewardActionCheckin) {
+        
+        NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+        
+        mainString = [[NSMutableAttributedString alloc]
+                      initWithString:[NSString stringWithFormat:translationForKey(@"popdeem.scan.couldNotFindPostText", @"Whoops! Sorry %@, we could not find a check-in from the last 48 hours at "), [[PDUser sharedInstance] firstName]]
+                      attributes:@{
+                                   NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+                                   NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                   }];
+        
+        hashTagString = [[NSMutableAttributedString alloc]
+                         initWithString:locationString
+                         attributes:@{
+                                      NSFontAttributeName : PopdeemFont(PDThemeFontBold, 12),
+                                      NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                      }];
+
+    }
+    
   [failedLabelAttributedString appendAttributedString:mainString];
   [failedLabelAttributedString appendAttributedString:hashTagString];
   
-  NSMutableAttributedString *restString = [[NSMutableAttributedString alloc]
-                                           initWithString: translationForKey(@"popdeem.scan.ensureCorrectAccountText", @"\n\nPlease ensure you've shared from the correct social media account and try again.")
-                                           attributes:@{
-                                                        NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-                                                        NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
-                                                        }];
+    NSMutableAttributedString *restString = @"";
+    
+    if(_reward.action == PDRewardActionPhoto) {
+        
+       restString = [[NSMutableAttributedString alloc]
+                                                 initWithString: translationForKey(@"popdeem.scan.ensureCorrectAccountText", @"\n\nPlease ensure you've shared from the correct social media account and try again.")
+                                                 attributes:@{
+                                                              NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+                                                              NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                              }];
+        
+    }  else if (_reward.action == PDRewardActionCheckin) {
+        
+        restString = [[NSMutableAttributedString alloc]
+                                                 initWithString: translationForKey(@"popdeem.scan.ensureCorrectAccountText", @"\n\nPlease ensure you've checked-in at the correct location on Facebook and try again.")
+                                                 attributes:@{
+                                                              NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+                                                              NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                              }];
+        
+    }
   
   [failedLabelAttributedString appendAttributedString:restString];
   
@@ -188,7 +229,7 @@
 
 - (void) setupPostView {
   
-  if (_postModel.mediaUrl != nil) {
+  if (_reward.action == PDRewardActionPhoto && _postModel.mediaUrl != nil) {
     NSString *urlString = @"";
     if ([_postModel.mediaUrl containsString:@"https"]) {
       urlString = _postModel.mediaUrl;
@@ -208,7 +249,13 @@
     }];
     [task1 resume];
   }
-  
+    
+  else if (_reward.action == PDRewardActionCheckin) {
+      NSString *locationImage = @"pduikit_map_pin";
+      [self.postImageView setImage:PopdeemImage(locationImage)];
+  }
+    
+
   if (_postModel.profilePictureUrl != nil) {
     NSString *urlString = @"";
     if ([_postModel.profilePictureUrl containsString:@"https"]) {
@@ -233,10 +280,29 @@
   _profilePicture.layer.cornerRadius = _profilePicture.frame.size.width/2;
   _profilePicture.clipsToBounds = YES;
   
-  NSString *uptohash = [NSString stringWithFormat: translationForKey(@"popdeem.scan.foundPostWithText", @"Hey %@, we found your post with "), [[PDUser sharedInstance] firstName]];
-  NSString *hash = _reward.forcedTag;
-  
-  NSString *afterHash = translationForKey(@"popdeem.scan.thanksForSharingText", @". Thanks for sharing! You have unlocked your reward!");
+    NSString *uptohash = @"";
+    NSString *hash = @"";
+    NSString *afterHash = @"";
+    
+    if(_reward.action == PDRewardActionPhoto) {
+    
+        uptohash = [NSString stringWithFormat: translationForKey(@"popdeem.scan.foundPostWithText", @"Hey %@, we found your post with "), [[PDUser sharedInstance] firstName]];
+        hash = _reward.forcedTag;
+    
+        afterHash = translationForKey(@"popdeem.scan.thanksForSharingText", @". Thanks for sharing! You have unlocked your reward!");
+        
+    } else if (_reward.action == PDRewardActionCheckin) {
+        
+        uptohash = [NSString stringWithFormat: translationForKey(@"popdeem.scan.foundPostWithText", @"Hey %@, we found your check-in at "), [[PDUser sharedInstance] firstName]];
+        
+        NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+        
+        hash = locationString;
+        
+        afterHash = translationForKey(@"popdeem.scan.thanksForSharingText", @". Thanks for checking-in! You have unlocked your reward!");
+    }
+    
     
   NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
   ps.paragraphSpacing = 2.0;
@@ -294,18 +360,42 @@
                           
   [postLabelAttributedString appendAttributedString:socialNameString];
   
-  NSMutableAttributedString *socialPostString = [[NSMutableAttributedString alloc]
+    NSMutableAttributedString *socialPostString;
+    
+    if (_reward.action == PDRewardActionCheckin) {
+        
+        NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+        
+        NSString *postWithLocation = [NSString stringWithFormat:@"%@ %@", @"📍 ", locationString];
+        
+        socialPostString = [[NSMutableAttributedString alloc]
+                                                       initWithString:postWithLocation
+                                                       attributes:@{
+                                                                    NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
+                                                                    NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
+                                                                    }];
+    } else {
+
+        socialPostString = [[NSMutableAttributedString alloc]
                                                  initWithString:_postModel.text
                                                  attributes:@{
                                                               NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
                                                               NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryFont)
                                                              }];
+    }
   
+    
+    
+    
+    
+    
+    
   [postLabelAttributedString appendAttributedString:socialPostString];
   
   [_postTextLabel setAttributedText:postLabelAttributedString];
   
-  [_claimButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_claimButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
   [_claimButton setTitle:translationForKey(@"popdeem.claim.claimRewardsText", @"Claim Reward") forState:UIControlStateNormal];
   _claimButton.layer.cornerRadius = 5.0;
   _claimButton.clipsToBounds = YES;
@@ -378,17 +468,33 @@
   }
 }
 
+
+
 - (void) didClaimRewardId:(NSInteger)rewardId {
-  for (UIViewController *controller in self.navigationController.viewControllers) {
-    if ([controller isKindOfClass:[PDUIHomeViewController class]]) {
-      PDUIHomeViewController *cont = (PDUIHomeViewController*)controller;
-      [cont setDidClaim:YES];
-      [self.navigationController popToViewController:controller
-                                            animated:YES];
-      break;
-    }
+      for (UIViewController *controller in self.navigationController.viewControllers) {
+            if ([controller isKindOfClass:[PDUIHomeViewController class]]) {
+              PDUIHomeViewController *cont = (PDUIHomeViewController*)controller;
+              [cont setDidClaim:YES];
+              [self.navigationController popToViewController:controller
+                                                    animated:YES];
+          break;
+    } else {
+        for (UIViewController *childcontroller in controller.childViewControllers) {
+            if ([childcontroller isKindOfClass:[PDUIHomeViewController class]]) {
+                
+                PDUIHomeViewController *cont = (PDUIHomeViewController*)childcontroller;
+                [cont setDidClaim:YES];
+                
+                NSLog(@"%@",controller.navigationController.viewControllers);
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+                
+                break;
+            }
+        }
+     }
   }
 }
+
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (alertView.tag == 9) {
@@ -408,7 +514,7 @@
   [super viewDidLoad];
   [_activityIndicator setHidden:NO];
   [_activityIndicator setSize:55.0f];
-  [_activityIndicator setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_activityIndicator setTintColor:PopdeemColor(PDThemeColorButtons)];
   [_activityIndicator setType:DGActivityIndicatorAnimationTypeBallPulse];
   [_activityIndicator setBackgroundColor:[UIColor clearColor]];
   [_activityIndicator startAnimating];

@@ -60,11 +60,11 @@
   self.viewThreeLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
 
 	self.viewOneActionButtonColor = [UIColor whiteColor];
-	self.viewOneActionButtonBorderColor = PopdeemColor(PDThemeColorPrimaryApp);
+	self.viewOneActionButtonBorderColor = PopdeemColor(PDThemeColorButtons);
 	self.viewTwoActionButtonColor = [UIColor whiteColor];
-	self.viewOneActionButtonTextColor= PopdeemColor(PDThemeColorPrimaryApp);
-	self.viewTwoActionButtonTextColor= PopdeemColor(PDThemeColorPrimaryApp);
-  self.viewThreeActionButtonColor = PopdeemColor(PDThemeColorPrimaryApp);
+	self.viewOneActionButtonTextColor= PopdeemColor(PDThemeColorButtons);
+	self.viewTwoActionButtonTextColor= PopdeemColor(PDThemeColorButtons);
+  self.viewThreeActionButtonColor = PopdeemColor(PDThemeColorButtons);
   self.viewThreeActionButtonTextColor = [UIColor whiteColor];
 	
 	self.viewOneImage = PopdeemImage(@"pduikit_instagramstep1");

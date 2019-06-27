@@ -88,11 +88,11 @@
   [self.rulesLabel setText:_reward.rewardRules];
 	
 	[self.timerLabel setFont:PopdeemFont(PDThemeFontBold, 55)];
-	[self.timerLabel setTextColor:PopdeemColor(PDThemeColorPrimaryApp)];
+	[self.timerLabel setTextColor:PopdeemColor(PDThemeColorRewardAction)];
   
-  [self.doneButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [self.doneButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
   [self.doneButton setTitle:translationForKey(@"popdeem.redeem.doneButton.title", @"Done") forState:UIControlStateNormal];
-  [self.doneButton setTitleColor:PopdeemColor(PDThemeColorPrimaryInverse) forState:UIControlStateNormal];
+  [self.doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [self.doneButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 18.0)];
   
   if (PopdeemThemeHasValueForKey(@"popdeem.images.tableViewBackgroundImage")) {

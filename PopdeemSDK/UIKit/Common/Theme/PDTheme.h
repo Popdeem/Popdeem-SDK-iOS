@@ -12,6 +12,9 @@
 #define PopdeemColor(key) \
 [[PDTheme sharedInstance] colorForKey:(key)]
 
+#define PopdeemFontSize(key) \
+[[PDTheme sharedInstance] fontSizeForKey:(key)]
+
 #define PopdeemColorFromHex(key) \
 [[PDTheme sharedInstance] findColorFromValue:(key)]
 
@@ -33,6 +36,7 @@ fontForKey(key,size)
 
 - (UIImage*)imageForKey:(NSString*)key;
 - (UIColor*)colorForKey:(NSString*)key;
+- (NSString*)fontSizeForKey:(NSString*)key;
 - (NSString*)fontNameForKey:(NSString*)key;
 - (BOOL) hasValueForKey:(NSString*)key;
 - (UIColor *)findColorFromValue:(id)value;

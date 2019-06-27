@@ -46,12 +46,20 @@
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+    
+    NSString *cornerRadiusString = PopdeemFontSize(PDThemeButtonRadius);
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    float buttonCornerRadius = [numberFormatter numberFromString:cornerRadiusString].floatValue;
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
   //View Setup
   _viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self reward:_reward];
   [_viewModel setup];
-  
+    
+    UIImage *dismissImage = PopdeemImage(@"popdeem.images.dismissLoginImage");
+    [_cancelButton setImage:dismissImage forState:UIControlStateNormal];
+    
   [_titleLabel setText:_viewModel.titleString];
   [_titleLabel setFont:_viewModel.titleFont];
   [_titleLabel setTextColor:_viewModel.titleColor];
@@ -71,19 +79,19 @@
     [_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
     [_twitterLoginButton setTitle:_viewModel.twitterButtonText forState:UIControlStateNormal];
-    _twitterLoginButton.layer.cornerRadius = 5.0;
+    _twitterLoginButton.layer.cornerRadius = buttonCornerRadius;
     _twitterLoginButton.clipsToBounds = YES;
   }
   
   [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  _instagramLoginButton.layer.cornerRadius = 5.0;
+  _instagramLoginButton.layer.cornerRadius = buttonCornerRadius;
   _instagramLoginButton.clipsToBounds = YES;
   [_instagramLoginButton setTitle:_viewModel.instagramButtonText forState:UIControlStateNormal];
   [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
   [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
   
   //Facebook setup
-  _facebookLoginButton.layer.cornerRadius = 5.0;
+  _facebookLoginButton.layer.cornerRadius = buttonCornerRadius;
   _facebookLoginButton.clipsToBounds = YES;
   [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
   [self.facebookLoginButton.titleLabel setFont:_viewModel.facebookButtonFont];

@@ -33,24 +33,43 @@
       self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to include the required hashtag. Then use the scan feature on the previous screen to claim your reward.");
     }
   } else {
-    self.viewOneImage = PopdeemImage(@"pduikit_facebook_step1");
+   
+      // Need to get handle on reward
+      
+      NSString *tutorialImage = @"";
+      
+    if (_controller.parent.reward.action == PDRewardActionPhoto) {
+          tutorialImage = @"pduikit_facebook_step1";
+      }
+      else if (_controller.parent.reward.action == PDRewardActionCheckin) {
+          tutorialImage = @"pduikit_facebook_checkin";
+      }
+    
+      self.viewOneImage = PopdeemImage(tutorialImage);
+
     if (_controller.image) {
       self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.image", @"Share your photo");
     } else {
       self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.checkin", @"Check-in");
     }
-    if (_controller.parent.reward.forcedTag) {
-      self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the hashtag %@, or you will be unable to claim your reward."), _controller.parent.reward.forcedTag];
-    } else {
+    if (_controller.parent.reward.action == PDRewardActionPhoto && _controller.parent.reward.forcedTag) {
+        self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the hashtag %@, or you will be unable to claim your reward."), _controller.parent.reward.forcedTag];
+        
+    } else if (_controller.parent.reward.action == PDRewardActionCheckin) {
+        
+        NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+        
+        self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2", @"You must check-in at a %@ location, or you will be unable to claim your reward."), locationString];
+    }
+    else {
       self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Your post must include the specified hashtag, or you will be unable to claim your reward.");
     }
   }
   
-  
+
   self.viewOneActionButtonText = translationForKey(@"popdeem.facebook.share.stepThree.buttonText", @"Okay, Gotcha");
-  
  
-  
   self.viewOneLabelOneFont = PopdeemFont(PDThemeFontBold, 14);
   self.viewOneLabelTwoFont = PopdeemFont(PDThemeFontPrimary, 14);
   self.viewOneActionButtonFont = PopdeemFont(PDThemeFontBold, 14);
@@ -58,7 +77,7 @@
   self.viewOneLabelOneColor = PopdeemColor(PDThemeColorPrimaryFont);
   self.viewOneLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
   
-  self.viewOneActionButtonColor = PopdeemColor(PDThemeColorPrimaryApp);
+  self.viewOneActionButtonColor = PopdeemColor(PDThemeColorButtons);
   self.viewOneActionButtonBorderColor = [UIColor whiteColor];
 
 }

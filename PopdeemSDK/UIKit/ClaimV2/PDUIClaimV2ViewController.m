@@ -81,6 +81,8 @@
     _detailRewardView.layer.cornerRadius = 5;
     _detailRewardView.clipsToBounds = YES;
     
+    
+  //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromFacebookAfterCheckin) name:UIApplicationDidBecomeActiveNotification object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backFromInstagram) name:UIApplicationDidBecomeActiveNotification object:nil];
     
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramLoginSuccess) name:InstagramLoginSuccess object:nil];
@@ -108,7 +110,7 @@
   //[self.continueButton.titleLabel setTitle:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue")];
   [_continueButton setTitle:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue") forState:UIControlStateNormal];
   [self.continueButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-  [self.continueButton setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [self.continueButton setTintColor:PopdeemColor(PDThemeColorButtons)];
   
   CALayer *continueTopBorder = [CALayer layer];
   continueTopBorder.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 1.0f);
@@ -199,7 +201,15 @@
   if (_reward.action == PDRewardActionPhoto) {
     [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.photo", @"Your photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
   } else {
+      
+    NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+      
+    [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.checkin", @"Your check-in must be at a %@ location to redeem this reward."), locationString]];
+      
+     /*
     [self.bottomInfoLabel setText:[NSString stringWithFormat:translationForKey(@"popdeem.claim.info.checkin", @"Your check-in or photo must contain %@ in the caption to redeem this reward."), _reward.forcedTag]];
+      */
   }
 }
 
@@ -1059,21 +1069,29 @@
     
     NSLog(@"Back From Instagram");
     
-    NSTimeInterval seconds = [startTimer timeIntervalSinceNow] * -1;
-    NSString *secondsString = [NSString stringWithFormat:@"%f", seconds];
-    NSLog(@"Number of Seconds Elapsed: %@", secondsString.description);
-    
-    if (seconds < 10.00) {
-        _didStayLongEnoughToPost = NO;
-    } else {
-        _didStayLongEnoughToPost = YES;
-    }
-    
-    if (_didGoToInstagram && _didStayLongEnoughToPost) {
-        //We know user was at Instagram, and instagram post is being attempted
-        PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
+    if (_reward.action == PDRewardActionCheckin && _didGoToFacebook) {
+        PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:FACEBOOK_NETWORK];
         [self.navigationController pushViewController:scan animated:YES];
     }
+    
+    else if (_reward.action == PDRewardActionPhoto && _didGoToInstagram) {
+        
+        NSTimeInterval seconds = [startTimer timeIntervalSinceNow] * -1;
+        NSString *secondsString = [NSString stringWithFormat:@"%f", seconds];
+        NSLog(@"Number of Seconds Elapsed: %@", secondsString.description);
+        
+        if (seconds < 10.00) {
+            _didStayLongEnoughToPost = NO;
+        } else {
+            _didStayLongEnoughToPost = YES;
+        }
+        
+        if (_didStayLongEnoughToPost) {
+            //We know user was at Instagram, and instagram post is being attempted
+            PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
+            [self.navigationController pushViewController:scan animated:YES];
+    }
+  }
 }
 
 # pragma mark - Facebook Sharing -
@@ -1093,9 +1111,16 @@
   isv.modalPresentationStyle = UIModalPresentationOverFullScreen;
   isv.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   isv.reward = _reward;
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+  if (_reward.action == PDRewardActionPhoto && _userImage != nil) {
+      [[NSNotificationCenter defaultCenter] removeObserver:self];
+   }
+    
   [self presentViewController:isv animated:YES completion:^(void){}];
   [_continueButton setUserInteractionEnabled:YES];
+    
+    _didGoToFacebook = YES;
+    
   return;
 }
 
@@ -1267,7 +1292,7 @@
             //Facebook Only
             switch (reward.action) {
                 case PDRewardActionCheckin:
-                    action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
+                    action = translationForKey(@"popdeem.claim.action.checkin", @"📍 Check-in Required");
                     break;
                 case PDRewardActionPhoto:
                     action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
@@ -1309,7 +1334,7 @@
     } else if (types.count == 0) {
         switch (reward.action) {
             case PDRewardActionCheckin:
-                action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
+                action = translationForKey(@"popdeem.claim.action.checkin", @"📍 Check-in Required");
                 break;
             case PDRewardActionPhoto:
                 action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
@@ -1361,7 +1386,7 @@
     
     [_closeDetailRewardView setFont:PopdeemFont(PDThemeFontLight, 16)];
     [_closeDetailRewardView setTitle:translationForKey(@"popdeem.claim.closeButtonText", @"Close") forState:UIControlStateNormal];
-    [_closeDetailRewardView setTintColor:PopdeemColor(PDThemeColorPrimaryApp)];
+    [_closeDetailRewardView setTintColor:PopdeemColor(PDThemeColorButtons)];
     
     _blurViewForDetailRewardView.hidden = NO;
     _detailRewardView.hidden = NO;

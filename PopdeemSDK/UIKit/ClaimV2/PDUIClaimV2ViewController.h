@@ -42,6 +42,7 @@
 @property (nonatomic) BOOL willTweet;
 @property (nonatomic) BOOL willInstagram;
 @property (nonatomic) BOOL didGoToInstagram;
+@property (nonatomic) BOOL didGoToFacebook;
 @property (nonatomic) BOOL didStayLongEnoughToPost;
 
 

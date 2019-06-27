@@ -255,7 +255,7 @@
   NSMutableAttributedString *actionString = [[NSMutableAttributedString alloc]
                                            initWithString:action attributes:@{
                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontLight, 12),
-                                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorPrimaryApp)
+                                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorRewardAction)
                                                                             }];
   [_actionLabel setAttributedText:actionString];
   [_socialIconOne setHidden:YES];
@@ -338,7 +338,7 @@
       //Facebook Only
       switch (reward.action) {
         case PDRewardActionCheckin:
-          action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
+          action = translationForKey(@"popdeem.claim.action.checkin", @"📍 Check-in Required");
           break;
         case PDRewardActionPhoto:
           action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");
@@ -380,7 +380,7 @@
   } else if (types.count == 0) {
     switch (reward.action) {
       case PDRewardActionCheckin:
-        action = translationForKey(@"popdeem.claim.action.checkin", @"Check-in Required");
+        action = translationForKey(@"popdeem.claim.action.checkin", @"📍 Check-in Required");
         break;
       case PDRewardActionPhoto:
         action = translationForKey(@"popdeem.claim.action.photo", @"📸 Photo Required");

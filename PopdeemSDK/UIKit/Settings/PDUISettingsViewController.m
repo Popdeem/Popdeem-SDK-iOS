@@ -133,16 +133,16 @@
 	self.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 140)];
 	self.tableView.tableHeaderView = self.tableHeaderView;
 	
-	if (PopdeemThemeHasValueForKey(@"popdeem.images.homeHeaderImage")) {
+	if (PopdeemThemeHasValueForKey(@"popdeem.images.settingsHeaderImage")) {
 		UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:self.tableHeaderView.frame];
 		[bgImageView setHidden:NO];
-		[bgImageView setImage:PopdeemImage(@"popdeem.images.homeHeaderImage")];
+		[bgImageView setImage:PopdeemImage(@"popdeem.images.settingsHeaderImage")];
 		[bgImageView setContentMode:UIViewContentModeScaleAspectFill];
 		[bgImageView setClipsToBounds:YES];
 		UIView *gradientView = [[UIView alloc] initWithFrame:bgImageView.frame];
 		[gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
 		[self.tableHeaderView addSubview:bgImageView];
-		[bgImageView addSubview:gradientView];
+		//[bgImageView addSubview:gradientView];
 	}
 	
   [self getPicture];
@@ -261,8 +261,8 @@
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
   case 0:
-            return @"";
-            //return translationForKey(@"popdeem.settings.socialNetworksText", @"Social Networks");
+            //return @"";
+            return translationForKey(@"popdeem.settings.socialNetworksText", @"Social Networks");
 			break;
 	case 1:
 			return @"";

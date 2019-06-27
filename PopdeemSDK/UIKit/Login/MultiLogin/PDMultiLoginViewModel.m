@@ -34,12 +34,24 @@
   _instagramButtonText = translationForKey(@"popdeem.sociallogin.instagramButtonText", @"Log in with Instagram");
   _facebookButtonText = translationForKey(@"popdeem.sociallogin.facebookButtonText", @"Log in with Facebook");
 	
+    
+    // default is 17
+    NSString *titleFontSizeString = PopdeemFontSize(PDThemeTitleFontSize);
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    float titleFontSize = [numberFormatter numberFromString:titleFontSizeString].floatValue;
+    
 	_titleColor = PopdeemColor(PDThemeColorPrimaryFont);
-	_titleFont = PopdeemFont(PDThemeFontBold, 17.0);
-	
+	_titleFont = PopdeemFont(PDThemeFontBold, titleFontSize);
+    
+    
+    // default is 14
+    NSString *bodyFontSizeString = PopdeemFontSize(PDThemeBodyFontSize);
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    float bodyFontSize = [numberFormatter numberFromString:bodyFontSizeString].floatValue;
 	
 	_bodyColor = PopdeemColor(PDThemeColorPrimaryFont);
-	_bodyFont = PopdeemFont(PDThemeFontPrimary, 14.0);
+	_bodyFont = PopdeemFont(PDThemeFontPrimary, bodyFontSize);
 	
   
   NSInteger variations = [[NSUserDefaults standardUserDefaults] integerForKey:PDGratLoginVariations];

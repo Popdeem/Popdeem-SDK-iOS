@@ -125,6 +125,8 @@ typedef NS_ENUM(NSUInteger, PDEnv) {
 
 - (void) nonSocialRegister;
 
++ (void) setFacebookCredentials:(NSString*)facebookAccessToken facebookId:(NSString*)facebookId;
+
 + (NSString*) instagramClientId;
 + (NSString*) instagramClientSecret;
 + (NSString*) instagramCallback;

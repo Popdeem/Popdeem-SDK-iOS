@@ -110,6 +110,15 @@ extern NSString *const PDThemeFontLight;
 extern NSString *const PDThemeNavUseTheme;
 extern NSString *const PDThemeColorHomeHeaderText;
 
+extern NSString *const PDThemeColorRewardAction;
+extern NSString *const PDThemeColorButtons;
+
+extern NSString *const PDThemeTitleFontSize;
+extern NSString *const PDThemeBodyFontSize;
+extern NSString *const PDThemeButtonRadius;
+
+
+ 
 //
 //NSCoding Keys
 //

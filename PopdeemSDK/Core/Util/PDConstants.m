@@ -100,6 +100,20 @@ NSString *const PDThemeFontLight = @"popdeem.fonts.lightFont";
 NSString *const PDThemeNavUseTheme = @"popdeem.nav.useTheme";
 NSString *const PDThemeColorHomeHeaderText = @"popdeem.colors.homeHeaderTextColor";
 
+
+NSString *const PDThemeColorRewardAction = @"popdeem.colors.rewardActionColor";
+NSString *const PDThemeColorButtons = @"popdeem.colors.buttonsColor";
+
+
+/*
+ * PDTheme Font Sizes
+ */
+
+NSString *const PDThemeTitleFontSize = @"popdeem.fonts.titleFontSize";
+NSString *const PDThemeBodyFontSize = @"popdeem.fonts.bodyFontSize";
+NSString *const PDThemeButtonRadius = @"popdeem.fonts.buttonRadius";
+
+
 /*
  NSCoding Keys
  */

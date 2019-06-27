@@ -41,7 +41,8 @@
 #import "PDStringsHelper.h"
 #import "PDCustomer.h"
 #import <TwitterKit/TWTRKit.h>
-
+#import "PDSocialAPIService.h"
+#import "PDAPIClient.h"
 
 @interface PopdeemSDK()
   @property (nonatomic, strong)id uiKitCore;
@@ -411,6 +412,31 @@
     }
   }];
 }
+
+
+
+
++ (void) setFacebookCredentials:(NSString*)facebookAccessToken
+                     facebookId:(NSString*)facebookId {
+    
+    
+    if (facebookAccessToken.length == 0) {return ;}
+    [[PDAPIClient sharedInstance] setFacebookAccessToken:facebookAccessToken];
+    [[PDAPIClient sharedInstance] setFacebookID:facebookId];
+    
+    // Register with Facebook & Log into Social
+    
+    PDUserAPIService *service = [[PDUserAPIService alloc] init];
+    [service registerUserwithFacebookAccesstoken:facebookAccessToken facebookId:facebookId completion:^(PDUser *user, NSError *error) {
+        if (error) {
+            PDLogError(@"Error updating User: %@", error.localizedDescription);
+        }
+    }];
+    
+}
+
+
+
 
 + (void) logout {
 	if ([[NSUserDefaults standardUserDefaults] objectForKey:@"popdeemUser"]) {

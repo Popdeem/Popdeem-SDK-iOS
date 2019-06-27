@@ -267,7 +267,7 @@
       UIView *gradientView = [[UIView alloc] initWithFrame:_tableHeaderImageView.frame];
       [gradientView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
       [_controller.tableView.tableHeaderView addSubview:_tableHeaderImageView];
-      [_controller.tableView.tableHeaderView addSubview:gradientView];
+      //[_controller.tableView.tableHeaderView addSubview:gradientView];
     }
   }
   

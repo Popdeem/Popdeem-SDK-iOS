@@ -137,14 +137,14 @@
 	
 	_viewTwoActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
   [_viewTwoActionButton setBackgroundColor:[UIColor whiteColor]];
-  [_viewTwoActionButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
+  [_viewTwoActionButton setTitleColor:PopdeemColor(PDThemeColorButtons) forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setFont:_viewModel.viewTwoActionButtonFont];
 	[_viewTwoActionButton setTitle:_viewModel.viewTwoActionButtonText forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
 	[_viewTwoActionButton setTag:1];
 	[_viewTwoActionButton addTarget:self action:@selector(scroll) forControlEvents:UIControlEventTouchUpInside];
 	[_secondView addSubview:_viewTwoActionButton];
-  _viewTwoActionButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
+  _viewTwoActionButton.layer.borderColor = PopdeemColor(PDThemeColorButtons).CGColor;
   _viewTwoActionButton.layer.borderWidth = 1.0;
 	
 	cardHeight = currentY + 30 + 40 + 20;
@@ -187,7 +187,7 @@
 	[_viewOneActionButton setTag:1];
 	[_viewOneActionButton addTarget:self action:@selector(scroll) forControlEvents:UIControlEventTouchUpInside];
 	[_firstView addSubview:_viewOneActionButton];
-  _viewOneActionButton.layer.borderColor = PopdeemColor(PDThemeColorPrimaryApp).CGColor;
+  _viewOneActionButton.layer.borderColor = PopdeemColor(PDThemeColorButtons).CGColor;
   _viewOneActionButton.layer.borderWidth = 1.0;
 
   currentY = 0;
@@ -246,7 +246,7 @@
   currentY += _viewTwoImageView.frame.size.height;
   
   _viewThreeActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
-  [_viewThreeActionButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_viewThreeActionButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
   [_viewThreeActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [_viewThreeActionButton.titleLabel setFont:_viewModel.viewThreeActionButtonFont];
   [_viewThreeActionButton setTitle:_viewModel.viewThreeActionButtonText forState:UIControlStateNormal];

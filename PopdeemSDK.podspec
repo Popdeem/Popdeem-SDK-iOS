@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "PopdeemSDK"
-  s.version      = "1.1.65"
+  s.version      = "1.2"
   s.summary      = "PopdeemSDK is used to interact with the Popdeem Product on iOS."
   s.description  = "For detailed instructions, see http://www.popdeem.com/developer"
   s.homepage     = "https://github.com/Popdeem/Popdeem-SDK-iOS.git"
@@ -45,9 +45,9 @@ Pod::Spec.new do |s|
 	s.subspec 'Core' do |core|
     core.source_files = "PopdeemSDK/*.m", "PopdeemSDK/*.h", "PopdeemSDK/Core/*.{h,m}","PopdeemSDK/**/*.{h,m}" , "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
-		core.dependency "FBSDKLoginKit"
-		core.dependency "FBSDKCoreKit"
-    core.dependency "FBSDKShareKit"
+		core.dependency "FBSDKLoginKit", '< 4.30'
+		core.dependency "FBSDKCoreKit", '< 4.30'
+    core.dependency "FBSDKShareKit", '< 4.30'
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"

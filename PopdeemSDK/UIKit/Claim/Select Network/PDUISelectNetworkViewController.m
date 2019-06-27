@@ -88,7 +88,11 @@
     }
   } else {
     if ([_mediaTypes containsObject:@(PDSocialMediaTypeFacebook)]) {
-      topLabelText = [NSString stringWithFormat:@"Scan Facebook for a story with %@ to claim your reward:", _reward.forcedTag];
+      
+      NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+      NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+        
+      topLabelText = [NSString stringWithFormat:@"Scan Facebook for a check-in at a %@ location claim your reward:", locationString];
     }
     if ([_mediaTypes containsObject:@(PDSocialMediaTypeTwitter)]) {
       topLabelText = [NSString stringWithFormat:@"Scan Twitter for a story with %@ to claim your reward:", _reward.forcedTag];
@@ -161,7 +165,21 @@
     }
   }];
   
+    // TODO: check the type of reward..
+    
+  if (_reward.action == PDRewardActionPhoto) {
+    
   [self.bottomLabel setText:[NSString stringWithFormat: translationForKey(@"popdeem.scan.noteEligibilityText", @"Note: You must have shared your experience with %@ in the last 48 hours to be eligible for a reward"), _reward.forcedTag]];
+  } else {
+
+    NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+      
+  [self.bottomLabel setText:[NSString stringWithFormat: translationForKey(@"popdeem.scan.noteEligibilityText", @"Note: You must have checked-in at a %@ location in the last 48 hours to be eligible for a reward"), locationString]];
+      
+  }
+    
+    
     
   [self.bottomLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.bottomLabel setFont:PopdeemFont(PDThemeFontLight, 12)];

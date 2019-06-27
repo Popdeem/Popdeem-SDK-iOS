@@ -58,6 +58,7 @@
 }
 
 - (void)viewDidLoad {
+
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -131,20 +132,44 @@
   currentY += _viewOneImageView.frame.size.height;
   
   if (_facebookInstalled) {
-    NSString *forcedTagString = (self.parent.reward.forcedTag) ? self.parent.reward.forcedTag : @"hashtag";
-    NSDictionary *attributes = @{
-                                 NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12),
-                                 NSForegroundColorAttributeName: [UIColor blackColor],
-                                 NSBackgroundColorAttributeName: [UIColor colorWithRed:0.87 green:0.90 blue:0.96 alpha:1.00]
-                                 };
-    NSMutableAttributedString *hashtagString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@ ",forcedTagString] attributes:attributes];
-    UILabel *hashLabel = [[UILabel alloc] init];
-    [hashLabel setAttributedText:hashtagString];
-    [hashLabel sizeToFit];
-    [hashLabel setFrame:CGRectMake(18, 38, hashLabel.frame.size.width, hashLabel.frame.size.height)];
-    hashLabel.layer.cornerRadius = 3.0f;
-    hashLabel.clipsToBounds = YES;
-    [_viewOneImageView addSubview:hashLabel];
+      
+    if (_reward.action == PDRewardActionPhoto) {
+        NSString *forcedTagString = (self.parent.reward.forcedTag) ? self.parent.reward.forcedTag : @"hashtag";
+        NSDictionary *attributes = @{
+                                     NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12),
+                                     NSForegroundColorAttributeName: [UIColor blackColor],
+                                     NSBackgroundColorAttributeName: [UIColor colorWithRed:0.87 green:0.90 blue:0.96 alpha:1.00]
+                                     };
+        NSMutableAttributedString *hashtagString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@ ",forcedTagString] attributes:attributes];
+        UILabel *hashLabel = [[UILabel alloc] init];
+        [hashLabel setAttributedText:hashtagString];
+        [hashLabel sizeToFit];
+        [hashLabel setFrame:CGRectMake(18, 36, hashLabel.frame.size.width, hashLabel.frame.size.height)];
+        hashLabel.layer.cornerRadius = 3.0f;
+        hashLabel.clipsToBounds = YES;
+        [_viewOneImageView addSubview:hashLabel];
+    }
+
+    else if (_reward.action == PDRewardActionCheckin) {
+        
+        NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+        
+        NSDictionary *attributes = @{
+                                     NSFontAttributeName: PopdeemFont(PDThemeFontPrimary, 12),
+                                     NSForegroundColorAttributeName: [UIColor blackColor],
+                                     NSBackgroundColorAttributeName: [UIColor colorWithRed:0.87 green:0.90 blue:0.96 alpha:1.00]
+                                     };
+        NSMutableAttributedString *checkinLocationString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", locationString] attributes:attributes];
+        UILabel *hashLabel = [[UILabel alloc] init];
+        [hashLabel setAttributedText:checkinLocationString];
+        [hashLabel sizeToFit];
+        [hashLabel setFrame:CGRectMake(48, 92, hashLabel.frame.size.width, hashLabel.frame.size.height)];
+        hashLabel.layer.cornerRadius = 3.0f;
+        hashLabel.clipsToBounds = YES;
+        [_viewOneImageView addSubview:hashLabel];
+    }
+  
   }
   
   _viewOneActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
@@ -157,7 +182,7 @@
   [_viewOneActionButton setTag:1];
   [_viewOneActionButton addTarget:self action:@selector(shareOnFacebook) forControlEvents:UIControlEventTouchUpInside];
   [_firstView addSubview:_viewOneActionButton];
-  [_viewOneActionButton setBackgroundColor:PopdeemColor(PDThemeColorPrimaryApp)];
+  [_viewOneActionButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
   
   cardHeight = currentY + 30 + 40 + 20;
   [_firstView setFrame:CGRectMake(0, 0, cardWidth, cardHeight)];
@@ -184,22 +209,36 @@
     [self dismiss];
     return;
   }
-  FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
-  dialog.fromViewController = self;
-  if (_image != nil) {
-    FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
-    photo.image = _image;
-    photo.userGenerated = YES;
-    FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
-    content.photos = @[photo];
-    if (_reward.forcedTag) {
-      content.hashtag = [FBSDKHashtag hashtagWithString:_reward.forcedTag];
+    
+    
+if (_reward.action == PDRewardActionCheckin && _image == nil) {
+    
+    NSURL *facebookURL = [NSURL URLWithString:@"fb://"];
+    if ([[UIApplication sharedApplication] canOpenURL:facebookURL]) {
+        _leavingToFacebook = YES;
+        [[UIApplication sharedApplication] openURL:facebookURL];
     }
-    dialog.shareContent = content;
+
+}
+    else { //if (_reward.action == PDRewardActionPhoto)
+    
+          FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+          dialog.fromViewController = self;
+          if (_image != nil) {
+            FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+            photo.image = _image;
+            photo.userGenerated = YES;
+            FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+            content.photos = @[photo];
+            if (_reward.forcedTag) {
+              content.hashtag = [FBSDKHashtag hashtagWithString:_reward.forcedTag];
+            }
+            dialog.shareContent = content;
+          }
+          dialog.mode = FBSDKShareDialogModeAutomatic;
+          dialog.delegate = self;
+          [dialog show];
   }
-  dialog.mode = FBSDKShareDialogModeAutomatic;
-  dialog.delegate = self;
-  [dialog show];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -245,13 +284,13 @@
 }
 
 - (void)appDidEnterBackground:(NSNotification *)notification {
-  if (_leavingToFacebook) {
-    [self dismissViewControllerAnimated:YES completion:^(void){
-      [[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToInstagram object:nil];
-      [[NSNotificationCenter defaultCenter] removeObserver:self];
-    }];
-    AbraLogEvent(ABRA_EVENT_CLICKED_NEXT_INSTAGRAM_TUTORIAL, nil);
-  }
+    if (_leavingToFacebook) {
+        [self dismissViewControllerAnimated:YES completion:^(void){
+            [[NSNotificationCenter defaultCenter] postNotificationName:PDUserLinkedToFacebook object:nil];
+            [[NSNotificationCenter defaultCenter] removeObserver:self];
+        }];
+        AbraLogEvent(ABRA_EVENT_CLICKED_NEXT_INSTAGRAM_TUTORIAL, nil);
+    }
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
