@@ -149,6 +149,17 @@ static const NSString *kVariablesKey = @"Variables";
 }
 
 
+- (NSString *)socialLoginVariationForKey:(NSString *)key {
+    id value = [self objectForKey:key];
+    if (value) {
+        if ([value isKindOfClass:[NSString class]]){
+            return value;
+        }
+    }
+    return nil;
+}
+
+
 /**
  * Colors
  */

@@ -115,10 +115,9 @@ extern NSString *const PDThemeColorButtons;
 
 extern NSString *const PDThemeTitleFontSize;
 extern NSString *const PDThemeBodyFontSize;
-extern NSString *const PDThemeButtonRadius;
 
+extern NSString *const PDThemeSocialLoginVariation;
 
- 
 //
 //NSCoding Keys
 //

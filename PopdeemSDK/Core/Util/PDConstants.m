@@ -101,6 +101,8 @@ NSString *const PDThemeNavUseTheme = @"popdeem.nav.useTheme";
 NSString *const PDThemeColorHomeHeaderText = @"popdeem.colors.homeHeaderTextColor";
 
 
+NSString *const PDThemeSocialLoginVariation = @"popdeem.images.socialLoginVariation";
+
 NSString *const PDThemeColorRewardAction = @"popdeem.colors.rewardActionColor";
 NSString *const PDThemeColorButtons = @"popdeem.colors.buttonsColor";
 
@@ -111,7 +113,6 @@ NSString *const PDThemeColorButtons = @"popdeem.colors.buttonsColor";
 
 NSString *const PDThemeTitleFontSize = @"popdeem.fonts.titleFontSize";
 NSString *const PDThemeBodyFontSize = @"popdeem.fonts.bodyFontSize";
-NSString *const PDThemeButtonRadius = @"popdeem.fonts.buttonRadius";
 
 
 /*

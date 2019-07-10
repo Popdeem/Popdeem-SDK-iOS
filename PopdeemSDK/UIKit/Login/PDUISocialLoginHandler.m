@@ -15,6 +15,7 @@
 #import "PDUser+Facebook.h"
 #import "PopdeemSDK.h"
 #import "PDMultiLoginViewController.h"
+#import "PDMultiLoginViewControllerV2.h"
 #import "PDRewardStore.h"
 #import "PDRewardApiService.h"
 
@@ -98,16 +99,42 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 
 - (void) presentLoginModal {
   [self fetchSocialLoginReward:^(PDReward *reward) {
-    PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
-    UIViewController *topController = [PDUIKitUtils topViewController];
-    [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    
-    //  PDUISocialLoginViewController *vc = [[PDUISocialLoginViewController alloc] initWithLocationServices:YES];
-    [topController presentViewController:vc animated:YES completion:^{}];
-    [self setUsesCount:self.usesCount+1];
-    PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+      
+      UIViewController *topController = [PDUIKitUtils topViewController];
+      [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+      
+      NSString *socialLoginVariation = PopdeemSocialLoginVariation(PDThemeSocialLoginVariation);
+      NSString *socialLoginDesignVariation1 = @"pd_social_login_design_variation_1";
+      NSString *socialLoginDesignVariation2 = @"pd_social_login_design_variation_2";
+      
+      if  ([socialLoginVariation isEqualToString:socialLoginDesignVariation1]) {
+        PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
+          
+          [topController presentViewController:vc animated:YES completion:^{}];
+          [self setUsesCount:self.usesCount+1];
+          PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+      }
+       else if ([socialLoginVariation isEqualToString:socialLoginDesignVariation2]) {
+        PDMultiLoginViewControllerV2 *vc = [[PDMultiLoginViewControllerV2 alloc] initFromNibWithReward:reward];
+           
+           [topController presentViewController:vc animated:YES completion:^{}];
+           [self setUsesCount:self.usesCount+1];
+           PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+      }
+       else {
+        PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
+           [topController presentViewController:vc animated:YES completion:^{}];
+           [self setUsesCount:self.usesCount+1];
+           PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+      }
+      
   }];
 }
+
+
+
+
+
 
 - (NSUInteger)usesCount {
   if ([[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]) {

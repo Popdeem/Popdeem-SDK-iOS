@@ -1,14 +1,14 @@
 //
-//  PDMultiLoginViewController.m
+//  PDMultiLoginViewControllerV2.m
 //  PopdeemSDK
 //
 //  Created by Niall Quinn on 10/01/2017.
 //  Copyright © 2017 Popdeem. All rights reserved.
 //
 
-#import "PDMultiLoginViewController.h"
+#import "PDMultiLoginViewControllerV2.h"
 #import "PDSocialMediaManager.h"
-#import "PDMultiLoginViewModel.h"
+#import "PDMultiLoginViewModelV2.h"
 #import "PDTheme.h"
 #import "PDConstants.h"
 #import "PDUser.h"
@@ -25,18 +25,18 @@
 #import "PDUIDirectToSocialHomeHandler.h"
 #import "PDCustomer.h"
 
-@interface PDMultiLoginViewController ()
-@property (nonatomic, retain) PDMultiLoginViewModel* viewModel;
+@interface PDMultiLoginViewControllerV2 ()
+@property (nonatomic, retain) PDMultiLoginViewModelV2* viewModel;
 @property (nonatomic) BOOL facebookLoginOccurring;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) PDUIRewardTableViewCell *rewardCell;
 @end
 
-@implementation PDMultiLoginViewController
+@implementation PDMultiLoginViewControllerV2
 
 - (instancetype) initFromNibWithReward:(PDReward*)reward {
   NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
-  if (self = [self initWithNibName:@"PDMultiLoginViewController" bundle:podBundle]) {
+  if (self = [self initWithNibName:@"PDMultiLoginViewControllerV2" bundle:podBundle]) {
     self.view.backgroundColor = [UIColor whiteColor];
     self.reward = reward;
     return self;
@@ -47,14 +47,15 @@
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
     
-    
+
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
   //View Setup
-  _viewModel = [[PDMultiLoginViewModel alloc] initForViewController:self reward:_reward];
+  _viewModel = [[PDMultiLoginViewModelV2 alloc] initForViewController:self reward:_reward];
   [_viewModel setup];
     
-    UIImage *dismissImage = PopdeemImage(@"popdeem.images.dismissLoginImage");
-    [_cancelButton setImage:dismissImage forState:UIControlStateNormal];
+  
+  [_cancelButton setFont:_viewModel.titleFont];
+  [_cancelButton setTitleColor:UIColor.lightGrayColor forState:UIControlStateNormal];
     
   [_titleLabel setText:_viewModel.titleString];
   [_titleLabel setFont:_viewModel.titleFont];
@@ -75,19 +76,19 @@
     [_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
     [_twitterLoginButton setTitle:_viewModel.twitterButtonText forState:UIControlStateNormal];
-    _twitterLoginButton.layer.cornerRadius = 5.0;
+    _twitterLoginButton.layer.cornerRadius = 20.0;
     _twitterLoginButton.clipsToBounds = YES;
   }
   
   [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  _instagramLoginButton.layer.cornerRadius = 5.0;
+  _instagramLoginButton.layer.cornerRadius = 20.0;
   _instagramLoginButton.clipsToBounds = YES;
   [_instagramLoginButton setTitle:_viewModel.instagramButtonText forState:UIControlStateNormal];
   [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
   [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
   
   //Facebook setup
-  _facebookLoginButton.layer.cornerRadius = 5.0;
+  _facebookLoginButton.layer.cornerRadius = 20.0;
   _facebookLoginButton.clipsToBounds = YES;
   [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
   [self.facebookLoginButton.titleLabel setFont:_viewModel.facebookButtonFont];
