@@ -53,9 +53,14 @@
   _viewModel = [[PDMultiLoginViewModelV2 alloc] initForViewController:self reward:_reward];
   [_viewModel setup];
     
+    
+    UIColor *customGrayColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1.0].CGColor;
+    
+    UIColor *customColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1.0];
   
-  [_cancelButton setFont:_viewModel.titleFont];
-  [_cancelButton setTitleColor:UIColor.lightGrayColor forState:UIControlStateNormal];
+  [_cancelButton setFont:PopdeemFont(PDThemeFontBold, 15)];
+  [_cancelButton setTitleColor:customColor forState:UIControlStateNormal];
+
     
   [_titleLabel setText:_viewModel.titleString];
   [_titleLabel setFont:_viewModel.titleFont];
@@ -63,7 +68,7 @@
   [_titleLabel sizeToFit];
   
   [_bodyLabel setText:_viewModel.bodyString];
-  [_bodyLabel setTextColor:_viewModel.bodyColor];
+  [_bodyLabel setTextColor:customColor];
   [_bodyLabel setFont:_viewModel.bodyFont];
   
   if (![[PDCustomer sharedInstance] usesTwitter]) {
@@ -74,25 +79,52 @@
   } else {
     [_twitterLoginButton setBackgroundColor:_viewModel.twitterButtonColor];
     [_twitterLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+    [_twitterLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontBold, 15)];
     [_twitterLoginButton setTitle:_viewModel.twitterButtonText forState:UIControlStateNormal];
-    _twitterLoginButton.layer.cornerRadius = 20.0;
+    _twitterLoginButton.layer.cornerRadius = 25.0;
     _twitterLoginButton.clipsToBounds = YES;
+      
+      _twitterLoginButton.layer.masksToBounds = NO;
+      _twitterLoginButton.layer.borderColor = (__bridge CGColorRef _Nullable)(UIColor.clearColor);
+      _twitterLoginButton.layer.borderWidth = 1.0f;
+      _twitterLoginButton.layer.shadowColor = _viewModel.twitterButtonColor.CGColor;
+      _twitterLoginButton.layer.shadowOpacity = 0.5;
+      _twitterLoginButton.layer.shadowRadius = 8;
+      _twitterLoginButton.layer.shadowOffset = CGSizeMake(8.0f, 8.0f);
+      
   }
   
   [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  _instagramLoginButton.layer.cornerRadius = 20.0;
+  _instagramLoginButton.layer.cornerRadius = 25.0;
   _instagramLoginButton.clipsToBounds = YES;
   [_instagramLoginButton setTitle:_viewModel.instagramButtonText forState:UIControlStateNormal];
-  [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
+  [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontBold, 15)];
   [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
   
+    _instagramLoginButton.layer.masksToBounds = NO;
+    _instagramLoginButton.layer.borderColor = (__bridge CGColorRef _Nullable)(UIColor.clearColor);
+    _instagramLoginButton.layer.borderWidth = 1.0f;
+    _instagramLoginButton.layer.shadowColor = _viewModel.instagramButtonColor.CGColor;
+    _instagramLoginButton.layer.shadowOpacity = 0.5;
+    _instagramLoginButton.layer.shadowRadius = 8;
+    _instagramLoginButton.layer.shadowOffset = CGSizeMake(8.0f, 8.0f);
+    
+    
   //Facebook setup
-  _facebookLoginButton.layer.cornerRadius = 20.0;
+  _facebookLoginButton.layer.cornerRadius = 25.0;
   _facebookLoginButton.clipsToBounds = YES;
   [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
-  [self.facebookLoginButton.titleLabel setFont:_viewModel.facebookButtonFont];
+  [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontBold, 15)];
   
+    _facebookLoginButton.layer.masksToBounds = NO;
+    _facebookLoginButton.layer.borderColor = (__bridge CGColorRef _Nullable)(UIColor.clearColor);
+    _facebookLoginButton.layer.borderWidth = 1.0f;
+    _facebookLoginButton.layer.shadowColor = _viewModel.facebookButtonColor.CGColor;
+    _facebookLoginButton.layer.shadowOpacity = 0.5;
+    _facebookLoginButton.layer.shadowRadius = 8;
+    _facebookLoginButton.layer.shadowOffset = CGSizeMake(8.0f, 8.0f);
+    
+    
   if (_viewModel.image) {
     [self.imageView setImage:_viewModel.image];
   }

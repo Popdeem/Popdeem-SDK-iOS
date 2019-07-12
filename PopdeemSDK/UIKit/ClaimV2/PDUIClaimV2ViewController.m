@@ -1381,10 +1381,11 @@
     _detailViewRewardDescription.text = _reward.rewardRules;
 
     NSString *shareInfo = [self infoStringForReward:_reward];
+    [_detailViewRewardActionRequired setFont: PopdeemFont(PDThemeFontLight, 14)];
     _detailViewRewardActionRequired.text = shareInfo;
 
     
-    [_closeDetailRewardView setFont:PopdeemFont(PDThemeFontLight, 16)];
+    [_closeDetailRewardView setFont:PopdeemFont(PDThemeFontBold, 16)];
     [_closeDetailRewardView setTitle:translationForKey(@"popdeem.claim.closeButtonText", @"Close") forState:UIControlStateNormal];
     [_closeDetailRewardView setTintColor:PopdeemColor(PDThemeColorButtons)];
     
