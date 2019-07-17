@@ -74,7 +74,7 @@
         NSString *cancelButtonTitle = translationForKey(@"popdeem.noaction.cancelText", @"Cancel");
         [self.cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
         
-        [self.cancelButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
+        [self.cancelButton setTitleColor:PopdeemColor(PDThemeColorButtons) forState:UIControlStateNormal];
         [_cancelButton setBackgroundColor: [UIColor whiteColor]];
         [_cancelButton setFont:PopdeemFont(PDThemeFontPrimary, 18)];
         [_cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
@@ -87,7 +87,7 @@
         NSString *claimButtonTitle = translationForKey(@"popdeem.noaction.claimText", @"Claim");
         [self.claimButton setTitle:claimButtonTitle forState:UIControlStateNormal];
         
-        [self.claimButton setTitleColor:PopdeemColor(PDThemeColorPrimaryApp) forState:UIControlStateNormal];
+        [self.claimButton setTitleColor:PopdeemColor(PDThemeColorButtons) forState:UIControlStateNormal];
         [_claimButton setBackgroundColor: [UIColor whiteColor]];
         [_claimButton setFont:PopdeemFont(PDThemeFontBold, 18)];
         [_claimButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];

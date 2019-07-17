@@ -71,6 +71,10 @@ NSString *const NotificationReceived = @"NotificationReceived";
 NSString *const DidFetchBrands = @"DidFetchBrands";
 NSString *const DirectToSocialHome = @"DirectToSocialHome";
 NSString *const ShouldUpdateTableView = @"ShoudUpdateTableView";
+
+NSString * const NavigateToSocialRewardsNotification = @"NavigateToSocialRewardsNotification";
+
+
 /*
  End NSNotificationCenter Strings
  */

@@ -81,6 +81,8 @@ extern NSString *const DidFetchBrands;
 extern NSString *const DirectToSocialHome;
 extern NSString *const PDUserLinkedToFacebook;
 extern NSString *const ShouldUpdateTableView;
+
+extern NSString *const NavigateToSocialRewardsNotification;
     //
 //End NSNotificationCenter Strings
 //

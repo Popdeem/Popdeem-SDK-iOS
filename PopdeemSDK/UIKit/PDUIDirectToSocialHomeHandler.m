@@ -11,7 +11,9 @@
 #import "PDUIHomeViewController.h"
 #import "PDUINavigationController.h"
 
+
 @implementation PDUIDirectToSocialHomeHandler
+
 
 -(void) handleHomeFlow {
   [self presentHomeFlow];
@@ -21,7 +23,6 @@
     
   UIViewController *topController = [PDUIKitUtils topViewController];
   [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-
   if ([topController isKindOfClass:[PDUIHomeViewController class]]) {
     return;
   }
@@ -31,6 +32,11 @@
         return;
      }
   }
+    
+  [[NSNotificationCenter defaultCenter] postNotificationName:NavigateToSocialRewardsNotification object:self];
+    
+    
+ /*
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -49,7 +55,12 @@
   
   [topController presentViewController:_navController animated:YES completion:^{
   }];
+  
 #pragma clang diagnostic pop
+  
+  */
+    
+    
 }
 
 @end
