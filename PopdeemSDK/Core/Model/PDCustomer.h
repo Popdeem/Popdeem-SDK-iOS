@@ -25,5 +25,8 @@
 + (instancetype) sharedInstance;
 - (BOOL) usesAmbassadorFeatures;
 - (BOOL) usesTwitter;
+- (BOOL) usesInstagram;
+- (BOOL) usesFacebook;
+
 @end
 

@@ -70,10 +70,27 @@ static PDCustomer *globalCustomer = nil;
 }
 
 - (BOOL) usesTwitter {
-  if (self.twitterConsumerSecret != nil && self.twitterConsumerKey != nil) {
+  if (self.twitterConsumerKey != nil) {
     return YES;
   }
   return NO;
 }
+
+
+- (BOOL) usesFacebook {
+    if (self.facebookAppId != nil) {
+        return YES;
+    }
+    return NO;
+}
+
+
+- (BOOL) usesInstagram {
+    if (self.instagramClientId != nil) {
+        return YES;
+    }
+    return NO;
+}
+
 
 @end

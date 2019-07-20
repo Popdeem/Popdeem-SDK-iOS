@@ -63,11 +63,11 @@
 
     
   [_titleLabel setText:_viewModel.titleString];
-  [_titleLabel setFont:_viewModel.titleFont];
-  [_titleLabel setTextColor:_viewModel.titleColor];
+  [_titleLabel setFont:_viewModel.bodyFont];
+  [_titleLabel setTextColor:customColor];
   [_titleLabel sizeToFit];
   
-  [_bodyLabel setText:_viewModel.bodyString];
+  [_bodyLabel setText:@""];
   [_bodyLabel setTextColor:customColor];
   [_bodyLabel setFont:_viewModel.bodyFont];
   
