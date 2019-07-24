@@ -40,7 +40,7 @@
 #import "PDCustomerAPIService.h"
 #import "PDStringsHelper.h"
 #import "PDCustomer.h"
-#import <TwitterKit/TWTRKit.h>
+#import "TWTRKit.h"
 #import "PDSocialAPIService.h"
 #import "PDAPIClient.h"
 

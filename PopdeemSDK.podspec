@@ -53,7 +53,6 @@ Pod::Spec.new do |s|
 		core.dependency "JSONModel"
     core.dependency "TOCropViewController"
     core.dependency "Realm"
-    core.dependency "TwitterKit"
   end
 
   s.subspec 'UIKit' do |uikit|
