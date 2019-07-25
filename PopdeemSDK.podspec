@@ -27,7 +27,12 @@ Pod::Spec.new do |s|
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.resources = "PopdeemSDK/UIKit/*{xib,png,json}", "PopdeemSDK/UIKit/**/*.{xib,png,json}", "PopdeemSDK/UIKit/**/**/*.{xib,png,json}"
-	
+  
+
+  s.resource_bundles = {
+      "TwitterKitResources" => ["PopdeemSDK/Libraries/TwitterKit/**/*.{xib,png,json}", "PopdeemSDK/Resources/Libraries/TwitterKit/**/*.{xib,png,json}"]
+    }
+
 #	s.resource_bundles = {
 #		"Resources" => ["PopdeemSDK/UIKit/Resources/*.png", "PopdeemSDK/UIKit/Resources/*.json", "PopdeemSDK/UIKit/*{xib,png}", "PopdeemSDK/UIKit/**/*.{xib,png}", "PopdeemSDK/UIKit/**/**/*.{xib,png}"]
 #	}

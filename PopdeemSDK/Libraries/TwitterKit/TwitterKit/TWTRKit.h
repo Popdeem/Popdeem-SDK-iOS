@@ -42,7 +42,6 @@
 #import "TWTRTimelineDelegate.h"
 #import "TWTRTimelineFilter.h"
 #import "TWTRTimelineType.h"
-#import "TWTRTimelineViewController.h"
 #import "TWTRTweet.h"
 #import "TWTRTweetCashtagEntity.h"
 #import "TWTRTweetEntity.h"
