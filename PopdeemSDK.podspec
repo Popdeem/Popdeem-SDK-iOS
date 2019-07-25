@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   
 
   s.resource_bundles = {
-      "TwitterKitResources" => ["PopdeemSDK/Libraries/TwitterKit/**/*.{xib,png,json}", "PopdeemSDK/Resources/Libraries/TwitterKit/**/*.{xib,png,json}"]
+      "TwitterKitResources" => ["PopdeemSDK/Libraries/TwitterKit/**/*.{xib,png,json,strings}", "PopdeemSDK/Resources/Libraries/TwitterKit/**/*.{xib,png,json,strings}"]
     }
 
 #	s.resource_bundles = {
