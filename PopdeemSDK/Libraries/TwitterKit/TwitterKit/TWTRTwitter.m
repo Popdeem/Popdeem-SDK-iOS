@@ -55,6 +55,8 @@
 #import "TWTRUser.h"
 #import "TWTRWebAuthenticationFlow.h"
 
+#import "PDUIKitUtils.h"
+
 #define AssetCachePath (@"cache/assets")
 
 static const NSUInteger MB = 1048576;
@@ -347,7 +349,7 @@ static TWTRTwitter *sharedTwitter;
 - (void)performWebBasedLogin:(UIViewController *)viewController completion:(TWTRLogInCompletion)completion
 {
     if (!viewController) {
-        viewController = [TWTRUtils topViewController];
+        viewController = [PDUIKitUtils topViewController];
     }
 
     self.webAuthenticationFlow = [[TWTRWebAuthenticationFlow alloc] initWithSessionStore:self.sessionStore];
@@ -364,7 +366,7 @@ static TWTRTwitter *sharedTwitter;
                 web view controller at this point in the login cycle otherwise this would dismiss
                 the view controller below it.
              */
-            [[TWTRUtils topViewController] dismissViewControllerAnimated:YES completion:nil];
+            [[PDUIKitUtils topViewController] dismissViewControllerAnimated:YES completion:nil];
             completion(session, error);
         }];
 }
