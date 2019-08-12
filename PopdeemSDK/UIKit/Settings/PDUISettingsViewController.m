@@ -24,6 +24,7 @@
 #import "PDCustomer.h"
 #import "PDUIHomeVIewController.h"
 #import "TWTRTwitter.h"
+#import "TWTRSessionStore.h"
 
 #define kSocialNib @"SocialNib"
 #define kLogoutNib @"LogoutNib"
@@ -642,8 +643,8 @@
       [self.tableHeaderNameLabel setHidden:YES];
       [self.tableHeaderNameLabel setText:@""];
       [self.tableView reloadData];
-      [self dismissViewControllerAnimated:YES completion:^{
-      }];
+      //[self dismissViewControllerAnimated:YES completion:^{
+      //}];
     });
   } else {
     [self disconnectAccount:[accounts lastObject]];
