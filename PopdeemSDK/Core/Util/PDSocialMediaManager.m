@@ -14,7 +14,7 @@
 #import <Accounts/Accounts.h>
 #import "PDInstagramAPIClient.h"
 #import "PDSocialAPIService.h"
-#import <TwitterKit/TWTRKit.h>
+#import "TWTRTwitter.h"
 #import "PDCustomer.h"
 
 #pragma clang diagnostic push

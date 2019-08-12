@@ -23,7 +23,7 @@
 #import "PDUserAPIService.h"
 #import "PDCustomer.h"
 #import "PDUIHomeVIewController.h"
-#import <TwitterKit/TWTRKit.h>
+#import "TWTRTwitter.h"
 
 #define kSocialNib @"SocialNib"
 #define kLogoutNib @"LogoutNib"

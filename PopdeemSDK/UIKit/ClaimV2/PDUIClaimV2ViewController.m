@@ -31,7 +31,8 @@
 #import "PDUIHomeViewController.h"
 #import "PDUIPostScanViewController.h"
 #import "PDLocationValidator.h"
-#import <TwitterKit/TWTRKit.h>
+#import "TWTRTwitter.h"
+#import "TWTRComposer.h"
 #import "PDUIRewardV2TableViewCell.h"
 
 @import Photos;
