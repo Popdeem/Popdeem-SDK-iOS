@@ -291,11 +291,19 @@
   return NO;
 }
 
+/*
 + (BOOL) application:(UIApplication*)application openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options {
   BOOL twitterHandled = [[Twitter sharedInstance] application:application openURL:url options:options];
   if (twitterHandled) {
     return twitterHandled;
   }
+ */
+
++ (BOOL) application:(UIApplication*)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    BOOL twitterHandled = [[Twitter sharedInstance] application:application openURL:url options:options];
+    if (twitterHandled) {
+        return twitterHandled;
+    }
   
   if ([[url scheme] isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"FacebookNamespace"]]) {
     return [PopdeemSDK processReferral:application url:url sourceApplication:@"" annotation:nil];
