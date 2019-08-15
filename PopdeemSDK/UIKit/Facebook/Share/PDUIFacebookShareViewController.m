@@ -164,7 +164,7 @@
         UILabel *hashLabel = [[UILabel alloc] init];
         [hashLabel setAttributedText:checkinLocationString];
         [hashLabel sizeToFit];
-        [hashLabel setFrame:CGRectMake(48, 92, hashLabel.frame.size.width, hashLabel.frame.size.height)];
+        [hashLabel setFrame:CGRectMake(self.view.center.x - hashLabel.frame.size.width, 92, hashLabel.frame.size.width, hashLabel.frame.size.height)];
         hashLabel.layer.cornerRadius = 3.0f;
         hashLabel.clipsToBounds = YES;
         [_viewOneImageView addSubview:hashLabel];

@@ -42,7 +42,7 @@
           tutorialImage = @"pduikit_facebook_step1";
       }
       else if (_controller.parent.reward.action == PDRewardActionCheckin) {
-          tutorialImage = @"pduikit_facebook_checkin";
+          tutorialImage = @"pduikit_fb_checkin";
       }
     
       self.viewOneImage = PopdeemImage(tutorialImage);
