@@ -120,6 +120,13 @@ extern NSString *const PDThemeBodyFontSize;
 
 extern NSString *const PDThemeSocialLoginVariation;
 
+extern NSString *const PDSocialLoginDesignVariation1;
+extern NSString *const PDSocialLoginDesignVariation2;
+
+extern NSString *const PDThemeSocialLoginTransition;
+extern NSString *const PDSocialLoginTransition1;
+extern NSString *const PDSocialLoginTransition2;
+
 //
 //NSCoding Keys
 //

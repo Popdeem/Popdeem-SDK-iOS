@@ -104,23 +104,33 @@ static NSString *const PDUseCountKey = @"PDUseCount";
       [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
       
       NSString *socialLoginVariation = PopdeemSocialLoginVariation(PDThemeSocialLoginVariation);
-      NSString *socialLoginDesignVariation1 = @"pd_social_login_design_variation_1";
-      NSString *socialLoginDesignVariation2 = @"pd_social_login_design_variation_2";
       
-      if  ([socialLoginVariation isEqualToString:socialLoginDesignVariation1]) {
+      if  ([socialLoginVariation isEqualToString:PDSocialLoginDesignVariation1]) {
         PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
           
           [topController presentViewController:vc animated:YES completion:^{}];
           [self setUsesCount:self.usesCount+1];
           PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
       }
-       else if ([socialLoginVariation isEqualToString:socialLoginDesignVariation2]) {
+       else if ([socialLoginVariation isEqualToString:PDSocialLoginDesignVariation2]) {
         PDMultiLoginViewControllerV2 *vc = [[PDMultiLoginViewControllerV2 alloc] initFromNibWithReward:reward];
            
-           [topController presentViewController:vc animated:YES completion:^{}];
+           NSString *socialLoginTransition = PopdeemSocialLoginTransition(PDThemeSocialLoginTransition);
+    
+           if ([socialLoginTransition isEqualToString:PDSocialLoginTransition2]) {
+               CATransition *transition = [[CATransition alloc] init];
+               transition.duration = 0.5;
+               transition.type = kCATransitionPush;
+               transition.subtype = kCATransitionFromRight;
+               [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+               [topController.view.window.layer addAnimation:transition forKey:kCATransition];
+               [topController presentViewController:vc animated:NO completion:^{}];
+           } else {
+                [topController presentViewController:vc animated:YES completion:^{}];
+            }
            [self setUsesCount:self.usesCount+1];
            PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
-      }
+       }
        else {
         PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
            [topController presentViewController:vc animated:YES completion:^{}];

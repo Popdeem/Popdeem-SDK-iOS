@@ -246,9 +246,23 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [weakSelf.loadingView hideAnimated:YES];
   });
-  [self dismissViewControllerAnimated:YES completion:^{
-    //Any cleanup to do?
-  }];
+    
+    NSString *socialLoginTransition = PopdeemSocialLoginTransition(PDThemeSocialLoginTransition);
+    
+    if ([socialLoginTransition isEqualToString:PDSocialLoginTransition2]) {
+        CATransition *transition = [[CATransition alloc] init];
+        transition.duration = 0.5;
+        transition.type = kCATransitionPush;
+        transition.subtype = kCATransitionFromRight;
+        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+        [self.view.window.layer addAnimation:transition forKey:kCATransition];
+        [self dismissViewControllerAnimated:NO completion:^{}];
+    } else {
+      [self dismissViewControllerAnimated:YES completion:^{
+        //Any cleanup to do?
+      }];
+    }
+     
   AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Dismiss Button"});
 }
 

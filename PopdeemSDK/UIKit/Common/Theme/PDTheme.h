@@ -32,6 +32,9 @@ fontForKey(key,size)
 #define PopdeemSocialLoginVariation(key) \
 [[PDTheme sharedInstance] socialLoginVariationForKey:(key)]
 
+#define PopdeemSocialLoginTransition(key) \
+[[PDTheme sharedInstance] socialLoginTransitionForKey:(key)]
+
 @interface PDTheme : NSObject
 
 + (instancetype)sharedInstance;
@@ -44,6 +47,7 @@ fontForKey(key,size)
 - (BOOL) hasValueForKey:(NSString*)key;
 - (UIColor *)findColorFromValue:(id)value;
 - (NSString*)socialLoginVariationForKey:(NSString*)key;
+- (NSString*)socialLoginTransitionForKey:(NSString*)key;
 
 extern UIFont *fontForKey(NSString *key, CGFloat size);
 

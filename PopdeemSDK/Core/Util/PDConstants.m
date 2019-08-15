@@ -106,6 +106,13 @@ NSString *const PDThemeColorHomeHeaderText = @"popdeem.colors.homeHeaderTextColo
 
 
 NSString *const PDThemeSocialLoginVariation = @"popdeem.images.socialLoginVariation";
+NSString *const PDSocialLoginDesignVariation1 = @"pd_social_login_design_variation_1";
+NSString *const PDSocialLoginDesignVariation2 = @"pd_social_login_design_variation_2";
+
+
+NSString *const PDThemeSocialLoginTransition = @"popdeem.images.socialLoginTransition";
+NSString *const PDSocialLoginTransition1 = @"pd_social_login_transition_1";
+NSString *const PDSocialLoginTransition2 = @"pd_social_login_transition_2";
 
 NSString *const PDThemeColorRewardAction = @"popdeem.colors.rewardActionColor";
 NSString *const PDThemeColorButtons = @"popdeem.colors.buttonsColor";
