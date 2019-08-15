@@ -27,10 +27,20 @@
   if (!_controller.facebookInstalled) {
     self.viewOneLabelOneText = translationForKey(@"popdeem.facebook.share.stepOne.label1.noapp", @"Facebook not installed");
     self.viewOneImage = PopdeemImage(@"pduikit_facebook_noapp");
-    if (_controller.parent.reward.forcedTag) {
+      
+      
+      if (_controller.parent.reward.forcedTag && ![_controller.parent.reward.forcedTag  isEqual: @"#"]) {
       self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2.noapp", @"Make your post on Facebook, making sure to include the hashtag %@. Then use the scan feature on the previous screen to claim your reward."), _controller.parent.reward.forcedTag];
+        
+    } else if (_controller.parent.reward.action == PDRewardActionCheckin) {
+        
+    NSString *defaultLocationString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    NSString *locationString = translationForKey(@"popdeem.claim.checkinLocation", defaultLocationString);
+        
+      self.viewOneLabelTwoText = [NSString stringWithFormat:translationForKey(@"popdeem.facebook.share.stepOne.label2.noapp", @"Make your post on Facebook, making sure to check-in at a %@ location. Then use the scan feature on the previous screen to claim your reward."), locationString];
+        
     } else {
-      self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook, making sure to include the required hashtag. Then use the scan feature on the previous screen to claim your reward.");
+        self.viewOneLabelTwoText = translationForKey(@"popdeem.facebook.share.stepOne.label2", @"Make your post on Facebook. Then use the scan feature on the previous screen to claim your reward.");
     }
   } else {
    
