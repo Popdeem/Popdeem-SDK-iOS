@@ -33,7 +33,7 @@
      }
   }
     
-  [[NSNotificationCenter defaultCenter] postNotificationName:NavigateToSocialRewardsNotification object:self];
+  [[NSNotificationCenter defaultCenter] postNotificationName:SocialLoginTakeoverUserLoggedIn object:self];
     
     
  /*

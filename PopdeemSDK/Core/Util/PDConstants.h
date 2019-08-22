@@ -82,7 +82,12 @@ extern NSString *const DirectToSocialHome;
 extern NSString *const PDUserLinkedToFacebook;
 extern NSString *const ShouldUpdateTableView;
 
-extern NSString *const NavigateToSocialRewardsNotification;
+extern NSString *const SocialLoginTakeoverUserLoggedIn;
+extern NSString *const SocialLoginTakeoverDismissed;
+
+
+
+
     //
 //End NSNotificationCenter Strings
 //

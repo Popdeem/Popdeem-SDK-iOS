@@ -250,19 +250,26 @@
     NSString *socialLoginTransition = PopdeemSocialLoginTransition(PDThemeSocialLoginTransition);
     
     if ([socialLoginTransition isEqualToString:PDSocialLoginTransition2]) {
-        CATransition *transition = [[CATransition alloc] init];
-        transition.duration = 0.5;
+        
+        CATransition *transition = [CATransition animation];
+        transition.duration = 0.3;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type = kCATransitionPush;
         transition.subtype = kCATransitionFromRight;
-        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-        [self.view.window.layer addAnimation:transition forKey:kCATransition];
-        [self dismissViewControllerAnimated:NO completion:^{}];
-    } else {
-      [self dismissViewControllerAnimated:YES completion:^{
+        [self.view.window.layer addAnimation:transition forKey:nil];
+    
+        [self dismissViewControllerAnimated:NO completion:^{
         //Any cleanup to do?
+        [[NSNotificationCenter defaultCenter] postNotificationName:SocialLoginTakeoverDismissed object:self];
+        }];
+    } else {
+      [self dismissViewControllerAnimated:NO completion:^{
+        //Any cleanup to do?
+        [[NSNotificationCenter defaultCenter] postNotificationName:SocialLoginTakeoverDismissed object:self];
       }];
-    }
      
+    }
+    
   AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Dismiss Button"});
 }
 

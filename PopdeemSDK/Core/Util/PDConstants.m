@@ -72,7 +72,8 @@ NSString *const DidFetchBrands = @"DidFetchBrands";
 NSString *const DirectToSocialHome = @"DirectToSocialHome";
 NSString *const ShouldUpdateTableView = @"ShoudUpdateTableView";
 
-NSString * const NavigateToSocialRewardsNotification = @"NavigateToSocialRewardsNotification";
+NSString * const SocialLoginTakeoverUserLoggedIn = @"SocialLoginTakeoverUserLoggedIn";
+NSString * const SocialLoginTakeoverDismissed = @"SocialLoginTakeoverDismissed";
 
 
 /*
