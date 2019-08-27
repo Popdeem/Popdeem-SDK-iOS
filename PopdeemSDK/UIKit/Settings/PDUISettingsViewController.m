@@ -230,17 +230,33 @@
 	// Dispose of any resources that can be recreated.
 }
 
+
+
+- (NSInteger)numberOfSocialNetworksTurnedOn {
+    int socialNetworksOn = 0;
+    
+    if ([[PDCustomer sharedInstance] usesTwitter]) {
+        socialNetworksOn++;
+    }
+    if ([[PDCustomer sharedInstance] usesInstagram]) {
+        socialNetworksOn++;
+    }
+    if ([[PDCustomer sharedInstance] usesFacebook]) {
+        socialNetworksOn++;
+    }
+    return socialNetworksOn;
+}
+
+
+
+
 #pragma mark - Table View Data Source -
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
   case 0:
-      if ([[PDCustomer sharedInstance] usesTwitter]) {
-        return 3;
-      } else {
-        return 2;
-      }
+            return [self numberOfSocialNetworksTurnedOn];
 			break;
-	case 1:
+  case 1:
 			return 1;
 			break;
   default:
@@ -279,29 +295,57 @@
 	return 50;
 }
 
+
+
+
+
+
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	PDUISocialSettingsTableViewCell *socialCell;
 	PDUILogoutTableViewCell *logoutCell;
-	switch (indexPath.section) {
-		case 0:
-			socialCell = [self.tableView dequeueReusableCellWithIdentifier:kSocialNib];
-			switch (indexPath.row) {
-				case 0:
-					[socialCell setSocialNetwork:PDSocialMediaTypeFacebook];
-					break;
-				case 1:
-          if ([[PDCustomer sharedInstance] usesTwitter]) {
-            [socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
-          } else {
-            [socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
-          }
-					break;
-				case 2:
-					[socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
-					break;
-				default:
-					break;
-			}
+	
+    
+    switch (indexPath.section) {
+        case 0:
+            socialCell = [self.tableView dequeueReusableCellWithIdentifier:kSocialNib];
+            switch (indexPath.row) {
+                    
+                case 0:
+                    if ([[PDCustomer sharedInstance] usesFacebook]) {
+                        [socialCell setSocialNetwork:PDSocialMediaTypeFacebook];
+                    }
+                    else if (![[PDCustomer sharedInstance] usesFacebook] && [[PDCustomer sharedInstance] usesTwitter]) {
+                        [socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
+                    }
+                        
+                    else if (![[PDCustomer sharedInstance] usesFacebook] && ![[PDCustomer sharedInstance] usesTwitter]) {
+                        [socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
+                    }
+                    break;
+                        
+                        
+                case 1:
+                    if ([[PDCustomer sharedInstance] usesTwitter] && [[PDCustomer sharedInstance] usesFacebook]) {
+                        [socialCell setSocialNetwork:PDSocialMediaTypeTwitter];
+                    }
+                    else if (![[PDCustomer sharedInstance] usesTwitter] || ![[PDCustomer sharedInstance] usesFacebook]) {
+                        [socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
+                    }
+                    break;
+                    
+                    
+                case 2:
+                    
+                    [socialCell setSocialNetwork:PDSocialMediaTypeInstagram];
+                    break;
+                   
+                    
+                default:
+                    break;
+            }
+            
+            
+            
 			[socialCell setParent:self];
 			return socialCell;
 			break;

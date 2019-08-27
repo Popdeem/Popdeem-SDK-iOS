@@ -222,6 +222,8 @@ CGFloat _cardX,_cardY;
 	secret = [PopdeemSDK instagramClientSecret];
 	callback = [PopdeemSDK instagramCallback];
 	
+    // response_type=code&scope=basic&hl=en
+    
 	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
   
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];
@@ -250,6 +252,7 @@ CGFloat _cardX,_cardY;
 }
 
 #pragma mark - Web View Delegate -
+
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:@"accounts/login"].location != NSNotFound) {

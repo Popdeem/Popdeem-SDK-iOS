@@ -9,6 +9,7 @@
 #import "PDBackgroundScan.h"
 #import "PDReward.h"
 #import "PDLogger.h"
+#import "PDAbraClient.h"
 
 @implementation PDBackgroundScan
 
@@ -20,6 +21,7 @@
   NSDictionary *params = @{
                            @"network" : network
                            };
+
 
   NSURLSession *session = [NSURLSession createPopdeemSession];
   NSString *path = [NSString stringWithFormat:@"%@/%@/%zd/autodiscovery",self.baseUrl,REWARDS_PATH,reward.identifier];

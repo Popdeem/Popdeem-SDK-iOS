@@ -25,6 +25,7 @@
 #import "PDUIDirectToSocialHomeHandler.h"
 #import "PDCustomer.h"
 
+
 @interface PDMultiLoginViewControllerV2 ()
 @property (nonatomic, retain) PDMultiLoginViewModelV2* viewModel;
 @property (nonatomic) BOOL facebookLoginOccurring;
@@ -53,15 +54,12 @@
   _viewModel = [[PDMultiLoginViewModelV2 alloc] initForViewController:self reward:_reward];
   [_viewModel setup];
     
-    
     UIColor *customGrayColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1.0].CGColor;
-    
     UIColor *customColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1.0];
   
   [_cancelButton setFont:PopdeemFont(PDThemeFontBold, 15)];
   [_cancelButton setTitleColor:customColor forState:UIControlStateNormal];
 
-    
   [_titleLabel setText:_viewModel.titleString];
   [_titleLabel setFont:_viewModel.bodyFont];
   [_titleLabel setTextColor:customColor];
@@ -93,13 +91,22 @@
       _twitterLoginButton.layer.shadowOffset = CGSizeMake(8.0f, 8.0f);
       
   }
+    
+    if (![[PDCustomer sharedInstance] usesInstagram]) {
+        [_instagramLoginButton setHidden:YES];
+        [_instagramLoginButton setEnabled:NO];
+        
+        //_instagramButtonHeightConstraint.constant = 0;
+        //_instagramButtonBottomGapLayoutConstraint.constant = 0;
+        
+    } else {
   
-  [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  _instagramLoginButton.layer.cornerRadius = 25.0;
-  _instagramLoginButton.clipsToBounds = YES;
-  [_instagramLoginButton setTitle:_viewModel.instagramButtonText forState:UIControlStateNormal];
-  [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontBold, 15)];
-  [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
+    [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _instagramLoginButton.layer.cornerRadius = 25.0;
+    _instagramLoginButton.clipsToBounds = YES;
+    [_instagramLoginButton setTitle:_viewModel.instagramButtonText forState:UIControlStateNormal];
+    [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontBold, 15)];
+    [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
   
     _instagramLoginButton.layer.masksToBounds = NO;
     _instagramLoginButton.layer.borderColor = (__bridge CGColorRef _Nullable)(UIColor.clearColor);
@@ -108,13 +115,22 @@
     _instagramLoginButton.layer.shadowOpacity = 0.5;
     _instagramLoginButton.layer.shadowRadius = 8;
     _instagramLoginButton.layer.shadowOffset = CGSizeMake(8.0f, 8.0f);
+    }
+
+    if(![[PDCustomer sharedInstance] usesFacebook]) {
+        [_facebookLoginButton setHidden:YES];
+        [_facebookLoginButton setEnabled:NO];
+        
+        //_facebookButtonHeightConstraint.constant = 0;
+        //_facebookButtonBottomGapLayoutConstraint.constant = 0;
+
+    } else {
     
-    
-  //Facebook setup
-  _facebookLoginButton.layer.cornerRadius = 25.0;
-  _facebookLoginButton.clipsToBounds = YES;
-  [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
-  [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontBold, 15)];
+      //Facebook setup
+      _facebookLoginButton.layer.cornerRadius = 25.0;
+      _facebookLoginButton.clipsToBounds = YES;
+      [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
+      [self.facebookLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontBold, 15)];
   
     _facebookLoginButton.layer.masksToBounds = NO;
     _facebookLoginButton.layer.borderColor = (__bridge CGColorRef _Nullable)(UIColor.clearColor);
@@ -123,7 +139,8 @@
     _facebookLoginButton.layer.shadowOpacity = 0.5;
     _facebookLoginButton.layer.shadowRadius = 8;
     _facebookLoginButton.layer.shadowOffset = CGSizeMake(8.0f, 8.0f);
-    
+        
+    }
     
   if (_viewModel.image) {
     [self.imageView setImage:_viewModel.image];
@@ -271,6 +288,9 @@
     }
     
   AbraLogEvent(ABRA_EVENT_CLICKED_CLOSE_LOGIN_TAKEOVER, @{@"Source" : @"Dismiss Button"});
+    
+    
+    
 }
 
 #pragma mark - Facebook Login -

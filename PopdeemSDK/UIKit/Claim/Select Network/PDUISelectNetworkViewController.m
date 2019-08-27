@@ -413,6 +413,20 @@
 #pragma mark - Scanning -
 
 - (void) pushScanForNetwork:(NSString*)network {
+    
+     if ([network isEqualToString:@"facebook"]) {
+     NSLog(@"Log Scanned Facebook");
+     AbraLogEvent(ABRA_EVENT_USER_SCANNED_FACEBOOK, @{@"Source" : @"Scan for Post"});
+     
+     } else if ([network isEqualToString:@"twitter"]) {
+     NSLog(@"Log Scanned Twitter");
+     AbraLogEvent(ABRA_EVENT_USER_SCANNED_TWITTER, @{@"Source" : @"Scan for Post"});
+     
+     } else if ([network isEqualToString:@"instagram"]) {
+     NSLog(@"Log Scanned Instagram");
+     AbraLogEvent(ABRA_EVENT_USER_SCANNED_INSTAGRAM, @{@"Source" : @"Scan for Post"});
+     }
+    
   PDUIPostScanViewController *postScan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:network];
   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   [self.navigationController pushViewController:postScan animated:YES];

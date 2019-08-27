@@ -25,4 +25,6 @@
 - (void) disconnectInstagramAccount;
 - (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName;
 - (void) logoutUser;
+- (NSInteger) numberOfSocialNetworksTurnedOn;
+
 @end

@@ -113,6 +113,9 @@ static NSString *const PDUseCountKey = @"PDUseCount";
           [topController presentViewController:vc animated:YES completion:^{}];
           [self setUsesCount:self.usesCount+1];
           PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+          
+          [self logSocialLoginTakeoverCount];
+    
       }
        else if ([socialLoginVariation isEqualToString:PDSocialLoginDesignVariation2]) {
         PDMultiLoginViewControllerV2 *vc = [[PDMultiLoginViewControllerV2 alloc] initFromNibWithReward:reward];
@@ -134,6 +137,9 @@ static NSString *const PDUseCountKey = @"PDUseCount";
             }
            [self setUsesCount:self.usesCount+1];
            PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+           
+           [self logSocialLoginTakeoverCount];
+           
        }
        else {
         PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
@@ -144,6 +150,8 @@ static NSString *const PDUseCountKey = @"PDUseCount";
            [topController presentViewController:vc animated:YES completion:^{}];
            [self setUsesCount:self.usesCount+1];
            PDLog(@"Login Count: %lu",(unsigned long)[self usesCount]);
+           
+           [self logSocialLoginTakeoverCount];
       }
       
   }];
@@ -168,6 +176,35 @@ static NSString *const PDUseCountKey = @"PDUseCount";
 
 - (NSUInteger)numberOfPromptsAllowed {
   return [[NSUserDefaults standardUserDefaults] integerForKey:PDUseCountKey]? : 0;
+}
+
+
+- (void) logSocialLoginTakeoverCount {
+    
+    switch ([self usesCount]) {
+        case 1:
+            NSLog(@"Log Login Takeover 1");
+            AbraLogEvent(ABRA_EVENT_SHOW_LOGIN_TAKEOVER_1, @{@"Source" : @"Social Login Takeover"});
+            break;
+        case 2:
+            NSLog(@"Log Login Takeover 2");
+            AbraLogEvent(ABRA_EVENT_SHOW_LOGIN_TAKEOVER_2, @{@"Source" : @"Social Login Takeover"});
+            break;
+        case 3:
+            NSLog(@"Log Login Takeover 3");
+            AbraLogEvent(ABRA_EVENT_SHOW_LOGIN_TAKEOVER_3, @{@"Source" : @"Social Login Takeover"});
+            break;
+        case 4:
+            NSLog(@"Log Login Takeover 4");
+            AbraLogEvent(ABRA_EVENT_SHOW_LOGIN_TAKEOVER_4, @{@"Source" : @"Social Login Takeover"});
+            break;
+        case 5:
+            NSLog(@"Log Login Takeover 5");
+            AbraLogEvent(ABRA_EVENT_SHOW_LOGIN_TAKEOVER_5, @{@"Source" : @"Social Login Takeover"});
+            break;
+        default:
+            break;
+    }
 }
 
 

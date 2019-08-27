@@ -132,13 +132,18 @@ NSString *const ABRA_EVENT_CANCELLED_FACEBOOK_LOGIN = @"User cancelled facebook 
 
 
 
+NSString *const ABRA_EVENT_USER_SCANNED_FACEBOOK = @"User Scanned for Existing Post on Facebook";
+NSString *const ABRA_EVENT_USER_SCANNED_INSTAGRAM = @"User Scanned for Existing Post on Instagram";
+NSString *const ABRA_EVENT_USER_SCANNED_TWITTER = @"User Scanned for Existing Post on Twitter";
 
+NSString *const ABRA_EVENT_USER_POSTED_FACEBOOK = @"User Posted and Facebook Auto Scan Occured";
+NSString *const ABRA_EVENT_USER_POSTED_INSTAGRAM = @"User Posted and Instagram Auto Scan Occured";
+NSString *const ABRA_EVENT_USER_POSTED_TWITTER = @"User Posted and Twitter Auto Scan Occured";
 
-
-
-
-
-
-
+NSString *const ABRA_EVENT_SHOW_LOGIN_TAKEOVER_1 = @"Login Takeover Count: 1";
+NSString *const ABRA_EVENT_SHOW_LOGIN_TAKEOVER_2 = @"Login Takeover Count: 2";
+NSString *const ABRA_EVENT_SHOW_LOGIN_TAKEOVER_3 = @"Login Takeover Count: 3";
+NSString *const ABRA_EVENT_SHOW_LOGIN_TAKEOVER_4 = @"Login Takeover Count: 4";
+NSString *const ABRA_EVENT_SHOW_LOGIN_TAKEOVER_5 = @"Login Takeover Count: 5";
 
 

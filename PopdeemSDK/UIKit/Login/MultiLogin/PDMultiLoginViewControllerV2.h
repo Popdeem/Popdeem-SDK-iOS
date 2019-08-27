@@ -25,8 +25,16 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *instagramLoginButton;
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @property (nonatomic, assign) PDReward *reward;
+
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonHeightConstraint;
 @property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *twitterButtonBottomGapLayoutConstraint;
+
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonBottomGapLayoutConstraint;
+
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *instagramButtonHeightConstraint;
+@property (unsafe_unretained, nonatomic) IBOutlet NSLayoutConstraint *instagramButtonBottomGapLayoutConstraint;
+
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic) BOOL twitterValid;
 

@@ -1089,6 +1089,7 @@
         
         if (_didStayLongEnoughToPost) {
             //We know user was at Instagram, and instagram post is being attempted
+            AbraLogEvent(ABRA_EVENT_USER_POSTED_INSTAGRAM, @{@"Source" : @"Shared Post"});
             PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:INSTAGRAM_NETWORK];
             [self.navigationController pushViewController:scan animated:YES];
     }
@@ -1126,6 +1127,8 @@
 }
 
 - (void) facebookShared {
+    
+  AbraLogEvent(ABRA_EVENT_USER_POSTED_FACEBOOK, @{@"Source" : @"Shared Post"});
   PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:_reward network:FACEBOOK_NETWORK];
   [self.navigationController pushViewController:scan animated:NO];
 }
@@ -1169,6 +1172,7 @@
     }
     else {
       NSLog(@"Sending Tweet!");
+      AbraLogEvent(ABRA_EVENT_USER_POSTED_TWITTER, @{@"Source" : @"Shared Post"});
       PDUIPostScanViewController *scan = [[PDUIPostScanViewController alloc] initWithReward:weakSelf.reward network:TWITTER_NETWORK];
       [weakSelf.navigationController pushViewController:scan animated:NO];
 
