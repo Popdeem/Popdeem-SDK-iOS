@@ -95,10 +95,6 @@
     if (![[PDCustomer sharedInstance] usesInstagram]) {
         [_instagramLoginButton setHidden:YES];
         [_instagramLoginButton setEnabled:NO];
-        
-        //_instagramButtonHeightConstraint.constant = 0;
-        //_instagramButtonBottomGapLayoutConstraint.constant = 0;
-        
     } else {
   
     [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -120,10 +116,6 @@
     if(![[PDCustomer sharedInstance] usesFacebook]) {
         [_facebookLoginButton setHidden:YES];
         [_facebookLoginButton setEnabled:NO];
-        
-        //_facebookButtonHeightConstraint.constant = 0;
-        //_facebookButtonBottomGapLayoutConstraint.constant = 0;
-
     } else {
     
       //Facebook setup

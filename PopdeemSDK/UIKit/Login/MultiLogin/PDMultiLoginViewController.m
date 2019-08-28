@@ -79,6 +79,12 @@
     _twitterLoginButton.clipsToBounds = YES;
   }
   
+    
+  if (![[PDCustomer sharedInstance] usesInstagram]) {
+      [_instagramLoginButton setHidden:YES];
+      [_instagramLoginButton setEnabled:NO];
+  } else {
+    
   [_instagramLoginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   _instagramLoginButton.layer.cornerRadius = 5.0;
   _instagramLoginButton.clipsToBounds = YES;
@@ -86,12 +92,21 @@
   [_instagramLoginButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 15)];
   [_instagramLoginButton setBackgroundColor:_viewModel.instagramButtonColor];
   
+  }
+    
+  if(![[PDCustomer sharedInstance] usesFacebook]) {
+     [_facebookLoginButton setHidden:YES];
+     [_facebookLoginButton setEnabled:NO];
+  } else {
+    
   //Facebook setup
   _facebookLoginButton.layer.cornerRadius = 5.0;
   _facebookLoginButton.clipsToBounds = YES;
   [_facebookLoginButton setTitle:_viewModel.facebookButtonText forState:UIControlStateNormal];
   [self.facebookLoginButton.titleLabel setFont:_viewModel.facebookButtonFont];
   
+  }
+    
   if (_viewModel.image) {
     [self.imageView setImage:_viewModel.image];
   }
