@@ -84,7 +84,7 @@
     _profileButton.layer.borderColor = PopdeemColor(PDThemeColorSecondaryApp).CGColor;
     _profileButton.titleLabel.textColor = PopdeemColor(PDThemeColorSecondaryApp);
     _profileButton.titleLabel.font = PopdeemFont(PDThemeFontBold, 17);
-    [_profileButton setTitle:translationForKey(@"popdeem.gratitude.buttonTitle", @"Go to Profile") forState:UIControlStateNormal];
+    [_profileButton setTitle:translationForKey(@"popdeem.gratitude.buttonTitle", @"Continue") forState:UIControlStateNormal];
     [_profileButton setTitleColor:PopdeemColor(PDThemeColorSecondaryApp) forState:UIControlStateNormal];
     [_profileButton addTarget:self action:@selector(dismissAction) forControlEvents:UIControlEventTouchUpInside];
     

@@ -356,7 +356,7 @@
   if (_didClaim) {
     claimAction = NO;
     _didClaim = NO;
-    [_segmentedControl setSelectedSegmentIndex:2];
+    //[_segmentedControl setSelectedSegmentIndex:2];
     [_model fetchWallet];
     _model.rewards = [PDRewardStore orderedByDistanceFromUser];
     [_model fetchWallet];
@@ -1175,7 +1175,7 @@
     [self.tableView reloadInputViews];
   }];
   _didLogin = NO;
-  [_segmentedControl setSelectedSegmentIndex:2];
+  //[_segmentedControl setSelectedSegmentIndex:2];
 }
 
 - (void) showConnect {
