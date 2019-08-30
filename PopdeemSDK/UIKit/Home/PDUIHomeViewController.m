@@ -205,7 +205,7 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggedOut) name:PDUserDidLogout object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postVerified) name:InstagramVerifySuccessFromWallet object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramPostMade:) name:InstagramPostMade object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:NotificationReceived object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:_model selector:@selector(fetchInbox) name:PopdeemNotificationReceived object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:PDUserDidLogin object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateUser) name:PDUserDidUpdate object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldUpdateTableView) name:ShouldUpdateTableView object:nil];

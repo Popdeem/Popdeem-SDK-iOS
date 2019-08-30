@@ -256,7 +256,7 @@
   [[PDNotificationHandler sharedInstance] showRemoteNotification:userInfo completion:^(BOOL success) {
     PDLog(@"Notification Shown");
   }];
-  [[NSNotificationCenter defaultCenter] postNotificationName:NotificationReceived object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:PopdeemNotificationReceived object:nil];
 }
 
 + (BOOL) canOpenUrl:(NSURL*)url	
