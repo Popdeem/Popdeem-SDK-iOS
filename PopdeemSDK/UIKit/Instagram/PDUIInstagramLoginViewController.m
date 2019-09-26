@@ -13,9 +13,11 @@
 #import "PDConstants.h"
 #import "PDAPIClient.h"
 #import "PDUIClaimViewModel.h"
+#import "PDUIClaimViewModel.h"
+#import <WebKit/WKWebView.h>
+#import <WebKit/WebKit.h>
 
-
-@interface PDUIInstagramLoginViewController ()
+@interface PDUIInstagramLoginViewController()
 @property (nonatomic, retain) PDUIModalLoadingView *loadingView;
 @property (nonatomic) BOOL tappedClosed;
 @property (nonatomic) BOOL cancelPressed;
@@ -179,7 +181,7 @@ CGFloat _cardX,_cardY;
 	[_cardView addSubview:_actionButton];
 	[self renderView];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-  
+
 
 }
 
@@ -218,6 +220,9 @@ CGFloat _cardX,_cardY;
 }
 
 - (void) connectInstagram {
+    
+    
+    
 	client_id = [PopdeemSDK instagramClientId];
 	secret = [PopdeemSDK instagramClientSecret];
 	callback = [PopdeemSDK instagramCallback];
@@ -225,6 +230,8 @@ CGFloat _cardX,_cardY;
     // response_type=code&scope=basic&hl=en
     
 	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
+    
+    
   
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];
 	self.definesPresentationContext = YES;
@@ -244,15 +251,49 @@ CGFloat _cardX,_cardY;
     }
   }
 	
+    [self presentViewController:_webViewController animated:YES completion:^(void){
+        
+        
+        [_webViewController.loadingView hideAnimated:YES];
+    
+        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        [_webViewController.wkWebView loadRequest:req];
+        
+    }];
+    
+    
+    /*
 	[self presentViewController:_webViewController animated:YES completion:^(void){
+        
 		_webViewController.webView.delegate = self;
+        
 		[_webViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 	}];
+    */
+     
+    
 	AbraLogEvent(ABRA_EVENT_CLICKED_SIGN_IN_INSTAGRAM, nil);
 }
 
 #pragma mark - Web View Delegate -
 
+
+/*
+- (void) wkWebView:(WKWebView *)wkWebView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    decisionHandler(WKNavigationActionPolicyAllow);
+    
+    NSLog(@"Testing WKWebView");
+}
+*/
+
+
+
+
+
+
+
+
+/*
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
 	if ([[[request URL] URLStringWithoutQuery] rangeOfString:@"accounts/login"].location != NSNotFound) {
@@ -298,6 +339,12 @@ CGFloat _cardX,_cardY;
 	}
 	return YES;
 }
+
+*/
+
+
+
+
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
 	// [indicator stopAnimating];

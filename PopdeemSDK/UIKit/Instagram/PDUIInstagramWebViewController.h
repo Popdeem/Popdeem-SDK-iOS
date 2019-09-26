@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PDUIModalLoadingView.h"
 #import <WebKit/WKWebView.h>
+@import WebKit;
 
-@interface PDUIInstagramWebViewController : UIViewController
+@interface PDUIInstagramWebViewController : UIViewController <WKUIDelegate, WKNavigationDelegate>
 @property (unsafe_unretained, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (unsafe_unretained, nonatomic) IBOutlet UIWebView *webView;
 @property (unsafe_unretained, nonatomic) IBOutlet WKWebView *wkWebView;
