@@ -25,9 +25,9 @@
 @property (nonatomic) BOOL directConnect;
 @end
 
-NSString *client_id;
-NSString *secret;
-NSString *callback;
+//NSString *client_id;
+//NSString *secret;
+//NSString *callback;
 CGFloat _cardX,_cardY;
 
 @implementation PDUIInstagramLoginViewController
@@ -223,13 +223,13 @@ CGFloat _cardX,_cardY;
     
     
     
-	client_id = [PopdeemSDK instagramClientId];
-	secret = [PopdeemSDK instagramClientSecret];
-	callback = [PopdeemSDK instagramCallback];
+	//client_id = [PopdeemSDK instagramClientId];
+	//secret = [PopdeemSDK instagramClientSecret];
+	//callback = [PopdeemSDK instagramCallback];
 	
     // response_type=code&scope=basic&hl=en
     
-	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
+	//NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
     
     
   
@@ -253,11 +253,10 @@ CGFloat _cardX,_cardY;
 	
     [self presentViewController:_webViewController animated:YES completion:^(void){
         
-        
         [_webViewController.loadingView hideAnimated:YES];
     
-        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-        [_webViewController.wkWebView loadRequest:req];
+        //NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        //[_webViewController.wkWebView loadRequest:req];
         
     }];
     
@@ -276,19 +275,6 @@ CGFloat _cardX,_cardY;
 }
 
 #pragma mark - Web View Delegate -
-
-
-/*
-- (void) wkWebView:(WKWebView *)wkWebView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    decisionHandler(WKNavigationActionPolicyAllow);
-    
-    NSLog(@"Testing WKWebView");
-}
-*/
-
-
-
-
 
 
 

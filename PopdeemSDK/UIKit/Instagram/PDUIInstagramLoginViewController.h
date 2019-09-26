@@ -34,7 +34,7 @@
 
 @property (nonatomic, retain) PDUIInstagramWebViewController *webViewController;
 @property (nonatomic, retain) IBOutlet UIWebView *webview;
-@property (nonatomic, retain) IBOutlet WKWebView *wkWebview;
+//@property (nonatomic, retain) IBOutlet WKWebView *wkWebview;
 
 - (instancetype) initForParent:(UIViewController*)parent delegate:(id<InstagramLoginDelegate>)delegate connectMode:(BOOL)connectMode;
 - (instancetype) initForParent:(UIViewController*)parent connectMode:(BOOL)connectMode;
