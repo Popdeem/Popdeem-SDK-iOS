@@ -230,8 +230,6 @@ CGFloat _cardX,_cardY;
     // response_type=code&scope=basic&hl=en
     
 	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
-    
-    
   
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];
 	self.definesPresentationContext = YES;
@@ -252,25 +250,15 @@ CGFloat _cardX,_cardY;
   }
 	
     [self presentViewController:_webViewController animated:YES completion:^(void){
-        
-        [_webViewController.loadingView hideAnimated:YES];
     
+        [_webViewController.loadingView hideAnimated:YES];
+        
         NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [_webViewController.wkNewWebView loadRequest:req];
         
+        
     }];
-    
-    
-    /*
-	[self presentViewController:_webViewController animated:YES completion:^(void){
-        
-		_webViewController.webView.delegate = self;
-        
-		[_webViewController.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-	}];
-    */
-     
-    
+
 	AbraLogEvent(ABRA_EVENT_CLICKED_SIGN_IN_INSTAGRAM, nil);
 }
 
@@ -369,10 +357,12 @@ CGFloat _cardX,_cardY;
 	[_delegate connectInstagramAccount:instagramModel.user.id accessToken:instagramModel.accessToken userName:instagramModel.user.username];
 }
 
+/*
 - (NSString *)URLStringWithoutQuery:(NSURL*)url {
 	NSArray *parts = [[url absoluteString] componentsSeparatedByString:@"?"];
 	return [parts objectAtIndex:0];
 }
+ */
 
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
