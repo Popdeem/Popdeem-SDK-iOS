@@ -258,7 +258,7 @@ CGFloat _cardX,_cardY;
         
         NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [_webViewController.wkNewWebView loadRequest:req];
-        
+
         
     }];
 
@@ -275,7 +275,7 @@ CGFloat _cardX,_cardY;
     
     if ([[[request URL] URLStringWithoutQuery] rangeOfString:@"accounts/login"].location != NSNotFound) {
         //Show login view
-        [_loadingView hideAnimated:YES];
+        [_webViewController.loadingView hideAnimated:YES];
     }
     
     PDLog(@"URL: %@", [[request URL] URLStringWithoutQuery]);
