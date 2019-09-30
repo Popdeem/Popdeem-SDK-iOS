@@ -251,7 +251,10 @@ CGFloat _cardX,_cardY;
 	
     [self presentViewController:_webViewController animated:YES completion:^(void){
     
-        [_webViewController.loadingView hideAnimated:YES];
+        _webViewController.wkNewWebView.navigationDelegate = self;
+        _webViewController.wkNewWebView.UIDelegate = self;
+        
+        //[_webViewController.loadingView hideAnimated:YES];
         
         NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [_webViewController.wkNewWebView loadRequest:req];
@@ -266,56 +269,51 @@ CGFloat _cardX,_cardY;
 
 
 
-/*
+-(void)webView:(WKWebView *)wkNewWebView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    NSURLRequest *request = navigationAction.request;
+    
+    if ([[[request URL] URLStringWithoutQuery] rangeOfString:@"accounts/login"].location != NSNotFound) {
+        //Show login view
+        [_loadingView hideAnimated:YES];
+    }
+    
+    PDLog(@"URL: %@", [[request URL] URLStringWithoutQuery]);
+    if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
+        [_webViewController.loadingView hideAnimated:YES];
 
-- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
-	if ([[[request URL] URLStringWithoutQuery] rangeOfString:@"accounts/login"].location != NSNotFound) {
-		//Show login view
-		[_webViewController.loadingView hideAnimated:YES];
-	}
-	PDLog(@"URL: %@", [[request URL] URLStringWithoutQuery]);
-	if ([[[request URL] URLStringWithoutQuery] rangeOfString:callback].location != NSNotFound) {
-		[_webViewController.loadingView hideAnimated:YES];
-		// Extract oauth_verifier from URL query
-//		_webViewController.loadingView = [[PDUIModalLoadingView alloc] initForView:_webViewController.view titleText:@"Please Wait" descriptionText:@"We are connecting your Instagram Account"];
-//		[_webViewController.loadingView showAnimated:YES];
-		NSString* verifier = nil;
-		NSArray* urlParams = [[[request URL] query] componentsSeparatedByString:@"&"];
-		for (NSString* param in urlParams) {
-			NSArray* keyValue = [param componentsSeparatedByString:@"="];
-			NSString* key = [keyValue objectAtIndex:0];
-			if ([key isEqualToString:@"code"]) {
-				verifier = [keyValue objectAtIndex:1];
-				break;
-			}
-		}
-		
-		if (verifier) {
-			
-			NSString *data = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",client_id,secret,callback,verifier];
-			
-			NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/access_token"];
-			
-			NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-			[request setHTTPMethod:@"POST"];
-			[request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
-			NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-      PDLog(@"Instagram connection started: %@", theConnection);
-			receivedData = [[NSMutableData alloc] init];
-		} else {
-			// ERROR!
-		}
-		
-		[webView removeFromSuperview];
-		
-		return NO;
-	}
-	return YES;
+        NSString* verifier = nil;
+        NSArray* urlParams = [[[request URL] query] componentsSeparatedByString:@"&"];
+        for (NSString* param in urlParams) {
+            NSArray* keyValue = [param componentsSeparatedByString:@"="];
+            NSString* key = [keyValue objectAtIndex:0];
+            if ([key isEqualToString:@"code"]) {
+                verifier = [keyValue objectAtIndex:1];
+                break;
+            }
+        }
+        
+        if (verifier) {
+            
+            NSString *data = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",client_id,secret,callback,verifier];
+            NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/access_token"];
+            
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+            [request setHTTPMethod:@"POST"];
+            [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+            NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            PDLog(@"Instagram connection started: %@", theConnection);
+            receivedData = [[NSMutableData alloc] init];
+        } else {
+            // ERROR!
+        }
+        
+        [wkNewWebView removeFromSuperview];
+        
+    }
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
-
-*/
-
-
 
 
 /*
