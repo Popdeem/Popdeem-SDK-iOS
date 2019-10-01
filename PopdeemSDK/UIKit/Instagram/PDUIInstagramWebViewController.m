@@ -16,6 +16,7 @@
 
 @end
 
+
 @implementation PDUIInstagramWebViewController
 
 - (instancetype) initFromNib {
@@ -48,12 +49,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Preparing Instagram Login"];
-	[_loadingView showAnimated:YES];
+    
+    _loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Preparing Instagram Login"];
+    [_loadingView showAnimated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,8 +69,8 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginCancelPressed object:nil];
   __weak typeof(self) weakSelf = self;
 	[self dismissViewControllerAnimated:YES completion:^(void){
-		if (weakSelf.webView && [weakSelf.webView isLoading]) {
-				[weakSelf.webView stopLoading];
+		if (weakSelf.wkNewWebView && [weakSelf.wkNewWebView isLoading]) {
+				[weakSelf.wkNewWebView stopLoading];
 		}
 	}];
 }
@@ -73,6 +78,9 @@
 - (void) viewWillDisappear:(BOOL)animated {
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
+
+
+
 
 /*
 #pragma mark - Navigation
