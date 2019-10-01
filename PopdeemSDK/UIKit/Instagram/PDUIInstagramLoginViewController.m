@@ -316,11 +316,6 @@ CGFloat _cardX,_cardY;
 }
 
 
-/*
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-	// [indicator stopAnimating];
-}*/
-
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receivedData appendData:data];
 }

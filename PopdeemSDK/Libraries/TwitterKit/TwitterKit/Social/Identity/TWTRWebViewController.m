@@ -17,10 +17,14 @@
 
 #import "TWTRWebViewController.h"
 #import "TWTRAuthenticationConstants.h"
+#import <WebKit/WKWebView.h>
+#import <WebKit/WebKit.h>
+@import WebKit;
 
-@interface TWTRWebViewController () <UIWebViewDelegate>
+//TWITTER-WKWEBVIEW
+@interface TWTRWebViewController () <WKNavigationDelegate, WKUIDelegate>
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *wkWebView;
 @property (nonatomic, assign) BOOL showCancelButton;
 @property (nonatomic, copy) TWTRWebViewControllerCancelCompletion cancelCompletion;
 
@@ -58,42 +62,52 @@
 
 - (void)load
 {
-    [[self webView] loadRequest:[self request]];
+    [[self wkWebView] loadRequest:[self request]];
 }
 
 #pragma mark - View controller lifecycle
 
 - (void)loadView
 {
-    [self setWebView:[[UIWebView alloc] init]];
-    [[self webView] setScalesPageToFit:YES];
-    [[self webView] setDelegate:self];
-    [self setView:[self webView]];
+    [self setWkWebView:[[WKWebView alloc] init]];
+    //[[self wkWebView] setScalesPageToFit:YES];
+    //[[self wkWebView] setDelegate:self];
+    [self setView:[self wkWebView]];
 }
 
 #pragma mark - UIWebview delegate
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
+
+//TWITTER-WKWEBVIEW
+
+-(void)webView:(WKWebView *)wkWebView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    NSURLRequest *request = navigationAction.request;
+    
     if (![self whitelistedDomain:request]) {
         // Open in Safari if request is not whitelisted
         NSLog(@"Opening link in Safari browser, as the host is not whitelisted: %@", request.URL);
         [[UIApplication sharedApplication] openURL:request.URL];
-        return NO;
+        //return NO;
     }
-    if ([self shouldStartLoadWithRequest]) {
-        return [self shouldStartLoadWithRequest](self, request, navigationType);
+    if ([self decidePolicyForNavigationAction]) {
+        return [self decidePolicyForNavigationAction](self, navigationAction);
     }
-    return YES;
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+
+
+- (void)webView:(WKWebView *)wkWebView didFailLoadWithError:(NSError *)error
 {
     if (self.errorHandler) {
         self.errorHandler(error);
         self.errorHandler = nil;
     }
 }
+
+
 
 #pragma mark - Internal methods
 

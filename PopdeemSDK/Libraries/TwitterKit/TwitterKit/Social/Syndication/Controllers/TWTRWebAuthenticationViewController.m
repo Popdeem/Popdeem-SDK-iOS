@@ -102,17 +102,22 @@
        [self failWithError:error];
     };
 
-    webVC.shouldStartLoadWithRequest = ^BOOL(UIViewController *controller, NSURLRequest *request, UIWebViewNavigationType navType) {
-       NSURL *URL = request.URL;
+    //TWITTER-WKWEBVIEW
+    webVC.decidePolicyForNavigationAction = ^(UIViewController *controller, WKNavigationAction* navAction) {
+        
+        NSURLRequest *request = navAction.request;
+        
+        NSURL *URL = request.URL;
         if ([TWTRSDKScheme isEqualToString:URL.scheme] && [TWTRSDKRedirectHost isEqualToString:URL.host]) {
             [self handleTwitterRedirectRequest:request];
-            return NO;
         }
-        return YES;
     };
-
+    
     return webVC;
 }
+
+
+
 
 - (void)embedViewController:(UIViewController *)controller
 {

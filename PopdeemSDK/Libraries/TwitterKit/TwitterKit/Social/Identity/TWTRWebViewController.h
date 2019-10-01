@@ -20,17 +20,24 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WKWebView.h>
+#import <WebKit/WebKit.h>
+@import WebKit;
 
 @class TWTRWebViewController;
 
-typedef BOOL (^TWTRWebViewControllerShouldLoadCompletion)(UIViewController *controller, NSURLRequest *request, UIWebViewNavigationType navigationType);
+//TWITTER-WKWEBVIEW
+typedef void (^TWTRWebViewControllerDecidePolicyForNavigationActionCompletion)(UIViewController *controller, WKNavigationAction* navigationAction);
 typedef void (^TWTRWebViewControllerCancelCompletion)(TWTRWebViewController *webViewController);
 typedef void (^TWTRWebViewControllerHandleError)(NSError *error);
 
 @interface TWTRWebViewController : UIViewController
 
 @property (nonatomic, strong) NSURLRequest *request;
-@property (nonatomic, copy) TWTRWebViewControllerShouldLoadCompletion shouldStartLoadWithRequest;
+
+//TWITTER-WKWEBVIEW
+@property (nonatomic, copy) TWTRWebViewControllerDecidePolicyForNavigationActionCompletion decidePolicyForNavigationAction;
+
 @property (nonatomic, copy) TWTRWebViewControllerHandleError errorHandler;
 
 - (void)enableCancelButtonWithCancelCompletion:(TWTRWebViewControllerCancelCompletion)cancelCompletion;
