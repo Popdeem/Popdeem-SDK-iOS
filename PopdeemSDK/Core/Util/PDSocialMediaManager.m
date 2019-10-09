@@ -75,8 +75,8 @@
     if ([_holderViewController isKindOfClass:[UIViewController class]]) {
         _holderViewController = nil;
     }
-    
-  [lm logInWithReadPermissions:permissions fromViewController:_holderViewController  handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+  
+  [lm logInWithPermissions:permissions fromViewController:_holderViewController  handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
     if (error) {
       failure(error);
     } else if (result.isCancelled) {

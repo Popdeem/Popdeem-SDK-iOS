@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "13.0"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -50,9 +50,9 @@ Pod::Spec.new do |s|
 	s.subspec 'Core' do |core|
     core.source_files = "PopdeemSDK/*.m", "PopdeemSDK/*.h", "PopdeemSDK/Core/*.{h,m}","PopdeemSDK/**/*.{h,m}" , "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
-		core.dependency "FBSDKLoginKit", '< 4.30'
-		core.dependency "FBSDKCoreKit", '< 4.30'
-    core.dependency "FBSDKShareKit", '< 4.30'
+		core.dependency "FBSDKLoginKit", '~> 5.6.0'
+		core.dependency "FBSDKCoreKit", '~> 5.6.0'
+    core.dependency "FBSDKShareKit", '~> 5.6.0'
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"
