@@ -19,6 +19,8 @@
  This header is private to the Twitter Core SDK and not exposed for public SDK consumption
  */
 
+#import "TWTRAppAPIClient.h"
+
 @interface TWTRAppAPIClient ()
 
 @property (nonatomic, readwrite) NSString *accessToken;
