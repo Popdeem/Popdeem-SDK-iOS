@@ -107,6 +107,8 @@ static NSString *const PDUseCountKey = @"PDUseCount";
           
         PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
           
+          vc.modalPresentationStyle = UIModalPresentationFullScreen;
+          
           [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
           [topController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
           
@@ -121,7 +123,9 @@ static NSString *const PDUseCountKey = @"PDUseCount";
         PDMultiLoginViewControllerV2 *vc = [[PDMultiLoginViewControllerV2 alloc] initFromNibWithReward:reward];
            
            NSString *socialLoginTransition = PopdeemSocialLoginTransition(PDThemeSocialLoginTransition);
-    
+           
+           vc.modalPresentationStyle = UIModalPresentationFullScreen;
+           
            if ([socialLoginTransition isEqualToString:PDSocialLoginTransition2]) {
                
                CATransition *transition = [CATransition animation];
@@ -143,6 +147,8 @@ static NSString *const PDUseCountKey = @"PDUseCount";
        }
        else {
         PDMultiLoginViewController *vc = [[PDMultiLoginViewController alloc] initFromNibWithReward:reward];
+           
+           vc.modalPresentationStyle = UIModalPresentationFullScreen;
            
            [topController setModalPresentationStyle:UIModalPresentationOverFullScreen];
            [topController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
