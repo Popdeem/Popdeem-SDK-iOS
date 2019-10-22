@@ -77,6 +77,13 @@
     }
   }
   
+    NSString *buttonColor;
+    
+    if (PopdeemThemeHasValueForKey(PDThemeColorButtons)) {
+        buttonColor = PopdeemColor(PDThemeColorButtons);
+    } else {
+        buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
 
   self.viewOneActionButtonText = translationForKey(@"popdeem.facebook.share.stepThree.buttonText", @"Okay, Gotcha");
  
@@ -87,7 +94,7 @@
   self.viewOneLabelOneColor = PopdeemColor(PDThemeColorPrimaryFont);
   self.viewOneLabelTwoColor = PopdeemColor(PDThemeColorPrimaryFont);
   
-  self.viewOneActionButtonColor = PopdeemColor(PDThemeColorButtons);
+  self.viewOneActionButtonColor = buttonColor;
   self.viewOneActionButtonBorderColor = [UIColor whiteColor];
 
 }

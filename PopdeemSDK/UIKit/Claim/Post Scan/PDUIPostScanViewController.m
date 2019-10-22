@@ -42,9 +42,14 @@
 
 @property (nonatomic, retain) UILabel *failedLabel;
 
+
+
 @end
 
 @implementation PDUIPostScanViewController
+
+NSString *buttonColor;
+
 
 - (instancetype) initWithReward:(PDReward*)reward network:(NSString*)network {
   if (self = [self initFromNib]) {
@@ -395,7 +400,14 @@
   
   [_postTextLabel setAttributedText:postLabelAttributedString];
   
-  [_claimButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
+
+    if (PopdeemThemeHasValueForKey(PDThemeColorButtons)) {
+        buttonColor = PopdeemColor(PDThemeColorButtons);
+    } else {
+        buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
+    
+  [_claimButton setBackgroundColor:buttonColor];
   [_claimButton setTitle:translationForKey(@"popdeem.claim.claimRewardsText", @"Claim Reward") forState:UIControlStateNormal];
   _claimButton.layer.cornerRadius = 5.0;
   _claimButton.clipsToBounds = YES;
@@ -514,7 +526,7 @@
   [super viewDidLoad];
   [_activityIndicator setHidden:NO];
   [_activityIndicator setSize:55.0f];
-  [_activityIndicator setTintColor:PopdeemColor(PDThemeColorButtons)];
+  [_activityIndicator setTintColor:buttonColor];
   [_activityIndicator setType:DGActivityIndicatorAnimationTypeBallPulse];
   [_activityIndicator setBackgroundColor:[UIColor clearColor]];
   [_activityIndicator startAnimating];

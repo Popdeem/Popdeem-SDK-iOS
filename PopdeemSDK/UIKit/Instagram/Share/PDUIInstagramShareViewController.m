@@ -135,9 +135,18 @@
 	
 	currentY += _viewTwoImageView.frame.size.height;
 	
+    UIColor *buttonColor;
+    
+    if (PopdeemThemeHasValueForKey(PDThemeColorButtons)) {
+        buttonColor = PopdeemColor(PDThemeColorButtons);
+    } else {
+        buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
+    
+    
 	_viewTwoActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
   [_viewTwoActionButton setBackgroundColor:[UIColor whiteColor]];
-  [_viewTwoActionButton setTitleColor:PopdeemColor(PDThemeColorButtons) forState:UIControlStateNormal];
+  [_viewTwoActionButton setTitleColor:buttonColor forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setFont:_viewModel.viewTwoActionButtonFont];
 	[_viewTwoActionButton setTitle:_viewModel.viewTwoActionButtonText forState:UIControlStateNormal];
 	[_viewTwoActionButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -246,7 +255,7 @@
   currentY += _viewTwoImageView.frame.size.height;
   
   _viewThreeActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
-  [_viewThreeActionButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
+  [_viewThreeActionButton setBackgroundColor:buttonColor];
   [_viewThreeActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [_viewThreeActionButton.titleLabel setFont:_viewModel.viewThreeActionButtonFont];
   [_viewThreeActionButton setTitle:_viewModel.viewThreeActionButtonText forState:UIControlStateNormal];

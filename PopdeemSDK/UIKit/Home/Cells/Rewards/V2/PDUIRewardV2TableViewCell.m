@@ -251,11 +251,19 @@
   topBorder.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1.00].CGColor;
   [_infoArea.layer addSublayer:topBorder];
   
+    NSString *rewardActionColor;
+    
+    if (PopdeemThemeHasValueForKey(PDThemeColorRewardAction)) {
+        rewardActionColor = PopdeemColor(PDThemeColorRewardAction);
+    } else {
+        rewardActionColor = PopdeemColor(PDThemeColorSecondaryFont);
+    }
+    
   NSString *action = [self infoStringForReward:reward];
   NSMutableAttributedString *actionString = [[NSMutableAttributedString alloc]
                                            initWithString:action attributes:@{
                                                                             NSFontAttributeName : PopdeemFont(PDThemeFontLight, 12),
-                                                                            NSForegroundColorAttributeName : PopdeemColor(PDThemeColorRewardAction)
+                                                                            NSForegroundColorAttributeName : rewardActionColor
                                                                             }];
   [_actionLabel setAttributedText:actionString];
   [_socialIconOne setHidden:YES];

@@ -61,6 +61,9 @@
   BOOL autoVerify;
   NSInteger verifyRewardId;
   BOOL firstLaunch;
+    
+  BOOL wasGratitiudeAlreadyShown;
+    
 }
 @property (nonatomic, retain) PDUIHomeViewModel *model;
 @property (nonatomic) PDUIClaimViewController *claimVC;
@@ -1163,7 +1166,7 @@
                                                 ABRA_PROPERTYNAME_SOCIAL_NETWORK : ABRA_PROPERTYVALUE_SOCIAL_NETWORK_FACEBOOK,
                                                 ABRA_PROPERTYNAME_SOURCE_PAGE : @"Rewards Home"
                                                 }));
-  if ([[PDUser sharedInstance] advocacyScore] <= 30) {
+  if (!wasGratitiudeAlreadyShown) {
     [self performSelector:@selector(showConnect) withObject:nil afterDelay:1.0];
   }
   
@@ -1181,6 +1184,8 @@
 - (void) showConnect {
   PDUIGratitudeViewController *gViewController = [[PDUIGratitudeViewController alloc] initWithType:PDGratitudeTypeConnect];
 
+  wasGratitiudeAlreadyShown = YES;
+    
   [self presentViewController:gViewController animated:NO completion:^{
     
   }];

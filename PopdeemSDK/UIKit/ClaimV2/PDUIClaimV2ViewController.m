@@ -58,6 +58,8 @@
 
 @implementation PDUIClaimV2ViewController
 
+ NSString *buttonsColor;
+
 - (instancetype) initFromNib {
   NSBundle *podBundle = [NSBundle bundleForClass:[PopdeemSDK class]];
   if (self = [self initWithNibName:@"PDUIClaimV2ViewController" bundle:podBundle]) {
@@ -111,7 +113,14 @@
   //[self.continueButton.titleLabel setTitle:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue")];
   [_continueButton setTitle:translationForKey(@"popdeem.claim.continuebutton.text", @"Continue") forState:UIControlStateNormal];
   [self.continueButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 16)];
-  [self.continueButton setTintColor:PopdeemColor(PDThemeColorButtons)];
+        
+    if (PopdeemThemeHasValueForKey(PDThemeColorButtons)) {
+        buttonsColor = PopdeemColor(PDThemeColorButtons);
+    } else {
+        buttonsColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
+    
+  [self.continueButton setTintColor:buttonsColor];
   
   CALayer *continueTopBorder = [CALayer layer];
   continueTopBorder.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 1.0f);
@@ -1392,7 +1401,7 @@
     
     [_closeDetailRewardView setFont:PopdeemFont(PDThemeFontBold, 16)];
     [_closeDetailRewardView setTitle:translationForKey(@"popdeem.claim.closeButtonText", @"Close") forState:UIControlStateNormal];
-    [_closeDetailRewardView setTintColor:PopdeemColor(PDThemeColorButtons)];
+    [_closeDetailRewardView setTintColor:buttonsColor];
     
     _blurViewForDetailRewardView.hidden = NO;
     _detailRewardView.hidden = NO;

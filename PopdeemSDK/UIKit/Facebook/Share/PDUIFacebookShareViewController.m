@@ -171,6 +171,15 @@
     }
   
   }
+    
+    
+    NSString *buttonColor;
+    
+    if (PopdeemThemeHasValueForKey(PDThemeColorButtons)) {
+        buttonColor = PopdeemColor(PDThemeColorButtons);
+    } else {
+        buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
   
   _viewOneActionButton = [[UIButton alloc] initWithFrame:CGRectMake(15, currentY+30, cardWidth-30, 40)];
   [_viewOneActionButton setBackgroundColor:[UIColor whiteColor]];
@@ -182,7 +191,7 @@
   [_viewOneActionButton setTag:1];
   [_viewOneActionButton addTarget:self action:@selector(shareOnFacebook) forControlEvents:UIControlEventTouchUpInside];
   [_firstView addSubview:_viewOneActionButton];
-  [_viewOneActionButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
+  [_viewOneActionButton setBackgroundColor:buttonColor];
   
   cardHeight = currentY + 30 + 40 + 20;
   [_firstView setFrame:CGRectMake(0, 0, cardWidth, cardHeight)];

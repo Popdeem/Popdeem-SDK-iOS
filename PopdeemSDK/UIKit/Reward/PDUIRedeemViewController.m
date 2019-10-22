@@ -86,11 +86,27 @@
   [self.rulesLabel setNumberOfLines:4];
   [self.rulesLabel setTextColor:PopdeemColor(PDThemeColorSecondaryFont)];
   [self.rulesLabel setText:_reward.rewardRules];
+    
+    NSString *rewardActionColor;
+    
+    if (PopdeemThemeHasValueForKey(PDThemeColorRewardAction)) {
+        rewardActionColor = PopdeemColor(PDThemeColorRewardAction);
+    } else {
+        rewardActionColor = PopdeemColor(PDThemeColorSecondaryFont);
+    }
 	
 	[self.timerLabel setFont:PopdeemFont(PDThemeFontBold, 55)];
-	[self.timerLabel setTextColor:PopdeemColor(PDThemeColorRewardAction)];
+	[self.timerLabel setTextColor:rewardActionColor];
   
-  [self.doneButton setBackgroundColor:PopdeemColor(PDThemeColorButtons)];
+    NSString *buttonColor;
+    
+    if (PopdeemThemeHasValueForKey(PDThemeColorButtons)) {
+        buttonColor = PopdeemColor(PDThemeColorButtons);
+    } else {
+        buttonColor = PopdeemColor(PDThemeColorPrimaryApp);
+    }
+    
+  [self.doneButton setBackgroundColor:buttonColor];
   [self.doneButton setTitle:translationForKey(@"popdeem.redeem.doneButton.title", @"Done") forState:UIControlStateNormal];
   [self.doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [self.doneButton.titleLabel setFont:PopdeemFont(PDThemeFontPrimary, 18.0)];
