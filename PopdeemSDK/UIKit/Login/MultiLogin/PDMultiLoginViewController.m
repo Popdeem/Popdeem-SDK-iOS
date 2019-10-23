@@ -32,6 +32,8 @@
 @property (nonatomic, retain) PDUIRewardTableViewCell *rewardCell;
 @end
 
+BOOL foundUserLocation = NO;
+
 @implementation PDMultiLoginViewController
 
 - (instancetype) initFromNibWithReward:(PDReward*)reward {
@@ -292,6 +294,11 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
   NSLog(@"Location Updated");
+    
+    if (foundUserLocation) return;
+    [_locationManager stopUpdatingLocation];
+    foundUserLocation = YES;
+    
   CLLocation *location = [locations lastObject];
   PDGeoLocation pdLoc = PDGeoLocationMake(location.coordinate.latitude, location.coordinate.longitude);
   [[PDUser sharedInstance] setLastLocation:pdLoc];
@@ -303,6 +310,8 @@
     [_loadingView hideAnimated:YES];
   });
   [self dismissViewControllerAnimated:YES completion:^{
+      
+    PDLog(@"NSNotification User Updated V1");
     [[NSNotificationCenter defaultCenter] postNotificationName:DirectToSocialHome object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                         object:nil];
