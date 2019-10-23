@@ -346,9 +346,9 @@ BOOL foundLocation = NO;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
   NSLog(@"Location Updated");
     
-    if (foundLocation) return;
-    [_locationManager stopUpdatingLocation];
-    foundLocation = YES;
+    //if (foundLocation) return;
+    //[_locationManager stopUpdatingLocation];
+    //foundLocation = YES;
     
   CLLocation *location = [locations lastObject];
   PDGeoLocation pdLoc = PDGeoLocationMake(location.coordinate.latitude, location.coordinate.longitude);
@@ -367,6 +367,9 @@ BOOL foundLocation = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:PDUserDidLogin
                                                         object:nil];
   }];
+    
+    [_locationManager stopUpdatingLocation];
+    
 }
 
 @end
