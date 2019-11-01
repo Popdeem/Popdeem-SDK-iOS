@@ -79,7 +79,9 @@
 - (UIViewController *)webController
 {
     if (_useWebFlow) {
-        return [self webViewController];
+        //return [self webViewController];
+        [self.navigationController setNavigationBarHidden:YES];
+        return [self safariViewController];
     } else {
         [self.navigationController setNavigationBarHidden:YES];
         return [self safariViewController];
