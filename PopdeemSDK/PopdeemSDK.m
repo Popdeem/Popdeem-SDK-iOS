@@ -63,6 +63,7 @@
   return SDK;
 }
 
+
 - (void) fetchCustomer {
   PDCustomerAPIService *service = [[PDCustomerAPIService alloc] init];
   [service getCustomerWithCompletion:^(NSError *error) {
