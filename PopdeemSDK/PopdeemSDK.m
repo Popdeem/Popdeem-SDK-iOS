@@ -90,7 +90,7 @@
         return @"https://api.popdeem.com";
       break;
       case PDEnvStaging:
-        return @"http://api.staging.popdeem.com";
+        return @"https://api-staging.popdeem.com";
       break;
       default:
         return @"https://api.popdeem.com";

@@ -56,18 +56,19 @@ BOOL foundLocation = NO;
   _viewModel = [[PDMultiLoginViewModelV2 alloc] initForViewController:self reward:_reward];
   [_viewModel setup];
     
-    UIColor *customGrayColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1.0].CGColor;
+    //UIColor *customGrayColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1.0].CGColor;
+    UIColor *customGreenColor = [UIColor colorWithRed:0.04 green:0.41 blue:0.23 alpha:1.0];
     UIColor *customColor = [UIColor colorWithRed:0.33 green:0.33 blue:0.33 alpha:1.0];
   
   [_cancelButton setFont:PopdeemFont(PDThemeFontBold, 15)];
   [_cancelButton setTitleColor:customColor forState:UIControlStateNormal];
-
+    
   [_titleLabel setText:_viewModel.titleString];
-  [_titleLabel setFont:_viewModel.bodyFont];
-  [_titleLabel setTextColor:customColor];
+  [_titleLabel setFont:_viewModel.titleFont];
+  [_titleLabel setTextColor:customGreenColor];
   [_titleLabel sizeToFit];
   
-  [_bodyLabel setText:@""];
+  [_bodyLabel setText:_viewModel.bodyString];
   [_bodyLabel setTextColor:customColor];
   [_bodyLabel setFont:_viewModel.bodyFont];
   

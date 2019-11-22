@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,26 +27,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pduikit_default_login_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="CSN-dF-pXj">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="275"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="292"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New: Social Rewards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09q-IF-jId">
-                    <rect key="frame" x="20" y="198" width="335" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="Qgi-a4-ovH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKg-C5-Rw2">
-                    <rect key="frame" x="20" y="244" width="335" height="72"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="72" id="eVS-8F-VqG"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wF-oE-hL7">
                     <rect key="frame" x="16" y="546" width="343" height="50"/>
                     <color key="backgroundColor" red="1" green="0.32156862745098042" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,6 +73,24 @@
                         <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="mRU-nw-E5C"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New: Social Rewards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09q-IF-jId">
+                    <rect key="frame" x="20" y="291" width="335" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Qgi-a4-ovH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your Social account to turn social features on. This will give you access to exclusive content and new social rewards." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKg-C5-Rw2">
+                    <rect key="frame" x="20" y="337" width="335" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="72" id="eVS-8F-VqG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -105,7 +103,7 @@
                 <constraint firstAttribute="trailing" secondItem="09q-IF-jId" secondAttribute="trailing" constant="20" id="FVM-bv-Gcg"/>
                 <constraint firstAttribute="bottom" secondItem="PO4-6d-yeQ" secondAttribute="bottom" constant="20" id="G9t-lc-ME0"/>
                 <constraint firstItem="PO4-6d-yeQ" firstAttribute="leading" secondItem="1wF-oE-hL7" secondAttribute="leading" id="H6T-KY-5UC"/>
-                <constraint firstItem="whg-BB-TEr" firstAttribute="top" secondItem="fKg-C5-Rw2" secondAttribute="bottom" constant="101" id="IVz-UD-Mcu"/>
+                <constraint firstItem="whg-BB-TEr" firstAttribute="top" secondItem="fKg-C5-Rw2" secondAttribute="bottom" constant="8" id="IVz-UD-Mcu"/>
                 <constraint firstAttribute="trailing" secondItem="25a-7f-Yar" secondAttribute="trailing" constant="16" id="JfB-vD-hWv"/>
                 <constraint firstItem="PO4-6d-yeQ" firstAttribute="top" secondItem="1wF-oE-hL7" secondAttribute="bottom" constant="21" id="JpE-Q2-ajx"/>
                 <constraint firstAttribute="trailing" secondItem="1wF-oE-hL7" secondAttribute="trailing" constant="16" id="NQi-qk-XVr"/>
@@ -118,7 +116,7 @@
                 <constraint firstItem="whg-BB-TEr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="aoj-5x-2E6"/>
                 <constraint firstItem="25a-7f-Yar" firstAttribute="top" secondItem="whg-BB-TEr" secondAttribute="bottom" constant="16" id="m9h-Q4-zaH"/>
                 <constraint firstItem="09q-IF-jId" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="tgG-Ce-GpN"/>
-                <constraint firstItem="09q-IF-jId" firstAttribute="top" secondItem="CSN-dF-pXj" secondAttribute="bottom" constant="-77" id="urq-Lm-3Hl"/>
+                <constraint firstItem="09q-IF-jId" firstAttribute="top" secondItem="CSN-dF-pXj" secondAttribute="bottom" constant="-1" id="urq-Lm-3Hl"/>
             </constraints>
             <point key="canvasLocation" x="34.399999999999999" y="54.422788605697157"/>
         </view>
