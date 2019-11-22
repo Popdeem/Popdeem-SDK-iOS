@@ -92,7 +92,6 @@ BOOL foundLocation = NO;
       _twitterLoginButton.layer.shadowOpacity = 0.5;
       _twitterLoginButton.layer.shadowRadius = 8;
       _twitterLoginButton.layer.shadowOffset = CGSizeMake(8.0f, 8.0f);
-      
   }
     
     if (![[PDCustomer sharedInstance] usesInstagram]) {
