@@ -137,7 +137,7 @@
 			initWithString:labelLineTwo
 				attributes:@{
 						NSFontAttributeName : PopdeemFont(PDThemeFontPrimary, 12),
-						NSForegroundColorAttributeName : _primaryAppColor
+						NSForegroundColorAttributeName : _secondaryFontColor
 				}];
 	
 	NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc] init];
