@@ -254,12 +254,17 @@ CGFloat _cardX,_cardY;
         _webViewController.wkNewWebView.navigationDelegate = self;
         _webViewController.wkNewWebView.UIDelegate = self;
         
-        //[_webViewController.loadingView hideAnimated:YES];
-        
         NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         [_webViewController.wkNewWebView loadRequest:req];
 
-        
+        /*
+        if ([_webViewController.wkNewWebView isLoading]) {
+            [self dismissViewControllerAnimated:YES completion:^(void) {
+               
+            }];
+        }
+        */
+      
     }];
 
 	AbraLogEvent(ABRA_EVENT_CLICKED_SIGN_IN_INSTAGRAM, nil);

@@ -22,7 +22,7 @@
 	NSLogv(full_message, args);
 	if (alert) {
 		NSString *fullString = [[NSString alloc] initWithFormat:message arguments:args];
-		UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Popdeem Error"
+		UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Connection Error"
 																								message:fullString
 																								delegate:nil
 																			cancelButtonTitle:@"OK"

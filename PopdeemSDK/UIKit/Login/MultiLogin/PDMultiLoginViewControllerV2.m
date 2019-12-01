@@ -24,6 +24,8 @@
 #import "PDUIRewardTableViewCell.h"
 #import "PDUIDirectToSocialHomeHandler.h"
 #import "PDCustomer.h"
+#import "PDCustomerAPIService.h"
+
 
 
 @interface PDMultiLoginViewControllerV2 ()
@@ -50,7 +52,6 @@ BOOL foundLocation = NO;
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
     
-
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
   //View Setup
   _viewModel = [[PDMultiLoginViewModelV2 alloc] initForViewController:self reward:_reward];
@@ -63,14 +64,25 @@ BOOL foundLocation = NO;
   [_cancelButton setFont:PopdeemFont(PDThemeFontBold, 15)];
   [_cancelButton setTitleColor:customColor forState:UIControlStateNormal];
     
-  [_titleLabel setText:_viewModel.titleString];
-  [_titleLabel setFont:_viewModel.titleFont];
-  [_titleLabel setTextColor:customGreenColor];
-  [_titleLabel sizeToFit];
-  
-  [_bodyLabel setText:_viewModel.bodyString];
-  [_bodyLabel setTextColor:customColor];
-  [_bodyLabel setFont:_viewModel.bodyFont];
+    [_titleLabel setFont:_viewModel.titleFont];
+    [_titleLabel setTextColor:customGreenColor];
+    [_titleLabel sizeToFit];
+    
+    [_bodyLabel setText:_viewModel.bodyString];
+    [_bodyLabel setTextColor:customColor];
+    [_bodyLabel setFont:_viewModel.bodyFont];
+          
+    
+    if (![[PDCustomer sharedInstance] usesTwitter] && ![[PDCustomer sharedInstance] usesFacebook] && ![[PDCustomer sharedInstance] usesInstagram]) {
+        
+        [_titleLabel setText:@"CONNECT SOCIAL MEDIA ACCOUNTS"];
+        [_bodyLabel setText:@"Go to the social rewards section of the app to connect your social media accounts"];
+        [_cancelButton setTitle:@"CONTINUE" forState:UIControlStateNormal];
+        
+    } else {
+        [_titleLabel setText:_viewModel.titleString];
+        [_bodyLabel setText:_viewModel.bodyString];
+    }
   
   if (![[PDCustomer sharedInstance] usesTwitter]) {
     [_twitterLoginButton setHidden:YES];
@@ -271,12 +283,12 @@ BOOL foundLocation = NO;
         transition.subtype = kCATransitionFromRight;
         [self.view.window.layer addAnimation:transition forKey:nil];
     
-        [self dismissViewControllerAnimated:NO completion:^{
+        [self dismissViewControllerAnimated:YES completion:^{
         //Any cleanup to do?
         [[NSNotificationCenter defaultCenter] postNotificationName:SocialLoginTakeoverDismissed object:self];
         }];
     } else {
-      [self dismissViewControllerAnimated:NO completion:^{
+      [self dismissViewControllerAnimated:YES completion:^{
         //Any cleanup to do?
         [[NSNotificationCenter defaultCenter] postNotificationName:SocialLoginTakeoverDismissed object:self];
       }];
