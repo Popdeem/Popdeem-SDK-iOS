@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31B32431FBF867A6E89A54EC /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7DD2FDC97B9570A691120D /* libPods-PopdeemSDK.a */; };
 		37D8E6F422E7BC200048E676 /* TWTRTokenOnlyAuthSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D8E4C022E7BC1D0048E676 /* TWTRTokenOnlyAuthSession.m */; };
 		37D8E6F522E7BC200048E676 /* TWTRGenericKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D8E4C222E7BC1D0048E676 /* TWTRGenericKeychainItem.m */; };
 		37D8E6F622E7BC200048E676 /* TWTRCoreOAuthSigning.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D8E4C322E7BC1D0048E676 /* TWTRCoreOAuthSigning.m */; };
@@ -401,6 +402,7 @@
 		39FDF1E01E926106007AE076 /* PDBGScanResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1DF1E926106007AE076 /* PDBGScanResponseModel.m */; };
 		39FDF1E51E9263EB007AE076 /* PDUIPostScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1E31E9263EB007AE076 /* PDUIPostScanViewController.m */; };
 		39FDF1EA1E95061F007AE076 /* PDUIScanFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FDF1E81E95061F007AE076 /* PDUIScanFailViewController.m */; };
+		55FB94F68AD14E6C5A271E1B /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDCAF99588927BC44E131ED /* libPods-PopdeemSDKTests.a */; };
 		A92281EB1C07369800A43320 /* PDUIRewardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E61C07369800A43320 /* PDUIRewardTableViewController.m */; };
 		A92281EC1C07369800A43320 /* PDUIRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281E81C07369800A43320 /* PDUIRewardTableViewCell.m */; };
 		A92281F11C07465700A43320 /* PDUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92281F01C07465700A43320 /* PDUINavigationController.m */; };
@@ -470,8 +472,6 @@
 		BC67FF8D2B030DD6410173B2 /* UserAPIServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F7563AA957CD78C051E7 /* UserAPIServiceTests.m */; };
 		BC67FF9299B320568828D76D /* PDUserFacebookParams.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67FDD2A855E1479FF66FE7 /* PDUserFacebookParams.m */; };
 		BC67FFAF6CF0555B014F2D5B /* PDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67F6177E3E2771EAEAA4AB /* PDUser.m */; };
-		EE46155708F75BF49EFDEC29 /* libPods-PopdeemSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E27422E6D81757E79B4A62 /* libPods-PopdeemSDK.a */; };
-		FD4C09D0F4D709A497FB1921 /* libPods-PopdeemSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F4ED81B8E7E757DB400C70 /* libPods-PopdeemSDKTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -497,11 +497,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		030E2C57F0BB1E43FE74AA96 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
-		09C617A135AD4E9AD46ADC21 /* Pods-PopdeemSDKCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.debug.xcconfig"; sourceTree = "<group>"; };
-		15F4ED81B8E7E757DB400C70 /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28E27422E6D81757E79B4A62 /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D5D1F8CFFB7CEE791DBD2E4 /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		37D8E4B722E7BC1D0048E676 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		37D8E4B822E7BC1D0048E676 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
 		37D8E4B922E7BC1D0048E676 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
@@ -1465,11 +1460,9 @@
 		39FDF1E71E95061F007AE076 /* PDUIScanFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUIScanFailViewController.h; path = "Claim/Post Scan Failure/PDUIScanFailViewController.h"; sourceTree = "<group>"; };
 		39FDF1E81E95061F007AE076 /* PDUIScanFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDUIScanFailViewController.m; path = "Claim/Post Scan Failure/PDUIScanFailViewController.m"; sourceTree = "<group>"; };
 		39FDF1E91E95061F007AE076 /* PDUIScanFailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDUIScanFailViewController.xib; path = "Claim/Post Scan Failure/PDUIScanFailViewController.xib"; sourceTree = "<group>"; };
-		51A8D384AE4508E261030AD1 /* Pods-PopdeemSDKCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKCore/Pods-PopdeemSDKCore.release.xcconfig"; sourceTree = "<group>"; };
-		9FE1755911810215CDAC287E /* libPods-PopdeemSDKCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKCore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigationSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A737E2DF8D7E47497456E905 /* libPods-BrandsSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrandsSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8DF0C6380A4739C49CA6D09 /* libPods-TestSize.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestSize.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79E05AA67C06FCEBCEE6EE37 /* Pods-PopdeemSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.release.xcconfig"; path = "Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		8AE844082C76F51702A7C97B /* Pods-PopdeemSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.debug.xcconfig"; path = "Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		91CF24C1477C27BBE66E895D /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A90FA4B21C033FD1001DA473 /* PopdeemSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = PopdeemSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A90FA4F91C0361F5001DA473 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A90FA4FA1C036304001DA473 /* PDBrandStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDBrandStore.h; path = Core/Store/PDBrandStore.h; sourceTree = "<group>"; };
@@ -1493,7 +1486,8 @@
 		A92281F31C074C2D00A43320 /* PDUIModalTransitionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUIModalTransitionHandler.m; sourceTree = "<group>"; };
 		A9582FA01C05D8DF00D62456 /* PDSocialLoginHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDSocialLoginHandlerTest.m; path = PopdeemSDKTests/UIKit/PDSocialLoginHandlerTest.m; sourceTree = SOURCE_ROOT; };
 		A9582FA51C0619A900D62456 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = default.json; path = Resources/default.json; sourceTree = "<group>"; };
-		A9C52977BCDFEE7AB508D258 /* Pods-PopdeemSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB7DD2FDC97B9570A691120D /* libPods-PopdeemSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADDCAF99588927BC44E131ED /* libPods-PopdeemSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopdeemSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC67F00FE2C935B8F1DED1C0 /* PDReferral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReferral.h; sourceTree = "<group>"; };
 		BC67F0259BE1A6F5B3827F5D /* PDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUtils.m; sourceTree = "<group>"; };
 		BC67F043EB7A7A6156010094 /* PDUISocialLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDUISocialLoginHandler.h; path = Login/PDUISocialLoginHandler.h; sourceTree = "<group>"; };
@@ -1593,9 +1587,7 @@
 		BC67FF81C6E0A9A231CE6FE4 /* PDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUser.h; sourceTree = "<group>"; };
 		BC67FFB094C0C5B47033A565 /* PDGeolocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGeolocationManager.h; sourceTree = "<group>"; };
 		BC67FFE3DB5E8203430170C6 /* PDFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFeeds.m; sourceTree = "<group>"; };
-		C6480DC9E4C7CAAF921C5FBD /* libPods-TabbedTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TabbedTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9F4E102262B31F7E8D22725 /* libPods-SwiftSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwiftSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F32DC6C7367756EB4D6D92DE /* Pods-PopdeemSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		BE121B4DF353868BFB7CF8E4 /* Pods-PopdeemSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopdeemSDK.release.xcconfig"; path = "Target Support Files/Pods-PopdeemSDK/Pods-PopdeemSDK.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1603,7 +1595,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE46155708F75BF49EFDEC29 /* libPods-PopdeemSDK.a in Frameworks */,
+				31B32431FBF867A6E89A54EC /* libPods-PopdeemSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1612,7 +1604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				391CE04D1BFE0E4700868532 /* libPopdeemSDK.a in Frameworks */,
-				FD4C09D0F4D709A497FB1921 /* libPods-PopdeemSDKTests.a in Frameworks */,
+				55FB94F68AD14E6C5A271E1B /* libPods-PopdeemSDKTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3136,7 +3128,7 @@
 				39D7D0741B8F0DCF00E45D0B /* PopdeemSDKTests */,
 				39D7D0661B8F0DCF00E45D0B /* Products */,
 				4EF69A0328B0579398DD2DED /* Frameworks */,
-				48B1EA15DD3FC0CD7A96452B /* Pods */,
+				DE8FDE0E9207DEDFB4B68FFE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3359,19 +3351,6 @@
 			name = "Post Scan (Failure)";
 			sourceTree = "<group>";
 		};
-		48B1EA15DD3FC0CD7A96452B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2D5D1F8CFFB7CEE791DBD2E4 /* Pods-PopdeemSDK.debug.xcconfig */,
-				030E2C57F0BB1E43FE74AA96 /* Pods-PopdeemSDK.release.xcconfig */,
-				09C617A135AD4E9AD46ADC21 /* Pods-PopdeemSDKCore.debug.xcconfig */,
-				51A8D384AE4508E261030AD1 /* Pods-PopdeemSDKCore.release.xcconfig */,
-				A9C52977BCDFEE7AB508D258 /* Pods-PopdeemSDKTests.debug.xcconfig */,
-				F32DC6C7367756EB4D6D92DE /* Pods-PopdeemSDKTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		4EF69A0328B0579398DD2DED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3393,14 +3372,8 @@
 				39A772D91BECB930007ED334 /* libPods-PopdeemSDK.a */,
 				3951C8DE1BDBD29500A5C6B7 /* libPods-PopdeemSDK.a */,
 				3951C8DA1BDBD22400A5C6B7 /* libPods-PopdeemSDK.a */,
-				A737E2DF8D7E47497456E905 /* libPods-BrandsSample.a */,
-				A3DECC01B2485C48FC15734E /* libPods-NavigationSample.a */,
-				28E27422E6D81757E79B4A62 /* libPods-PopdeemSDK.a */,
-				9FE1755911810215CDAC287E /* libPods-PopdeemSDKCore.a */,
-				15F4ED81B8E7E757DB400C70 /* libPods-PopdeemSDKTests.a */,
-				E9F4E102262B31F7E8D22725 /* libPods-SwiftSample.a */,
-				C6480DC9E4C7CAAF921C5FBD /* libPods-TabbedTest.a */,
-				A8DF0C6380A4739C49CA6D09 /* libPods-TestSize.a */,
+				AB7DD2FDC97B9570A691120D /* libPods-PopdeemSDK.a */,
+				ADDCAF99588927BC44E131ED /* libPods-PopdeemSDKTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3735,6 +3708,18 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		DE8FDE0E9207DEDFB4B68FFE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8AE844082C76F51702A7C97B /* Pods-PopdeemSDK.debug.xcconfig */,
+				BE121B4DF353868BFB7CF8E4 /* Pods-PopdeemSDK.release.xcconfig */,
+				91CF24C1477C27BBE66E895D /* Pods-PopdeemSDKTests.debug.xcconfig */,
+				79E05AA67C06FCEBCEE6EE37 /* Pods-PopdeemSDKTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3742,7 +3727,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39D7D0791B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDK" */;
 			buildPhases = (
-				2480412D7BAB09C119A97954 /* [CP] Check Pods Manifest.lock */,
+				9F44689D976FC9A0907A5ACD /* [CP] Check Pods Manifest.lock */,
 				39D7D0611B8F0DCF00E45D0B /* Sources */,
 				39D7D0621B8F0DCF00E45D0B /* Frameworks */,
 				39D7D0631B8F0DCF00E45D0B /* CopyFiles */,
@@ -3760,11 +3745,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39D7D07C1B8F0DCF00E45D0B /* Build configuration list for PBXNativeTarget "PopdeemSDKTests" */;
 			buildPhases = (
-				B479D08B2FE6EAF37B562F05 /* [CP] Check Pods Manifest.lock */,
+				5322EDA0B81AEBAEE8DD67D8 /* [CP] Check Pods Manifest.lock */,
 				39D7D06C1B8F0DCF00E45D0B /* Sources */,
 				39D7D06D1B8F0DCF00E45D0B /* Frameworks */,
 				39D7D06E1B8F0DCF00E45D0B /* Resources */,
-				85412172AB2BA3FA899B41EC /* [CP] Copy Pods Resources */,
+				9FA67DF12D3D3354A35AEB4C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3855,16 +3840,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2480412D7BAB09C119A97954 /* [CP] Check Pods Manifest.lock */ = {
+		5322EDA0B81AEBAEE8DD67D8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PopdeemSDKTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F44689D976FC9A0907A5ACD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-PopdeemSDK-checkManifestLockResult.txt",
 			);
@@ -3873,7 +3884,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		85412172AB2BA3FA899B41EC /* [CP] Copy Pods Resources */ = {
+		9FA67DF12D3D3354A35AEB4C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3891,24 +3902,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopdeemSDKTests/Pods-PopdeemSDKTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B479D08B2FE6EAF37B562F05 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PopdeemSDKTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4461,7 +4454,7 @@
 		};
 		39D7D07A1B8F0DCF00E45D0B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D5D1F8CFFB7CEE791DBD2E4 /* Pods-PopdeemSDK.debug.xcconfig */;
+			baseConfigurationReference = 8AE844082C76F51702A7C97B /* Pods-PopdeemSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -4482,7 +4475,7 @@
 		};
 		39D7D07B1B8F0DCF00E45D0B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 030E2C57F0BB1E43FE74AA96 /* Pods-PopdeemSDK.release.xcconfig */;
+			baseConfigurationReference = BE121B4DF353868BFB7CF8E4 /* Pods-PopdeemSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -4502,7 +4495,7 @@
 		};
 		39D7D07D1B8F0DCF00E45D0B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9C52977BCDFEE7AB508D258 /* Pods-PopdeemSDKTests.debug.xcconfig */;
+			baseConfigurationReference = 91CF24C1477C27BBE66E895D /* Pods-PopdeemSDKTests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -4564,7 +4557,7 @@
 		};
 		39D7D07E1B8F0DCF00E45D0B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F32DC6C7367756EB4D6D92DE /* Pods-PopdeemSDKTests.release.xcconfig */;
+			baseConfigurationReference = 79E05AA67C06FCEBCEE6EE37 /* Pods-PopdeemSDKTests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";

@@ -6,20 +6,28 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - Expecta (1.0.6)
-  - FBSDKCoreKit (4.33.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.33.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.33.0):
-    - FBSDKCoreKit (~> 4.33.0)
-  - JSONModel (1.7.0)
+  - FBSDKCoreKit (5.11.1):
+    - FBSDKCoreKit/Basics (= 5.11.1)
+    - FBSDKCoreKit/Core (= 5.11.1)
+  - FBSDKCoreKit/Basics (5.11.1)
+  - FBSDKCoreKit/Core (5.11.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.11.1):
+    - FBSDKLoginKit/Login (= 5.11.1)
+  - FBSDKLoginKit/Login (5.11.1):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKShareKit (5.11.1):
+    - FBSDKShareKit/Share (= 5.11.1)
+  - FBSDKShareKit/Share (5.11.1):
+    - FBSDKCoreKit (~> 5.0)
+  - JSONModel (1.8.0)
   - Nocilla (0.11.0)
-  - OCMock (3.4.1)
-  - Realm (3.5.0):
-    - Realm/Headers (= 3.5.0)
-  - Realm/Headers (3.5.0)
+  - OCMock (3.5)
+  - Realm (4.1.1):
+    - Realm/Headers (= 4.1.1)
+  - Realm/Headers (4.1.1)
   - Shimmer (1.0.2)
-  - TOCropViewController (2.3.6)
+  - TOCropViewController (2.5.2)
 
 DEPENDENCIES:
   - Bolts
@@ -35,7 +43,7 @@ DEPENDENCIES:
   - TOCropViewController
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Bolts
     - Expecta
     - FBSDKCoreKit
@@ -51,16 +59,16 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
-  FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
-  FBSDKShareKit: 1869cb24db2cea90666a50cb9d568deb38e2d16e
-  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  FBSDKCoreKit: 5aada61a229054694810f3cee231f986004b3c49
+  FBSDKLoginKit: 0e4572e0279e477103b57978e3ea05fac1dd673d
+  FBSDKShareKit: 2b4435ecb134e2af8a636524e43b7813e3d60a0b
+  JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
-  OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
-  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  OCMock: 4ab4577fc941af31f4a0398f6e7e230cf21fc72a
+  Realm: 25f0a8244cbb1c2271c922963ea8666fc2d8104d
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
+  TOCropViewController: e9da34f484aedd4e5d5a8ab230ba217cfe16c729
 
-PODFILE CHECKSUM: 711a51ddb2eb4f775935ad820c0f846e6b0b67d6
+PODFILE CHECKSUM: 84357df237a0cbf62730693c1f8faf2176f6e20a
 
-COCOAPODS: 1.7.3
+COCOAPODS: 1.8.4
