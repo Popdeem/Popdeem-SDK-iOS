@@ -75,8 +75,6 @@
     [self setView:[self wkWebView]];
 }
 
-#pragma mark - UIWebview delegate
-
 
 //TWITTER-WKWEBVIEW
 
