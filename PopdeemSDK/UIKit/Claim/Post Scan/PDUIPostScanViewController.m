@@ -256,6 +256,9 @@ NSString *buttonColor;
   }
     
   else if (_reward.action == PDRewardActionCheckin) {
+      
+      //UPDATE THE IMAGE HERE
+      
       NSString *locationImage = @"pduikit_map_pin";
       [self.postImageView setImage:PopdeemImage(locationImage)];
   }

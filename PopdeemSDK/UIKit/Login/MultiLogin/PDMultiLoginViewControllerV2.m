@@ -214,6 +214,16 @@ BOOL foundLocation = NO;
     weakSelf.twitterValid = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.loadingView hideAnimated:YES];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unable to Login" message:@"There was an issue logging you in. Please try again later!" preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                //button click event
+                            }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
     });
     //Show some error, something went wrong
   }];
@@ -254,6 +264,15 @@ BOOL foundLocation = NO;
 	} failure:^(NSError* error){
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.loadingView hideAnimated:YES];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unable to Login" message:@"There was an issue logging you in. Please try again later!" preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                //button click event
+                            }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+        
     });
   }];
   
@@ -327,7 +346,19 @@ BOOL foundLocation = NO;
 
 - (void) facebookLoginFailure {
   dispatch_async(dispatch_get_main_queue(), ^{
+      
+      
     [_loadingView hideAnimated:YES];
+      
+      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unable to Login" message:@"There was an issue logging you in. Please try again later!" preferredStyle:UIAlertControllerStyleAlert];
+
+      UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                              //button click event
+                          }];
+      [alert addAction:ok];
+      [self presentViewController:alert animated:YES completion:nil];
+      
+      
   });
 }
 
