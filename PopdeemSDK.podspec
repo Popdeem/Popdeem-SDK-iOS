@@ -50,9 +50,9 @@ Pod::Spec.new do |s|
 	s.subspec 'Core' do |core|
     core.source_files = "PopdeemSDK/*.m", "PopdeemSDK/*.h", "PopdeemSDK/Core/*.{h,m}","PopdeemSDK/**/*.{h,m}" , "PopdeemSDK/Core/**/*.{h,m}", "PopdeemSDK/Core/**/**/*.{h,m}", "PopdeemSDK/UIKit/Common/Theme/PDTheme.{h,m}"
     core.public_header_files = "PopdeemSDK/**/*.h", "PopdeemSDK/*.h"
-        core.dependency "FBSDKLoginKit", '<= 5.13.0'
-        core.dependency "FBSDKCoreKit", '<= 5.13.0'
-        core.dependency "FBSDKShareKit", '<= 5.13.0'
+        core.dependency "FBSDKLoginKit", '<= 5.8.0'
+        core.dependency "FBSDKCoreKit", '<= 5.8.0'
+        core.dependency "FBSDKShareKit", '<= 5.8.0'
 		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"
