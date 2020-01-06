@@ -6,26 +6,26 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - Expecta (1.0.6)
-  - FBSDKCoreKit (5.11.1):
-    - FBSDKCoreKit/Basics (= 5.11.1)
-    - FBSDKCoreKit/Core (= 5.11.1)
-  - FBSDKCoreKit/Basics (5.11.1)
-  - FBSDKCoreKit/Core (5.11.1):
+  - FBSDKCoreKit (5.13.1):
+    - FBSDKCoreKit/Basics (= 5.13.1)
+    - FBSDKCoreKit/Core (= 5.13.1)
+  - FBSDKCoreKit/Basics (5.13.1)
+  - FBSDKCoreKit/Core (5.13.1):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.11.1):
-    - FBSDKLoginKit/Login (= 5.11.1)
-  - FBSDKLoginKit/Login (5.11.1):
+  - FBSDKLoginKit (5.13.1):
+    - FBSDKLoginKit/Login (= 5.13.1)
+  - FBSDKLoginKit/Login (5.13.1):
     - FBSDKCoreKit (~> 5.0)
-  - FBSDKShareKit (5.11.1):
-    - FBSDKShareKit/Share (= 5.11.1)
-  - FBSDKShareKit/Share (5.11.1):
+  - FBSDKShareKit (5.13.1):
+    - FBSDKShareKit/Share (= 5.13.1)
+  - FBSDKShareKit/Share (5.13.1):
     - FBSDKCoreKit (~> 5.0)
   - JSONModel (1.8.0)
   - Nocilla (0.11.0)
   - OCMock (3.5)
-  - Realm (4.1.1):
-    - Realm/Headers (= 4.1.1)
-  - Realm/Headers (4.1.1)
+  - Realm (4.3.0):
+    - Realm/Headers (= 4.3.0)
+  - Realm/Headers (4.3.0)
   - Shimmer (1.0.2)
   - TOCropViewController (2.5.2)
 
@@ -59,13 +59,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  FBSDKCoreKit: 5aada61a229054694810f3cee231f986004b3c49
-  FBSDKLoginKit: 0e4572e0279e477103b57978e3ea05fac1dd673d
-  FBSDKShareKit: 2b4435ecb134e2af8a636524e43b7813e3d60a0b
+  FBSDKCoreKit: 8fb98209109fb684937f05d534305edb18c20207
+  FBSDKLoginKit: c7c6ffd9ca9ea45aee32361840af040ad8f6706a
+  FBSDKShareKit: 8a0e4d7172c7b706991c834cff2bf74e7b4726e3
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Nocilla: 7af7a386071150cc8aa5da4da97d060f049dd61c
   OCMock: 4ab4577fc941af31f4a0398f6e7e230cf21fc72a
-  Realm: 25f0a8244cbb1c2271c922963ea8666fc2d8104d
+  Realm: 9357c3589555793e1860a7104a7412bca4a48d99
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   TOCropViewController: e9da34f484aedd4e5d5a8ab230ba217cfe16c729
 
