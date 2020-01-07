@@ -53,7 +53,6 @@ Pod::Spec.new do |s|
         core.dependency "FBSDKLoginKit", '<= 5.8.0'
         core.dependency "FBSDKCoreKit", '<= 5.8.0'
         core.dependency "FBSDKShareKit", '<= 5.8.0'
-		core.dependency "Bolts"
 		core.dependency "Shimmer"
 		core.dependency "JSONModel"
     core.dependency "TOCropViewController"

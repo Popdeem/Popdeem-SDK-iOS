@@ -8,7 +8,6 @@
 
 #import "PDReferral.h"
 #import "PDAPIClient.h"
-#import <Bolts/BFURL.h>
 
 @implementation PDReferral
 
@@ -31,10 +30,12 @@
 }
 
 - (void) setupWithithUrl:(NSURL*)url appRef:(NSString*)application {
+    /*
+    
     BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:application];
     if (parsedUrl.appLinkData) {
         // This is AppLink traffic
-//        NSURL *applinkTargetUrl = parsedUrl.targetURL;
+        //NSURL *applinkTargetUrl = parsedUrl.targetURL;
         NSDictionary *alData = parsedUrl.appLinkData;
         NSString *targetUrl = alData[@"target_url"];
         if ([self getRequestIdFromURL:targetUrl] > 0) {
@@ -48,6 +49,9 @@
             self.senderId = [parsedUrl.inputQueryParameters[@"user_id"] integerValue];
         }
     }
+     
+     */
+     
 }
 
 - (NSInteger) getRequestIdFromURL:(NSString*)url {
