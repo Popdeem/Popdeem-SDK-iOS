@@ -230,9 +230,11 @@ BOOL foundLocation = NO;
 }
 
 - (IBAction)instagramLoginButtonPressed:(id)sender {
-  _loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
-  _loadingView.titleLabel.text = @"Logging in.";
-  [_loadingView showAnimated:YES];
+  //_loadingView = [[PDUIModalLoadingView alloc] initWithDefaultsForView:self.view];
+  //_loadingView.titleLabel.text = @"Logging in.";
+  //[_loadingView showAnimated:YES];
+    
+    
   PDUIInstagramLoginViewController *instaVC = [[PDUIInstagramLoginViewController alloc] initForParent:self delegate:self connectMode:NO directConnect:YES];
   instaVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
   instaVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -252,10 +254,10 @@ BOOL foundLocation = NO;
 
 #pragma mark - Instagram Login Delegate Methods
 
-- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken {
 	PDUserAPIService *service = [[PDUserAPIService alloc] init];
     __weak typeof(self) weakSelf = self;
-	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user){
+	[service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:@"" profilePicture:@"" success:^(PDUser *user){
 		[self addUserToUserDefaults:user];
 		AbraLogEvent(ABRA_EVENT_LOGIN, @{@"Source" : @"Login Takeover"});
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -67,5 +67,5 @@ typedef NS_ENUM(NSInteger, SocialMediaTypesAvailable) {
 - (void) makeClaim;
 - (void) instagramLoginSuccess;
 - (void) instagramLoginFailure;
-- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName;
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken;
 @end

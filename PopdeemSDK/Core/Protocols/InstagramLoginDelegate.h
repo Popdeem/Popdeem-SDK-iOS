@@ -10,6 +10,6 @@
 
 @protocol InstagramLoginDelegate <NSObject>
 
-- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName;
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken ;
 
 @end

@@ -188,16 +188,18 @@
 	NSString *deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 	
 	NSDictionary *params = @{@"user": @{
-																			@"instagram": @{
-																					@"id": instagramId,
-																					@"access_token": accessToken,
-																					@"full_name": fullName,
-																					@"profile_picture" : profilePicture
-																					},
-																			@"unique_identifier": deviceId
-																			}};
+                            @"instagram": @{
+                                    @"id": instagramId,
+                                    @"access_token": accessToken,
+                                    @"full_name": fullName,
+                                    @"profile_picture" : profilePicture
+                                    },
+                            @"unique_identifier": deviceId
+                            }};
 	
 	NSURLSession *session = [NSURLSession createPopdeemSession];
+    
+
 	[session POST:apiString params:params completion:^(NSData *data, NSURLResponse *response, NSError *error){
 		if (error) {
 			//Handle Error

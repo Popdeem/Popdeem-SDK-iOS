@@ -79,17 +79,16 @@
 
 - (void) connectInstagramAccount:(NSString*)userId
 										 accessToken:(NSString*)accessToken
-											screenName:(NSString*)screenName
 											completion:(void (^)(NSError *error))completion {
 	
 	NSMutableDictionary *instagram = [NSMutableDictionary dictionary];
 
 
 
-	[instagram setObject:userId forKey:@"id"];
+	[instagram setObject:userId forKey:@"user_id"];
 
 	[instagram setObject:accessToken forKey:@"access_token"];
-	[instagram setObject:screenName forKey:@"screen_name"];
+	//[instagram setObject:screenName forKey:@"screen_name"];
 	
 	NSMutableDictionary *user = [NSMutableDictionary dictionary];
 	[user setObject:instagram forKey:@"instagram"];

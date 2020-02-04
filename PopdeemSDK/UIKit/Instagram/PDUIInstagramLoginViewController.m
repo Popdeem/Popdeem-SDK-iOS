@@ -5,7 +5,7 @@
 //  Created by Niall Quinn on 16/06/2016.
 //  Copyright © 2016 Popdeem. All rights reserved.
 //
-
+#import "PDUIInstagramPermissionsViewController.h"
 #import "PDUIInstagramLoginViewController.h"
 #import "PDUtils.h"
 #import "PopdeemSDK.h"
@@ -31,6 +31,7 @@ NSString *callback;
 CGFloat _cardX,_cardY;
 
 @implementation PDUIInstagramLoginViewController
+
 
 - (instancetype) initForParent:(UIViewController*)parent delegate:(id<InstagramLoginDelegate>)delegate connectMode:(BOOL)connectMode {
 	connected = NO;
@@ -80,6 +81,7 @@ CGFloat _cardX,_cardY;
 }
 
 - (void) renderView {
+    
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webViewCancelPressed) name:InstagramLoginCancelPressed object:nil];
   
@@ -148,6 +150,7 @@ CGFloat _cardX,_cardY;
 	CGFloat viewCenterY = self.view.frame.size.height/2;
 	[_cardView setFrame:CGRectMake(_cardX, viewCenterY-(currentY/2), _cardView.frame.size.width, currentY)];
 	[self.view setNeedsDisplay];
+    
 
 }
 
@@ -161,8 +164,11 @@ CGFloat _cardX,_cardY;
 }
 
 - (void)viewDidLoad {
+
 	[super viewDidLoad];
-	[_viewModel setup];
+
+    
+    [_viewModel setup];
 	[self.view setBackgroundColor:[UIColor clearColor]];
 	self.backingView = [[UIView alloc] initWithFrame:_parent.view.frame];
 	[self.backingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
@@ -185,7 +191,10 @@ CGFloat _cardX,_cardY;
 
 }
 
+
+
 - (void) viewDidAppear:(BOOL)animated {
+    
 //	[UIView animateWithDuration:0.5 animations:^{
 //		[_cardView setFrame:CGRectMake(_cardX, _cardY, _cardView.frame.size.width, _cardView.frame.size.height)];
 //	}];
@@ -221,16 +230,25 @@ CGFloat _cardX,_cardY;
 
 - (void) connectInstagram {
     
-    
-    
+
 	client_id = [PopdeemSDK instagramClientId];
 	secret = [PopdeemSDK instagramClientSecret];
 	callback = [PopdeemSDK instagramCallback];
 	
-    // response_type=code&scope=basic&hl=en
+
+    //client_id = @"caf0eebcdafe46b88abd75fe14d35810";
+    //secret = @"9a2e9c9627724123af64c826c6b24361";
+    //callback = [PopdeemSDK instagramCallback];
     
-	NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
+    
+    //NEW
+    NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=user_profile,user_media&response_type=code",client_id,callback];
+    
+    //OLD
+	//NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
   
+    
+    
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];
 	self.definesPresentationContext = YES;
 	_webViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -278,6 +296,8 @@ CGFloat _cardX,_cardY;
     
     NSURLRequest *request = navigationAction.request;
     
+    [_webViewController.loadingView hideAnimated:YES];
+    
     if ([[[request URL] URLStringWithoutQuery] rangeOfString:@"accounts/login"].location != NSNotFound) {
         //Show login view
         [_webViewController.loadingView hideAnimated:YES];
@@ -297,10 +317,15 @@ CGFloat _cardX,_cardY;
                 break;
             }
         }
-        
+            
         if (verifier) {
             
+            //New
             NSString *data = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",client_id,secret,callback,verifier];
+            
+            //Old
+            //NSString *data = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",client_id,secret,callback,verifier];
+            
             NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/access_token"];
             
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
@@ -327,12 +352,14 @@ CGFloat _cardX,_cardY;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-																									message:[NSString stringWithFormat:@"%@", error]
-																								 delegate:nil
-																				cancelButtonTitle:@"OK"
-																				otherButtonTitles:nil];
+                                              message:[NSString stringWithFormat:@"%@", error]
+                                              delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
 	[alert show];
 }
+
+
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *response = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
@@ -347,12 +374,14 @@ CGFloat _cardX,_cardY;
 	[self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (void) connectWithModel:(InstagramResponseModel*)instagramModel {
-	[_delegate connectInstagramAccount:instagramModel.user.id accessToken:instagramModel.accessToken userName:instagramModel.user.username];
+- (void) connectWithModel:( InstagramResponseModel*)instagramModel {
+
+	[_delegate connectInstagramAccount: instagramModel.userId accessToken:instagramModel.accessToken];
 }
 
 - (void) registerWithModel:(InstagramResponseModel*)instagramModel {
-	[_delegate connectInstagramAccount:instagramModel.user.id accessToken:instagramModel.accessToken userName:instagramModel.user.username];
+
+	[_delegate connectInstagramAccount: instagramModel.userId accessToken:instagramModel.accessToken];
 }
 
 /*

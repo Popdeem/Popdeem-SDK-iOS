@@ -23,7 +23,7 @@
 - (void) disconnectTwitterAccount;
 - (void) connectInstagramAccount;
 - (void) disconnectInstagramAccount;
-- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName;
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken;
 - (void) logoutUser;
 - (NSInteger) numberOfSocialNetworksTurnedOn;
 

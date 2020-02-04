@@ -38,5 +38,6 @@
 - (instancetype) initForParent:(UIViewController*)parent connectMode:(BOOL)connectMode;
 - (instancetype) initForParent:(UIViewController*)parent delegate:(id<InstagramLoginDelegate>)delegate connectMode:(BOOL)connectMode directConnect:(BOOL)directConnect;
 - (void) connectInstagram;
+- (void) showInstagramPermissionsWarning;
 
 @end

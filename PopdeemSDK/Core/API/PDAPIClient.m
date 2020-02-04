@@ -107,11 +107,10 @@
 #pragma mark - Connect Instagram Account -
 - (void) connectInstagramAccount:(NSString*)userId
 										 accessToken:(NSString*)accessToken
-											screenName:(NSString*)screenName
 												 success:(void (^)(void))success
 												 failure:(void (^)(NSError *error))failure {
 	PDSocialAPIService *service = [[PDSocialAPIService alloc] init];
-	[service connectInstagramAccount:userId accessToken:accessToken screenName:screenName completion:^(NSError *error){
+	[service connectInstagramAccount:userId accessToken:accessToken completion:^(NSError *error){
 		if (error) {
 			failure(error);
 		} else {

@@ -18,7 +18,6 @@
 
 - (void) connectInstagramAccount:(NSString*)userId
 										 accessToken:(NSString*)accessToken
-											screenName:(NSString*)screenName
 											completion:(void (^)(NSError *error))completion;
 
 - (void) connectFacebookAccount:(NSString*)userId

@@ -11,11 +11,13 @@
 #import "PDTheme.h"
 #import "PDUtils.h"
 #import "PDConstants.h"
+#import "PDUIInstagramPermissionsViewController.h"
 
 @interface PDUIInstagramWebViewController ()
 
 @end
 
+Boolean didShowInstagramPermissionsPopup = false;
 
 @implementation PDUIInstagramWebViewController
 
@@ -49,15 +51,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     
+    
+    if(!didShowInstagramPermissionsPopup) {
+        [self showInstagramPermissionsWarning];
+        didShowInstagramPermissionsPopup = true;
+    }
+    
+    
+    
     _loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Preparing Instagram Login"];
-    [_loadingView showAnimated:YES];
+    //[_loadingView showAnimated:YES];
     
 }
 
@@ -80,16 +90,12 @@
 }
 
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) showInstagramPermissionsWarning {
+    PDUIInstagramPermissionsViewController *ipvc = [[PDUIInstagramPermissionsViewController alloc] initForParent:self];
+    self.definesPresentationContext = YES;
+    ipvc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    ipvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:ipvc animated:YES completion:^(void){}];
 }
-*/
 
 @end

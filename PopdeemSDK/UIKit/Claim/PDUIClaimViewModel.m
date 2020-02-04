@@ -658,17 +658,17 @@
 	});
 }
 
-- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken {
 	PDAPIClient *client = [PDAPIClient sharedInstance];  
   if ([[PDUser sharedInstance] isRegistered]) {
-    [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
+    [client connectInstagramAccount:identifier accessToken:accessToken  success:^(void){
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
     } failure:^(NSError* error){
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:self userInfo:error.userInfo];
     }];
   } else {
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
-    [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user) {
+    [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:@"" profilePicture:@"" success:^(PDUser *user) {
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginSuccess object:nil];
     } failure:^(NSError *error) {
       [[NSNotificationCenter defaultCenter] postNotificationName:InstagramLoginFailure object:nil];

@@ -28,8 +28,12 @@
 
 @end
 
-@implementation InstagramUserModel
+
+/*
+@implementation InstagramUserModel : NSObject
+//@implementation InstagramUserModel
 +(JSONKeyMapper*)keyMapper {
 	return [JSONKeyMapper mapperForSnakeCase];
 }
 @end
+*/

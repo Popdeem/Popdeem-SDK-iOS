@@ -474,12 +474,12 @@
 	});
 }
 
-- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken userName:(NSString*)userName {
+- (void) connectInstagramAccount:(NSString*)identifier accessToken:(NSString*)accessToken {
 	PDAPIClient *client = [PDAPIClient sharedInstance];
 	_loadingView = [[PDUIModalLoadingView alloc] initForView:self.view titleText:@"Please Wait" descriptionText:@"Connecting Instagram"];
 	[_loadingView showAnimated:YES];
   if ([[PDUser sharedInstance] isRegistered]) {
-    [client connectInstagramAccount:identifier accessToken:accessToken screenName:userName success:^(void){
+    [client connectInstagramAccount:identifier accessToken:accessToken success:^(void){
       dispatch_async(dispatch_get_main_queue(), ^{
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:YES animated:YES];
@@ -508,7 +508,7 @@
     }];
   } else {
     PDUserAPIService *service = [[PDUserAPIService alloc] init];
-    [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:userName profilePicture:@"" success:^(PDUser *user) {
+    [service registerUserWithInstagramId:identifier accessToken:accessToken fullName:@"" userName:@"" profilePicture:@"" success:^(PDUser *user) {
       dispatch_async(dispatch_get_main_queue(), ^{
         PDUISocialSettingsTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         [cell.socialSwitch setOn:YES animated:YES];
