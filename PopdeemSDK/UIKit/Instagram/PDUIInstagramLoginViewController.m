@@ -236,17 +236,7 @@ CGFloat _cardX,_cardY;
 	callback = [PopdeemSDK instagramCallback];
 	
 
-    //client_id = @"caf0eebcdafe46b88abd75fe14d35810";
-    //secret = @"9a2e9c9627724123af64c826c6b24361";
-    //callback = [PopdeemSDK instagramCallback];
-    
-    
-    //NEW
     NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=user_profile,user_media&response_type=code",client_id,callback];
-    
-    //OLD
-	//NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=code&scope=basic",client_id,callback];
-  
     
     
 	_webViewController = [[PDUIInstagramWebViewController alloc] initFromNib];
@@ -322,9 +312,6 @@ CGFloat _cardX,_cardY;
             
             //New
             NSString *data = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",client_id,secret,callback,verifier];
-            
-            //Old
-            //NSString *data = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",client_id,secret,callback,verifier];
             
             NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/access_token"];
             
