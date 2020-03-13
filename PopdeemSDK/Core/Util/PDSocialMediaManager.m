@@ -313,13 +313,9 @@
 		completion(NO);
 		return;
 	}
-	PDInstagramAPIClient *client = [[PDInstagramAPIClient alloc] init];
-	[client checkAccessToken:^(BOOL valid, NSError *error){
-		if (error) {
-			PDLogError(@"Error when checking Instagram Token: %@",error);
-		}
-		completion(valid);
-	}];
+	else {
+		completion(YES);
+	}
 }
 
 - (BOOL) isLoggedInWithAnyNetwork {

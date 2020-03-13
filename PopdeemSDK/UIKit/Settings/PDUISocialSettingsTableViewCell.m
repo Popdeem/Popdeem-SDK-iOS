@@ -101,6 +101,7 @@
     [self setNeedsDisplay];
   }
   
+   
   //Verify the token for real. This takes a moment - above is to avoid the text on the button changing before the users eyes.
 	PDSocialMediaManager *man = [PDSocialMediaManager manager];
 	[man isLoggedInWithInstagram:^(BOOL isLoggedIn){
@@ -109,6 +110,7 @@
 			[self setNeedsDisplay];
 		});
 	}];
+    
 }
 
 - (IBAction)switchToggled:(UISwitch*)sender {

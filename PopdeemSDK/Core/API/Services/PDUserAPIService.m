@@ -190,9 +190,10 @@
 	NSDictionary *params = @{@"user": @{
                             @"instagram": @{
                                     @"id": instagramId,
-                                    @"access_token": accessToken,
+                                    @"short_term_token": accessToken,
                                     @"full_name": fullName,
-                                    @"profile_picture" : profilePicture
+                                    @"profile_picture" : profilePicture,
+                                    @"useBasicDisplayAPI" : @true,
                                     },
                             @"unique_identifier": deviceId
                             }};

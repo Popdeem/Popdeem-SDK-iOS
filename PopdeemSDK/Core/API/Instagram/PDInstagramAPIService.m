@@ -21,6 +21,7 @@
 	return nil;
 }
 
+
 - (void) checkAccessToken:(void (^)(BOOL valid, NSError *error))completion {
 	NSURLSession *session = [NSURLSession createPopdeemSession];
 	PDUser *user = [PDUser sharedInstance];

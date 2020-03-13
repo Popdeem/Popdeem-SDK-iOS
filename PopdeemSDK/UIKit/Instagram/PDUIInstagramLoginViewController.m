@@ -243,8 +243,8 @@ CGFloat _cardX,_cardY;
 	self.definesPresentationContext = YES;
 	_webViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
 	
-  NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-  [storage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+  /*NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+  //[storage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
   
   NSHTTPCookie *cookie;
 
@@ -255,7 +255,7 @@ CGFloat _cardX,_cardY;
     if(domainRange.length > 0) {
       [storage deleteCookie:cookie];
     }
-  }
+  }*/
 	
     [self presentViewController:_webViewController animated:YES completion:^(void){
     
