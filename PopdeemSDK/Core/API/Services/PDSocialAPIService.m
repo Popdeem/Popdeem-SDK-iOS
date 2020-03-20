@@ -83,13 +83,13 @@
 	
 	NSMutableDictionary *instagram = [NSMutableDictionary dictionary];
 
+	[instagram setObject:userId forKey:@"id"];
 
-
-	[instagram setObject:userId forKey:@"user_id"];
-
-	[instagram setObject:accessToken forKey:@"access_token"];
+	[instagram setObject:accessToken forKey:@"short_term_token"];
 	//[instagram setObject:screenName forKey:@"screen_name"];
 	
+    [instagram setObject:@true forKey:@"useBasicDisplayAPI"];
+    
 	NSMutableDictionary *user = [NSMutableDictionary dictionary];
 	[user setObject:instagram forKey:@"instagram"];
 	
