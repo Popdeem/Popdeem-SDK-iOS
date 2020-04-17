@@ -140,10 +140,11 @@
 }
 
 - (void) buttonPressed:(UIButton*)button {
-	PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
+	//PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
 	[_viewModel setIsLoading:YES];
 	[self pullModel];
 	[self.view setUserInteractionEnabled:NO];
+    PDSocialMediaManager *manager = [[PDSocialMediaManager alloc] initForViewController:self];
   __weak typeof(self) weakSelf = self;
   if ([[PDUser sharedInstance] isRegistered]) {
     [manager loginWithTwitter:^(void){

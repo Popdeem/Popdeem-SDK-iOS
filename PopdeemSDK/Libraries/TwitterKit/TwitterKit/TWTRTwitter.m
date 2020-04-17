@@ -327,20 +327,10 @@ static TWTRTwitter *sharedTwitter;
     } else {
         __weak typeof(viewController) weakViewController = viewController;
         self.mobileSSO = [[TWTRMobileSSO alloc] initWithAuthConfig:self.sessionStore.authConfig];
-        [self.mobileSSO attemptAppLoginWithCompletion:^(TWTRSession *session, NSError *error) {
-            if (session) {
-                completion(session, error);
-            } else {
-                if (error.domain == TWTRLogInErrorDomain && error.code == TWTRLogInErrorCodeCancelled) {
-                    // The user tapped "Cancel"
-                    completion(session, error);
-                } else {
-                    typeof(weakViewController) strongViewController = weakViewController;
-                    // There wasn't a Twitter app
-                    [self performWebBasedLogin:strongViewController completion:completion];
-                }
-            }
-        }];
+
+        //typeof(weakViewController) strongViewController = weakViewController;
+        // There wasn't a Twitter app
+        [self performWebBasedLogin:weakViewController completion:completion];
     }
 }
 
