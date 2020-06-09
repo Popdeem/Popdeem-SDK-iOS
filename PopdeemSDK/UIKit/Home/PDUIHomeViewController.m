@@ -239,7 +239,7 @@
   [self.refreshControl addTarget:self action:@selector(reloadAction) forControlEvents:UIControlEventValueChanged];
   
   
-  self.title = translationForKey(@"popdeem.home.title", @"Rewards");
+  self.navigationItem.title = translationForKey(@"popdeem.home.navTitle", @"Rewards");
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.view setBackgroundColor:PopdeemColor(PDThemeColorViewBackground)];
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -335,7 +335,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-  self.title = translationForKey(@"popdeem.home.title", @"Rewards");
+self.navigationItem.title = translationForKey(@"popdeem.home.navTitle", @"Rewards");
   [self.view setUserInteractionEnabled:YES];
 
 //    if (!firstLaunch) {
